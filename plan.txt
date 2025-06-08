@@ -1,0 +1,18 @@
+Use monado/src/xrt/state_trackers/oxr as a baseline for my OpenXR implementation
+
+Write it to use an abstracted stream. Not sure if I want to use stdlib, but std::streambuf and std::istream/std::ostream could be a decent way to do it. The first iteration should just use TCP, and honestly I'm not sure if an android qemu pipe will ever be a good idea because it still needs to go over TCP on the host for IPC. App -> TCP -> VM pipe -> TCP -> Server is probably not that bad. If the documentation is still up to date, I could try writing to /dev/goldfish_pipe with a tcp service which would make it App -> VM pipe -> TCP -> Server. Who knows if this will matter.
+
+For qemu pipe see: https://android.googlesource.com/platform/external/qemu/+/master/docs/ANDROID-QEMU-PIPE.TXT
+
+Basically my program will be a thin wrapper of OpenXR with some logic in the middle to e.g. implement behavior or extensions locally.
+
+It should have an abstracted notion of a swapchain service which should support the following behaviors:
+- creating a swapchain
+- acquiring a swapchain
+- releasing a swapchain
+- destroying a swapchain
+This should be as thin a wrapper over the server's behavior as possible, it just needs to be abstracted to allow tricks to make it work locally, and to allow streaming if necessary.
+
+To start out, extensions should be one to one between server and client (barring implementations needed for MVP on client). The client should throw an error if it attempts to create an instance with extensions the host doesn't support. Basically, over time I want to build up a list of locally-implemented extensions, which are removed from the list passed by the app. These locally-implemented extensions may depend on host extensions that the app didn't request, so it should add these too before forwarding to the host.
+
+Actually, some of these locally implemented extensions should probably be OpenXR layers in a separate project. Not the ones directly related to xrtransport, but the ones that reimplement extensions only available on the Quest, if there are any. The layer can implement them and remove them from the requested list that gets passed on.

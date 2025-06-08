@@ -1,0 +1,1 @@
+from common import get_xml_root, collect_structs
