@@ -1,1 +1,2 @@
 from common import get_xml_root, collect_structs
+from serializer_generator import generate_serializer
