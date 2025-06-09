@@ -1,0 +1,6664 @@
+[
+    {
+        "name": "xrNegotiateLoaderRuntimeInterface",
+        "type": "XrResult",
+        "params": [
+            {
+                "qualifier": "const",
+                "type": "XrNegotiateLoaderInfo",
+                "pointer": "*",
+                "name": "loaderInfo"
+            },
+            {
+                "type": "XrNegotiateRuntimeRequest",
+                "pointer": "*",
+                "name": "runtimeRequest"
+            }
+        ]
+    },
+    {
+        "name": "xrNegotiateLoaderApiLayerInterface",
+        "type": "XrResult",
+        "params": [
+            {
+                "qualifier": "const",
+                "type": "XrNegotiateLoaderInfo",
+                "pointer": "*",
+                "name": "loaderInfo"
+            },
+            {
+                "qualifier": "const",
+                "type": "char",
+                "pointer": "*",
+                "name": "layerName",
+                "len": "null-terminated"
+            },
+            {
+                "type": "XrNegotiateApiLayerRequest",
+                "pointer": "*",
+                "name": "apiLayerRequest"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateApiLayerInstance",
+        "type": "XrResult",
+        "params": [
+            {
+                "qualifier": "const",
+                "type": "XrInstanceCreateInfo",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrApiLayerCreateInfo",
+                "pointer": "*",
+                "name": "layerInfo"
+            },
+            {
+                "type": "XrInstance",
+                "pointer": "*",
+                "name": "instance"
+            }
+        ]
+    },
+    {
+        "name": "xrGetInstanceProcAddr",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "char",
+                "pointer": "*",
+                "name": "name",
+                "len": "null-terminated"
+            },
+            {
+                "type": "PFN_xrVoidFunction",
+                "pointer": "*",
+                "name": "function"
+            }
+        ],
+        "flag": true
+    },
+    {
+        "name": "xrEnumerateApiLayerProperties",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "uint32_t",
+                "name": "propertyCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "propertyCountOutput"
+            },
+            {
+                "type": "XrApiLayerProperties",
+                "pointer": "*",
+                "name": "properties",
+                "len": "propertyCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateInstanceExtensionProperties",
+        "type": "XrResult",
+        "params": [
+            {
+                "qualifier": "const",
+                "type": "char",
+                "pointer": "*",
+                "name": "layerName",
+                "len": "null-terminated"
+            },
+            {
+                "type": "uint32_t",
+                "name": "propertyCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "propertyCountOutput"
+            },
+            {
+                "type": "XrExtensionProperties",
+                "pointer": "*",
+                "name": "properties",
+                "len": "propertyCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateInstance",
+        "type": "XrResult",
+        "params": [
+            {
+                "qualifier": "const",
+                "type": "XrInstanceCreateInfo",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrInstance",
+                "pointer": "*",
+                "name": "instance"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyInstance",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            }
+        ]
+    },
+    {
+        "name": "xrResultToString",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrResult",
+                "name": "value"
+            },
+            {
+                "type": "char",
+                "name": "buffer",
+                "array": "[XR_MAX_RESULT_STRING_SIZE]"
+            }
+        ]
+    },
+    {
+        "name": "xrStructureTypeToString",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrStructureType",
+                "name": "value"
+            },
+            {
+                "type": "char",
+                "name": "buffer",
+                "array": "[XR_MAX_STRUCTURE_NAME_SIZE]"
+            }
+        ]
+    },
+    {
+        "name": "xrStructureTypeToString2KHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrStructureType",
+                "name": "value"
+            },
+            {
+                "type": "char",
+                "name": "buffer",
+                "array": "[XR_MAX_STRUCTURE_NAME_SIZE_EXTENDED_KHR]"
+            }
+        ]
+    },
+    {
+        "name": "xrGetInstanceProperties",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrInstanceProperties",
+                "pointer": "*",
+                "name": "instanceProperties"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSystem",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSystemGetInfo",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrSystemId",
+                "pointer": "*",
+                "name": "systemId"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSystemProperties",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrSystemProperties",
+                "pointer": "*",
+                "name": "properties"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSession",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSessionCreateInfo",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSession",
+                "pointer": "*",
+                "name": "session"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySession",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySpace",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateSwapchainFormats",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint32_t",
+                "name": "formatCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "formatCountOutput"
+            },
+            {
+                "type": "int64_t",
+                "pointer": "*",
+                "name": "formats",
+                "len": "formatCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSwapchain",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSwapchainCreateInfo",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSwapchain",
+                "pointer": "*",
+                "name": "swapchain"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySwapchain",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSwapchain",
+                "name": "swapchain"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateSwapchainImages",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSwapchain",
+                "name": "swapchain"
+            },
+            {
+                "type": "uint32_t",
+                "name": "imageCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "imageCountOutput"
+            },
+            {
+                "type": "XrSwapchainImageBaseHeader",
+                "pointer": "*",
+                "name": "images",
+                "len": "imageCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrAcquireSwapchainImage",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSwapchain",
+                "name": "swapchain"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSwapchainImageAcquireInfo",
+                "pointer": "*",
+                "name": "acquireInfo"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "index"
+            }
+        ]
+    },
+    {
+        "name": "xrWaitSwapchainImage",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSwapchain",
+                "name": "swapchain"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSwapchainImageWaitInfo",
+                "pointer": "*",
+                "name": "waitInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrReleaseSwapchainImage",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSwapchain",
+                "name": "swapchain"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSwapchainImageReleaseInfo",
+                "pointer": "*",
+                "name": "releaseInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrBeginSession",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSessionBeginInfo",
+                "pointer": "*",
+                "name": "beginInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrEndSession",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            }
+        ]
+    },
+    {
+        "name": "xrRequestExitSession",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateReferenceSpaces",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint32_t",
+                "name": "spaceCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "spaceCountOutput"
+            },
+            {
+                "type": "XrReferenceSpaceType",
+                "pointer": "*",
+                "name": "spaces",
+                "len": "spaceCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateReferenceSpace",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrReferenceSpaceCreateInfo",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateActionSpace",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrActionSpaceCreateInfo",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrLocateSpace",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrSpace",
+                "name": "baseSpace"
+            },
+            {
+                "type": "XrTime",
+                "name": "time"
+            },
+            {
+                "type": "XrSpaceLocation",
+                "pointer": "*",
+                "name": "location"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateViewConfigurations",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "uint32_t",
+                "name": "viewConfigurationTypeCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "viewConfigurationTypeCountOutput"
+            },
+            {
+                "type": "XrViewConfigurationType",
+                "pointer": "*",
+                "name": "viewConfigurationTypes",
+                "len": "viewConfigurationTypeCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateEnvironmentBlendModes",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrViewConfigurationType",
+                "name": "viewConfigurationType"
+            },
+            {
+                "type": "uint32_t",
+                "name": "environmentBlendModeCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "environmentBlendModeCountOutput"
+            },
+            {
+                "type": "XrEnvironmentBlendMode",
+                "pointer": "*",
+                "name": "environmentBlendModes",
+                "len": "environmentBlendModeCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetViewConfigurationProperties",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrViewConfigurationType",
+                "name": "viewConfigurationType"
+            },
+            {
+                "type": "XrViewConfigurationProperties",
+                "pointer": "*",
+                "name": "configurationProperties"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateViewConfigurationViews",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrViewConfigurationType",
+                "name": "viewConfigurationType"
+            },
+            {
+                "type": "uint32_t",
+                "name": "viewCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "viewCountOutput"
+            },
+            {
+                "type": "XrViewConfigurationView",
+                "pointer": "*",
+                "name": "views",
+                "len": "viewCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrBeginFrame",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFrameBeginInfo",
+                "pointer": "*",
+                "name": "frameBeginInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrLocateViews",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrViewLocateInfo",
+                "pointer": "*",
+                "name": "viewLocateInfo"
+            },
+            {
+                "type": "XrViewState",
+                "pointer": "*",
+                "name": "viewState"
+            },
+            {
+                "type": "uint32_t",
+                "name": "viewCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "viewCountOutput"
+            },
+            {
+                "type": "XrView",
+                "pointer": "*",
+                "name": "views",
+                "len": "viewCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrEndFrame",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFrameEndInfo",
+                "pointer": "*",
+                "name": "frameEndInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrWaitFrame",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFrameWaitInfo",
+                "pointer": "*",
+                "name": "frameWaitInfo"
+            },
+            {
+                "type": "XrFrameState",
+                "pointer": "*",
+                "name": "frameState"
+            }
+        ]
+    },
+    {
+        "name": "xrApplyHapticFeedback",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrHapticActionInfo",
+                "pointer": "*",
+                "name": "hapticActionInfo"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrHapticBaseHeader",
+                "pointer": "*",
+                "name": "hapticFeedback"
+            }
+        ]
+    },
+    {
+        "name": "xrStopHapticFeedback",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrHapticActionInfo",
+                "pointer": "*",
+                "name": "hapticActionInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrPollEvent",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrEventDataBuffer",
+                "pointer": "*",
+                "name": "eventData"
+            }
+        ]
+    },
+    {
+        "name": "xrStringToPath",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "char",
+                "pointer": "*",
+                "name": "pathString",
+                "len": "null-terminated"
+            },
+            {
+                "type": "XrPath",
+                "pointer": "*",
+                "name": "path"
+            }
+        ]
+    },
+    {
+        "name": "xrPathToString",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrPath",
+                "name": "path"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "char",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetReferenceSpaceBoundsRect",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrReferenceSpaceType",
+                "name": "referenceSpaceType"
+            },
+            {
+                "type": "XrExtent2Df",
+                "pointer": "*",
+                "name": "bounds"
+            }
+        ]
+    },
+    {
+        "name": "xrSetAndroidApplicationThreadKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrAndroidThreadTypeKHR",
+                "name": "threadType"
+            },
+            {
+                "type": "uint32_t",
+                "name": "threadId"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSwapchainAndroidSurfaceKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSwapchainCreateInfo",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrSwapchain",
+                "pointer": "*",
+                "name": "swapchain"
+            },
+            {
+                "type": "jobject",
+                "pointer": "*",
+                "name": "surface"
+            }
+        ]
+    },
+    {
+        "name": "xrGetActionStateBoolean",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrActionStateGetInfo",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrActionStateBoolean",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrGetActionStateFloat",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrActionStateGetInfo",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrActionStateFloat",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrGetActionStateVector2f",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrActionStateGetInfo",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrActionStateVector2f",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrGetActionStatePose",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrActionStateGetInfo",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrActionStatePose",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateActionSet",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrActionSetCreateInfo",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrActionSet",
+                "pointer": "*",
+                "name": "actionSet"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyActionSet",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrActionSet",
+                "name": "actionSet"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateAction",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrActionSet",
+                "name": "actionSet"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrActionCreateInfo",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrAction",
+                "pointer": "*",
+                "name": "action"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyAction",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrAction",
+                "name": "action"
+            }
+        ]
+    },
+    {
+        "name": "xrSuggestInteractionProfileBindings",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrInteractionProfileSuggestedBinding",
+                "pointer": "*",
+                "name": "suggestedBindings"
+            }
+        ]
+    },
+    {
+        "name": "xrAttachSessionActionSets",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSessionActionSetsAttachInfo",
+                "pointer": "*",
+                "name": "attachInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrGetCurrentInteractionProfile",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "topLevelUserPath"
+            },
+            {
+                "type": "XrInteractionProfileState",
+                "pointer": "*",
+                "name": "interactionProfile"
+            }
+        ]
+    },
+    {
+        "name": "xrSyncActions",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrActionsSyncInfo",
+                "pointer": "*",
+                "name": "syncInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateBoundSourcesForAction",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrBoundSourcesForActionEnumerateInfo",
+                "pointer": "*",
+                "name": "enumerateInfo"
+            },
+            {
+                "type": "uint32_t",
+                "name": "sourceCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "sourceCountOutput"
+            },
+            {
+                "type": "XrPath",
+                "pointer": "*",
+                "name": "sources",
+                "len": "sourceCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetInputSourceLocalizedName",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrInputSourceLocalizedNameGetInfo",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "char",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVulkanInstanceExtensionsKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "char",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVulkanDeviceExtensionsKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "char",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVulkanGraphicsDeviceKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "VkInstance",
+                "name": "vkInstance"
+            },
+            {
+                "type": "VkPhysicalDevice",
+                "pointer": "*",
+                "name": "vkPhysicalDevice"
+            }
+        ]
+    },
+    {
+        "name": "xrGetOpenGLGraphicsRequirementsKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrGraphicsRequirementsOpenGLKHR",
+                "pointer": "*",
+                "name": "graphicsRequirements"
+            }
+        ]
+    },
+    {
+        "name": "xrGetOpenGLESGraphicsRequirementsKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrGraphicsRequirementsOpenGLESKHR",
+                "pointer": "*",
+                "name": "graphicsRequirements"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVulkanGraphicsRequirementsKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrGraphicsRequirementsVulkanKHR",
+                "pointer": "*",
+                "name": "graphicsRequirements"
+            }
+        ]
+    },
+    {
+        "name": "xrGetD3D11GraphicsRequirementsKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrGraphicsRequirementsD3D11KHR",
+                "pointer": "*",
+                "name": "graphicsRequirements"
+            }
+        ]
+    },
+    {
+        "name": "xrGetD3D12GraphicsRequirementsKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrGraphicsRequirementsD3D12KHR",
+                "pointer": "*",
+                "name": "graphicsRequirements"
+            }
+        ]
+    },
+    {
+        "name": "xrGetMetalGraphicsRequirementsKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrGraphicsRequirementsMetalKHR",
+                "pointer": "*",
+                "name": "graphicsRequirements"
+            }
+        ]
+    },
+    {
+        "name": "xrPerfSettingsSetPerformanceLevelEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPerfSettingsDomainEXT",
+                "name": "domain"
+            },
+            {
+                "type": "XrPerfSettingsLevelEXT",
+                "name": "level"
+            }
+        ]
+    },
+    {
+        "name": "xrThermalGetTemperatureTrendEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPerfSettingsDomainEXT",
+                "name": "domain"
+            },
+            {
+                "type": "XrPerfSettingsNotificationLevelEXT",
+                "pointer": "*",
+                "name": "notificationLevel"
+            },
+            {
+                "type": "float",
+                "pointer": "*",
+                "name": "tempHeadroom"
+            },
+            {
+                "type": "float",
+                "pointer": "*",
+                "name": "tempSlope"
+            }
+        ]
+    },
+    {
+        "name": "xrSetDebugUtilsObjectNameEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrDebugUtilsObjectNameInfoEXT",
+                "pointer": "*",
+                "name": "nameInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateDebugUtilsMessengerEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrDebugUtilsMessengerCreateInfoEXT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrDebugUtilsMessengerEXT",
+                "pointer": "*",
+                "name": "messenger"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyDebugUtilsMessengerEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrDebugUtilsMessengerEXT",
+                "name": "messenger"
+            }
+        ]
+    },
+    {
+        "name": "xrSubmitDebugUtilsMessageEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrDebugUtilsMessageSeverityFlagsEXT",
+                "name": "messageSeverity"
+            },
+            {
+                "type": "XrDebugUtilsMessageTypeFlagsEXT",
+                "name": "messageTypes"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrDebugUtilsMessengerCallbackDataEXT",
+                "pointer": "*",
+                "name": "callbackData"
+            }
+        ]
+    },
+    {
+        "name": "xrSessionBeginDebugUtilsLabelRegionEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrDebugUtilsLabelEXT",
+                "pointer": "*",
+                "name": "labelInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrSessionEndDebugUtilsLabelRegionEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            }
+        ]
+    },
+    {
+        "name": "xrSessionInsertDebugUtilsLabelEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrDebugUtilsLabelEXT",
+                "pointer": "*",
+                "name": "labelInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrConvertTimeToWin32PerformanceCounterKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrTime",
+                "name": "time"
+            },
+            {
+                "type": "LARGE_INTEGER",
+                "pointer": "*",
+                "name": "performanceCounter"
+            }
+        ]
+    },
+    {
+        "name": "xrConvertWin32PerformanceCounterToTimeKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "LARGE_INTEGER",
+                "pointer": "*",
+                "name": "performanceCounter"
+            },
+            {
+                "type": "XrTime",
+                "pointer": "*",
+                "name": "time"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateVulkanInstanceKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVulkanInstanceCreateInfoKHR",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "VkInstance",
+                "pointer": "*",
+                "name": "vulkanInstance"
+            },
+            {
+                "type": "VkResult",
+                "pointer": "*",
+                "name": "vulkanResult"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateVulkanDeviceKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVulkanDeviceCreateInfoKHR",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "VkDevice",
+                "pointer": "*",
+                "name": "vulkanDevice"
+            },
+            {
+                "type": "VkResult",
+                "pointer": "*",
+                "name": "vulkanResult"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVulkanGraphicsDevice2KHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVulkanGraphicsDeviceGetInfoKHR",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "VkPhysicalDevice",
+                "pointer": "*",
+                "name": "vulkanPhysicalDevice"
+            }
+        ]
+    },
+    {
+        "name": "xrConvertTimeToTimespecTimeKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrTime",
+                "name": "time"
+            },
+            {
+                "qualifier": "struct",
+                "type": "timespec",
+                "pointer": "*",
+                "name": "timespecTime"
+            }
+        ]
+    },
+    {
+        "name": "xrConvertTimespecTimeToTimeKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const struct",
+                "type": "timespec",
+                "pointer": "*",
+                "name": "timespecTime"
+            },
+            {
+                "type": "XrTime",
+                "pointer": "*",
+                "name": "time"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVisibilityMaskKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrViewConfigurationType",
+                "name": "viewConfigurationType"
+            },
+            {
+                "type": "uint32_t",
+                "name": "viewIndex"
+            },
+            {
+                "type": "XrVisibilityMaskTypeKHR",
+                "name": "visibilityMaskType"
+            },
+            {
+                "type": "XrVisibilityMaskKHR",
+                "pointer": "*",
+                "name": "visibilityMask"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorCreateInfoMSFT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpatialAnchorMSFT",
+                "pointer": "*",
+                "name": "anchor"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorSpaceMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorSpaceCreateInfoMSFT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySpatialAnchorMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorMSFT",
+                "name": "anchor"
+            }
+        ]
+    },
+    {
+        "name": "xrSetInputDeviceActiveEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "interactionProfile"
+            },
+            {
+                "type": "XrPath",
+                "name": "topLevelPath"
+            },
+            {
+                "type": "XrBool32",
+                "name": "isActive"
+            }
+        ]
+    },
+    {
+        "name": "xrSetInputDeviceStateBoolEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "topLevelPath"
+            },
+            {
+                "type": "XrPath",
+                "name": "inputSourcePath"
+            },
+            {
+                "type": "XrBool32",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrSetInputDeviceStateFloatEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "topLevelPath"
+            },
+            {
+                "type": "XrPath",
+                "name": "inputSourcePath"
+            },
+            {
+                "type": "float",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrSetInputDeviceStateVector2fEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "topLevelPath"
+            },
+            {
+                "type": "XrPath",
+                "name": "inputSourcePath"
+            },
+            {
+                "type": "XrVector2f",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrSetInputDeviceLocationEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "topLevelPath"
+            },
+            {
+                "type": "XrPath",
+                "name": "inputSourcePath"
+            },
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrPosef",
+                "name": "pose"
+            }
+        ]
+    },
+    {
+        "name": "xrInitializeLoaderKHR",
+        "type": "XrResult",
+        "params": [
+            {
+                "qualifier": "const",
+                "type": "XrLoaderInitInfoBaseHeaderKHR",
+                "pointer": "*",
+                "name": "loaderInitInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialGraphNodeSpaceMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialGraphNodeSpaceCreateInfoMSFT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrTryCreateSpatialGraphStaticNodeBindingMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialGraphStaticNodeBindingCreateInfoMSFT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpatialGraphNodeBindingMSFT",
+                "pointer": "*",
+                "name": "nodeBinding"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySpatialGraphNodeBindingMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialGraphNodeBindingMSFT",
+                "name": "nodeBinding"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpatialGraphNodeBindingPropertiesMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialGraphNodeBindingMSFT",
+                "name": "nodeBinding"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialGraphNodeBindingPropertiesGetInfoMSFT",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrSpatialGraphNodeBindingPropertiesMSFT",
+                "pointer": "*",
+                "name": "properties"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateHandTrackerEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrHandTrackerCreateInfoEXT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrHandTrackerEXT",
+                "pointer": "*",
+                "name": "handTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyHandTrackerEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrHandTrackerEXT",
+                "name": "handTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrLocateHandJointsEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrHandTrackerEXT",
+                "name": "handTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrHandJointsLocateInfoEXT",
+                "pointer": "*",
+                "name": "locateInfo"
+            },
+            {
+                "type": "XrHandJointLocationsEXT",
+                "pointer": "*",
+                "name": "locations"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateFaceTrackerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFaceTrackerCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrFaceTrackerFB",
+                "pointer": "*",
+                "name": "faceTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyFaceTrackerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFaceTrackerFB",
+                "name": "faceTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrGetFaceExpressionWeightsFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFaceTrackerFB",
+                "name": "faceTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFaceExpressionInfoFB",
+                "pointer": "*",
+                "name": "expressionInfo"
+            },
+            {
+                "type": "XrFaceExpressionWeightsFB",
+                "pointer": "*",
+                "name": "expressionWeights"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateFaceTracker2FB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFaceTrackerCreateInfo2FB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrFaceTracker2FB",
+                "pointer": "*",
+                "name": "faceTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyFaceTracker2FB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFaceTracker2FB",
+                "name": "faceTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrGetFaceExpressionWeights2FB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFaceTracker2FB",
+                "name": "faceTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFaceExpressionInfo2FB",
+                "pointer": "*",
+                "name": "expressionInfo"
+            },
+            {
+                "type": "XrFaceExpressionWeights2FB",
+                "pointer": "*",
+                "name": "expressionWeights"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateBodyTrackerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrBodyTrackerCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrBodyTrackerFB",
+                "pointer": "*",
+                "name": "bodyTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyBodyTrackerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrBodyTrackerFB",
+                "name": "bodyTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrLocateBodyJointsFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrBodyTrackerFB",
+                "name": "bodyTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrBodyJointsLocateInfoFB",
+                "pointer": "*",
+                "name": "locateInfo"
+            },
+            {
+                "type": "XrBodyJointLocationsFB",
+                "pointer": "*",
+                "name": "locations"
+            }
+        ]
+    },
+    {
+        "name": "xrGetBodySkeletonFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrBodyTrackerFB",
+                "name": "bodyTracker"
+            },
+            {
+                "type": "XrBodySkeletonFB",
+                "pointer": "*",
+                "name": "skeleton"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateEyeTrackerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrEyeTrackerCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrEyeTrackerFB",
+                "pointer": "*",
+                "name": "eyeTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyEyeTrackerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEyeTrackerFB",
+                "name": "eyeTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrGetEyeGazesFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEyeTrackerFB",
+                "name": "eyeTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrEyeGazesInfoFB",
+                "pointer": "*",
+                "name": "gazeInfo"
+            },
+            {
+                "type": "XrEyeGazesFB",
+                "pointer": "*",
+                "name": "eyeGazes"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateHandMeshSpaceMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrHandTrackerEXT",
+                "name": "handTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrHandMeshSpaceCreateInfoMSFT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrUpdateHandMeshMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrHandTrackerEXT",
+                "name": "handTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrHandMeshUpdateInfoMSFT",
+                "pointer": "*",
+                "name": "updateInfo"
+            },
+            {
+                "type": "XrHandMeshMSFT",
+                "pointer": "*",
+                "name": "handMesh"
+            }
+        ]
+    },
+    {
+        "name": "xrGetControllerModelKeyMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "topLevelUserPath"
+            },
+            {
+                "type": "XrControllerModelKeyStateMSFT",
+                "pointer": "*",
+                "name": "controllerModelKeyState"
+            }
+        ]
+    },
+    {
+        "name": "xrLoadControllerModelMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrControllerModelKeyMSFT",
+                "name": "modelKey"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "uint8_t",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetControllerModelPropertiesMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrControllerModelKeyMSFT",
+                "name": "modelKey"
+            },
+            {
+                "type": "XrControllerModelPropertiesMSFT",
+                "pointer": "*",
+                "name": "properties"
+            }
+        ]
+    },
+    {
+        "name": "xrGetControllerModelStateMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrControllerModelKeyMSFT",
+                "name": "modelKey"
+            },
+            {
+                "type": "XrControllerModelStateMSFT",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateSceneComputeFeaturesMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "uint32_t",
+                "name": "featureCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "featureCountOutput"
+            },
+            {
+                "type": "XrSceneComputeFeatureMSFT",
+                "pointer": "*",
+                "name": "features",
+                "len": "featureCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSceneObserverMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSceneObserverCreateInfoMSFT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSceneObserverMSFT",
+                "pointer": "*",
+                "name": "sceneObserver"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySceneObserverMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneObserverMSFT",
+                "name": "sceneObserver"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSceneMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneObserverMSFT",
+                "name": "sceneObserver"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSceneCreateInfoMSFT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSceneMSFT",
+                "pointer": "*",
+                "name": "scene"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySceneMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneMSFT",
+                "name": "scene"
+            }
+        ]
+    },
+    {
+        "name": "xrComputeNewSceneMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneObserverMSFT",
+                "name": "sceneObserver"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrNewSceneComputeInfoMSFT",
+                "pointer": "*",
+                "name": "computeInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSceneComputeStateMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneObserverMSFT",
+                "name": "sceneObserver"
+            },
+            {
+                "type": "XrSceneComputeStateMSFT",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSceneComponentsMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneMSFT",
+                "name": "scene"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSceneComponentsGetInfoMSFT",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrSceneComponentsMSFT",
+                "pointer": "*",
+                "name": "components"
+            }
+        ]
+    },
+    {
+        "name": "xrLocateSceneComponentsMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneMSFT",
+                "name": "scene"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSceneComponentsLocateInfoMSFT",
+                "pointer": "*",
+                "name": "locateInfo"
+            },
+            {
+                "type": "XrSceneComponentLocationsMSFT",
+                "pointer": "*",
+                "name": "locations"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSceneMeshBuffersMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneMSFT",
+                "name": "scene"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSceneMeshBuffersGetInfoMSFT",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrSceneMeshBuffersMSFT",
+                "pointer": "*",
+                "name": "buffers"
+            }
+        ]
+    },
+    {
+        "name": "xrDeserializeSceneMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneObserverMSFT",
+                "name": "sceneObserver"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSceneDeserializeInfoMSFT",
+                "pointer": "*",
+                "name": "deserializeInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSerializedSceneFragmentDataMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneMSFT",
+                "name": "scene"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSerializedSceneFragmentDataGetInfoMSFT",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "uint32_t",
+                "name": "countInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "readOutput"
+            },
+            {
+                "type": "uint8_t",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "countInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSceneMarkerRawDataMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneMSFT",
+                "name": "scene"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrUuidMSFT",
+                "pointer": "*",
+                "name": "markerId"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "uint8_t",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSceneMarkerDecodedStringMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSceneMSFT",
+                "name": "scene"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrUuidMSFT",
+                "pointer": "*",
+                "name": "markerId"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "char",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateDisplayRefreshRatesFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint32_t",
+                "name": "displayRefreshRateCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "displayRefreshRateCountOutput"
+            },
+            {
+                "type": "float",
+                "pointer": "*",
+                "name": "displayRefreshRates",
+                "len": "displayRefreshRateCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetDisplayRefreshRateFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "float",
+                "pointer": "*",
+                "name": "displayRefreshRate"
+            }
+        ]
+    },
+    {
+        "name": "xrRequestDisplayRefreshRateFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "float",
+                "name": "displayRefreshRate"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorFromPerceptionAnchorMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "IUnknown",
+                "pointer": "*",
+                "name": "perceptionAnchor"
+            },
+            {
+                "type": "XrSpatialAnchorMSFT",
+                "pointer": "*",
+                "name": "anchor"
+            }
+        ]
+    },
+    {
+        "name": "xrTryGetPerceptionAnchorFromSpatialAnchorMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrSpatialAnchorMSFT",
+                "name": "anchor"
+            },
+            {
+                "type": "IUnknown",
+                "pointer": "**",
+                "name": "perceptionAnchor"
+            }
+        ]
+    },
+    {
+        "name": "xrUpdateSwapchainFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSwapchain",
+                "name": "swapchain"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSwapchainStateBaseHeaderFB",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSwapchainStateFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSwapchain",
+                "name": "swapchain"
+            },
+            {
+                "type": "XrSwapchainStateBaseHeaderFB",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateColorSpacesFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint32_t",
+                "name": "colorSpaceCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "colorSpaceCountOutput"
+            },
+            {
+                "type": "XrColorSpaceFB",
+                "pointer": "*",
+                "name": "colorSpaces",
+                "len": "colorSpaceCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrSetColorSpaceFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrColorSpaceFB",
+                "name": "colorSpace"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateFoveationProfileFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFoveationProfileCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrFoveationProfileFB",
+                "pointer": "*",
+                "name": "profile"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyFoveationProfileFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFoveationProfileFB",
+                "name": "profile"
+            }
+        ]
+    },
+    {
+        "name": "xrGetFoveationEyeTrackedStateMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrFoveationEyeTrackedStateMETA",
+                "pointer": "*",
+                "name": "foveationState"
+            }
+        ]
+    },
+    {
+        "name": "xrGetHandMeshFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrHandTrackerEXT",
+                "name": "handTracker"
+            },
+            {
+                "type": "XrHandTrackingMeshFB",
+                "pointer": "*",
+                "name": "mesh"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateRenderModelPathsFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint32_t",
+                "name": "pathCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "pathCountOutput"
+            },
+            {
+                "type": "XrRenderModelPathInfoFB",
+                "pointer": "*",
+                "name": "paths",
+                "len": "pathCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetRenderModelPropertiesFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "path"
+            },
+            {
+                "type": "XrRenderModelPropertiesFB",
+                "pointer": "*",
+                "name": "properties"
+            }
+        ]
+    },
+    {
+        "name": "xrLoadRenderModelFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrRenderModelLoadInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrRenderModelBufferFB",
+                "pointer": "*",
+                "name": "buffer"
+            }
+        ]
+    },
+    {
+        "name": "xrQuerySystemTrackedKeyboardFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrKeyboardTrackingQueryFB",
+                "pointer": "*",
+                "name": "queryInfo"
+            },
+            {
+                "type": "XrKeyboardTrackingDescriptionFB",
+                "pointer": "*",
+                "name": "keyboard"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateKeyboardSpaceFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrKeyboardSpaceCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "keyboardSpace"
+            }
+        ]
+    },
+    {
+        "name": "xrSetEnvironmentDepthEstimationVARJO",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrBool32",
+                "name": "enabled"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateReprojectionModesMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "XrSystemId",
+                "name": "systemId"
+            },
+            {
+                "type": "XrViewConfigurationType",
+                "name": "viewConfigurationType"
+            },
+            {
+                "type": "uint32_t",
+                "name": "modeCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "modeCountOutput"
+            },
+            {
+                "type": "XrReprojectionModeMSFT",
+                "pointer": "*",
+                "name": "modes",
+                "len": "modeCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetAudioOutputDeviceGuidOculus",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "wchar_t",
+                "name": "buffer",
+                "array": "[XR_MAX_AUDIO_DEVICE_STR_SIZE_OCULUS]"
+            }
+        ]
+    },
+    {
+        "name": "xrGetAudioInputDeviceGuidOculus",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "wchar_t",
+                "name": "buffer",
+                "array": "[XR_MAX_AUDIO_DEVICE_STR_SIZE_OCULUS]"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorCreateInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceUuidFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrUuidEXT",
+                "pointer": "*",
+                "name": "uuid"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateSpaceSupportedComponentsFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "uint32_t",
+                "name": "componentTypeCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "componentTypeCountOutput"
+            },
+            {
+                "type": "XrSpaceComponentTypeFB",
+                "pointer": "*",
+                "name": "componentTypes",
+                "len": "componentTypeCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrSetSpaceComponentStatusFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpaceComponentStatusSetInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceComponentStatusFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrSpaceComponentTypeFB",
+                "name": "componentType"
+            },
+            {
+                "type": "XrSpaceComponentStatusFB",
+                "pointer": "*",
+                "name": "status"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateTriangleMeshFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrTriangleMeshCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrTriangleMeshFB",
+                "pointer": "*",
+                "name": "outTriangleMesh"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyTriangleMeshFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrTriangleMeshFB",
+                "name": "mesh"
+            }
+        ]
+    },
+    {
+        "name": "xrTriangleMeshGetVertexBufferFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrTriangleMeshFB",
+                "name": "mesh"
+            },
+            {
+                "type": "XrVector3f",
+                "pointer": "**",
+                "name": "outVertexBuffer"
+            }
+        ]
+    },
+    {
+        "name": "xrTriangleMeshGetIndexBufferFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrTriangleMeshFB",
+                "name": "mesh"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "**",
+                "name": "outIndexBuffer"
+            }
+        ]
+    },
+    {
+        "name": "xrTriangleMeshBeginUpdateFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrTriangleMeshFB",
+                "name": "mesh"
+            }
+        ]
+    },
+    {
+        "name": "xrTriangleMeshEndUpdateFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrTriangleMeshFB",
+                "name": "mesh"
+            },
+            {
+                "type": "uint32_t",
+                "name": "vertexCount"
+            },
+            {
+                "type": "uint32_t",
+                "name": "triangleCount"
+            }
+        ]
+    },
+    {
+        "name": "xrTriangleMeshBeginVertexBufferUpdateFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrTriangleMeshFB",
+                "name": "mesh"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "outVertexCount"
+            }
+        ]
+    },
+    {
+        "name": "xrTriangleMeshEndVertexBufferUpdateFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrTriangleMeshFB",
+                "name": "mesh"
+            }
+        ]
+    },
+    {
+        "name": "xrCreatePassthroughFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPassthroughCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrPassthroughFB",
+                "pointer": "*",
+                "name": "outPassthrough"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyPassthroughFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughFB",
+                "name": "passthrough"
+            }
+        ]
+    },
+    {
+        "name": "xrPassthroughStartFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughFB",
+                "name": "passthrough"
+            }
+        ]
+    },
+    {
+        "name": "xrPassthroughPauseFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughFB",
+                "name": "passthrough"
+            }
+        ]
+    },
+    {
+        "name": "xrCreatePassthroughLayerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPassthroughLayerCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrPassthroughLayerFB",
+                "pointer": "*",
+                "name": "outLayer"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyPassthroughLayerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughLayerFB",
+                "name": "layer"
+            }
+        ]
+    },
+    {
+        "name": "xrPassthroughLayerPauseFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughLayerFB",
+                "name": "layer"
+            }
+        ]
+    },
+    {
+        "name": "xrPassthroughLayerResumeFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughLayerFB",
+                "name": "layer"
+            }
+        ]
+    },
+    {
+        "name": "xrPassthroughLayerSetStyleFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughLayerFB",
+                "name": "layer"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPassthroughStyleFB",
+                "pointer": "*",
+                "name": "style"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateGeometryInstanceFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrGeometryInstanceCreateInfoFB",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrGeometryInstanceFB",
+                "pointer": "*",
+                "name": "outGeometryInstance"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyGeometryInstanceFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrGeometryInstanceFB",
+                "name": "instance"
+            }
+        ]
+    },
+    {
+        "name": "xrGeometryInstanceSetTransformFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrGeometryInstanceFB",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrGeometryInstanceTransformFB",
+                "pointer": "*",
+                "name": "transformation"
+            }
+        ]
+    },
+    {
+        "name": "xrQuerySpacesFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpaceQueryInfoBaseHeaderFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrRetrieveSpaceQueryResultsFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "name": "requestId"
+            },
+            {
+                "type": "XrSpaceQueryResultsFB",
+                "pointer": "*",
+                "name": "results"
+            }
+        ]
+    },
+    {
+        "name": "xrSaveSpaceFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpaceSaveInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrEraseSpaceFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpaceEraseInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrSaveSpaceListFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpaceListSaveInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrShareSpacesFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpaceShareInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceContainerFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrSpaceContainerFB",
+                "pointer": "*",
+                "name": "spaceContainerOutput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceTriangleMeshMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpaceTriangleMeshGetInfoMETA",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrSpaceTriangleMeshMETA",
+                "pointer": "*",
+                "name": "triangleMeshOutput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceBoundingBox2DFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrRect2Df",
+                "pointer": "*",
+                "name": "boundingBox2DOutput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceBoundingBox3DFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrRect3DfFB",
+                "pointer": "*",
+                "name": "boundingBox3DOutput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceSemanticLabelsFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrSemanticLabelsFB",
+                "pointer": "*",
+                "name": "semanticLabelsOutput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceBoundary2DFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrBoundary2DFB",
+                "pointer": "*",
+                "name": "boundary2DOutput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceRoomLayoutFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrSpace",
+                "name": "space"
+            },
+            {
+                "type": "XrRoomLayoutFB",
+                "pointer": "*",
+                "name": "roomLayoutOutput"
+            }
+        ]
+    },
+    {
+        "name": "xrRequestSceneCaptureFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSceneCaptureRequestInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrPassthroughLayerSetKeyboardHandsIntensityFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughLayerFB",
+                "name": "layer"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPassthroughKeyboardHandsIntensityFB",
+                "pointer": "*",
+                "name": "intensity"
+            }
+        ]
+    },
+    {
+        "name": "xrStartColocationDiscoveryMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrColocationDiscoveryStartInfoMETA",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "discoveryRequestId"
+            }
+        ]
+    },
+    {
+        "name": "xrStopColocationDiscoveryMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrColocationDiscoveryStopInfoMETA",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrStartColocationAdvertisementMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrColocationAdvertisementStartInfoMETA",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "advertisementRequestId"
+            }
+        ]
+    },
+    {
+        "name": "xrStopColocationAdvertisementMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrColocationAdvertisementStopInfoMETA",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrShareSpacesMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrShareSpacesInfoMETA",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrAsyncRequestIdFB",
+                "pointer": "*",
+                "name": "requestId"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorStoreConnectionMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrSpatialAnchorStoreConnectionMSFT",
+                "pointer": "*",
+                "name": "spatialAnchorStore"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySpatialAnchorStoreConnectionMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorStoreConnectionMSFT",
+                "name": "spatialAnchorStore"
+            }
+        ]
+    },
+    {
+        "name": "xrPersistSpatialAnchorMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorStoreConnectionMSFT",
+                "name": "spatialAnchorStore"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorPersistenceInfoMSFT",
+                "pointer": "*",
+                "name": "spatialAnchorPersistenceInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumeratePersistedSpatialAnchorNamesMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorStoreConnectionMSFT",
+                "name": "spatialAnchorStore"
+            },
+            {
+                "type": "uint32_t",
+                "name": "spatialAnchorNameCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "spatialAnchorNameCountOutput"
+            },
+            {
+                "type": "XrSpatialAnchorPersistenceNameMSFT",
+                "pointer": "*",
+                "name": "spatialAnchorNames",
+                "len": "spatialAnchorNameCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorFromPersistedNameMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT",
+                "pointer": "*",
+                "name": "spatialAnchorCreateInfo"
+            },
+            {
+                "type": "XrSpatialAnchorMSFT",
+                "pointer": "*",
+                "name": "spatialAnchor"
+            }
+        ]
+    },
+    {
+        "name": "xrUnpersistSpatialAnchorMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorStoreConnectionMSFT",
+                "name": "spatialAnchorStore"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorPersistenceNameMSFT",
+                "pointer": "*",
+                "name": "spatialAnchorPersistenceName"
+            }
+        ]
+    },
+    {
+        "name": "xrClearSpatialAnchorStoreMSFT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorStoreConnectionMSFT",
+                "name": "spatialAnchorStore"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateBodyTrackerBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrBodyTrackerCreateInfoBD",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrBodyTrackerBD",
+                "pointer": "*",
+                "name": "bodyTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyBodyTrackerBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrBodyTrackerBD",
+                "name": "bodyTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrLocateBodyJointsBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrBodyTrackerBD",
+                "name": "bodyTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrBodyJointsLocateInfoBD",
+                "pointer": "*",
+                "name": "locateInfo"
+            },
+            {
+                "type": "XrBodyJointLocationsBD",
+                "pointer": "*",
+                "name": "locations"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateFacialTrackerHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFacialTrackerCreateInfoHTC",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrFacialTrackerHTC",
+                "pointer": "*",
+                "name": "facialTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyFacialTrackerHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFacialTrackerHTC",
+                "name": "facialTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrGetFacialExpressionsHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFacialTrackerHTC",
+                "name": "facialTracker"
+            },
+            {
+                "type": "XrFacialExpressionsHTC",
+                "pointer": "*",
+                "name": "facialExpressions"
+            }
+        ]
+    },
+    {
+        "name": "xrCreatePassthroughHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPassthroughCreateInfoHTC",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrPassthroughHTC",
+                "pointer": "*",
+                "name": "passthrough"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyPassthroughHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughHTC",
+                "name": "passthrough"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorCreateInfoHTC",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "anchor"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpatialAnchorNameHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "anchor"
+            },
+            {
+                "type": "XrSpatialAnchorNameHTC",
+                "pointer": "*",
+                "name": "name"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateViveTrackerPathsHTCX",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "uint32_t",
+                "name": "pathCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "pathCountOutput"
+            },
+            {
+                "type": "XrViveTrackerPathsHTCX",
+                "pointer": "*",
+                "name": "paths",
+                "len": "pathCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateBodyTrackerHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrBodyTrackerCreateInfoHTC",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrBodyTrackerHTC",
+                "pointer": "*",
+                "name": "bodyTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyBodyTrackerHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrBodyTrackerHTC",
+                "name": "bodyTracker"
+            }
+        ]
+    },
+    {
+        "name": "xrLocateBodyJointsHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrBodyTrackerHTC",
+                "name": "bodyTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrBodyJointsLocateInfoHTC",
+                "pointer": "*",
+                "name": "locateInfo"
+            },
+            {
+                "type": "XrBodyJointLocationsHTC",
+                "pointer": "*",
+                "name": "locations"
+            }
+        ]
+    },
+    {
+        "name": "xrGetBodySkeletonHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrBodyTrackerHTC",
+                "name": "bodyTracker"
+            },
+            {
+                "type": "XrSpace",
+                "name": "baseSpace"
+            },
+            {
+                "type": "uint32_t",
+                "name": "skeletonGenerationId"
+            },
+            {
+                "type": "XrBodySkeletonHTC",
+                "pointer": "*",
+                "name": "skeleton"
+            }
+        ]
+    },
+    {
+        "name": "xrSetMarkerTrackingVARJO",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrBool32",
+                "name": "enabled"
+            }
+        ]
+    },
+    {
+        "name": "xrSetMarkerTrackingTimeoutVARJO",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint64_t",
+                "name": "markerId"
+            },
+            {
+                "type": "XrDuration",
+                "name": "timeout"
+            }
+        ]
+    },
+    {
+        "name": "xrSetMarkerTrackingPredictionVARJO",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint64_t",
+                "name": "markerId"
+            },
+            {
+                "type": "XrBool32",
+                "name": "enable"
+            }
+        ]
+    },
+    {
+        "name": "xrGetMarkerSizeVARJO",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint64_t",
+                "name": "markerId"
+            },
+            {
+                "type": "XrExtent2Df",
+                "pointer": "*",
+                "name": "size"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateMarkerSpaceVARJO",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrMarkerSpaceCreateInfoVARJO",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrSetDigitalLensControlALMALENCE",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrDigitalLensControlALMALENCE",
+                "pointer": "*",
+                "name": "digitalLensControl"
+            }
+        ]
+    },
+    {
+        "name": "xrSetViewOffsetVARJO",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "float",
+                "name": "offset"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateExternalCamerasOCULUS",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "uint32_t",
+                "name": "cameraCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "cameraCountOutput"
+            },
+            {
+                "type": "XrExternalCameraOCULUS",
+                "pointer": "*",
+                "name": "cameras",
+                "len": "cameraCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreatePassthroughColorLutMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughFB",
+                "name": "passthrough"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPassthroughColorLutCreateInfoMETA",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrPassthroughColorLutMETA",
+                "pointer": "*",
+                "name": "colorLut"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyPassthroughColorLutMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughColorLutMETA",
+                "name": "colorLut"
+            }
+        ]
+    },
+    {
+        "name": "xrUpdatePassthroughColorLutMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPassthroughColorLutMETA",
+                "name": "colorLut"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPassthroughColorLutUpdateInfoMETA",
+                "pointer": "*",
+                "name": "updateInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumeratePerformanceMetricsCounterPathsMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "type": "uint32_t",
+                "name": "counterPathCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "counterPathCountOutput"
+            },
+            {
+                "type": "XrPath",
+                "pointer": "*",
+                "name": "counterPaths",
+                "len": "counterPathCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrSetPerformanceMetricsStateMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPerformanceMetricsStateMETA",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrGetPerformanceMetricsStateMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPerformanceMetricsStateMETA",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrQueryPerformanceMetricsCounterMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPath",
+                "name": "counterPath"
+            },
+            {
+                "type": "XrPerformanceMetricsCounterMETA",
+                "pointer": "*",
+                "name": "counter"
+            }
+        ]
+    },
+    {
+        "name": "xrGetPassthroughPreferencesMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrPassthroughPreferencesMETA",
+                "pointer": "*",
+                "name": "preferences"
+            }
+        ]
+    },
+    {
+        "name": "xrApplyFoveationHTC",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFoveationApplyInfoHTC",
+                "pointer": "*",
+                "name": "applyInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpaceFromCoordinateFrameUIDML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrCoordinateSpaceCreateInfoML",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrGetDeviceSampleRateFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrHapticActionInfo",
+                "pointer": "*",
+                "name": "hapticActionInfo"
+            },
+            {
+                "type": "XrDevicePcmSampleRateGetInfoFB",
+                "pointer": "*",
+                "name": "deviceSampleRate"
+            }
+        ]
+    },
+    {
+        "name": "xrSetTrackingOptimizationSettingsHintQCOM",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrTrackingOptimizationSettingsDomainQCOM",
+                "name": "domain"
+            },
+            {
+                "type": "XrTrackingOptimizationSettingsHintQCOM",
+                "name": "hint"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpaceUserFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpaceUserCreateInfoFB",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrSpaceUserFB",
+                "pointer": "*",
+                "name": "user"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpaceUserIdFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpaceUserFB",
+                "name": "user"
+            },
+            {
+                "type": "XrSpaceUserIdFB",
+                "pointer": "*",
+                "name": "userId"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySpaceUserFB",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpaceUserFB",
+                "name": "user"
+            }
+        ]
+    },
+    {
+        "name": "xrGetRecommendedLayerResolutionMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrRecommendedLayerResolutionGetInfoMETA",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrRecommendedLayerResolutionMETA",
+                "pointer": "*",
+                "name": "resolution"
+            }
+        ]
+    },
+    {
+        "name": "xrApplyForceFeedbackCurlMNDX",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrHandTrackerEXT",
+                "name": "handTracker"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrForceFeedbackCurlApplyLocationsMNDX",
+                "pointer": "*",
+                "name": "locations"
+            }
+        ]
+    },
+    {
+        "name": "xrCreatePlaneDetectorEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPlaneDetectorCreateInfoEXT",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrPlaneDetectorEXT",
+                "pointer": "*",
+                "name": "planeDetector"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyPlaneDetectorEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPlaneDetectorEXT",
+                "name": "planeDetector"
+            }
+        ]
+    },
+    {
+        "name": "xrBeginPlaneDetectionEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPlaneDetectorEXT",
+                "name": "planeDetector"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPlaneDetectorBeginInfoEXT",
+                "pointer": "*",
+                "name": "beginInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrGetPlaneDetectionStateEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPlaneDetectorEXT",
+                "name": "planeDetector"
+            },
+            {
+                "type": "XrPlaneDetectionStateEXT",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrGetPlaneDetectionsEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPlaneDetectorEXT",
+                "name": "planeDetector"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrPlaneDetectorGetInfoEXT",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrPlaneDetectorLocationsEXT",
+                "pointer": "*",
+                "name": "locations"
+            }
+        ]
+    },
+    {
+        "name": "xrGetPlanePolygonBufferEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrPlaneDetectorEXT",
+                "name": "planeDetector"
+            },
+            {
+                "type": "uint64_t",
+                "name": "planeId"
+            },
+            {
+                "type": "uint32_t",
+                "name": "polygonBufferIndex"
+            },
+            {
+                "type": "XrPlaneDetectorPolygonBufferEXT",
+                "pointer": "*",
+                "name": "polygonBuffer"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateVirtualKeyboardMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVirtualKeyboardCreateInfoMETA",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "pointer": "*",
+                "name": "keyboard"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyVirtualKeyboardMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateVirtualKeyboardSpaceMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVirtualKeyboardSpaceCreateInfoMETA",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "keyboardSpace"
+            }
+        ]
+    },
+    {
+        "name": "xrSuggestVirtualKeyboardLocationMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVirtualKeyboardLocationInfoMETA",
+                "pointer": "*",
+                "name": "locationInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVirtualKeyboardScaleMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "type": "float",
+                "pointer": "*",
+                "name": "scale"
+            }
+        ]
+    },
+    {
+        "name": "xrSetVirtualKeyboardModelVisibilityMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVirtualKeyboardModelVisibilitySetInfoMETA",
+                "pointer": "*",
+                "name": "modelVisibility"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVirtualKeyboardModelAnimationStatesMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "type": "XrVirtualKeyboardModelAnimationStatesMETA",
+                "pointer": "*",
+                "name": "animationStates"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVirtualKeyboardDirtyTexturesMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "type": "uint32_t",
+                "name": "textureIdCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "textureIdCountOutput"
+            },
+            {
+                "type": "uint64_t",
+                "pointer": "*",
+                "name": "textureIds",
+                "len": "textureIdCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetVirtualKeyboardTextureDataMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "type": "uint64_t",
+                "name": "textureId"
+            },
+            {
+                "type": "XrVirtualKeyboardTextureDataMETA",
+                "pointer": "*",
+                "name": "textureData"
+            }
+        ]
+    },
+    {
+        "name": "xrSendVirtualKeyboardInputMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVirtualKeyboardInputInfoMETA",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrPosef",
+                "pointer": "*",
+                "name": "interactorRootPose"
+            }
+        ]
+    },
+    {
+        "name": "xrChangeVirtualKeyboardTextContextMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrVirtualKeyboardMETA",
+                "name": "keyboard"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrVirtualKeyboardTextContextChangeInfoMETA",
+                "pointer": "*",
+                "name": "changeInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrEnableUserCalibrationEventsML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrUserCalibrationEnableEventsInfoML",
+                "pointer": "*",
+                "name": "enableInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrEnableLocalizationEventsML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrLocalizationEnableEventsInfoML",
+                "pointer": "*",
+                "name": "info"
+            }
+        ]
+    },
+    {
+        "name": "xrQueryLocalizationMapsML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrLocalizationMapQueryInfoBaseHeaderML",
+                "pointer": "*",
+                "name": "queryInfo"
+            },
+            {
+                "type": "uint32_t",
+                "name": "mapCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "mapCountOutput"
+            },
+            {
+                "type": "XrLocalizationMapML",
+                "pointer": "*",
+                "name": "maps",
+                "len": "mapCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrRequestMapLocalizationML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrMapLocalizationRequestInfoML",
+                "pointer": "*",
+                "name": "requestInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrImportLocalizationMapML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrLocalizationMapImportInfoML",
+                "pointer": "*",
+                "name": "importInfo"
+            },
+            {
+                "type": "XrUuidEXT",
+                "pointer": "*",
+                "name": "mapUuid"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateExportedLocalizationMapML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrUuidEXT",
+                "pointer": "*",
+                "name": "mapUuid"
+            },
+            {
+                "type": "XrExportedLocalizationMapML",
+                "pointer": "*",
+                "name": "map"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyExportedLocalizationMapML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrExportedLocalizationMapML",
+                "name": "map"
+            }
+        ]
+    },
+    {
+        "name": "xrGetExportedLocalizationMapDataML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrExportedLocalizationMapML",
+                "name": "map"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "char",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateMarkerDetectorML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrMarkerDetectorCreateInfoML",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrMarkerDetectorML",
+                "pointer": "*",
+                "name": "markerDetector"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyMarkerDetectorML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrMarkerDetectorML",
+                "name": "markerDetector"
+            }
+        ]
+    },
+    {
+        "name": "xrSnapshotMarkerDetectorML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrMarkerDetectorML",
+                "name": "markerDetector"
+            },
+            {
+                "type": "XrMarkerDetectorSnapshotInfoML",
+                "pointer": "*",
+                "name": "snapshotInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrGetMarkerDetectorStateML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrMarkerDetectorML",
+                "name": "markerDetector"
+            },
+            {
+                "type": "XrMarkerDetectorStateML",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrGetMarkersML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrMarkerDetectorML",
+                "name": "markerDetector"
+            },
+            {
+                "type": "uint32_t",
+                "name": "markerCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "markerCountOutput"
+            },
+            {
+                "type": "XrMarkerML",
+                "pointer": "*",
+                "name": "markers",
+                "len": "markerCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetMarkerReprojectionErrorML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrMarkerDetectorML",
+                "name": "markerDetector"
+            },
+            {
+                "type": "XrMarkerML",
+                "name": "marker"
+            },
+            {
+                "type": "float",
+                "pointer": "*",
+                "name": "reprojectionErrorMeters"
+            }
+        ]
+    },
+    {
+        "name": "xrGetMarkerLengthML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrMarkerDetectorML",
+                "name": "markerDetector"
+            },
+            {
+                "type": "XrMarkerML",
+                "name": "marker"
+            },
+            {
+                "type": "float",
+                "pointer": "*",
+                "name": "meters"
+            }
+        ]
+    },
+    {
+        "name": "xrGetMarkerNumberML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrMarkerDetectorML",
+                "name": "markerDetector"
+            },
+            {
+                "type": "XrMarkerML",
+                "name": "marker"
+            },
+            {
+                "type": "uint64_t",
+                "pointer": "*",
+                "name": "number"
+            }
+        ]
+    },
+    {
+        "name": "xrGetMarkerStringML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrMarkerDetectorML",
+                "name": "markerDetector"
+            },
+            {
+                "type": "XrMarkerML",
+                "name": "marker"
+            },
+            {
+                "type": "uint32_t",
+                "name": "bufferCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "bufferCountOutput"
+            },
+            {
+                "type": "char",
+                "pointer": "*",
+                "name": "buffer",
+                "len": "bufferCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateMarkerSpaceML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrMarkerSpaceCreateInfoML",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrPollFutureEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFuturePollInfoEXT",
+                "pointer": "*",
+                "name": "pollInfo"
+            },
+            {
+                "type": "XrFuturePollResultEXT",
+                "pointer": "*",
+                "name": "pollResult"
+            }
+        ]
+    },
+    {
+        "name": "xrCancelFutureEXT",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFutureCancelInfoEXT",
+                "pointer": "*",
+                "name": "cancelInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateEnvironmentDepthProviderMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrEnvironmentDepthProviderCreateInfoMETA",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrEnvironmentDepthProviderMETA",
+                "pointer": "*",
+                "name": "environmentDepthProvider"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyEnvironmentDepthProviderMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthProviderMETA",
+                "name": "environmentDepthProvider"
+            }
+        ]
+    },
+    {
+        "name": "xrStartEnvironmentDepthProviderMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthProviderMETA",
+                "name": "environmentDepthProvider"
+            }
+        ]
+    },
+    {
+        "name": "xrStopEnvironmentDepthProviderMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthProviderMETA",
+                "name": "environmentDepthProvider"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateEnvironmentDepthSwapchainMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthProviderMETA",
+                "name": "environmentDepthProvider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrEnvironmentDepthSwapchainCreateInfoMETA",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrEnvironmentDepthSwapchainMETA",
+                "pointer": "*",
+                "name": "swapchain"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyEnvironmentDepthSwapchainMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthSwapchainMETA",
+                "name": "swapchain"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateEnvironmentDepthSwapchainImagesMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthSwapchainMETA",
+                "name": "swapchain"
+            },
+            {
+                "type": "uint32_t",
+                "name": "imageCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "imageCountOutput"
+            },
+            {
+                "type": "XrSwapchainImageBaseHeader",
+                "pointer": "*",
+                "name": "images",
+                "len": "imageCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetEnvironmentDepthSwapchainStateMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthSwapchainMETA",
+                "name": "swapchain"
+            },
+            {
+                "type": "XrEnvironmentDepthSwapchainStateMETA",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrAcquireEnvironmentDepthImageMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthProviderMETA",
+                "name": "environmentDepthProvider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrEnvironmentDepthImageAcquireInfoMETA",
+                "pointer": "*",
+                "name": "acquireInfo"
+            },
+            {
+                "type": "XrEnvironmentDepthImageMETA",
+                "pointer": "*",
+                "name": "environmentDepthImage"
+            }
+        ]
+    },
+    {
+        "name": "xrSetEnvironmentDepthHandRemovalMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrEnvironmentDepthProviderMETA",
+                "name": "environmentDepthProvider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrEnvironmentDepthHandRemovalSetInfoMETA",
+                "pointer": "*",
+                "name": "setInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateFacialExpressionClientML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFacialExpressionClientCreateInfoML",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrFacialExpressionClientML",
+                "pointer": "*",
+                "name": "facialExpressionClient"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyFacialExpressionClientML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFacialExpressionClientML",
+                "name": "facialExpressionClient"
+            }
+        ]
+    },
+    {
+        "name": "xrGetFacialExpressionBlendShapePropertiesML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrFacialExpressionClientML",
+                "name": "facialExpressionClient"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrFacialExpressionBlendShapeGetInfoML",
+                "pointer": "*",
+                "name": "blendShapeGetInfo"
+            },
+            {
+                "type": "uint32_t",
+                "name": "blendShapeCount"
+            },
+            {
+                "type": "XrFacialExpressionBlendShapePropertiesML",
+                "pointer": "*",
+                "name": "blendShapes",
+                "len": "blendShapeCount"
+            }
+        ]
+    },
+    {
+        "name": "xrLocateSpaces",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpacesLocateInfo",
+                "pointer": "*",
+                "name": "locateInfo"
+            },
+            {
+                "type": "XrSpaceLocations",
+                "pointer": "*",
+                "name": "spaceLocations"
+            }
+        ]
+    },
+    {
+        "name": "xrSetSystemNotificationsML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrInstance",
+                "name": "instance"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSystemNotificationsSetInfoML",
+                "pointer": "*",
+                "name": "info"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorsAsyncML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorsCreateInfoBaseHeaderML",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorsCompleteML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrCreateSpatialAnchorsCompletionML",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpatialAnchorStateML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpace",
+                "name": "anchor"
+            },
+            {
+                "type": "XrSpatialAnchorStateML",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorsStorageML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorsCreateStorageInfoML",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "pointer": "*",
+                "name": "storage"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySpatialAnchorsStorageML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            }
+        ]
+    },
+    {
+        "name": "xrQuerySpatialAnchorsAsyncML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorsQueryInfoBaseHeaderML",
+                "pointer": "*",
+                "name": "queryInfo"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrQuerySpatialAnchorsCompleteML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrSpatialAnchorsQueryCompletionML",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrPublishSpatialAnchorsAsyncML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorsPublishInfoML",
+                "pointer": "*",
+                "name": "publishInfo"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrPublishSpatialAnchorsCompleteML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrSpatialAnchorsPublishCompletionML",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrDeleteSpatialAnchorsAsyncML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorsDeleteInfoML",
+                "pointer": "*",
+                "name": "deleteInfo"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrDeleteSpatialAnchorsCompleteML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrSpatialAnchorsDeleteCompletionML",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrUpdateSpatialAnchorsExpirationAsyncML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorsUpdateExpirationInfoML",
+                "pointer": "*",
+                "name": "updateInfo"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrUpdateSpatialAnchorsExpirationCompleteML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSpatialAnchorsStorageML",
+                "name": "storage"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrSpatialAnchorsUpdateExpirationCompletionML",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateWorldMeshDetectorML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrWorldMeshDetectorCreateInfoML",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrWorldMeshDetectorML",
+                "pointer": "*",
+                "name": "detector"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyWorldMeshDetectorML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrWorldMeshDetectorML",
+                "name": "detector"
+            }
+        ]
+    },
+    {
+        "name": "xrRequestWorldMeshStateAsyncML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrWorldMeshDetectorML",
+                "name": "detector"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrWorldMeshStateRequestInfoML",
+                "pointer": "*",
+                "name": "stateRequest"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrRequestWorldMeshStateCompleteML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrWorldMeshDetectorML",
+                "name": "detector"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrWorldMeshStateRequestCompletionML",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrGetWorldMeshBufferRecommendSizeML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrWorldMeshDetectorML",
+                "name": "detector"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrWorldMeshBufferRecommendedSizeInfoML",
+                "pointer": "*",
+                "name": "sizeInfo"
+            },
+            {
+                "type": "XrWorldMeshBufferSizeML",
+                "pointer": "*",
+                "name": "size"
+            }
+        ]
+    },
+    {
+        "name": "xrAllocateWorldMeshBufferML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrWorldMeshDetectorML",
+                "name": "detector"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrWorldMeshBufferSizeML",
+                "pointer": "*",
+                "name": "size"
+            },
+            {
+                "type": "XrWorldMeshBufferML",
+                "pointer": "*",
+                "name": "buffer"
+            }
+        ]
+    },
+    {
+        "name": "xrFreeWorldMeshBufferML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrWorldMeshDetectorML",
+                "name": "detector"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrWorldMeshBufferML",
+                "pointer": "*",
+                "name": "buffer"
+            }
+        ]
+    },
+    {
+        "name": "xrRequestWorldMeshAsyncML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrWorldMeshDetectorML",
+                "name": "detector"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrWorldMeshGetInfoML",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrWorldMeshBufferML",
+                "pointer": "*",
+                "name": "buffer"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrRequestWorldMeshCompleteML",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrWorldMeshDetectorML",
+                "name": "detector"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrWorldMeshRequestCompletionInfoML",
+                "pointer": "*",
+                "name": "completionInfo"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrWorldMeshRequestCompletionML",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpatialEntityUuidBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataSnapshotBD",
+                "name": "snapshot"
+            },
+            {
+                "type": "XrSpatialEntityIdBD",
+                "name": "entityId"
+            },
+            {
+                "type": "XrUuidEXT",
+                "pointer": "*",
+                "name": "uuid"
+            }
+        ]
+    },
+    {
+        "name": "xrEnumerateSpatialEntityComponentTypesBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataSnapshotBD",
+                "name": "snapshot"
+            },
+            {
+                "type": "XrSpatialEntityIdBD",
+                "name": "entityId"
+            },
+            {
+                "type": "uint32_t",
+                "name": "componentTypeCapacityInput"
+            },
+            {
+                "type": "uint32_t",
+                "pointer": "*",
+                "name": "componentTypeCountOutput"
+            },
+            {
+                "type": "XrSpatialEntityComponentTypeBD",
+                "pointer": "*",
+                "name": "componentTypes",
+                "len": "componentTypeCapacityInput"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSpatialEntityComponentDataBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataSnapshotBD",
+                "name": "snapshot"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialEntityComponentGetInfoBD",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrSpatialEntityComponentDataBaseHeaderBD",
+                "pointer": "*",
+                "name": "componentData"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSenseDataProviderBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSenseDataProviderCreateInfoBD",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSenseDataProviderBD",
+                "pointer": "*",
+                "name": "provider"
+            }
+        ]
+    },
+    {
+        "name": "xrStartSenseDataProviderAsyncBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSenseDataProviderStartInfoBD",
+                "pointer": "*",
+                "name": "startInfo"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrStartSenseDataProviderCompleteBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrFutureCompletionEXT",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrGetSenseDataProviderStateBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "type": "XrSenseDataProviderStateBD",
+                "pointer": "*",
+                "name": "state"
+            }
+        ]
+    },
+    {
+        "name": "xrQuerySenseDataAsyncBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSenseDataQueryInfoBD",
+                "pointer": "*",
+                "name": "queryInfo"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrQuerySenseDataCompleteBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrSenseDataQueryCompletionBD",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySenseDataSnapshotBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataSnapshotBD",
+                "name": "snapshot"
+            }
+        ]
+    },
+    {
+        "name": "xrGetQueriedSenseDataBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataSnapshotBD",
+                "name": "snapshot"
+            },
+            {
+                "type": "XrQueriedSenseDataGetInfoBD",
+                "pointer": "*",
+                "name": "getInfo"
+            },
+            {
+                "type": "XrQueriedSenseDataBD",
+                "pointer": "*",
+                "name": "queriedSenseData"
+            }
+        ]
+    },
+    {
+        "name": "xrStopSenseDataProviderBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroySenseDataProviderBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialEntityAnchorBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialEntityAnchorCreateInfoBD",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrAnchorBD",
+                "pointer": "*",
+                "name": "anchor"
+            }
+        ]
+    },
+    {
+        "name": "xrDestroyAnchorBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrAnchorBD",
+                "name": "anchor"
+            }
+        ]
+    },
+    {
+        "name": "xrGetAnchorUuidBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrAnchorBD",
+                "name": "anchor"
+            },
+            {
+                "type": "XrUuidEXT",
+                "pointer": "*",
+                "name": "uuid"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateAnchorSpaceBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrAnchorSpaceCreateInfoBD",
+                "pointer": "*",
+                "name": "createInfo"
+            },
+            {
+                "type": "XrSpace",
+                "pointer": "*",
+                "name": "space"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorAsyncBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorCreateInfoBD",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrCreateSpatialAnchorCompleteBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrSpatialAnchorCreateCompletionBD",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrPersistSpatialAnchorAsyncBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorPersistInfoBD",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrPersistSpatialAnchorCompleteBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrFutureCompletionEXT",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrUnpersistSpatialAnchorAsyncBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorUnpersistInfoBD",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrUnpersistSpatialAnchorCompleteBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrFutureCompletionEXT",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrShareSpatialAnchorAsyncBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSpatialAnchorShareInfoBD",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrShareSpatialAnchorCompleteBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrFutureCompletionEXT",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrDownloadSharedSpatialAnchorAsyncBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSharedSpatialAnchorDownloadInfoBD",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrDownloadSharedSpatialAnchorCompleteBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrFutureCompletionEXT",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrCaptureSceneAsyncBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSceneCaptureInfoBD",
+                "pointer": "*",
+                "name": "info"
+            },
+            {
+                "type": "XrFutureEXT",
+                "pointer": "*",
+                "name": "future"
+            }
+        ]
+    },
+    {
+        "name": "xrCaptureSceneCompleteBD",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSenseDataProviderBD",
+                "name": "provider"
+            },
+            {
+                "type": "XrFutureEXT",
+                "name": "future"
+            },
+            {
+                "type": "XrFutureCompletionEXT",
+                "pointer": "*",
+                "name": "completion"
+            }
+        ]
+    },
+    {
+        "name": "xrResumeSimultaneousHandsAndControllersTrackingMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSimultaneousHandsAndControllersTrackingResumeInfoMETA",
+                "pointer": "*",
+                "name": "resumeInfo"
+            }
+        ]
+    },
+    {
+        "name": "xrPauseSimultaneousHandsAndControllersTrackingMETA",
+        "type": "XrResult",
+        "params": [
+            {
+                "type": "XrSession",
+                "name": "session"
+            },
+            {
+                "qualifier": "const",
+                "type": "XrSimultaneousHandsAndControllersTrackingPauseInfoMETA",
+                "pointer": "*",
+                "name": "pauseInfo"
+            }
+        ]
+    }
+]

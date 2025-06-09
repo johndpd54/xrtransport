@@ -1,6 +1,5 @@
 import sys
-from common import get_xml_root, collect_structs
-import json
+from common import get_xml_root, parse_spec
 
 HEADER = """
 #ifndef XRTRANSPORT_SERIALIZER_H
@@ -23,11 +22,11 @@ def main():
         return
     xr_xml_path, out_path = sys.argv[1:3]
     xml_root = get_xml_root(xr_xml_path)
-    structs = collect_structs(xml_root)
-    generate_serializer(structs)
+    spec = parse_spec(xml_root)
+    generate_serializer(spec)
 
-def generate_serializer(structs):
-    print(json.dumps(structs, indent=4))
+def generate_serializer(spec):
+    pass
 
 if __name__ == "__main__":
     main()

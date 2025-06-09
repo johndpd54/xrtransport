@@ -1,0 +1,33 @@
+The protocol starts out with a simple handshake:
+- The client connects and sends version information
+  - XR_CURRENT_API_VERSION (uint64_t)
+  - xrtransport protocol version (uint32_t)
+- The server responds with its version information in the same format
+- The client sends an OK (>0 uint32_t) or QUIT (0 uint32_t) if the protocol is unacceptable
+- The server sends an OK (>0 uint32_t) or QUIT (0 uint32_t) if the protocol is unacceptable
+
+This spec doesn't define what makes a version difference unacceptable.
+It is up to the developer to determine if any breaking changes between the protocol versions exist
+When either side sends a QUIT, they are free to close the connection immediately.
+
+After this, the protocol enters the running state. This consists of the client sending function requests, and the server responding.
+
+Function request (client to server):
+- Packet header: 1 (uint8_t)
+- Send response: 1 or 0 (uint8_t)
+- Number of arguments (uint8_t)
+- Reserved (uint8_t)
+- Function ID (uint32_t)
+- Arguments (variable length)
+
+Argument (client to server):
+- Direct argument variant (int, float, etc)
+  - Arg header: 1 (uint8_t)
+  - Reserved (7 x uint8_t)
+  - Data (uint64_t, bit cast)
+- Simple struct pointer variant
+  - Arg header: 2 (uint8_t)
+  - Const: 1 (const) or 0 (non-const) (uint8_t)
+
+Function response (server to client):
+- Packet header

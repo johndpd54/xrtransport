@@ -1,8 +1,19 @@
 import xml.etree.ElementTree as ET
 
+class XrSpec:
+    def __init__(self, functions, function_aliases, structs):
+        self.functions = functions
+        self.function_aliases = function_aliases
+        self.structs = structs
+
 def get_xml_root(xml_path):
     xml_tree = ET.parse(xml_path)
     return xml_tree.getroot()
+
+def parse_spec(xml_root):
+    functions, function_aliases = collect_functions(xml_root)
+    structs = collect_structs(xml_root)
+    return XrSpec(functions, function_aliases, structs)
 
 def collect_xr_structure_type_values(xml_root):
     structure_types = {}
@@ -69,59 +80,67 @@ def get_xr_structure_type(struct_type_tag):
     # this struct doesn't have a defined XrStructureType value
     return None
 
+def parse_declaration(tag):
+    def add_if_present(member, key, value):
+        if not value or not value.strip():
+            return
+        member[key] = value.strip()
+    
+    assert len(tag) >= 2 # member needs at least <type> and <name>
+
+    member = {}
+
+    type_tag = tag[0]
+    assert type_tag.tag == "type"
+    name_tag = tag[1]
+    assert name_tag.tag == "name"
+
+    add_if_present(member, "qualifier", tag.text)
+    member["type"] = type_tag.text
+    add_if_present(member, "pointer", type_tag.tail)
+    member["name"] = name_tag.text
+
+    if name_tag.tail:
+        assert name_tag.tail.startswith("[")
+        array = name_tag.tail
+        # note: will not work with 2-deep tags after name
+        # so far it doesn't seem like that exists
+        for next_element in tag[2:]:
+            if next_element.text:
+                array += next_element.text
+            if next_element.tail:
+                array += next_element.tail
+        member["array"] = array
+
+    if "len" in tag.attrib:
+        member["len"] = tag.attrib["len"]
+
+    return member
+
 def collect_structs(xml_root):
     xr_structure_type_values = collect_xr_structure_type_values(xml_root)
 
     structs = []
     struct_type_tags = xml_root.findall("types/type[@category='struct']")
-    for struct_type_tag in struct_type_tags:
+    # tags that refer to an alias need to be processed after all others
+    for type_tag in struct_type_tags:
+        if "alias" in type_tag.attrib:
+            # don't generate any functions that take an aliased type, as this will be a redefinition
+            continue
+
         # initialize struct
         struct = {
-            "name": struct_type_tag.attrib["name"]
+            "name": type_tag.attrib["name"]
         }
         # check if struct has corresponding structure type, if so add it
-        xr_structure_type = get_xr_structure_type(struct_type_tag)
+        xr_structure_type = get_xr_structure_type(type_tag)
         if xr_structure_type:
             struct["xr_type"] = xr_structure_type
             struct["xr_type_value"] = xr_structure_type_values[xr_structure_type]
         struct["members"] = []
 
-        for member_tag in struct_type_tag.findall("member"):
-            def add_if_present(member, key, value):
-                if not value or not value.strip():
-                    return
-                member[key] = value.strip()
-            
-            assert len(member_tag) >= 2 # member needs at least <type> and <name>
-
-            member = {}
-
-            member_type_tag = member_tag[0]
-            assert member_type_tag.tag == "type"
-            member_name_tag = member_tag[1]
-            assert member_name_tag.tag == "name"
-
-            add_if_present(member, "qualifier", member_tag.text)
-            member["type"] = member_type_tag.text
-            add_if_present(member, "pointer", member_type_tag.tail)
-            member["name"] = member_name_tag.text
-
-            if member_name_tag.tail:
-                assert member_name_tag.tail.startswith("[")
-                array = member_name_tag.tail
-                # note: will not work with 2-deep tags after name
-                # so far it doesn't seem like that exists
-                for i in range(2, len(member_tag)):
-                    next_element = member_tag[i]
-                    if next_element.text:
-                        array += next_element.text
-                    if next_element.tail:
-                        array += next_element.tail
-                member["array"] = array
-
-            if "len" in member_tag.attrib:
-                member["len"] = member_tag.attrib["len"]
-
+        for member_tag in type_tag.findall("member"):
+            member = parse_declaration(member_tag)
             struct["members"].append(member)
         
         # check if struct is one that doesn't have an xr_type but still has a 'void* next'
@@ -142,3 +161,32 @@ def collect_structs(xml_root):
     structs.sort(key=sort_key)
 
     return structs
+
+def collect_functions(xml_root):
+    functions = []
+    function_aliases = {}
+
+    command_tags = xml_root.findall("commands/command")
+    for command_tag in command_tags:
+        if "alias" in command_tag.attrib:
+            name = command_tag.attrib["name"]
+            alias = command_tag.attrib["alias"]
+            function_aliases[name] = alias
+        else:
+            function = {}
+            proto_tag = command_tag.find("proto")
+            function["name"] = proto_tag.find("name").text
+            function["type"] = proto_tag.find("type").text # always XrResult
+            function["params"] = []
+            param_tags = command_tag.findall("param")
+            for param_tag in param_tags:
+                param = parse_declaration(param_tag)
+                function["params"].append(param)
+            functions.append(function)
+    
+    # flag functions that likely need extra work
+    for function in functions:
+        if any(p["type"].startswith("PFN") for p in function["params"]):
+            function["flag"] = True
+    
+    return functions, function_aliases
