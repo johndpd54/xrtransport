@@ -16,3 +16,5 @@ This should be as thin a wrapper over the server's behavior as possible, it just
 To start out, extensions should be one to one between server and client (barring implementations needed for MVP on client). The client should throw an error if it attempts to create an instance with extensions the host doesn't support. Basically, over time I want to build up a list of locally-implemented extensions, which are removed from the list passed by the app. These locally-implemented extensions may depend on host extensions that the app didn't request, so it should add these too before forwarding to the host.
 
 Actually, some of these locally implemented extensions should probably be OpenXR layers in a separate project. Not the ones directly related to xrtransport, but the ones that reimplement extensions only available on the Quest, if there are any. The layer can implement them and remove them from the requested list that gets passed on.
+
+Structs that are actually larger than their declared types (i.e. headers) will need some extra handling

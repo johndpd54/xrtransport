@@ -6,12 +6,14 @@ class XrSpec:
         self.functions = functions
         self.function_aliases = function_aliases
         self.structs = structs
+        self.functions_index = {f.name: f for f in self.functions}
+        self.structs_index = {s.name: s for s in self.structs}
     
     def find_function(self, name):
-        return next((f for f in self.functions if f.name == name), None)
+        return self.functions_index[name] if name in self.functions_index else None
     
     def find_struct(self, name):
-        return next((s for s in self.structs if s.name == name), None)
+        return self.structs_index[name] if name in self.structs_index else None
 
 class XrStruct:
     def __init__(self, name, members):
