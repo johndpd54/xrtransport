@@ -1,5 +1,5 @@
 import sys
-from common import get_xml_root, parse_spec
+from common import get_xml_root, parse_spec, XrStruct, XrFunction, XrParam
 import json
 
 def main():
@@ -10,11 +10,25 @@ def main():
     xml_root = get_xml_root(xr_xml_path)
     spec = parse_spec(xml_root)
     with open("functions.json", "w") as functions_out:
-        functions_out.write(json.dumps(spec.functions, indent=4))
+        functions_out.write(json.dumps(spec.functions, default=custom_json_serializer, indent=4))
     with open("function_aliases.json", "w") as function_aliases_out:
         function_aliases_out.write(json.dumps(spec.function_aliases, indent=4))
     with open("structs.json", "w") as structs_out:
-        structs_out.write(json.dumps(spec.structs, indent=4))
+        structs_out.write(json.dumps(spec.structs, default=custom_json_serializer, indent=4))
+
+def custom_json_serializer(obj):
+    if not isinstance(obj, XrStruct) and not isinstance(obj, XrFunction) and not isinstance(obj, XrParam):
+        raise TypeError(f"Type {type(obj)} not serializable")
+    
+    result = {}
+
+    for var in vars(obj):
+        val = getattr(obj, var)
+        if val:
+            result[var] = val
+    
+    return result
+        
 
 if __name__ == "__main__":
     main()

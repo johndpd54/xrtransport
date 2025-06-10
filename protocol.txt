@@ -12,6 +12,13 @@ When either side sends a QUIT, they are free to close the connection immediately
 
 After this, the protocol enters the running state. This consists of the client sending function requests, and the server responding.
 
+The general idea for this protocol is that data should be read in defined chunks, and elements within those chunks
+should be aligned to the beginning of the chunk. For example, function requests and arguments start with an 8-byte
+header in which all variables are aligned
+
+All pointers in structs (except the void* next of chained structs) should be converted to relative offsets to data
+within the same packet.
+
 Function request (client to server):
 - Packet header: 1 (uint8_t)
 - Send response: 1 or 0 (uint8_t)
@@ -22,12 +29,40 @@ Function request (client to server):
 
 Argument (client to server):
 - Direct argument variant (int, float, etc)
-  - Arg header: 1 (uint8_t)
-  - Reserved (7 x uint8_t)
+  - Header
+    - Arg header: 1 (uint8_t)
+    - Reserved (7 * uint8_t)
   - Data (uint64_t, bit cast)
 - Simple struct pointer variant
-  - Arg header: 2 (uint8_t)
-  - Const: 1 (const) or 0 (non-const) (uint8_t)
+  - Header:
+    - Arg header: 2 (uint8_t)
+    - Const: 1 (const) or 0 (non-const) (uint8_t)
+    - Reserved (2 * uint8_t)
+    - Data size (uint32_t)
+  - Data (variable length, but ideally aligned to 8 bytes)
+  - Note: If any members of a struct are pointers to e.g. an array, that data should be included in the same buffer
+          after the struct, and all pointers in the struct will be interpreted as relative to the beginning of the
+          buffer.
+- OpenXR struct pointer variant
+  - Header:
+    - Arg header: 3 (uint8_t)
+    - Const: 1 (const) or 0 (non-const) (uint8_t)
+    - Length of chain (uint8_t)
+    - Reserved (uint8_t)
+    - Size of first struct (uint32_t)
+  - Data:
+    - First struct
+    - Size of next struct (uint32_t)
+    - Next struct
+    - etc...
+  - Note: If any members of a struct are pointers to e.g. an array, that data should be included in the same buffer
+          after the struct, and all pointers in the struct will be interpreted as relative to the beginning of the
+          buffer.
+- Null pointer variant
+  - Header:
+    - Arg header: 4 (uint8_t)
+    - Reserved (uint8_t * 7)
+
 
 Function response (server to client):
 - Packet header

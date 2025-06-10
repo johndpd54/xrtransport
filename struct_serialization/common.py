@@ -1,10 +1,57 @@
 import xml.etree.ElementTree as ET
+import json
 
 class XrSpec:
     def __init__(self, functions, function_aliases, structs):
         self.functions = functions
         self.function_aliases = function_aliases
         self.structs = structs
+    
+    def find_function(self, name):
+        return next((f for f in self.functions if f.name == name), None)
+    
+    def find_struct(self, name):
+        return next((s for s in self.structs if s.name == name), None)
+
+class XrStruct:
+    def __init__(self, name, members):
+        self.name = name
+        self.xr_type = None
+        self.xr_type_value = None
+        self.members = members
+        self.header = None
+        self.extension = None
+    
+class XrFunction:
+    def __init__(self, name, type_, params):
+        self.name = name
+        self.type = type_
+        self.params = params
+        self.flag = None
+        self.extension = None
+
+class XrParam:
+    def __init__(self, type_, name):
+        self.qualifier = None
+        self.type = type_
+        self.pointer = None
+        self.name = name
+        self.array = None
+        self.len = None
+    
+    def is_next_ptr(self):
+        return self.type == "void" and self.pointer == "*" and self.name == "next"
+    
+    def full_type(self):
+        full_type = self.type
+        if self.qualifier:
+            full_type = self.qualifier + " " + full_type
+        if self.pointer:
+            full_type += self.pointer
+        if self.array:
+            full_type += self.array
+        
+        return full_type
 
 def get_xml_root(xml_path):
     xml_tree = ET.parse(xml_path)
@@ -13,7 +60,9 @@ def get_xml_root(xml_path):
 def parse_spec(xml_root):
     functions, function_aliases = collect_functions(xml_root)
     structs = collect_structs(xml_root)
-    return XrSpec(functions, function_aliases, structs)
+    spec = XrSpec(functions, function_aliases, structs)
+    attach_extension_names(xml_root, spec)
+    return spec
 
 def collect_xr_structure_type_values(xml_root):
     structure_types = {}
@@ -80,25 +129,25 @@ def get_xr_structure_type(struct_type_tag):
     # this struct doesn't have a defined XrStructureType value
     return None
 
-def parse_declaration(tag):
-    def add_if_present(member, key, value):
+def parse_param(tag):
+    def add_if_present(p, key, value):
         if not value or not value.strip():
             return
-        member[key] = value.strip()
+        setattr(p, key, value.strip())
     
-    assert len(tag) >= 2 # member needs at least <type> and <name>
-
-    member = {}
+    assert len(tag) >= 2 # param needs at least <type> and <name>
 
     type_tag = tag[0]
     assert type_tag.tag == "type"
     name_tag = tag[1]
     assert name_tag.tag == "name"
 
-    add_if_present(member, "qualifier", tag.text)
-    member["type"] = type_tag.text
-    add_if_present(member, "pointer", type_tag.tail)
-    member["name"] = name_tag.text
+    type_ = type_tag.text
+    name = name_tag.text
+    param = XrParam(type_, name)
+
+    add_if_present(param, "qualifier", tag.text)
+    add_if_present(param, "pointer", type_tag.tail)
 
     if name_tag.tail:
         assert name_tag.tail.startswith("[")
@@ -110,12 +159,12 @@ def parse_declaration(tag):
                 array += next_element.text
             if next_element.tail:
                 array += next_element.tail
-        member["array"] = array
+        param.array = array
 
     if "len" in tag.attrib:
-        member["len"] = tag.attrib["len"]
+        param.len = tag.attrib["len"]
 
-    return member
+    return param
 
 def collect_structs(xml_root):
     xr_structure_type_values = collect_xr_structure_type_values(xml_root)
@@ -129,35 +178,33 @@ def collect_structs(xml_root):
             continue
 
         # initialize struct
-        struct = {
-            "name": type_tag.attrib["name"]
-        }
+        struct = XrStruct(type_tag.attrib["name"], [])
+
         # check if struct has corresponding structure type, if so add it
         xr_structure_type = get_xr_structure_type(type_tag)
         if xr_structure_type:
-            struct["xr_type"] = xr_structure_type
-            struct["xr_type_value"] = xr_structure_type_values[xr_structure_type]
-        struct["members"] = []
+            struct.xr_type = xr_structure_type
+            struct.xr_type_value = xr_structure_type_values[xr_structure_type]
 
         for member_tag in type_tag.findall("member"):
-            member = parse_declaration(member_tag)
-            struct["members"].append(member)
+            member = parse_param(member_tag)
+            struct.members.append(member)
         
         # check if struct is one that doesn't have an xr_type but still has a 'void* next'
         # these should not have generators, and using them should fallback to the generic case
         # because these are usually (always?) aliased headers that actually represent a different type
-        if not "xr_type" in struct and any(m["type"] == "void" and m["pointer"] == "*" and m["name"] == "next" for m in struct["members"]):
-            struct["header"] = True
+        if not struct.xr_type and any(m.is_next_ptr() for m in struct.members):
+            struct.header = True
 
         structs.append(struct)
 
     # sort structs by their assigned XrStructureType
     def sort_key(struct):
-        if not "xr_type" in struct or not struct["xr_type"] in xr_structure_type_values:
+        if not struct.xr_type in xr_structure_type_values:
             # sort non-typed structs to the beginning
             return 0
         # sort the rest by their XrStructureType value
-        return xr_structure_type_values[struct["xr_type"]]
+        return xr_structure_type_values[struct.xr_type]
     structs.sort(key=sort_key)
 
     return structs
@@ -173,20 +220,33 @@ def collect_functions(xml_root):
             alias = command_tag.attrib["alias"]
             function_aliases[name] = alias
         else:
-            function = {}
             proto_tag = command_tag.find("proto")
-            function["name"] = proto_tag.find("name").text
-            function["type"] = proto_tag.find("type").text # always XrResult
-            function["params"] = []
+            name = proto_tag.find("name").text
+            type_ = proto_tag.find("type").text # always XrResult
+            function = XrFunction(name, type_, [])
             param_tags = command_tag.findall("param")
             for param_tag in param_tags:
-                param = parse_declaration(param_tag)
-                function["params"].append(param)
+                param = parse_param(param_tag)
+                function.params.append(param)
             functions.append(function)
     
     # flag functions that likely need extra work
     for function in functions:
-        if any(p["type"].startswith("PFN") for p in function["params"]):
-            function["flag"] = True
+        if any(p.type.startswith("PFN") for p in function.params):
+            function.flag = True
     
     return functions, function_aliases
+
+def attach_extension_names(xml_root, spec):
+    extension_tags = xml_root.findall("extensions/extension")
+    for extension_tag in extension_tags:
+        for type_tag in extension_tag.findall("require/type"):
+            struct_name = type_tag.attrib["name"]
+            struct = spec.find_struct(struct_name)
+            if struct:
+                struct.extension = extension_tag.attrib["name"]
+        for command_tag in extension_tag.findall("require/command"):
+            function_name = command_tag.attrib["name"]
+            function = spec.find_function(function_name)
+            if function:
+                function.extension = extension_tag.attrib["name"]
