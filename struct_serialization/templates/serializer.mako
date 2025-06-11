@@ -23,6 +23,16 @@ constexpr size_t align(std::size_t x, std::size_t n) {
         (x + (n - 1)) & ~(n - 1);
 }
 
+template <typename T>
+static inline std::size_t count_null_terminated(const T* ptr) {
+    std::size_t count = 0;
+    while (*ptr != T{}) {
+        ++ptr;
+        ++count;
+    }
+    return count + 1;
+}
+
 <%include file="serializer_lookup_table.mako"/>
 
 // About these: I actually think I'm gonna scrap the struct headers.
@@ -55,8 +65,48 @@ constexpr size_t align(std::size_t x, std::size_t n) {
 //}
 
 <%namespace name="struct_serializer" file="struct_serializer.mako"/>
-% for struct in spec.structs:
+
+<%
+    # group structs by extension
+    grouped_structs = [[]]
+    last_extension = None
+    for struct in spec.structs:
+        if struct.extension == last_extension:
+            grouped_structs[-1].append(struct)
+        else:
+            grouped_structs.append([struct])
+            last_extension = struct.extension
+%>
+
+// Forward declarations
+% for struct_group in grouped_structs:
+<% extension = struct_group[0].extension if len(struct_group) > 0 else None %>
+% if extension:
+#ifdef XRTRANSPORT_EXT_${extension}
+% endif
+% for struct in struct_group:
+${struct_serializer.forward_serializer(struct)}
+% endfor
+% if extension:
+#endif // XRTRANSPORT_EXT_${extension}
+% endif
+% endfor
+
+// Generic serializer
+${struct_serializer.generic_serializer()}
+
+// Serializers
+% for struct_group in grouped_structs:
+<% extension = struct_group[0].extension if len(struct_group) > 0 else None %>
+% if extension:
+#ifdef XRTRANSPORT_EXT_${extension}
+% endif
+% for struct in struct_group:
 ${struct_serializer.serializer(struct)}
+% endfor
+% if extension:
+#endif // XRTRANSPORT_EXT_${extension}
+% endif
 % endfor
 
 } // namespace xrtransport

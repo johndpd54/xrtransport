@@ -184,169 +184,6 @@
         ]
     },
     {
-        "name": "XrNegotiateLoaderInfo",
-        "members": [
-            {
-                "type": "XrLoaderInterfaceStructs",
-                "name": "structType"
-            },
-            {
-                "type": "uint32_t",
-                "name": "structVersion"
-            },
-            {
-                "type": "size_t",
-                "name": "structSize"
-            },
-            {
-                "type": "uint32_t",
-                "name": "minInterfaceVersion"
-            },
-            {
-                "type": "uint32_t",
-                "name": "maxInterfaceVersion"
-            },
-            {
-                "type": "XrVersion",
-                "name": "minApiVersion"
-            },
-            {
-                "type": "XrVersion",
-                "name": "maxApiVersion"
-            }
-        ]
-    },
-    {
-        "name": "XrNegotiateApiLayerRequest",
-        "members": [
-            {
-                "type": "XrLoaderInterfaceStructs",
-                "name": "structType"
-            },
-            {
-                "type": "uint32_t",
-                "name": "structVersion"
-            },
-            {
-                "type": "size_t",
-                "name": "structSize"
-            },
-            {
-                "type": "uint32_t",
-                "name": "layerInterfaceVersion"
-            },
-            {
-                "type": "XrVersion",
-                "name": "layerApiVersion"
-            },
-            {
-                "type": "PFN_xrGetInstanceProcAddr",
-                "name": "getInstanceProcAddr"
-            },
-            {
-                "type": "PFN_xrCreateApiLayerInstance",
-                "name": "createApiLayerInstance"
-            }
-        ]
-    },
-    {
-        "name": "XrNegotiateRuntimeRequest",
-        "members": [
-            {
-                "type": "XrLoaderInterfaceStructs",
-                "name": "structType"
-            },
-            {
-                "type": "uint32_t",
-                "name": "structVersion"
-            },
-            {
-                "type": "size_t",
-                "name": "structSize"
-            },
-            {
-                "type": "uint32_t",
-                "name": "runtimeInterfaceVersion"
-            },
-            {
-                "type": "XrVersion",
-                "name": "runtimeApiVersion"
-            },
-            {
-                "type": "PFN_xrGetInstanceProcAddr",
-                "name": "getInstanceProcAddr"
-            }
-        ]
-    },
-    {
-        "name": "XrApiLayerNextInfo",
-        "members": [
-            {
-                "type": "XrLoaderInterfaceStructs",
-                "name": "structType"
-            },
-            {
-                "type": "uint32_t",
-                "name": "structVersion"
-            },
-            {
-                "type": "size_t",
-                "name": "structSize"
-            },
-            {
-                "type": "char",
-                "name": "layerName",
-                "array": "[XR_MAX_API_LAYER_NAME_SIZE]"
-            },
-            {
-                "type": "PFN_xrGetInstanceProcAddr",
-                "name": "nextGetInstanceProcAddr"
-            },
-            {
-                "type": "PFN_xrCreateApiLayerInstance",
-                "name": "nextCreateApiLayerInstance"
-            },
-            {
-                "qualifier": "struct",
-                "type": "XrApiLayerNextInfo",
-                "pointer": "*",
-                "name": "next"
-            }
-        ]
-    },
-    {
-        "name": "XrApiLayerCreateInfo",
-        "members": [
-            {
-                "type": "XrLoaderInterfaceStructs",
-                "name": "structType"
-            },
-            {
-                "type": "uint32_t",
-                "name": "structVersion"
-            },
-            {
-                "type": "size_t",
-                "name": "structSize"
-            },
-            {
-                "type": "void",
-                "pointer": "*",
-                "name": "loaderInstance"
-            },
-            {
-                "type": "char",
-                "name": "settings_file_location",
-                "array": "[XR_API_LAYER_MAX_SETTINGS_PATH_SIZE]"
-            },
-            {
-                "type": "XrApiLayerNextInfo",
-                "pointer": "*",
-                "name": "nextInfo"
-            }
-        ]
-    },
-    {
         "name": "XrBaseInStructure",
         "members": [
             {
@@ -4131,7 +3968,8 @@
                 "type": "XrTime",
                 "name": "time"
             }
-        ]
+        ],
+        "extension": "XR_MSFT_spatial_anchor"
     },
     {
         "name": "XrSpatialAnchorSpaceCreateInfoMSFT",
@@ -4156,7 +3994,8 @@
                 "type": "XrPosef",
                 "name": "poseInAnchorSpace"
             }
-        ]
+        ],
+        "extension": "XR_MSFT_spatial_anchor"
     },
     {
         "name": "XrCompositionLayerImageLayoutFB",
@@ -7624,7 +7463,8 @@
                 "type": "XrPosef",
                 "name": "poseInCoordinateSpace"
             }
-        ]
+        ],
+        "extension": "XR_ML_compat"
     },
     {
         "name": "XrSystemMarkerUnderstandingPropertiesML",
@@ -9398,7 +9238,8 @@
                 "type": "XrDigitalLensControlFlagsALMALENCE",
                 "name": "flags"
             }
-        ]
+        ],
+        "extension": "XR_ALMALENCE_digital_lens_control"
     },
     {
         "name": "XrEventDataSceneCaptureCompleteFB",

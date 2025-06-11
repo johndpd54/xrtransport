@@ -2,10 +2,11 @@ import xml.etree.ElementTree as ET
 import json
 
 class XrSpec:
-    def __init__(self, functions, function_aliases, structs):
+    def __init__(self, functions, function_aliases, structs, supported_types):
         self.functions = functions
         self.function_aliases = function_aliases
         self.structs = structs
+        self.supported_types = supported_types
         self.functions_index = {f.name: f for f in self.functions}
         self.structs_index = {s.name: s for s in self.structs}
     
@@ -55,6 +56,22 @@ class XrParam:
         
         return full_type
 
+struct_blacklist = {
+    # ignore structs and functions associated with loader negotiation
+    # all API layer logic will remain on the client, not transported
+    "XrNegotiateLoaderInfo",
+    "XrNegotiateApiLayerRequest",
+    "XrNegotiateRuntimeRequest",
+    "XrApiLayerNextInfo",
+    "XrApiLayerCreateInfo",
+    # ignore utility header structs
+    "XrBaseInStructure",
+    "XrBaseOutStructure",
+}
+function_blacklist = {
+    
+}
+
 def get_xml_root(xml_path):
     xml_tree = ET.parse(xml_path)
     return xml_tree.getroot()
@@ -62,7 +79,8 @@ def get_xml_root(xml_path):
 def parse_spec(xml_root):
     functions, function_aliases = collect_functions(xml_root)
     structs = collect_structs(xml_root)
-    spec = XrSpec(functions, function_aliases, structs)
+    supported_types = collect_supported_types(xml_root)
+    spec = XrSpec(functions, function_aliases, structs, supported_types)
     attach_extension_names(xml_root, spec)
     return spec
 
@@ -182,6 +200,9 @@ def collect_structs(xml_root):
         # initialize struct
         struct = XrStruct(type_tag.attrib["name"], [])
 
+        if struct.name in struct_blacklist:
+            continue
+
         # check if struct has corresponding structure type, if so add it
         xr_structure_type = get_xr_structure_type(type_tag)
         if xr_structure_type:
@@ -224,6 +245,8 @@ def collect_functions(xml_root):
         else:
             proto_tag = command_tag.find("proto")
             name = proto_tag.find("name").text
+            if name in function_blacklist:
+                continue
             type_ = proto_tag.find("type").text # always XrResult
             function = XrFunction(name, type_, [])
             param_tags = command_tag.findall("param")
@@ -252,3 +275,31 @@ def attach_extension_names(xml_root, spec):
             function = spec.find_function(function_name)
             if function:
                 function.extension = extension_tag.attrib["name"]
+        # Some structs are not referred to by their extension, but their XrStructureType is
+        for enum_tag in extension_tag.findall("require/enum"):
+            if "extends" in enum_tag.attrib and enum_tag.attrib["extends"] == "XrStructureType":
+                enum_name = enum_tag.attrib["name"]
+                struct = next((s for s in spec.structs if s.xr_type == enum_name), None)
+                if not struct:
+                    print(f"Warning! found XrStructureType ({enum_name}) with no corresponding struct!")
+                else:
+                    struct.extension = extension_tag.attrib["name"]
+
+def collect_supported_types(xml_root):
+    supported_types = set()
+    type_tags = xml_root.findall("types/type")
+    for type_tag in type_tags:
+        if "requires" in type_tag.attrib:
+            # this specifies that this type comes from a header
+            if type_tag.attrib["requires"] == "openxr_platform_defines":
+                # this is a basic C type that we support
+                supported_types.add(type_tag.attrib["name"])
+        elif "category" in type_tag.attrib:
+            category = type_tag.attrib["category"]
+            if category in ["basetype", "bitmask", "handle"]:
+                supported_types.add(type_tag.find("name").text)
+            elif category == "enum":
+                supported_types.add(type_tag.attrib["name"])
+    
+    return supported_types
+            
