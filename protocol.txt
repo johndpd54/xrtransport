@@ -12,61 +12,14 @@ When either side sends a QUIT, they are free to close the connection immediately
 
 After this, the protocol enters the running state. This consists of the client sending function requests, and the server responding.
 
-The general idea for this protocol is that data should be read in defined chunks, and elements within those chunks
-should be aligned to the beginning of the chunk. For example, function requests and arguments start with an 8-byte
-header in which all variables are aligned
+The actual structure of this protocol is dynamic based on the types being sent. It is extremely stateful, i.e., minimal extra metadata
+is sent along with the data, and both client and server rely on context to know what to deserialize.
 
-All pointers in structs (except the void* next of chained structs) should be converted to relative offsets to data
-within the same packet.
+Generally speaking, the protocol can be thought of as the client sending the result of a DFS of its arguments, and the server
+responding with the result of the function call along with any arguments that may have changed. There are a few special markers
+that are sent that are not data. These include:
+- Function request header: uint32_t function index
+- XR struct next type: The XrStructureType of the next struct in the chain, or XR_TYPE_UNKNOWN to indicate the end of the chain (nullptr)
+- Pointer marker: All other pointer members are preceded by a uint8_t: 1 to indicate the pointer has a value, 0 to indicate nullptr
 
-Function request (client to server):
-- Packet header: 1 (uint8_t)
-- Send response: 1 or 0 (uint8_t)
-- Number of arguments (uint8_t)
-- Reserved (uint8_t)
-- Function ID (uint32_t)
-- Arguments (variable length)
-
-Argument (client to server):
-- Direct argument variant (int, float, etc)
-  - Header
-    - Arg header: 1 (uint8_t)
-    - Reserved (7 * uint8_t)
-  - Data (uint64_t, bit cast)
-- Simple struct pointer variant
-  - Header:
-    - Arg header: 2 (uint8_t)
-    - Const: 1 (const) or 0 (non-const) (uint8_t)
-    - Reserved (2 * uint8_t)
-    - Data size (uint32_t)
-  - Data (variable length, but ideally aligned to 8 bytes)
-  - Note: If any members of a struct are pointers to e.g. an array, that data should be included in the same buffer
-          after the struct, and all pointers in the struct will be interpreted as relative to the beginning of the
-          buffer.
-- OpenXR struct pointer variant
-  - Header:
-    - Arg header: 3 (uint8_t)
-    - Const: 1 (const) or 0 (non-const) (uint8_t)
-    - Length of chain (uint8_t)
-    - Reserved (uint8_t)
-    - Size of first struct (uint32_t)
-  - Data:
-    - First struct
-    - Size of next struct (uint32_t)
-    - Next struct
-    - etc...
-  - Note: If any members of a struct are pointers to e.g. an array, that data should be included in the same buffer
-          after the struct, and all pointers in the struct will be interpreted as relative to the beginning of the
-          buffer.
-- Null pointer variant
-  - Header:
-    - Arg header: 4 (uint8_t)
-    - Reserved (uint8_t * 7)
-
-Function response (server to client):
-- Packet header: 1 (uint8_t)
-- Number of args returned (uint8_t)
-- Reserved (2 * uint8_t)
-- XrResult (cast to uint32_t)
-- Args:
-  - Same as client to server, except this can only return simple struct and OpenXR struct variants
+For a full understanding of how the protocol works, see the code generators.
