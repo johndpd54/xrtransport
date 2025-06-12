@@ -1833,7 +1833,7 @@ static StructDeserializer deserializer_lookup(XrStructureType struct_type) {
 
     while (low <= high) {
         std::size_t mid = low + (high - low) / 2;
-        auto& at_mid = deserializer_lookup_table[mid];
+        std::tuple<XrStructureType, StructDeserializer>& at_mid = deserializer_lookup_table[mid];
         XrStructureType at_mid_type = std::get<0>(at_mid);
 
         if (at_mid_type == struct_type) {
@@ -3671,7 +3671,7 @@ static StructAllocator allocator_lookup(XrStructureType struct_type) {
 
     while (low <= high) {
         std::size_t mid = low + (high - low) / 2;
-        auto& at_mid = allocator_lookup_table[mid];
+        std::tuple<XrStructureType, StructAllocator>& at_mid = allocator_lookup_table[mid];
         XrStructureType at_mid_type = std::get<0>(at_mid);
 
         if (at_mid_type == struct_type) {
@@ -5509,7 +5509,7 @@ static StructCleaner cleaner_lookup(XrStructureType struct_type) {
 
     while (low <= high) {
         std::size_t mid = low + (high - low) / 2;
-        auto& at_mid = cleaner_lookup_table[mid];
+        std::tuple<XrStructureType, StructCleaner>& at_mid = cleaner_lookup_table[mid];
         XrStructureType at_mid_type = std::get<0>(at_mid);
 
         if (at_mid_type == struct_type) {
@@ -17593,7 +17593,7 @@ static void deserialize(XrDebugUtilsObjectNameInfoEXT* s, std::istream& in) {
     deserialize(&marker, in);
     if (marker) {
         std::size_t num_items{};
-        deserialize(static_cast<uint32_t*>(&num_items));
+        deserialize(static_cast<std::uint32_t*>(&num_items));
         allocate(&s->objectName, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->objectName[i], in);
@@ -17625,7 +17625,7 @@ static void deserialize(XrDebugUtilsMessengerCallbackDataEXT* s, std::istream& i
     deserialize(&marker, in);
     if (marker) {
         std::size_t num_items{};
-        deserialize(static_cast<uint32_t*>(&num_items));
+        deserialize(static_cast<std::uint32_t*>(&num_items));
         allocate(&s->messageId, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->messageId[i], in);
@@ -17638,7 +17638,7 @@ static void deserialize(XrDebugUtilsMessengerCallbackDataEXT* s, std::istream& i
     deserialize(&marker, in);
     if (marker) {
         std::size_t num_items{};
-        deserialize(static_cast<uint32_t*>(&num_items));
+        deserialize(static_cast<std::uint32_t*>(&num_items));
         allocate(&s->functionName, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->functionName[i], in);
@@ -17651,7 +17651,7 @@ static void deserialize(XrDebugUtilsMessengerCallbackDataEXT* s, std::istream& i
     deserialize(&marker, in);
     if (marker) {
         std::size_t num_items{};
-        deserialize(static_cast<uint32_t*>(&num_items));
+        deserialize(static_cast<std::uint32_t*>(&num_items));
         allocate(&s->message, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->message[i], in);
@@ -17740,7 +17740,7 @@ static void deserialize(XrDebugUtilsLabelEXT* s, std::istream& in) {
     deserialize(&marker, in);
     if (marker) {
         std::size_t num_items{};
-        deserialize(static_cast<uint32_t*>(&num_items));
+        deserialize(static_cast<std::uint32_t*>(&num_items));
         allocate(&s->labelName, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->labelName[i], in);
@@ -23395,7 +23395,7 @@ static void deserialize(XrSemanticLabelsSupportInfoFB* s, std::istream& in) {
     deserialize(&marker, in);
     if (marker) {
         std::size_t num_items{};
-        deserialize(static_cast<uint32_t*>(&num_items));
+        deserialize(static_cast<std::uint32_t*>(&num_items));
         allocate(&s->recognizedLabels, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->recognizedLabels[i], in);
@@ -24261,7 +24261,7 @@ static void deserialize(XrVirtualKeyboardTextContextChangeInfoMETA* s, std::istr
     deserialize(&marker, in);
     if (marker) {
         std::size_t num_items{};
-        deserialize(static_cast<uint32_t*>(&num_items));
+        deserialize(static_cast<std::uint32_t*>(&num_items));
         allocate(&s->textContext, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->textContext[i], in);
