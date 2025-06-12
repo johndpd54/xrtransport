@@ -19,14 +19,16 @@ static void serialize(const ${struct.name}* s, std::ostream& out) {
     serialize(&s->type, out);
     const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
     if (next != nullptr) {
-        // special marker to indicate next struct
-        uint8_t marker = 1;
-        serialize(&marker, out);
+        ## serialize next's type to mark non-null and tell deserializer how to read
+        ## note that this means the XrStructureType is written and read twice:
+        ## first to tell that it's not null and dispatch to the correct function
+        ## second as an actual part of the struct
+        serialize(&next->type, out);
         serializer_lookup(next->type)(next, out);
     }
     else {
         // special marker to indicate no next struct
-        uint8_t marker = 0;
+        XrStructureType marker = XR_TYPE_UNKNOWN;
         serialize(&marker, out);
     }
     <% rest_members = struct.members[2:] %>
@@ -38,28 +40,35 @@ static void serialize(const ${struct.name}* s, std::ostream& out) {
     #error auto-generator doesn't support array of pointers (${struct.name}.${member.name})
         <% continue %>
     % endif
-    % if member.pointer:
-        % if member.pointer != "*":
+    % if member.pointer and member.pointer != "*":
     #error auto-generator doesn't support double pointers (${struct.name}.${member.name})
-            <% continue %>
-        % endif
-        % if member.len:
-            % if "," in member.len:
+        <% continue %>
+    % endif
+    % if member.len and "," in member.len:
     #error auto-generator doesn't support multi-variable lengths (${struct.name}.${member.name})
-                <% continue %>
-            % endif
+        <% continue %>
+    % endif
+    % if member.pointer:
+    if (s->${member.name} != nullptr) {
+        std::uint8_t marker = 1;
+        serialize(&marker, out);
+        % if member.len:
             <% actual_length = f"count_null_terminated(s->{member.name})" if member.len == "null-terminated" else f"s->{member.len}" %>
-    
-    for (int i = 0; i < (${actual_length}); i++) {
-        serialize(&s->${member.name}[i], out);
-    }
+        for (int i = 0; i < (${actual_length}); i++) {
+            serialize(&s->${member.name}[i], out);
+        }
         % else:
-    serialize(s->${member.name}, out);
+        serialize(s->${member.name}, out);
         % endif
+    }
+    else {
+        std::uint8_t marker = 0;
+        serialize(&marker, out);
+    }
     % elif member.array:
         <% array_size = member.array[1:-1] %>
     for (int i = 0; i < ${array_size}; i++) {
-        serialize(&s->${member.name}, out);
+        serialize(&s->${member.name}[i], out);
     }
     % else:
     serialize(&s->${member.name}, out);

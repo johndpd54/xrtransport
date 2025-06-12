@@ -9,12 +9,25 @@ class XrSpec:
         self.supported_types = supported_types
         self.functions_index = {f.name: f for f in self.functions}
         self.structs_index = {s.name: s for s in self.structs}
+        self.grouped_structs = self.group_structs()
     
     def find_function(self, name):
         return self.functions_index[name] if name in self.functions_index else None
     
     def find_struct(self, name):
         return self.structs_index[name] if name in self.structs_index else None
+    
+    def group_structs(self):
+        # group structs by extension
+        grouped_structs = [[]]
+        last_extension = None
+        for struct in self.structs:
+            if struct.extension == last_extension:
+                grouped_structs[-1].append(struct)
+            else:
+                grouped_structs.append([struct])
+                last_extension = struct.extension
+        return grouped_structs
 
 class XrStruct:
     def __init__(self, name, members):
@@ -80,8 +93,8 @@ def parse_spec(xml_root):
     functions, function_aliases = collect_functions(xml_root)
     structs = collect_structs(xml_root)
     supported_types = collect_supported_types(xml_root)
+    attach_extension_names(xml_root, structs, functions) # must be done before constructing XrSpec
     spec = XrSpec(functions, function_aliases, structs, supported_types)
-    attach_extension_names(xml_root, spec)
     return spec
 
 def collect_xr_structure_type_values(xml_root):
@@ -262,24 +275,27 @@ def collect_functions(xml_root):
     
     return functions, function_aliases
 
-def attach_extension_names(xml_root, spec):
+def attach_extension_names(xml_root, structs, functions):
     extension_tags = xml_root.findall("extensions/extension")
     for extension_tag in extension_tags:
         for type_tag in extension_tag.findall("require/type"):
             struct_name = type_tag.attrib["name"]
-            struct = spec.find_struct(struct_name)
+            # O(N^2), but this needs to be done before the spec is constructed
+            # so we can't use find_struct. If this becomes a problem we can throw
+            # them all in a dict first
+            struct = next((s for s in structs if s.name == struct_name), None)
             if struct:
                 struct.extension = extension_tag.attrib["name"]
         for command_tag in extension_tag.findall("require/command"):
             function_name = command_tag.attrib["name"]
-            function = spec.find_function(function_name)
+            function = next((f for f in functions if f.name == function_name), None)
             if function:
                 function.extension = extension_tag.attrib["name"]
         # Some structs are not referred to by their extension, but their XrStructureType is
         for enum_tag in extension_tag.findall("require/enum"):
             if "extends" in enum_tag.attrib and enum_tag.attrib["extends"] == "XrStructureType":
                 enum_name = enum_tag.attrib["name"]
-                struct = next((s for s in spec.structs if s.xr_type == enum_name), None)
+                struct = next((s for s in structs if s.xr_type == enum_name), None)
                 if not struct:
                     print(f"Warning! found XrStructureType ({enum_name}) with no corresponding struct!")
                 else:

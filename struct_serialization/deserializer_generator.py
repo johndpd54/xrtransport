@@ -12,13 +12,13 @@ def main():
     xml_root = get_xml_root(xr_xml_path)
     spec = parse_spec(xml_root)
     with open(out_path, "wb") as out:
-        generate_serializer(spec, out)
+        generate_deserializer(spec, out)
 
-def generate_serializer(spec, out):
+def generate_deserializer(spec, out):
     base_path = os.path.dirname(os.path.realpath(__file__))
     base_path = os.path.relpath(base_path, os.getcwd())
     template_lookup = TemplateLookup(directories=[f"{base_path}/templates"])
-    template = template_lookup.get_template("serializer.mako")
+    template = template_lookup.get_template("deserializer.mako")
     out.write(template.render(spec=spec).encode())
 
 if __name__ == "__main__":

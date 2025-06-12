@@ -4,23 +4,23 @@
 %>
 
 // Only to be used with OpenXR pNext structs
-using StructSerializer = void(*)(const XrBaseInStructure*, std::ostream&);
-#define STRUCT_SERIALIZER_PTR(t) (reinterpret_cast<StructSerializer>(static_cast<void(*)(const t*, std::ostream&)>(&serialize)))
+using StructCleaner = void(*)(const XrBaseOutStructure*);
+#define STRUCT_CLEANER_PTR(t) (reinterpret_cast<StructCleaner>(static_cast<void(*)(const t*)>(&cleanup)))
 
-static std::tuple<XrStructureType, StructSerializer> serializer_lookup_table[] = {
+static std::tuple<XrStructureType, StructCleaner> cleaner_lookup_table[] = {
 <%common:for_grouped_structs grouped_structs="${grouped_xr_structs}" args="struct">
-    {${struct.xr_type}, STRUCT_SERIALIZER_PTR(${struct.name})},
+    {${struct.xr_type}, STRUCT_CLEANER_PTR(${struct.name})},
 </%common:for_grouped_structs>
 };
 
-static StructSerializer serializer_lookup(XrStructureType struct_type) {
-    std::size_t array_size = sizeof(serializer_lookup_table) / sizeof(serializer_lookup_table[0]);
+static StructCleaner cleaner_lookup(XrStructureType struct_type) {
+    std::size_t array_size = sizeof(cleaner_lookup_table) / sizeof(cleaner_lookup_table[0]);
     std::size_t low = 0;
     std::size_t high = array_size - 1;
 
     while (low <= high) {
         std::size_t mid = low + (high - low) / 2;
-        auto& at_mid = serializer_lookup_table[mid];
+        auto& at_mid = cleaner_lookup_table[mid];
         XrStructureType at_mid_type = std::get<0>(at_mid);
 
         if (at_mid_type == struct_type) {
@@ -35,5 +35,5 @@ static StructSerializer serializer_lookup(XrStructureType struct_type) {
         }
     }
     
-    assert(false && "XrStructureType not found in serializers lookup table");
+    assert(false && "XrStructureType not found in cleaners lookup table");
 }
