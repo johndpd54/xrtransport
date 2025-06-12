@@ -20,7 +20,7 @@ static StructAllocator allocator_lookup(XrStructureType struct_type) {
 
     while (low <= high) {
         std::size_t mid = low + (high - low) / 2;
-        auto& at_mid = allocator_lookup_table[mid];
+        std::tuple<XrStructureType, StructAllocator>& at_mid = allocator_lookup_table[mid];
         XrStructureType at_mid_type = std::get<0>(at_mid);
 
         if (at_mid_type == struct_type) {

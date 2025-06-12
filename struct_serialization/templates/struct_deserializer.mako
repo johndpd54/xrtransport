@@ -54,7 +54,7 @@ static void deserialize(${struct.name}* s, std::istream& in) {
         % if member.len:
             % if member.len == "null-terminated":
         std::size_t num_items{};
-        deserialize(static_cast<uint32_t*>(&num_items));
+        deserialize(static_cast<std::uint32_t*>(&num_items));
             % else:
         std::size_t num_items = s->${member.len};
             % endif
