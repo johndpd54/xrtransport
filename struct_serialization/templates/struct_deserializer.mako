@@ -52,7 +52,12 @@ static void deserialize(${struct.name}* s, std::istream& in) {
     deserialize(&marker, in);
     if (marker) {
         % if member.len:
-        std::size_t num_items = ${f"count_null_terminated(s->{member.name})" if member.len == "null-terminated" else f"s->{member.len}"};
+            % if member.len == "null-terminated":
+        std::size_t num_items{};
+        deserialize(static_cast<uint32_t*>(&num_items));
+            % else:
+        std::size_t num_items = s->${member.len};
+            % endif
         allocate(&s->${member.name}, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->${member.name}[i], in);

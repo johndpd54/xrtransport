@@ -37,8 +37,13 @@ ${struct_serializer.generic_serializer()}
 
 // Serializers
 <%common:for_grouped_structs args="struct">
+% if not struct.name in spec.custom_structs:
 ${struct_serializer.serializer(struct)}
+% endif
 </%common:for_grouped_structs>
+
+// Custom implementations
+<%include file="serializer_custom.mako"/>
 
 } // namespace xrtransport
 

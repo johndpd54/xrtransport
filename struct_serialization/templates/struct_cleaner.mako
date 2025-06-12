@@ -25,7 +25,7 @@ static void cleanup(const ${struct.name}* s) {
         ## it shouldn't matter because our only side effect is deleting
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     <% rest_members = struct.members[2:] %>
 % else:
@@ -52,11 +52,11 @@ static void cleanup(const ${struct.name}* s) {
             cleanup(&s->${member.name}[i]);
             ## no need to delete individual items, as we don't allow double pointers
         }
-        delete s->${member.name};
+        delete[] s->${member.name};
 
         % else:
         cleanup(s->${member.name});
-        delete s->${member.name};
+        delete[] s->${member.name};
         % endif
     }
     % elif member.array:

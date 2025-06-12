@@ -53,8 +53,11 @@ static void serialize(const ${struct.name}* s, std::ostream& out) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
         % if member.len:
-            <% actual_length = f"count_null_terminated(s->{member.name})" if member.len == "null-terminated" else f"s->{member.len}" %>
-        for (int i = 0; i < (${actual_length}); i++) {
+        std::size_t num_items = ${f"count_null_terminated(s->{member.name})" if member.len == "null-terminated" else f"s->{member.len}"};
+            % if member.len == "null-terminated":
+        serialize(static_cast<const uint32_t*>(&num_items), out);
+            % endif
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->${member.name}[i], out);
         }
         % else:

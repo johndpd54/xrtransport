@@ -5061,7 +5061,7 @@ static void serialize(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s, 
 template <typename T>
 static void serialize(const T* x, std::ostream& out) {
     static_assert(
-        std::is_same<T, XrPlaneDetectorOrientationEXT>::value || std::is_same<T, XrHandJointsMotionRangeEXT>::value || std::is_same<T, XrPassthroughHTC>::value || std::is_same<T, XrGeometryInstanceFB>::value || std::is_same<T, XrRenderModelKeyFB>::value || std::is_same<T, XrOverlaySessionCreateFlagsEXTX>::value || std::is_same<T, XrKeyboardTrackingFlagsFB>::value || std::is_same<T, XrTrackingOptimizationSettingsHintQCOM>::value || std::is_same<T, XrEyeCalibrationStatusML>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagsMETA>::value || std::is_same<T, XrMarkerDetectorCornerRefineMethodML>::value || std::is_same<T, XrBodyJointSetHTC>::value || std::is_same<T, XrEyeExpressionHTC>::value || std::is_same<T, XrLocalizationMapConfidenceML>::value || std::is_same<T, XrSpatialEntityComponentTypeBD>::value || std::is_same<T, XrMarkerDetectorProfileML>::value || std::is_same<T, XrCompositionLayerSettingsFlagsFB>::value || std::is_same<T, XrMarkerDetectorML>::value || std::is_same<T, XrPassthroughColorLutChannelsMETA>::value || std::is_same<T, XrPerfSettingsLevelEXT>::value || std::is_same<T, XrBodyTrackerFB>::value || std::is_same<T, XrDigitalLensControlFlagBitsALMALENCE>::value || std::is_same<T, XrHandJointEXT>::value || std::is_same<T, XrCompositionLayerFlags>::value || std::is_same<T, uint16_t>::value || std::is_same<T, XrMarkerAprilTagDictML>::value || std::is_same<T, XrLocalDimmingModeMETA>::value || std::is_same<T, XrAction>::value || std::is_same<T, XrSpaceStorageLocationFB>::value || std::is_same<T, XrSpaceUserIdFB>::value || std::is_same<T, XrSemanticLabelsSupportFlagBitsFB>::value || std::is_same<T, XrLocalizationMapErrorFlagBitsML>::value || std::is_same<T, XrVulkanDeviceCreateFlagsKHR>::value || std::is_same<T, XrPersistenceLocationBD>::value || std::is_same<T, XrMarkerDetectorFpsML>::value || std::is_same<T, XrSpatialAnchorMSFT>::value || std::is_same<T, int64_t>::value || std::is_same<T, int8_t>::value || std::is_same<T, XrSpacePersistenceModeFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagsFB>::value || std::is_same<T, XrInstanceCreateFlagBits>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagBitsML>::value || std::is_same<T, XrCompositionLayerSettingsFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingFlagBitsFB>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagBitsEXT>::value || std::is_same<T, XrFullBodyJointMETA>::value || std::is_same<T, XrBodyJointConfidenceHTC>::value || std::is_same<T, XrBodyTrackerHTC>::value || std::is_same<T, XrEyePositionFB>::value || std::is_same<T, char>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagBitsEXT>::value || std::is_same<T, XrBodyJointSetBD>::value || std::is_same<T, XrHandTrackingDataSourceEXT>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagBitsFB>::value || std::is_same<T, XrInstance>::value || std::is_same<T, XrPlaneDetectionStateEXT>::value || std::is_same<T, XrWorldMeshDetectorML>::value || std::is_same<T, XrFaceConfidenceFB>::value || std::is_same<T, XrFaceTracker2FB>::value || std::is_same<T, XrPassthroughPreferenceFlagsMETA>::value || std::is_same<T, uint8_t>::value || std::is_same<T, XrSpatialGraphNodeTypeMSFT>::value || std::is_same<T, XrSpatialAnchorConfidenceML>::value || std::is_same<T, XrFaceTrackerFB>::value || std::is_same<T, XrFrameEndInfoFlagBitsML>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagBitsMETA>::value || std::is_same<T, XrFoveationProfileFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagsFB>::value || std::is_same<T, XrFacialBlendShapeML>::value || std::is_same<T, XrTriangleMeshFlagBitsFB>::value || std::is_same<T, XrPassthroughPreferenceFlagBitsMETA>::value || std::is_same<T, XrSwapchainUsageFlags>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagBitsEXT>::value || std::is_same<T, XrFaceExpressionSet2FB>::value || std::is_same<T, float>::value || std::is_same<T, XrVisibilityMaskTypeKHR>::value || std::is_same<T, XrSpaceVelocityFlagBits>::value || std::is_same<T, XrAndroidThreadTypeKHR>::value || std::is_same<T, XrSwapchainCreateFoveationFlagsFB>::value || std::is_same<T, XrRenderModelFlagBitsFB>::value || std::is_same<T, XrWorldMeshBlockResultML>::value || std::is_same<T, double>::value || std::is_same<T, XrHandJointSetEXT>::value || std::is_same<T, XrSpatialAnchorStoreConnectionMSFT>::value || std::is_same<T, XrFrameSynthesisInfoFlagBitsEXT>::value || std::is_same<T, size_t>::value || std::is_same<T, XrVulkanInstanceCreateFlagsKHR>::value || std::is_same<T, XrHandTrackerEXT>::value || std::is_same<T, XrSpatialMeshLodBD>::value || std::is_same<T, XrSpaceLocationFlags>::value || std::is_same<T, XrCompositionLayerFlagBits>::value || std::is_same<T, XrCompareOpFB>::value || std::is_same<T, XrHandTrackingAimFlagBitsFB>::value || std::is_same<T, XrPassthroughFormHTC>::value || std::is_same<T, XrSpatialMeshConfigFlagBitsBD>::value || std::is_same<T, XrRenderModelFlagsFB>::value || std::is_same<T, XrSceneObserverMSFT>::value || std::is_same<T, XrSpaceLocationFlagBits>::value || std::is_same<T, XrPerfSettingsNotificationLevelEXT>::value || std::is_same<T, XrMarkerDetectorFullAnalysisIntervalML>::value || std::is_same<T, XrPerformanceMetricsCounterFlagsMETA>::value || std::is_same<T, XrBodyJointFB>::value || std::is_same<T, XrFaceConfidence2FB>::value || std::is_same<T, XrSceneComputeConsistencyMSFT>::value || std::is_same<T, XrForceFeedbackCurlLocationMNDX>::value || std::is_same<T, XrSwapchainCreateFoveationFlagBitsFB>::value || std::is_same<T, XrWorldMeshBlockStatusML>::value || std::is_same<T, XrFacialTrackingTypeHTC>::value || std::is_same<T, XrPassthroughLayerPurposeFB>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagBitsFB>::value || std::is_same<T, XrFaceExpressionFB>::value || std::is_same<T, XrSystemId>::value || std::is_same<T, XrAsyncRequestIdFB>::value || std::is_same<T, XrFlags64>::value || std::is_same<T, XrSpatialEntityIdBD>::value || std::is_same<T, XrFrameSynthesisInfoFlagsEXT>::value || std::is_same<T, XrWindingOrderFB>::value || std::is_same<T, XrSceneObjectTypeMSFT>::value || std::is_same<T, XrHandForearmJointULTRALEAP>::value || std::is_same<T, XrPassthroughFlagsFB>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagsEXT>::value || std::is_same<T, XrEnvironmentDepthProviderMETA>::value || std::is_same<T, uint64_t>::value || std::is_same<T, XrDigitalLensControlFlagsALMALENCE>::value || std::is_same<T, XrInputSourceLocalizedNameFlags>::value || std::is_same<T, XrFormFactor>::value || std::is_same<T, XrBlendFactorFB>::value || std::is_same<T, XrPassthroughColorLutMETA>::value || std::is_same<T, XrVulkanInstanceCreateFlagBitsKHR>::value || std::is_same<T, XrVirtualKeyboardInputSourceMETA>::value || std::is_same<T, XrSessionState>::value || std::is_same<T, XrPassthroughStateChangedFlagBitsFB>::value || std::is_same<T, XrFaceExpression2FB>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagsMETA>::value || std::is_same<T, XrSwapchain>::value || std::is_same<T, XrFaceTrackingDataSource2FB>::value || std::is_same<T, XrSceneComputeStateMSFT>::value || std::is_same<T, XrTriangleMeshFB>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagsMETA>::value || std::is_same<T, XrBodyTrackerBD>::value || std::is_same<T, XrVirtualKeyboardMETA>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagsEXT>::value || std::is_same<T, XrAnchorBD>::value || std::is_same<T, XrSpaceComponentTypeFB>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagBitsMETA>::value || std::is_same<T, XrSpaceVelocityFlags>::value || std::is_same<T, XrResult>::value || std::is_same<T, XrMarkerML>::value || std::is_same<T, XrPlaneDetectorEXT>::value || std::is_same<T, XrPath>::value || std::is_same<T, XrPerformanceMetricsCounterUnitMETA>::value || std::is_same<T, XrActionType>::value || std::is_same<T, XrReferenceSpaceType>::value || std::is_same<T, XrEnvironmentDepthSwapchainMETA>::value || std::is_same<T, XrLocalizationMapErrorFlagsML>::value || std::is_same<T, XrInputSourceLocalizedNameFlagBits>::value || std::is_same<T, XrEnvironmentBlendMode>::value || std::is_same<T, XrMarkerDetectorResolutionML>::value || std::is_same<T, XrWorldMeshDetectorFlagBitsML>::value || std::is_same<T, XrPassthroughFlagBitsFB>::value || std::is_same<T, XrSenseDataProviderTypeBD>::value || std::is_same<T, int32_t>::value || std::is_same<T, XrSpatialAnchorsStorageML>::value || std::is_same<T, XrSwapchainCreateFlagBits>::value || std::is_same<T, XrOverlaySessionCreateFlagBitsEXTX>::value || std::is_same<T, XrColorSpaceFB>::value || std::is_same<T, XrLocalizationMapTypeML>::value || std::is_same<T, XrPerformanceMetricsCounterFlagBitsMETA>::value || std::is_same<T, XrMarkerTypeML>::value || std::is_same<T, XrLipExpressionHTC>::value || std::is_same<T, XrEyeTrackerFB>::value || std::is_same<T, XrObjectType>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagsFB>::value || std::is_same<T, XrFoveationLevelHTC>::value || std::is_same<T, XrFaceExpressionSetFB>::value || std::is_same<T, XrActionSet>::value || std::is_same<T, XrTrackingOptimizationSettingsDomainQCOM>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagsML>::value || std::is_same<T, XrFoveationDynamicFB>::value || std::is_same<T, XrBodyJointHTC>::value || std::is_same<T, wchar_t>::value || std::is_same<T, XrSpace>::value || std::is_same<T, XrTime>::value || std::is_same<T, uintptr_t>::value || std::is_same<T, XrHandTrackingAimFlagsFB>::value || std::is_same<T, XrDuration>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagBitsFB>::value || std::is_same<T, XrSessionCreateFlags>::value || std::is_same<T, XrSwapchainCreateFlags>::value || std::is_same<T, XrEyeVisibility>::value || std::is_same<T, XrSemanticLabelBD>::value || std::is_same<T, XrSession>::value || std::is_same<T, XrControllerModelKeyMSFT>::value || std::is_same<T, XrSpatialMeshConfigFlagsBD>::value || std::is_same<T, XrPassthroughLayerFB>::value || std::is_same<T, XrViewStateFlags>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagsMETA>::value || std::is_same<T, XrSceneMSFT>::value || std::is_same<T, XrFoveationDynamicFlagBitsHTC>::value || std::is_same<T, XrSceneMarkerTypeMSFT>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagsFB>::value || std::is_same<T, XrSceneMarkerQRCodeSymbolTypeMSFT>::value || std::is_same<T, XrSessionCreateFlagBits>::value || std::is_same<T, int16_t>::value || std::is_same<T, XrHandEXT>::value || std::is_same<T, XrHandPoseTypeMSFT>::value || std::is_same<T, XrPlaneDetectorFlagsEXT>::value || std::is_same<T, XrMarkerDetectorStatusML>::value || std::is_same<T, XrViewConfigurationType>::value || std::is_same<T, XrSpatialGraphNodeBindingMSFT>::value || std::is_same<T, XrMarkerDetectorCameraML>::value || std::is_same<T, XrReprojectionModeMSFT>::value || std::is_same<T, XrBool32>::value || std::is_same<T, XrSwapchainUsageFlagBits>::value || std::is_same<T, XrSenseDataProviderBD>::value || std::is_same<T, void>::value || std::is_same<T, XrSwapchainStateFoveationFlagsFB>::value || std::is_same<T, XrViewStateFlagBits>::value || std::is_same<T, XrFutureEXT>::value || std::is_same<T, XrSpaceQueryActionFB>::value || std::is_same<T, XrSemanticLabelsSupportFlagsFB>::value || std::is_same<T, XrLocalizationMapStateML>::value || std::is_same<T, XrFoveationLevelFB>::value || std::is_same<T, XrWorldMeshDetectorLodML>::value || std::is_same<T, XrBodyJointBD>::value || std::is_same<T, XrLoaderInterfaceStructs>::value || std::is_same<T, XrVersion>::value || std::is_same<T, XrFrameEndInfoFlagsML>::value || std::is_same<T, XrTriangleMeshFlagsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagBitsFB>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagsMETA>::value || std::is_same<T, XrSenseDataSnapshotBD>::value || std::is_same<T, XrPerfSettingsDomainEXT>::value || std::is_same<T, XrExternalCameraStatusFlagsOCULUS>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagsML>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagBitsMETA>::value || std::is_same<T, XrPassthroughCapabilityFlagBitsFB>::value || std::is_same<T, XrExportedLocalizationMapML>::value || std::is_same<T, XrFacialTrackerHTC>::value || std::is_same<T, XrSceneComputeFeatureMSFT>::value || std::is_same<T, XrMeshComputeLodMSFT>::value || std::is_same<T, XrOverlayMainSessionFlagBitsEXTX>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagsEXT>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagBitsML>::value || std::is_same<T, XrVirtualKeyboardLocationTypeMETA>::value || std::is_same<T, XrPassthroughFB>::value || std::is_same<T, XrVulkanDeviceCreateFlagBitsKHR>::value || std::is_same<T, XrSpaceUserFB>::value || std::is_same<T, XrStructureType>::value || std::is_same<T, XrExternalCameraAttachedToDeviceOCULUS>::value || std::is_same<T, XrDebugUtilsMessengerEXT>::value || std::is_same<T, XrSceneComponentTypeMSFT>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagBitsFB>::value || std::is_same<T, XrOverlayMainSessionFlagsEXTX>::value || std::is_same<T, XrPlaneDetectorSemanticTypeEXT>::value || std::is_same<T, XrMarkerArucoDictML>::value || std::is_same<T, uint32_t>::value || std::is_same<T, XrPassthroughCapabilityFlagsFB>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagBitsMETA>::value || std::is_same<T, XrInstanceCreateFlags>::value || std::is_same<T, XrScenePlaneAlignmentTypeMSFT>::value || std::is_same<T, XrPassthroughStateChangedFlagsFB>::value || std::is_same<T, XrWorldMeshDetectorFlagsML>::value || std::is_same<T, XrFoveationDynamicFlagsHTC>::value || std::is_same<T, XrKeyboardTrackingQueryFlagBitsFB>::value || std::is_same<T, XrBodyJointSetFB>::value || std::is_same<T, XrFutureStateEXT>::value || std::is_same<T, XrSenseDataProviderStateBD>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagBitsMETA>::value || std::is_same<T, XrFoveationModeHTC>::value || std::is_same<T, XrPerfSettingsSubDomainEXT>::value || std::is_same<T, XrFacialExpressionClientML>::value || std::is_same<T, XrPlaneDetectorFlagBitsEXT>::value || std::is_same<T, XrHeadsetFitStatusML>::value || std::is_same<T, XrExternalCameraStatusFlagBitsOCULUS>::value,
+        std::is_same<T, XrAction>::value || std::is_same<T, XrActionSet>::value || std::is_same<T, XrActionType>::value || std::is_same<T, XrAnchorBD>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagBitsFB>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagsFB>::value || std::is_same<T, XrAndroidThreadTypeKHR>::value || std::is_same<T, XrAsyncRequestIdFB>::value || std::is_same<T, XrBlendFactorFB>::value || std::is_same<T, XrBodyJointBD>::value || std::is_same<T, XrBodyJointConfidenceHTC>::value || std::is_same<T, XrBodyJointFB>::value || std::is_same<T, XrBodyJointHTC>::value || std::is_same<T, XrBodyJointSetBD>::value || std::is_same<T, XrBodyJointSetFB>::value || std::is_same<T, XrBodyJointSetHTC>::value || std::is_same<T, XrBodyTrackerBD>::value || std::is_same<T, XrBodyTrackerFB>::value || std::is_same<T, XrBodyTrackerHTC>::value || std::is_same<T, XrBool32>::value || std::is_same<T, XrColorSpaceFB>::value || std::is_same<T, XrCompareOpFB>::value || std::is_same<T, XrCompositionLayerFlagBits>::value || std::is_same<T, XrCompositionLayerFlags>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagBitsFB>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagsFB>::value || std::is_same<T, XrCompositionLayerSettingsFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSettingsFlagsFB>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagsFB>::value || std::is_same<T, XrControllerModelKeyMSFT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagBitsEXT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagsEXT>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagBitsEXT>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagsEXT>::value || std::is_same<T, XrDebugUtilsMessengerEXT>::value || std::is_same<T, XrDigitalLensControlFlagBitsALMALENCE>::value || std::is_same<T, XrDigitalLensControlFlagsALMALENCE>::value || std::is_same<T, XrDuration>::value || std::is_same<T, XrEnvironmentBlendMode>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagBitsMETA>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagsMETA>::value || std::is_same<T, XrEnvironmentDepthProviderMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagBitsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainMETA>::value || std::is_same<T, XrExportedLocalizationMapML>::value || std::is_same<T, XrExternalCameraAttachedToDeviceOCULUS>::value || std::is_same<T, XrExternalCameraStatusFlagBitsOCULUS>::value || std::is_same<T, XrExternalCameraStatusFlagsOCULUS>::value || std::is_same<T, XrEyeCalibrationStatusML>::value || std::is_same<T, XrEyeExpressionHTC>::value || std::is_same<T, XrEyePositionFB>::value || std::is_same<T, XrEyeTrackerFB>::value || std::is_same<T, XrEyeVisibility>::value || std::is_same<T, XrFaceConfidence2FB>::value || std::is_same<T, XrFaceConfidenceFB>::value || std::is_same<T, XrFaceExpression2FB>::value || std::is_same<T, XrFaceExpressionFB>::value || std::is_same<T, XrFaceExpressionSet2FB>::value || std::is_same<T, XrFaceExpressionSetFB>::value || std::is_same<T, XrFaceTracker2FB>::value || std::is_same<T, XrFaceTrackerFB>::value || std::is_same<T, XrFaceTrackingDataSource2FB>::value || std::is_same<T, XrFacialBlendShapeML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagBitsML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagsML>::value || std::is_same<T, XrFacialExpressionClientML>::value || std::is_same<T, XrFacialTrackerHTC>::value || std::is_same<T, XrFacialTrackingTypeHTC>::value || std::is_same<T, XrFlags64>::value || std::is_same<T, XrForceFeedbackCurlLocationMNDX>::value || std::is_same<T, XrFormFactor>::value || std::is_same<T, XrFoveationDynamicFB>::value || std::is_same<T, XrFoveationDynamicFlagBitsHTC>::value || std::is_same<T, XrFoveationDynamicFlagsHTC>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagBitsMETA>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagsMETA>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagBitsMETA>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagsMETA>::value || std::is_same<T, XrFoveationLevelFB>::value || std::is_same<T, XrFoveationLevelHTC>::value || std::is_same<T, XrFoveationModeHTC>::value || std::is_same<T, XrFoveationProfileFB>::value || std::is_same<T, XrFrameEndInfoFlagBitsML>::value || std::is_same<T, XrFrameEndInfoFlagsML>::value || std::is_same<T, XrFrameSynthesisInfoFlagBitsEXT>::value || std::is_same<T, XrFrameSynthesisInfoFlagsEXT>::value || std::is_same<T, XrFullBodyJointMETA>::value || std::is_same<T, XrFutureEXT>::value || std::is_same<T, XrFutureStateEXT>::value || std::is_same<T, XrGeometryInstanceFB>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagBitsML>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagsML>::value || std::is_same<T, XrHandEXT>::value || std::is_same<T, XrHandForearmJointULTRALEAP>::value || std::is_same<T, XrHandJointEXT>::value || std::is_same<T, XrHandJointSetEXT>::value || std::is_same<T, XrHandJointsMotionRangeEXT>::value || std::is_same<T, XrHandPoseTypeMSFT>::value || std::is_same<T, XrHandTrackerEXT>::value || std::is_same<T, XrHandTrackingAimFlagBitsFB>::value || std::is_same<T, XrHandTrackingAimFlagsFB>::value || std::is_same<T, XrHandTrackingDataSourceEXT>::value || std::is_same<T, XrHeadsetFitStatusML>::value || std::is_same<T, XrInputSourceLocalizedNameFlagBits>::value || std::is_same<T, XrInputSourceLocalizedNameFlags>::value || std::is_same<T, XrInstance>::value || std::is_same<T, XrInstanceCreateFlagBits>::value || std::is_same<T, XrInstanceCreateFlags>::value || std::is_same<T, XrKeyboardTrackingFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingFlagsFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagsFB>::value || std::is_same<T, XrLipExpressionHTC>::value || std::is_same<T, XrLoaderInterfaceStructs>::value || std::is_same<T, XrLocalDimmingModeMETA>::value || std::is_same<T, XrLocalizationMapConfidenceML>::value || std::is_same<T, XrLocalizationMapErrorFlagBitsML>::value || std::is_same<T, XrLocalizationMapErrorFlagsML>::value || std::is_same<T, XrLocalizationMapStateML>::value || std::is_same<T, XrLocalizationMapTypeML>::value || std::is_same<T, XrMarkerAprilTagDictML>::value || std::is_same<T, XrMarkerArucoDictML>::value || std::is_same<T, XrMarkerDetectorCameraML>::value || std::is_same<T, XrMarkerDetectorCornerRefineMethodML>::value || std::is_same<T, XrMarkerDetectorFpsML>::value || std::is_same<T, XrMarkerDetectorFullAnalysisIntervalML>::value || std::is_same<T, XrMarkerDetectorML>::value || std::is_same<T, XrMarkerDetectorProfileML>::value || std::is_same<T, XrMarkerDetectorResolutionML>::value || std::is_same<T, XrMarkerDetectorStatusML>::value || std::is_same<T, XrMarkerML>::value || std::is_same<T, XrMarkerTypeML>::value || std::is_same<T, XrMeshComputeLodMSFT>::value || std::is_same<T, XrObjectType>::value || std::is_same<T, XrOverlayMainSessionFlagBitsEXTX>::value || std::is_same<T, XrOverlayMainSessionFlagsEXTX>::value || std::is_same<T, XrOverlaySessionCreateFlagBitsEXTX>::value || std::is_same<T, XrOverlaySessionCreateFlagsEXTX>::value || std::is_same<T, XrPassthroughCapabilityFlagBitsFB>::value || std::is_same<T, XrPassthroughCapabilityFlagsFB>::value || std::is_same<T, XrPassthroughColorLutChannelsMETA>::value || std::is_same<T, XrPassthroughColorLutMETA>::value || std::is_same<T, XrPassthroughFB>::value || std::is_same<T, XrPassthroughFlagBitsFB>::value || std::is_same<T, XrPassthroughFlagsFB>::value || std::is_same<T, XrPassthroughFormHTC>::value || std::is_same<T, XrPassthroughHTC>::value || std::is_same<T, XrPassthroughLayerFB>::value || std::is_same<T, XrPassthroughLayerPurposeFB>::value || std::is_same<T, XrPassthroughPreferenceFlagBitsMETA>::value || std::is_same<T, XrPassthroughPreferenceFlagsMETA>::value || std::is_same<T, XrPassthroughStateChangedFlagBitsFB>::value || std::is_same<T, XrPassthroughStateChangedFlagsFB>::value || std::is_same<T, XrPath>::value || std::is_same<T, XrPerfSettingsDomainEXT>::value || std::is_same<T, XrPerfSettingsLevelEXT>::value || std::is_same<T, XrPerfSettingsNotificationLevelEXT>::value || std::is_same<T, XrPerfSettingsSubDomainEXT>::value || std::is_same<T, XrPerformanceMetricsCounterFlagBitsMETA>::value || std::is_same<T, XrPerformanceMetricsCounterFlagsMETA>::value || std::is_same<T, XrPerformanceMetricsCounterUnitMETA>::value || std::is_same<T, XrPersistenceLocationBD>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagBitsEXT>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagsEXT>::value || std::is_same<T, XrPlaneDetectionStateEXT>::value || std::is_same<T, XrPlaneDetectorEXT>::value || std::is_same<T, XrPlaneDetectorFlagBitsEXT>::value || std::is_same<T, XrPlaneDetectorFlagsEXT>::value || std::is_same<T, XrPlaneDetectorOrientationEXT>::value || std::is_same<T, XrPlaneDetectorSemanticTypeEXT>::value || std::is_same<T, XrReferenceSpaceType>::value || std::is_same<T, XrRenderModelFlagBitsFB>::value || std::is_same<T, XrRenderModelFlagsFB>::value || std::is_same<T, XrRenderModelKeyFB>::value || std::is_same<T, XrReprojectionModeMSFT>::value || std::is_same<T, XrResult>::value || std::is_same<T, XrSceneComponentTypeMSFT>::value || std::is_same<T, XrSceneComputeConsistencyMSFT>::value || std::is_same<T, XrSceneComputeFeatureMSFT>::value || std::is_same<T, XrSceneComputeStateMSFT>::value || std::is_same<T, XrSceneMSFT>::value || std::is_same<T, XrSceneMarkerQRCodeSymbolTypeMSFT>::value || std::is_same<T, XrSceneMarkerTypeMSFT>::value || std::is_same<T, XrSceneObjectTypeMSFT>::value || std::is_same<T, XrSceneObserverMSFT>::value || std::is_same<T, XrScenePlaneAlignmentTypeMSFT>::value || std::is_same<T, XrSemanticLabelBD>::value || std::is_same<T, XrSemanticLabelsSupportFlagBitsFB>::value || std::is_same<T, XrSemanticLabelsSupportFlagsFB>::value || std::is_same<T, XrSenseDataProviderBD>::value || std::is_same<T, XrSenseDataProviderStateBD>::value || std::is_same<T, XrSenseDataProviderTypeBD>::value || std::is_same<T, XrSenseDataSnapshotBD>::value || std::is_same<T, XrSession>::value || std::is_same<T, XrSessionCreateFlagBits>::value || std::is_same<T, XrSessionCreateFlags>::value || std::is_same<T, XrSessionState>::value || std::is_same<T, XrSpace>::value || std::is_same<T, XrSpaceComponentTypeFB>::value || std::is_same<T, XrSpaceLocationFlagBits>::value || std::is_same<T, XrSpaceLocationFlags>::value || std::is_same<T, XrSpacePersistenceModeFB>::value || std::is_same<T, XrSpaceQueryActionFB>::value || std::is_same<T, XrSpaceStorageLocationFB>::value || std::is_same<T, XrSpaceUserFB>::value || std::is_same<T, XrSpaceUserIdFB>::value || std::is_same<T, XrSpaceVelocityFlagBits>::value || std::is_same<T, XrSpaceVelocityFlags>::value || std::is_same<T, XrSpatialAnchorConfidenceML>::value || std::is_same<T, XrSpatialAnchorMSFT>::value || std::is_same<T, XrSpatialAnchorStoreConnectionMSFT>::value || std::is_same<T, XrSpatialAnchorsStorageML>::value || std::is_same<T, XrSpatialEntityComponentTypeBD>::value || std::is_same<T, XrSpatialEntityIdBD>::value || std::is_same<T, XrSpatialGraphNodeBindingMSFT>::value || std::is_same<T, XrSpatialGraphNodeTypeMSFT>::value || std::is_same<T, XrSpatialMeshConfigFlagBitsBD>::value || std::is_same<T, XrSpatialMeshConfigFlagsBD>::value || std::is_same<T, XrSpatialMeshLodBD>::value || std::is_same<T, XrStructureType>::value || std::is_same<T, XrSwapchain>::value || std::is_same<T, XrSwapchainCreateFlagBits>::value || std::is_same<T, XrSwapchainCreateFlags>::value || std::is_same<T, XrSwapchainCreateFoveationFlagBitsFB>::value || std::is_same<T, XrSwapchainCreateFoveationFlagsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagBitsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagsFB>::value || std::is_same<T, XrSwapchainUsageFlagBits>::value || std::is_same<T, XrSwapchainUsageFlags>::value || std::is_same<T, XrSystemId>::value || std::is_same<T, XrTime>::value || std::is_same<T, XrTrackingOptimizationSettingsDomainQCOM>::value || std::is_same<T, XrTrackingOptimizationSettingsHintQCOM>::value || std::is_same<T, XrTriangleMeshFB>::value || std::is_same<T, XrTriangleMeshFlagBitsFB>::value || std::is_same<T, XrTriangleMeshFlagsFB>::value || std::is_same<T, XrVersion>::value || std::is_same<T, XrViewConfigurationType>::value || std::is_same<T, XrViewStateFlagBits>::value || std::is_same<T, XrViewStateFlags>::value || std::is_same<T, XrVirtualKeyboardInputSourceMETA>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagBitsMETA>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagsMETA>::value || std::is_same<T, XrVirtualKeyboardLocationTypeMETA>::value || std::is_same<T, XrVirtualKeyboardMETA>::value || std::is_same<T, XrVisibilityMaskTypeKHR>::value || std::is_same<T, XrVulkanDeviceCreateFlagBitsKHR>::value || std::is_same<T, XrVulkanDeviceCreateFlagsKHR>::value || std::is_same<T, XrVulkanInstanceCreateFlagBitsKHR>::value || std::is_same<T, XrVulkanInstanceCreateFlagsKHR>::value || std::is_same<T, XrWindingOrderFB>::value || std::is_same<T, XrWorldMeshBlockResultML>::value || std::is_same<T, XrWorldMeshBlockStatusML>::value || std::is_same<T, XrWorldMeshDetectorFlagBitsML>::value || std::is_same<T, XrWorldMeshDetectorFlagsML>::value || std::is_same<T, XrWorldMeshDetectorLodML>::value || std::is_same<T, XrWorldMeshDetectorML>::value || std::is_same<T, char>::value || std::is_same<T, double>::value || std::is_same<T, float>::value || std::is_same<T, int16_t>::value || std::is_same<T, int32_t>::value || std::is_same<T, int64_t>::value || std::is_same<T, int8_t>::value || std::is_same<T, size_t>::value || std::is_same<T, uint16_t>::value || std::is_same<T, uint32_t>::value || std::is_same<T, uint64_t>::value || std::is_same<T, uint8_t>::value || std::is_same<T, uintptr_t>::value || std::is_same<T, void>::value || std::is_same<T, wchar_t>::value,
         "T must be a supported type"
     );
     out.write(reinterpret_cast<const char*>(x), sizeof(*x));
@@ -5435,8 +5435,8 @@ static void serialize(const XrHandMeshIndexBufferMSFT* s, std::ostream& out) {
     if (s->indices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCapacityInput); i++) {
+        std::size_t num_items = s->indexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indices[i], out);
         }
     }
@@ -5457,8 +5457,8 @@ static void serialize(const XrHandMeshVertexBufferMSFT* s, std::ostream& out) {
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -5570,8 +5570,8 @@ static void serialize(const XrSceneBoundsMSFT* s, std::ostream& out) {
     if (s->spheres != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->sphereCount); i++) {
+        std::size_t num_items = s->sphereCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->spheres[i], out);
         }
     }
@@ -5583,8 +5583,8 @@ static void serialize(const XrSceneBoundsMSFT* s, std::ostream& out) {
     if (s->boxes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->boxCount); i++) {
+        std::size_t num_items = s->boxCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->boxes[i], out);
         }
     }
@@ -5596,8 +5596,8 @@ static void serialize(const XrSceneBoundsMSFT* s, std::ostream& out) {
     if (s->frustums != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->frustumCount); i++) {
+        std::size_t num_items = s->frustumCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->frustums[i], out);
         }
     }
@@ -5667,8 +5667,8 @@ static void serialize(const XrDeserializeSceneFragmentMSFT* s, std::ostream& out
     if (s->buffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->bufferSize); i++) {
+        std::size_t num_items = s->bufferSize;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->buffer[i], out);
         }
     }
@@ -5935,8 +5935,8 @@ static void serialize(const XrPassthroughColorLutDataMETA* s, std::ostream& out)
     if (s->buffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->bufferSize); i++) {
+        std::size_t num_items = s->bufferSize;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->buffer[i], out);
         }
     }
@@ -6230,28 +6230,6 @@ static void serialize(const XrExtensionProperties* s, std::ostream& out) {
 
 
 
-static void serialize(const XrInstanceCreateInfo* s, std::ostream& out) {
-    serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-    serialize(&s->createFlags, out);
-    serialize(&s->applicationInfo, out);
-    serialize(&s->enabledApiLayerCount, out);
-    #error auto-generator doesn't support double pointers (XrInstanceCreateInfo.enabledApiLayerNames)
-            serialize(&s->enabledExtensionCount, out);
-    #error auto-generator doesn't support double pointers (XrInstanceCreateInfo.enabledExtensionNames)
-        }
-
-
 
 
 static void serialize(const XrSystemGetInfo* s, std::ostream& out) {
@@ -6423,26 +6401,6 @@ static void serialize(const XrViewState* s, std::ostream& out) {
 }
 
 
-
-
-static void serialize(const XrFrameEndInfo* s, std::ostream& out) {
-    serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-    serialize(&s->displayTime, out);
-    serialize(&s->environmentBlendMode, out);
-    serialize(&s->layerCount, out);
-    #error auto-generator doesn't support double pointers (XrFrameEndInfo.layers)
-        }
 
 
 
@@ -6664,8 +6622,8 @@ static void serialize(const XrActionCreateInfo* s, std::ostream& out) {
     if (s->subactionPaths != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->countSubactionPaths); i++) {
+        std::size_t num_items = s->countSubactionPaths;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->subactionPaths[i], out);
         }
     }
@@ -6742,8 +6700,8 @@ static void serialize(const XrCompositionLayerProjection* s, std::ostream& out) 
     if (s->views != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->viewCount); i++) {
+        std::size_t num_items = s->viewCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->views[i], out);
         }
     }
@@ -7026,8 +6984,8 @@ static void serialize(const XrInteractionProfileSuggestedBinding* s, std::ostrea
     if (s->suggestedBindings != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->countSuggestedBindings); i++) {
+        std::size_t num_items = s->countSuggestedBindings;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->suggestedBindings[i], out);
         }
     }
@@ -7190,8 +7148,8 @@ static void serialize(const XrSessionActionSetsAttachInfo* s, std::ostream& out)
     if (s->actionSets != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->countActionSets); i++) {
+        std::size_t num_items = s->countActionSets;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->actionSets[i], out);
         }
     }
@@ -7221,8 +7179,8 @@ static void serialize(const XrActionsSyncInfo* s, std::ostream& out) {
     if (s->activeActionSets != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->countActiveActionSets); i++) {
+        std::size_t num_items = s->countActiveActionSets;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->activeActionSets[i], out);
         }
     }
@@ -7385,8 +7343,8 @@ static void serialize(const XrVulkanSwapchainFormatListCreateInfoKHR* s, std::os
     if (s->viewFormats != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->viewFormatCount); i++) {
+        std::size_t num_items = s->viewFormatCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->viewFormats[i], out);
         }
     }
@@ -7503,8 +7461,9 @@ static void serialize(const XrDebugUtilsObjectNameInfoEXT* s, std::ostream& out)
     if (s->objectName != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (count_null_terminated(s->objectName)); i++) {
+        std::size_t num_items = count_null_terminated(s->objectName);
+        serialize(static_cast<const uint32_t*>(&num_items), out);
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->objectName[i], out);
         }
     }
@@ -7533,8 +7492,9 @@ static void serialize(const XrDebugUtilsMessengerCallbackDataEXT* s, std::ostrea
     if (s->messageId != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (count_null_terminated(s->messageId)); i++) {
+        std::size_t num_items = count_null_terminated(s->messageId);
+        serialize(static_cast<const uint32_t*>(&num_items), out);
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->messageId[i], out);
         }
     }
@@ -7545,8 +7505,9 @@ static void serialize(const XrDebugUtilsMessengerCallbackDataEXT* s, std::ostrea
     if (s->functionName != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (count_null_terminated(s->functionName)); i++) {
+        std::size_t num_items = count_null_terminated(s->functionName);
+        serialize(static_cast<const uint32_t*>(&num_items), out);
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->functionName[i], out);
         }
     }
@@ -7557,8 +7518,9 @@ static void serialize(const XrDebugUtilsMessengerCallbackDataEXT* s, std::ostrea
     if (s->message != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (count_null_terminated(s->message)); i++) {
+        std::size_t num_items = count_null_terminated(s->message);
+        serialize(static_cast<const uint32_t*>(&num_items), out);
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->message[i], out);
         }
     }
@@ -7570,8 +7532,8 @@ static void serialize(const XrDebugUtilsMessengerCallbackDataEXT* s, std::ostrea
     if (s->objects != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->objectCount); i++) {
+        std::size_t num_items = s->objectCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->objects[i], out);
         }
     }
@@ -7583,8 +7545,8 @@ static void serialize(const XrDebugUtilsMessengerCallbackDataEXT* s, std::ostrea
     if (s->sessionLabels != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->sessionLabelCount); i++) {
+        std::size_t num_items = s->sessionLabelCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->sessionLabels[i], out);
         }
     }
@@ -7643,8 +7605,9 @@ static void serialize(const XrDebugUtilsLabelEXT* s, std::ostream& out) {
     if (s->labelName != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (count_null_terminated(s->labelName)); i++) {
+        std::size_t num_items = count_null_terminated(s->labelName);
+        serialize(static_cast<const uint32_t*>(&num_items), out);
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->labelName[i], out);
         }
     }
@@ -8246,8 +8209,8 @@ static void serialize(const XrVisibilityMaskKHR* s, std::ostream& out) {
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -8260,8 +8223,8 @@ static void serialize(const XrVisibilityMaskKHR* s, std::ostream& out) {
     if (s->indices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCapacityInput); i++) {
+        std::size_t num_items = s->indexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indices[i], out);
         }
     }
@@ -8671,8 +8634,8 @@ static void serialize(const XrHandJointLocationsEXT* s, std::ostream& out) {
     if (s->jointLocations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointCount); i++) {
+        std::size_t num_items = s->jointCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->jointLocations[i], out);
         }
     }
@@ -8702,8 +8665,8 @@ static void serialize(const XrHandJointVelocitiesEXT* s, std::ostream& out) {
     if (s->jointVelocities != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointCount); i++) {
+        std::size_t num_items = s->jointCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->jointVelocities[i], out);
         }
     }
@@ -8842,8 +8805,8 @@ static void serialize(const XrSecondaryViewConfigurationSessionBeginInfoMSFT* s,
     if (s->enabledViewConfigurationTypes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->viewConfigurationCount); i++) {
+        std::size_t num_items = s->viewConfigurationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->enabledViewConfigurationTypes[i], out);
         }
     }
@@ -8893,8 +8856,8 @@ static void serialize(const XrSecondaryViewConfigurationFrameStateMSFT* s, std::
     if (s->viewConfigurationStates != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->viewConfigurationCount); i++) {
+        std::size_t num_items = s->viewConfigurationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->viewConfigurationStates[i], out);
         }
     }
@@ -8924,8 +8887,8 @@ static void serialize(const XrSecondaryViewConfigurationFrameEndInfoMSFT* s, std
     if (s->viewConfigurationLayersInfo != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->viewConfigurationCount); i++) {
+        std::size_t num_items = s->viewConfigurationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->viewConfigurationLayersInfo[i], out);
         }
     }
@@ -9045,8 +9008,8 @@ static void serialize(const XrControllerModelPropertiesMSFT* s, std::ostream& ou
     if (s->nodeProperties != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->nodeCapacityInput); i++) {
+        std::size_t num_items = s->nodeCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->nodeProperties[i], out);
         }
     }
@@ -9096,8 +9059,8 @@ static void serialize(const XrControllerModelStateMSFT* s, std::ostream& out) {
     if (s->nodeStates != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->nodeCapacityInput); i++) {
+        std::size_t num_items = s->nodeCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->nodeStates[i], out);
         }
     }
@@ -9339,8 +9302,8 @@ static void serialize(const XrBodyJointLocationsFB* s, std::ostream& out) {
     if (s->jointLocations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointCount); i++) {
+        std::size_t num_items = s->jointCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->jointLocations[i], out);
         }
     }
@@ -9372,8 +9335,8 @@ static void serialize(const XrBodySkeletonFB* s, std::ostream& out) {
     if (s->joints != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointCount); i++) {
+        std::size_t num_items = s->jointCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->joints[i], out);
         }
     }
@@ -9724,8 +9687,8 @@ static void serialize(const XrNewSceneComputeInfoMSFT* s, std::ostream& out) {
     if (s->requestedFeatures != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->requestedFeatureCount); i++) {
+        std::size_t num_items = s->requestedFeatureCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->requestedFeatures[i], out);
         }
     }
@@ -9777,8 +9740,8 @@ static void serialize(const XrSceneComponentsMSFT* s, std::ostream& out) {
     if (s->components != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->componentCapacityInput); i++) {
+        std::size_t num_items = s->componentCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->components[i], out);
         }
     }
@@ -9827,8 +9790,8 @@ static void serialize(const XrSceneComponentLocationsMSFT* s, std::ostream& out)
     if (s->locations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->locationCount); i++) {
+        std::size_t num_items = s->locationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->locations[i], out);
         }
     }
@@ -9860,8 +9823,8 @@ static void serialize(const XrSceneComponentsLocateInfoMSFT* s, std::ostream& ou
     if (s->componentIds != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->componentIdCount); i++) {
+        std::size_t num_items = s->componentIdCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->componentIds[i], out);
         }
     }
@@ -9891,8 +9854,8 @@ static void serialize(const XrSceneObjectsMSFT* s, std::ostream& out) {
     if (s->sceneObjects != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->sceneObjectCount); i++) {
+        std::size_t num_items = s->sceneObjectCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->sceneObjects[i], out);
         }
     }
@@ -9941,8 +9904,8 @@ static void serialize(const XrSceneObjectTypesFilterInfoMSFT* s, std::ostream& o
     if (s->objectTypes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->objectTypeCount); i++) {
+        std::size_t num_items = s->objectTypeCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->objectTypes[i], out);
         }
     }
@@ -9972,8 +9935,8 @@ static void serialize(const XrScenePlanesMSFT* s, std::ostream& out) {
     if (s->scenePlanes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->scenePlaneCount); i++) {
+        std::size_t num_items = s->scenePlaneCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->scenePlanes[i], out);
         }
     }
@@ -10003,8 +9966,8 @@ static void serialize(const XrScenePlaneAlignmentFilterInfoMSFT* s, std::ostream
     if (s->alignments != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->alignmentCount); i++) {
+        std::size_t num_items = s->alignmentCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->alignments[i], out);
         }
     }
@@ -10034,8 +9997,8 @@ static void serialize(const XrSceneMeshesMSFT* s, std::ostream& out) {
     if (s->sceneMeshes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->sceneMeshCount); i++) {
+        std::size_t num_items = s->sceneMeshCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->sceneMeshes[i], out);
         }
     }
@@ -10103,8 +10066,8 @@ static void serialize(const XrSceneMeshVertexBufferMSFT* s, std::ostream& out) {
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -10135,8 +10098,8 @@ static void serialize(const XrSceneMeshIndicesUint32MSFT* s, std::ostream& out) 
     if (s->indices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCapacityInput); i++) {
+        std::size_t num_items = s->indexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indices[i], out);
         }
     }
@@ -10167,8 +10130,8 @@ static void serialize(const XrSceneMeshIndicesUint16MSFT* s, std::ostream& out) 
     if (s->indices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCapacityInput); i++) {
+        std::size_t num_items = s->indexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indices[i], out);
         }
     }
@@ -10220,8 +10183,8 @@ static void serialize(const XrSceneDeserializeInfoMSFT* s, std::ostream& out) {
     if (s->fragments != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->fragmentCount); i++) {
+        std::size_t num_items = s->fragmentCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->fragments[i], out);
         }
     }
@@ -10422,8 +10385,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->jointBindPoses != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointCapacityInput); i++) {
+        std::size_t num_items = s->jointCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->jointBindPoses[i], out);
         }
     }
@@ -10434,8 +10397,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->jointRadii != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointCapacityInput); i++) {
+        std::size_t num_items = s->jointCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->jointRadii[i], out);
         }
     }
@@ -10446,8 +10409,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->jointParents != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointCapacityInput); i++) {
+        std::size_t num_items = s->jointCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->jointParents[i], out);
         }
     }
@@ -10460,8 +10423,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->vertexPositions != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertexPositions[i], out);
         }
     }
@@ -10472,8 +10435,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->vertexNormals != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertexNormals[i], out);
         }
     }
@@ -10484,8 +10447,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->vertexUVs != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertexUVs[i], out);
         }
     }
@@ -10496,8 +10459,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->vertexBlendIndices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertexBlendIndices[i], out);
         }
     }
@@ -10508,8 +10471,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->vertexBlendWeights != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertexBlendWeights[i], out);
         }
     }
@@ -10522,8 +10485,8 @@ static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
     if (s->indices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCapacityInput); i++) {
+        std::size_t num_items = s->indexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indices[i], out);
         }
     }
@@ -11244,8 +11207,8 @@ static void serialize(const XrRenderModelBufferFB* s, std::ostream& out) {
     if (s->buffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->bufferCapacityInput); i++) {
+        std::size_t num_items = s->bufferCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->buffer[i], out);
         }
     }
@@ -11821,8 +11784,8 @@ static void serialize(const XrLocalizationMapImportInfoML* s, std::ostream& out)
     if (s->data != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->size); i++) {
+        std::size_t num_items = s->size;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->data[i], out);
         }
     }
@@ -11896,8 +11859,8 @@ static void serialize(const XrCreateSpatialAnchorsCompletionML* s, std::ostream&
     if (s->spaces != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->spaceCount); i++) {
+        std::size_t num_items = s->spaceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->spaces[i], out);
         }
     }
@@ -11991,8 +11954,8 @@ static void serialize(const XrSpatialAnchorsQueryCompletionML* s, std::ostream& 
     if (s->uuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->uuidCapacityInput); i++) {
+        std::size_t num_items = s->uuidCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->uuids[i], out);
         }
     }
@@ -12023,8 +11986,8 @@ static void serialize(const XrSpatialAnchorsCreateInfoFromUuidsML* s, std::ostre
     if (s->uuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->uuidCount); i++) {
+        std::size_t num_items = s->uuidCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->uuids[i], out);
         }
     }
@@ -12054,8 +12017,8 @@ static void serialize(const XrSpatialAnchorsPublishInfoML* s, std::ostream& out)
     if (s->anchors != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->anchorCount); i++) {
+        std::size_t num_items = s->anchorCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->anchors[i], out);
         }
     }
@@ -12087,8 +12050,8 @@ static void serialize(const XrSpatialAnchorsPublishCompletionML* s, std::ostream
     if (s->uuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->uuidCount); i++) {
+        std::size_t num_items = s->uuidCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->uuids[i], out);
         }
     }
@@ -12118,8 +12081,8 @@ static void serialize(const XrSpatialAnchorsDeleteInfoML* s, std::ostream& out) 
     if (s->uuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->uuidCount); i++) {
+        std::size_t num_items = s->uuidCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->uuids[i], out);
         }
     }
@@ -12168,8 +12131,8 @@ static void serialize(const XrSpatialAnchorsUpdateExpirationInfoML* s, std::ostr
     if (s->uuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->uuidCount); i++) {
+        std::size_t num_items = s->uuidCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->uuids[i], out);
         }
     }
@@ -12219,8 +12182,8 @@ static void serialize(const XrSpatialAnchorsPublishCompletionDetailsML* s, std::
     if (s->results != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->resultCount); i++) {
+        std::size_t num_items = s->resultCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->results[i], out);
         }
     }
@@ -12250,8 +12213,8 @@ static void serialize(const XrSpatialAnchorsDeleteCompletionDetailsML* s, std::o
     if (s->results != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->resultCount); i++) {
+        std::size_t num_items = s->resultCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->results[i], out);
         }
     }
@@ -12281,8 +12244,8 @@ static void serialize(const XrSpatialAnchorsUpdateExpirationCompletionDetailsML*
     if (s->results != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->resultCount); i++) {
+        std::size_t num_items = s->resultCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->results[i], out);
         }
     }
@@ -12358,8 +12321,8 @@ static void serialize(const XrSceneMarkersMSFT* s, std::ostream& out) {
     if (s->sceneMarkers != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->sceneMarkerCapacityInput); i++) {
+        std::size_t num_items = s->sceneMarkerCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->sceneMarkers[i], out);
         }
     }
@@ -12389,8 +12352,8 @@ static void serialize(const XrSceneMarkerTypeFilterMSFT* s, std::ostream& out) {
     if (s->markerTypes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->markerTypeCount); i++) {
+        std::size_t num_items = s->markerTypeCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->markerTypes[i], out);
         }
     }
@@ -12420,8 +12383,8 @@ static void serialize(const XrSceneMarkerQRCodesMSFT* s, std::ostream& out) {
     if (s->qrCodes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->qrCodeCapacityInput); i++) {
+        std::size_t num_items = s->qrCodeCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->qrCodes[i], out);
         }
     }
@@ -12494,8 +12457,8 @@ static void serialize(const XrSpaceQueryResultsFB* s, std::ostream& out) {
     if (s->results != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->resultCapacityInput); i++) {
+        std::size_t num_items = s->resultCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->results[i], out);
         }
     }
@@ -12563,8 +12526,8 @@ static void serialize(const XrSpaceUuidFilterInfoFB* s, std::ostream& out) {
     if (s->uuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->uuidCount); i++) {
+        std::size_t num_items = s->uuidCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->uuids[i], out);
         }
     }
@@ -12836,8 +12799,8 @@ static void serialize(const XrSpaceShareInfoFB* s, std::ostream& out) {
     if (s->spaces != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->spaceCount); i++) {
+        std::size_t num_items = s->spaceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->spaces[i], out);
         }
     }
@@ -12849,8 +12812,8 @@ static void serialize(const XrSpaceShareInfoFB* s, std::ostream& out) {
     if (s->users != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->userCount); i++) {
+        std::size_t num_items = s->userCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->users[i], out);
         }
     }
@@ -12953,8 +12916,8 @@ static void serialize(const XrHapticAmplitudeEnvelopeVibrationFB* s, std::ostrea
     if (s->amplitudes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->amplitudeCount); i++) {
+        std::size_t num_items = s->amplitudeCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->amplitudes[i], out);
         }
     }
@@ -12988,8 +12951,8 @@ static void serialize(const XrSemanticLabelsFB* s, std::ostream& out) {
     if (s->buffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->bufferCapacityInput); i++) {
+        std::size_t num_items = s->bufferCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->buffer[i], out);
         }
     }
@@ -13022,8 +12985,8 @@ static void serialize(const XrRoomLayoutFB* s, std::ostream& out) {
     if (s->wallUuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->wallUuidCapacityInput); i++) {
+        std::size_t num_items = s->wallUuidCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->wallUuids[i], out);
         }
     }
@@ -13054,8 +13017,8 @@ static void serialize(const XrBoundary2DFB* s, std::ostream& out) {
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -13085,8 +13048,9 @@ static void serialize(const XrSemanticLabelsSupportInfoFB* s, std::ostream& out)
     if (s->recognizedLabels != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (count_null_terminated(s->recognizedLabels)); i++) {
+        std::size_t num_items = count_null_terminated(s->recognizedLabels);
+        serialize(static_cast<const uint32_t*>(&num_items), out);
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->recognizedLabels[i], out);
         }
     }
@@ -13161,8 +13125,8 @@ static void serialize(const XrSceneCaptureRequestInfoFB* s, std::ostream& out) {
     if (s->request != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->requestByteCount); i++) {
+        std::size_t num_items = s->requestByteCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->request[i], out);
         }
     }
@@ -13196,8 +13160,8 @@ static void serialize(const XrSpaceContainerFB* s, std::ostream& out) {
     if (s->uuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->uuidCapacityInput); i++) {
+        std::size_t num_items = s->uuidCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->uuids[i], out);
         }
     }
@@ -13351,8 +13315,8 @@ static void serialize(const XrFaceExpressionWeightsFB* s, std::ostream& out) {
     if (s->weights != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->weightCount); i++) {
+        std::size_t num_items = s->weightCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->weights[i], out);
         }
     }
@@ -13364,8 +13328,8 @@ static void serialize(const XrFaceExpressionWeightsFB* s, std::ostream& out) {
     if (s->confidences != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->confidenceCount); i++) {
+        std::size_t num_items = s->confidenceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->confidences[i], out);
         }
     }
@@ -13528,8 +13492,8 @@ static void serialize(const XrHapticPcmVibrationFB* s, std::ostream& out) {
     if (s->buffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->bufferSize); i++) {
+        std::size_t num_items = s->bufferSize;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->buffer[i], out);
         }
     }
@@ -13830,8 +13794,8 @@ static void serialize(const XrVirtualKeyboardModelAnimationStatesMETA* s, std::o
     if (s->states != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->stateCapacityInput); i++) {
+        std::size_t num_items = s->stateCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->states[i], out);
         }
     }
@@ -13864,8 +13828,8 @@ static void serialize(const XrVirtualKeyboardTextureDataMETA* s, std::ostream& o
     if (s->buffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->bufferCapacityInput); i++) {
+        std::size_t num_items = s->bufferCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->buffer[i], out);
         }
     }
@@ -13916,8 +13880,9 @@ static void serialize(const XrVirtualKeyboardTextContextChangeInfoMETA* s, std::
     if (s->textContext != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (count_null_terminated(s->textContext)); i++) {
+        std::size_t num_items = count_null_terminated(s->textContext);
+        serialize(static_cast<const uint32_t*>(&num_items), out);
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->textContext[i], out);
         }
     }
@@ -14143,8 +14108,8 @@ static void serialize(const XrSpaceListSaveInfoFB* s, std::ostream& out) {
     if (s->spaces != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->spaceCount); i++) {
+        std::size_t num_items = s->spaceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->spaces[i], out);
         }
     }
@@ -14415,8 +14380,8 @@ static void serialize(const XrSpaceTriangleMeshMETA* s, std::ostream& out) {
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -14429,8 +14394,8 @@ static void serialize(const XrSpaceTriangleMeshMETA* s, std::ostream& out) {
     if (s->indices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCapacityInput); i++) {
+        std::size_t num_items = s->indexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indices[i], out);
         }
     }
@@ -14528,8 +14493,8 @@ static void serialize(const XrFaceTrackerCreateInfo2FB* s, std::ostream& out) {
     if (s->requestedDataSources != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->requestedDataSourceCount); i++) {
+        std::size_t num_items = s->requestedDataSourceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->requestedDataSources[i], out);
         }
     }
@@ -14578,8 +14543,8 @@ static void serialize(const XrFaceExpressionWeights2FB* s, std::ostream& out) {
     if (s->weights != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->weightCount); i++) {
+        std::size_t num_items = s->weightCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->weights[i], out);
         }
     }
@@ -14591,8 +14556,8 @@ static void serialize(const XrFaceExpressionWeights2FB* s, std::ostream& out) {
     if (s->confidences != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->confidenceCount); i++) {
+        std::size_t num_items = s->confidenceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->confidences[i], out);
         }
     }
@@ -14648,8 +14613,8 @@ static void serialize(const XrShareSpacesInfoMETA* s, std::ostream& out) {
     if (s->spaces != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->spaceCount); i++) {
+        std::size_t num_items = s->spaceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->spaces[i], out);
         }
     }
@@ -14914,8 +14879,8 @@ static void serialize(const XrPassthroughMeshTransformInfoHTC* s, std::ostream& 
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCount); i++) {
+        std::size_t num_items = s->vertexCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -14927,8 +14892,8 @@ static void serialize(const XrPassthroughMeshTransformInfoHTC* s, std::ostream& 
     if (s->indices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCount); i++) {
+        std::size_t num_items = s->indexCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indices[i], out);
         }
     }
@@ -14988,8 +14953,8 @@ static void serialize(const XrFoveationApplyInfoHTC* s, std::ostream& out) {
     if (s->subImages != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->subImageCount); i++) {
+        std::size_t num_items = s->subImageCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->subImages[i], out);
         }
     }
@@ -15038,8 +15003,8 @@ static void serialize(const XrFoveationCustomModeInfoHTC* s, std::ostream& out) 
     if (s->configs != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->configCount); i++) {
+        std::size_t num_items = s->configCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->configs[i], out);
         }
     }
@@ -15175,8 +15140,8 @@ static void serialize(const XrBodyJointLocationsHTC* s, std::ostream& out) {
     if (s->jointLocations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointLocationCount); i++) {
+        std::size_t num_items = s->jointLocationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->jointLocations[i], out);
         }
     }
@@ -15207,8 +15172,8 @@ static void serialize(const XrBodySkeletonHTC* s, std::ostream& out) {
     if (s->joints != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointCount); i++) {
+        std::size_t num_items = s->jointCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->joints[i], out);
         }
     }
@@ -15241,8 +15206,8 @@ static void serialize(const XrActiveActionSetPrioritiesEXT* s, std::ostream& out
     if (s->actionSetPriorities != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->actionSetPriorityCount); i++) {
+        std::size_t num_items = s->actionSetPriorityCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->actionSetPriorities[i], out);
         }
     }
@@ -15294,8 +15259,8 @@ static void serialize(const XrForceFeedbackCurlApplyLocationsMNDX* s, std::ostre
     if (s->locations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->locationCount); i++) {
+        std::size_t num_items = s->locationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->locations[i], out);
         }
     }
@@ -15368,8 +15333,8 @@ static void serialize(const XrBodyJointLocationsBD* s, std::ostream& out) {
     if (s->jointLocations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->jointLocationCount); i++) {
+        std::size_t num_items = s->jointLocationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->jointLocations[i], out);
         }
     }
@@ -15499,8 +15464,8 @@ static void serialize(const XrSpatialEntityComponentDataSemanticBD* s, std::ostr
     if (s->labels != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->labelCapacityInput); i++) {
+        std::size_t num_items = s->labelCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->labels[i], out);
         }
     }
@@ -15550,8 +15515,8 @@ static void serialize(const XrSpatialEntityComponentDataPolygonBD* s, std::ostre
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -15601,8 +15566,8 @@ static void serialize(const XrSpatialEntityComponentDataTriangleMeshBD* s, std::
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -15615,8 +15580,8 @@ static void serialize(const XrSpatialEntityComponentDataTriangleMeshBD* s, std::
     if (s->indices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCapacityInput); i++) {
+        std::size_t num_items = s->indexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indices[i], out);
         }
     }
@@ -15760,8 +15725,8 @@ static void serialize(const XrSenseDataFilterUuidBD* s, std::ostream& out) {
     if (s->uuids != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->uuidCount); i++) {
+        std::size_t num_items = s->uuidCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->uuids[i], out);
         }
     }
@@ -15791,8 +15756,8 @@ static void serialize(const XrSenseDataFilterSemanticBD* s, std::ostream& out) {
     if (s->labels != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->labelCount); i++) {
+        std::size_t num_items = s->labelCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->labels[i], out);
         }
     }
@@ -15841,8 +15806,8 @@ static void serialize(const XrQueriedSenseDataBD* s, std::ostream& out) {
     if (s->states != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->stateCapacityInput); i++) {
+        std::size_t num_items = s->stateCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->states[i], out);
         }
     }
@@ -16205,8 +16170,8 @@ static void serialize(const XrHandTrackingDataSourceInfoEXT* s, std::ostream& ou
     if (s->requestedDataSources != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->requestedDataSourceCount); i++) {
+        std::size_t num_items = s->requestedDataSourceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->requestedDataSources[i], out);
         }
     }
@@ -16280,8 +16245,8 @@ static void serialize(const XrPlaneDetectorBeginInfoEXT* s, std::ostream& out) {
     if (s->orientations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->orientationCount); i++) {
+        std::size_t num_items = s->orientationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->orientations[i], out);
         }
     }
@@ -16293,8 +16258,8 @@ static void serialize(const XrPlaneDetectorBeginInfoEXT* s, std::ostream& out) {
     if (s->semanticTypes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->semanticTypeCount); i++) {
+        std::size_t num_items = s->semanticTypeCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->semanticTypes[i], out);
         }
     }
@@ -16349,8 +16314,8 @@ static void serialize(const XrPlaneDetectorLocationsEXT* s, std::ostream& out) {
     if (s->planeLocations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->planeLocationCapacityInput); i++) {
+        std::size_t num_items = s->planeLocationCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->planeLocations[i], out);
         }
     }
@@ -16406,8 +16371,8 @@ static void serialize(const XrPlaneDetectorPolygonBufferEXT* s, std::ostream& ou
     if (s->vertices != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCapacityInput); i++) {
+        std::size_t num_items = s->vertexCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertices[i], out);
         }
     }
@@ -16581,8 +16546,8 @@ static void serialize(const XrSpacesLocateInfo* s, std::ostream& out) {
     if (s->spaces != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->spaceCount); i++) {
+        std::size_t num_items = s->spaceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->spaces[i], out);
         }
     }
@@ -16612,8 +16577,8 @@ static void serialize(const XrSpaceLocations* s, std::ostream& out) {
     if (s->locations != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->locationCount); i++) {
+        std::size_t num_items = s->locationCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->locations[i], out);
         }
     }
@@ -16643,8 +16608,8 @@ static void serialize(const XrSpaceVelocities* s, std::ostream& out) {
     if (s->velocities != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->velocityCount); i++) {
+        std::size_t num_items = s->velocityCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->velocities[i], out);
         }
     }
@@ -16825,8 +16790,8 @@ static void serialize(const XrWorldMeshStateRequestCompletionML* s, std::ostream
     if (s->meshBlockStates != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->meshBlockStateCapacityInput); i++) {
+        std::size_t num_items = s->meshBlockStateCapacityInput;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->meshBlockStates[i], out);
         }
     }
@@ -16894,8 +16859,8 @@ static void serialize(const XrWorldMeshBufferML* s, std::ostream& out) {
     if (s->buffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->bufferSize); i++) {
+        std::size_t num_items = s->bufferSize;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->buffer[i], out);
         }
     }
@@ -16948,8 +16913,8 @@ static void serialize(const XrWorldMeshGetInfoML* s, std::ostream& out) {
     if (s->blocks != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->blockCount); i++) {
+        std::size_t num_items = s->blockCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->blocks[i], out);
         }
     }
@@ -16983,8 +16948,8 @@ static void serialize(const XrWorldMeshBlockML* s, std::ostream& out) {
     if (s->indexBuffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->indexCount); i++) {
+        std::size_t num_items = s->indexCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->indexBuffer[i], out);
         }
     }
@@ -16996,8 +16961,8 @@ static void serialize(const XrWorldMeshBlockML* s, std::ostream& out) {
     if (s->vertexBuffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->vertexCount); i++) {
+        std::size_t num_items = s->vertexCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->vertexBuffer[i], out);
         }
     }
@@ -17009,8 +16974,8 @@ static void serialize(const XrWorldMeshBlockML* s, std::ostream& out) {
     if (s->normalBuffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->normalCount); i++) {
+        std::size_t num_items = s->normalCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->normalBuffer[i], out);
         }
     }
@@ -17022,8 +16987,8 @@ static void serialize(const XrWorldMeshBlockML* s, std::ostream& out) {
     if (s->confidenceBuffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->confidenceCount); i++) {
+        std::size_t num_items = s->confidenceCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->confidenceBuffer[i], out);
         }
     }
@@ -17054,8 +17019,8 @@ static void serialize(const XrWorldMeshRequestCompletionML* s, std::ostream& out
     if (s->blocks != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->blockCount); i++) {
+        std::size_t num_items = s->blockCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->blocks[i], out);
         }
     }
@@ -17127,8 +17092,8 @@ static void serialize(const XrFacialExpressionClientCreateInfoML* s, std::ostrea
     if (s->requestedFacialBlendShapes != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->requestedCount); i++) {
+        std::size_t num_items = s->requestedCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->requestedFacialBlendShapes[i], out);
         }
     }
@@ -17295,8 +17260,8 @@ static void serialize(const XrColocationAdvertisementStartInfoMETA* s, std::ostr
     if (s->buffer != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->bufferSize); i++) {
+        std::size_t num_items = s->bufferSize;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->buffer[i], out);
         }
     }
@@ -17512,8 +17477,8 @@ static void serialize(const XrShareSpacesRecipientGroupsMETA* s, std::ostream& o
     if (s->groups != nullptr) {
         std::uint8_t marker = 1;
         serialize(&marker, out);
-            
-        for (int i = 0; i < (s->groupCount); i++) {
+        std::size_t num_items = s->groupCount;
+        for (int i = 0; i < num_items; i++) {
             serialize(&s->groups[i], out);
         }
     }
@@ -17564,6 +17529,75 @@ static void serialize(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s, 
 
 #endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
 
+
+// Custom implementations
+static void serialize(const XrInstanceCreateInfo* s, std::ostream& out) {
+    serialize(&s->type, out);
+    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
+    if (next != nullptr) {
+        serialize(&next->type, out);
+        serializer_lookup(next->type)(next, out);
+    }
+    else {
+        // special marker to indicate no next struct
+        XrStructureType marker = XR_TYPE_UNKNOWN;
+        serialize(&marker, out);
+    }
+    
+    serialize(&s->createFlags, out);
+    serialize(&s->applicationInfo, out);
+    serialize(&s->enabledApiLayerCount, out);
+
+    for (int i = 0; i < s->enabledApiLayerCount; i++) {
+        const char* str = s->enabledApiLayerNames[i];
+        std::size_t string_length = count_null_terminated(str);
+        serialize(reinterpret_cast<const uint32_t*>(&string_length), out);
+        for (int j = 0; j < string_length; j++) {
+            serialize(&str[j], out);
+        }
+    }
+
+    serialize(&s->enabledExtensionCount, out);
+
+    for (int i = 0; i < s->enabledExtensionCount; i++) {
+        const char* str = s->enabledExtensionNames[i];
+        std::size_t string_length = count_null_terminated(str);
+        serialize(reinterpret_cast<const uint32_t*>(&string_length), out);
+        for (int j = 0; j < string_length; j++) {
+            serialize(&str[j], out);
+        }
+    }
+}
+
+static void serialize(const XrFrameEndInfo* s, std::ostream& out) {
+    serialize(&s->type, out);
+    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
+    if (next != nullptr) {
+        serialize(&next->type, out);
+        serializer_lookup(next->type)(next, out);
+    }
+    else {
+        // special marker to indicate no next struct
+        XrStructureType marker = XR_TYPE_UNKNOWN;
+        serialize(&marker, out);
+    }
+    
+    serialize(&s->displayTime, out);
+    serialize(&s->environmentBlendMode, out);
+    serialize(&s->layerCount, out);
+
+    for (int i = 0; i < s->layerCount; i++) {
+        const XrCompositionLayerBaseHeader* header = s->layers[i];
+        if (header != nullptr) {
+            serialize(&header->type, out);
+            serializer_lookup(header->type)(reinterpret_cast<const XrBaseInStructure*>(header), out);
+        }
+        else {
+            XrStructureType marker = XR_TYPE_UNKNOWN;
+            serialize(&marker, out);
+        }
+    }
+}
 
 } // namespace xrtransport
 

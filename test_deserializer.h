@@ -12,16 +12,6 @@
 
 namespace xrtransport {
 
-template <typename T>
-static inline std::size_t count_null_terminated(const T* ptr) {
-    std::size_t count = 0;
-    while (*ptr != T{}) {
-        ++ptr;
-        ++count;
-    }
-    return count + 1;
-}
-
 
 
 
@@ -15122,7 +15112,7 @@ static void cleanup(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s);
 template <typename T>
 static void deserialize(T* x, std::istream& in) {
     static_assert(
-        std::is_same<T, XrSenseDataProviderStateBD>::value || std::is_same<T, XrGeometryInstanceFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagsFB>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagsMETA>::value || std::is_same<T, XrSpatialAnchorMSFT>::value || std::is_same<T, XrSpaceVelocityFlagBits>::value || std::is_same<T, XrKeyboardTrackingQueryFlagBitsFB>::value || std::is_same<T, XrHandJointEXT>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagsFB>::value || std::is_same<T, XrBodyTrackerFB>::value || std::is_same<T, XrFaceExpression2FB>::value || std::is_same<T, XrInstance>::value || std::is_same<T, XrDigitalLensControlFlagBitsALMALENCE>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagBitsMETA>::value || std::is_same<T, XrMarkerAprilTagDictML>::value || std::is_same<T, XrSwapchainCreateFlags>::value || std::is_same<T, XrPerformanceMetricsCounterFlagBitsMETA>::value || std::is_same<T, XrFutureEXT>::value || std::is_same<T, size_t>::value || std::is_same<T, XrHandTrackerEXT>::value || std::is_same<T, XrTriangleMeshFB>::value || std::is_same<T, XrActionType>::value || std::is_same<T, XrColorSpaceFB>::value || std::is_same<T, XrFoveationDynamicFlagBitsHTC>::value || std::is_same<T, XrSwapchainCreateFoveationFlagBitsFB>::value || std::is_same<T, XrSpaceStorageLocationFB>::value || std::is_same<T, XrVersion>::value || std::is_same<T, XrObjectType>::value || std::is_same<T, XrSwapchainUsageFlagBits>::value || std::is_same<T, XrHeadsetFitStatusML>::value || std::is_same<T, XrHandEXT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagBitsEXT>::value || std::is_same<T, XrCompositionLayerSecureContentFlagBitsFB>::value || std::is_same<T, XrFaceConfidence2FB>::value || std::is_same<T, XrSystemId>::value || std::is_same<T, XrPassthroughFB>::value || std::is_same<T, void>::value || std::is_same<T, XrRenderModelKeyFB>::value || std::is_same<T, XrEyeCalibrationStatusML>::value || std::is_same<T, XrOverlaySessionCreateFlagBitsEXTX>::value || std::is_same<T, XrSpatialEntityIdBD>::value || std::is_same<T, XrInputSourceLocalizedNameFlags>::value || std::is_same<T, XrTrackingOptimizationSettingsDomainQCOM>::value || std::is_same<T, XrRenderModelFlagsFB>::value || std::is_same<T, XrAnchorBD>::value || std::is_same<T, XrSemanticLabelsSupportFlagBitsFB>::value || std::is_same<T, XrEnvironmentDepthProviderMETA>::value || std::is_same<T, XrPassthroughFlagsFB>::value || std::is_same<T, XrSceneMSFT>::value || std::is_same<T, XrSwapchain>::value || std::is_same<T, XrSpatialEntityComponentTypeBD>::value || std::is_same<T, XrResult>::value || std::is_same<T, XrForceFeedbackCurlLocationMNDX>::value || std::is_same<T, XrFlags64>::value || std::is_same<T, XrMarkerDetectorStatusML>::value || std::is_same<T, XrAndroidThreadTypeKHR>::value || std::is_same<T, XrPassthroughLayerFB>::value || std::is_same<T, XrSessionState>::value || std::is_same<T, XrFoveationLevelFB>::value || std::is_same<T, XrReprojectionModeMSFT>::value || std::is_same<T, XrAction>::value || std::is_same<T, XrSpatialAnchorsStorageML>::value || std::is_same<T, XrEyeVisibility>::value || std::is_same<T, XrPassthroughColorLutChannelsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainMETA>::value || std::is_same<T, XrEyePositionFB>::value || std::is_same<T, XrBodyJointHTC>::value || std::is_same<T, XrCompareOpFB>::value || std::is_same<T, XrSpaceQueryActionFB>::value || std::is_same<T, XrFaceExpressionSetFB>::value || std::is_same<T, XrTrackingOptimizationSettingsHintQCOM>::value || std::is_same<T, XrPlaneDetectionStateEXT>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagBitsMETA>::value || std::is_same<T, XrSceneComputeFeatureMSFT>::value || std::is_same<T, XrSwapchainCreateFoveationFlagsFB>::value || std::is_same<T, XrBodyTrackerHTC>::value || std::is_same<T, XrSpatialGraphNodeBindingMSFT>::value || std::is_same<T, XrMeshComputeLodMSFT>::value || std::is_same<T, int16_t>::value || std::is_same<T, XrVulkanDeviceCreateFlagsKHR>::value || std::is_same<T, XrVirtualKeyboardMETA>::value || std::is_same<T, XrInstanceCreateFlagBits>::value || std::is_same<T, XrBodyJointSetBD>::value || std::is_same<T, XrPassthroughCapabilityFlagsFB>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagBitsML>::value || std::is_same<T, XrControllerModelKeyMSFT>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagBitsMETA>::value || std::is_same<T, XrBodyJointConfidenceHTC>::value || std::is_same<T, XrOverlayMainSessionFlagsEXTX>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagsFB>::value || std::is_same<T, XrCompositionLayerFlags>::value || std::is_same<T, XrKeyboardTrackingFlagBitsFB>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagBitsML>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagsEXT>::value || std::is_same<T, XrPerfSettingsSubDomainEXT>::value || std::is_same<T, XrViewStateFlagBits>::value || std::is_same<T, XrEyeExpressionHTC>::value || std::is_same<T, XrSpacePersistenceModeFB>::value || std::is_same<T, XrVisibilityMaskTypeKHR>::value || std::is_same<T, XrSpatialAnchorConfidenceML>::value || std::is_same<T, XrSessionCreateFlagBits>::value || std::is_same<T, XrSpaceComponentTypeFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagBitsFB>::value || std::is_same<T, XrFacialTrackingTypeHTC>::value || std::is_same<T, XrExternalCameraAttachedToDeviceOCULUS>::value || std::is_same<T, XrSpatialMeshLodBD>::value || std::is_same<T, XrMarkerML>::value || std::is_same<T, XrPlaneDetectorSemanticTypeEXT>::value || std::is_same<T, XrFoveationLevelHTC>::value || std::is_same<T, XrPlaneDetectorFlagBitsEXT>::value || std::is_same<T, XrVulkanInstanceCreateFlagBitsKHR>::value || std::is_same<T, XrDigitalLensControlFlagsALMALENCE>::value || std::is_same<T, XrCompositionLayerSettingsFlagBitsFB>::value || std::is_same<T, XrHandJointSetEXT>::value || std::is_same<T, XrSceneComponentTypeMSFT>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagBitsMETA>::value || std::is_same<T, XrPerfSettingsNotificationLevelEXT>::value || std::is_same<T, XrRenderModelFlagBitsFB>::value || std::is_same<T, XrBool32>::value || std::is_same<T, XrPassthroughPreferenceFlagBitsMETA>::value || std::is_same<T, XrSpatialMeshConfigFlagsBD>::value || std::is_same<T, XrMarkerArucoDictML>::value || std::is_same<T, XrWorldMeshDetectorFlagsML>::value || std::is_same<T, XrStructureType>::value || std::is_same<T, XrMarkerDetectorCameraML>::value || std::is_same<T, XrWorldMeshBlockResultML>::value || std::is_same<T, XrSenseDataSnapshotBD>::value || std::is_same<T, XrFrameSynthesisInfoFlagBitsEXT>::value || std::is_same<T, XrOverlaySessionCreateFlagsEXTX>::value || std::is_same<T, XrSwapchainStateFoveationFlagsFB>::value || std::is_same<T, XrSpaceLocationFlags>::value || std::is_same<T, wchar_t>::value || std::is_same<T, XrSemanticLabelBD>::value || std::is_same<T, XrTime>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagBitsMETA>::value || std::is_same<T, XrHandPoseTypeMSFT>::value || std::is_same<T, XrSemanticLabelsSupportFlagsFB>::value || std::is_same<T, XrHandTrackingAimFlagsFB>::value || std::is_same<T, XrPassthroughFlagBitsFB>::value || std::is_same<T, XrBodyJointFB>::value || std::is_same<T, XrWorldMeshDetectorFlagBitsML>::value || std::is_same<T, XrFoveationDynamicFB>::value || std::is_same<T, XrBlendFactorFB>::value || std::is_same<T, XrWorldMeshDetectorML>::value || std::is_same<T, XrPlaneDetectorOrientationEXT>::value || std::is_same<T, XrLocalizationMapTypeML>::value || std::is_same<T, XrFaceConfidenceFB>::value || std::is_same<T, XrPerfSettingsLevelEXT>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagsMETA>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagBitsFB>::value || std::is_same<T, XrFacialExpressionClientML>::value || std::is_same<T, XrSwapchainCreateFlagBits>::value || std::is_same<T, XrOverlayMainSessionFlagBitsEXTX>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagsMETA>::value || std::is_same<T, char>::value || std::is_same<T, XrPerformanceMetricsCounterUnitMETA>::value || std::is_same<T, int64_t>::value || std::is_same<T, XrMarkerDetectorResolutionML>::value || std::is_same<T, XrPassthroughLayerPurposeFB>::value || std::is_same<T, XrLocalizationMapErrorFlagsML>::value || std::is_same<T, XrFoveationModeHTC>::value || std::is_same<T, XrFutureStateEXT>::value || std::is_same<T, XrVirtualKeyboardInputSourceMETA>::value || std::is_same<T, XrPassthroughStateChangedFlagsFB>::value || std::is_same<T, XrFoveationDynamicFlagsHTC>::value || std::is_same<T, XrKeyboardTrackingFlagsFB>::value || std::is_same<T, XrFaceTrackingDataSource2FB>::value || std::is_same<T, XrFrameEndInfoFlagBitsML>::value || std::is_same<T, XrFormFactor>::value || std::is_same<T, XrSenseDataProviderTypeBD>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagsEXT>::value || std::is_same<T, XrSceneObserverMSFT>::value || std::is_same<T, XrVirtualKeyboardLocationTypeMETA>::value || std::is_same<T, XrReferenceSpaceType>::value || std::is_same<T, XrVulkanInstanceCreateFlagsKHR>::value || std::is_same<T, XrPassthroughHTC>::value || std::is_same<T, XrWorldMeshBlockStatusML>::value || std::is_same<T, XrSceneMarkerQRCodeSymbolTypeMSFT>::value || std::is_same<T, int32_t>::value || std::is_same<T, uint16_t>::value || std::is_same<T, float>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagsEXT>::value || std::is_same<T, XrPassthroughFormHTC>::value || std::is_same<T, XrFaceTrackerFB>::value || std::is_same<T, XrSenseDataProviderBD>::value || std::is_same<T, XrWindingOrderFB>::value || std::is_same<T, XrTriangleMeshFlagsFB>::value || std::is_same<T, XrLocalDimmingModeMETA>::value || std::is_same<T, XrBodyTrackerBD>::value || std::is_same<T, XrSpatialAnchorStoreConnectionMSFT>::value || std::is_same<T, XrCompositionLayerSettingsFlagsFB>::value || std::is_same<T, XrDebugUtilsMessengerEXT>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagsFB>::value || std::is_same<T, XrMarkerDetectorProfileML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagsML>::value || std::is_same<T, XrPlaneDetectorFlagsEXT>::value || std::is_same<T, XrEnvironmentBlendMode>::value || std::is_same<T, XrInstanceCreateFlags>::value || std::is_same<T, uint64_t>::value || std::is_same<T, uintptr_t>::value || std::is_same<T, XrSpaceLocationFlagBits>::value || std::is_same<T, XrPerfSettingsDomainEXT>::value || std::is_same<T, XrWorldMeshDetectorLodML>::value || std::is_same<T, XrDuration>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagBitsFB>::value || std::is_same<T, uint32_t>::value || std::is_same<T, XrHandTrackingAimFlagBitsFB>::value || std::is_same<T, XrBodyJointSetHTC>::value || std::is_same<T, XrAsyncRequestIdFB>::value || std::is_same<T, XrActionSet>::value || std::is_same<T, XrBodyJointBD>::value || std::is_same<T, XrLocalizationMapErrorFlagBitsML>::value || std::is_same<T, XrSceneMarkerTypeMSFT>::value || std::is_same<T, XrFrameEndInfoFlagsML>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagsMETA>::value || std::is_same<T, XrSceneComputeStateMSFT>::value || std::is_same<T, XrSceneComputeConsistencyMSFT>::value || std::is_same<T, XrSpaceVelocityFlags>::value || std::is_same<T, XrHandJointsMotionRangeEXT>::value || std::is_same<T, XrLipExpressionHTC>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagBitsEXT>::value || std::is_same<T, XrLoaderInterfaceStructs>::value || std::is_same<T, XrBodyJointSetFB>::value || std::is_same<T, int8_t>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagBitsFB>::value || std::is_same<T, XrPassthroughCapabilityFlagBitsFB>::value || std::is_same<T, XrViewConfigurationType>::value || std::is_same<T, XrSpatialMeshConfigFlagBitsBD>::value || std::is_same<T, uint8_t>::value || std::is_same<T, XrFullBodyJointMETA>::value || std::is_same<T, XrFrameSynthesisInfoFlagsEXT>::value || std::is_same<T, XrSwapchainUsageFlags>::value || std::is_same<T, XrMarkerDetectorML>::value || std::is_same<T, XrPath>::value || std::is_same<T, XrFoveationProfileFB>::value || std::is_same<T, XrFaceTracker2FB>::value || std::is_same<T, XrFacialBlendShapeML>::value || std::is_same<T, XrMarkerDetectorCornerRefineMethodML>::value || std::is_same<T, XrPassthroughStateChangedFlagBitsFB>::value || std::is_same<T, XrExportedLocalizationMapML>::value || std::is_same<T, XrVulkanDeviceCreateFlagBitsKHR>::value || std::is_same<T, XrPlaneDetectorEXT>::value || std::is_same<T, XrPersistenceLocationBD>::value || std::is_same<T, XrScenePlaneAlignmentTypeMSFT>::value || std::is_same<T, XrPassthroughColorLutMETA>::value || std::is_same<T, XrSpatialGraphNodeTypeMSFT>::value || std::is_same<T, XrTriangleMeshFlagBitsFB>::value || std::is_same<T, XrHandTrackingDataSourceEXT>::value || std::is_same<T, XrFaceExpressionFB>::value || std::is_same<T, XrMarkerDetectorFullAnalysisIntervalML>::value || std::is_same<T, XrSpaceUserIdFB>::value || std::is_same<T, XrPassthroughPreferenceFlagsMETA>::value || std::is_same<T, XrViewStateFlags>::value || std::is_same<T, XrSession>::value || std::is_same<T, XrLocalizationMapStateML>::value || std::is_same<T, XrPerformanceMetricsCounterFlagsMETA>::value || std::is_same<T, XrFaceExpressionSet2FB>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagsMETA>::value || std::is_same<T, XrMarkerTypeML>::value || std::is_same<T, XrExternalCameraStatusFlagsOCULUS>::value || std::is_same<T, XrInputSourceLocalizedNameFlagBits>::value || std::is_same<T, XrSpaceUserFB>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagBitsEXT>::value || std::is_same<T, XrLocalizationMapConfidenceML>::value || std::is_same<T, XrEyeTrackerFB>::value || std::is_same<T, XrCompositionLayerFlagBits>::value || std::is_same<T, XrKeyboardTrackingQueryFlagsFB>::value || std::is_same<T, XrExternalCameraStatusFlagBitsOCULUS>::value || std::is_same<T, XrMarkerDetectorFpsML>::value || std::is_same<T, double>::value || std::is_same<T, XrFacialTrackerHTC>::value || std::is_same<T, XrSpace>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagsML>::value || std::is_same<T, XrHandForearmJointULTRALEAP>::value || std::is_same<T, XrSessionCreateFlags>::value || std::is_same<T, XrSceneObjectTypeMSFT>::value,
+        std::is_same<T, XrAction>::value || std::is_same<T, XrActionSet>::value || std::is_same<T, XrActionType>::value || std::is_same<T, XrAnchorBD>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagBitsFB>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagsFB>::value || std::is_same<T, XrAndroidThreadTypeKHR>::value || std::is_same<T, XrAsyncRequestIdFB>::value || std::is_same<T, XrBlendFactorFB>::value || std::is_same<T, XrBodyJointBD>::value || std::is_same<T, XrBodyJointConfidenceHTC>::value || std::is_same<T, XrBodyJointFB>::value || std::is_same<T, XrBodyJointHTC>::value || std::is_same<T, XrBodyJointSetBD>::value || std::is_same<T, XrBodyJointSetFB>::value || std::is_same<T, XrBodyJointSetHTC>::value || std::is_same<T, XrBodyTrackerBD>::value || std::is_same<T, XrBodyTrackerFB>::value || std::is_same<T, XrBodyTrackerHTC>::value || std::is_same<T, XrBool32>::value || std::is_same<T, XrColorSpaceFB>::value || std::is_same<T, XrCompareOpFB>::value || std::is_same<T, XrCompositionLayerFlagBits>::value || std::is_same<T, XrCompositionLayerFlags>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagBitsFB>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagsFB>::value || std::is_same<T, XrCompositionLayerSettingsFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSettingsFlagsFB>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagsFB>::value || std::is_same<T, XrControllerModelKeyMSFT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagBitsEXT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagsEXT>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagBitsEXT>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagsEXT>::value || std::is_same<T, XrDebugUtilsMessengerEXT>::value || std::is_same<T, XrDigitalLensControlFlagBitsALMALENCE>::value || std::is_same<T, XrDigitalLensControlFlagsALMALENCE>::value || std::is_same<T, XrDuration>::value || std::is_same<T, XrEnvironmentBlendMode>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagBitsMETA>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagsMETA>::value || std::is_same<T, XrEnvironmentDepthProviderMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagBitsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainMETA>::value || std::is_same<T, XrExportedLocalizationMapML>::value || std::is_same<T, XrExternalCameraAttachedToDeviceOCULUS>::value || std::is_same<T, XrExternalCameraStatusFlagBitsOCULUS>::value || std::is_same<T, XrExternalCameraStatusFlagsOCULUS>::value || std::is_same<T, XrEyeCalibrationStatusML>::value || std::is_same<T, XrEyeExpressionHTC>::value || std::is_same<T, XrEyePositionFB>::value || std::is_same<T, XrEyeTrackerFB>::value || std::is_same<T, XrEyeVisibility>::value || std::is_same<T, XrFaceConfidence2FB>::value || std::is_same<T, XrFaceConfidenceFB>::value || std::is_same<T, XrFaceExpression2FB>::value || std::is_same<T, XrFaceExpressionFB>::value || std::is_same<T, XrFaceExpressionSet2FB>::value || std::is_same<T, XrFaceExpressionSetFB>::value || std::is_same<T, XrFaceTracker2FB>::value || std::is_same<T, XrFaceTrackerFB>::value || std::is_same<T, XrFaceTrackingDataSource2FB>::value || std::is_same<T, XrFacialBlendShapeML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagBitsML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagsML>::value || std::is_same<T, XrFacialExpressionClientML>::value || std::is_same<T, XrFacialTrackerHTC>::value || std::is_same<T, XrFacialTrackingTypeHTC>::value || std::is_same<T, XrFlags64>::value || std::is_same<T, XrForceFeedbackCurlLocationMNDX>::value || std::is_same<T, XrFormFactor>::value || std::is_same<T, XrFoveationDynamicFB>::value || std::is_same<T, XrFoveationDynamicFlagBitsHTC>::value || std::is_same<T, XrFoveationDynamicFlagsHTC>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagBitsMETA>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagsMETA>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagBitsMETA>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagsMETA>::value || std::is_same<T, XrFoveationLevelFB>::value || std::is_same<T, XrFoveationLevelHTC>::value || std::is_same<T, XrFoveationModeHTC>::value || std::is_same<T, XrFoveationProfileFB>::value || std::is_same<T, XrFrameEndInfoFlagBitsML>::value || std::is_same<T, XrFrameEndInfoFlagsML>::value || std::is_same<T, XrFrameSynthesisInfoFlagBitsEXT>::value || std::is_same<T, XrFrameSynthesisInfoFlagsEXT>::value || std::is_same<T, XrFullBodyJointMETA>::value || std::is_same<T, XrFutureEXT>::value || std::is_same<T, XrFutureStateEXT>::value || std::is_same<T, XrGeometryInstanceFB>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagBitsML>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagsML>::value || std::is_same<T, XrHandEXT>::value || std::is_same<T, XrHandForearmJointULTRALEAP>::value || std::is_same<T, XrHandJointEXT>::value || std::is_same<T, XrHandJointSetEXT>::value || std::is_same<T, XrHandJointsMotionRangeEXT>::value || std::is_same<T, XrHandPoseTypeMSFT>::value || std::is_same<T, XrHandTrackerEXT>::value || std::is_same<T, XrHandTrackingAimFlagBitsFB>::value || std::is_same<T, XrHandTrackingAimFlagsFB>::value || std::is_same<T, XrHandTrackingDataSourceEXT>::value || std::is_same<T, XrHeadsetFitStatusML>::value || std::is_same<T, XrInputSourceLocalizedNameFlagBits>::value || std::is_same<T, XrInputSourceLocalizedNameFlags>::value || std::is_same<T, XrInstance>::value || std::is_same<T, XrInstanceCreateFlagBits>::value || std::is_same<T, XrInstanceCreateFlags>::value || std::is_same<T, XrKeyboardTrackingFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingFlagsFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagsFB>::value || std::is_same<T, XrLipExpressionHTC>::value || std::is_same<T, XrLoaderInterfaceStructs>::value || std::is_same<T, XrLocalDimmingModeMETA>::value || std::is_same<T, XrLocalizationMapConfidenceML>::value || std::is_same<T, XrLocalizationMapErrorFlagBitsML>::value || std::is_same<T, XrLocalizationMapErrorFlagsML>::value || std::is_same<T, XrLocalizationMapStateML>::value || std::is_same<T, XrLocalizationMapTypeML>::value || std::is_same<T, XrMarkerAprilTagDictML>::value || std::is_same<T, XrMarkerArucoDictML>::value || std::is_same<T, XrMarkerDetectorCameraML>::value || std::is_same<T, XrMarkerDetectorCornerRefineMethodML>::value || std::is_same<T, XrMarkerDetectorFpsML>::value || std::is_same<T, XrMarkerDetectorFullAnalysisIntervalML>::value || std::is_same<T, XrMarkerDetectorML>::value || std::is_same<T, XrMarkerDetectorProfileML>::value || std::is_same<T, XrMarkerDetectorResolutionML>::value || std::is_same<T, XrMarkerDetectorStatusML>::value || std::is_same<T, XrMarkerML>::value || std::is_same<T, XrMarkerTypeML>::value || std::is_same<T, XrMeshComputeLodMSFT>::value || std::is_same<T, XrObjectType>::value || std::is_same<T, XrOverlayMainSessionFlagBitsEXTX>::value || std::is_same<T, XrOverlayMainSessionFlagsEXTX>::value || std::is_same<T, XrOverlaySessionCreateFlagBitsEXTX>::value || std::is_same<T, XrOverlaySessionCreateFlagsEXTX>::value || std::is_same<T, XrPassthroughCapabilityFlagBitsFB>::value || std::is_same<T, XrPassthroughCapabilityFlagsFB>::value || std::is_same<T, XrPassthroughColorLutChannelsMETA>::value || std::is_same<T, XrPassthroughColorLutMETA>::value || std::is_same<T, XrPassthroughFB>::value || std::is_same<T, XrPassthroughFlagBitsFB>::value || std::is_same<T, XrPassthroughFlagsFB>::value || std::is_same<T, XrPassthroughFormHTC>::value || std::is_same<T, XrPassthroughHTC>::value || std::is_same<T, XrPassthroughLayerFB>::value || std::is_same<T, XrPassthroughLayerPurposeFB>::value || std::is_same<T, XrPassthroughPreferenceFlagBitsMETA>::value || std::is_same<T, XrPassthroughPreferenceFlagsMETA>::value || std::is_same<T, XrPassthroughStateChangedFlagBitsFB>::value || std::is_same<T, XrPassthroughStateChangedFlagsFB>::value || std::is_same<T, XrPath>::value || std::is_same<T, XrPerfSettingsDomainEXT>::value || std::is_same<T, XrPerfSettingsLevelEXT>::value || std::is_same<T, XrPerfSettingsNotificationLevelEXT>::value || std::is_same<T, XrPerfSettingsSubDomainEXT>::value || std::is_same<T, XrPerformanceMetricsCounterFlagBitsMETA>::value || std::is_same<T, XrPerformanceMetricsCounterFlagsMETA>::value || std::is_same<T, XrPerformanceMetricsCounterUnitMETA>::value || std::is_same<T, XrPersistenceLocationBD>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagBitsEXT>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagsEXT>::value || std::is_same<T, XrPlaneDetectionStateEXT>::value || std::is_same<T, XrPlaneDetectorEXT>::value || std::is_same<T, XrPlaneDetectorFlagBitsEXT>::value || std::is_same<T, XrPlaneDetectorFlagsEXT>::value || std::is_same<T, XrPlaneDetectorOrientationEXT>::value || std::is_same<T, XrPlaneDetectorSemanticTypeEXT>::value || std::is_same<T, XrReferenceSpaceType>::value || std::is_same<T, XrRenderModelFlagBitsFB>::value || std::is_same<T, XrRenderModelFlagsFB>::value || std::is_same<T, XrRenderModelKeyFB>::value || std::is_same<T, XrReprojectionModeMSFT>::value || std::is_same<T, XrResult>::value || std::is_same<T, XrSceneComponentTypeMSFT>::value || std::is_same<T, XrSceneComputeConsistencyMSFT>::value || std::is_same<T, XrSceneComputeFeatureMSFT>::value || std::is_same<T, XrSceneComputeStateMSFT>::value || std::is_same<T, XrSceneMSFT>::value || std::is_same<T, XrSceneMarkerQRCodeSymbolTypeMSFT>::value || std::is_same<T, XrSceneMarkerTypeMSFT>::value || std::is_same<T, XrSceneObjectTypeMSFT>::value || std::is_same<T, XrSceneObserverMSFT>::value || std::is_same<T, XrScenePlaneAlignmentTypeMSFT>::value || std::is_same<T, XrSemanticLabelBD>::value || std::is_same<T, XrSemanticLabelsSupportFlagBitsFB>::value || std::is_same<T, XrSemanticLabelsSupportFlagsFB>::value || std::is_same<T, XrSenseDataProviderBD>::value || std::is_same<T, XrSenseDataProviderStateBD>::value || std::is_same<T, XrSenseDataProviderTypeBD>::value || std::is_same<T, XrSenseDataSnapshotBD>::value || std::is_same<T, XrSession>::value || std::is_same<T, XrSessionCreateFlagBits>::value || std::is_same<T, XrSessionCreateFlags>::value || std::is_same<T, XrSessionState>::value || std::is_same<T, XrSpace>::value || std::is_same<T, XrSpaceComponentTypeFB>::value || std::is_same<T, XrSpaceLocationFlagBits>::value || std::is_same<T, XrSpaceLocationFlags>::value || std::is_same<T, XrSpacePersistenceModeFB>::value || std::is_same<T, XrSpaceQueryActionFB>::value || std::is_same<T, XrSpaceStorageLocationFB>::value || std::is_same<T, XrSpaceUserFB>::value || std::is_same<T, XrSpaceUserIdFB>::value || std::is_same<T, XrSpaceVelocityFlagBits>::value || std::is_same<T, XrSpaceVelocityFlags>::value || std::is_same<T, XrSpatialAnchorConfidenceML>::value || std::is_same<T, XrSpatialAnchorMSFT>::value || std::is_same<T, XrSpatialAnchorStoreConnectionMSFT>::value || std::is_same<T, XrSpatialAnchorsStorageML>::value || std::is_same<T, XrSpatialEntityComponentTypeBD>::value || std::is_same<T, XrSpatialEntityIdBD>::value || std::is_same<T, XrSpatialGraphNodeBindingMSFT>::value || std::is_same<T, XrSpatialGraphNodeTypeMSFT>::value || std::is_same<T, XrSpatialMeshConfigFlagBitsBD>::value || std::is_same<T, XrSpatialMeshConfigFlagsBD>::value || std::is_same<T, XrSpatialMeshLodBD>::value || std::is_same<T, XrStructureType>::value || std::is_same<T, XrSwapchain>::value || std::is_same<T, XrSwapchainCreateFlagBits>::value || std::is_same<T, XrSwapchainCreateFlags>::value || std::is_same<T, XrSwapchainCreateFoveationFlagBitsFB>::value || std::is_same<T, XrSwapchainCreateFoveationFlagsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagBitsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagsFB>::value || std::is_same<T, XrSwapchainUsageFlagBits>::value || std::is_same<T, XrSwapchainUsageFlags>::value || std::is_same<T, XrSystemId>::value || std::is_same<T, XrTime>::value || std::is_same<T, XrTrackingOptimizationSettingsDomainQCOM>::value || std::is_same<T, XrTrackingOptimizationSettingsHintQCOM>::value || std::is_same<T, XrTriangleMeshFB>::value || std::is_same<T, XrTriangleMeshFlagBitsFB>::value || std::is_same<T, XrTriangleMeshFlagsFB>::value || std::is_same<T, XrVersion>::value || std::is_same<T, XrViewConfigurationType>::value || std::is_same<T, XrViewStateFlagBits>::value || std::is_same<T, XrViewStateFlags>::value || std::is_same<T, XrVirtualKeyboardInputSourceMETA>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagBitsMETA>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagsMETA>::value || std::is_same<T, XrVirtualKeyboardLocationTypeMETA>::value || std::is_same<T, XrVirtualKeyboardMETA>::value || std::is_same<T, XrVisibilityMaskTypeKHR>::value || std::is_same<T, XrVulkanDeviceCreateFlagBitsKHR>::value || std::is_same<T, XrVulkanDeviceCreateFlagsKHR>::value || std::is_same<T, XrVulkanInstanceCreateFlagBitsKHR>::value || std::is_same<T, XrVulkanInstanceCreateFlagsKHR>::value || std::is_same<T, XrWindingOrderFB>::value || std::is_same<T, XrWorldMeshBlockResultML>::value || std::is_same<T, XrWorldMeshBlockStatusML>::value || std::is_same<T, XrWorldMeshDetectorFlagBitsML>::value || std::is_same<T, XrWorldMeshDetectorFlagsML>::value || std::is_same<T, XrWorldMeshDetectorLodML>::value || std::is_same<T, XrWorldMeshDetectorML>::value || std::is_same<T, char>::value || std::is_same<T, double>::value || std::is_same<T, float>::value || std::is_same<T, int16_t>::value || std::is_same<T, int32_t>::value || std::is_same<T, int64_t>::value || std::is_same<T, int8_t>::value || std::is_same<T, size_t>::value || std::is_same<T, uint16_t>::value || std::is_same<T, uint32_t>::value || std::is_same<T, uint64_t>::value || std::is_same<T, uint8_t>::value || std::is_same<T, uintptr_t>::value || std::is_same<T, void>::value || std::is_same<T, wchar_t>::value,
         "T must be a supported type"
     );
     in.read(std::reinterpret_cast<char*>(x), sizeof(*x));
@@ -15134,7 +15124,7 @@ static void deserialize(T* x, std::istream& in) {
 template <typename T>
 static void allocate(T** x, std::size_t n) {
     static_assert(
-        std::is_same<T, XrSenseDataProviderStateBD>::value || std::is_same<T, XrGeometryInstanceFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagsFB>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagsMETA>::value || std::is_same<T, XrSpatialAnchorMSFT>::value || std::is_same<T, XrSpaceVelocityFlagBits>::value || std::is_same<T, XrKeyboardTrackingQueryFlagBitsFB>::value || std::is_same<T, XrHandJointEXT>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagsFB>::value || std::is_same<T, XrBodyTrackerFB>::value || std::is_same<T, XrFaceExpression2FB>::value || std::is_same<T, XrInstance>::value || std::is_same<T, XrDigitalLensControlFlagBitsALMALENCE>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagBitsMETA>::value || std::is_same<T, XrMarkerAprilTagDictML>::value || std::is_same<T, XrSwapchainCreateFlags>::value || std::is_same<T, XrPerformanceMetricsCounterFlagBitsMETA>::value || std::is_same<T, XrFutureEXT>::value || std::is_same<T, size_t>::value || std::is_same<T, XrHandTrackerEXT>::value || std::is_same<T, XrTriangleMeshFB>::value || std::is_same<T, XrActionType>::value || std::is_same<T, XrColorSpaceFB>::value || std::is_same<T, XrFoveationDynamicFlagBitsHTC>::value || std::is_same<T, XrSwapchainCreateFoveationFlagBitsFB>::value || std::is_same<T, XrSpaceStorageLocationFB>::value || std::is_same<T, XrVersion>::value || std::is_same<T, XrObjectType>::value || std::is_same<T, XrSwapchainUsageFlagBits>::value || std::is_same<T, XrHeadsetFitStatusML>::value || std::is_same<T, XrHandEXT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagBitsEXT>::value || std::is_same<T, XrCompositionLayerSecureContentFlagBitsFB>::value || std::is_same<T, XrFaceConfidence2FB>::value || std::is_same<T, XrSystemId>::value || std::is_same<T, XrPassthroughFB>::value || std::is_same<T, void>::value || std::is_same<T, XrRenderModelKeyFB>::value || std::is_same<T, XrEyeCalibrationStatusML>::value || std::is_same<T, XrOverlaySessionCreateFlagBitsEXTX>::value || std::is_same<T, XrSpatialEntityIdBD>::value || std::is_same<T, XrInputSourceLocalizedNameFlags>::value || std::is_same<T, XrTrackingOptimizationSettingsDomainQCOM>::value || std::is_same<T, XrRenderModelFlagsFB>::value || std::is_same<T, XrAnchorBD>::value || std::is_same<T, XrSemanticLabelsSupportFlagBitsFB>::value || std::is_same<T, XrEnvironmentDepthProviderMETA>::value || std::is_same<T, XrPassthroughFlagsFB>::value || std::is_same<T, XrSceneMSFT>::value || std::is_same<T, XrSwapchain>::value || std::is_same<T, XrSpatialEntityComponentTypeBD>::value || std::is_same<T, XrResult>::value || std::is_same<T, XrForceFeedbackCurlLocationMNDX>::value || std::is_same<T, XrFlags64>::value || std::is_same<T, XrMarkerDetectorStatusML>::value || std::is_same<T, XrAndroidThreadTypeKHR>::value || std::is_same<T, XrPassthroughLayerFB>::value || std::is_same<T, XrSessionState>::value || std::is_same<T, XrFoveationLevelFB>::value || std::is_same<T, XrReprojectionModeMSFT>::value || std::is_same<T, XrAction>::value || std::is_same<T, XrSpatialAnchorsStorageML>::value || std::is_same<T, XrEyeVisibility>::value || std::is_same<T, XrPassthroughColorLutChannelsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainMETA>::value || std::is_same<T, XrEyePositionFB>::value || std::is_same<T, XrBodyJointHTC>::value || std::is_same<T, XrCompareOpFB>::value || std::is_same<T, XrSpaceQueryActionFB>::value || std::is_same<T, XrFaceExpressionSetFB>::value || std::is_same<T, XrTrackingOptimizationSettingsHintQCOM>::value || std::is_same<T, XrPlaneDetectionStateEXT>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagBitsMETA>::value || std::is_same<T, XrSceneComputeFeatureMSFT>::value || std::is_same<T, XrSwapchainCreateFoveationFlagsFB>::value || std::is_same<T, XrBodyTrackerHTC>::value || std::is_same<T, XrSpatialGraphNodeBindingMSFT>::value || std::is_same<T, XrMeshComputeLodMSFT>::value || std::is_same<T, int16_t>::value || std::is_same<T, XrVulkanDeviceCreateFlagsKHR>::value || std::is_same<T, XrVirtualKeyboardMETA>::value || std::is_same<T, XrInstanceCreateFlagBits>::value || std::is_same<T, XrBodyJointSetBD>::value || std::is_same<T, XrPassthroughCapabilityFlagsFB>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagBitsML>::value || std::is_same<T, XrControllerModelKeyMSFT>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagBitsMETA>::value || std::is_same<T, XrBodyJointConfidenceHTC>::value || std::is_same<T, XrOverlayMainSessionFlagsEXTX>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagsFB>::value || std::is_same<T, XrCompositionLayerFlags>::value || std::is_same<T, XrKeyboardTrackingFlagBitsFB>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagBitsML>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagsEXT>::value || std::is_same<T, XrPerfSettingsSubDomainEXT>::value || std::is_same<T, XrViewStateFlagBits>::value || std::is_same<T, XrEyeExpressionHTC>::value || std::is_same<T, XrSpacePersistenceModeFB>::value || std::is_same<T, XrVisibilityMaskTypeKHR>::value || std::is_same<T, XrSpatialAnchorConfidenceML>::value || std::is_same<T, XrSessionCreateFlagBits>::value || std::is_same<T, XrSpaceComponentTypeFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagBitsFB>::value || std::is_same<T, XrFacialTrackingTypeHTC>::value || std::is_same<T, XrExternalCameraAttachedToDeviceOCULUS>::value || std::is_same<T, XrSpatialMeshLodBD>::value || std::is_same<T, XrMarkerML>::value || std::is_same<T, XrPlaneDetectorSemanticTypeEXT>::value || std::is_same<T, XrFoveationLevelHTC>::value || std::is_same<T, XrPlaneDetectorFlagBitsEXT>::value || std::is_same<T, XrVulkanInstanceCreateFlagBitsKHR>::value || std::is_same<T, XrDigitalLensControlFlagsALMALENCE>::value || std::is_same<T, XrCompositionLayerSettingsFlagBitsFB>::value || std::is_same<T, XrHandJointSetEXT>::value || std::is_same<T, XrSceneComponentTypeMSFT>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagBitsMETA>::value || std::is_same<T, XrPerfSettingsNotificationLevelEXT>::value || std::is_same<T, XrRenderModelFlagBitsFB>::value || std::is_same<T, XrBool32>::value || std::is_same<T, XrPassthroughPreferenceFlagBitsMETA>::value || std::is_same<T, XrSpatialMeshConfigFlagsBD>::value || std::is_same<T, XrMarkerArucoDictML>::value || std::is_same<T, XrWorldMeshDetectorFlagsML>::value || std::is_same<T, XrStructureType>::value || std::is_same<T, XrMarkerDetectorCameraML>::value || std::is_same<T, XrWorldMeshBlockResultML>::value || std::is_same<T, XrSenseDataSnapshotBD>::value || std::is_same<T, XrFrameSynthesisInfoFlagBitsEXT>::value || std::is_same<T, XrOverlaySessionCreateFlagsEXTX>::value || std::is_same<T, XrSwapchainStateFoveationFlagsFB>::value || std::is_same<T, XrSpaceLocationFlags>::value || std::is_same<T, wchar_t>::value || std::is_same<T, XrSemanticLabelBD>::value || std::is_same<T, XrTime>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagBitsMETA>::value || std::is_same<T, XrHandPoseTypeMSFT>::value || std::is_same<T, XrSemanticLabelsSupportFlagsFB>::value || std::is_same<T, XrHandTrackingAimFlagsFB>::value || std::is_same<T, XrPassthroughFlagBitsFB>::value || std::is_same<T, XrBodyJointFB>::value || std::is_same<T, XrWorldMeshDetectorFlagBitsML>::value || std::is_same<T, XrFoveationDynamicFB>::value || std::is_same<T, XrBlendFactorFB>::value || std::is_same<T, XrWorldMeshDetectorML>::value || std::is_same<T, XrPlaneDetectorOrientationEXT>::value || std::is_same<T, XrLocalizationMapTypeML>::value || std::is_same<T, XrFaceConfidenceFB>::value || std::is_same<T, XrPerfSettingsLevelEXT>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagsMETA>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagBitsFB>::value || std::is_same<T, XrFacialExpressionClientML>::value || std::is_same<T, XrSwapchainCreateFlagBits>::value || std::is_same<T, XrOverlayMainSessionFlagBitsEXTX>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagsMETA>::value || std::is_same<T, char>::value || std::is_same<T, XrPerformanceMetricsCounterUnitMETA>::value || std::is_same<T, int64_t>::value || std::is_same<T, XrMarkerDetectorResolutionML>::value || std::is_same<T, XrPassthroughLayerPurposeFB>::value || std::is_same<T, XrLocalizationMapErrorFlagsML>::value || std::is_same<T, XrFoveationModeHTC>::value || std::is_same<T, XrFutureStateEXT>::value || std::is_same<T, XrVirtualKeyboardInputSourceMETA>::value || std::is_same<T, XrPassthroughStateChangedFlagsFB>::value || std::is_same<T, XrFoveationDynamicFlagsHTC>::value || std::is_same<T, XrKeyboardTrackingFlagsFB>::value || std::is_same<T, XrFaceTrackingDataSource2FB>::value || std::is_same<T, XrFrameEndInfoFlagBitsML>::value || std::is_same<T, XrFormFactor>::value || std::is_same<T, XrSenseDataProviderTypeBD>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagsEXT>::value || std::is_same<T, XrSceneObserverMSFT>::value || std::is_same<T, XrVirtualKeyboardLocationTypeMETA>::value || std::is_same<T, XrReferenceSpaceType>::value || std::is_same<T, XrVulkanInstanceCreateFlagsKHR>::value || std::is_same<T, XrPassthroughHTC>::value || std::is_same<T, XrWorldMeshBlockStatusML>::value || std::is_same<T, XrSceneMarkerQRCodeSymbolTypeMSFT>::value || std::is_same<T, int32_t>::value || std::is_same<T, uint16_t>::value || std::is_same<T, float>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagsEXT>::value || std::is_same<T, XrPassthroughFormHTC>::value || std::is_same<T, XrFaceTrackerFB>::value || std::is_same<T, XrSenseDataProviderBD>::value || std::is_same<T, XrWindingOrderFB>::value || std::is_same<T, XrTriangleMeshFlagsFB>::value || std::is_same<T, XrLocalDimmingModeMETA>::value || std::is_same<T, XrBodyTrackerBD>::value || std::is_same<T, XrSpatialAnchorStoreConnectionMSFT>::value || std::is_same<T, XrCompositionLayerSettingsFlagsFB>::value || std::is_same<T, XrDebugUtilsMessengerEXT>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagsFB>::value || std::is_same<T, XrMarkerDetectorProfileML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagsML>::value || std::is_same<T, XrPlaneDetectorFlagsEXT>::value || std::is_same<T, XrEnvironmentBlendMode>::value || std::is_same<T, XrInstanceCreateFlags>::value || std::is_same<T, uint64_t>::value || std::is_same<T, uintptr_t>::value || std::is_same<T, XrSpaceLocationFlagBits>::value || std::is_same<T, XrPerfSettingsDomainEXT>::value || std::is_same<T, XrWorldMeshDetectorLodML>::value || std::is_same<T, XrDuration>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagBitsFB>::value || std::is_same<T, uint32_t>::value || std::is_same<T, XrHandTrackingAimFlagBitsFB>::value || std::is_same<T, XrBodyJointSetHTC>::value || std::is_same<T, XrAsyncRequestIdFB>::value || std::is_same<T, XrActionSet>::value || std::is_same<T, XrBodyJointBD>::value || std::is_same<T, XrLocalizationMapErrorFlagBitsML>::value || std::is_same<T, XrSceneMarkerTypeMSFT>::value || std::is_same<T, XrFrameEndInfoFlagsML>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagsMETA>::value || std::is_same<T, XrSceneComputeStateMSFT>::value || std::is_same<T, XrSceneComputeConsistencyMSFT>::value || std::is_same<T, XrSpaceVelocityFlags>::value || std::is_same<T, XrHandJointsMotionRangeEXT>::value || std::is_same<T, XrLipExpressionHTC>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagBitsEXT>::value || std::is_same<T, XrLoaderInterfaceStructs>::value || std::is_same<T, XrBodyJointSetFB>::value || std::is_same<T, int8_t>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagBitsFB>::value || std::is_same<T, XrPassthroughCapabilityFlagBitsFB>::value || std::is_same<T, XrViewConfigurationType>::value || std::is_same<T, XrSpatialMeshConfigFlagBitsBD>::value || std::is_same<T, uint8_t>::value || std::is_same<T, XrFullBodyJointMETA>::value || std::is_same<T, XrFrameSynthesisInfoFlagsEXT>::value || std::is_same<T, XrSwapchainUsageFlags>::value || std::is_same<T, XrMarkerDetectorML>::value || std::is_same<T, XrPath>::value || std::is_same<T, XrFoveationProfileFB>::value || std::is_same<T, XrFaceTracker2FB>::value || std::is_same<T, XrFacialBlendShapeML>::value || std::is_same<T, XrMarkerDetectorCornerRefineMethodML>::value || std::is_same<T, XrPassthroughStateChangedFlagBitsFB>::value || std::is_same<T, XrExportedLocalizationMapML>::value || std::is_same<T, XrVulkanDeviceCreateFlagBitsKHR>::value || std::is_same<T, XrPlaneDetectorEXT>::value || std::is_same<T, XrPersistenceLocationBD>::value || std::is_same<T, XrScenePlaneAlignmentTypeMSFT>::value || std::is_same<T, XrPassthroughColorLutMETA>::value || std::is_same<T, XrSpatialGraphNodeTypeMSFT>::value || std::is_same<T, XrTriangleMeshFlagBitsFB>::value || std::is_same<T, XrHandTrackingDataSourceEXT>::value || std::is_same<T, XrFaceExpressionFB>::value || std::is_same<T, XrMarkerDetectorFullAnalysisIntervalML>::value || std::is_same<T, XrSpaceUserIdFB>::value || std::is_same<T, XrPassthroughPreferenceFlagsMETA>::value || std::is_same<T, XrViewStateFlags>::value || std::is_same<T, XrSession>::value || std::is_same<T, XrLocalizationMapStateML>::value || std::is_same<T, XrPerformanceMetricsCounterFlagsMETA>::value || std::is_same<T, XrFaceExpressionSet2FB>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagsMETA>::value || std::is_same<T, XrMarkerTypeML>::value || std::is_same<T, XrExternalCameraStatusFlagsOCULUS>::value || std::is_same<T, XrInputSourceLocalizedNameFlagBits>::value || std::is_same<T, XrSpaceUserFB>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagBitsEXT>::value || std::is_same<T, XrLocalizationMapConfidenceML>::value || std::is_same<T, XrEyeTrackerFB>::value || std::is_same<T, XrCompositionLayerFlagBits>::value || std::is_same<T, XrKeyboardTrackingQueryFlagsFB>::value || std::is_same<T, XrExternalCameraStatusFlagBitsOCULUS>::value || std::is_same<T, XrMarkerDetectorFpsML>::value || std::is_same<T, double>::value || std::is_same<T, XrFacialTrackerHTC>::value || std::is_same<T, XrSpace>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagsML>::value || std::is_same<T, XrHandForearmJointULTRALEAP>::value || std::is_same<T, XrSessionCreateFlags>::value || std::is_same<T, XrSceneObjectTypeMSFT>::value,
+        std::is_same<T, XrAction>::value || std::is_same<T, XrActionSet>::value || std::is_same<T, XrActionType>::value || std::is_same<T, XrAnchorBD>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagBitsFB>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagsFB>::value || std::is_same<T, XrAndroidThreadTypeKHR>::value || std::is_same<T, XrAsyncRequestIdFB>::value || std::is_same<T, XrBlendFactorFB>::value || std::is_same<T, XrBodyJointBD>::value || std::is_same<T, XrBodyJointConfidenceHTC>::value || std::is_same<T, XrBodyJointFB>::value || std::is_same<T, XrBodyJointHTC>::value || std::is_same<T, XrBodyJointSetBD>::value || std::is_same<T, XrBodyJointSetFB>::value || std::is_same<T, XrBodyJointSetHTC>::value || std::is_same<T, XrBodyTrackerBD>::value || std::is_same<T, XrBodyTrackerFB>::value || std::is_same<T, XrBodyTrackerHTC>::value || std::is_same<T, XrBool32>::value || std::is_same<T, XrColorSpaceFB>::value || std::is_same<T, XrCompareOpFB>::value || std::is_same<T, XrCompositionLayerFlagBits>::value || std::is_same<T, XrCompositionLayerFlags>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagBitsFB>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagsFB>::value || std::is_same<T, XrCompositionLayerSettingsFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSettingsFlagsFB>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagsFB>::value || std::is_same<T, XrControllerModelKeyMSFT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagBitsEXT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagsEXT>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagBitsEXT>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagsEXT>::value || std::is_same<T, XrDebugUtilsMessengerEXT>::value || std::is_same<T, XrDigitalLensControlFlagBitsALMALENCE>::value || std::is_same<T, XrDigitalLensControlFlagsALMALENCE>::value || std::is_same<T, XrDuration>::value || std::is_same<T, XrEnvironmentBlendMode>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagBitsMETA>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagsMETA>::value || std::is_same<T, XrEnvironmentDepthProviderMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagBitsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainMETA>::value || std::is_same<T, XrExportedLocalizationMapML>::value || std::is_same<T, XrExternalCameraAttachedToDeviceOCULUS>::value || std::is_same<T, XrExternalCameraStatusFlagBitsOCULUS>::value || std::is_same<T, XrExternalCameraStatusFlagsOCULUS>::value || std::is_same<T, XrEyeCalibrationStatusML>::value || std::is_same<T, XrEyeExpressionHTC>::value || std::is_same<T, XrEyePositionFB>::value || std::is_same<T, XrEyeTrackerFB>::value || std::is_same<T, XrEyeVisibility>::value || std::is_same<T, XrFaceConfidence2FB>::value || std::is_same<T, XrFaceConfidenceFB>::value || std::is_same<T, XrFaceExpression2FB>::value || std::is_same<T, XrFaceExpressionFB>::value || std::is_same<T, XrFaceExpressionSet2FB>::value || std::is_same<T, XrFaceExpressionSetFB>::value || std::is_same<T, XrFaceTracker2FB>::value || std::is_same<T, XrFaceTrackerFB>::value || std::is_same<T, XrFaceTrackingDataSource2FB>::value || std::is_same<T, XrFacialBlendShapeML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagBitsML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagsML>::value || std::is_same<T, XrFacialExpressionClientML>::value || std::is_same<T, XrFacialTrackerHTC>::value || std::is_same<T, XrFacialTrackingTypeHTC>::value || std::is_same<T, XrFlags64>::value || std::is_same<T, XrForceFeedbackCurlLocationMNDX>::value || std::is_same<T, XrFormFactor>::value || std::is_same<T, XrFoveationDynamicFB>::value || std::is_same<T, XrFoveationDynamicFlagBitsHTC>::value || std::is_same<T, XrFoveationDynamicFlagsHTC>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagBitsMETA>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagsMETA>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagBitsMETA>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagsMETA>::value || std::is_same<T, XrFoveationLevelFB>::value || std::is_same<T, XrFoveationLevelHTC>::value || std::is_same<T, XrFoveationModeHTC>::value || std::is_same<T, XrFoveationProfileFB>::value || std::is_same<T, XrFrameEndInfoFlagBitsML>::value || std::is_same<T, XrFrameEndInfoFlagsML>::value || std::is_same<T, XrFrameSynthesisInfoFlagBitsEXT>::value || std::is_same<T, XrFrameSynthesisInfoFlagsEXT>::value || std::is_same<T, XrFullBodyJointMETA>::value || std::is_same<T, XrFutureEXT>::value || std::is_same<T, XrFutureStateEXT>::value || std::is_same<T, XrGeometryInstanceFB>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagBitsML>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagsML>::value || std::is_same<T, XrHandEXT>::value || std::is_same<T, XrHandForearmJointULTRALEAP>::value || std::is_same<T, XrHandJointEXT>::value || std::is_same<T, XrHandJointSetEXT>::value || std::is_same<T, XrHandJointsMotionRangeEXT>::value || std::is_same<T, XrHandPoseTypeMSFT>::value || std::is_same<T, XrHandTrackerEXT>::value || std::is_same<T, XrHandTrackingAimFlagBitsFB>::value || std::is_same<T, XrHandTrackingAimFlagsFB>::value || std::is_same<T, XrHandTrackingDataSourceEXT>::value || std::is_same<T, XrHeadsetFitStatusML>::value || std::is_same<T, XrInputSourceLocalizedNameFlagBits>::value || std::is_same<T, XrInputSourceLocalizedNameFlags>::value || std::is_same<T, XrInstance>::value || std::is_same<T, XrInstanceCreateFlagBits>::value || std::is_same<T, XrInstanceCreateFlags>::value || std::is_same<T, XrKeyboardTrackingFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingFlagsFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagsFB>::value || std::is_same<T, XrLipExpressionHTC>::value || std::is_same<T, XrLoaderInterfaceStructs>::value || std::is_same<T, XrLocalDimmingModeMETA>::value || std::is_same<T, XrLocalizationMapConfidenceML>::value || std::is_same<T, XrLocalizationMapErrorFlagBitsML>::value || std::is_same<T, XrLocalizationMapErrorFlagsML>::value || std::is_same<T, XrLocalizationMapStateML>::value || std::is_same<T, XrLocalizationMapTypeML>::value || std::is_same<T, XrMarkerAprilTagDictML>::value || std::is_same<T, XrMarkerArucoDictML>::value || std::is_same<T, XrMarkerDetectorCameraML>::value || std::is_same<T, XrMarkerDetectorCornerRefineMethodML>::value || std::is_same<T, XrMarkerDetectorFpsML>::value || std::is_same<T, XrMarkerDetectorFullAnalysisIntervalML>::value || std::is_same<T, XrMarkerDetectorML>::value || std::is_same<T, XrMarkerDetectorProfileML>::value || std::is_same<T, XrMarkerDetectorResolutionML>::value || std::is_same<T, XrMarkerDetectorStatusML>::value || std::is_same<T, XrMarkerML>::value || std::is_same<T, XrMarkerTypeML>::value || std::is_same<T, XrMeshComputeLodMSFT>::value || std::is_same<T, XrObjectType>::value || std::is_same<T, XrOverlayMainSessionFlagBitsEXTX>::value || std::is_same<T, XrOverlayMainSessionFlagsEXTX>::value || std::is_same<T, XrOverlaySessionCreateFlagBitsEXTX>::value || std::is_same<T, XrOverlaySessionCreateFlagsEXTX>::value || std::is_same<T, XrPassthroughCapabilityFlagBitsFB>::value || std::is_same<T, XrPassthroughCapabilityFlagsFB>::value || std::is_same<T, XrPassthroughColorLutChannelsMETA>::value || std::is_same<T, XrPassthroughColorLutMETA>::value || std::is_same<T, XrPassthroughFB>::value || std::is_same<T, XrPassthroughFlagBitsFB>::value || std::is_same<T, XrPassthroughFlagsFB>::value || std::is_same<T, XrPassthroughFormHTC>::value || std::is_same<T, XrPassthroughHTC>::value || std::is_same<T, XrPassthroughLayerFB>::value || std::is_same<T, XrPassthroughLayerPurposeFB>::value || std::is_same<T, XrPassthroughPreferenceFlagBitsMETA>::value || std::is_same<T, XrPassthroughPreferenceFlagsMETA>::value || std::is_same<T, XrPassthroughStateChangedFlagBitsFB>::value || std::is_same<T, XrPassthroughStateChangedFlagsFB>::value || std::is_same<T, XrPath>::value || std::is_same<T, XrPerfSettingsDomainEXT>::value || std::is_same<T, XrPerfSettingsLevelEXT>::value || std::is_same<T, XrPerfSettingsNotificationLevelEXT>::value || std::is_same<T, XrPerfSettingsSubDomainEXT>::value || std::is_same<T, XrPerformanceMetricsCounterFlagBitsMETA>::value || std::is_same<T, XrPerformanceMetricsCounterFlagsMETA>::value || std::is_same<T, XrPerformanceMetricsCounterUnitMETA>::value || std::is_same<T, XrPersistenceLocationBD>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagBitsEXT>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagsEXT>::value || std::is_same<T, XrPlaneDetectionStateEXT>::value || std::is_same<T, XrPlaneDetectorEXT>::value || std::is_same<T, XrPlaneDetectorFlagBitsEXT>::value || std::is_same<T, XrPlaneDetectorFlagsEXT>::value || std::is_same<T, XrPlaneDetectorOrientationEXT>::value || std::is_same<T, XrPlaneDetectorSemanticTypeEXT>::value || std::is_same<T, XrReferenceSpaceType>::value || std::is_same<T, XrRenderModelFlagBitsFB>::value || std::is_same<T, XrRenderModelFlagsFB>::value || std::is_same<T, XrRenderModelKeyFB>::value || std::is_same<T, XrReprojectionModeMSFT>::value || std::is_same<T, XrResult>::value || std::is_same<T, XrSceneComponentTypeMSFT>::value || std::is_same<T, XrSceneComputeConsistencyMSFT>::value || std::is_same<T, XrSceneComputeFeatureMSFT>::value || std::is_same<T, XrSceneComputeStateMSFT>::value || std::is_same<T, XrSceneMSFT>::value || std::is_same<T, XrSceneMarkerQRCodeSymbolTypeMSFT>::value || std::is_same<T, XrSceneMarkerTypeMSFT>::value || std::is_same<T, XrSceneObjectTypeMSFT>::value || std::is_same<T, XrSceneObserverMSFT>::value || std::is_same<T, XrScenePlaneAlignmentTypeMSFT>::value || std::is_same<T, XrSemanticLabelBD>::value || std::is_same<T, XrSemanticLabelsSupportFlagBitsFB>::value || std::is_same<T, XrSemanticLabelsSupportFlagsFB>::value || std::is_same<T, XrSenseDataProviderBD>::value || std::is_same<T, XrSenseDataProviderStateBD>::value || std::is_same<T, XrSenseDataProviderTypeBD>::value || std::is_same<T, XrSenseDataSnapshotBD>::value || std::is_same<T, XrSession>::value || std::is_same<T, XrSessionCreateFlagBits>::value || std::is_same<T, XrSessionCreateFlags>::value || std::is_same<T, XrSessionState>::value || std::is_same<T, XrSpace>::value || std::is_same<T, XrSpaceComponentTypeFB>::value || std::is_same<T, XrSpaceLocationFlagBits>::value || std::is_same<T, XrSpaceLocationFlags>::value || std::is_same<T, XrSpacePersistenceModeFB>::value || std::is_same<T, XrSpaceQueryActionFB>::value || std::is_same<T, XrSpaceStorageLocationFB>::value || std::is_same<T, XrSpaceUserFB>::value || std::is_same<T, XrSpaceUserIdFB>::value || std::is_same<T, XrSpaceVelocityFlagBits>::value || std::is_same<T, XrSpaceVelocityFlags>::value || std::is_same<T, XrSpatialAnchorConfidenceML>::value || std::is_same<T, XrSpatialAnchorMSFT>::value || std::is_same<T, XrSpatialAnchorStoreConnectionMSFT>::value || std::is_same<T, XrSpatialAnchorsStorageML>::value || std::is_same<T, XrSpatialEntityComponentTypeBD>::value || std::is_same<T, XrSpatialEntityIdBD>::value || std::is_same<T, XrSpatialGraphNodeBindingMSFT>::value || std::is_same<T, XrSpatialGraphNodeTypeMSFT>::value || std::is_same<T, XrSpatialMeshConfigFlagBitsBD>::value || std::is_same<T, XrSpatialMeshConfigFlagsBD>::value || std::is_same<T, XrSpatialMeshLodBD>::value || std::is_same<T, XrStructureType>::value || std::is_same<T, XrSwapchain>::value || std::is_same<T, XrSwapchainCreateFlagBits>::value || std::is_same<T, XrSwapchainCreateFlags>::value || std::is_same<T, XrSwapchainCreateFoveationFlagBitsFB>::value || std::is_same<T, XrSwapchainCreateFoveationFlagsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagBitsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagsFB>::value || std::is_same<T, XrSwapchainUsageFlagBits>::value || std::is_same<T, XrSwapchainUsageFlags>::value || std::is_same<T, XrSystemId>::value || std::is_same<T, XrTime>::value || std::is_same<T, XrTrackingOptimizationSettingsDomainQCOM>::value || std::is_same<T, XrTrackingOptimizationSettingsHintQCOM>::value || std::is_same<T, XrTriangleMeshFB>::value || std::is_same<T, XrTriangleMeshFlagBitsFB>::value || std::is_same<T, XrTriangleMeshFlagsFB>::value || std::is_same<T, XrVersion>::value || std::is_same<T, XrViewConfigurationType>::value || std::is_same<T, XrViewStateFlagBits>::value || std::is_same<T, XrViewStateFlags>::value || std::is_same<T, XrVirtualKeyboardInputSourceMETA>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagBitsMETA>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagsMETA>::value || std::is_same<T, XrVirtualKeyboardLocationTypeMETA>::value || std::is_same<T, XrVirtualKeyboardMETA>::value || std::is_same<T, XrVisibilityMaskTypeKHR>::value || std::is_same<T, XrVulkanDeviceCreateFlagBitsKHR>::value || std::is_same<T, XrVulkanDeviceCreateFlagsKHR>::value || std::is_same<T, XrVulkanInstanceCreateFlagBitsKHR>::value || std::is_same<T, XrVulkanInstanceCreateFlagsKHR>::value || std::is_same<T, XrWindingOrderFB>::value || std::is_same<T, XrWorldMeshBlockResultML>::value || std::is_same<T, XrWorldMeshBlockStatusML>::value || std::is_same<T, XrWorldMeshDetectorFlagBitsML>::value || std::is_same<T, XrWorldMeshDetectorFlagsML>::value || std::is_same<T, XrWorldMeshDetectorLodML>::value || std::is_same<T, XrWorldMeshDetectorML>::value || std::is_same<T, char>::value || std::is_same<T, double>::value || std::is_same<T, float>::value || std::is_same<T, int16_t>::value || std::is_same<T, int32_t>::value || std::is_same<T, int64_t>::value || std::is_same<T, int8_t>::value || std::is_same<T, size_t>::value || std::is_same<T, uint16_t>::value || std::is_same<T, uint32_t>::value || std::is_same<T, uint64_t>::value || std::is_same<T, uint8_t>::value || std::is_same<T, uintptr_t>::value || std::is_same<T, void>::value || std::is_same<T, wchar_t>::value,
         "T must be a supported type"
     );
     *x = new T[n]();
@@ -15146,7 +15136,7 @@ static void allocate(T** x, std::size_t n) {
 template <typename T>
 static void cleanup(const T* x) {
     static_assert(
-        std::is_same<T, XrSenseDataProviderStateBD>::value || std::is_same<T, XrGeometryInstanceFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagsFB>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagsMETA>::value || std::is_same<T, XrSpatialAnchorMSFT>::value || std::is_same<T, XrSpaceVelocityFlagBits>::value || std::is_same<T, XrKeyboardTrackingQueryFlagBitsFB>::value || std::is_same<T, XrHandJointEXT>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagsFB>::value || std::is_same<T, XrBodyTrackerFB>::value || std::is_same<T, XrFaceExpression2FB>::value || std::is_same<T, XrInstance>::value || std::is_same<T, XrDigitalLensControlFlagBitsALMALENCE>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagBitsMETA>::value || std::is_same<T, XrMarkerAprilTagDictML>::value || std::is_same<T, XrSwapchainCreateFlags>::value || std::is_same<T, XrPerformanceMetricsCounterFlagBitsMETA>::value || std::is_same<T, XrFutureEXT>::value || std::is_same<T, size_t>::value || std::is_same<T, XrHandTrackerEXT>::value || std::is_same<T, XrTriangleMeshFB>::value || std::is_same<T, XrActionType>::value || std::is_same<T, XrColorSpaceFB>::value || std::is_same<T, XrFoveationDynamicFlagBitsHTC>::value || std::is_same<T, XrSwapchainCreateFoveationFlagBitsFB>::value || std::is_same<T, XrSpaceStorageLocationFB>::value || std::is_same<T, XrVersion>::value || std::is_same<T, XrObjectType>::value || std::is_same<T, XrSwapchainUsageFlagBits>::value || std::is_same<T, XrHeadsetFitStatusML>::value || std::is_same<T, XrHandEXT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagBitsEXT>::value || std::is_same<T, XrCompositionLayerSecureContentFlagBitsFB>::value || std::is_same<T, XrFaceConfidence2FB>::value || std::is_same<T, XrSystemId>::value || std::is_same<T, XrPassthroughFB>::value || std::is_same<T, void>::value || std::is_same<T, XrRenderModelKeyFB>::value || std::is_same<T, XrEyeCalibrationStatusML>::value || std::is_same<T, XrOverlaySessionCreateFlagBitsEXTX>::value || std::is_same<T, XrSpatialEntityIdBD>::value || std::is_same<T, XrInputSourceLocalizedNameFlags>::value || std::is_same<T, XrTrackingOptimizationSettingsDomainQCOM>::value || std::is_same<T, XrRenderModelFlagsFB>::value || std::is_same<T, XrAnchorBD>::value || std::is_same<T, XrSemanticLabelsSupportFlagBitsFB>::value || std::is_same<T, XrEnvironmentDepthProviderMETA>::value || std::is_same<T, XrPassthroughFlagsFB>::value || std::is_same<T, XrSceneMSFT>::value || std::is_same<T, XrSwapchain>::value || std::is_same<T, XrSpatialEntityComponentTypeBD>::value || std::is_same<T, XrResult>::value || std::is_same<T, XrForceFeedbackCurlLocationMNDX>::value || std::is_same<T, XrFlags64>::value || std::is_same<T, XrMarkerDetectorStatusML>::value || std::is_same<T, XrAndroidThreadTypeKHR>::value || std::is_same<T, XrPassthroughLayerFB>::value || std::is_same<T, XrSessionState>::value || std::is_same<T, XrFoveationLevelFB>::value || std::is_same<T, XrReprojectionModeMSFT>::value || std::is_same<T, XrAction>::value || std::is_same<T, XrSpatialAnchorsStorageML>::value || std::is_same<T, XrEyeVisibility>::value || std::is_same<T, XrPassthroughColorLutChannelsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainMETA>::value || std::is_same<T, XrEyePositionFB>::value || std::is_same<T, XrBodyJointHTC>::value || std::is_same<T, XrCompareOpFB>::value || std::is_same<T, XrSpaceQueryActionFB>::value || std::is_same<T, XrFaceExpressionSetFB>::value || std::is_same<T, XrTrackingOptimizationSettingsHintQCOM>::value || std::is_same<T, XrPlaneDetectionStateEXT>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagBitsMETA>::value || std::is_same<T, XrSceneComputeFeatureMSFT>::value || std::is_same<T, XrSwapchainCreateFoveationFlagsFB>::value || std::is_same<T, XrBodyTrackerHTC>::value || std::is_same<T, XrSpatialGraphNodeBindingMSFT>::value || std::is_same<T, XrMeshComputeLodMSFT>::value || std::is_same<T, int16_t>::value || std::is_same<T, XrVulkanDeviceCreateFlagsKHR>::value || std::is_same<T, XrVirtualKeyboardMETA>::value || std::is_same<T, XrInstanceCreateFlagBits>::value || std::is_same<T, XrBodyJointSetBD>::value || std::is_same<T, XrPassthroughCapabilityFlagsFB>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagBitsML>::value || std::is_same<T, XrControllerModelKeyMSFT>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagBitsMETA>::value || std::is_same<T, XrBodyJointConfidenceHTC>::value || std::is_same<T, XrOverlayMainSessionFlagsEXTX>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagsFB>::value || std::is_same<T, XrCompositionLayerFlags>::value || std::is_same<T, XrKeyboardTrackingFlagBitsFB>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagBitsML>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagsEXT>::value || std::is_same<T, XrPerfSettingsSubDomainEXT>::value || std::is_same<T, XrViewStateFlagBits>::value || std::is_same<T, XrEyeExpressionHTC>::value || std::is_same<T, XrSpacePersistenceModeFB>::value || std::is_same<T, XrVisibilityMaskTypeKHR>::value || std::is_same<T, XrSpatialAnchorConfidenceML>::value || std::is_same<T, XrSessionCreateFlagBits>::value || std::is_same<T, XrSpaceComponentTypeFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagBitsFB>::value || std::is_same<T, XrFacialTrackingTypeHTC>::value || std::is_same<T, XrExternalCameraAttachedToDeviceOCULUS>::value || std::is_same<T, XrSpatialMeshLodBD>::value || std::is_same<T, XrMarkerML>::value || std::is_same<T, XrPlaneDetectorSemanticTypeEXT>::value || std::is_same<T, XrFoveationLevelHTC>::value || std::is_same<T, XrPlaneDetectorFlagBitsEXT>::value || std::is_same<T, XrVulkanInstanceCreateFlagBitsKHR>::value || std::is_same<T, XrDigitalLensControlFlagsALMALENCE>::value || std::is_same<T, XrCompositionLayerSettingsFlagBitsFB>::value || std::is_same<T, XrHandJointSetEXT>::value || std::is_same<T, XrSceneComponentTypeMSFT>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagBitsMETA>::value || std::is_same<T, XrPerfSettingsNotificationLevelEXT>::value || std::is_same<T, XrRenderModelFlagBitsFB>::value || std::is_same<T, XrBool32>::value || std::is_same<T, XrPassthroughPreferenceFlagBitsMETA>::value || std::is_same<T, XrSpatialMeshConfigFlagsBD>::value || std::is_same<T, XrMarkerArucoDictML>::value || std::is_same<T, XrWorldMeshDetectorFlagsML>::value || std::is_same<T, XrStructureType>::value || std::is_same<T, XrMarkerDetectorCameraML>::value || std::is_same<T, XrWorldMeshBlockResultML>::value || std::is_same<T, XrSenseDataSnapshotBD>::value || std::is_same<T, XrFrameSynthesisInfoFlagBitsEXT>::value || std::is_same<T, XrOverlaySessionCreateFlagsEXTX>::value || std::is_same<T, XrSwapchainStateFoveationFlagsFB>::value || std::is_same<T, XrSpaceLocationFlags>::value || std::is_same<T, wchar_t>::value || std::is_same<T, XrSemanticLabelBD>::value || std::is_same<T, XrTime>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagBitsMETA>::value || std::is_same<T, XrHandPoseTypeMSFT>::value || std::is_same<T, XrSemanticLabelsSupportFlagsFB>::value || std::is_same<T, XrHandTrackingAimFlagsFB>::value || std::is_same<T, XrPassthroughFlagBitsFB>::value || std::is_same<T, XrBodyJointFB>::value || std::is_same<T, XrWorldMeshDetectorFlagBitsML>::value || std::is_same<T, XrFoveationDynamicFB>::value || std::is_same<T, XrBlendFactorFB>::value || std::is_same<T, XrWorldMeshDetectorML>::value || std::is_same<T, XrPlaneDetectorOrientationEXT>::value || std::is_same<T, XrLocalizationMapTypeML>::value || std::is_same<T, XrFaceConfidenceFB>::value || std::is_same<T, XrPerfSettingsLevelEXT>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagsMETA>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagBitsFB>::value || std::is_same<T, XrFacialExpressionClientML>::value || std::is_same<T, XrSwapchainCreateFlagBits>::value || std::is_same<T, XrOverlayMainSessionFlagBitsEXTX>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagsMETA>::value || std::is_same<T, char>::value || std::is_same<T, XrPerformanceMetricsCounterUnitMETA>::value || std::is_same<T, int64_t>::value || std::is_same<T, XrMarkerDetectorResolutionML>::value || std::is_same<T, XrPassthroughLayerPurposeFB>::value || std::is_same<T, XrLocalizationMapErrorFlagsML>::value || std::is_same<T, XrFoveationModeHTC>::value || std::is_same<T, XrFutureStateEXT>::value || std::is_same<T, XrVirtualKeyboardInputSourceMETA>::value || std::is_same<T, XrPassthroughStateChangedFlagsFB>::value || std::is_same<T, XrFoveationDynamicFlagsHTC>::value || std::is_same<T, XrKeyboardTrackingFlagsFB>::value || std::is_same<T, XrFaceTrackingDataSource2FB>::value || std::is_same<T, XrFrameEndInfoFlagBitsML>::value || std::is_same<T, XrFormFactor>::value || std::is_same<T, XrSenseDataProviderTypeBD>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagsEXT>::value || std::is_same<T, XrSceneObserverMSFT>::value || std::is_same<T, XrVirtualKeyboardLocationTypeMETA>::value || std::is_same<T, XrReferenceSpaceType>::value || std::is_same<T, XrVulkanInstanceCreateFlagsKHR>::value || std::is_same<T, XrPassthroughHTC>::value || std::is_same<T, XrWorldMeshBlockStatusML>::value || std::is_same<T, XrSceneMarkerQRCodeSymbolTypeMSFT>::value || std::is_same<T, int32_t>::value || std::is_same<T, uint16_t>::value || std::is_same<T, float>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagsEXT>::value || std::is_same<T, XrPassthroughFormHTC>::value || std::is_same<T, XrFaceTrackerFB>::value || std::is_same<T, XrSenseDataProviderBD>::value || std::is_same<T, XrWindingOrderFB>::value || std::is_same<T, XrTriangleMeshFlagsFB>::value || std::is_same<T, XrLocalDimmingModeMETA>::value || std::is_same<T, XrBodyTrackerBD>::value || std::is_same<T, XrSpatialAnchorStoreConnectionMSFT>::value || std::is_same<T, XrCompositionLayerSettingsFlagsFB>::value || std::is_same<T, XrDebugUtilsMessengerEXT>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagsFB>::value || std::is_same<T, XrMarkerDetectorProfileML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagsML>::value || std::is_same<T, XrPlaneDetectorFlagsEXT>::value || std::is_same<T, XrEnvironmentBlendMode>::value || std::is_same<T, XrInstanceCreateFlags>::value || std::is_same<T, uint64_t>::value || std::is_same<T, uintptr_t>::value || std::is_same<T, XrSpaceLocationFlagBits>::value || std::is_same<T, XrPerfSettingsDomainEXT>::value || std::is_same<T, XrWorldMeshDetectorLodML>::value || std::is_same<T, XrDuration>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagBitsFB>::value || std::is_same<T, uint32_t>::value || std::is_same<T, XrHandTrackingAimFlagBitsFB>::value || std::is_same<T, XrBodyJointSetHTC>::value || std::is_same<T, XrAsyncRequestIdFB>::value || std::is_same<T, XrActionSet>::value || std::is_same<T, XrBodyJointBD>::value || std::is_same<T, XrLocalizationMapErrorFlagBitsML>::value || std::is_same<T, XrSceneMarkerTypeMSFT>::value || std::is_same<T, XrFrameEndInfoFlagsML>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagsMETA>::value || std::is_same<T, XrSceneComputeStateMSFT>::value || std::is_same<T, XrSceneComputeConsistencyMSFT>::value || std::is_same<T, XrSpaceVelocityFlags>::value || std::is_same<T, XrHandJointsMotionRangeEXT>::value || std::is_same<T, XrLipExpressionHTC>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagBitsEXT>::value || std::is_same<T, XrLoaderInterfaceStructs>::value || std::is_same<T, XrBodyJointSetFB>::value || std::is_same<T, int8_t>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagBitsFB>::value || std::is_same<T, XrPassthroughCapabilityFlagBitsFB>::value || std::is_same<T, XrViewConfigurationType>::value || std::is_same<T, XrSpatialMeshConfigFlagBitsBD>::value || std::is_same<T, uint8_t>::value || std::is_same<T, XrFullBodyJointMETA>::value || std::is_same<T, XrFrameSynthesisInfoFlagsEXT>::value || std::is_same<T, XrSwapchainUsageFlags>::value || std::is_same<T, XrMarkerDetectorML>::value || std::is_same<T, XrPath>::value || std::is_same<T, XrFoveationProfileFB>::value || std::is_same<T, XrFaceTracker2FB>::value || std::is_same<T, XrFacialBlendShapeML>::value || std::is_same<T, XrMarkerDetectorCornerRefineMethodML>::value || std::is_same<T, XrPassthroughStateChangedFlagBitsFB>::value || std::is_same<T, XrExportedLocalizationMapML>::value || std::is_same<T, XrVulkanDeviceCreateFlagBitsKHR>::value || std::is_same<T, XrPlaneDetectorEXT>::value || std::is_same<T, XrPersistenceLocationBD>::value || std::is_same<T, XrScenePlaneAlignmentTypeMSFT>::value || std::is_same<T, XrPassthroughColorLutMETA>::value || std::is_same<T, XrSpatialGraphNodeTypeMSFT>::value || std::is_same<T, XrTriangleMeshFlagBitsFB>::value || std::is_same<T, XrHandTrackingDataSourceEXT>::value || std::is_same<T, XrFaceExpressionFB>::value || std::is_same<T, XrMarkerDetectorFullAnalysisIntervalML>::value || std::is_same<T, XrSpaceUserIdFB>::value || std::is_same<T, XrPassthroughPreferenceFlagsMETA>::value || std::is_same<T, XrViewStateFlags>::value || std::is_same<T, XrSession>::value || std::is_same<T, XrLocalizationMapStateML>::value || std::is_same<T, XrPerformanceMetricsCounterFlagsMETA>::value || std::is_same<T, XrFaceExpressionSet2FB>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagsMETA>::value || std::is_same<T, XrMarkerTypeML>::value || std::is_same<T, XrExternalCameraStatusFlagsOCULUS>::value || std::is_same<T, XrInputSourceLocalizedNameFlagBits>::value || std::is_same<T, XrSpaceUserFB>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagBitsEXT>::value || std::is_same<T, XrLocalizationMapConfidenceML>::value || std::is_same<T, XrEyeTrackerFB>::value || std::is_same<T, XrCompositionLayerFlagBits>::value || std::is_same<T, XrKeyboardTrackingQueryFlagsFB>::value || std::is_same<T, XrExternalCameraStatusFlagBitsOCULUS>::value || std::is_same<T, XrMarkerDetectorFpsML>::value || std::is_same<T, double>::value || std::is_same<T, XrFacialTrackerHTC>::value || std::is_same<T, XrSpace>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagsML>::value || std::is_same<T, XrHandForearmJointULTRALEAP>::value || std::is_same<T, XrSessionCreateFlags>::value || std::is_same<T, XrSceneObjectTypeMSFT>::value,
+        std::is_same<T, XrAction>::value || std::is_same<T, XrActionSet>::value || std::is_same<T, XrActionType>::value || std::is_same<T, XrAnchorBD>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagBitsFB>::value || std::is_same<T, XrAndroidSurfaceSwapchainFlagsFB>::value || std::is_same<T, XrAndroidThreadTypeKHR>::value || std::is_same<T, XrAsyncRequestIdFB>::value || std::is_same<T, XrBlendFactorFB>::value || std::is_same<T, XrBodyJointBD>::value || std::is_same<T, XrBodyJointConfidenceHTC>::value || std::is_same<T, XrBodyJointFB>::value || std::is_same<T, XrBodyJointHTC>::value || std::is_same<T, XrBodyJointSetBD>::value || std::is_same<T, XrBodyJointSetFB>::value || std::is_same<T, XrBodyJointSetHTC>::value || std::is_same<T, XrBodyTrackerBD>::value || std::is_same<T, XrBodyTrackerFB>::value || std::is_same<T, XrBodyTrackerHTC>::value || std::is_same<T, XrBool32>::value || std::is_same<T, XrColorSpaceFB>::value || std::is_same<T, XrCompareOpFB>::value || std::is_same<T, XrCompositionLayerFlagBits>::value || std::is_same<T, XrCompositionLayerFlags>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagBitsFB>::value || std::is_same<T, XrCompositionLayerImageLayoutFlagsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSecureContentFlagsFB>::value || std::is_same<T, XrCompositionLayerSettingsFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSettingsFlagsFB>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagBitsFB>::value || std::is_same<T, XrCompositionLayerSpaceWarpInfoFlagsFB>::value || std::is_same<T, XrControllerModelKeyMSFT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagBitsEXT>::value || std::is_same<T, XrDebugUtilsMessageSeverityFlagsEXT>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagBitsEXT>::value || std::is_same<T, XrDebugUtilsMessageTypeFlagsEXT>::value || std::is_same<T, XrDebugUtilsMessengerEXT>::value || std::is_same<T, XrDigitalLensControlFlagBitsALMALENCE>::value || std::is_same<T, XrDigitalLensControlFlagsALMALENCE>::value || std::is_same<T, XrDuration>::value || std::is_same<T, XrEnvironmentBlendMode>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagBitsMETA>::value || std::is_same<T, XrEnvironmentDepthProviderCreateFlagsMETA>::value || std::is_same<T, XrEnvironmentDepthProviderMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagBitsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainCreateFlagsMETA>::value || std::is_same<T, XrEnvironmentDepthSwapchainMETA>::value || std::is_same<T, XrExportedLocalizationMapML>::value || std::is_same<T, XrExternalCameraAttachedToDeviceOCULUS>::value || std::is_same<T, XrExternalCameraStatusFlagBitsOCULUS>::value || std::is_same<T, XrExternalCameraStatusFlagsOCULUS>::value || std::is_same<T, XrEyeCalibrationStatusML>::value || std::is_same<T, XrEyeExpressionHTC>::value || std::is_same<T, XrEyePositionFB>::value || std::is_same<T, XrEyeTrackerFB>::value || std::is_same<T, XrEyeVisibility>::value || std::is_same<T, XrFaceConfidence2FB>::value || std::is_same<T, XrFaceConfidenceFB>::value || std::is_same<T, XrFaceExpression2FB>::value || std::is_same<T, XrFaceExpressionFB>::value || std::is_same<T, XrFaceExpressionSet2FB>::value || std::is_same<T, XrFaceExpressionSetFB>::value || std::is_same<T, XrFaceTracker2FB>::value || std::is_same<T, XrFaceTrackerFB>::value || std::is_same<T, XrFaceTrackingDataSource2FB>::value || std::is_same<T, XrFacialBlendShapeML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagBitsML>::value || std::is_same<T, XrFacialExpressionBlendShapePropertiesFlagsML>::value || std::is_same<T, XrFacialExpressionClientML>::value || std::is_same<T, XrFacialTrackerHTC>::value || std::is_same<T, XrFacialTrackingTypeHTC>::value || std::is_same<T, XrFlags64>::value || std::is_same<T, XrForceFeedbackCurlLocationMNDX>::value || std::is_same<T, XrFormFactor>::value || std::is_same<T, XrFoveationDynamicFB>::value || std::is_same<T, XrFoveationDynamicFlagBitsHTC>::value || std::is_same<T, XrFoveationDynamicFlagsHTC>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagBitsMETA>::value || std::is_same<T, XrFoveationEyeTrackedProfileCreateFlagsMETA>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagBitsMETA>::value || std::is_same<T, XrFoveationEyeTrackedStateFlagsMETA>::value || std::is_same<T, XrFoveationLevelFB>::value || std::is_same<T, XrFoveationLevelHTC>::value || std::is_same<T, XrFoveationModeHTC>::value || std::is_same<T, XrFoveationProfileFB>::value || std::is_same<T, XrFrameEndInfoFlagBitsML>::value || std::is_same<T, XrFrameEndInfoFlagsML>::value || std::is_same<T, XrFrameSynthesisInfoFlagBitsEXT>::value || std::is_same<T, XrFrameSynthesisInfoFlagsEXT>::value || std::is_same<T, XrFullBodyJointMETA>::value || std::is_same<T, XrFutureEXT>::value || std::is_same<T, XrFutureStateEXT>::value || std::is_same<T, XrGeometryInstanceFB>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagBitsML>::value || std::is_same<T, XrGlobalDimmerFrameEndInfoFlagsML>::value || std::is_same<T, XrHandEXT>::value || std::is_same<T, XrHandForearmJointULTRALEAP>::value || std::is_same<T, XrHandJointEXT>::value || std::is_same<T, XrHandJointSetEXT>::value || std::is_same<T, XrHandJointsMotionRangeEXT>::value || std::is_same<T, XrHandPoseTypeMSFT>::value || std::is_same<T, XrHandTrackerEXT>::value || std::is_same<T, XrHandTrackingAimFlagBitsFB>::value || std::is_same<T, XrHandTrackingAimFlagsFB>::value || std::is_same<T, XrHandTrackingDataSourceEXT>::value || std::is_same<T, XrHeadsetFitStatusML>::value || std::is_same<T, XrInputSourceLocalizedNameFlagBits>::value || std::is_same<T, XrInputSourceLocalizedNameFlags>::value || std::is_same<T, XrInstance>::value || std::is_same<T, XrInstanceCreateFlagBits>::value || std::is_same<T, XrInstanceCreateFlags>::value || std::is_same<T, XrKeyboardTrackingFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingFlagsFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagBitsFB>::value || std::is_same<T, XrKeyboardTrackingQueryFlagsFB>::value || std::is_same<T, XrLipExpressionHTC>::value || std::is_same<T, XrLoaderInterfaceStructs>::value || std::is_same<T, XrLocalDimmingModeMETA>::value || std::is_same<T, XrLocalizationMapConfidenceML>::value || std::is_same<T, XrLocalizationMapErrorFlagBitsML>::value || std::is_same<T, XrLocalizationMapErrorFlagsML>::value || std::is_same<T, XrLocalizationMapStateML>::value || std::is_same<T, XrLocalizationMapTypeML>::value || std::is_same<T, XrMarkerAprilTagDictML>::value || std::is_same<T, XrMarkerArucoDictML>::value || std::is_same<T, XrMarkerDetectorCameraML>::value || std::is_same<T, XrMarkerDetectorCornerRefineMethodML>::value || std::is_same<T, XrMarkerDetectorFpsML>::value || std::is_same<T, XrMarkerDetectorFullAnalysisIntervalML>::value || std::is_same<T, XrMarkerDetectorML>::value || std::is_same<T, XrMarkerDetectorProfileML>::value || std::is_same<T, XrMarkerDetectorResolutionML>::value || std::is_same<T, XrMarkerDetectorStatusML>::value || std::is_same<T, XrMarkerML>::value || std::is_same<T, XrMarkerTypeML>::value || std::is_same<T, XrMeshComputeLodMSFT>::value || std::is_same<T, XrObjectType>::value || std::is_same<T, XrOverlayMainSessionFlagBitsEXTX>::value || std::is_same<T, XrOverlayMainSessionFlagsEXTX>::value || std::is_same<T, XrOverlaySessionCreateFlagBitsEXTX>::value || std::is_same<T, XrOverlaySessionCreateFlagsEXTX>::value || std::is_same<T, XrPassthroughCapabilityFlagBitsFB>::value || std::is_same<T, XrPassthroughCapabilityFlagsFB>::value || std::is_same<T, XrPassthroughColorLutChannelsMETA>::value || std::is_same<T, XrPassthroughColorLutMETA>::value || std::is_same<T, XrPassthroughFB>::value || std::is_same<T, XrPassthroughFlagBitsFB>::value || std::is_same<T, XrPassthroughFlagsFB>::value || std::is_same<T, XrPassthroughFormHTC>::value || std::is_same<T, XrPassthroughHTC>::value || std::is_same<T, XrPassthroughLayerFB>::value || std::is_same<T, XrPassthroughLayerPurposeFB>::value || std::is_same<T, XrPassthroughPreferenceFlagBitsMETA>::value || std::is_same<T, XrPassthroughPreferenceFlagsMETA>::value || std::is_same<T, XrPassthroughStateChangedFlagBitsFB>::value || std::is_same<T, XrPassthroughStateChangedFlagsFB>::value || std::is_same<T, XrPath>::value || std::is_same<T, XrPerfSettingsDomainEXT>::value || std::is_same<T, XrPerfSettingsLevelEXT>::value || std::is_same<T, XrPerfSettingsNotificationLevelEXT>::value || std::is_same<T, XrPerfSettingsSubDomainEXT>::value || std::is_same<T, XrPerformanceMetricsCounterFlagBitsMETA>::value || std::is_same<T, XrPerformanceMetricsCounterFlagsMETA>::value || std::is_same<T, XrPerformanceMetricsCounterUnitMETA>::value || std::is_same<T, XrPersistenceLocationBD>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagBitsEXT>::value || std::is_same<T, XrPlaneDetectionCapabilityFlagsEXT>::value || std::is_same<T, XrPlaneDetectionStateEXT>::value || std::is_same<T, XrPlaneDetectorEXT>::value || std::is_same<T, XrPlaneDetectorFlagBitsEXT>::value || std::is_same<T, XrPlaneDetectorFlagsEXT>::value || std::is_same<T, XrPlaneDetectorOrientationEXT>::value || std::is_same<T, XrPlaneDetectorSemanticTypeEXT>::value || std::is_same<T, XrReferenceSpaceType>::value || std::is_same<T, XrRenderModelFlagBitsFB>::value || std::is_same<T, XrRenderModelFlagsFB>::value || std::is_same<T, XrRenderModelKeyFB>::value || std::is_same<T, XrReprojectionModeMSFT>::value || std::is_same<T, XrResult>::value || std::is_same<T, XrSceneComponentTypeMSFT>::value || std::is_same<T, XrSceneComputeConsistencyMSFT>::value || std::is_same<T, XrSceneComputeFeatureMSFT>::value || std::is_same<T, XrSceneComputeStateMSFT>::value || std::is_same<T, XrSceneMSFT>::value || std::is_same<T, XrSceneMarkerQRCodeSymbolTypeMSFT>::value || std::is_same<T, XrSceneMarkerTypeMSFT>::value || std::is_same<T, XrSceneObjectTypeMSFT>::value || std::is_same<T, XrSceneObserverMSFT>::value || std::is_same<T, XrScenePlaneAlignmentTypeMSFT>::value || std::is_same<T, XrSemanticLabelBD>::value || std::is_same<T, XrSemanticLabelsSupportFlagBitsFB>::value || std::is_same<T, XrSemanticLabelsSupportFlagsFB>::value || std::is_same<T, XrSenseDataProviderBD>::value || std::is_same<T, XrSenseDataProviderStateBD>::value || std::is_same<T, XrSenseDataProviderTypeBD>::value || std::is_same<T, XrSenseDataSnapshotBD>::value || std::is_same<T, XrSession>::value || std::is_same<T, XrSessionCreateFlagBits>::value || std::is_same<T, XrSessionCreateFlags>::value || std::is_same<T, XrSessionState>::value || std::is_same<T, XrSpace>::value || std::is_same<T, XrSpaceComponentTypeFB>::value || std::is_same<T, XrSpaceLocationFlagBits>::value || std::is_same<T, XrSpaceLocationFlags>::value || std::is_same<T, XrSpacePersistenceModeFB>::value || std::is_same<T, XrSpaceQueryActionFB>::value || std::is_same<T, XrSpaceStorageLocationFB>::value || std::is_same<T, XrSpaceUserFB>::value || std::is_same<T, XrSpaceUserIdFB>::value || std::is_same<T, XrSpaceVelocityFlagBits>::value || std::is_same<T, XrSpaceVelocityFlags>::value || std::is_same<T, XrSpatialAnchorConfidenceML>::value || std::is_same<T, XrSpatialAnchorMSFT>::value || std::is_same<T, XrSpatialAnchorStoreConnectionMSFT>::value || std::is_same<T, XrSpatialAnchorsStorageML>::value || std::is_same<T, XrSpatialEntityComponentTypeBD>::value || std::is_same<T, XrSpatialEntityIdBD>::value || std::is_same<T, XrSpatialGraphNodeBindingMSFT>::value || std::is_same<T, XrSpatialGraphNodeTypeMSFT>::value || std::is_same<T, XrSpatialMeshConfigFlagBitsBD>::value || std::is_same<T, XrSpatialMeshConfigFlagsBD>::value || std::is_same<T, XrSpatialMeshLodBD>::value || std::is_same<T, XrStructureType>::value || std::is_same<T, XrSwapchain>::value || std::is_same<T, XrSwapchainCreateFlagBits>::value || std::is_same<T, XrSwapchainCreateFlags>::value || std::is_same<T, XrSwapchainCreateFoveationFlagBitsFB>::value || std::is_same<T, XrSwapchainCreateFoveationFlagsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagBitsFB>::value || std::is_same<T, XrSwapchainStateFoveationFlagsFB>::value || std::is_same<T, XrSwapchainUsageFlagBits>::value || std::is_same<T, XrSwapchainUsageFlags>::value || std::is_same<T, XrSystemId>::value || std::is_same<T, XrTime>::value || std::is_same<T, XrTrackingOptimizationSettingsDomainQCOM>::value || std::is_same<T, XrTrackingOptimizationSettingsHintQCOM>::value || std::is_same<T, XrTriangleMeshFB>::value || std::is_same<T, XrTriangleMeshFlagBitsFB>::value || std::is_same<T, XrTriangleMeshFlagsFB>::value || std::is_same<T, XrVersion>::value || std::is_same<T, XrViewConfigurationType>::value || std::is_same<T, XrViewStateFlagBits>::value || std::is_same<T, XrViewStateFlags>::value || std::is_same<T, XrVirtualKeyboardInputSourceMETA>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagBitsMETA>::value || std::is_same<T, XrVirtualKeyboardInputStateFlagsMETA>::value || std::is_same<T, XrVirtualKeyboardLocationTypeMETA>::value || std::is_same<T, XrVirtualKeyboardMETA>::value || std::is_same<T, XrVisibilityMaskTypeKHR>::value || std::is_same<T, XrVulkanDeviceCreateFlagBitsKHR>::value || std::is_same<T, XrVulkanDeviceCreateFlagsKHR>::value || std::is_same<T, XrVulkanInstanceCreateFlagBitsKHR>::value || std::is_same<T, XrVulkanInstanceCreateFlagsKHR>::value || std::is_same<T, XrWindingOrderFB>::value || std::is_same<T, XrWorldMeshBlockResultML>::value || std::is_same<T, XrWorldMeshBlockStatusML>::value || std::is_same<T, XrWorldMeshDetectorFlagBitsML>::value || std::is_same<T, XrWorldMeshDetectorFlagsML>::value || std::is_same<T, XrWorldMeshDetectorLodML>::value || std::is_same<T, XrWorldMeshDetectorML>::value || std::is_same<T, char>::value || std::is_same<T, double>::value || std::is_same<T, float>::value || std::is_same<T, int16_t>::value || std::is_same<T, int32_t>::value || std::is_same<T, int64_t>::value || std::is_same<T, int8_t>::value || std::is_same<T, size_t>::value || std::is_same<T, uint16_t>::value || std::is_same<T, uint32_t>::value || std::is_same<T, uint64_t>::value || std::is_same<T, uint8_t>::value || std::is_same<T, uintptr_t>::value || std::is_same<T, void>::value || std::is_same<T, wchar_t>::value,
         "T must be a supported type"
     );
     // no-op for base types
@@ -16318,29 +16308,6 @@ static void deserialize(XrExtensionProperties* s, std::istream& in) {
 
 
 
-static void deserialize(XrInstanceCreateInfo* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    deserialize(&s->createFlags, in);
-    deserialize(&s->applicationInfo, in);
-    deserialize(&s->enabledApiLayerCount, in);
-    #error auto-generator doesn't support double pointers (XrInstanceCreateInfo.enabledApiLayerNames)
-            deserialize(&s->enabledExtensionCount, in);
-    #error auto-generator doesn't support double pointers (XrInstanceCreateInfo.enabledExtensionNames)
-        }
-
-
 
 
 static void deserialize(XrSystemGetInfo* s, std::istream& in) {
@@ -16520,27 +16487,6 @@ static void deserialize(XrViewState* s, std::istream& in) {
 }
 
 
-
-
-static void deserialize(XrFrameEndInfo* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    deserialize(&s->displayTime, in);
-    deserialize(&s->environmentBlendMode, in);
-    deserialize(&s->layerCount, in);
-    #error auto-generator doesn't support double pointers (XrFrameEndInfo.layers)
-        }
 
 
 
@@ -17646,7 +17592,8 @@ static void deserialize(XrDebugUtilsObjectNameInfoEXT* s, std::istream& in) {
     std::uint8_t marker{};
     deserialize(&marker, in);
     if (marker) {
-        std::size_t num_items = count_null_terminated(s->objectName);
+        std::size_t num_items{};
+        deserialize(static_cast<uint32_t*>(&num_items));
         allocate(&s->objectName, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->objectName[i], in);
@@ -17677,7 +17624,8 @@ static void deserialize(XrDebugUtilsMessengerCallbackDataEXT* s, std::istream& i
     std::uint8_t marker{};
     deserialize(&marker, in);
     if (marker) {
-        std::size_t num_items = count_null_terminated(s->messageId);
+        std::size_t num_items{};
+        deserialize(static_cast<uint32_t*>(&num_items));
         allocate(&s->messageId, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->messageId[i], in);
@@ -17689,7 +17637,8 @@ static void deserialize(XrDebugUtilsMessengerCallbackDataEXT* s, std::istream& i
     std::uint8_t marker{};
     deserialize(&marker, in);
     if (marker) {
-        std::size_t num_items = count_null_terminated(s->functionName);
+        std::size_t num_items{};
+        deserialize(static_cast<uint32_t*>(&num_items));
         allocate(&s->functionName, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->functionName[i], in);
@@ -17701,7 +17650,8 @@ static void deserialize(XrDebugUtilsMessengerCallbackDataEXT* s, std::istream& i
     std::uint8_t marker{};
     deserialize(&marker, in);
     if (marker) {
-        std::size_t num_items = count_null_terminated(s->message);
+        std::size_t num_items{};
+        deserialize(static_cast<uint32_t*>(&num_items));
         allocate(&s->message, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->message[i], in);
@@ -17789,7 +17739,8 @@ static void deserialize(XrDebugUtilsLabelEXT* s, std::istream& in) {
     std::uint8_t marker{};
     deserialize(&marker, in);
     if (marker) {
-        std::size_t num_items = count_null_terminated(s->labelName);
+        std::size_t num_items{};
+        deserialize(static_cast<uint32_t*>(&num_items));
         allocate(&s->labelName, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->labelName[i], in);
@@ -23443,7 +23394,8 @@ static void deserialize(XrSemanticLabelsSupportInfoFB* s, std::istream& in) {
     std::uint8_t marker{};
     deserialize(&marker, in);
     if (marker) {
-        std::size_t num_items = count_null_terminated(s->recognizedLabels);
+        std::size_t num_items{};
+        deserialize(static_cast<uint32_t*>(&num_items));
         allocate(&s->recognizedLabels, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->recognizedLabels[i], in);
@@ -24308,7 +24260,8 @@ static void deserialize(XrVirtualKeyboardTextContextChangeInfoMETA* s, std::istr
     std::uint8_t marker{};
     deserialize(&marker, in);
     if (marker) {
-        std::size_t num_items = count_null_terminated(s->textContext);
+        std::size_t num_items{};
+        deserialize(static_cast<uint32_t*>(&num_items));
         allocate(&s->textContext, num_items);
         for (int i = 0; i < num_items; i++) {
             deserialize(&s->textContext[i], in);
@@ -32541,7 +32494,7 @@ static void cleanup(const XrSwapchainImageBaseHeader* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -32574,7 +32527,7 @@ static void cleanup(const XrCompositionLayerBaseHeader* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
     cleanup(&s->layerFlags);
     cleanup(&s->space);
@@ -32588,7 +32541,7 @@ static void cleanup(const XrHapticBaseHeader* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -32600,7 +32553,7 @@ static void cleanup(const XrEventDataBaseHeader* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -32632,7 +32585,7 @@ static void cleanup(const XrBindingModificationBaseHeaderKHR* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -32722,7 +32675,7 @@ static void cleanup(const XrHandMeshIndexBufferMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indices[i]);
         }
-        delete s->indices;
+        delete[] s->indices;
 
     }
 }
@@ -32740,7 +32693,7 @@ static void cleanup(const XrHandMeshVertexBufferMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
 }
@@ -32765,7 +32718,7 @@ static void cleanup(const XrSwapchainStateBaseHeaderFB* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -32780,7 +32733,7 @@ static void cleanup(const XrLoaderInitInfoBaseHeaderKHR* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -32839,7 +32792,7 @@ static void cleanup(const XrSceneBoundsMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->spheres[i]);
         }
-        delete s->spheres;
+        delete[] s->spheres;
 
     }
     cleanup(&s->boxCount);
@@ -32848,7 +32801,7 @@ static void cleanup(const XrSceneBoundsMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->boxes[i]);
         }
-        delete s->boxes;
+        delete[] s->boxes;
 
     }
     cleanup(&s->frustumCount);
@@ -32857,7 +32810,7 @@ static void cleanup(const XrSceneBoundsMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->frustums[i]);
         }
-        delete s->frustums;
+        delete[] s->frustums;
 
     }
 }
@@ -32924,7 +32877,7 @@ static void cleanup(const XrDeserializeSceneFragmentMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->buffer[i]);
         }
-        delete s->buffer;
+        delete[] s->buffer;
 
     }
 }
@@ -32993,7 +32946,7 @@ static void cleanup(const XrSpaceQueryInfoBaseHeaderFB* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -33005,7 +32958,7 @@ static void cleanup(const XrSpaceFilterInfoBaseHeaderFB* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -33068,7 +33021,7 @@ static void cleanup(const XrShareSpacesRecipientBaseHeaderMETA* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -33173,7 +33126,7 @@ static void cleanup(const XrPassthroughColorLutDataMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->buffer[i]);
         }
-        delete s->buffer;
+        delete[] s->buffer;
 
     }
 }
@@ -33226,7 +33179,7 @@ static void cleanup(const XrLocalizationMapQueryInfoBaseHeaderML* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -33302,7 +33255,7 @@ static void cleanup(const XrFutureCompletionBaseHeaderEXT* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
     cleanup(&s->futureResult);
 }
@@ -33338,7 +33291,7 @@ static void cleanup(const XrSpatialAnchorsCreateInfoBaseHeaderML* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -33353,7 +33306,7 @@ static void cleanup(const XrSpatialAnchorsQueryInfoBaseHeaderML* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -33377,7 +33330,7 @@ static void cleanup(const XrSpatialEntityComponentDataBaseHeaderBD* s) {
     cleanup(&s->type);
     if (s->next != nullptr) {
         cleanup(s->next);
-        delete s->next;
+        delete[] s->next;
     }
 }
 
@@ -33390,7 +33343,7 @@ static void cleanup(const XrApiLayerProperties* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -33412,7 +33365,7 @@ static void cleanup(const XrExtensionProperties* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -33425,29 +33378,13 @@ static void cleanup(const XrExtensionProperties* s) {
 
 
 
-static void cleanup(const XrInstanceCreateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete next;
-    }
-    
-    cleanup(&s->createFlags);
-    cleanup(&s->applicationInfo);
-    cleanup(&s->enabledApiLayerCount);
-    #error auto-generator doesn't support double pointers (XrInstanceCreateInfo.enabledApiLayerNames)
-            cleanup(&s->enabledExtensionCount);
-    #error auto-generator doesn't support double pointers (XrInstanceCreateInfo.enabledExtensionNames)
-        }
-
-
 
 
 static void cleanup(const XrSystemGetInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->formFactor);
@@ -33460,7 +33397,7 @@ static void cleanup(const XrSystemProperties* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->systemId);
@@ -33480,7 +33417,7 @@ static void cleanup(const XrViewLocateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewConfigurationType);
@@ -33495,7 +33432,7 @@ static void cleanup(const XrView* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->pose);
@@ -33509,7 +33446,7 @@ static void cleanup(const XrSessionCreateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->createFlags);
@@ -33523,7 +33460,7 @@ static void cleanup(const XrSwapchainCreateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->createFlags);
@@ -33544,7 +33481,7 @@ static void cleanup(const XrSessionBeginInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->primaryViewConfigurationType);
@@ -33557,7 +33494,7 @@ static void cleanup(const XrViewState* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewStateFlags);
@@ -33566,27 +33503,13 @@ static void cleanup(const XrViewState* s) {
 
 
 
-static void cleanup(const XrFrameEndInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete next;
-    }
-    
-    cleanup(&s->displayTime);
-    cleanup(&s->environmentBlendMode);
-    cleanup(&s->layerCount);
-    #error auto-generator doesn't support double pointers (XrFrameEndInfo.layers)
-        }
-
-
 
 
 static void cleanup(const XrHapticVibration* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->duration);
@@ -33601,7 +33524,7 @@ static void cleanup(const XrEventDataBuffer* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -33617,7 +33540,7 @@ static void cleanup(const XrEventDataInstanceLossPending* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->lossTime);
@@ -33630,7 +33553,7 @@ static void cleanup(const XrEventDataSessionStateChanged* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->session);
@@ -33645,7 +33568,7 @@ static void cleanup(const XrActionStateBoolean* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->currentState);
@@ -33661,7 +33584,7 @@ static void cleanup(const XrActionStateFloat* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->currentState);
@@ -33677,7 +33600,7 @@ static void cleanup(const XrActionStateVector2f* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->currentState);
@@ -33693,7 +33616,7 @@ static void cleanup(const XrActionStatePose* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->isActive);
@@ -33706,7 +33629,7 @@ static void cleanup(const XrActionSetCreateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -33727,7 +33650,7 @@ static void cleanup(const XrActionCreateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -33741,7 +33664,7 @@ static void cleanup(const XrActionCreateInfo* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->subactionPaths[i]);
         }
-        delete s->subactionPaths;
+        delete[] s->subactionPaths;
 
     }
         
@@ -33757,7 +33680,7 @@ static void cleanup(const XrInstanceProperties* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->runtimeVersion);
@@ -33774,7 +33697,7 @@ static void cleanup(const XrFrameWaitInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -33786,7 +33709,7 @@ static void cleanup(const XrCompositionLayerProjection* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -33797,7 +33720,7 @@ static void cleanup(const XrCompositionLayerProjection* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->views[i]);
         }
-        delete s->views;
+        delete[] s->views;
 
     }
 }
@@ -33809,7 +33732,7 @@ static void cleanup(const XrCompositionLayerQuad* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -33827,7 +33750,7 @@ static void cleanup(const XrReferenceSpaceCreateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->referenceSpaceType);
@@ -33841,7 +33764,7 @@ static void cleanup(const XrActionSpaceCreateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->action);
@@ -33856,7 +33779,7 @@ static void cleanup(const XrEventDataReferenceSpaceChangePending* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->session);
@@ -33873,7 +33796,7 @@ static void cleanup(const XrViewConfigurationView* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->recommendedImageRectWidth);
@@ -33891,7 +33814,7 @@ static void cleanup(const XrSpaceLocation* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->locationFlags);
@@ -33905,7 +33828,7 @@ static void cleanup(const XrSpaceVelocity* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->velocityFlags);
@@ -33920,7 +33843,7 @@ static void cleanup(const XrFrameState* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->predictedDisplayTime);
@@ -33935,7 +33858,7 @@ static void cleanup(const XrViewConfigurationProperties* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewConfigurationType);
@@ -33949,7 +33872,7 @@ static void cleanup(const XrFrameBeginInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -33961,7 +33884,7 @@ static void cleanup(const XrCompositionLayerProjectionView* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->pose);
@@ -33976,7 +33899,7 @@ static void cleanup(const XrEventDataEventsLost* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->lostEventCount);
@@ -33989,7 +33912,7 @@ static void cleanup(const XrInteractionProfileSuggestedBinding* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->interactionProfile);
@@ -33999,7 +33922,7 @@ static void cleanup(const XrInteractionProfileSuggestedBinding* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->suggestedBindings[i]);
         }
-        delete s->suggestedBindings;
+        delete[] s->suggestedBindings;
 
     }
 }
@@ -34011,7 +33934,7 @@ static void cleanup(const XrEventDataInteractionProfileChanged* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->session);
@@ -34024,7 +33947,7 @@ static void cleanup(const XrInteractionProfileState* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->interactionProfile);
@@ -34037,7 +33960,7 @@ static void cleanup(const XrSwapchainImageAcquireInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -34049,7 +33972,7 @@ static void cleanup(const XrSwapchainImageWaitInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->timeout);
@@ -34062,7 +33985,7 @@ static void cleanup(const XrSwapchainImageReleaseInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -34074,7 +33997,7 @@ static void cleanup(const XrActionStateGetInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->action);
@@ -34088,7 +34011,7 @@ static void cleanup(const XrHapticActionInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->action);
@@ -34102,7 +34025,7 @@ static void cleanup(const XrSessionActionSetsAttachInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->countActionSets);
@@ -34111,7 +34034,7 @@ static void cleanup(const XrSessionActionSetsAttachInfo* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->actionSets[i]);
         }
-        delete s->actionSets;
+        delete[] s->actionSets;
 
     }
 }
@@ -34123,7 +34046,7 @@ static void cleanup(const XrActionsSyncInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->countActiveActionSets);
@@ -34132,7 +34055,7 @@ static void cleanup(const XrActionsSyncInfo* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->activeActionSets[i]);
         }
-        delete s->activeActionSets;
+        delete[] s->activeActionSets;
 
     }
 }
@@ -34144,7 +34067,7 @@ static void cleanup(const XrBoundSourcesForActionEnumerateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->action);
@@ -34157,7 +34080,7 @@ static void cleanup(const XrInputSourceLocalizedNameGetInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->sourcePath);
@@ -34173,7 +34096,7 @@ static void cleanup(const XrCompositionLayerCubeKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -34194,16 +34117,16 @@ static void cleanup(const XrInstanceCreateInfoAndroidKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->applicationVM != nullptr) {
         cleanup(s->applicationVM);
-        delete s->applicationVM;
+        delete[] s->applicationVM;
     }
     if (s->applicationActivity != nullptr) {
         cleanup(s->applicationActivity);
-        delete s->applicationActivity;
+        delete[] s->applicationActivity;
     }
 }
 
@@ -34217,7 +34140,7 @@ static void cleanup(const XrCompositionLayerDepthInfoKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->subImage);
@@ -34237,7 +34160,7 @@ static void cleanup(const XrVulkanSwapchainFormatListCreateInfoKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewFormatCount);
@@ -34246,7 +34169,7 @@ static void cleanup(const XrVulkanSwapchainFormatListCreateInfoKHR* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->viewFormats[i]);
         }
-        delete s->viewFormats;
+        delete[] s->viewFormats;
 
     }
 }
@@ -34261,7 +34184,7 @@ static void cleanup(const XrEventDataPerfSettingsEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->domain);
@@ -34280,7 +34203,7 @@ static void cleanup(const XrCompositionLayerCylinderKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -34303,7 +34226,7 @@ static void cleanup(const XrCompositionLayerEquirectKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -34326,7 +34249,7 @@ static void cleanup(const XrDebugUtilsObjectNameInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->objectType);
@@ -34336,7 +34259,7 @@ static void cleanup(const XrDebugUtilsObjectNameInfoEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->objectName[i]);
         }
-        delete s->objectName;
+        delete[] s->objectName;
 
     }
 }
@@ -34348,7 +34271,7 @@ static void cleanup(const XrDebugUtilsMessengerCallbackDataEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->messageId != nullptr) {
@@ -34356,7 +34279,7 @@ static void cleanup(const XrDebugUtilsMessengerCallbackDataEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->messageId[i]);
         }
-        delete s->messageId;
+        delete[] s->messageId;
 
     }
     if (s->functionName != nullptr) {
@@ -34364,7 +34287,7 @@ static void cleanup(const XrDebugUtilsMessengerCallbackDataEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->functionName[i]);
         }
-        delete s->functionName;
+        delete[] s->functionName;
 
     }
     if (s->message != nullptr) {
@@ -34372,7 +34295,7 @@ static void cleanup(const XrDebugUtilsMessengerCallbackDataEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->message[i]);
         }
-        delete s->message;
+        delete[] s->message;
 
     }
     cleanup(&s->objectCount);
@@ -34381,7 +34304,7 @@ static void cleanup(const XrDebugUtilsMessengerCallbackDataEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->objects[i]);
         }
-        delete s->objects;
+        delete[] s->objects;
 
     }
     cleanup(&s->sessionLabelCount);
@@ -34390,7 +34313,7 @@ static void cleanup(const XrDebugUtilsMessengerCallbackDataEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->sessionLabels[i]);
         }
-        delete s->sessionLabels;
+        delete[] s->sessionLabels;
 
     }
 }
@@ -34402,7 +34325,7 @@ static void cleanup(const XrDebugUtilsMessengerCreateInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->messageSeverities);
@@ -34410,7 +34333,7 @@ static void cleanup(const XrDebugUtilsMessengerCreateInfoEXT* s) {
     cleanup(&s->userCallback);
     if (s->userData != nullptr) {
         cleanup(s->userData);
-        delete s->userData;
+        delete[] s->userData;
     }
 }
 
@@ -34421,7 +34344,7 @@ static void cleanup(const XrDebugUtilsLabelEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->labelName != nullptr) {
@@ -34429,7 +34352,7 @@ static void cleanup(const XrDebugUtilsLabelEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->labelName[i]);
         }
-        delete s->labelName;
+        delete[] s->labelName;
 
     }
 }
@@ -34444,7 +34367,7 @@ static void cleanup(const XrGraphicsBindingOpenGLWin32KHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->hDC);
@@ -34458,12 +34381,12 @@ static void cleanup(const XrGraphicsBindingOpenGLXlibKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->xDisplay != nullptr) {
         cleanup(s->xDisplay);
-        delete s->xDisplay;
+        delete[] s->xDisplay;
     }
     cleanup(&s->visualid);
     cleanup(&s->glxFBConfig);
@@ -34478,12 +34401,12 @@ static void cleanup(const XrGraphicsBindingOpenGLXcbKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->connection != nullptr) {
         cleanup(s->connection);
-        delete s->connection;
+        delete[] s->connection;
     }
     cleanup(&s->screenNumber);
     cleanup(&s->fbconfigid);
@@ -34499,12 +34422,12 @@ static void cleanup(const XrGraphicsBindingOpenGLWaylandKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->display != nullptr) {
         cleanup(s->display);
-        delete s->display;
+        delete[] s->display;
     }
 }
 
@@ -34515,7 +34438,7 @@ static void cleanup(const XrSwapchainImageOpenGLKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->image);
@@ -34528,7 +34451,7 @@ static void cleanup(const XrGraphicsRequirementsOpenGLKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->minApiVersionSupported);
@@ -34545,7 +34468,7 @@ static void cleanup(const XrGraphicsBindingOpenGLESAndroidKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->display);
@@ -34560,7 +34483,7 @@ static void cleanup(const XrSwapchainImageOpenGLESKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->image);
@@ -34573,7 +34496,7 @@ static void cleanup(const XrGraphicsRequirementsOpenGLESKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->minApiVersionSupported);
@@ -34590,7 +34513,7 @@ static void cleanup(const XrGraphicsBindingVulkanKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->instance);
@@ -34607,7 +34530,7 @@ static void cleanup(const XrSwapchainImageVulkanKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->image);
@@ -34620,7 +34543,7 @@ static void cleanup(const XrGraphicsRequirementsVulkanKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->minApiVersionSupported);
@@ -34637,12 +34560,12 @@ static void cleanup(const XrGraphicsBindingD3D11KHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->device != nullptr) {
         cleanup(s->device);
-        delete s->device;
+        delete[] s->device;
     }
 }
 
@@ -34653,12 +34576,12 @@ static void cleanup(const XrSwapchainImageD3D11KHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->texture != nullptr) {
         cleanup(s->texture);
-        delete s->texture;
+        delete[] s->texture;
     }
 }
 
@@ -34669,7 +34592,7 @@ static void cleanup(const XrGraphicsRequirementsD3D11KHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->adapterLuid);
@@ -34686,16 +34609,16 @@ static void cleanup(const XrGraphicsBindingD3D12KHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->device != nullptr) {
         cleanup(s->device);
-        delete s->device;
+        delete[] s->device;
     }
     if (s->queue != nullptr) {
         cleanup(s->queue);
-        delete s->queue;
+        delete[] s->queue;
     }
 }
 
@@ -34706,12 +34629,12 @@ static void cleanup(const XrSwapchainImageD3D12KHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->texture != nullptr) {
         cleanup(s->texture);
-        delete s->texture;
+        delete[] s->texture;
     }
 }
 
@@ -34722,7 +34645,7 @@ static void cleanup(const XrGraphicsRequirementsD3D12KHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->adapterLuid);
@@ -34739,12 +34662,12 @@ static void cleanup(const XrGraphicsBindingMetalKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->commandQueue != nullptr) {
         cleanup(s->commandQueue);
-        delete s->commandQueue;
+        delete[] s->commandQueue;
     }
 }
 
@@ -34755,12 +34678,12 @@ static void cleanup(const XrSwapchainImageMetalKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->texture != nullptr) {
         cleanup(s->texture);
-        delete s->texture;
+        delete[] s->texture;
     }
 }
 
@@ -34771,12 +34694,12 @@ static void cleanup(const XrGraphicsRequirementsMetalKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->metalDevice != nullptr) {
         cleanup(s->metalDevice);
-        delete s->metalDevice;
+        delete[] s->metalDevice;
     }
 }
 
@@ -34790,7 +34713,7 @@ static void cleanup(const XrSystemEyeGazeInteractionPropertiesEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsEyeGazeInteraction);
@@ -34803,7 +34726,7 @@ static void cleanup(const XrEyeGazeSampleTimeEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->time);
@@ -34819,7 +34742,7 @@ static void cleanup(const XrVisibilityMaskKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vertexCapacityInput);
@@ -34829,7 +34752,7 @@ static void cleanup(const XrVisibilityMaskKHR* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
     cleanup(&s->indexCapacityInput);
@@ -34839,7 +34762,7 @@ static void cleanup(const XrVisibilityMaskKHR* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indices[i]);
         }
-        delete s->indices;
+        delete[] s->indices;
 
     }
 }
@@ -34851,7 +34774,7 @@ static void cleanup(const XrEventDataVisibilityMaskChangedKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->session);
@@ -34869,7 +34792,7 @@ static void cleanup(const XrSessionCreateInfoOverlayEXTX* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->createFlags);
@@ -34883,7 +34806,7 @@ static void cleanup(const XrEventDataMainSessionVisibilityChangedEXTX* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->visible);
@@ -34900,7 +34823,7 @@ static void cleanup(const XrCompositionLayerColorScaleBiasKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->colorScale);
@@ -34917,7 +34840,7 @@ static void cleanup(const XrSpatialAnchorCreateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->space);
@@ -34932,7 +34855,7 @@ static void cleanup(const XrSpatialAnchorSpaceCreateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->anchor);
@@ -34949,7 +34872,7 @@ static void cleanup(const XrCompositionLayerImageLayoutFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -34965,7 +34888,7 @@ static void cleanup(const XrCompositionLayerAlphaBlendFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->srcFactorColor);
@@ -34984,7 +34907,7 @@ static void cleanup(const XrViewConfigurationDepthRangeEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->recommendedNearZ);
@@ -35003,7 +34926,7 @@ static void cleanup(const XrGraphicsBindingEGLMNDX* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->getProcAddress);
@@ -35022,7 +34945,7 @@ static void cleanup(const XrSpatialGraphNodeSpaceCreateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->nodeType);
@@ -35040,7 +34963,7 @@ static void cleanup(const XrSpatialGraphStaticNodeBindingCreateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->space);
@@ -35055,7 +34978,7 @@ static void cleanup(const XrSpatialGraphNodeBindingPropertiesGetInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -35067,7 +34990,7 @@ static void cleanup(const XrSpatialGraphNodeBindingPropertiesMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -35087,7 +35010,7 @@ static void cleanup(const XrSystemHandTrackingPropertiesEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsHandTracking);
@@ -35100,7 +35023,7 @@ static void cleanup(const XrHandTrackerCreateInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->hand);
@@ -35114,7 +35037,7 @@ static void cleanup(const XrHandJointsLocateInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -35128,7 +35051,7 @@ static void cleanup(const XrHandJointLocationsEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->isActive);
@@ -35138,7 +35061,7 @@ static void cleanup(const XrHandJointLocationsEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->jointLocations[i]);
         }
-        delete s->jointLocations;
+        delete[] s->jointLocations;
 
     }
 }
@@ -35150,7 +35073,7 @@ static void cleanup(const XrHandJointVelocitiesEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->jointCount);
@@ -35159,7 +35082,7 @@ static void cleanup(const XrHandJointVelocitiesEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->jointVelocities[i]);
         }
-        delete s->jointVelocities;
+        delete[] s->jointVelocities;
 
     }
 }
@@ -35174,7 +35097,7 @@ static void cleanup(const XrSystemHandTrackingMeshPropertiesMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsHandTrackingMesh);
@@ -35189,7 +35112,7 @@ static void cleanup(const XrHandMeshSpaceCreateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->handPoseType);
@@ -35203,7 +35126,7 @@ static void cleanup(const XrHandMeshUpdateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->time);
@@ -35217,7 +35140,7 @@ static void cleanup(const XrHandMeshMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->isActive);
@@ -35234,7 +35157,7 @@ static void cleanup(const XrHandPoseTypeInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->handPoseType);
@@ -35250,7 +35173,7 @@ static void cleanup(const XrSecondaryViewConfigurationSessionBeginInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewConfigurationCount);
@@ -35259,7 +35182,7 @@ static void cleanup(const XrSecondaryViewConfigurationSessionBeginInfoMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->enabledViewConfigurationTypes[i]);
         }
-        delete s->enabledViewConfigurationTypes;
+        delete[] s->enabledViewConfigurationTypes;
 
     }
 }
@@ -35271,7 +35194,7 @@ static void cleanup(const XrSecondaryViewConfigurationStateMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewConfigurationType);
@@ -35285,7 +35208,7 @@ static void cleanup(const XrSecondaryViewConfigurationFrameStateMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewConfigurationCount);
@@ -35294,7 +35217,7 @@ static void cleanup(const XrSecondaryViewConfigurationFrameStateMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->viewConfigurationStates[i]);
         }
-        delete s->viewConfigurationStates;
+        delete[] s->viewConfigurationStates;
 
     }
 }
@@ -35306,7 +35229,7 @@ static void cleanup(const XrSecondaryViewConfigurationFrameEndInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewConfigurationCount);
@@ -35315,7 +35238,7 @@ static void cleanup(const XrSecondaryViewConfigurationFrameEndInfoMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->viewConfigurationLayersInfo[i]);
         }
-        delete s->viewConfigurationLayersInfo;
+        delete[] s->viewConfigurationLayersInfo;
 
     }
 }
@@ -35327,7 +35250,7 @@ static void cleanup(const XrSecondaryViewConfigurationLayerInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewConfigurationType);
@@ -35343,7 +35266,7 @@ static void cleanup(const XrSecondaryViewConfigurationSwapchainCreateInfoMSFT* s
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->viewConfigurationType);
@@ -35359,7 +35282,7 @@ static void cleanup(const XrControllerModelKeyStateMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->modelKey);
@@ -35372,7 +35295,7 @@ static void cleanup(const XrControllerModelNodePropertiesMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -35392,7 +35315,7 @@ static void cleanup(const XrControllerModelPropertiesMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->nodeCapacityInput);
@@ -35402,7 +35325,7 @@ static void cleanup(const XrControllerModelPropertiesMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->nodeProperties[i]);
         }
-        delete s->nodeProperties;
+        delete[] s->nodeProperties;
 
     }
 }
@@ -35414,7 +35337,7 @@ static void cleanup(const XrControllerModelNodeStateMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->nodePose);
@@ -35427,7 +35350,7 @@ static void cleanup(const XrControllerModelStateMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->nodeCapacityInput);
@@ -35437,7 +35360,7 @@ static void cleanup(const XrControllerModelStateMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->nodeStates[i]);
         }
-        delete s->nodeStates;
+        delete[] s->nodeStates;
 
     }
 }
@@ -35452,7 +35375,7 @@ static void cleanup(const XrViewConfigurationViewFovEPIC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->recommendedFov);
@@ -35469,16 +35392,16 @@ static void cleanup(const XrHolographicWindowAttachmentMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->holographicSpace != nullptr) {
         cleanup(s->holographicSpace);
-        delete s->holographicSpace;
+        delete[] s->holographicSpace;
     }
     if (s->coreWindow != nullptr) {
         cleanup(s->coreWindow);
-        delete s->coreWindow;
+        delete[] s->coreWindow;
     }
 }
 
@@ -35492,7 +35415,7 @@ static void cleanup(const XrCompositionLayerReprojectionInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->reprojectionMode);
@@ -35505,7 +35428,7 @@ static void cleanup(const XrCompositionLayerReprojectionPlaneOverrideMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->position);
@@ -35523,7 +35446,7 @@ static void cleanup(const XrAndroidSurfaceSwapchainCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->createFlags);
@@ -35539,7 +35462,7 @@ static void cleanup(const XrCompositionLayerSecureContentFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -35555,7 +35478,7 @@ static void cleanup(const XrBodyTrackerCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->bodyJointSet);
@@ -35568,7 +35491,7 @@ static void cleanup(const XrBodyJointsLocateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -35582,7 +35505,7 @@ static void cleanup(const XrSystemBodyTrackingPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsBodyTracking);
@@ -35595,7 +35518,7 @@ static void cleanup(const XrBodyJointLocationsFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->isActive);
@@ -35606,7 +35529,7 @@ static void cleanup(const XrBodyJointLocationsFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->jointLocations[i]);
         }
-        delete s->jointLocations;
+        delete[] s->jointLocations;
 
     }
     cleanup(&s->skeletonChangedCount);
@@ -35620,7 +35543,7 @@ static void cleanup(const XrBodySkeletonFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->jointCount);
@@ -35629,7 +35552,7 @@ static void cleanup(const XrBodySkeletonFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->joints[i]);
         }
-        delete s->joints;
+        delete[] s->joints;
 
     }
 }
@@ -35644,7 +35567,7 @@ static void cleanup(const XrInteractionProfileDpadBindingEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->binding);
@@ -35656,11 +35579,11 @@ static void cleanup(const XrInteractionProfileDpadBindingEXT* s) {
     cleanup(&s->isSticky);
     if (s->onHaptic != nullptr) {
         cleanup(s->onHaptic);
-        delete s->onHaptic;
+        delete[] s->onHaptic;
     }
     if (s->offHaptic != nullptr) {
         cleanup(s->offHaptic);
-        delete s->offHaptic;
+        delete[] s->offHaptic;
     }
 }
 
@@ -35674,7 +35597,7 @@ static void cleanup(const XrInteractionProfileAnalogThresholdVALVE* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->action);
@@ -35683,11 +35606,11 @@ static void cleanup(const XrInteractionProfileAnalogThresholdVALVE* s) {
     cleanup(&s->offThreshold);
     if (s->onHaptic != nullptr) {
         cleanup(s->onHaptic);
-        delete s->onHaptic;
+        delete[] s->onHaptic;
     }
     if (s->offHaptic != nullptr) {
         cleanup(s->offHaptic);
-        delete s->offHaptic;
+        delete[] s->offHaptic;
     }
 }
 
@@ -35701,7 +35624,7 @@ static void cleanup(const XrHandJointsMotionRangeInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->handJointsMotionRange);
@@ -35717,16 +35640,16 @@ static void cleanup(const XrLoaderInitInfoAndroidKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->applicationVM != nullptr) {
         cleanup(s->applicationVM);
-        delete s->applicationVM;
+        delete[] s->applicationVM;
     }
     if (s->applicationContext != nullptr) {
         cleanup(s->applicationContext);
-        delete s->applicationContext;
+        delete[] s->applicationContext;
     }
 }
 
@@ -35740,7 +35663,7 @@ static void cleanup(const XrVulkanInstanceCreateInfoKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->systemId);
@@ -35748,11 +35671,11 @@ static void cleanup(const XrVulkanInstanceCreateInfoKHR* s) {
     cleanup(&s->pfnGetInstanceProcAddr);
     if (s->vulkanCreateInfo != nullptr) {
         cleanup(s->vulkanCreateInfo);
-        delete s->vulkanCreateInfo;
+        delete[] s->vulkanCreateInfo;
     }
     if (s->vulkanAllocator != nullptr) {
         cleanup(s->vulkanAllocator);
-        delete s->vulkanAllocator;
+        delete[] s->vulkanAllocator;
     }
 }
 
@@ -35763,7 +35686,7 @@ static void cleanup(const XrVulkanDeviceCreateInfoKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->systemId);
@@ -35772,11 +35695,11 @@ static void cleanup(const XrVulkanDeviceCreateInfoKHR* s) {
     cleanup(&s->vulkanPhysicalDevice);
     if (s->vulkanCreateInfo != nullptr) {
         cleanup(s->vulkanCreateInfo);
-        delete s->vulkanCreateInfo;
+        delete[] s->vulkanCreateInfo;
     }
     if (s->vulkanAllocator != nullptr) {
         cleanup(s->vulkanAllocator);
-        delete s->vulkanAllocator;
+        delete[] s->vulkanAllocator;
     }
 }
 
@@ -35787,7 +35710,7 @@ static void cleanup(const XrVulkanGraphicsDeviceGetInfoKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->systemId);
@@ -35804,7 +35727,7 @@ static void cleanup(const XrCompositionLayerEquirect2KHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -35828,7 +35751,7 @@ static void cleanup(const XrSceneObserverCreateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -35840,7 +35763,7 @@ static void cleanup(const XrSceneCreateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -35852,7 +35775,7 @@ static void cleanup(const XrNewSceneComputeInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestedFeatureCount);
@@ -35861,7 +35784,7 @@ static void cleanup(const XrNewSceneComputeInfoMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->requestedFeatures[i]);
         }
-        delete s->requestedFeatures;
+        delete[] s->requestedFeatures;
 
     }
     cleanup(&s->consistency);
@@ -35875,7 +35798,7 @@ static void cleanup(const XrVisualMeshComputeLodInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->lod);
@@ -35888,7 +35811,7 @@ static void cleanup(const XrSceneComponentsMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->componentCapacityInput);
@@ -35898,7 +35821,7 @@ static void cleanup(const XrSceneComponentsMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->components[i]);
         }
-        delete s->components;
+        delete[] s->components;
 
     }
 }
@@ -35910,7 +35833,7 @@ static void cleanup(const XrSceneComponentsGetInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->componentType);
@@ -35923,7 +35846,7 @@ static void cleanup(const XrSceneComponentLocationsMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->locationCount);
@@ -35932,7 +35855,7 @@ static void cleanup(const XrSceneComponentLocationsMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->locations[i]);
         }
-        delete s->locations;
+        delete[] s->locations;
 
     }
 }
@@ -35944,7 +35867,7 @@ static void cleanup(const XrSceneComponentsLocateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -35955,7 +35878,7 @@ static void cleanup(const XrSceneComponentsLocateInfoMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->componentIds[i]);
         }
-        delete s->componentIds;
+        delete[] s->componentIds;
 
     }
 }
@@ -35967,7 +35890,7 @@ static void cleanup(const XrSceneObjectsMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->sceneObjectCount);
@@ -35976,7 +35899,7 @@ static void cleanup(const XrSceneObjectsMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->sceneObjects[i]);
         }
-        delete s->sceneObjects;
+        delete[] s->sceneObjects;
 
     }
 }
@@ -35988,7 +35911,7 @@ static void cleanup(const XrSceneComponentParentFilterInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->parentId);
@@ -36001,7 +35924,7 @@ static void cleanup(const XrSceneObjectTypesFilterInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->objectTypeCount);
@@ -36010,7 +35933,7 @@ static void cleanup(const XrSceneObjectTypesFilterInfoMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->objectTypes[i]);
         }
-        delete s->objectTypes;
+        delete[] s->objectTypes;
 
     }
 }
@@ -36022,7 +35945,7 @@ static void cleanup(const XrScenePlanesMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->scenePlaneCount);
@@ -36031,7 +35954,7 @@ static void cleanup(const XrScenePlanesMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->scenePlanes[i]);
         }
-        delete s->scenePlanes;
+        delete[] s->scenePlanes;
 
     }
 }
@@ -36043,7 +35966,7 @@ static void cleanup(const XrScenePlaneAlignmentFilterInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->alignmentCount);
@@ -36052,7 +35975,7 @@ static void cleanup(const XrScenePlaneAlignmentFilterInfoMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->alignments[i]);
         }
-        delete s->alignments;
+        delete[] s->alignments;
 
     }
 }
@@ -36064,7 +35987,7 @@ static void cleanup(const XrSceneMeshesMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->sceneMeshCount);
@@ -36073,7 +35996,7 @@ static void cleanup(const XrSceneMeshesMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->sceneMeshes[i]);
         }
-        delete s->sceneMeshes;
+        delete[] s->sceneMeshes;
 
     }
 }
@@ -36085,7 +36008,7 @@ static void cleanup(const XrSceneMeshBuffersGetInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->meshBufferId);
@@ -36098,7 +36021,7 @@ static void cleanup(const XrSceneMeshBuffersMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -36110,7 +36033,7 @@ static void cleanup(const XrSceneMeshVertexBufferMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vertexCapacityInput);
@@ -36120,7 +36043,7 @@ static void cleanup(const XrSceneMeshVertexBufferMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
 }
@@ -36132,7 +36055,7 @@ static void cleanup(const XrSceneMeshIndicesUint32MSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->indexCapacityInput);
@@ -36142,7 +36065,7 @@ static void cleanup(const XrSceneMeshIndicesUint32MSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indices[i]);
         }
-        delete s->indices;
+        delete[] s->indices;
 
     }
 }
@@ -36154,7 +36077,7 @@ static void cleanup(const XrSceneMeshIndicesUint16MSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->indexCapacityInput);
@@ -36164,7 +36087,7 @@ static void cleanup(const XrSceneMeshIndicesUint16MSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indices[i]);
         }
-        delete s->indices;
+        delete[] s->indices;
 
     }
 }
@@ -36179,7 +36102,7 @@ static void cleanup(const XrSerializedSceneFragmentDataGetInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->sceneFragmentId);
@@ -36192,7 +36115,7 @@ static void cleanup(const XrSceneDeserializeInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->fragmentCount);
@@ -36201,7 +36124,7 @@ static void cleanup(const XrSceneDeserializeInfoMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->fragments[i]);
         }
-        delete s->fragments;
+        delete[] s->fragments;
 
     }
 }
@@ -36216,7 +36139,7 @@ static void cleanup(const XrEventDataDisplayRefreshRateChangedFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->fromDisplayRefreshRate);
@@ -36233,7 +36156,7 @@ static void cleanup(const XrViveTrackerPathsHTCX* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->persistentPath);
@@ -36247,12 +36170,12 @@ static void cleanup(const XrEventDataViveTrackerConnectedHTCX* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->paths != nullptr) {
         cleanup(s->paths);
-        delete s->paths;
+        delete[] s->paths;
     }
 }
 
@@ -36266,7 +36189,7 @@ static void cleanup(const XrSystemFacialTrackingPropertiesHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportEyeFacialTracking);
@@ -36280,7 +36203,7 @@ static void cleanup(const XrFacialTrackerCreateInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->facialTrackingType);
@@ -36293,7 +36216,7 @@ static void cleanup(const XrFacialExpressionsHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->isActive);
@@ -36301,7 +36224,7 @@ static void cleanup(const XrFacialExpressionsHTC* s) {
     cleanup(&s->expressionCount);
     if (s->expressionWeightings != nullptr) {
         cleanup(s->expressionWeightings);
-        delete s->expressionWeightings;
+        delete[] s->expressionWeightings;
     }
 }
 
@@ -36315,7 +36238,7 @@ static void cleanup(const XrSystemColorSpacePropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->colorSpace);
@@ -36331,7 +36254,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->jointCapacityInput);
@@ -36341,7 +36264,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->jointBindPoses[i]);
         }
-        delete s->jointBindPoses;
+        delete[] s->jointBindPoses;
 
     }
     if (s->jointRadii != nullptr) {
@@ -36349,7 +36272,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->jointRadii[i]);
         }
-        delete s->jointRadii;
+        delete[] s->jointRadii;
 
     }
     if (s->jointParents != nullptr) {
@@ -36357,7 +36280,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->jointParents[i]);
         }
-        delete s->jointParents;
+        delete[] s->jointParents;
 
     }
     cleanup(&s->vertexCapacityInput);
@@ -36367,7 +36290,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertexPositions[i]);
         }
-        delete s->vertexPositions;
+        delete[] s->vertexPositions;
 
     }
     if (s->vertexNormals != nullptr) {
@@ -36375,7 +36298,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertexNormals[i]);
         }
-        delete s->vertexNormals;
+        delete[] s->vertexNormals;
 
     }
     if (s->vertexUVs != nullptr) {
@@ -36383,7 +36306,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertexUVs[i]);
         }
-        delete s->vertexUVs;
+        delete[] s->vertexUVs;
 
     }
     if (s->vertexBlendIndices != nullptr) {
@@ -36391,7 +36314,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertexBlendIndices[i]);
         }
-        delete s->vertexBlendIndices;
+        delete[] s->vertexBlendIndices;
 
     }
     if (s->vertexBlendWeights != nullptr) {
@@ -36399,7 +36322,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertexBlendWeights[i]);
         }
-        delete s->vertexBlendWeights;
+        delete[] s->vertexBlendWeights;
 
     }
     cleanup(&s->indexCapacityInput);
@@ -36409,7 +36332,7 @@ static void cleanup(const XrHandTrackingMeshFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indices[i]);
         }
-        delete s->indices;
+        delete[] s->indices;
 
     }
 }
@@ -36421,7 +36344,7 @@ static void cleanup(const XrHandTrackingScaleFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->sensorOutput);
@@ -36440,7 +36363,7 @@ static void cleanup(const XrHandTrackingAimStateFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->status);
@@ -36461,7 +36384,7 @@ static void cleanup(const XrHandTrackingCapsulesStateFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -36480,7 +36403,7 @@ static void cleanup(const XrSpaceComponentStatusFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->enabled);
@@ -36494,7 +36417,7 @@ static void cleanup(const XrSpatialAnchorCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->space);
@@ -36509,7 +36432,7 @@ static void cleanup(const XrSystemSpatialEntityPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSpatialEntity);
@@ -36522,7 +36445,7 @@ static void cleanup(const XrEventDataSpatialAnchorCreateCompleteFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -36538,7 +36461,7 @@ static void cleanup(const XrEventDataSpaceSetStatusCompleteFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -36556,7 +36479,7 @@ static void cleanup(const XrSpaceComponentStatusSetInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->componentType);
@@ -36574,7 +36497,7 @@ static void cleanup(const XrFoveationProfileCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -36586,7 +36509,7 @@ static void cleanup(const XrSwapchainCreateInfoFoveationFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -36599,7 +36522,7 @@ static void cleanup(const XrSwapchainStateFoveationFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -36616,7 +36539,7 @@ static void cleanup(const XrFoveationLevelProfileCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->level);
@@ -36634,7 +36557,7 @@ static void cleanup(const XrSystemKeyboardTrackingPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsKeyboardTracking);
@@ -36647,7 +36570,7 @@ static void cleanup(const XrKeyboardTrackingQueryFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -36660,7 +36583,7 @@ static void cleanup(const XrKeyboardSpaceCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->trackedKeyboardId);
@@ -36676,7 +36599,7 @@ static void cleanup(const XrTriangleMeshCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -36684,12 +36607,12 @@ static void cleanup(const XrTriangleMeshCreateInfoFB* s) {
     cleanup(&s->vertexCount);
     if (s->vertexBuffer != nullptr) {
         cleanup(s->vertexBuffer);
-        delete s->vertexBuffer;
+        delete[] s->vertexBuffer;
     }
     cleanup(&s->triangleCount);
     if (s->indexBuffer != nullptr) {
         cleanup(s->indexBuffer);
-        delete s->indexBuffer;
+        delete[] s->indexBuffer;
     }
 }
 
@@ -36703,7 +36626,7 @@ static void cleanup(const XrSystemPassthroughPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsPassthrough);
@@ -36716,7 +36639,7 @@ static void cleanup(const XrPassthroughCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -36729,7 +36652,7 @@ static void cleanup(const XrPassthroughLayerCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->passthrough);
@@ -36744,7 +36667,7 @@ static void cleanup(const XrCompositionLayerPassthroughFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -36759,7 +36682,7 @@ static void cleanup(const XrGeometryInstanceCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layer);
@@ -36776,7 +36699,7 @@ static void cleanup(const XrGeometryInstanceTransformFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -36792,7 +36715,7 @@ static void cleanup(const XrSystemPassthroughProperties2FB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->capabilities);
@@ -36805,7 +36728,7 @@ static void cleanup(const XrPassthroughStyleFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->textureOpacityFactor);
@@ -36819,7 +36742,7 @@ static void cleanup(const XrPassthroughColorMapMonoToRgbaFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -36835,7 +36758,7 @@ static void cleanup(const XrPassthroughColorMapMonoToMonoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -36851,7 +36774,7 @@ static void cleanup(const XrPassthroughBrightnessContrastSaturationFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->brightness);
@@ -36866,7 +36789,7 @@ static void cleanup(const XrEventDataPassthroughStateChangedFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -36882,7 +36805,7 @@ static void cleanup(const XrRenderModelPathInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->path);
@@ -36895,7 +36818,7 @@ static void cleanup(const XrRenderModelPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vendorId);
@@ -36915,7 +36838,7 @@ static void cleanup(const XrRenderModelBufferFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->bufferCapacityInput);
@@ -36925,7 +36848,7 @@ static void cleanup(const XrRenderModelBufferFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->buffer[i]);
         }
-        delete s->buffer;
+        delete[] s->buffer;
 
     }
 }
@@ -36937,7 +36860,7 @@ static void cleanup(const XrRenderModelLoadInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->modelKey);
@@ -36950,7 +36873,7 @@ static void cleanup(const XrSystemRenderModelPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsRenderModelLoading);
@@ -36963,7 +36886,7 @@ static void cleanup(const XrRenderModelCapabilitiesRequestFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -36979,7 +36902,7 @@ static void cleanup(const XrBindingModificationsKHR* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->bindingModificationCount);
@@ -36996,7 +36919,7 @@ static void cleanup(const XrViewLocateFoveatedRenderingVARJO* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->foveatedRenderingActive);
@@ -37009,7 +36932,7 @@ static void cleanup(const XrFoveatedViewConfigurationViewVARJO* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->foveatedRenderingActive);
@@ -37022,7 +36945,7 @@ static void cleanup(const XrSystemFoveatedRenderingPropertiesVARJO* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsFoveatedRendering);
@@ -37038,7 +36961,7 @@ static void cleanup(const XrCompositionLayerDepthTestVARJO* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->depthTestRangeNearZ);
@@ -37055,7 +36978,7 @@ static void cleanup(const XrSystemMarkerTrackingPropertiesVARJO* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsMarkerTracking);
@@ -37068,7 +36991,7 @@ static void cleanup(const XrEventDataMarkerTrackingUpdateVARJO* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->markerId);
@@ -37084,7 +37007,7 @@ static void cleanup(const XrMarkerSpaceCreateInfoVARJO* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->markerId);
@@ -37101,7 +37024,7 @@ static void cleanup(const XrFrameEndInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->focusDistance);
@@ -37118,7 +37041,7 @@ static void cleanup(const XrGlobalDimmerFrameEndInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->dimmerValue);
@@ -37135,7 +37058,7 @@ static void cleanup(const XrCoordinateSpaceCreateInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->cfuid);
@@ -37152,7 +37075,7 @@ static void cleanup(const XrSystemMarkerUnderstandingPropertiesML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsMarkerUnderstanding);
@@ -37165,7 +37088,7 @@ static void cleanup(const XrMarkerDetectorCreateInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->profile);
@@ -37179,7 +37102,7 @@ static void cleanup(const XrMarkerDetectorArucoInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->arucoDict);
@@ -37192,7 +37115,7 @@ static void cleanup(const XrMarkerDetectorSizeInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->markerLength);
@@ -37205,7 +37128,7 @@ static void cleanup(const XrMarkerDetectorAprilTagInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->aprilTagDict);
@@ -37218,7 +37141,7 @@ static void cleanup(const XrMarkerDetectorCustomProfileInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->fpsHint);
@@ -37236,7 +37159,7 @@ static void cleanup(const XrMarkerDetectorSnapshotInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -37248,7 +37171,7 @@ static void cleanup(const XrMarkerDetectorStateML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->state);
@@ -37261,7 +37184,7 @@ static void cleanup(const XrMarkerSpaceCreateInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->markerDetector);
@@ -37279,7 +37202,7 @@ static void cleanup(const XrLocalizationMapML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -37297,7 +37220,7 @@ static void cleanup(const XrEventDataLocalizationChangedML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->session);
@@ -37314,7 +37237,7 @@ static void cleanup(const XrMapLocalizationRequestInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->mapUuid);
@@ -37327,7 +37250,7 @@ static void cleanup(const XrLocalizationMapImportInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->size);
@@ -37336,7 +37259,7 @@ static void cleanup(const XrLocalizationMapImportInfoML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->data[i]);
         }
-        delete s->data;
+        delete[] s->data;
 
     }
 }
@@ -37348,7 +37271,7 @@ static void cleanup(const XrLocalizationEnableEventsInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->enabled);
@@ -37364,7 +37287,7 @@ static void cleanup(const XrSpatialAnchorsCreateInfoFromPoseML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -37379,7 +37302,7 @@ static void cleanup(const XrCreateSpatialAnchorsCompletionML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -37389,7 +37312,7 @@ static void cleanup(const XrCreateSpatialAnchorsCompletionML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->spaces[i]);
         }
-        delete s->spaces;
+        delete[] s->spaces;
 
     }
 }
@@ -37401,7 +37324,7 @@ static void cleanup(const XrSpatialAnchorStateML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->confidence);
@@ -37417,7 +37340,7 @@ static void cleanup(const XrSpatialAnchorsCreateStorageInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -37429,7 +37352,7 @@ static void cleanup(const XrSpatialAnchorsQueryInfoRadiusML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -37445,7 +37368,7 @@ static void cleanup(const XrSpatialAnchorsQueryCompletionML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -37456,7 +37379,7 @@ static void cleanup(const XrSpatialAnchorsQueryCompletionML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->uuids[i]);
         }
-        delete s->uuids;
+        delete[] s->uuids;
 
     }
 }
@@ -37468,7 +37391,7 @@ static void cleanup(const XrSpatialAnchorsCreateInfoFromUuidsML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->storage);
@@ -37478,7 +37401,7 @@ static void cleanup(const XrSpatialAnchorsCreateInfoFromUuidsML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->uuids[i]);
         }
-        delete s->uuids;
+        delete[] s->uuids;
 
     }
 }
@@ -37490,7 +37413,7 @@ static void cleanup(const XrSpatialAnchorsPublishInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->anchorCount);
@@ -37499,7 +37422,7 @@ static void cleanup(const XrSpatialAnchorsPublishInfoML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->anchors[i]);
         }
-        delete s->anchors;
+        delete[] s->anchors;
 
     }
     cleanup(&s->expiration);
@@ -37512,7 +37435,7 @@ static void cleanup(const XrSpatialAnchorsPublishCompletionML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -37522,7 +37445,7 @@ static void cleanup(const XrSpatialAnchorsPublishCompletionML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->uuids[i]);
         }
-        delete s->uuids;
+        delete[] s->uuids;
 
     }
 }
@@ -37534,7 +37457,7 @@ static void cleanup(const XrSpatialAnchorsDeleteInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuidCount);
@@ -37543,7 +37466,7 @@ static void cleanup(const XrSpatialAnchorsDeleteInfoML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->uuids[i]);
         }
-        delete s->uuids;
+        delete[] s->uuids;
 
     }
 }
@@ -37555,7 +37478,7 @@ static void cleanup(const XrSpatialAnchorsDeleteCompletionML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -37568,7 +37491,7 @@ static void cleanup(const XrSpatialAnchorsUpdateExpirationInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuidCount);
@@ -37577,7 +37500,7 @@ static void cleanup(const XrSpatialAnchorsUpdateExpirationInfoML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->uuids[i]);
         }
-        delete s->uuids;
+        delete[] s->uuids;
 
     }
     cleanup(&s->expiration);
@@ -37590,7 +37513,7 @@ static void cleanup(const XrSpatialAnchorsUpdateExpirationCompletionML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -37603,7 +37526,7 @@ static void cleanup(const XrSpatialAnchorsPublishCompletionDetailsML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->resultCount);
@@ -37612,7 +37535,7 @@ static void cleanup(const XrSpatialAnchorsPublishCompletionDetailsML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->results[i]);
         }
-        delete s->results;
+        delete[] s->results;
 
     }
 }
@@ -37624,7 +37547,7 @@ static void cleanup(const XrSpatialAnchorsDeleteCompletionDetailsML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->resultCount);
@@ -37633,7 +37556,7 @@ static void cleanup(const XrSpatialAnchorsDeleteCompletionDetailsML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->results[i]);
         }
-        delete s->results;
+        delete[] s->results;
 
     }
 }
@@ -37645,7 +37568,7 @@ static void cleanup(const XrSpatialAnchorsUpdateExpirationCompletionDetailsML* s
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->resultCount);
@@ -37654,7 +37577,7 @@ static void cleanup(const XrSpatialAnchorsUpdateExpirationCompletionDetailsML* s
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->results[i]);
         }
-        delete s->results;
+        delete[] s->results;
 
     }
 }
@@ -37669,7 +37592,7 @@ static void cleanup(const XrSpatialAnchorPersistenceInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->spatialAnchorPersistenceName);
@@ -37683,7 +37606,7 @@ static void cleanup(const XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->spatialAnchorStore);
@@ -37700,7 +37623,7 @@ static void cleanup(const XrSceneMarkersMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->sceneMarkerCapacityInput);
@@ -37709,7 +37632,7 @@ static void cleanup(const XrSceneMarkersMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->sceneMarkers[i]);
         }
-        delete s->sceneMarkers;
+        delete[] s->sceneMarkers;
 
     }
 }
@@ -37721,7 +37644,7 @@ static void cleanup(const XrSceneMarkerTypeFilterMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->markerTypeCount);
@@ -37730,7 +37653,7 @@ static void cleanup(const XrSceneMarkerTypeFilterMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->markerTypes[i]);
         }
-        delete s->markerTypes;
+        delete[] s->markerTypes;
 
     }
 }
@@ -37742,7 +37665,7 @@ static void cleanup(const XrSceneMarkerQRCodesMSFT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->qrCodeCapacityInput);
@@ -37751,7 +37674,7 @@ static void cleanup(const XrSceneMarkerQRCodesMSFT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->qrCodes[i]);
         }
-        delete s->qrCodes;
+        delete[] s->qrCodes;
 
     }
 }
@@ -37766,7 +37689,7 @@ static void cleanup(const XrSpaceQueryInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->queryAction);
@@ -37774,11 +37697,11 @@ static void cleanup(const XrSpaceQueryInfoFB* s) {
     cleanup(&s->timeout);
     if (s->filter != nullptr) {
         cleanup(s->filter);
-        delete s->filter;
+        delete[] s->filter;
     }
     if (s->excludeFilter != nullptr) {
         cleanup(s->excludeFilter);
-        delete s->excludeFilter;
+        delete[] s->excludeFilter;
     }
 }
 
@@ -37789,7 +37712,7 @@ static void cleanup(const XrSpaceQueryResultsFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->resultCapacityInput);
@@ -37799,7 +37722,7 @@ static void cleanup(const XrSpaceQueryResultsFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->results[i]);
         }
-        delete s->results;
+        delete[] s->results;
 
     }
 }
@@ -37811,7 +37734,7 @@ static void cleanup(const XrSpaceStorageLocationFilterInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->location);
@@ -37824,7 +37747,7 @@ static void cleanup(const XrSpaceComponentFilterInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->componentType);
@@ -37837,7 +37760,7 @@ static void cleanup(const XrSpaceUuidFilterInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuidCount);
@@ -37846,7 +37769,7 @@ static void cleanup(const XrSpaceUuidFilterInfoFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->uuids[i]);
         }
-        delete s->uuids;
+        delete[] s->uuids;
 
     }
 }
@@ -37858,7 +37781,7 @@ static void cleanup(const XrEventDataSpaceQueryResultsAvailableFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -37871,7 +37794,7 @@ static void cleanup(const XrEventDataSpaceQueryCompleteFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -37888,7 +37811,7 @@ static void cleanup(const XrSpaceSaveInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->space);
@@ -37903,7 +37826,7 @@ static void cleanup(const XrSpaceEraseInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->space);
@@ -37917,7 +37840,7 @@ static void cleanup(const XrEventDataSpaceSaveCompleteFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -37934,7 +37857,7 @@ static void cleanup(const XrEventDataSpaceEraseCompleteFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -37954,7 +37877,7 @@ static void cleanup(const XrSwapchainImageFoveationVulkanFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->image);
@@ -37972,7 +37895,7 @@ static void cleanup(const XrSwapchainStateAndroidSurfaceDimensionsFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->width);
@@ -37989,7 +37912,7 @@ static void cleanup(const XrSwapchainStateSamplerOpenGLESFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->minFilter);
@@ -38014,7 +37937,7 @@ static void cleanup(const XrSwapchainStateSamplerVulkanFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->minFilter);
@@ -38040,7 +37963,7 @@ static void cleanup(const XrSpaceShareInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->spaceCount);
@@ -38049,7 +37972,7 @@ static void cleanup(const XrSpaceShareInfoFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->spaces[i]);
         }
-        delete s->spaces;
+        delete[] s->spaces;
 
     }
     cleanup(&s->userCount);
@@ -38058,7 +37981,7 @@ static void cleanup(const XrSpaceShareInfoFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->users[i]);
         }
-        delete s->users;
+        delete[] s->users;
 
     }
 }
@@ -38070,7 +37993,7 @@ static void cleanup(const XrEventDataSpaceShareCompleteFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -38087,7 +38010,7 @@ static void cleanup(const XrCompositionLayerSpaceWarpInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -38107,7 +38030,7 @@ static void cleanup(const XrSystemSpaceWarpPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->recommendedMotionVectorImageRectWidth);
@@ -38124,7 +38047,7 @@ static void cleanup(const XrHapticAmplitudeEnvelopeVibrationFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->duration);
@@ -38134,7 +38057,7 @@ static void cleanup(const XrHapticAmplitudeEnvelopeVibrationFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->amplitudes[i]);
         }
-        delete s->amplitudes;
+        delete[] s->amplitudes;
 
     }
 }
@@ -38149,7 +38072,7 @@ static void cleanup(const XrSemanticLabelsFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->bufferCapacityInput);
@@ -38159,7 +38082,7 @@ static void cleanup(const XrSemanticLabelsFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->buffer[i]);
         }
-        delete s->buffer;
+        delete[] s->buffer;
 
     }
 }
@@ -38171,7 +38094,7 @@ static void cleanup(const XrRoomLayoutFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->floorUuid);
@@ -38183,7 +38106,7 @@ static void cleanup(const XrRoomLayoutFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->wallUuids[i]);
         }
-        delete s->wallUuids;
+        delete[] s->wallUuids;
 
     }
 }
@@ -38195,7 +38118,7 @@ static void cleanup(const XrBoundary2DFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vertexCapacityInput);
@@ -38205,7 +38128,7 @@ static void cleanup(const XrBoundary2DFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
 }
@@ -38217,7 +38140,7 @@ static void cleanup(const XrSemanticLabelsSupportInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -38226,7 +38149,7 @@ static void cleanup(const XrSemanticLabelsSupportInfoFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->recognizedLabels[i]);
         }
-        delete s->recognizedLabels;
+        delete[] s->recognizedLabels;
 
     }
 }
@@ -38241,7 +38164,7 @@ static void cleanup(const XrDigitalLensControlALMALENCE* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -38257,7 +38180,7 @@ static void cleanup(const XrEventDataSceneCaptureCompleteFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -38271,7 +38194,7 @@ static void cleanup(const XrSceneCaptureRequestInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestByteCount);
@@ -38280,7 +38203,7 @@ static void cleanup(const XrSceneCaptureRequestInfoFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->request[i]);
         }
-        delete s->request;
+        delete[] s->request;
 
     }
 }
@@ -38295,7 +38218,7 @@ static void cleanup(const XrSpaceContainerFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuidCapacityInput);
@@ -38305,7 +38228,7 @@ static void cleanup(const XrSpaceContainerFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->uuids[i]);
         }
-        delete s->uuids;
+        delete[] s->uuids;
 
     }
 }
@@ -38320,7 +38243,7 @@ static void cleanup(const XrFoveationEyeTrackedProfileCreateInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -38333,7 +38256,7 @@ static void cleanup(const XrFoveationEyeTrackedStateMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -38350,7 +38273,7 @@ static void cleanup(const XrSystemFoveationEyeTrackedPropertiesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsFoveationEyeTracked);
@@ -38366,7 +38289,7 @@ static void cleanup(const XrFaceExpressionInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->time);
@@ -38379,7 +38302,7 @@ static void cleanup(const XrSystemFaceTrackingPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsFaceTracking);
@@ -38392,7 +38315,7 @@ static void cleanup(const XrFaceTrackerCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->faceExpressionSet);
@@ -38405,7 +38328,7 @@ static void cleanup(const XrFaceExpressionWeightsFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->weightCount);
@@ -38414,7 +38337,7 @@ static void cleanup(const XrFaceExpressionWeightsFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->weights[i]);
         }
-        delete s->weights;
+        delete[] s->weights;
 
     }
     cleanup(&s->confidenceCount);
@@ -38423,7 +38346,7 @@ static void cleanup(const XrFaceExpressionWeightsFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->confidences[i]);
         }
-        delete s->confidences;
+        delete[] s->confidences;
 
     }
     cleanup(&s->status);
@@ -38440,7 +38363,7 @@ static void cleanup(const XrEyeTrackerCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -38452,7 +38375,7 @@ static void cleanup(const XrEyeGazesInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -38466,7 +38389,7 @@ static void cleanup(const XrEyeGazesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -38483,7 +38406,7 @@ static void cleanup(const XrSystemEyeTrackingPropertiesFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsEyeTracking);
@@ -38499,7 +38422,7 @@ static void cleanup(const XrPassthroughKeyboardHandsIntensityFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->leftHandIntensity);
@@ -38516,7 +38439,7 @@ static void cleanup(const XrCompositionLayerSettingsFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -38532,7 +38455,7 @@ static void cleanup(const XrHapticPcmVibrationFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->bufferSize);
@@ -38541,14 +38464,14 @@ static void cleanup(const XrHapticPcmVibrationFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->buffer[i]);
         }
-        delete s->buffer;
+        delete[] s->buffer;
 
     }
     cleanup(&s->sampleRate);
     cleanup(&s->append);
     if (s->samplesConsumed != nullptr) {
         cleanup(s->samplesConsumed);
-        delete s->samplesConsumed;
+        delete[] s->samplesConsumed;
     }
 }
 
@@ -38559,7 +38482,7 @@ static void cleanup(const XrDevicePcmSampleRateStateFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->sampleRate);
@@ -38575,7 +38498,7 @@ static void cleanup(const XrFrameSynthesisInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -38597,7 +38520,7 @@ static void cleanup(const XrFrameSynthesisConfigViewEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->recommendedMotionVectorImageRectWidth);
@@ -38614,7 +38537,7 @@ static void cleanup(const XrCompositionLayerDepthTestFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->depthMask);
@@ -38631,7 +38554,7 @@ static void cleanup(const XrLocalDimmingFrameEndInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->localDimmingMode);
@@ -38647,7 +38570,7 @@ static void cleanup(const XrPassthroughPreferencesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -38663,7 +38586,7 @@ static void cleanup(const XrSystemVirtualKeyboardPropertiesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsVirtualKeyboard);
@@ -38676,7 +38599,7 @@ static void cleanup(const XrVirtualKeyboardCreateInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -38688,7 +38611,7 @@ static void cleanup(const XrVirtualKeyboardSpaceCreateInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->locationType);
@@ -38703,7 +38626,7 @@ static void cleanup(const XrVirtualKeyboardLocationInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->locationType);
@@ -38719,7 +38642,7 @@ static void cleanup(const XrVirtualKeyboardModelVisibilitySetInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->visible);
@@ -38732,7 +38655,7 @@ static void cleanup(const XrVirtualKeyboardAnimationStateMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->animationIndex);
@@ -38746,7 +38669,7 @@ static void cleanup(const XrVirtualKeyboardModelAnimationStatesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->stateCapacityInput);
@@ -38756,7 +38679,7 @@ static void cleanup(const XrVirtualKeyboardModelAnimationStatesMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->states[i]);
         }
-        delete s->states;
+        delete[] s->states;
 
     }
 }
@@ -38768,7 +38691,7 @@ static void cleanup(const XrVirtualKeyboardTextureDataMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->textureWidth);
@@ -38780,7 +38703,7 @@ static void cleanup(const XrVirtualKeyboardTextureDataMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->buffer[i]);
         }
-        delete s->buffer;
+        delete[] s->buffer;
 
     }
 }
@@ -38792,7 +38715,7 @@ static void cleanup(const XrVirtualKeyboardInputInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->inputSource);
@@ -38808,7 +38731,7 @@ static void cleanup(const XrVirtualKeyboardTextContextChangeInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->textContext != nullptr) {
@@ -38816,7 +38739,7 @@ static void cleanup(const XrVirtualKeyboardTextContextChangeInfoMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->textContext[i]);
         }
-        delete s->textContext;
+        delete[] s->textContext;
 
     }
 }
@@ -38828,7 +38751,7 @@ static void cleanup(const XrEventDataVirtualKeyboardCommitTextMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->keyboard);
@@ -38845,7 +38768,7 @@ static void cleanup(const XrEventDataVirtualKeyboardBackspaceMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->keyboard);
@@ -38858,7 +38781,7 @@ static void cleanup(const XrEventDataVirtualKeyboardEnterMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->keyboard);
@@ -38871,7 +38794,7 @@ static void cleanup(const XrEventDataVirtualKeyboardShownMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->keyboard);
@@ -38884,7 +38807,7 @@ static void cleanup(const XrEventDataVirtualKeyboardHiddenMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->keyboard);
@@ -38900,7 +38823,7 @@ static void cleanup(const XrExternalCameraOCULUS* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
         
@@ -38921,7 +38844,7 @@ static void cleanup(const XrVulkanSwapchainCreateInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->additionalCreateFlags);
@@ -38938,7 +38861,7 @@ static void cleanup(const XrPerformanceMetricsStateMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->enabled);
@@ -38951,7 +38874,7 @@ static void cleanup(const XrPerformanceMetricsCounterMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->counterFlags);
@@ -38970,7 +38893,7 @@ static void cleanup(const XrSpaceListSaveInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->spaceCount);
@@ -38979,7 +38902,7 @@ static void cleanup(const XrSpaceListSaveInfoFB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->spaces[i]);
         }
-        delete s->spaces;
+        delete[] s->spaces;
 
     }
     cleanup(&s->location);
@@ -38992,7 +38915,7 @@ static void cleanup(const XrEventDataSpaceListSaveCompleteFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -39009,7 +38932,7 @@ static void cleanup(const XrSpaceUserCreateInfoFB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->userId);
@@ -39025,7 +38948,7 @@ static void cleanup(const XrSystemHeadsetIdPropertiesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->id);
@@ -39041,7 +38964,7 @@ static void cleanup(const XrRecommendedLayerResolutionMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->recommendedImageDimensions);
@@ -39055,12 +38978,12 @@ static void cleanup(const XrRecommendedLayerResolutionGetInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     if (s->layer != nullptr) {
         cleanup(s->layer);
-        delete s->layer;
+        delete[] s->layer;
     }
     cleanup(&s->predictedDisplayTime);
 }
@@ -39075,7 +38998,7 @@ static void cleanup(const XrSystemPassthroughColorLutPropertiesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->maxColorLutResolution);
@@ -39088,7 +39011,7 @@ static void cleanup(const XrPassthroughColorLutCreateInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->channels);
@@ -39103,7 +39026,7 @@ static void cleanup(const XrPassthroughColorLutUpdateInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->data);
@@ -39116,7 +39039,7 @@ static void cleanup(const XrPassthroughColorMapLutMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->colorLut);
@@ -39130,7 +39053,7 @@ static void cleanup(const XrPassthroughColorMapInterpolatedLutMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->sourceColorLut);
@@ -39148,7 +39071,7 @@ static void cleanup(const XrSpaceTriangleMeshGetInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -39160,7 +39083,7 @@ static void cleanup(const XrSpaceTriangleMeshMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vertexCapacityInput);
@@ -39170,7 +39093,7 @@ static void cleanup(const XrSpaceTriangleMeshMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
     cleanup(&s->indexCapacityInput);
@@ -39180,7 +39103,7 @@ static void cleanup(const XrSpaceTriangleMeshMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indices[i]);
         }
-        delete s->indices;
+        delete[] s->indices;
 
     }
 }
@@ -39195,7 +39118,7 @@ static void cleanup(const XrSystemPropertiesBodyTrackingFullBodyMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsFullBodyTracking);
@@ -39211,7 +39134,7 @@ static void cleanup(const XrEventDataPassthroughLayerResumedMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layer);
@@ -39227,7 +39150,7 @@ static void cleanup(const XrSystemFaceTrackingProperties2FB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsVisualFaceTracking);
@@ -39241,7 +39164,7 @@ static void cleanup(const XrFaceTrackerCreateInfo2FB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->faceExpressionSet);
@@ -39251,7 +39174,7 @@ static void cleanup(const XrFaceTrackerCreateInfo2FB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->requestedDataSources[i]);
         }
-        delete s->requestedDataSources;
+        delete[] s->requestedDataSources;
 
     }
 }
@@ -39263,7 +39186,7 @@ static void cleanup(const XrFaceExpressionInfo2FB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->time);
@@ -39276,7 +39199,7 @@ static void cleanup(const XrFaceExpressionWeights2FB* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->weightCount);
@@ -39285,7 +39208,7 @@ static void cleanup(const XrFaceExpressionWeights2FB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->weights[i]);
         }
-        delete s->weights;
+        delete[] s->weights;
 
     }
     cleanup(&s->confidenceCount);
@@ -39294,7 +39217,7 @@ static void cleanup(const XrFaceExpressionWeights2FB* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->confidences[i]);
         }
-        delete s->confidences;
+        delete[] s->confidences;
 
     }
     cleanup(&s->isValid);
@@ -39313,7 +39236,7 @@ static void cleanup(const XrSystemSpatialEntitySharingPropertiesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSpatialEntitySharing);
@@ -39326,7 +39249,7 @@ static void cleanup(const XrShareSpacesInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->spaceCount);
@@ -39335,12 +39258,12 @@ static void cleanup(const XrShareSpacesInfoMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->spaces[i]);
         }
-        delete s->spaces;
+        delete[] s->spaces;
 
     }
     if (s->recipientInfo != nullptr) {
         cleanup(s->recipientInfo);
-        delete s->recipientInfo;
+        delete[] s->recipientInfo;
     }
 }
 
@@ -39351,7 +39274,7 @@ static void cleanup(const XrEventDataShareSpacesCompleteMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -39368,7 +39291,7 @@ static void cleanup(const XrEnvironmentDepthProviderCreateInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->createFlags);
@@ -39381,7 +39304,7 @@ static void cleanup(const XrEnvironmentDepthSwapchainCreateInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->createFlags);
@@ -39394,7 +39317,7 @@ static void cleanup(const XrEnvironmentDepthSwapchainStateMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->width);
@@ -39408,7 +39331,7 @@ static void cleanup(const XrEnvironmentDepthImageAcquireInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->space);
@@ -39422,7 +39345,7 @@ static void cleanup(const XrEnvironmentDepthImageViewMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->fov);
@@ -39436,7 +39359,7 @@ static void cleanup(const XrEnvironmentDepthImageMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->swapchainIndex);
@@ -39455,7 +39378,7 @@ static void cleanup(const XrEnvironmentDepthHandRemovalSetInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->enabled);
@@ -39468,7 +39391,7 @@ static void cleanup(const XrSystemEnvironmentDepthPropertiesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsEnvironmentDepth);
@@ -39485,7 +39408,7 @@ static void cleanup(const XrPassthroughCreateInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->form);
@@ -39498,7 +39421,7 @@ static void cleanup(const XrPassthroughColorHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->alpha);
@@ -39511,7 +39434,7 @@ static void cleanup(const XrPassthroughMeshTransformInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vertexCount);
@@ -39520,7 +39443,7 @@ static void cleanup(const XrPassthroughMeshTransformInfoHTC* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
     cleanup(&s->indexCount);
@@ -39529,7 +39452,7 @@ static void cleanup(const XrPassthroughMeshTransformInfoHTC* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indices[i]);
         }
-        delete s->indices;
+        delete[] s->indices;
 
     }
     cleanup(&s->baseSpace);
@@ -39545,7 +39468,7 @@ static void cleanup(const XrCompositionLayerPassthroughHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->layerFlags);
@@ -39564,7 +39487,7 @@ static void cleanup(const XrFoveationApplyInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->mode);
@@ -39574,7 +39497,7 @@ static void cleanup(const XrFoveationApplyInfoHTC* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->subImages[i]);
         }
-        delete s->subImages;
+        delete[] s->subImages;
 
     }
 }
@@ -39586,7 +39509,7 @@ static void cleanup(const XrFoveationDynamicModeInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->dynamicFlags);
@@ -39599,7 +39522,7 @@ static void cleanup(const XrFoveationCustomModeInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->configCount);
@@ -39608,7 +39531,7 @@ static void cleanup(const XrFoveationCustomModeInfoHTC* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->configs[i]);
         }
-        delete s->configs;
+        delete[] s->configs;
 
     }
 }
@@ -39623,7 +39546,7 @@ static void cleanup(const XrSystemAnchorPropertiesHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsAnchor);
@@ -39636,7 +39559,7 @@ static void cleanup(const XrSpatialAnchorCreateInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->space);
@@ -39654,7 +39577,7 @@ static void cleanup(const XrSystemBodyTrackingPropertiesHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsBodyTracking);
@@ -39667,7 +39590,7 @@ static void cleanup(const XrBodyTrackerCreateInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->bodyJointSet);
@@ -39680,7 +39603,7 @@ static void cleanup(const XrBodyJointsLocateInfoHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -39694,7 +39617,7 @@ static void cleanup(const XrBodyJointLocationsHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->combinedLocationFlags);
@@ -39705,7 +39628,7 @@ static void cleanup(const XrBodyJointLocationsHTC* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->jointLocations[i]);
         }
-        delete s->jointLocations;
+        delete[] s->jointLocations;
 
     }
     cleanup(&s->skeletonGenerationId);
@@ -39718,7 +39641,7 @@ static void cleanup(const XrBodySkeletonHTC* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->jointCount);
@@ -39727,7 +39650,7 @@ static void cleanup(const XrBodySkeletonHTC* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->joints[i]);
         }
-        delete s->joints;
+        delete[] s->joints;
 
     }
 }
@@ -39742,7 +39665,7 @@ static void cleanup(const XrActiveActionSetPrioritiesEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->actionSetPriorityCount);
@@ -39751,7 +39674,7 @@ static void cleanup(const XrActiveActionSetPrioritiesEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->actionSetPriorities[i]);
         }
-        delete s->actionSetPriorities;
+        delete[] s->actionSetPriorities;
 
     }
 }
@@ -39766,7 +39689,7 @@ static void cleanup(const XrSystemForceFeedbackCurlPropertiesMNDX* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsForceFeedbackCurl);
@@ -39779,7 +39702,7 @@ static void cleanup(const XrForceFeedbackCurlApplyLocationsMNDX* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->locationCount);
@@ -39788,7 +39711,7 @@ static void cleanup(const XrForceFeedbackCurlApplyLocationsMNDX* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->locations[i]);
         }
-        delete s->locations;
+        delete[] s->locations;
 
     }
 }
@@ -39803,7 +39726,7 @@ static void cleanup(const XrBodyTrackerCreateInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->jointSet);
@@ -39816,7 +39739,7 @@ static void cleanup(const XrBodyJointsLocateInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -39830,7 +39753,7 @@ static void cleanup(const XrBodyJointLocationsBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->allJointPosesTracked);
@@ -39840,7 +39763,7 @@ static void cleanup(const XrBodyJointLocationsBD* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->jointLocations[i]);
         }
-        delete s->jointLocations;
+        delete[] s->jointLocations;
 
     }
 }
@@ -39852,7 +39775,7 @@ static void cleanup(const XrSystemBodyTrackingPropertiesBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsBodyTracking);
@@ -39868,7 +39791,7 @@ static void cleanup(const XrSystemSpatialSensingPropertiesBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSpatialSensing);
@@ -39881,7 +39804,7 @@ static void cleanup(const XrSpatialEntityComponentGetInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->entityId);
@@ -39895,7 +39818,7 @@ static void cleanup(const XrSpatialEntityLocationGetInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -39908,7 +39831,7 @@ static void cleanup(const XrSpatialEntityComponentDataLocationBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->location);
@@ -39921,7 +39844,7 @@ static void cleanup(const XrSpatialEntityComponentDataSemanticBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->labelCapacityInput);
@@ -39931,7 +39854,7 @@ static void cleanup(const XrSpatialEntityComponentDataSemanticBD* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->labels[i]);
         }
-        delete s->labels;
+        delete[] s->labels;
 
     }
 }
@@ -39943,7 +39866,7 @@ static void cleanup(const XrSpatialEntityComponentDataBoundingBox2DBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->boundingBox2D);
@@ -39956,7 +39879,7 @@ static void cleanup(const XrSpatialEntityComponentDataPolygonBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vertexCapacityInput);
@@ -39966,7 +39889,7 @@ static void cleanup(const XrSpatialEntityComponentDataPolygonBD* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
 }
@@ -39978,7 +39901,7 @@ static void cleanup(const XrSpatialEntityComponentDataBoundingBox3DBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->boundingBox3D);
@@ -39991,7 +39914,7 @@ static void cleanup(const XrSpatialEntityComponentDataTriangleMeshBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vertexCapacityInput);
@@ -40001,7 +39924,7 @@ static void cleanup(const XrSpatialEntityComponentDataTriangleMeshBD* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
     cleanup(&s->indexCapacityInput);
@@ -40011,7 +39934,7 @@ static void cleanup(const XrSpatialEntityComponentDataTriangleMeshBD* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indices[i]);
         }
-        delete s->indices;
+        delete[] s->indices;
 
     }
 }
@@ -40023,7 +39946,7 @@ static void cleanup(const XrSenseDataProviderCreateInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->providerType);
@@ -40036,7 +39959,7 @@ static void cleanup(const XrSenseDataProviderStartInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -40048,7 +39971,7 @@ static void cleanup(const XrEventDataSenseDataProviderStateChangedBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->provider);
@@ -40062,7 +39985,7 @@ static void cleanup(const XrEventDataSenseDataUpdatedBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->provider);
@@ -40075,7 +39998,7 @@ static void cleanup(const XrSenseDataQueryInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -40087,7 +40010,7 @@ static void cleanup(const XrSenseDataQueryCompletionBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -40101,7 +40024,7 @@ static void cleanup(const XrSenseDataFilterUuidBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuidCount);
@@ -40110,7 +40033,7 @@ static void cleanup(const XrSenseDataFilterUuidBD* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->uuids[i]);
         }
-        delete s->uuids;
+        delete[] s->uuids;
 
     }
 }
@@ -40122,7 +40045,7 @@ static void cleanup(const XrSenseDataFilterSemanticBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->labelCount);
@@ -40131,7 +40054,7 @@ static void cleanup(const XrSenseDataFilterSemanticBD* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->labels[i]);
         }
-        delete s->labels;
+        delete[] s->labels;
 
     }
 }
@@ -40143,7 +40066,7 @@ static void cleanup(const XrQueriedSenseDataGetInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -40155,7 +40078,7 @@ static void cleanup(const XrQueriedSenseDataBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->stateCapacityInput);
@@ -40165,7 +40088,7 @@ static void cleanup(const XrQueriedSenseDataBD* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->states[i]);
         }
-        delete s->states;
+        delete[] s->states;
 
     }
 }
@@ -40177,7 +40100,7 @@ static void cleanup(const XrSpatialEntityStateBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->entityId);
@@ -40192,7 +40115,7 @@ static void cleanup(const XrSpatialEntityAnchorCreateInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->snapshot);
@@ -40206,7 +40129,7 @@ static void cleanup(const XrAnchorSpaceCreateInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->anchor);
@@ -40223,7 +40146,7 @@ static void cleanup(const XrSystemSpatialAnchorPropertiesBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSpatialAnchor);
@@ -40236,7 +40159,7 @@ static void cleanup(const XrSpatialAnchorCreateInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->space);
@@ -40251,7 +40174,7 @@ static void cleanup(const XrSpatialAnchorCreateCompletionBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -40266,7 +40189,7 @@ static void cleanup(const XrSpatialAnchorPersistInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->location);
@@ -40280,7 +40203,7 @@ static void cleanup(const XrSpatialAnchorUnpersistInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->location);
@@ -40297,7 +40220,7 @@ static void cleanup(const XrSystemSpatialAnchorSharingPropertiesBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSpatialAnchorSharing);
@@ -40310,7 +40233,7 @@ static void cleanup(const XrSpatialAnchorShareInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->anchor);
@@ -40323,7 +40246,7 @@ static void cleanup(const XrSharedSpatialAnchorDownloadInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuid);
@@ -40339,7 +40262,7 @@ static void cleanup(const XrSystemSpatialScenePropertiesBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSpatialScene);
@@ -40352,7 +40275,7 @@ static void cleanup(const XrSceneCaptureInfoBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -40367,7 +40290,7 @@ static void cleanup(const XrSystemSpatialMeshPropertiesBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSpatialMesh);
@@ -40380,7 +40303,7 @@ static void cleanup(const XrSenseDataProviderCreateInfoSpatialMeshBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->configFlags);
@@ -40397,7 +40320,7 @@ static void cleanup(const XrFuturePollResultProgressBD* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->isSupported);
@@ -40414,7 +40337,7 @@ static void cleanup(const XrHandTrackingDataSourceInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestedDataSourceCount);
@@ -40423,7 +40346,7 @@ static void cleanup(const XrHandTrackingDataSourceInfoEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->requestedDataSources[i]);
         }
-        delete s->requestedDataSources;
+        delete[] s->requestedDataSources;
 
     }
 }
@@ -40435,7 +40358,7 @@ static void cleanup(const XrHandTrackingDataSourceStateEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->isActive);
@@ -40452,7 +40375,7 @@ static void cleanup(const XrPlaneDetectorCreateInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -40465,7 +40388,7 @@ static void cleanup(const XrPlaneDetectorBeginInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -40476,7 +40399,7 @@ static void cleanup(const XrPlaneDetectorBeginInfoEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->orientations[i]);
         }
-        delete s->orientations;
+        delete[] s->orientations;
 
     }
     cleanup(&s->semanticTypeCount);
@@ -40485,7 +40408,7 @@ static void cleanup(const XrPlaneDetectorBeginInfoEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->semanticTypes[i]);
         }
-        delete s->semanticTypes;
+        delete[] s->semanticTypes;
 
     }
     cleanup(&s->maxPlanes);
@@ -40501,7 +40424,7 @@ static void cleanup(const XrPlaneDetectorGetInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -40515,7 +40438,7 @@ static void cleanup(const XrPlaneDetectorLocationsEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->planeLocationCapacityInput);
@@ -40525,7 +40448,7 @@ static void cleanup(const XrPlaneDetectorLocationsEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->planeLocations[i]);
         }
-        delete s->planeLocations;
+        delete[] s->planeLocations;
 
     }
 }
@@ -40537,7 +40460,7 @@ static void cleanup(const XrPlaneDetectorLocationEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->planeId);
@@ -40556,7 +40479,7 @@ static void cleanup(const XrPlaneDetectorPolygonBufferEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->vertexCapacityInput);
@@ -40566,7 +40489,7 @@ static void cleanup(const XrPlaneDetectorPolygonBufferEXT* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertices[i]);
         }
-        delete s->vertices;
+        delete[] s->vertices;
 
     }
 }
@@ -40578,7 +40501,7 @@ static void cleanup(const XrSystemPlaneDetectionPropertiesEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportedFeatures);
@@ -40594,7 +40517,7 @@ static void cleanup(const XrFutureCancelInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->future);
@@ -40607,7 +40530,7 @@ static void cleanup(const XrFuturePollInfoEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->future);
@@ -40620,7 +40543,7 @@ static void cleanup(const XrFutureCompletionEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -40633,7 +40556,7 @@ static void cleanup(const XrFuturePollResultEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->state);
@@ -40649,7 +40572,7 @@ static void cleanup(const XrEventDataUserPresenceChangedEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->session);
@@ -40663,7 +40586,7 @@ static void cleanup(const XrSystemUserPresencePropertiesEXT* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsUserPresence);
@@ -40678,7 +40601,7 @@ static void cleanup(const XrSpacesLocateInfo* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -40689,7 +40612,7 @@ static void cleanup(const XrSpacesLocateInfo* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->spaces[i]);
         }
-        delete s->spaces;
+        delete[] s->spaces;
 
     }
 }
@@ -40701,7 +40624,7 @@ static void cleanup(const XrSpaceLocations* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->locationCount);
@@ -40710,7 +40633,7 @@ static void cleanup(const XrSpaceLocations* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->locations[i]);
         }
-        delete s->locations;
+        delete[] s->locations;
 
     }
 }
@@ -40722,7 +40645,7 @@ static void cleanup(const XrSpaceVelocities* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->velocityCount);
@@ -40731,7 +40654,7 @@ static void cleanup(const XrSpaceVelocities* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->velocities[i]);
         }
-        delete s->velocities;
+        delete[] s->velocities;
 
     }
 }
@@ -40745,7 +40668,7 @@ static void cleanup(const XrEventDataHeadsetFitChangedML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->status);
@@ -40759,7 +40682,7 @@ static void cleanup(const XrEventDataEyeCalibrationChangedML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->status);
@@ -40772,7 +40695,7 @@ static void cleanup(const XrUserCalibrationEnableEventsInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->enabled);
@@ -40788,7 +40711,7 @@ static void cleanup(const XrSystemNotificationsSetInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->suppressNotifications);
@@ -40804,7 +40727,7 @@ static void cleanup(const XrWorldMeshDetectorCreateInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -40816,7 +40739,7 @@ static void cleanup(const XrWorldMeshStateRequestInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->baseSpace);
@@ -40832,7 +40755,7 @@ static void cleanup(const XrWorldMeshBlockStateML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuid);
@@ -40849,7 +40772,7 @@ static void cleanup(const XrWorldMeshStateRequestCompletionML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -40861,7 +40784,7 @@ static void cleanup(const XrWorldMeshStateRequestCompletionML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->meshBlockStates[i]);
         }
-        delete s->meshBlockStates;
+        delete[] s->meshBlockStates;
 
     }
 }
@@ -40873,7 +40796,7 @@ static void cleanup(const XrWorldMeshBufferRecommendedSizeInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->maxBlockCount);
@@ -40886,7 +40809,7 @@ static void cleanup(const XrWorldMeshBufferSizeML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->size);
@@ -40899,7 +40822,7 @@ static void cleanup(const XrWorldMeshBufferML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->bufferSize);
@@ -40908,7 +40831,7 @@ static void cleanup(const XrWorldMeshBufferML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->buffer[i]);
         }
-        delete s->buffer;
+        delete[] s->buffer;
 
     }
 }
@@ -40920,7 +40843,7 @@ static void cleanup(const XrWorldMeshBlockRequestML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuid);
@@ -40934,7 +40857,7 @@ static void cleanup(const XrWorldMeshGetInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->flags);
@@ -40946,7 +40869,7 @@ static void cleanup(const XrWorldMeshGetInfoML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->blocks[i]);
         }
-        delete s->blocks;
+        delete[] s->blocks;
 
     }
 }
@@ -40958,7 +40881,7 @@ static void cleanup(const XrWorldMeshBlockML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->uuid);
@@ -40971,7 +40894,7 @@ static void cleanup(const XrWorldMeshBlockML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->indexBuffer[i]);
         }
-        delete s->indexBuffer;
+        delete[] s->indexBuffer;
 
     }
     cleanup(&s->vertexCount);
@@ -40980,7 +40903,7 @@ static void cleanup(const XrWorldMeshBlockML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->vertexBuffer[i]);
         }
-        delete s->vertexBuffer;
+        delete[] s->vertexBuffer;
 
     }
     cleanup(&s->normalCount);
@@ -40989,7 +40912,7 @@ static void cleanup(const XrWorldMeshBlockML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->normalBuffer[i]);
         }
-        delete s->normalBuffer;
+        delete[] s->normalBuffer;
 
     }
     cleanup(&s->confidenceCount);
@@ -40998,7 +40921,7 @@ static void cleanup(const XrWorldMeshBlockML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->confidenceBuffer[i]);
         }
-        delete s->confidenceBuffer;
+        delete[] s->confidenceBuffer;
 
     }
 }
@@ -41010,7 +40933,7 @@ static void cleanup(const XrWorldMeshRequestCompletionML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->futureResult);
@@ -41020,7 +40943,7 @@ static void cleanup(const XrWorldMeshRequestCompletionML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->blocks[i]);
         }
-        delete s->blocks;
+        delete[] s->blocks;
 
     }
 }
@@ -41032,7 +40955,7 @@ static void cleanup(const XrWorldMeshRequestCompletionInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->meshSpace);
@@ -41049,7 +40972,7 @@ static void cleanup(const XrSystemFacialExpressionPropertiesML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsFacialExpression);
@@ -41062,7 +40985,7 @@ static void cleanup(const XrFacialExpressionClientCreateInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestedCount);
@@ -41071,7 +40994,7 @@ static void cleanup(const XrFacialExpressionClientCreateInfoML* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->requestedFacialBlendShapes[i]);
         }
-        delete s->requestedFacialBlendShapes;
+        delete[] s->requestedFacialBlendShapes;
 
     }
 }
@@ -41083,7 +41006,7 @@ static void cleanup(const XrFacialExpressionBlendShapeGetInfoML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -41095,7 +41018,7 @@ static void cleanup(const XrFacialExpressionBlendShapePropertiesML* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestedFacialBlendShape);
@@ -41114,7 +41037,7 @@ static void cleanup(const XrSystemSimultaneousHandsAndControllersPropertiesMETA*
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSimultaneousHandsAndControllers);
@@ -41127,7 +41050,7 @@ static void cleanup(const XrSimultaneousHandsAndControllersTrackingResumeInfoMET
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -41139,7 +41062,7 @@ static void cleanup(const XrSimultaneousHandsAndControllersTrackingPauseInfoMETA
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -41154,7 +41077,7 @@ static void cleanup(const XrColocationDiscoveryStartInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -41166,7 +41089,7 @@ static void cleanup(const XrColocationDiscoveryStopInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -41178,7 +41101,7 @@ static void cleanup(const XrColocationAdvertisementStartInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->bufferSize);
@@ -41187,7 +41110,7 @@ static void cleanup(const XrColocationAdvertisementStartInfoMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->buffer[i]);
         }
-        delete s->buffer;
+        delete[] s->buffer;
 
     }
 }
@@ -41199,7 +41122,7 @@ static void cleanup(const XrColocationAdvertisementStopInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
 }
@@ -41211,7 +41134,7 @@ static void cleanup(const XrEventDataStartColocationAdvertisementCompleteMETA* s
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->advertisementRequestId);
@@ -41226,7 +41149,7 @@ static void cleanup(const XrEventDataStopColocationAdvertisementCompleteMETA* s)
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -41240,7 +41163,7 @@ static void cleanup(const XrEventDataColocationAdvertisementCompleteMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->advertisementRequestId);
@@ -41254,7 +41177,7 @@ static void cleanup(const XrEventDataStartColocationDiscoveryCompleteMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->discoveryRequestId);
@@ -41268,7 +41191,7 @@ static void cleanup(const XrEventDataColocationDiscoveryResultMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->discoveryRequestId);
@@ -41287,7 +41210,7 @@ static void cleanup(const XrEventDataColocationDiscoveryCompleteMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->discoveryRequestId);
@@ -41301,7 +41224,7 @@ static void cleanup(const XrEventDataStopColocationDiscoveryCompleteMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->requestId);
@@ -41315,7 +41238,7 @@ static void cleanup(const XrSystemColocationDiscoveryPropertiesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsColocationDiscovery);
@@ -41331,7 +41254,7 @@ static void cleanup(const XrShareSpacesRecipientGroupsMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->groupCount);
@@ -41340,7 +41263,7 @@ static void cleanup(const XrShareSpacesRecipientGroupsMETA* s) {
         for (int i = 0; i < num_items; i++) {
             cleanup(&s->groups[i]);
         }
-        delete s->groups;
+        delete[] s->groups;
 
     }
 }
@@ -41352,7 +41275,7 @@ static void cleanup(const XrSpaceGroupUuidFilterInfoMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->groupUuid);
@@ -41365,7 +41288,7 @@ static void cleanup(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s) {
     if (s->next != nullptr) {
         const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
         cleaner_lookup(next->type)(next);
-        delete next;
+        delete[] next;
     }
     
     cleanup(&s->supportsSpatialEntityGroupSharing);
@@ -41374,6 +41297,118 @@ static void cleanup(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s) {
 
 #endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
 
+
+// Custom implementations
+static void deserialize(XrInstanceCreateInfo* s, std::istream& in) {
+    deserialize(&s->type, in);
+    XrStructureType next_type{};
+    deserialize(&next_type, in);
+    if (next_type != XR_TYPE_UNKNOWN) {
+        XrBaseOutStructure* next{};
+        allocator_lookup(next_type)(&next, 1);
+        deserializer_lookup(next_type)(next, in);
+        s->next = next;
+    }
+    else {
+        s->next = nullptr;
+    }
+
+    deserialize(&s->createFlags, in);
+    deserialize(&s->applicationInfo, in);
+    deserialize(&s->enabledApiLayerCount, in);
+
+    char** enabledApiLayerNames = new char*[s->enabledApiLayerCount]();
+    for (int i = 0; i < s->enabledApiLayerCount; i++) {
+        std::size_t string_length{};
+        deserialize(reinterpret_cast<std::uint32_t*>(&string_length), in);
+        char* str = new char[string_length]();
+        for (int j = 0; j < string_length; j++) {
+            deserialize(&str[j], in);
+        }
+        enabledApiLayerNames[i] = str;
+    }
+    s->enabledApiLayerNames = enabledApiLayerNames;
+
+    deserialize(&s->enabledExtensionCount, in);
+    
+    char** enabledExtensionNames = new char*[s->enabledExtensionCount]();
+    for (int i = 0; i < s->enabledExtensionCount; i++) {
+        std::size_t string_length{};
+        deserialize(reinterpret_cast<std::uint32_t*>(&string_length), in);
+        char* str = new char[s->enabledExtensionCount]();
+        for (int j = 0; j < string_length; j++) {
+            deserialize(&str[j], in);
+        }
+        enabledExtensionNames[i] = str;
+    }
+    s->enabledExtensionNames;
+}
+
+static void cleanup(const XrInstanceCreateInfo* s) {
+    if (s->next != nullptr) {
+        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
+        cleaner_lookup(next->type)(next);
+        delete[] next;
+    }
+    for (int i = 0; i < s->enabledApiLayerCount; i++) {
+        delete[] s->enabledApiLayerNames[i];
+    }
+    delete[] s->enabledApiLayerNames;
+    for (int i = 0; i < s->enabledExtensionCount; i++) {
+        delete[] s->enabledExtensionNames[i];
+    }
+    delete[] s->enabledExtensionNames;
+}
+
+static void deserialize(XrFrameEndInfo* s, std::istream& in) {
+    deserialize(&s->type, in);
+    XrStructureType next_type{};
+    deserialize(&next_type, in);
+    if (next_type != XR_TYPE_UNKNOWN) {
+        XrBaseOutStructure* next{};
+        allocator_lookup(next_type)(&next, 1);
+        deserializer_lookup(next_type)(next, in);
+        s->next = next;
+    }
+    else {
+        s->next = nullptr;
+    }
+
+    deserialize(&s->displayTime, in);
+    deserialize(&s->environmentBlendMode, in);
+    deserialize(&s->layerCount, in);
+
+    XrCompositionLayerBaseHeader** layers = new XrCompositionLayerBaseHeader*[s->layerCount]();
+    for (int i = 0; i < s->layerCount; i++) {
+        XrStructureType layer_type{};
+        deserialize(&layer_type, in);
+        if (layer_type != XR_TYPE_UNKNOWN) {
+            XrCompositionLayerBaseHeader* layer{};
+            allocator_lookup(layer_type)(reinterpret_cast<XrBaseOutStructure**>(&layer), 1);
+            deserializer_lookup(layer_type)(reinterpret_cast<XrBaseOutStructure*>(layer), in);
+            layers[i] = layer;
+        }
+        else {
+            layers[i] = nullptr;
+        }
+    }
+    s->layers = layers;
+}
+
+static void cleanup(const XrFrameEndInfo* s) {
+    if (s->next != nullptr) {
+        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
+        cleaner_lookup(next->type)(next);
+        delete[] next;
+    }
+
+    for (int i = 0; i < s->layerCount; i++) {
+        const XrBaseOutStructure* layer = reinterpret_cast<const XrBaseOutStructure*>(s->layers[i]);
+        cleaner_lookup(layer->type)(layer);
+        delete[] layer;
+    }
+    delete[] s->layers;
+}
 
 } // namespace xrtransport
 

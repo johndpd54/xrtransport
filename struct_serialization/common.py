@@ -1,6 +1,12 @@
 import xml.etree.ElementTree as ET
 import json
 
+# structs whose serializers and deserializers are manually specified
+CUSTOM_STRUCTS = [
+    "XrInstanceCreateInfo",
+    "XrFrameEndInfo",
+]
+
 class XrSpec:
     def __init__(self, functions, function_aliases, structs, supported_types):
         self.functions = functions
@@ -10,6 +16,7 @@ class XrSpec:
         self.functions_index = {f.name: f for f in self.functions}
         self.structs_index = {s.name: s for s in self.structs}
         self.grouped_structs = self.group_structs()
+        self.custom_structs = CUSTOM_STRUCTS
     
     def find_function(self, name):
         return self.functions_index[name] if name in self.functions_index else None
@@ -317,5 +324,5 @@ def collect_supported_types(xml_root):
             elif category == "enum":
                 supported_types.add(type_tag.attrib["name"])
     
-    return supported_types
+    return sorted(list(supported_types))
             

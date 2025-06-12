@@ -19,7 +19,11 @@ def generate_deserializer(spec, out):
     base_path = os.path.relpath(base_path, os.getcwd())
     template_lookup = TemplateLookup(directories=[f"{base_path}/templates"])
     template = template_lookup.get_template("deserializer.mako")
-    out.write(template.render(spec=spec).encode())
+    try:
+        out.write(template.render(spec=spec).encode())
+    except:
+        print("Warning! An exception occurred running serializer template.")
+        print(exceptions.text_error_template().render())
 
 if __name__ == "__main__":
     main()
