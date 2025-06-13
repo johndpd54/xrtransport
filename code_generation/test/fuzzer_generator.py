@@ -23,11 +23,11 @@ class RandomStructGenerator:
         if struct.xr_type:
             out.append(f"{indent * ' '}{binding}.type = {struct.xr_type};")
             if random.random() < self.nullptr_chance:
+                out.append(f"{indent * ' '}{binding}.next = nullptr;")
+            else:
                 next_struct = self.choose_xr_struct()
                 self._gen_struct(out, next_struct, f"{name}_next", indent)
                 out.append(f"{indent * ' '}{binding}.next = &{name}_next;")
-            else:
-                out.append(f"{indent * ' '}{binding}.next = nullptr;")
             rest_members = struct.members[2:]
         else:
             rest_members = struct.members
@@ -82,7 +82,7 @@ class RandomStructGenerator:
     def choose_xr_struct(self):
         return random.choice(self.test_xr_structs)
 
-    def generate_struct(self, name, indent=0):
+    def generate_struct(self, name, struct=None, indent=0):
         if struct == None:
             struct = self.choose_struct()
         lines = []
