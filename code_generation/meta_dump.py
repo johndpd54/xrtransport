@@ -15,6 +15,8 @@ def main():
         function_aliases_out.write(json.dumps(spec.function_aliases, indent=4))
     with open("structs.json", "w") as structs_out:
         structs_out.write(json.dumps(spec.structs, default=custom_json_serializer, indent=4))
+    with open("supported_types.json", "w") as supported_types_out:
+        supported_types_out.write(json.dumps(spec.supported_types, indent=4))
 
 def custom_json_serializer(obj):
     if not isinstance(obj, XrStruct) and not isinstance(obj, XrFunction) and not isinstance(obj, XrParam):

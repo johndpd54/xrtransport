@@ -184,36 +184,6 @@
         ]
     },
     {
-        "name": "XrBaseInStructure",
-        "members": [
-            {
-                "type": "XrStructureType",
-                "name": "type"
-            },
-            {
-                "qualifier": "const struct",
-                "type": "XrBaseInStructure",
-                "pointer": "*",
-                "name": "next"
-            }
-        ]
-    },
-    {
-        "name": "XrBaseOutStructure",
-        "members": [
-            {
-                "type": "XrStructureType",
-                "name": "type"
-            },
-            {
-                "qualifier": "struct",
-                "type": "XrBaseOutStructure",
-                "pointer": "*",
-                "name": "next"
-            }
-        ]
-    },
-    {
         "name": "XrApplicationInfo",
         "members": [
             {

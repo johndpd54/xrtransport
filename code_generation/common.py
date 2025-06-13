@@ -17,6 +17,9 @@ class XrSpec:
         self.structs_index = {s.name: s for s in self.structs}
         self.grouped_structs = self.group_structs()
         self.custom_structs = CUSTOM_STRUCTS
+        test_extensions = [None]
+        self.test_structs = filter_test_structs(self.structs, test_extensions)
+        self.test_supported_types = filter_test_supported_types(self.supported_types, test_extensions)
     
     def find_function(self, name):
         return self.functions_index[name] if name in self.functions_index else None
@@ -100,7 +103,7 @@ def parse_spec(xml_root):
     functions, function_aliases = collect_functions(xml_root)
     structs = collect_structs(xml_root)
     supported_types = collect_supported_types(xml_root)
-    attach_extension_names(xml_root, structs, functions) # must be done before constructing XrSpec
+    attach_extension_names(xml_root, structs, functions, supported_types) # must be done before constructing XrSpec
     spec = XrSpec(functions, function_aliases, structs, supported_types)
     return spec
 
@@ -282,17 +285,19 @@ def collect_functions(xml_root):
     
     return functions, function_aliases
 
-def attach_extension_names(xml_root, structs, functions):
+def attach_extension_names(xml_root, structs, functions, supported_types):
     extension_tags = xml_root.findall("extensions/extension")
     for extension_tag in extension_tags:
         for type_tag in extension_tag.findall("require/type"):
-            struct_name = type_tag.attrib["name"]
+            name = type_tag.attrib["name"]
             # O(N^2), but this needs to be done before the spec is constructed
             # so we can't use find_struct. If this becomes a problem we can throw
             # them all in a dict first
-            struct = next((s for s in structs if s.name == struct_name), None)
+            struct = next((s for s in structs if s.name == name), None)
             if struct:
                 struct.extension = extension_tag.attrib["name"]
+            if name in supported_types:
+                supported_types[name] = extension_tag.attrib["name"]
         for command_tag in extension_tag.findall("require/command"):
             function_name = command_tag.attrib["name"]
             function = next((f for f in functions if f.name == function_name), None)
@@ -309,20 +314,29 @@ def attach_extension_names(xml_root, structs, functions):
                     struct.extension = extension_tag.attrib["name"]
 
 def collect_supported_types(xml_root):
-    supported_types = set()
+    # map of type name to extension
+    # this function fills in None as extension for all types, this will be filled in later
+    supported_types = {}
     type_tags = xml_root.findall("types/type")
     for type_tag in type_tags:
         if "requires" in type_tag.attrib:
             # this specifies that this type comes from a header
             if type_tag.attrib["requires"] == "openxr_platform_defines":
                 # this is a basic C type that we support
-                supported_types.add(type_tag.attrib["name"])
+                supported_types[type_tag.attrib["name"]] = None
         elif "category" in type_tag.attrib:
             category = type_tag.attrib["category"]
             if category in ["basetype", "bitmask", "handle"]:
-                supported_types.add(type_tag.find("name").text)
+                supported_types[type_tag.find("name").text] = None
             elif category == "enum":
-                supported_types.add(type_tag.attrib["name"])
+                supported_types[type_tag.attrib["name"]] = None
     
-    return sorted(list(supported_types))
+    return supported_types
             
+# filter the whole list of structs to a subset for testing defined by a list of extensions we're testing
+def filter_test_structs(structs, test_extensions):
+    return [s for s in structs if s.extension in test_extensions]
+
+# filter the whole list of supported types to a subset for testing defined by a list of extensions we're testing
+def filter_test_supported_types(supported_types, test_extensions):
+    return [t for t in supported_types if supported_types[t] in test_extensions]

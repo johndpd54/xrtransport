@@ -1,0 +1,1 @@
+from .fuzzer_generator import generate_struct_fuzzer
