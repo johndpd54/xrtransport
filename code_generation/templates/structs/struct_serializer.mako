@@ -2,10 +2,10 @@
 template <typename T>
 static void serialize(const T* x, std::ostream& out) {
     static_assert(
-        ${" || ".join(f"std::is_same<T, {t}>::value" for t in spec.supported_types)},
+        !std::is_class<T>::value,
         "T must be a supported type"
     );
-    out.write(reinterpret_cast<const char*>(x), sizeof(*x));
+    out.write(reinterpret_cast<const char*>(x), sizeof(T));
 }
 </%def>
 
@@ -48,6 +48,10 @@ static void serialize(const ${struct.name}* s, std::ostream& out) {
     #error auto-generator doesn't support multi-variable lengths (${struct.name}.${member.name})
         <% continue %>
     % endif
+    % if member.pointer and member.len and member_struct and member_struct.header:
+    #error auto-generator doesn't support arrays of header structs (${struct.name}.${member.name})
+        <% continue %>
+    % endif
     % if member.pointer:
     if (s->${member.name} != nullptr) {
         std::uint8_t marker = 1;
@@ -61,7 +65,13 @@ static void serialize(const ${struct.name}* s, std::ostream& out) {
             serialize(&s->${member.name}[i], out);
         }
         % else:
+            % if member.header:
+        XrStructureType header_real_type = s->${member.name}.type;
+        serialize(&header_real_type, out);
+        serializer_lookup(header_real_type)(reinterpret_cast<const XrBaseInStructure*>(s->${member.name}), out);
+            % else:
         serialize(s->${member.name}, out);
+            % endif
         % endif
     }
     else {

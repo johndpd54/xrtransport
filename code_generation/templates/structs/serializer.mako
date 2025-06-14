@@ -23,14 +23,14 @@ static inline std::size_t count_null_terminated(const T* ptr) {
     return count + 1;
 }
 
-<%include file="serializer_lookup_table.mako"/>
-
 <%namespace name="struct_serializer" file="struct_serializer.mako"/>
 
 // Forward declarations
 <%common:for_grouped_structs args="struct">
 ${struct_serializer.forward_serializer(struct)}
 </%common:for_grouped_structs>
+
+<%include file="serializer_lookup_table.mako"/>
 
 // Generic serializer
 ${struct_serializer.generic_serializer()}

@@ -3,3 +3,8 @@ for the base API, along with any extensions it is configured to support at compi
 work by itself due to graphics considerations and platform-specific behavior. To get around this, API layers 
 should be built on top of this base runtime to support specific client-server pairs, e.g. (Android/OpenGL ->
 Windows/Vulkan)
+
+xrEnumerateSwapchainImages needs to be custom implementation. The size of each element of its images parameter
+is determined by which graphics extension is enabled which will need to be kept track of locally
+
+TODO next: add a cleanup case for a pointer to a single header

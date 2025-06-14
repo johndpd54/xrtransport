@@ -1,0 +1,10 @@
+^C:\USERS\ANDREW\WORKSPACE\XRTRANSPORT\GENERATED\BUILD\CMAKEFILES\0DD35F61BDDB56EBBA2F4C7C95A2E207\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Andrew/Workspace/xrtransport/generated -BC:/Users/Andrew/Workspace/xrtransport/generated/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Andrew/Workspace/xrtransport/generated/build/xrtransport.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

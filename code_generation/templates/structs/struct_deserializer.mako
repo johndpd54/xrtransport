@@ -2,10 +2,10 @@
 template <typename T>
 static void deserialize(T* x, std::istream& in) {
     static_assert(
-        ${" || ".join(f"std::is_same<T, {t}>::value" for t in spec.supported_types)},
+        !std::is_class<T>::value,
         "T must be a supported type"
     );
-    in.read(std::reinterpret_cast<char*>(x), sizeof(*x));
+    in.read(reinterpret_cast<char*>(x), sizeof(T));
 }
 </%def>
 
@@ -35,6 +35,7 @@ static void deserialize(${struct.name}* s, std::istream& in) {
     <% rest_members = struct.members %>
 % endif
 % for member in rest_members:
+    <% member_struct = spec.find_struct(member.type) %>
     % if member.pointer and member.array:
     #error auto-generator doesn't support array of pointers (${struct.name}.${member.name})
         <% continue %>
@@ -45,6 +46,10 @@ static void deserialize(${struct.name}* s, std::istream& in) {
     % endif
     % if member.len and "," in member.len:
     #error auto-generator doesn't support multi-variable lengths (${struct.name}.${member.name})
+        <% continue %>
+    % endif
+    % if member.pointer and member.len and member_struct and member_struct.header:
+    #error auto-generator doesn't support arrays of header structs (${struct.name}.${member.name})
         <% continue %>
     % endif
     % if member.pointer:
@@ -63,8 +68,17 @@ static void deserialize(${struct.name}* s, std::istream& in) {
             deserialize(&s->${member.name}[i], in);
         }
         % else:
+            % if member.header:
+        XrStructureType header_real_type = XR_TYPE_UNKNOWN;
+        deserialize(&header_real_type, in);
+        XrBaseOutStructure* header_real{};
+        allocator_lookup(header_real_type)(&header_real);
+        deserializer_lookup(header_real_type)(&header_real, in);
+        s->${member.name} = (${member.full_type()})header_real;
+            % else:
         allocate(&s->${member.name}, 1);
         deserialize(s->${member.name}, in);
+            % endif
         % endif
     }
     else {

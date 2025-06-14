@@ -2,7 +2,7 @@
 template <typename T>
 static void cleanup(const T* x) {
     static_assert(
-        ${" || ".join(f"std::is_same<T, {t}>::value" for t in spec.supported_types)},
+        !std::is_class<T>::value,
         "T must be a supported type"
     );
     // no-op for base types

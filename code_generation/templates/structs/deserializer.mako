@@ -12,10 +12,6 @@
 
 namespace xrtransport {
 
-<%include file="deserializer_lookup_table.mako"/>
-<%include file="allocator_lookup_table.mako"/>
-<%include file="cleaner_lookup_table.mako"/>
-
 <%namespace name="struct_deserializer" file="struct_deserializer.mako"/>
 <%namespace name="struct_allocator" file="struct_allocator.mako"/>
 <%namespace name="struct_cleaner" file="struct_cleaner.mako"/>
@@ -34,6 +30,10 @@ ${struct_allocator.forward_allocator(struct)}
 <%common:for_grouped_structs args="struct">
 ${struct_cleaner.forward_cleaner(struct)}
 </%common:for_grouped_structs>
+
+<%include file="deserializer_lookup_table.mako"/>
+<%include file="allocator_lookup_table.mako"/>
+<%include file="cleaner_lookup_table.mako"/>
 
 // Generic deserializer
 ${struct_deserializer.generic_deserializer()}

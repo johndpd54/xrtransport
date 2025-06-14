@@ -1,10 +1,6 @@
 <%def name="generic_allocator()">
 template <typename T>
 static void allocate(T** x, std::size_t n) {
-    static_assert(
-        ${" || ".join(f"std::is_same<T, {t}>::value" for t in spec.supported_types)},
-        "T must be a supported type"
-    );
     *x = new T[n]();
 }
 </%def>

@@ -1,9 +1,24 @@
-#include "test_serializer.h"
-#include "test_deserializer.h"
+#include "serializer.h"
+#include "deserializer.h"
+
+#include <cassert>
+#include <cstring>
 
 int main() {
-% for i in range(100):
-${struct_generator.generate_struct(f"item{i}", indent=4)}
+<% plans = [struct_generator.generate_plan() for _ in range(1000)] %>
+% for i, plan in enumerate(plans):
+${plan.gen_init(f"item{i}", indent=4)}
 % endfor
+
+
+
+
+
+
+
+% for i, plan in enumerate(plans):
+${plan.gen_compare(f"item{i}", indent=4)}
+% endfor
+
     return 0;
 }
