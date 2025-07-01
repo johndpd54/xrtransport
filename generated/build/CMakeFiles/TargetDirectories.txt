@@ -1,3 +1,0 @@
-C:/Users/Andrew/Workspace/xrtransport/generated/build/CMakeFiles/fuzzer.dir
-C:/Users/Andrew/Workspace/xrtransport/generated/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Andrew/Workspace/xrtransport/generated/build/CMakeFiles/ZERO_CHECK.dir
