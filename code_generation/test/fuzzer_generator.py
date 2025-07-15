@@ -130,8 +130,7 @@ class StructFuzzerPlan:
                     self._init_member(plan, out, member.type, f"{name}_{member.name}", f"{name}_{member.name}", indent)
                     out.append(f"{indent * ' '}{binding}.{member.name} = &{name}_{member.name};")
             elif member.array:
-                array_length = member.array[1:-1]
-                out.append(f"{indent * ' '}for (int i = 0; i < {array_length}; i++) {{")
+                out.append(f"{indent * ' '}for (int i = 0; i < {member.array}; i++) {{")
                 self._init_member(plan, out, member.type, f"{name}_{member.name}", f"{binding}.{member.name}[i]", indent + 4)
                 out.append(f"{indent * ' '}}}")
             else:
@@ -175,8 +174,7 @@ class StructFuzzerPlan:
                 else:
                     self._compare_member(plan, out, member.type, f"{name}_{member.name}", f"{binding}->{member.name}", indent)
             elif member.array:
-                array_length = member.array[1:-1]
-                out.append(f"{indent * ' '}for (int i = 0; i < {array_length}; i++) {{")
+                out.append(f"{indent * ' '}for (int i = 0; i < {member.array}; i++) {{")
                 self._compare_member(plan, out, member.type, f"{name}_{member.name}", f"{binding}.{member.name}[i]", indent + 4)
                 out.append(f"{indent * ' '}}}")
             else:

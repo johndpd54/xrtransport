@@ -1,29 +1,25 @@
 
+
+
+
+
+
+
+
 #ifndef XRTRANSPORT_SERIALIZER_GENERATED_H
 #define XRTRANSPORT_SERIALIZER_GENERATED_H
+
+#include "common.h"
 
 #include "openxr/openxr.h"
 
 #include <iostream>
 #include <cstdint>
-#include <vector>
-#include <tuple>
+#include <unordered_map>
 #include <cassert>
 #include <cstring>
 
 namespace xrtransport {
-
-template <typename T>
-static inline std::size_t count_null_terminated(const T* ptr) {
-    std::size_t count = 0;
-    while (*ptr != T{}) {
-        ++ptr;
-        ++count;
-    }
-    return count + 1;
-}
-
-
 
 // Forward declarations
 
@@ -3217,14 +3213,11 @@ static void serialize(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s, 
 #endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
 
 
-
-
-
 // Only to be used with OpenXR pNext structs
 using StructSerializer = void(*)(const XrBaseInStructure*, std::ostream&);
 #define STRUCT_SERIALIZER_PTR(t) (reinterpret_cast<StructSerializer>(static_cast<void(*)(const t*, std::ostream&)>(&serialize)))
 
-static std::tuple<XrStructureType, StructSerializer> serializer_lookup_table[] = {
+static std::unordered_map<XrStructureType, StructSerializer> serializer_lookup_table = {
 
 
 
@@ -5032,32 +5025,11 @@ static std::tuple<XrStructureType, StructSerializer> serializer_lookup_table[] =
 };
 
 static StructSerializer serializer_lookup(XrStructureType struct_type) {
-    std::size_t array_size = sizeof(serializer_lookup_table) / sizeof(serializer_lookup_table[0]);
-    std::size_t low = 0;
-    std::size_t high = array_size - 1;
-
-    while (low <= high) {
-        std::size_t mid = low + (high - low) / 2;
-        std::tuple<XrStructureType, StructSerializer>& at_mid = serializer_lookup_table[mid];
-        XrStructureType at_mid_type = std::get<0>(at_mid);
-
-        if (at_mid_type == struct_type) {
-            return std::get<1>(at_mid);
-        }
-
-        if (at_mid_type < struct_type) {
-            low = mid + 1;
-        }
-        else {
-            high = mid - 1;
-        }
-    }
-    
-    assert(false && "XrStructureType not found in serializers lookup table");
+    assert(serializer_lookup_table.find(struct_type) != serializer_lookup_table.end());
+    return serializer_lookup_table[struct_type];
 }
 
-// Generic serializer
-
+// Generic serializers
 template <typename T>
 static void serialize(const T* x, std::ostream& out) {
     static_assert(
@@ -5067,6 +5039,30 @@ static void serialize(const T* x, std::ostream& out) {
     out.write(reinterpret_cast<const char*>(x), sizeof(T));
 }
 
+template <typename T>
+static void serialize_array(const T* x, std::size_t len, std::ostream& out) {
+    for (std::size_t i = 0; i < len; i++) {
+        serialize(&x[i], out);
+    }
+}
+
+template <typename T>
+static void serialize_ptr(const T* x, std::size_t len, std::ostream& out) {
+    std::uint32_t marker = x != nullptr ? len : 0;
+    serialize(&marker, out);
+    if (marker) {
+        serialize_array(x, len, out);
+    }
+}
+
+static void serialize_xr(const void* untyped, std::ostream& out) {
+    const XrBaseInStructure* x = static_cast<const XrBaseInStructure*>(untyped);
+    XrStructureType type = x != nullptr ? x->type : XR_TYPE_UNKNOWN;
+    serialize(&type, out);
+    if (type != XR_TYPE_UNKNOWN) {
+        serializer_lookup(type)(x, out);
+    }
+}
 
 // Serializers
 
@@ -5075,219 +5071,350 @@ static void serialize(const T* x, std::ostream& out) {
 
 
 static void serialize(const XrVector2f* s, std::ostream& out) {
-    
+            
+
     serialize(&s->x, out);
+
+            
+
     serialize(&s->y, out);
+
 }
 
 
 
 
 static void serialize(const XrVector3f* s, std::ostream& out) {
-    
+            
+
     serialize(&s->x, out);
+
+            
+
     serialize(&s->y, out);
+
+            
+
     serialize(&s->z, out);
+
 }
 
 
 
 
 static void serialize(const XrVector4f* s, std::ostream& out) {
-    
+            
+
     serialize(&s->x, out);
+
+            
+
     serialize(&s->y, out);
+
+            
+
     serialize(&s->z, out);
+
+            
+
     serialize(&s->w, out);
+
 }
 
 
 
 
 static void serialize(const XrColor4f* s, std::ostream& out) {
-    
+            
+
     serialize(&s->r, out);
+
+            
+
     serialize(&s->g, out);
+
+            
+
     serialize(&s->b, out);
+
+            
+
     serialize(&s->a, out);
+
 }
 
 
 
 
 static void serialize(const XrQuaternionf* s, std::ostream& out) {
-    
+            
+
     serialize(&s->x, out);
+
+            
+
     serialize(&s->y, out);
+
+            
+
     serialize(&s->z, out);
+
+            
+
     serialize(&s->w, out);
+
 }
 
 
 
 
 static void serialize(const XrPosef* s, std::ostream& out) {
-    
+            
+
     serialize(&s->orientation, out);
+
+            
+
     serialize(&s->position, out);
+
 }
 
 
 
 
 static void serialize(const XrOffset2Df* s, std::ostream& out) {
-    
+            
+
     serialize(&s->x, out);
+
+            
+
     serialize(&s->y, out);
+
 }
 
 
 
 
 static void serialize(const XrExtent2Df* s, std::ostream& out) {
-    
+            
+
     serialize(&s->width, out);
+
+            
+
     serialize(&s->height, out);
+
 }
 
 
 
 
 static void serialize(const XrRect2Df* s, std::ostream& out) {
-    
+            
+
     serialize(&s->offset, out);
+
+            
+
     serialize(&s->extent, out);
+
 }
 
 
 
 
 static void serialize(const XrOffset2Di* s, std::ostream& out) {
-    
+            
+
     serialize(&s->x, out);
+
+            
+
     serialize(&s->y, out);
+
 }
 
 
 
 
 static void serialize(const XrExtent2Di* s, std::ostream& out) {
-    
+            
+
     serialize(&s->width, out);
+
+            
+
     serialize(&s->height, out);
+
 }
 
 
 
 
 static void serialize(const XrRect2Di* s, std::ostream& out) {
-    
+            
+
     serialize(&s->offset, out);
+
+            
+
     serialize(&s->extent, out);
+
 }
 
 
 
 
 static void serialize(const XrApplicationInfo* s, std::ostream& out) {
-    
-        
-    for (int i = 0; i < XR_MAX_APPLICATION_NAME_SIZE; i++) {
-        serialize(&s->applicationName[i], out);
-    }
+            
+
+    serialize_array(s->applicationName, XR_MAX_APPLICATION_NAME_SIZE, out);
+
+            
+
     serialize(&s->applicationVersion, out);
-        
-    for (int i = 0; i < XR_MAX_ENGINE_NAME_SIZE; i++) {
-        serialize(&s->engineName[i], out);
-    }
+
+            
+
+    serialize_array(s->engineName, XR_MAX_ENGINE_NAME_SIZE, out);
+
+            
+
     serialize(&s->engineVersion, out);
+
+            
+
     serialize(&s->apiVersion, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemGraphicsProperties* s, std::ostream& out) {
-    
+            
+
     serialize(&s->maxSwapchainImageHeight, out);
+
+            
+
     serialize(&s->maxSwapchainImageWidth, out);
+
+            
+
     serialize(&s->maxLayerCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemTrackingProperties* s, std::ostream& out) {
-    
+            
+
     serialize(&s->orientationTracking, out);
+
+            
+
     serialize(&s->positionTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageBaseHeader* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
 
 
 static void serialize(const XrFovf* s, std::ostream& out) {
-    
+            
+
     serialize(&s->angleLeft, out);
+
+            
+
     serialize(&s->angleRight, out);
+
+            
+
     serialize(&s->angleUp, out);
+
+            
+
     serialize(&s->angleDown, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainSubImage* s, std::ostream& out) {
-    
+            
+
     serialize(&s->swapchain, out);
+
+            
+
     serialize(&s->imageRect, out);
+
+            
+
     serialize(&s->imageArrayIndex, out);
+
 }
 
 
 
 
 static void serialize(const XrCompositionLayerBaseHeader* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
 
 
 static void serialize(const XrHapticBaseHeader* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
 
 
 static void serialize(const XrEventDataBaseHeader* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
 
 
 static void serialize(const XrActionSuggestedBinding* s, std::ostream& out) {
-    
+            
+
     serialize(&s->action, out);
+
+            
+
     serialize(&s->binding, out);
+
 }
 
 
 
 
 static void serialize(const XrActiveActionSet* s, std::ostream& out) {
-    
+            
+
     serialize(&s->actionSet, out);
+
+            
+
     serialize(&s->subactionPath, out);
+
 }
 
 
@@ -5296,7 +5423,7 @@ static void serialize(const XrActiveActionSet* s, std::ostream& out) {
 
 
 static void serialize(const XrBindingModificationBaseHeaderKHR* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
@@ -5306,20 +5433,36 @@ static void serialize(const XrBindingModificationBaseHeaderKHR* s, std::ostream&
 
 
 static void serialize(const XrHandJointLocationEXT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->locationFlags, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->radius, out);
+
 }
 
 
 
 
 static void serialize(const XrHandJointVelocityEXT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->velocityFlags, out);
+
+            
+
     serialize(&s->linearVelocity, out);
+
+            
+
     serialize(&s->angularVelocity, out);
+
 }
 
 
@@ -5329,9 +5472,14 @@ static void serialize(const XrHandJointVelocityEXT* s, std::ostream& out) {
 
 
 static void serialize(const XrFaceExpressionStatusFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->isValid, out);
+
+            
+
     serialize(&s->isEyeFollowingBlendshapesValid, out);
+
 }
 
 
@@ -5341,19 +5489,32 @@ static void serialize(const XrFaceExpressionStatusFB* s, std::ostream& out) {
 
 
 static void serialize(const XrBodySkeletonJointFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->joint, out);
+
+            
+
     serialize(&s->parentJoint, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
 
 
 static void serialize(const XrBodyJointLocationFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->locationFlags, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
@@ -5363,10 +5524,18 @@ static void serialize(const XrBodyJointLocationFB* s, std::ostream& out) {
 
 
 static void serialize(const XrEyeGazeFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->isValid, out);
+
+            
+
     serialize(&s->gazePose, out);
+
+            
+
     serialize(&s->gazeConfidence, out);
+
 }
 
 
@@ -5376,53 +5545,60 @@ static void serialize(const XrEyeGazeFB* s, std::ostream& out) {
 
 
 static void serialize(const XrHandMeshIndexBufferMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->indexBufferKey, out);
+
+            
+
     serialize(&s->indexCapacityInput, out);
+
+            
+
     serialize(&s->indexCountOutput, out);
-    if (s->indices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indices, s->indexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrHandMeshVertexBufferMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->vertexUpdateTime, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrHandMeshVertexMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->position, out);
+
+            
+
     serialize(&s->normal, out);
+
 }
 
 
@@ -5432,7 +5608,7 @@ static void serialize(const XrHandMeshVertexMSFT* s, std::ostream& out) {
 
 
 static void serialize(const XrSwapchainStateBaseHeaderFB* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
@@ -5442,7 +5618,7 @@ static void serialize(const XrSwapchainStateBaseHeaderFB* s, std::ostream& out) 
 
 
 static void serialize(const XrLoaderInitInfoBaseHeaderKHR* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
@@ -5452,135 +5628,179 @@ static void serialize(const XrLoaderInitInfoBaseHeaderKHR* s, std::ostream& out)
 
 
 static void serialize(const XrUuidMSFT* s, std::ostream& out) {
-    
-        
-    for (int i = 0; i < 16; i++) {
-        serialize(&s->bytes[i], out);
-    }
+            
+
+    serialize_array(s->bytes, 16, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneSphereBoundMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->center, out);
+
+            
+
     serialize(&s->radius, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneOrientedBoxBoundMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->extents, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneFrustumBoundMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->fov, out);
+
+            
+
     serialize(&s->farDistance, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneBoundsMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->sphereCount, out);
-    if (s->spheres != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->sphereCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->spheres[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->spheres, s->sphereCount, out);
+
+            
+
     serialize(&s->boxCount, out);
-    if (s->boxes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->boxCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->boxes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->boxes, s->boxCount, out);
+
+            
+
     serialize(&s->frustumCount, out);
-    if (s->frustums != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->frustumCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->frustums[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->frustums, s->frustumCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneComponentMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->componentType, out);
+
+            
+
     serialize(&s->id, out);
+
+            
+
     serialize(&s->parentId, out);
+
+            
+
     serialize(&s->updateTime, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneComponentLocationMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->flags, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneObjectMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->objectType, out);
+
 }
 
 
 
 
 static void serialize(const XrScenePlaneMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->alignment, out);
+
+            
+
     serialize(&s->size, out);
+
+            
+
     serialize(&s->meshBufferId, out);
+
+            
+
     serialize(&s->supportsIndicesUint16, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMeshMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->meshBufferId, out);
+
+            
+
     serialize(&s->supportsIndicesUint16, out);
+
 }
 
 
@@ -5590,20 +5810,15 @@ static void serialize(const XrSceneMeshMSFT* s, std::ostream& out) {
 
 
 static void serialize(const XrDeserializeSceneFragmentMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->bufferSize, out);
-    if (s->buffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->buffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->buffer, s->bufferSize, out);
+
 }
 
 
@@ -5613,20 +5828,36 @@ static void serialize(const XrDeserializeSceneFragmentMSFT* s, std::ostream& out
 
 
 static void serialize(const XrSceneMarkerMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->markerType, out);
+
+            
+
     serialize(&s->lastSeenTime, out);
+
+            
+
     serialize(&s->center, out);
+
+            
+
     serialize(&s->size, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMarkerQRCodeMSFT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->symbolType, out);
+
+            
+
     serialize(&s->version, out);
+
 }
 
 
@@ -5636,11 +5867,22 @@ static void serialize(const XrSceneMarkerQRCodeMSFT* s, std::ostream& out) {
 
 
 static void serialize(const XrVector4sFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->x, out);
+
+            
+
     serialize(&s->y, out);
+
+            
+
     serialize(&s->z, out);
+
+            
+
     serialize(&s->w, out);
+
 }
 
 
@@ -5650,13 +5892,18 @@ static void serialize(const XrVector4sFB* s, std::ostream& out) {
 
 
 static void serialize(const XrHandCapsuleFB* s, std::ostream& out) {
-    
-        
-    for (int i = 0; i < XR_HAND_TRACKING_CAPSULE_POINT_COUNT_FB; i++) {
-        serialize(&s->points[i], out);
-    }
+            
+
+    serialize_array(s->points, XR_HAND_TRACKING_CAPSULE_POINT_COUNT_FB, out);
+
+            
+
     serialize(&s->radius, out);
+
+            
+
     serialize(&s->joint, out);
+
 }
 
 
@@ -5666,23 +5913,28 @@ static void serialize(const XrHandCapsuleFB* s, std::ostream& out) {
 
 
 static void serialize(const XrSpaceQueryInfoBaseHeaderFB* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
 
 
 static void serialize(const XrSpaceFilterInfoBaseHeaderFB* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
 
 
 static void serialize(const XrSpaceQueryResultFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->uuid, out);
+
 }
 
 
@@ -5692,19 +5944,32 @@ static void serialize(const XrSpaceQueryResultFB* s, std::ostream& out) {
 
 
 static void serialize(const XrOffset3DfFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->x, out);
+
+            
+
     serialize(&s->y, out);
+
+            
+
     serialize(&s->z, out);
+
 }
 
 
 
 
 static void serialize(const XrRect3DfFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->offset, out);
+
+            
+
     serialize(&s->extent, out);
+
 }
 
 
@@ -5714,14 +5979,22 @@ static void serialize(const XrRect3DfFB* s, std::ostream& out) {
 
 
 static void serialize(const XrKeyboardTrackingDescriptionFB* s, std::ostream& out) {
-    
+            
+
     serialize(&s->trackedKeyboardId, out);
+
+            
+
     serialize(&s->size, out);
+
+            
+
     serialize(&s->flags, out);
-        
-    for (int i = 0; i < XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB; i++) {
-        serialize(&s->name[i], out);
-    }
+
+            
+
+    serialize_array(s->name, XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB, out);
+
 }
 
 
@@ -5731,7 +6004,7 @@ static void serialize(const XrKeyboardTrackingDescriptionFB* s, std::ostream& ou
 
 
 static void serialize(const XrShareSpacesRecipientBaseHeaderMETA* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
@@ -5741,11 +6014,10 @@ static void serialize(const XrShareSpacesRecipientBaseHeaderMETA* s, std::ostrea
 
 
 static void serialize(const XrSpatialAnchorPersistenceNameMSFT* s, std::ostream& out) {
-    
-        
-    for (int i = 0; i < XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT; i++) {
-        serialize(&s->name[i], out);
-    }
+            
+
+    serialize_array(s->name, XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT, out);
+
 }
 
 
@@ -5755,9 +6027,14 @@ static void serialize(const XrSpatialAnchorPersistenceNameMSFT* s, std::ostream&
 
 
 static void serialize(const XrBodyJointLocationBD* s, std::ostream& out) {
-    
+            
+
     serialize(&s->locationFlags, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
@@ -5767,11 +6044,10 @@ static void serialize(const XrBodyJointLocationBD* s, std::ostream& out) {
 
 
 static void serialize(const XrSpatialAnchorNameHTC* s, std::ostream& out) {
-    
-        
-    for (int i = 0; i < XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC; i++) {
-        serialize(&s->name[i], out);
-    }
+            
+
+    serialize_array(s->name, XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC, out);
+
 }
 
 
@@ -5780,8 +6056,10 @@ static void serialize(const XrSpatialAnchorNameHTC* s, std::ostream& out) {
 
 
 static void serialize(const XrBodySkeletonJointHTC* s, std::ostream& out) {
-    
+            
+
     serialize(&s->pose, out);
+
 }
 
 
@@ -5790,9 +6068,14 @@ static void serialize(const XrBodySkeletonJointHTC* s, std::ostream& out) {
 
 
 static void serialize(const XrBodyJointLocationHTC* s, std::ostream& out) {
-    
+            
+
     serialize(&s->locationFlags, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
@@ -5802,23 +6085,48 @@ static void serialize(const XrBodyJointLocationHTC* s, std::ostream& out) {
 
 
 static void serialize(const XrExternalCameraIntrinsicsOCULUS* s, std::ostream& out) {
-    
+            
+
     serialize(&s->lastChangeTime, out);
+
+            
+
     serialize(&s->fov, out);
+
+            
+
     serialize(&s->virtualNearPlaneDistance, out);
+
+            
+
     serialize(&s->virtualFarPlaneDistance, out);
+
+            
+
     serialize(&s->imageSensorPixelResolution, out);
+
 }
 
 
 
 
 static void serialize(const XrExternalCameraExtrinsicsOCULUS* s, std::ostream& out) {
-    
+            
+
     serialize(&s->lastChangeTime, out);
+
+            
+
     serialize(&s->cameraStatusFlags, out);
+
+            
+
     serialize(&s->attachedToDevice, out);
+
+            
+
     serialize(&s->relativePose, out);
+
 }
 
 
@@ -5828,20 +6136,15 @@ static void serialize(const XrExternalCameraExtrinsicsOCULUS* s, std::ostream& o
 
 
 static void serialize(const XrPassthroughColorLutDataMETA* s, std::ostream& out) {
-    
+            
+
     serialize(&s->bufferSize, out);
-    if (s->buffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->buffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->buffer, s->bufferSize, out);
+
 }
 
 
@@ -5851,10 +6154,18 @@ static void serialize(const XrPassthroughColorLutDataMETA* s, std::ostream& out)
 
 
 static void serialize(const XrFoveationConfigurationHTC* s, std::ostream& out) {
-    
+            
+
     serialize(&s->level, out);
+
+            
+
     serialize(&s->clearFovDegree, out);
+
+            
+
     serialize(&s->focalCenterOffset, out);
+
 }
 
 
@@ -5864,9 +6175,14 @@ static void serialize(const XrFoveationConfigurationHTC* s, std::ostream& out) {
 
 
 static void serialize(const XrActiveActionSetPriorityEXT* s, std::ostream& out) {
-    
+            
+
     serialize(&s->actionSet, out);
+
+            
+
     serialize(&s->priorityOverride, out);
+
 }
 
 
@@ -5876,9 +6192,14 @@ static void serialize(const XrActiveActionSetPriorityEXT* s, std::ostream& out) 
 
 
 static void serialize(const XrForceFeedbackCurlApplyLocationMNDX* s, std::ostream& out) {
-    
+            
+
     serialize(&s->location, out);
+
+            
+
     serialize(&s->value, out);
+
 }
 
 
@@ -5888,7 +6209,7 @@ static void serialize(const XrForceFeedbackCurlApplyLocationMNDX* s, std::ostrea
 
 
 static void serialize(const XrLocalizationMapQueryInfoBaseHeaderML* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
@@ -5897,60 +6218,96 @@ static void serialize(const XrLocalizationMapQueryInfoBaseHeaderML* s, std::ostr
 
 
 static void serialize(const XrColor3f* s, std::ostream& out) {
-    
+            
+
     serialize(&s->r, out);
+
+            
+
     serialize(&s->g, out);
+
+            
+
     serialize(&s->b, out);
+
 }
 
 
 
 
 static void serialize(const XrExtent3Df* s, std::ostream& out) {
-    
+            
+
     serialize(&s->width, out);
+
+            
+
     serialize(&s->height, out);
+
+            
+
     serialize(&s->depth, out);
+
 }
 
 
 
 
 static void serialize(const XrSpheref* s, std::ostream& out) {
-    
+            
+
     serialize(&s->center, out);
+
+            
+
     serialize(&s->radius, out);
+
 }
 
 
 
 
 static void serialize(const XrBoxf* s, std::ostream& out) {
-    
+            
+
     serialize(&s->center, out);
+
+            
+
     serialize(&s->extents, out);
+
 }
 
 
 
 
 static void serialize(const XrFrustumf* s, std::ostream& out) {
-    
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->fov, out);
+
+            
+
     serialize(&s->nearZ, out);
+
+            
+
     serialize(&s->farZ, out);
+
 }
 
 
 
 
 static void serialize(const XrUuid* s, std::ostream& out) {
-    
-        
-    for (int i = 0; i < XR_UUID_SIZE; i++) {
-        serialize(&s->data[i], out);
-    }
+            
+
+    serialize_array(s->data, XR_UUID_SIZE, out);
+
 }
 
 
@@ -5959,7 +6316,7 @@ static void serialize(const XrUuid* s, std::ostream& out) {
 
 
 static void serialize(const XrFutureCompletionBaseHeaderEXT* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
@@ -5968,19 +6325,32 @@ static void serialize(const XrFutureCompletionBaseHeaderEXT* s, std::ostream& ou
 
 
 static void serialize(const XrSpaceLocationData* s, std::ostream& out) {
-    
+            
+
     serialize(&s->locationFlags, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceVelocityData* s, std::ostream& out) {
-    
+            
+
     serialize(&s->velocityFlags, out);
+
+            
+
     serialize(&s->linearVelocity, out);
+
+            
+
     serialize(&s->angularVelocity, out);
+
 }
 
 
@@ -5989,7 +6359,7 @@ static void serialize(const XrSpaceVelocityData* s, std::ostream& out) {
 
 
 static void serialize(const XrSpatialAnchorsCreateInfoBaseHeaderML* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
@@ -5999,16 +6369,21 @@ static void serialize(const XrSpatialAnchorsCreateInfoBaseHeaderML* s, std::ostr
 
 
 static void serialize(const XrSpatialAnchorsQueryInfoBaseHeaderML* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorCompletionResultML* s, std::ostream& out) {
-    
+            
+
     serialize(&s->uuid, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
@@ -6018,7 +6393,7 @@ static void serialize(const XrSpatialAnchorCompletionResultML* s, std::ostream& 
 
 
 static void serialize(const XrSpatialEntityComponentDataBaseHeaderBD* s, std::ostream& out) {
-    serializer_lookup(s->type)(reinterpret_cast<const XrBaseInStructure*>(s));
+        serialize_xr(s, out);
 }
 
 
@@ -6027,51 +6402,52 @@ static void serialize(const XrSpatialEntityComponentDataBaseHeaderBD* s, std::os
 
 
 static void serialize(const XrApiLayerProperties* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_MAX_API_LAYER_NAME_SIZE; i++) {
-        serialize(&s->layerName[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->layerName, XR_MAX_API_LAYER_NAME_SIZE, out);
+
+            
+
     serialize(&s->specVersion, out);
+
+            
+
     serialize(&s->layerVersion, out);
-        
-    for (int i = 0; i < XR_MAX_API_LAYER_DESCRIPTION_SIZE; i++) {
-        serialize(&s->description[i], out);
-    }
+
+            
+
+    serialize_array(s->description, XR_MAX_API_LAYER_DESCRIPTION_SIZE, out);
+
 }
 
 
 
 
 static void serialize(const XrExtensionProperties* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_MAX_EXTENSION_NAME_SIZE; i++) {
-        serialize(&s->extensionName[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->extensionName, XR_MAX_EXTENSION_NAME_SIZE, out);
+
+            
+
     serialize(&s->extensionVersion, out);
+
 }
 
 
@@ -6080,171 +6456,208 @@ static void serialize(const XrExtensionProperties* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemGetInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->formFactor, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemProperties* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->systemId, out);
+
+            
+
     serialize(&s->vendorId, out);
-        
-    for (int i = 0; i < XR_MAX_SYSTEM_NAME_SIZE; i++) {
-        serialize(&s->systemName[i], out);
-    }
+
+            
+
+    serialize_array(s->systemName, XR_MAX_SYSTEM_NAME_SIZE, out);
+
+            
+
     serialize(&s->graphicsProperties, out);
+
+            
+
     serialize(&s->trackingProperties, out);
+
 }
 
 
 
 
 static void serialize(const XrViewLocateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewConfigurationType, out);
+
+            
+
     serialize(&s->displayTime, out);
+
+            
+
     serialize(&s->space, out);
+
 }
 
 
 
 
 static void serialize(const XrView* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->fov, out);
+
 }
 
 
 
 
 static void serialize(const XrSessionCreateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->createFlags, out);
+
+            
+
     serialize(&s->systemId, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainCreateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->createFlags, out);
+
+            
+
     serialize(&s->usageFlags, out);
+
+            
+
     serialize(&s->format, out);
+
+            
+
     serialize(&s->sampleCount, out);
+
+            
+
     serialize(&s->width, out);
+
+            
+
     serialize(&s->height, out);
+
+            
+
     serialize(&s->faceCount, out);
+
+            
+
     serialize(&s->arraySize, out);
+
+            
+
     serialize(&s->mipCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSessionBeginInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->primaryViewConfigurationType, out);
+
 }
 
 
 
 
 static void serialize(const XrViewState* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewStateFlags, out);
+
 }
 
 
@@ -6253,827 +6666,875 @@ static void serialize(const XrViewState* s, std::ostream& out) {
 
 
 static void serialize(const XrHapticVibration* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->duration, out);
+
+            
+
     serialize(&s->frequency, out);
+
+            
+
     serialize(&s->amplitude, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataBuffer* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < 4000; i++) {
-        serialize(&s->varying[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->varying, 4000, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataInstanceLossPending* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->lossTime, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSessionStateChanged* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->session, out);
+
+            
+
     serialize(&s->state, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrActionStateBoolean* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->currentState, out);
+
+            
+
     serialize(&s->changedSinceLastSync, out);
+
+            
+
     serialize(&s->lastChangeTime, out);
+
+            
+
     serialize(&s->isActive, out);
+
 }
 
 
 
 
 static void serialize(const XrActionStateFloat* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->currentState, out);
+
+            
+
     serialize(&s->changedSinceLastSync, out);
+
+            
+
     serialize(&s->lastChangeTime, out);
+
+            
+
     serialize(&s->isActive, out);
+
 }
 
 
 
 
 static void serialize(const XrActionStateVector2f* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->currentState, out);
+
+            
+
     serialize(&s->changedSinceLastSync, out);
+
+            
+
     serialize(&s->lastChangeTime, out);
+
+            
+
     serialize(&s->isActive, out);
+
 }
 
 
 
 
 static void serialize(const XrActionStatePose* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->isActive, out);
+
 }
 
 
 
 
 static void serialize(const XrActionSetCreateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_MAX_ACTION_SET_NAME_SIZE; i++) {
-        serialize(&s->actionSetName[i], out);
-    }
-        
-    for (int i = 0; i < XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE; i++) {
-        serialize(&s->localizedActionSetName[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->actionSetName, XR_MAX_ACTION_SET_NAME_SIZE, out);
+
+            
+
+    serialize_array(s->localizedActionSetName, XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE, out);
+
+            
+
     serialize(&s->priority, out);
+
 }
 
 
 
 
 static void serialize(const XrActionCreateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_MAX_ACTION_NAME_SIZE; i++) {
-        serialize(&s->actionName[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->actionName, XR_MAX_ACTION_NAME_SIZE, out);
+
+            
+
     serialize(&s->actionType, out);
+
+            
+
     serialize(&s->countSubactionPaths, out);
-    if (s->subactionPaths != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->countSubactionPaths;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->subactionPaths[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-        
-    for (int i = 0; i < XR_MAX_LOCALIZED_ACTION_NAME_SIZE; i++) {
-        serialize(&s->localizedActionName[i], out);
-    }
+
+            
+
+    
+    serialize_ptr(s->subactionPaths, s->countSubactionPaths, out);
+
+            
+
+    serialize_array(s->localizedActionName, XR_MAX_LOCALIZED_ACTION_NAME_SIZE, out);
+
 }
 
 
 
 
 static void serialize(const XrInstanceProperties* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->runtimeVersion, out);
-        
-    for (int i = 0; i < XR_MAX_RUNTIME_NAME_SIZE; i++) {
-        serialize(&s->runtimeName[i], out);
-    }
+
+            
+
+    serialize_array(s->runtimeName, XR_MAX_RUNTIME_NAME_SIZE, out);
+
 }
 
 
 
 
 static void serialize(const XrFrameWaitInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrCompositionLayerProjection* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->viewCount, out);
-    if (s->views != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->viewCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->views[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->views, s->viewCount, out);
+
 }
 
 
 
 
 static void serialize(const XrCompositionLayerQuad* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->eyeVisibility, out);
+
+            
+
     serialize(&s->subImage, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->size, out);
+
 }
 
 
 
 
 static void serialize(const XrReferenceSpaceCreateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->referenceSpaceType, out);
+
+            
+
     serialize(&s->poseInReferenceSpace, out);
+
 }
 
 
 
 
 static void serialize(const XrActionSpaceCreateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->action, out);
+
+            
+
     serialize(&s->subactionPath, out);
+
+            
+
     serialize(&s->poseInActionSpace, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataReferenceSpaceChangePending* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->session, out);
+
+            
+
     serialize(&s->referenceSpaceType, out);
+
+            
+
     serialize(&s->changeTime, out);
+
+            
+
     serialize(&s->poseValid, out);
+
+            
+
     serialize(&s->poseInPreviousSpace, out);
+
 }
 
 
 
 
 static void serialize(const XrViewConfigurationView* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->recommendedImageRectWidth, out);
+
+            
+
     serialize(&s->maxImageRectWidth, out);
+
+            
+
     serialize(&s->recommendedImageRectHeight, out);
+
+            
+
     serialize(&s->maxImageRectHeight, out);
+
+            
+
     serialize(&s->recommendedSwapchainSampleCount, out);
+
+            
+
     serialize(&s->maxSwapchainSampleCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceLocation* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->locationFlags, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceVelocity* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->velocityFlags, out);
+
+            
+
     serialize(&s->linearVelocity, out);
+
+            
+
     serialize(&s->angularVelocity, out);
+
 }
 
 
 
 
 static void serialize(const XrFrameState* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->predictedDisplayTime, out);
+
+            
+
     serialize(&s->predictedDisplayPeriod, out);
+
+            
+
     serialize(&s->shouldRender, out);
+
 }
 
 
 
 
 static void serialize(const XrViewConfigurationProperties* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewConfigurationType, out);
+
+            
+
     serialize(&s->fovMutable, out);
+
 }
 
 
 
 
 static void serialize(const XrFrameBeginInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrCompositionLayerProjectionView* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->fov, out);
+
+            
+
     serialize(&s->subImage, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataEventsLost* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->lostEventCount, out);
+
 }
 
 
 
 
 static void serialize(const XrInteractionProfileSuggestedBinding* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->interactionProfile, out);
+
+            
+
     serialize(&s->countSuggestedBindings, out);
-    if (s->suggestedBindings != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->countSuggestedBindings;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->suggestedBindings[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->suggestedBindings, s->countSuggestedBindings, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataInteractionProfileChanged* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->session, out);
+
 }
 
 
 
 
 static void serialize(const XrInteractionProfileState* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->interactionProfile, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageAcquireInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageWaitInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->timeout, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageReleaseInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrActionStateGetInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->action, out);
+
+            
+
     serialize(&s->subactionPath, out);
+
 }
 
 
 
 
 static void serialize(const XrHapticActionInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->action, out);
+
+            
+
     serialize(&s->subactionPath, out);
+
 }
 
 
 
 
 static void serialize(const XrSessionActionSetsAttachInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->countActionSets, out);
-    if (s->actionSets != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->countActionSets;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->actionSets[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->actionSets, s->countActionSets, out);
+
 }
 
 
 
 
 static void serialize(const XrActionsSyncInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->countActiveActionSets, out);
-    if (s->activeActionSets != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->countActiveActionSets;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->activeActionSets[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->activeActionSets, s->countActiveActionSets, out);
+
 }
 
 
 
 
 static void serialize(const XrBoundSourcesForActionEnumerateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->action, out);
+
 }
 
 
 
 
 static void serialize(const XrInputSourceLocalizedNameGetInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->sourcePath, out);
+
+            
+
     serialize(&s->whichComponents, out);
+
 }
 
 
@@ -7082,24 +7543,38 @@ static void serialize(const XrInputSourceLocalizedNameGetInfo* s, std::ostream& 
 
 
 static void serialize(const XrCompositionLayerCubeKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->eyeVisibility, out);
+
+            
+
     serialize(&s->swapchain, out);
+
+            
+
     serialize(&s->imageArrayIndex, out);
+
+            
+
     serialize(&s->orientation, out);
+
 }
 
 
@@ -7109,36 +7584,24 @@ static void serialize(const XrCompositionLayerCubeKHR* s, std::ostream& out) {
 
 
 static void serialize(const XrInstanceCreateInfoAndroidKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->applicationVM != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->applicationVM, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->applicationActivity != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->applicationActivity, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->applicationVM, 1, out);
+
+            
+
+    
+    serialize_ptr(s->applicationActivity, 1, out);
+
 }
 
 
@@ -7148,23 +7611,34 @@ static void serialize(const XrInstanceCreateInfoAndroidKHR* s, std::ostream& out
 
 
 static void serialize(const XrCompositionLayerDepthInfoKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->subImage, out);
+
+            
+
     serialize(&s->minDepth, out);
+
+            
+
     serialize(&s->maxDepth, out);
+
+            
+
     serialize(&s->nearZ, out);
+
+            
+
     serialize(&s->farZ, out);
+
 }
 
 
@@ -7174,31 +7648,23 @@ static void serialize(const XrCompositionLayerDepthInfoKHR* s, std::ostream& out
 
 
 static void serialize(const XrVulkanSwapchainFormatListCreateInfoKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewFormatCount, out);
-    if (s->viewFormats != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->viewFormatCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->viewFormats[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->viewFormats, s->viewFormatCount, out);
+
 }
 
 
@@ -7208,22 +7674,30 @@ static void serialize(const XrVulkanSwapchainFormatListCreateInfoKHR* s, std::os
 
 
 static void serialize(const XrEventDataPerfSettingsEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->domain, out);
+
+            
+
     serialize(&s->subDomain, out);
+
+            
+
     serialize(&s->fromLevel, out);
+
+            
+
     serialize(&s->toLevel, out);
+
 }
 
 
@@ -7233,26 +7707,46 @@ static void serialize(const XrEventDataPerfSettingsEXT* s, std::ostream& out) {
 
 
 static void serialize(const XrCompositionLayerCylinderKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->eyeVisibility, out);
+
+            
+
     serialize(&s->subImage, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->radius, out);
+
+            
+
     serialize(&s->centralAngle, out);
+
+            
+
     serialize(&s->aspectRatio, out);
+
 }
 
 
@@ -7262,26 +7756,46 @@ static void serialize(const XrCompositionLayerCylinderKHR* s, std::ostream& out)
 
 
 static void serialize(const XrCompositionLayerEquirectKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->eyeVisibility, out);
+
+            
+
     serialize(&s->subImage, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->radius, out);
+
+            
+
     serialize(&s->scale, out);
+
+            
+
     serialize(&s->bias, out);
+
 }
 
 
@@ -7291,177 +7805,124 @@ static void serialize(const XrCompositionLayerEquirectKHR* s, std::ostream& out)
 
 
 static void serialize(const XrDebugUtilsObjectNameInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->objectType, out);
+
+            
+
     serialize(&s->objectHandle, out);
-    if (s->objectName != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = count_null_terminated(s->objectName);
-        serialize(static_cast<const uint32_t*>(&num_items), out);
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->objectName[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->objectName, count_null_terminated(s->objectName), out);
+
 }
 
 
 
 
 static void serialize(const XrDebugUtilsMessengerCallbackDataEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->messageId != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = count_null_terminated(s->messageId);
-        serialize(static_cast<const uint32_t*>(&num_items), out);
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->messageId[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->functionName != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = count_null_terminated(s->functionName);
-        serialize(static_cast<const uint32_t*>(&num_items), out);
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->functionName[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->message != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = count_null_terminated(s->message);
-        serialize(static_cast<const uint32_t*>(&num_items), out);
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->message[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->messageId, count_null_terminated(s->messageId), out);
+
+            
+
+    
+    serialize_ptr(s->functionName, count_null_terminated(s->functionName), out);
+
+            
+
+    
+    serialize_ptr(s->message, count_null_terminated(s->message), out);
+
+            
+
     serialize(&s->objectCount, out);
-    if (s->objects != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->objectCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->objects[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->objects, s->objectCount, out);
+
+            
+
     serialize(&s->sessionLabelCount, out);
-    if (s->sessionLabels != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->sessionLabelCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->sessionLabels[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->sessionLabels, s->sessionLabelCount, out);
+
 }
 
 
 
 
 static void serialize(const XrDebugUtilsMessengerCreateInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->messageSeverities, out);
+
+            
+
     serialize(&s->messageTypes, out);
+
+            
+
     serialize(&s->userCallback, out);
-    if (s->userData != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->userData, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->userData, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrDebugUtilsLabelEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->labelName != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = count_null_terminated(s->labelName);
-        serialize(static_cast<const uint32_t*>(&num_items), out);
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->labelName[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->labelName, count_null_terminated(s->labelName), out);
+
 }
 
 
@@ -7471,149 +7932,155 @@ static void serialize(const XrDebugUtilsLabelEXT* s, std::ostream& out) {
 
 
 static void serialize(const XrGraphicsBindingOpenGLWin32KHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->hDC, out);
+
+            
+
     serialize(&s->hGLRC, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsBindingOpenGLXlibKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->xDisplay != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->xDisplay, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->xDisplay, 1, out);
+
+            
+
     serialize(&s->visualid, out);
+
+            
+
     serialize(&s->glxFBConfig, out);
+
+            
+
     serialize(&s->glxDrawable, out);
+
+            
+
     serialize(&s->glxContext, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsBindingOpenGLXcbKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->connection != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->connection, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->connection, 1, out);
+
+            
+
     serialize(&s->screenNumber, out);
+
+            
+
     serialize(&s->fbconfigid, out);
+
+            
+
     serialize(&s->visualid, out);
+
+            
+
     serialize(&s->glxDrawable, out);
+
+            
+
     serialize(&s->glxContext, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsBindingOpenGLWaylandKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->display != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->display, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->display, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageOpenGLKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->image, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsRequirementsOpenGLKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->minApiVersionSupported, out);
+
+            
+
     serialize(&s->maxApiVersionSupported, out);
+
 }
 
 
@@ -7623,60 +8090,66 @@ static void serialize(const XrGraphicsRequirementsOpenGLKHR* s, std::ostream& ou
 
 
 static void serialize(const XrGraphicsBindingOpenGLESAndroidKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->display, out);
+
+            
+
     serialize(&s->config, out);
+
+            
+
     serialize(&s->context, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageOpenGLESKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->image, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsRequirementsOpenGLESKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->minApiVersionSupported, out);
+
+            
+
     serialize(&s->maxApiVersionSupported, out);
+
 }
 
 
@@ -7686,62 +8159,74 @@ static void serialize(const XrGraphicsRequirementsOpenGLESKHR* s, std::ostream& 
 
 
 static void serialize(const XrGraphicsBindingVulkanKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->instance, out);
+
+            
+
     serialize(&s->physicalDevice, out);
+
+            
+
     serialize(&s->device, out);
+
+            
+
     serialize(&s->queueFamilyIndex, out);
+
+            
+
     serialize(&s->queueIndex, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageVulkanKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->image, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsRequirementsVulkanKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->minApiVersionSupported, out);
+
+            
+
     serialize(&s->maxApiVersionSupported, out);
+
 }
 
 
@@ -7751,74 +8236,60 @@ static void serialize(const XrGraphicsRequirementsVulkanKHR* s, std::ostream& ou
 
 
 static void serialize(const XrGraphicsBindingD3D11KHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->device != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->device, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->device, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageD3D11KHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->texture != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->texture, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->texture, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsRequirementsD3D11KHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->adapterLuid, out);
+
+            
+
     serialize(&s->minFeatureLevel, out);
+
 }
 
 
@@ -7828,83 +8299,65 @@ static void serialize(const XrGraphicsRequirementsD3D11KHR* s, std::ostream& out
 
 
 static void serialize(const XrGraphicsBindingD3D12KHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->device != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->device, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->queue != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->queue, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->device, 1, out);
+
+            
+
+    
+    serialize_ptr(s->queue, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageD3D12KHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->texture != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->texture, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->texture, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsRequirementsD3D12KHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->adapterLuid, out);
+
+            
+
     serialize(&s->minFeatureLevel, out);
+
 }
 
 
@@ -7914,81 +8367,57 @@ static void serialize(const XrGraphicsRequirementsD3D12KHR* s, std::ostream& out
 
 
 static void serialize(const XrGraphicsBindingMetalKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->commandQueue != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->commandQueue, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->commandQueue, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainImageMetalKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->texture != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->texture, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->texture, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrGraphicsRequirementsMetalKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->metalDevice != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->metalDevice, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->metalDevice, 1, out);
+
 }
 
 
@@ -7998,38 +8427,36 @@ static void serialize(const XrGraphicsRequirementsMetalKHR* s, std::ostream& out
 
 
 static void serialize(const XrSystemEyeGazeInteractionPropertiesEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsEyeGazeInteraction, out);
+
 }
 
 
 
 
 static void serialize(const XrEyeGazeSampleTimeEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
@@ -8039,67 +8466,66 @@ static void serialize(const XrEyeGazeSampleTimeEXT* s, std::ostream& out) {
 
 
 static void serialize(const XrVisibilityMaskKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->indexCapacityInput, out);
+
+            
+
     serialize(&s->indexCountOutput, out);
-    if (s->indices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indices, s->indexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataVisibilityMaskChangedKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->session, out);
+
+            
+
     serialize(&s->viewConfigurationType, out);
+
+            
+
     serialize(&s->viewIndex, out);
+
 }
 
 
@@ -8109,40 +8535,44 @@ static void serialize(const XrEventDataVisibilityMaskChangedKHR* s, std::ostream
 
 
 static void serialize(const XrSessionCreateInfoOverlayEXTX* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->createFlags, out);
+
+            
+
     serialize(&s->sessionLayersPlacement, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataMainSessionVisibilityChangedEXTX* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->visible, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -8152,20 +8582,22 @@ static void serialize(const XrEventDataMainSessionVisibilityChangedEXTX* s, std:
 
 
 static void serialize(const XrCompositionLayerColorScaleBiasKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->colorScale, out);
+
+            
+
     serialize(&s->colorBias, out);
+
 }
 
 
@@ -8175,41 +8607,48 @@ static void serialize(const XrCompositionLayerColorScaleBiasKHR* s, std::ostream
 
 
 static void serialize(const XrSpatialAnchorCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorSpaceCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->anchor, out);
+
+            
+
     serialize(&s->poseInAnchorSpace, out);
+
 }
 
 
@@ -8219,19 +8658,18 @@ static void serialize(const XrSpatialAnchorSpaceCreateInfoMSFT* s, std::ostream&
 
 
 static void serialize(const XrCompositionLayerImageLayoutFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -8241,22 +8679,30 @@ static void serialize(const XrCompositionLayerImageLayoutFB* s, std::ostream& ou
 
 
 static void serialize(const XrCompositionLayerAlphaBlendFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->srcFactorColor, out);
+
+            
+
     serialize(&s->dstFactorColor, out);
+
+            
+
     serialize(&s->srcFactorAlpha, out);
+
+            
+
     serialize(&s->dstFactorAlpha, out);
+
 }
 
 
@@ -8266,22 +8712,30 @@ static void serialize(const XrCompositionLayerAlphaBlendFB* s, std::ostream& out
 
 
 static void serialize(const XrViewConfigurationDepthRangeEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->recommendedNearZ, out);
+
+            
+
     serialize(&s->minNearZ, out);
+
+            
+
     serialize(&s->recommendedFarZ, out);
+
+            
+
     serialize(&s->maxFarZ, out);
+
 }
 
 
@@ -8291,22 +8745,30 @@ static void serialize(const XrViewConfigurationDepthRangeEXT* s, std::ostream& o
 
 
 static void serialize(const XrGraphicsBindingEGLMNDX* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->getProcAddress, out);
+
+            
+
     serialize(&s->display, out);
+
+            
+
     serialize(&s->config, out);
+
+            
+
     serialize(&s->context, out);
+
 }
 
 
@@ -8316,86 +8778,88 @@ static void serialize(const XrGraphicsBindingEGLMNDX* s, std::ostream& out) {
 
 
 static void serialize(const XrSpatialGraphNodeSpaceCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->nodeType, out);
-        
-    for (int i = 0; i < XR_GUID_SIZE_MSFT; i++) {
-        serialize(&s->nodeId[i], out);
-    }
+
+            
+
+    serialize_array(s->nodeId, XR_GUID_SIZE_MSFT, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialGraphStaticNodeBindingCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->poseInSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialGraphNodeBindingPropertiesGetInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialGraphNodeBindingPropertiesMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_GUID_SIZE_MSFT; i++) {
-        serialize(&s->nodeId[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->nodeId, XR_GUID_SIZE_MSFT, out);
+
+            
+
     serialize(&s->poseInNodeSpace, out);
+
 }
 
 
@@ -8405,122 +8869,112 @@ static void serialize(const XrSpatialGraphNodeBindingPropertiesMSFT* s, std::ost
 
 
 static void serialize(const XrSystemHandTrackingPropertiesEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsHandTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrHandTrackerCreateInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->hand, out);
+
+            
+
     serialize(&s->handJointSet, out);
+
 }
 
 
 
 
 static void serialize(const XrHandJointsLocateInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrHandJointLocationsEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->isActive, out);
+
+            
+
     serialize(&s->jointCount, out);
-    if (s->jointLocations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->jointLocations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->jointLocations, s->jointCount, out);
+
 }
 
 
 
 
 static void serialize(const XrHandJointVelocitiesEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->jointCount, out);
-    if (s->jointVelocities != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->jointVelocities[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->jointVelocities, s->jointCount, out);
+
 }
 
 
@@ -8530,103 +8984,122 @@ static void serialize(const XrHandJointVelocitiesEXT* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemHandTrackingMeshPropertiesMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsHandTrackingMesh, out);
+
+            
+
     serialize(&s->maxHandMeshIndexCount, out);
+
+            
+
     serialize(&s->maxHandMeshVertexCount, out);
+
 }
 
 
 
 
 static void serialize(const XrHandMeshSpaceCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->handPoseType, out);
+
+            
+
     serialize(&s->poseInHandMeshSpace, out);
+
 }
 
 
 
 
 static void serialize(const XrHandMeshUpdateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->handPoseType, out);
+
 }
 
 
 
 
 static void serialize(const XrHandMeshMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->isActive, out);
+
+            
+
     serialize(&s->indexBufferChanged, out);
+
+            
+
     serialize(&s->vertexBufferChanged, out);
+
+            
+
     serialize(&s->indexBuffer, out);
+
+            
+
     serialize(&s->vertexBuffer, out);
+
 }
 
 
 
 
 static void serialize(const XrHandPoseTypeInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->handPoseType, out);
+
 }
 
 
@@ -8636,154 +9109,139 @@ static void serialize(const XrHandPoseTypeInfoMSFT* s, std::ostream& out) {
 
 
 static void serialize(const XrSecondaryViewConfigurationSessionBeginInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewConfigurationCount, out);
-    if (s->enabledViewConfigurationTypes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->viewConfigurationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->enabledViewConfigurationTypes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->enabledViewConfigurationTypes, s->viewConfigurationCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSecondaryViewConfigurationStateMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewConfigurationType, out);
+
+            
+
     serialize(&s->active, out);
+
 }
 
 
 
 
 static void serialize(const XrSecondaryViewConfigurationFrameStateMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewConfigurationCount, out);
-    if (s->viewConfigurationStates != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->viewConfigurationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->viewConfigurationStates[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->viewConfigurationStates, s->viewConfigurationCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSecondaryViewConfigurationFrameEndInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewConfigurationCount, out);
-    if (s->viewConfigurationLayersInfo != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->viewConfigurationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->viewConfigurationLayersInfo[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->viewConfigurationLayersInfo, s->viewConfigurationCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSecondaryViewConfigurationLayerInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewConfigurationType, out);
+
+            
+
     serialize(&s->environmentBlendMode, out);
+
+            
+
     serialize(&s->layerCount, out);
-    #error auto-generator doesn't support double pointers (XrSecondaryViewConfigurationLayerInfoMSFT.layers)
-        }
+
+            
+
+    #error auto-generator doesn't support double pointers (s->layers)
+    None
+}
 
 
 
 
 static void serialize(const XrSecondaryViewConfigurationSwapchainCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->viewConfigurationType, out);
+
 }
 
 
@@ -8793,128 +9251,112 @@ static void serialize(const XrSecondaryViewConfigurationSwapchainCreateInfoMSFT*
 
 
 static void serialize(const XrControllerModelKeyStateMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->modelKey, out);
+
 }
 
 
 
 
 static void serialize(const XrControllerModelNodePropertiesMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT; i++) {
-        serialize(&s->parentNodeName[i], out);
-    }
-        
-    for (int i = 0; i < XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT; i++) {
-        serialize(&s->nodeName[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->parentNodeName, XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT, out);
+
+            
+
+    serialize_array(s->nodeName, XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT, out);
+
 }
 
 
 
 
 static void serialize(const XrControllerModelPropertiesMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->nodeCapacityInput, out);
+
+            
+
     serialize(&s->nodeCountOutput, out);
-    if (s->nodeProperties != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->nodeCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->nodeProperties[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->nodeProperties, s->nodeCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrControllerModelNodeStateMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->nodePose, out);
+
 }
 
 
 
 
 static void serialize(const XrControllerModelStateMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->nodeCapacityInput, out);
+
+            
+
     serialize(&s->nodeCountOutput, out);
-    if (s->nodeStates != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->nodeCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->nodeStates[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->nodeStates, s->nodeCapacityInput, out);
+
 }
 
 
@@ -8924,20 +9366,22 @@ static void serialize(const XrControllerModelStateMSFT* s, std::ostream& out) {
 
 
 static void serialize(const XrViewConfigurationViewFovEPIC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->recommendedFov, out);
+
+            
+
     serialize(&s->maxMutableFov, out);
+
 }
 
 
@@ -8947,36 +9391,24 @@ static void serialize(const XrViewConfigurationViewFovEPIC* s, std::ostream& out
 
 
 static void serialize(const XrHolographicWindowAttachmentMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->holographicSpace != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->holographicSpace, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->coreWindow != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->coreWindow, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->holographicSpace, 1, out);
+
+            
+
+    
+    serialize_ptr(s->coreWindow, 1, out);
+
 }
 
 
@@ -8986,40 +9418,44 @@ static void serialize(const XrHolographicWindowAttachmentMSFT* s, std::ostream& 
 
 
 static void serialize(const XrCompositionLayerReprojectionInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->reprojectionMode, out);
+
 }
 
 
 
 
 static void serialize(const XrCompositionLayerReprojectionPlaneOverrideMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->position, out);
+
+            
+
     serialize(&s->normal, out);
+
+            
+
     serialize(&s->velocity, out);
+
 }
 
 
@@ -9029,19 +9465,18 @@ static void serialize(const XrCompositionLayerReprojectionPlaneOverrideMSFT* s, 
 
 
 static void serialize(const XrAndroidSurfaceSwapchainCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->createFlags, out);
+
 }
 
 
@@ -9051,19 +9486,18 @@ static void serialize(const XrAndroidSurfaceSwapchainCreateInfoFB* s, std::ostre
 
 
 static void serialize(const XrCompositionLayerSecureContentFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -9073,124 +9507,120 @@ static void serialize(const XrCompositionLayerSecureContentFB* s, std::ostream& 
 
 
 static void serialize(const XrBodyTrackerCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->bodyJointSet, out);
+
 }
 
 
 
 
 static void serialize(const XrBodyJointsLocateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemBodyTrackingPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsBodyTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrBodyJointLocationsFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->isActive, out);
+
+            
+
     serialize(&s->confidence, out);
+
+            
+
     serialize(&s->jointCount, out);
-    if (s->jointLocations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->jointLocations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->jointLocations, s->jointCount, out);
+
+            
+
     serialize(&s->skeletonChangedCount, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrBodySkeletonFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->jointCount, out);
-    if (s->joints != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->joints[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->joints, s->jointCount, out);
+
 }
 
 
@@ -9200,43 +9630,52 @@ static void serialize(const XrBodySkeletonFB* s, std::ostream& out) {
 
 
 static void serialize(const XrInteractionProfileDpadBindingEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->binding, out);
+
+            
+
     serialize(&s->actionSet, out);
+
+            
+
     serialize(&s->forceThreshold, out);
+
+            
+
     serialize(&s->forceThresholdReleased, out);
+
+            
+
     serialize(&s->centerRegion, out);
+
+            
+
     serialize(&s->wedgeAngle, out);
+
+            
+
     serialize(&s->isSticky, out);
-    if (s->onHaptic != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->onHaptic, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->offHaptic != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->offHaptic, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->onHaptic, 1, out);
+
+            
+
+    
+    serialize_ptr(s->offHaptic, 1, out);
+
 }
 
 
@@ -9246,40 +9685,40 @@ static void serialize(const XrInteractionProfileDpadBindingEXT* s, std::ostream&
 
 
 static void serialize(const XrInteractionProfileAnalogThresholdVALVE* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->action, out);
+
+            
+
     serialize(&s->binding, out);
+
+            
+
     serialize(&s->onThreshold, out);
+
+            
+
     serialize(&s->offThreshold, out);
-    if (s->onHaptic != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->onHaptic, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->offHaptic != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->offHaptic, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->onHaptic, 1, out);
+
+            
+
+    
+    serialize_ptr(s->offHaptic, 1, out);
+
 }
 
 
@@ -9289,19 +9728,18 @@ static void serialize(const XrInteractionProfileAnalogThresholdVALVE* s, std::os
 
 
 static void serialize(const XrHandJointsMotionRangeInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->handJointsMotionRange, out);
+
 }
 
 
@@ -9311,36 +9749,24 @@ static void serialize(const XrHandJointsMotionRangeInfoEXT* s, std::ostream& out
 
 
 static void serialize(const XrLoaderInitInfoAndroidKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->applicationVM != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->applicationVM, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->applicationContext != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->applicationContext, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->applicationVM, 1, out);
+
+            
+
+    
+    serialize_ptr(s->applicationContext, 1, out);
+
 }
 
 
@@ -9350,99 +9776,98 @@ static void serialize(const XrLoaderInitInfoAndroidKHR* s, std::ostream& out) {
 
 
 static void serialize(const XrVulkanInstanceCreateInfoKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->systemId, out);
+
+            
+
     serialize(&s->createFlags, out);
+
+            
+
     serialize(&s->pfnGetInstanceProcAddr, out);
-    if (s->vulkanCreateInfo != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->vulkanCreateInfo, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->vulkanAllocator != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->vulkanAllocator, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vulkanCreateInfo, 1, out);
+
+            
+
+    
+    serialize_ptr(s->vulkanAllocator, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrVulkanDeviceCreateInfoKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->systemId, out);
+
+            
+
     serialize(&s->createFlags, out);
+
+            
+
     serialize(&s->pfnGetInstanceProcAddr, out);
+
+            
+
     serialize(&s->vulkanPhysicalDevice, out);
-    if (s->vulkanCreateInfo != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->vulkanCreateInfo, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->vulkanAllocator != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->vulkanAllocator, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vulkanCreateInfo, 1, out);
+
+            
+
+    
+    serialize_ptr(s->vulkanAllocator, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrVulkanGraphicsDeviceGetInfoKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->systemId, out);
+
+            
+
     serialize(&s->vulkanInstance, out);
+
 }
 
 
@@ -9452,27 +9877,50 @@ static void serialize(const XrVulkanGraphicsDeviceGetInfoKHR* s, std::ostream& o
 
 
 static void serialize(const XrCompositionLayerEquirect2KHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->eyeVisibility, out);
+
+            
+
     serialize(&s->subImage, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->radius, out);
+
+            
+
     serialize(&s->centralHorizontalAngle, out);
+
+            
+
     serialize(&s->upperVerticalAngle, out);
+
+            
+
     serialize(&s->lowerVerticalAngle, out);
+
 }
 
 
@@ -9482,510 +9930,422 @@ static void serialize(const XrCompositionLayerEquirect2KHR* s, std::ostream& out
 
 
 static void serialize(const XrSceneObserverCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrNewSceneComputeInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestedFeatureCount, out);
-    if (s->requestedFeatures != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->requestedFeatureCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->requestedFeatures[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->requestedFeatures, s->requestedFeatureCount, out);
+
+            
+
     serialize(&s->consistency, out);
+
+            
+
     serialize(&s->bounds, out);
+
 }
 
 
 
 
 static void serialize(const XrVisualMeshComputeLodInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->lod, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneComponentsMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->componentCapacityInput, out);
+
+            
+
     serialize(&s->componentCountOutput, out);
-    if (s->components != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->componentCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->components[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->components, s->componentCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneComponentsGetInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->componentType, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneComponentLocationsMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->locationCount, out);
-    if (s->locations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->locationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->locations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->locations, s->locationCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneComponentsLocateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->componentIdCount, out);
-    if (s->componentIds != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->componentIdCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->componentIds[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->componentIds, s->componentIdCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneObjectsMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->sceneObjectCount, out);
-    if (s->sceneObjects != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->sceneObjectCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->sceneObjects[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->sceneObjects, s->sceneObjectCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneComponentParentFilterInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->parentId, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneObjectTypesFilterInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->objectTypeCount, out);
-    if (s->objectTypes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->objectTypeCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->objectTypes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->objectTypes, s->objectTypeCount, out);
+
 }
 
 
 
 
 static void serialize(const XrScenePlanesMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->scenePlaneCount, out);
-    if (s->scenePlanes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->scenePlaneCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->scenePlanes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->scenePlanes, s->scenePlaneCount, out);
+
 }
 
 
 
 
 static void serialize(const XrScenePlaneAlignmentFilterInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->alignmentCount, out);
-    if (s->alignments != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->alignmentCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->alignments[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->alignments, s->alignmentCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMeshesMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->sceneMeshCount, out);
-    if (s->sceneMeshes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->sceneMeshCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->sceneMeshes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->sceneMeshes, s->sceneMeshCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMeshBuffersGetInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->meshBufferId, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMeshBuffersMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMeshVertexBufferMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMeshIndicesUint32MSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->indexCapacityInput, out);
+
+            
+
     serialize(&s->indexCountOutput, out);
-    if (s->indices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indices, s->indexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMeshIndicesUint16MSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->indexCapacityInput, out);
+
+            
+
     serialize(&s->indexCountOutput, out);
-    if (s->indices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indices, s->indexCapacityInput, out);
+
 }
 
 
@@ -9995,50 +10355,41 @@ static void serialize(const XrSceneMeshIndicesUint16MSFT* s, std::ostream& out) 
 
 
 static void serialize(const XrSerializedSceneFragmentDataGetInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->sceneFragmentId, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneDeserializeInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->fragmentCount, out);
-    if (s->fragments != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->fragmentCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->fragments[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->fragments, s->fragmentCount, out);
+
 }
 
 
@@ -10048,20 +10399,22 @@ static void serialize(const XrSceneDeserializeInfoMSFT* s, std::ostream& out) {
 
 
 static void serialize(const XrEventDataDisplayRefreshRateChangedFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->fromDisplayRefreshRate, out);
+
+            
+
     serialize(&s->toDisplayRefreshRate, out);
+
 }
 
 
@@ -10071,47 +10424,41 @@ static void serialize(const XrEventDataDisplayRefreshRateChangedFB* s, std::ostr
 
 
 static void serialize(const XrViveTrackerPathsHTCX* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->persistentPath, out);
+
+            
+
     serialize(&s->rolePath, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataViveTrackerConnectedHTCX* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->paths != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->paths, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->paths, 1, out);
+
 }
 
 
@@ -10121,69 +10468,71 @@ static void serialize(const XrEventDataViveTrackerConnectedHTCX* s, std::ostream
 
 
 static void serialize(const XrSystemFacialTrackingPropertiesHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportEyeFacialTracking, out);
+
+            
+
     serialize(&s->supportLipFacialTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrFacialTrackerCreateInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->facialTrackingType, out);
+
 }
 
 
 
 
 static void serialize(const XrFacialExpressionsHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->isActive, out);
+
+            
+
     serialize(&s->sampleTime, out);
+
+            
+
     serialize(&s->expressionCount, out);
-    if (s->expressionWeightings != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->expressionWeightings, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->expressionWeightings, 1, out);
+
 }
 
 
@@ -10193,19 +10542,18 @@ static void serialize(const XrFacialExpressionsHTC* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemColorSpacePropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->colorSpace, out);
+
 }
 
 
@@ -10215,154 +10563,113 @@ static void serialize(const XrSystemColorSpacePropertiesFB* s, std::ostream& out
 
 
 static void serialize(const XrHandTrackingMeshFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->jointCapacityInput, out);
+
+            
+
     serialize(&s->jointCountOutput, out);
-    if (s->jointBindPoses != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->jointBindPoses[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->jointRadii != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->jointRadii[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->jointParents != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->jointParents[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->jointBindPoses, s->jointCapacityInput, out);
+
+            
+
+    
+    serialize_ptr(s->jointRadii, s->jointCapacityInput, out);
+
+            
+
+    
+    serialize_ptr(s->jointParents, s->jointCapacityInput, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertexPositions != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertexPositions[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->vertexNormals != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertexNormals[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->vertexUVs != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertexUVs[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->vertexBlendIndices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertexBlendIndices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->vertexBlendWeights != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertexBlendWeights[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertexPositions, s->vertexCapacityInput, out);
+
+            
+
+    
+    serialize_ptr(s->vertexNormals, s->vertexCapacityInput, out);
+
+            
+
+    
+    serialize_ptr(s->vertexUVs, s->vertexCapacityInput, out);
+
+            
+
+    
+    serialize_ptr(s->vertexBlendIndices, s->vertexCapacityInput, out);
+
+            
+
+    
+    serialize_ptr(s->vertexBlendWeights, s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->indexCapacityInput, out);
+
+            
+
     serialize(&s->indexCountOutput, out);
-    if (s->indices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indices, s->indexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrHandTrackingScaleFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->sensorOutput, out);
+
+            
+
     serialize(&s->currentOutput, out);
+
+            
+
     serialize(&s->overrideHandScale, out);
+
+            
+
     serialize(&s->overrideValueInput, out);
+
 }
 
 
@@ -10372,24 +10679,38 @@ static void serialize(const XrHandTrackingScaleFB* s, std::ostream& out) {
 
 
 static void serialize(const XrHandTrackingAimStateFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->status, out);
+
+            
+
     serialize(&s->aimPose, out);
+
+            
+
     serialize(&s->pinchStrengthIndex, out);
+
+            
+
     serialize(&s->pinchStrengthMiddle, out);
+
+            
+
     serialize(&s->pinchStrengthRing, out);
+
+            
+
     serialize(&s->pinchStrengthLittle, out);
+
 }
 
 
@@ -10399,22 +10720,18 @@ static void serialize(const XrHandTrackingAimStateFB* s, std::ostream& out) {
 
 
 static void serialize(const XrHandTrackingCapsulesStateFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_HAND_TRACKING_CAPSULE_COUNT_FB; i++) {
-        serialize(&s->capsules[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->capsules, XR_HAND_TRACKING_CAPSULE_COUNT_FB, out);
+
 }
 
 
@@ -10424,127 +10741,160 @@ static void serialize(const XrHandTrackingCapsulesStateFB* s, std::ostream& out)
 
 
 static void serialize(const XrSpaceComponentStatusFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->enabled, out);
+
+            
+
     serialize(&s->changePending, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->poseInSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemSpatialEntityPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSpatialEntity, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSpatialAnchorCreateCompleteFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->uuid, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSpaceSetStatusCompleteFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->uuid, out);
+
+            
+
     serialize(&s->componentType, out);
+
+            
+
     serialize(&s->enabled, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceComponentStatusSetInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->componentType, out);
+
+            
+
     serialize(&s->enabled, out);
+
+            
+
     serialize(&s->timeout, out);
+
 }
 
 
@@ -10554,57 +10904,54 @@ static void serialize(const XrSpaceComponentStatusSetInfoFB* s, std::ostream& ou
 
 
 static void serialize(const XrFoveationProfileCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainCreateInfoFoveationFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
 
 
 static void serialize(const XrSwapchainStateFoveationFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
+            
+
     serialize(&s->profile, out);
+
 }
 
 
@@ -10614,21 +10961,26 @@ static void serialize(const XrSwapchainStateFoveationFB* s, std::ostream& out) {
 
 
 static void serialize(const XrFoveationLevelProfileCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->level, out);
+
+            
+
     serialize(&s->verticalOffset, out);
+
+            
+
     serialize(&s->dynamic, out);
+
 }
 
 
@@ -10638,57 +10990,54 @@ static void serialize(const XrFoveationLevelProfileCreateInfoFB* s, std::ostream
 
 
 static void serialize(const XrSystemKeyboardTrackingPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsKeyboardTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrKeyboardTrackingQueryFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
 
 
 static void serialize(const XrKeyboardSpaceCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->trackedKeyboardId, out);
+
 }
 
 
@@ -10698,40 +11047,40 @@ static void serialize(const XrKeyboardSpaceCreateInfoFB* s, std::ostream& out) {
 
 
 static void serialize(const XrTriangleMeshCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
+            
+
     serialize(&s->windingOrder, out);
+
+            
+
     serialize(&s->vertexCount, out);
-    if (s->vertexBuffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->vertexBuffer, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertexBuffer, 1, out);
+
+            
+
     serialize(&s->triangleCount, out);
-    if (s->indexBuffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->indexBuffer, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indexBuffer, 1, out);
+
 }
 
 
@@ -10741,248 +11090,272 @@ static void serialize(const XrTriangleMeshCreateInfoFB* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemPassthroughPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsPassthrough, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughLayerCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->passthrough, out);
+
+            
+
     serialize(&s->flags, out);
+
+            
+
     serialize(&s->purpose, out);
+
 }
 
 
 
 
 static void serialize(const XrCompositionLayerPassthroughFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->layerHandle, out);
+
 }
 
 
 
 
 static void serialize(const XrGeometryInstanceCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layer, out);
+
+            
+
     serialize(&s->mesh, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->scale, out);
+
 }
 
 
 
 
 static void serialize(const XrGeometryInstanceTransformFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->scale, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemPassthroughProperties2FB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->capabilities, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughStyleFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->textureOpacityFactor, out);
+
+            
+
     serialize(&s->edgeColor, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughColorMapMonoToRgbaFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB; i++) {
-        serialize(&s->textureColorMap[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->textureColorMap, XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughColorMapMonoToMonoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB; i++) {
-        serialize(&s->textureColorMap[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->textureColorMap, XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughBrightnessContrastSaturationFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->brightness, out);
+
+            
+
     serialize(&s->contrast, out);
+
+            
+
     serialize(&s->saturation, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataPassthroughStateChangedFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -10992,134 +11365,133 @@ static void serialize(const XrEventDataPassthroughStateChangedFB* s, std::ostrea
 
 
 static void serialize(const XrRenderModelPathInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->path, out);
+
 }
 
 
 
 
 static void serialize(const XrRenderModelPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vendorId, out);
-        
-    for (int i = 0; i < XR_MAX_RENDER_MODEL_NAME_SIZE_FB; i++) {
-        serialize(&s->modelName[i], out);
-    }
+
+            
+
+    serialize_array(s->modelName, XR_MAX_RENDER_MODEL_NAME_SIZE_FB, out);
+
+            
+
     serialize(&s->modelKey, out);
+
+            
+
     serialize(&s->modelVersion, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
 
 
 static void serialize(const XrRenderModelBufferFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->bufferCapacityInput, out);
+
+            
+
     serialize(&s->bufferCountOutput, out);
-    if (s->buffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->bufferCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->buffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->buffer, s->bufferCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrRenderModelLoadInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->modelKey, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemRenderModelPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsRenderModelLoading, out);
+
 }
 
 
 
 
 static void serialize(const XrRenderModelCapabilitiesRequestFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -11129,21 +11501,23 @@ static void serialize(const XrRenderModelCapabilitiesRequestFB* s, std::ostream&
 
 
 static void serialize(const XrBindingModificationsKHR* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->bindingModificationCount, out);
-    #error auto-generator doesn't support double pointers (XrBindingModificationsKHR.bindingModifications)
-        }
+
+            
+
+    #error auto-generator doesn't support double pointers (s->bindingModifications)
+    None
+}
 
 
 #endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
@@ -11152,57 +11526,54 @@ static void serialize(const XrBindingModificationsKHR* s, std::ostream& out) {
 
 
 static void serialize(const XrViewLocateFoveatedRenderingVARJO* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->foveatedRenderingActive, out);
+
 }
 
 
 
 
 static void serialize(const XrFoveatedViewConfigurationViewVARJO* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->foveatedRenderingActive, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemFoveatedRenderingPropertiesVARJO* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsFoveatedRendering, out);
+
 }
 
 
@@ -11212,20 +11583,22 @@ static void serialize(const XrSystemFoveatedRenderingPropertiesVARJO* s, std::os
 
 
 static void serialize(const XrCompositionLayerDepthTestVARJO* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->depthTestRangeNearZ, out);
+
+            
+
     serialize(&s->depthTestRangeFarZ, out);
+
 }
 
 
@@ -11235,61 +11608,70 @@ static void serialize(const XrCompositionLayerDepthTestVARJO* s, std::ostream& o
 
 
 static void serialize(const XrSystemMarkerTrackingPropertiesVARJO* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsMarkerTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataMarkerTrackingUpdateVARJO* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->markerId, out);
+
+            
+
     serialize(&s->isActive, out);
+
+            
+
     serialize(&s->isPredicted, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerSpaceCreateInfoVARJO* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->markerId, out);
+
+            
+
     serialize(&s->poseInMarkerSpace, out);
+
 }
 
 
@@ -11299,20 +11681,22 @@ static void serialize(const XrMarkerSpaceCreateInfoVARJO* s, std::ostream& out) 
 
 
 static void serialize(const XrFrameEndInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->focusDistance, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -11322,20 +11706,22 @@ static void serialize(const XrFrameEndInfoML* s, std::ostream& out) {
 
 
 static void serialize(const XrGlobalDimmerFrameEndInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->dimmerValue, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -11345,20 +11731,22 @@ static void serialize(const XrGlobalDimmerFrameEndInfoML* s, std::ostream& out) 
 
 
 static void serialize(const XrCoordinateSpaceCreateInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->cfuid, out);
+
+            
+
     serialize(&s->poseInCoordinateSpace, out);
+
 }
 
 
@@ -11368,178 +11756,190 @@ static void serialize(const XrCoordinateSpaceCreateInfoML* s, std::ostream& out)
 
 
 static void serialize(const XrSystemMarkerUnderstandingPropertiesML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsMarkerUnderstanding, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerDetectorCreateInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->profile, out);
+
+            
+
     serialize(&s->markerType, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerDetectorArucoInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->arucoDict, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerDetectorSizeInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->markerLength, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerDetectorAprilTagInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->aprilTagDict, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerDetectorCustomProfileInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->fpsHint, out);
+
+            
+
     serialize(&s->resolutionHint, out);
+
+            
+
     serialize(&s->cameraHint, out);
+
+            
+
     serialize(&s->cornerRefineMethod, out);
+
+            
+
     serialize(&s->useEdgeRefinement, out);
+
+            
+
     serialize(&s->fullAnalysisIntervalHint, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerDetectorSnapshotInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerDetectorStateML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->state, out);
+
 }
 
 
 
 
 static void serialize(const XrMarkerSpaceCreateInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->markerDetector, out);
+
+            
+
     serialize(&s->marker, out);
+
+            
+
     serialize(&s->poseInMarkerSpace, out);
+
 }
 
 
@@ -11549,116 +11949,119 @@ static void serialize(const XrMarkerSpaceCreateInfoML* s, std::ostream& out) {
 
 
 static void serialize(const XrLocalizationMapML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_MAX_LOCALIZATION_MAP_NAME_LENGTH_ML; i++) {
-        serialize(&s->name[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->name, XR_MAX_LOCALIZATION_MAP_NAME_LENGTH_ML, out);
+
+            
+
     serialize(&s->mapUuid, out);
+
+            
+
     serialize(&s->mapType, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataLocalizationChangedML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->session, out);
+
+            
+
     serialize(&s->state, out);
+
+            
+
     serialize(&s->map, out);
+
+            
+
     serialize(&s->confidence, out);
+
+            
+
     serialize(&s->errorFlags, out);
+
 }
 
 
 
 
 static void serialize(const XrMapLocalizationRequestInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->mapUuid, out);
+
 }
 
 
 
 
 static void serialize(const XrLocalizationMapImportInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->size, out);
-    if (s->data != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->size;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->data[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->data, s->size, out);
+
 }
 
 
 
 
 static void serialize(const XrLocalizationEnableEventsInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->enabled, out);
+
 }
 
 
@@ -11668,72 +12071,71 @@ static void serialize(const XrLocalizationEnableEventsInfoML* s, std::ostream& o
 
 
 static void serialize(const XrSpatialAnchorsCreateInfoFromPoseML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->poseInBaseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrCreateSpatialAnchorsCompletionML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
+            
+
     serialize(&s->spaceCount, out);
-    if (s->spaces != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->spaces[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->spaces, s->spaceCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorStateML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->confidence, out);
+
 }
 
 
@@ -11743,363 +12145,311 @@ static void serialize(const XrSpatialAnchorStateML* s, std::ostream& out) {
 
 
 static void serialize(const XrSpatialAnchorsCreateStorageInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsQueryInfoRadiusML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->center, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->radius, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsQueryCompletionML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
+            
+
     serialize(&s->uuidCapacityInput, out);
+
+            
+
     serialize(&s->uuidCountOutput, out);
-    if (s->uuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->uuidCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->uuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->uuids, s->uuidCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsCreateInfoFromUuidsML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->storage, out);
+
+            
+
     serialize(&s->uuidCount, out);
-    if (s->uuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->uuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->uuids, s->uuidCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsPublishInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->anchorCount, out);
-    if (s->anchors != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->anchorCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->anchors[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->anchors, s->anchorCount, out);
+
+            
+
     serialize(&s->expiration, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsPublishCompletionML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
+            
+
     serialize(&s->uuidCount, out);
-    if (s->uuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->uuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->uuids, s->uuidCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsDeleteInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuidCount, out);
-    if (s->uuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->uuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->uuids, s->uuidCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsDeleteCompletionML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsUpdateExpirationInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuidCount, out);
-    if (s->uuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->uuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->uuids, s->uuidCount, out);
+
+            
+
     serialize(&s->expiration, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsUpdateExpirationCompletionML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsPublishCompletionDetailsML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->resultCount, out);
-    if (s->results != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->resultCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->results[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->results, s->resultCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsDeleteCompletionDetailsML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->resultCount, out);
-    if (s->results != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->resultCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->results[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->results, s->resultCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorsUpdateExpirationCompletionDetailsML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->resultCount, out);
-    if (s->results != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->resultCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->results[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->results, s->resultCount, out);
+
 }
 
 
@@ -12109,40 +12459,44 @@ static void serialize(const XrSpatialAnchorsUpdateExpirationCompletionDetailsML*
 
 
 static void serialize(const XrSpatialAnchorPersistenceInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->spatialAnchorPersistenceName, out);
+
+            
+
     serialize(&s->spatialAnchor, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->spatialAnchorStore, out);
+
+            
+
     serialize(&s->spatialAnchorPersistenceName, out);
+
 }
 
 
@@ -12152,93 +12506,69 @@ static void serialize(const XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* s,
 
 
 static void serialize(const XrSceneMarkersMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->sceneMarkerCapacityInput, out);
-    if (s->sceneMarkers != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->sceneMarkerCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->sceneMarkers[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->sceneMarkers, s->sceneMarkerCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMarkerTypeFilterMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->markerTypeCount, out);
-    if (s->markerTypes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->markerTypeCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->markerTypes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->markerTypes, s->markerTypeCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneMarkerQRCodesMSFT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->qrCodeCapacityInput, out);
-    if (s->qrCodes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->qrCodeCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->qrCodes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->qrCodes, s->qrCodeCapacityInput, out);
+
 }
 
 
@@ -12248,179 +12578,162 @@ static void serialize(const XrSceneMarkerQRCodesMSFT* s, std::ostream& out) {
 
 
 static void serialize(const XrSpaceQueryInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->queryAction, out);
+
+            
+
     serialize(&s->maxResultCount, out);
+
+            
+
     serialize(&s->timeout, out);
-    if (s->filter != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->filter, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->excludeFilter != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->excludeFilter, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->filter, 1, out);
+
+            
+
+    
+    serialize_ptr(s->excludeFilter, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceQueryResultsFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->resultCapacityInput, out);
+
+            
+
     serialize(&s->resultCountOutput, out);
-    if (s->results != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->resultCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->results[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->results, s->resultCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceStorageLocationFilterInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->location, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceComponentFilterInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->componentType, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceUuidFilterInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuidCount, out);
-    if (s->uuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->uuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->uuids, s->uuidCount, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSpaceQueryResultsAvailableFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSpaceQueryCompleteFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
@@ -12430,87 +12743,116 @@ static void serialize(const XrEventDataSpaceQueryCompleteFB* s, std::ostream& ou
 
 
 static void serialize(const XrSpaceSaveInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->location, out);
+
+            
+
     serialize(&s->persistenceMode, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceEraseInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->location, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSpaceSaveCompleteFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->uuid, out);
+
+            
+
     serialize(&s->location, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSpaceEraseCompleteFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->uuid, out);
+
+            
+
     serialize(&s->location, out);
+
 }
 
 
@@ -12520,21 +12862,26 @@ static void serialize(const XrEventDataSpaceEraseCompleteFB* s, std::ostream& ou
 
 
 static void serialize(const XrSwapchainImageFoveationVulkanFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->image, out);
+
+            
+
     serialize(&s->width, out);
+
+            
+
     serialize(&s->height, out);
+
 }
 
 
@@ -12544,20 +12891,22 @@ static void serialize(const XrSwapchainImageFoveationVulkanFB* s, std::ostream& 
 
 
 static void serialize(const XrSwapchainStateAndroidSurfaceDimensionsFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->width, out);
+
+            
+
     serialize(&s->height, out);
+
 }
 
 
@@ -12567,28 +12916,54 @@ static void serialize(const XrSwapchainStateAndroidSurfaceDimensionsFB* s, std::
 
 
 static void serialize(const XrSwapchainStateSamplerOpenGLESFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->minFilter, out);
+
+            
+
     serialize(&s->magFilter, out);
+
+            
+
     serialize(&s->wrapModeS, out);
+
+            
+
     serialize(&s->wrapModeT, out);
+
+            
+
     serialize(&s->swizzleRed, out);
+
+            
+
     serialize(&s->swizzleGreen, out);
+
+            
+
     serialize(&s->swizzleBlue, out);
+
+            
+
     serialize(&s->swizzleAlpha, out);
+
+            
+
     serialize(&s->maxAnisotropy, out);
+
+            
+
     serialize(&s->borderColor, out);
+
 }
 
 
@@ -12598,29 +12973,58 @@ static void serialize(const XrSwapchainStateSamplerOpenGLESFB* s, std::ostream& 
 
 
 static void serialize(const XrSwapchainStateSamplerVulkanFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->minFilter, out);
+
+            
+
     serialize(&s->magFilter, out);
+
+            
+
     serialize(&s->mipmapMode, out);
+
+            
+
     serialize(&s->wrapModeS, out);
+
+            
+
     serialize(&s->wrapModeT, out);
+
+            
+
     serialize(&s->swizzleRed, out);
+
+            
+
     serialize(&s->swizzleGreen, out);
+
+            
+
     serialize(&s->swizzleBlue, out);
+
+            
+
     serialize(&s->swizzleAlpha, out);
+
+            
+
     serialize(&s->maxAnisotropy, out);
+
+            
+
     serialize(&s->borderColor, out);
+
 }
 
 
@@ -12630,64 +13034,54 @@ static void serialize(const XrSwapchainStateSamplerVulkanFB* s, std::ostream& ou
 
 
 static void serialize(const XrSpaceShareInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->spaceCount, out);
-    if (s->spaces != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->spaces[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->spaces, s->spaceCount, out);
+
+            
+
     serialize(&s->userCount, out);
-    if (s->users != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->userCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->users[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->users, s->userCount, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSpaceShareCompleteFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
@@ -12697,46 +13091,68 @@ static void serialize(const XrEventDataSpaceShareCompleteFB* s, std::ostream& ou
 
 
 static void serialize(const XrCompositionLayerSpaceWarpInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->motionVectorSubImage, out);
+
+            
+
     serialize(&s->appSpaceDeltaPose, out);
+
+            
+
     serialize(&s->depthSubImage, out);
+
+            
+
     serialize(&s->minDepth, out);
+
+            
+
     serialize(&s->maxDepth, out);
+
+            
+
     serialize(&s->nearZ, out);
+
+            
+
     serialize(&s->farZ, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemSpaceWarpPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->recommendedMotionVectorImageRectWidth, out);
+
+            
+
     serialize(&s->recommendedMotionVectorImageRectHeight, out);
+
 }
 
 
@@ -12746,32 +13162,27 @@ static void serialize(const XrSystemSpaceWarpPropertiesFB* s, std::ostream& out)
 
 
 static void serialize(const XrHapticAmplitudeEnvelopeVibrationFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->duration, out);
+
+            
+
     serialize(&s->amplitudeCount, out);
-    if (s->amplitudes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->amplitudeCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->amplitudes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->amplitudes, s->amplitudeCount, out);
+
 }
 
 
@@ -12781,130 +13192,112 @@ static void serialize(const XrHapticAmplitudeEnvelopeVibrationFB* s, std::ostrea
 
 
 static void serialize(const XrSemanticLabelsFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->bufferCapacityInput, out);
+
+            
+
     serialize(&s->bufferCountOutput, out);
-    if (s->buffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->bufferCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->buffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->buffer, s->bufferCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrRoomLayoutFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->floorUuid, out);
+
+            
+
     serialize(&s->ceilingUuid, out);
+
+            
+
     serialize(&s->wallUuidCapacityInput, out);
+
+            
+
     serialize(&s->wallUuidCountOutput, out);
-    if (s->wallUuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->wallUuidCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->wallUuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->wallUuids, s->wallUuidCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrBoundary2DFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSemanticLabelsSupportInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
-    if (s->recognizedLabels != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = count_null_terminated(s->recognizedLabels);
-        serialize(static_cast<const uint32_t*>(&num_items), out);
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->recognizedLabels[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->recognizedLabels, count_null_terminated(s->recognizedLabels), out);
+
 }
 
 
@@ -12914,19 +13307,18 @@ static void serialize(const XrSemanticLabelsSupportInfoFB* s, std::ostream& out)
 
 
 static void serialize(const XrDigitalLensControlALMALENCE* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -12936,51 +13328,45 @@ static void serialize(const XrDigitalLensControlALMALENCE* s, std::ostream& out)
 
 
 static void serialize(const XrEventDataSceneCaptureCompleteFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneCaptureRequestInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestByteCount, out);
-    if (s->request != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->requestByteCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->request[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->request, s->requestByteCount, out);
+
 }
 
 
@@ -12990,32 +13376,27 @@ static void serialize(const XrSceneCaptureRequestInfoFB* s, std::ostream& out) {
 
 
 static void serialize(const XrSpaceContainerFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuidCapacityInput, out);
+
+            
+
     serialize(&s->uuidCountOutput, out);
-    if (s->uuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->uuidCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->uuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->uuids, s->uuidCapacityInput, out);
+
 }
 
 
@@ -13025,61 +13406,58 @@ static void serialize(const XrSpaceContainerFB* s, std::ostream& out) {
 
 
 static void serialize(const XrFoveationEyeTrackedProfileCreateInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
 
 
 static void serialize(const XrFoveationEyeTrackedStateMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_FOVEATION_CENTER_SIZE_META; i++) {
-        serialize(&s->foveationCenter[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->foveationCenter, XR_FOVEATION_CENTER_SIZE_META, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemFoveationEyeTrackedPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsFoveationEyeTracked, out);
+
 }
 
 
@@ -13089,103 +13467,94 @@ static void serialize(const XrSystemFoveationEyeTrackedPropertiesMETA* s, std::o
 
 
 static void serialize(const XrFaceExpressionInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemFaceTrackingPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsFaceTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrFaceTrackerCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->faceExpressionSet, out);
+
 }
 
 
 
 
 static void serialize(const XrFaceExpressionWeightsFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->weightCount, out);
-    if (s->weights != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->weightCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->weights[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->weights, s->weightCount, out);
+
+            
+
     serialize(&s->confidenceCount, out);
-    if (s->confidences != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->confidenceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->confidences[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->confidences, s->confidenceCount, out);
+
+            
+
     serialize(&s->status, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
@@ -13195,80 +13564,76 @@ static void serialize(const XrFaceExpressionWeightsFB* s, std::ostream& out) {
 
 
 static void serialize(const XrEyeTrackerCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrEyeGazesInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrEyeGazesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_EYE_POSITION_COUNT_FB; i++) {
-        serialize(&s->gaze[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->gaze, XR_EYE_POSITION_COUNT_FB, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemEyeTrackingPropertiesFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsEyeTracking, out);
+
 }
 
 
@@ -13278,20 +13643,22 @@ static void serialize(const XrSystemEyeTrackingPropertiesFB* s, std::ostream& ou
 
 
 static void serialize(const XrPassthroughKeyboardHandsIntensityFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->leftHandIntensity, out);
+
+            
+
     serialize(&s->rightHandIntensity, out);
+
 }
 
 
@@ -13301,19 +13668,18 @@ static void serialize(const XrPassthroughKeyboardHandsIntensityFB* s, std::ostre
 
 
 static void serialize(const XrCompositionLayerSettingsFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
 }
 
 
@@ -13323,61 +13689,54 @@ static void serialize(const XrCompositionLayerSettingsFB* s, std::ostream& out) 
 
 
 static void serialize(const XrHapticPcmVibrationFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->bufferSize, out);
-    if (s->buffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->buffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->buffer, s->bufferSize, out);
+
+            
+
     serialize(&s->sampleRate, out);
+
+            
+
     serialize(&s->append, out);
-    if (s->samplesConsumed != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->samplesConsumed, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->samplesConsumed, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrDevicePcmSampleRateStateFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->sampleRate, out);
+
 }
 
 
@@ -13387,48 +13746,76 @@ static void serialize(const XrDevicePcmSampleRateStateFB* s, std::ostream& out) 
 
 
 static void serialize(const XrFrameSynthesisInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->motionVectorSubImage, out);
+
+            
+
     serialize(&s->motionVectorScale, out);
+
+            
+
     serialize(&s->motionVectorOffset, out);
+
+            
+
     serialize(&s->appSpaceDeltaPose, out);
+
+            
+
     serialize(&s->depthSubImage, out);
+
+            
+
     serialize(&s->minDepth, out);
+
+            
+
     serialize(&s->maxDepth, out);
+
+            
+
     serialize(&s->nearZ, out);
+
+            
+
     serialize(&s->farZ, out);
+
 }
 
 
 
 
 static void serialize(const XrFrameSynthesisConfigViewEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->recommendedMotionVectorImageRectWidth, out);
+
+            
+
     serialize(&s->recommendedMotionVectorImageRectHeight, out);
+
 }
 
 
@@ -13438,20 +13825,22 @@ static void serialize(const XrFrameSynthesisConfigViewEXT* s, std::ostream& out)
 
 
 static void serialize(const XrCompositionLayerDepthTestFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->depthMask, out);
+
+            
+
     serialize(&s->compareOp, out);
+
 }
 
 
@@ -13461,19 +13850,18 @@ static void serialize(const XrCompositionLayerDepthTestFB* s, std::ostream& out)
 
 
 static void serialize(const XrLocalDimmingFrameEndInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->localDimmingMode, out);
+
 }
 
 
@@ -13483,19 +13871,18 @@ static void serialize(const XrLocalDimmingFrameEndInfoMETA* s, std::ostream& out
 
 
 static void serialize(const XrPassthroughPreferencesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
@@ -13505,337 +13892,333 @@ static void serialize(const XrPassthroughPreferencesMETA* s, std::ostream& out) 
 
 
 static void serialize(const XrSystemVirtualKeyboardPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsVirtualKeyboard, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardCreateInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardSpaceCreateInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->locationType, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->poseInSpace, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardLocationInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->locationType, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->poseInSpace, out);
+
+            
+
     serialize(&s->scale, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardModelVisibilitySetInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->visible, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardAnimationStateMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->animationIndex, out);
+
+            
+
     serialize(&s->fraction, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardModelAnimationStatesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->stateCapacityInput, out);
+
+            
+
     serialize(&s->stateCountOutput, out);
-    if (s->states != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->stateCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->states[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->states, s->stateCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardTextureDataMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->textureWidth, out);
+
+            
+
     serialize(&s->textureHeight, out);
+
+            
+
     serialize(&s->bufferCapacityInput, out);
+
+            
+
     serialize(&s->bufferCountOutput, out);
-    if (s->buffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->bufferCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->buffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->buffer, s->bufferCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardInputInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->inputSource, out);
+
+            
+
     serialize(&s->inputSpace, out);
+
+            
+
     serialize(&s->inputPoseInSpace, out);
+
+            
+
     serialize(&s->inputState, out);
+
 }
 
 
 
 
 static void serialize(const XrVirtualKeyboardTextContextChangeInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->textContext != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = count_null_terminated(s->textContext);
-        serialize(static_cast<const uint32_t*>(&num_items), out);
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->textContext[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->textContext, count_null_terminated(s->textContext), out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataVirtualKeyboardCommitTextMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->keyboard, out);
-        
-    for (int i = 0; i < XR_MAX_VIRTUAL_KEYBOARD_COMMIT_TEXT_SIZE_META; i++) {
-        serialize(&s->text[i], out);
-    }
+
+            
+
+    serialize_array(s->text, XR_MAX_VIRTUAL_KEYBOARD_COMMIT_TEXT_SIZE_META, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataVirtualKeyboardBackspaceMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->keyboard, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataVirtualKeyboardEnterMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->keyboard, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataVirtualKeyboardShownMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->keyboard, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataVirtualKeyboardHiddenMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->keyboard, out);
+
 }
 
 
@@ -13845,24 +14228,26 @@ static void serialize(const XrEventDataVirtualKeyboardHiddenMETA* s, std::ostrea
 
 
 static void serialize(const XrExternalCameraOCULUS* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-        
-    for (int i = 0; i < XR_MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS; i++) {
-        serialize(&s->name[i], out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
+    serialize_array(s->name, XR_MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS, out);
+
+            
+
     serialize(&s->intrinsics, out);
+
+            
+
     serialize(&s->extrinsics, out);
+
 }
 
 
@@ -13872,20 +14257,22 @@ static void serialize(const XrExternalCameraOCULUS* s, std::ostream& out) {
 
 
 static void serialize(const XrVulkanSwapchainCreateInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->additionalCreateFlags, out);
+
+            
+
     serialize(&s->additionalUsageFlags, out);
+
 }
 
 
@@ -13895,41 +14282,48 @@ static void serialize(const XrVulkanSwapchainCreateInfoMETA* s, std::ostream& ou
 
 
 static void serialize(const XrPerformanceMetricsStateMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->enabled, out);
+
 }
 
 
 
 
 static void serialize(const XrPerformanceMetricsCounterMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->counterFlags, out);
+
+            
+
     serialize(&s->counterUnit, out);
+
+            
+
     serialize(&s->uintValue, out);
+
+            
+
     serialize(&s->floatValue, out);
+
 }
 
 
@@ -13939,52 +14333,49 @@ static void serialize(const XrPerformanceMetricsCounterMETA* s, std::ostream& ou
 
 
 static void serialize(const XrSpaceListSaveInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->spaceCount, out);
-    if (s->spaces != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->spaces[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->spaces, s->spaceCount, out);
+
+            
+
     serialize(&s->location, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSpaceListSaveCompleteFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
@@ -13994,19 +14385,18 @@ static void serialize(const XrEventDataSpaceListSaveCompleteFB* s, std::ostream&
 
 
 static void serialize(const XrSpaceUserCreateInfoFB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->userId, out);
+
 }
 
 
@@ -14016,19 +14406,18 @@ static void serialize(const XrSpaceUserCreateInfoFB* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemHeadsetIdPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->id, out);
+
 }
 
 
@@ -14038,48 +14427,45 @@ static void serialize(const XrSystemHeadsetIdPropertiesMETA* s, std::ostream& ou
 
 
 static void serialize(const XrRecommendedLayerResolutionMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->recommendedImageDimensions, out);
+
+            
+
     serialize(&s->isValid, out);
+
 }
 
 
 
 
 static void serialize(const XrRecommendedLayerResolutionGetInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     
-    if (s->layer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->layer, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+    serialize_ptr(s->layer, 1, out);
+
+            
+
     serialize(&s->predictedDisplayTime, out);
+
 }
 
 
@@ -14089,100 +14475,110 @@ static void serialize(const XrRecommendedLayerResolutionGetInfoMETA* s, std::ost
 
 
 static void serialize(const XrSystemPassthroughColorLutPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->maxColorLutResolution, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughColorLutCreateInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->channels, out);
+
+            
+
     serialize(&s->resolution, out);
+
+            
+
     serialize(&s->data, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughColorLutUpdateInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->data, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughColorMapLutMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->colorLut, out);
+
+            
+
     serialize(&s->weight, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughColorMapInterpolatedLutMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->sourceColorLut, out);
+
+            
+
     serialize(&s->targetColorLut, out);
+
+            
+
     serialize(&s->weight, out);
+
 }
 
 
@@ -14192,64 +14588,54 @@ static void serialize(const XrPassthroughColorMapInterpolatedLutMETA* s, std::os
 
 
 static void serialize(const XrSpaceTriangleMeshGetInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceTriangleMeshMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->indexCapacityInput, out);
+
+            
+
     serialize(&s->indexCountOutput, out);
-    if (s->indices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indices, s->indexCapacityInput, out);
+
 }
 
 
@@ -14259,19 +14645,18 @@ static void serialize(const XrSpaceTriangleMeshMETA* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemPropertiesBodyTrackingFullBodyMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsFullBodyTracking, out);
+
 }
 
 
@@ -14281,19 +14666,18 @@ static void serialize(const XrSystemPropertiesBodyTrackingFullBodyMETA* s, std::
 
 
 static void serialize(const XrEventDataPassthroughLayerResumedMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layer, out);
+
 }
 
 
@@ -14303,119 +14687,115 @@ static void serialize(const XrEventDataPassthroughLayerResumedMETA* s, std::ostr
 
 
 static void serialize(const XrSystemFaceTrackingProperties2FB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsVisualFaceTracking, out);
+
+            
+
     serialize(&s->supportsAudioFaceTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrFaceTrackerCreateInfo2FB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->faceExpressionSet, out);
+
+            
+
     serialize(&s->requestedDataSourceCount, out);
-    if (s->requestedDataSources != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->requestedDataSourceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->requestedDataSources[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->requestedDataSources, s->requestedDataSourceCount, out);
+
 }
 
 
 
 
 static void serialize(const XrFaceExpressionInfo2FB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrFaceExpressionWeights2FB* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->weightCount, out);
-    if (s->weights != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->weightCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->weights[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->weights, s->weightCount, out);
+
+            
+
     serialize(&s->confidenceCount, out);
-    if (s->confidences != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->confidenceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->confidences[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->confidences, s->confidenceCount, out);
+
+            
+
     serialize(&s->isValid, out);
+
+            
+
     serialize(&s->isEyeFollowingBlendshapesValid, out);
+
+            
+
     serialize(&s->dataSource, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
@@ -14425,79 +14805,68 @@ static void serialize(const XrFaceExpressionWeights2FB* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemSpatialEntitySharingPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSpatialEntitySharing, out);
+
 }
 
 
 
 
 static void serialize(const XrShareSpacesInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->spaceCount, out);
-    if (s->spaces != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->spaces[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
-    if (s->recipientInfo != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        serialize(s->recipientInfo, out);
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->spaces, s->spaceCount, out);
+
+            
+
+    
+    serialize_ptr(s->recipientInfo, 1, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataShareSpacesCompleteMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
@@ -14507,162 +14876,172 @@ static void serialize(const XrEventDataShareSpacesCompleteMETA* s, std::ostream&
 
 
 static void serialize(const XrEnvironmentDepthProviderCreateInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->createFlags, out);
+
 }
 
 
 
 
 static void serialize(const XrEnvironmentDepthSwapchainCreateInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->createFlags, out);
+
 }
 
 
 
 
 static void serialize(const XrEnvironmentDepthSwapchainStateMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->width, out);
+
+            
+
     serialize(&s->height, out);
+
 }
 
 
 
 
 static void serialize(const XrEnvironmentDepthImageAcquireInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->displayTime, out);
+
 }
 
 
 
 
 static void serialize(const XrEnvironmentDepthImageViewMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->fov, out);
+
+            
+
     serialize(&s->pose, out);
+
 }
 
 
 
 
 static void serialize(const XrEnvironmentDepthImageMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->swapchainIndex, out);
+
+            
+
     serialize(&s->nearZ, out);
+
+            
+
     serialize(&s->farZ, out);
-        
-    for (int i = 0; i < 2; i++) {
-        serialize(&s->views[i], out);
-    }
+
+            
+
+    serialize_array(s->views, 2, out);
+
 }
 
 
 
 
 static void serialize(const XrEnvironmentDepthHandRemovalSetInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->enabled, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemEnvironmentDepthPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsEnvironmentDepth, out);
+
+            
+
     serialize(&s->supportsHandRemoval, out);
+
 }
 
 
@@ -14672,108 +15051,114 @@ static void serialize(const XrSystemEnvironmentDepthPropertiesMETA* s, std::ostr
 
 
 static void serialize(const XrPassthroughCreateInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->form, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughColorHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->alpha, out);
+
 }
 
 
 
 
 static void serialize(const XrPassthroughMeshTransformInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vertexCount, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCount, out);
+
+            
+
     serialize(&s->indexCount, out);
-    if (s->indices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indices, s->indexCount, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->scale, out);
+
 }
 
 
 
 
 static void serialize(const XrCompositionLayerPassthroughHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->layerFlags, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->passthrough, out);
+
+            
+
     serialize(&s->color, out);
+
 }
 
 
@@ -14783,82 +15168,68 @@ static void serialize(const XrCompositionLayerPassthroughHTC* s, std::ostream& o
 
 
 static void serialize(const XrFoveationApplyInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->mode, out);
+
+            
+
     serialize(&s->subImageCount, out);
-    if (s->subImages != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->subImageCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->subImages[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->subImages, s->subImageCount, out);
+
 }
 
 
 
 
 static void serialize(const XrFoveationDynamicModeInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->dynamicFlags, out);
+
 }
 
 
 
 
 static void serialize(const XrFoveationCustomModeInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->configCount, out);
-    if (s->configs != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->configCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->configs[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->configs, s->configCount, out);
+
 }
 
 
@@ -14868,40 +15239,44 @@ static void serialize(const XrFoveationCustomModeInfoHTC* s, std::ostream& out) 
 
 
 static void serialize(const XrSystemAnchorPropertiesHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsAnchor, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorCreateInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->poseInSpace, out);
+
+            
+
     serialize(&s->name, out);
+
 }
 
 
@@ -14911,123 +15286,116 @@ static void serialize(const XrSpatialAnchorCreateInfoHTC* s, std::ostream& out) 
 
 
 static void serialize(const XrSystemBodyTrackingPropertiesHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsBodyTracking, out);
+
 }
 
 
 
 
 static void serialize(const XrBodyTrackerCreateInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->bodyJointSet, out);
+
 }
 
 
 
 
 static void serialize(const XrBodyJointsLocateInfoHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrBodyJointLocationsHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->combinedLocationFlags, out);
+
+            
+
     serialize(&s->confidenceLevel, out);
+
+            
+
     serialize(&s->jointLocationCount, out);
-    if (s->jointLocations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointLocationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->jointLocations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->jointLocations, s->jointLocationCount, out);
+
+            
+
     serialize(&s->skeletonGenerationId, out);
+
 }
 
 
 
 
 static void serialize(const XrBodySkeletonHTC* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->jointCount, out);
-    if (s->joints != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->joints[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->joints, s->jointCount, out);
+
 }
 
 
@@ -15037,31 +15405,23 @@ static void serialize(const XrBodySkeletonHTC* s, std::ostream& out) {
 
 
 static void serialize(const XrActiveActionSetPrioritiesEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->actionSetPriorityCount, out);
-    if (s->actionSetPriorities != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->actionSetPriorityCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->actionSetPriorities[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->actionSetPriorities, s->actionSetPriorityCount, out);
+
 }
 
 
@@ -15071,50 +15431,41 @@ static void serialize(const XrActiveActionSetPrioritiesEXT* s, std::ostream& out
 
 
 static void serialize(const XrSystemForceFeedbackCurlPropertiesMNDX* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsForceFeedbackCurl, out);
+
 }
 
 
 
 
 static void serialize(const XrForceFeedbackCurlApplyLocationsMNDX* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->locationCount, out);
-    if (s->locations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->locationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->locations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->locations, s->locationCount, out);
+
 }
 
 
@@ -15124,90 +15475,85 @@ static void serialize(const XrForceFeedbackCurlApplyLocationsMNDX* s, std::ostre
 
 
 static void serialize(const XrBodyTrackerCreateInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->jointSet, out);
+
 }
 
 
 
 
 static void serialize(const XrBodyJointsLocateInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrBodyJointLocationsBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->allJointPosesTracked, out);
+
+            
+
     serialize(&s->jointLocationCount, out);
-    if (s->jointLocations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->jointLocationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->jointLocations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->jointLocations, s->jointLocationCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemBodyTrackingPropertiesBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsBodyTracking, out);
+
 }
 
 
@@ -15217,512 +15563,471 @@ static void serialize(const XrSystemBodyTrackingPropertiesBD* s, std::ostream& o
 
 
 static void serialize(const XrSystemSpatialSensingPropertiesBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSpatialSensing, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityComponentGetInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->entityId, out);
+
+            
+
     serialize(&s->componentType, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityLocationGetInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityComponentDataLocationBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->location, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityComponentDataSemanticBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->labelCapacityInput, out);
+
+            
+
     serialize(&s->labelCountOutput, out);
-    if (s->labels != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->labelCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->labels[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->labels, s->labelCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityComponentDataBoundingBox2DBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->boundingBox2D, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityComponentDataPolygonBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityComponentDataBoundingBox3DBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->boundingBox3D, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityComponentDataTriangleMeshBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->indexCapacityInput, out);
+
+            
+
     serialize(&s->indexCountOutput, out);
-    if (s->indices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indices, s->indexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSenseDataProviderCreateInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->providerType, out);
+
 }
 
 
 
 
 static void serialize(const XrSenseDataProviderStartInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSenseDataProviderStateChangedBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->provider, out);
+
+            
+
     serialize(&s->newState, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataSenseDataUpdatedBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->provider, out);
+
 }
 
 
 
 
 static void serialize(const XrSenseDataQueryInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSenseDataQueryCompletionBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
+            
+
     serialize(&s->snapshot, out);
+
 }
 
 
 
 
 static void serialize(const XrSenseDataFilterUuidBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuidCount, out);
-    if (s->uuids != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->uuids[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->uuids, s->uuidCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSenseDataFilterSemanticBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->labelCount, out);
-    if (s->labels != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->labelCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->labels[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->labels, s->labelCount, out);
+
 }
 
 
 
 
 static void serialize(const XrQueriedSenseDataGetInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrQueriedSenseDataBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->stateCapacityInput, out);
+
+            
+
     serialize(&s->stateCountOutput, out);
-    if (s->states != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->stateCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->states[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->states, s->stateCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityStateBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->entityId, out);
+
+            
+
     serialize(&s->lastUpdateTime, out);
+
+            
+
     serialize(&s->uuid, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialEntityAnchorCreateInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->snapshot, out);
+
+            
+
     serialize(&s->entityId, out);
+
 }
 
 
 
 
 static void serialize(const XrAnchorSpaceCreateInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->anchor, out);
+
+            
+
     serialize(&s->poseInAnchorSpace, out);
+
 }
 
 
@@ -15732,101 +16037,114 @@ static void serialize(const XrAnchorSpaceCreateInfoBD* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemSpatialAnchorPropertiesBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSpatialAnchor, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorCreateInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->space, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorCreateCompletionBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
+            
+
     serialize(&s->anchor, out);
+
+            
+
     serialize(&s->uuid, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorPersistInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->location, out);
+
+            
+
     serialize(&s->anchor, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorUnpersistInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->location, out);
+
+            
+
     serialize(&s->anchor, out);
+
 }
 
 
@@ -15836,57 +16154,54 @@ static void serialize(const XrSpatialAnchorUnpersistInfoBD* s, std::ostream& out
 
 
 static void serialize(const XrSystemSpatialAnchorSharingPropertiesBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSpatialAnchorSharing, out);
+
 }
 
 
 
 
 static void serialize(const XrSpatialAnchorShareInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->anchor, out);
+
 }
 
 
 
 
 static void serialize(const XrSharedSpatialAnchorDownloadInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuid, out);
+
 }
 
 
@@ -15896,37 +16211,32 @@ static void serialize(const XrSharedSpatialAnchorDownloadInfoBD* s, std::ostream
 
 
 static void serialize(const XrSystemSpatialScenePropertiesBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSpatialScene, out);
+
 }
 
 
 
 
 static void serialize(const XrSceneCaptureInfoBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
@@ -15936,39 +16246,40 @@ static void serialize(const XrSceneCaptureInfoBD* s, std::ostream& out) {
 
 
 static void serialize(const XrSystemSpatialMeshPropertiesBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSpatialMesh, out);
+
 }
 
 
 
 
 static void serialize(const XrSenseDataProviderCreateInfoSpatialMeshBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->configFlags, out);
+
+            
+
     serialize(&s->lod, out);
+
 }
 
 
@@ -15978,20 +16289,22 @@ static void serialize(const XrSenseDataProviderCreateInfoSpatialMeshBD* s, std::
 
 
 static void serialize(const XrFuturePollResultProgressBD* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->isSupported, out);
+
+            
+
     serialize(&s->progressPercentage, out);
+
 }
 
 
@@ -16001,51 +16314,45 @@ static void serialize(const XrFuturePollResultProgressBD* s, std::ostream& out) 
 
 
 static void serialize(const XrHandTrackingDataSourceInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestedDataSourceCount, out);
-    if (s->requestedDataSources != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->requestedDataSourceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->requestedDataSources[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->requestedDataSources, s->requestedDataSourceCount, out);
+
 }
 
 
 
 
 static void serialize(const XrHandTrackingDataSourceStateEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->isActive, out);
+
+            
+
     serialize(&s->dataSource, out);
+
 }
 
 
@@ -16055,197 +16362,210 @@ static void serialize(const XrHandTrackingDataSourceStateEXT* s, std::ostream& o
 
 
 static void serialize(const XrPlaneDetectorCreateInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
 }
 
 
 
 
 static void serialize(const XrPlaneDetectorBeginInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->orientationCount, out);
-    if (s->orientations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->orientationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->orientations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->orientations, s->orientationCount, out);
+
+            
+
     serialize(&s->semanticTypeCount, out);
-    if (s->semanticTypes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->semanticTypeCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->semanticTypes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->semanticTypes, s->semanticTypeCount, out);
+
+            
+
     serialize(&s->maxPlanes, out);
+
+            
+
     serialize(&s->minArea, out);
+
+            
+
     serialize(&s->boundingBoxPose, out);
+
+            
+
     serialize(&s->boundingBoxExtent, out);
+
 }
 
 
 
 
 static void serialize(const XrPlaneDetectorGetInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrPlaneDetectorLocationsEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->planeLocationCapacityInput, out);
+
+            
+
     serialize(&s->planeLocationCountOutput, out);
-    if (s->planeLocations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->planeLocationCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->planeLocations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->planeLocations, s->planeLocationCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrPlaneDetectorLocationEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->planeId, out);
+
+            
+
     serialize(&s->locationFlags, out);
+
+            
+
     serialize(&s->pose, out);
+
+            
+
     serialize(&s->extents, out);
+
+            
+
     serialize(&s->orientation, out);
+
+            
+
     serialize(&s->semanticType, out);
+
+            
+
     serialize(&s->polygonBufferCount, out);
+
 }
 
 
 
 
 static void serialize(const XrPlaneDetectorPolygonBufferEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->vertexCapacityInput, out);
+
+            
+
     serialize(&s->vertexCountOutput, out);
-    if (s->vertices != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertices[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertices, s->vertexCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemPlaneDetectionPropertiesEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportedFeatures, out);
+
 }
 
 
@@ -16255,76 +16575,72 @@ static void serialize(const XrSystemPlaneDetectionPropertiesEXT* s, std::ostream
 
 
 static void serialize(const XrFutureCancelInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->future, out);
+
 }
 
 
 
 
 static void serialize(const XrFuturePollInfoEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->future, out);
+
 }
 
 
 
 
 static void serialize(const XrFutureCompletionEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
 }
 
 
 
 
 static void serialize(const XrFuturePollResultEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->state, out);
+
 }
 
 
@@ -16334,39 +16650,40 @@ static void serialize(const XrFuturePollResultEXT* s, std::ostream& out) {
 
 
 static void serialize(const XrEventDataUserPresenceChangedEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->session, out);
+
+            
+
     serialize(&s->isUserPresent, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemUserPresencePropertiesEXT* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsUserPresence, out);
+
 }
 
 
@@ -16375,95 +16692,77 @@ static void serialize(const XrSystemUserPresencePropertiesEXT* s, std::ostream& 
 
 
 static void serialize(const XrSpacesLocateInfo* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->spaceCount, out);
-    if (s->spaces != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->spaces[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->spaces, s->spaceCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceLocations* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->locationCount, out);
-    if (s->locations != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->locationCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->locations[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->locations, s->locationCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceVelocities* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->velocityCount, out);
-    if (s->velocities != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->velocityCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->velocities[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->velocities, s->velocityCount, out);
+
 }
 
 
@@ -16472,58 +16771,58 @@ static void serialize(const XrSpaceVelocities* s, std::ostream& out) {
 
 
 static void serialize(const XrEventDataHeadsetFitChangedML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->status, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataEyeCalibrationChangedML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->status, out);
+
 }
 
 
 
 
 static void serialize(const XrUserCalibrationEnableEventsInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->enabled, out);
+
 }
 
 
@@ -16533,19 +16832,18 @@ static void serialize(const XrUserCalibrationEnableEventsInfoML* s, std::ostream
 
 
 static void serialize(const XrSystemNotificationsSetInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->suppressNotifications, out);
+
 }
 
 
@@ -16555,346 +16853,344 @@ static void serialize(const XrSystemNotificationsSetInfoML* s, std::ostream& out
 
 
 static void serialize(const XrWorldMeshDetectorCreateInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshStateRequestInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->baseSpace, out);
+
+            
+
     serialize(&s->time, out);
+
+            
+
     serialize(&s->boundingBoxCenter, out);
+
+            
+
     serialize(&s->boundingBoxExtents, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshBlockStateML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuid, out);
+
+            
+
     serialize(&s->meshBoundingBoxCenter, out);
+
+            
+
     serialize(&s->meshBoundingBoxExtents, out);
+
+            
+
     serialize(&s->lastUpdateTime, out);
+
+            
+
     serialize(&s->status, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshStateRequestCompletionML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
+            
+
     serialize(&s->timestamp, out);
+
+            
+
     serialize(&s->meshBlockStateCapacityInput, out);
+
+            
+
     serialize(&s->meshBlockStateCountOutput, out);
-    if (s->meshBlockStates != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->meshBlockStateCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->meshBlockStates[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->meshBlockStates, s->meshBlockStateCapacityInput, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshBufferRecommendedSizeInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->maxBlockCount, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshBufferSizeML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->size, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshBufferML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->bufferSize, out);
-    if (s->buffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->buffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->buffer, s->bufferSize, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshBlockRequestML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuid, out);
+
+            
+
     serialize(&s->lod, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshGetInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->flags, out);
+
+            
+
     serialize(&s->fillHoleLength, out);
+
+            
+
     serialize(&s->disconnectedComponentArea, out);
+
+            
+
     serialize(&s->blockCount, out);
-    if (s->blocks != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->blockCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->blocks[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->blocks, s->blockCount, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshBlockML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->uuid, out);
+
+            
+
     serialize(&s->blockResult, out);
+
+            
+
     serialize(&s->lod, out);
+
+            
+
     serialize(&s->flags, out);
+
+            
+
     serialize(&s->indexCount, out);
-    if (s->indexBuffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->indexCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->indexBuffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->indexBuffer, s->indexCount, out);
+
+            
+
     serialize(&s->vertexCount, out);
-    if (s->vertexBuffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->vertexCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->vertexBuffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->vertexBuffer, s->vertexCount, out);
+
+            
+
     serialize(&s->normalCount, out);
-    if (s->normalBuffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->normalCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->normalBuffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->normalBuffer, s->normalCount, out);
+
+            
+
     serialize(&s->confidenceCount, out);
-    if (s->confidenceBuffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->confidenceCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->confidenceBuffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->confidenceBuffer, s->confidenceCount, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshRequestCompletionML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->futureResult, out);
+
+            
+
     serialize(&s->blockCount, out);
-    if (s->blocks != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->blockCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->blocks[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->blocks, s->blockCount, out);
+
 }
 
 
 
 
 static void serialize(const XrWorldMeshRequestCompletionInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->meshSpace, out);
+
+            
+
     serialize(&s->meshSpaceLocateTime, out);
+
 }
 
 
@@ -16904,90 +17200,85 @@ static void serialize(const XrWorldMeshRequestCompletionInfoML* s, std::ostream&
 
 
 static void serialize(const XrSystemFacialExpressionPropertiesML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsFacialExpression, out);
+
 }
 
 
 
 
 static void serialize(const XrFacialExpressionClientCreateInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestedCount, out);
-    if (s->requestedFacialBlendShapes != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->requestedCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->requestedFacialBlendShapes[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->requestedFacialBlendShapes, s->requestedCount, out);
+
 }
 
 
 
 
 static void serialize(const XrFacialExpressionBlendShapeGetInfoML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrFacialExpressionBlendShapePropertiesML* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestedFacialBlendShape, out);
+
+            
+
     serialize(&s->weight, out);
+
+            
+
     serialize(&s->flags, out);
+
+            
+
     serialize(&s->time, out);
+
 }
 
 
@@ -16997,55 +17288,46 @@ static void serialize(const XrFacialExpressionBlendShapePropertiesML* s, std::os
 
 
 static void serialize(const XrSystemSimultaneousHandsAndControllersPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSimultaneousHandsAndControllers, out);
+
 }
 
 
 
 
 static void serialize(const XrSimultaneousHandsAndControllersTrackingResumeInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrSimultaneousHandsAndControllersTrackingPauseInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
@@ -17055,250 +17337,249 @@ static void serialize(const XrSimultaneousHandsAndControllersTrackingPauseInfoME
 
 
 static void serialize(const XrColocationDiscoveryStartInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrColocationDiscoveryStopInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrColocationAdvertisementStartInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->bufferSize, out);
-    if (s->buffer != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->buffer[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->buffer, s->bufferSize, out);
+
 }
 
 
 
 
 static void serialize(const XrColocationAdvertisementStopInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataStartColocationAdvertisementCompleteMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->advertisementRequestId, out);
+
+            
+
     serialize(&s->result, out);
+
+            
+
     serialize(&s->advertisementUuid, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataStopColocationAdvertisementCompleteMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataColocationAdvertisementCompleteMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->advertisementRequestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataStartColocationDiscoveryCompleteMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->discoveryRequestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataColocationDiscoveryResultMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->discoveryRequestId, out);
+
+            
+
     serialize(&s->advertisementUuid, out);
+
+            
+
     serialize(&s->bufferSize, out);
-        
-    for (int i = 0; i < XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META; i++) {
-        serialize(&s->buffer[i], out);
-    }
+
+            
+
+    serialize_array(s->buffer, XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataColocationDiscoveryCompleteMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->discoveryRequestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
 
 
 static void serialize(const XrEventDataStopColocationDiscoveryCompleteMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->requestId, out);
+
+            
+
     serialize(&s->result, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemColocationDiscoveryPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsColocationDiscovery, out);
+
 }
 
 
@@ -17308,69 +17589,59 @@ static void serialize(const XrSystemColocationDiscoveryPropertiesMETA* s, std::o
 
 
 static void serialize(const XrShareSpacesRecipientGroupsMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->groupCount, out);
-    if (s->groups != nullptr) {
-        std::uint8_t marker = 1;
-        serialize(&marker, out);
-        std::size_t num_items = s->groupCount;
-        for (int i = 0; i < num_items; i++) {
-            serialize(&s->groups[i], out);
-        }
-    }
-    else {
-        std::uint8_t marker = 0;
-        serialize(&marker, out);
-    }
+
+            
+
+    
+    serialize_ptr(s->groups, s->groupCount, out);
+
 }
 
 
 
 
 static void serialize(const XrSpaceGroupUuidFilterInfoMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->groupUuid, out);
+
 }
 
 
 
 
 static void serialize(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s, std::ostream& out) {
+            
+
     serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
+
+            
+
+    serialize_xr(s->next, out);
+
+            
+
     serialize(&s->supportsSpatialEntityGroupSharing, out);
+
 }
 
 
@@ -17379,71 +17650,11 @@ static void serialize(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s, 
 
 // Custom implementations
 static void serialize(const XrInstanceCreateInfo* s, std::ostream& out) {
-    serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-    serialize(&s->createFlags, out);
-    serialize(&s->applicationInfo, out);
-    serialize(&s->enabledApiLayerCount, out);
 
-    for (int i = 0; i < s->enabledApiLayerCount; i++) {
-        const char* str = s->enabledApiLayerNames[i];
-        std::size_t string_length = count_null_terminated(str);
-        serialize(reinterpret_cast<const uint32_t*>(&string_length), out);
-        for (int j = 0; j < string_length; j++) {
-            serialize(&str[j], out);
-        }
-    }
-
-    serialize(&s->enabledExtensionCount, out);
-
-    for (int i = 0; i < s->enabledExtensionCount; i++) {
-        const char* str = s->enabledExtensionNames[i];
-        std::size_t string_length = count_null_terminated(str);
-        serialize(reinterpret_cast<const uint32_t*>(&string_length), out);
-        for (int j = 0; j < string_length; j++) {
-            serialize(&str[j], out);
-        }
-    }
 }
 
 static void serialize(const XrFrameEndInfo* s, std::ostream& out) {
-    serialize(&s->type, out);
-    const XrBaseInStructure* next = reinterpret_cast<const XrBaseInStructure*>(s->next);
-    if (next != nullptr) {
-        serialize(&next->type, out);
-        serializer_lookup(next->type)(next, out);
-    }
-    else {
-        // special marker to indicate no next struct
-        XrStructureType marker = XR_TYPE_UNKNOWN;
-        serialize(&marker, out);
-    }
-    
-    serialize(&s->displayTime, out);
-    serialize(&s->environmentBlendMode, out);
-    serialize(&s->layerCount, out);
 
-    for (int i = 0; i < s->layerCount; i++) {
-        const XrCompositionLayerBaseHeader* header = s->layers[i];
-        if (header != nullptr) {
-            serialize(&header->type, out);
-            serializer_lookup(header->type)(reinterpret_cast<const XrBaseInStructure*>(header), out);
-        }
-        else {
-            XrStructureType marker = XR_TYPE_UNKNOWN;
-            serialize(&marker, out);
-        }
-    }
 }
 
 } // namespace xrtransport

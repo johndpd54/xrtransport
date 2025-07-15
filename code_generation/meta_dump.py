@@ -1,5 +1,5 @@
 import sys
-from common import get_xml_root, parse_spec, XrStruct, XrFunction, XrParam
+from spec_parser import get_xml_root, parse_spec, XrStruct, XrFunction, XrParam
 import json
 
 def main():

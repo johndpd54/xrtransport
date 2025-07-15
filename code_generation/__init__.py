@@ -1,5 +1,6 @@
 import os
-from .common import get_xml_root, parse_spec
+from .spec_parser import get_xml_root, parse_spec
+from .common import generate_common
 from .structs import generate_serializer, generate_deserializer
 from .test import generate_struct_fuzzer
 

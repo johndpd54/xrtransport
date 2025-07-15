@@ -1,20 +1,31 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 #ifndef XRTRANSPORT_DESERIALIZER_GENERATED_H
 #define XRTRANSPORT_DESERIALIZER_GENERATED_H
+
+#include "common.h"
 
 #include "openxr/openxr.h"
 
 #include <iostream>
 #include <cstdint>
-#include <vector>
+#include <unordered_map>
 #include <cassert>
 #include <cstring>
 
 namespace xrtransport {
-
-
-
-
 
 // Forward declarations (deserializers)
 
@@ -3203,3198 +3214,6 @@ static void deserialize(XrSpaceGroupUuidFilterInfoMETA* s, std::istream& in);
 
 
 static void deserialize(XrSystemSpatialEntityGroupSharingPropertiesMETA* s, std::istream& in);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
-
-
-// Forward declarations (allocators)
-
-
-
-
-
-static void allocate(XrVector2f** s, std::size_t n);
-
-
-
-
-static void allocate(XrVector3f** s, std::size_t n);
-
-
-
-
-static void allocate(XrVector4f** s, std::size_t n);
-
-
-
-
-static void allocate(XrColor4f** s, std::size_t n);
-
-
-
-
-static void allocate(XrQuaternionf** s, std::size_t n);
-
-
-
-
-static void allocate(XrPosef** s, std::size_t n);
-
-
-
-
-static void allocate(XrOffset2Df** s, std::size_t n);
-
-
-
-
-static void allocate(XrExtent2Df** s, std::size_t n);
-
-
-
-
-static void allocate(XrRect2Df** s, std::size_t n);
-
-
-
-
-static void allocate(XrOffset2Di** s, std::size_t n);
-
-
-
-
-static void allocate(XrExtent2Di** s, std::size_t n);
-
-
-
-
-static void allocate(XrRect2Di** s, std::size_t n);
-
-
-
-
-static void allocate(XrApplicationInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemGraphicsProperties** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemTrackingProperties** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageBaseHeader** s, std::size_t n);
-
-
-
-
-static void allocate(XrFovf** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainSubImage** s, std::size_t n);
-
-
-
-
-static void allocate(XrCompositionLayerBaseHeader** s, std::size_t n);
-
-
-
-
-static void allocate(XrHapticBaseHeader** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataBaseHeader** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionSuggestedBinding** s, std::size_t n);
-
-
-
-
-static void allocate(XrActiveActionSet** s, std::size_t n);
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-
-static void allocate(XrBindingModificationBaseHeaderKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-
-static void allocate(XrHandJointLocationEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandJointVelocityEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking
-
-
-static void allocate(XrFaceExpressionStatusFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_face_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_body_tracking
-
-
-static void allocate(XrBodySkeletonJointFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodyJointLocationFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-
-static void allocate(XrEyeGazeFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-
-static void allocate(XrHandMeshIndexBufferMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandMeshVertexBufferMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandMeshVertexMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state
-
-
-static void allocate(XrSwapchainStateBaseHeaderFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_loader_init
-
-
-static void allocate(XrLoaderInitInfoBaseHeaderKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_loader_init
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-
-static void allocate(XrUuidMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneSphereBoundMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneOrientedBoxBoundMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneFrustumBoundMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneBoundsMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneComponentMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneComponentLocationMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneObjectMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrScenePlaneMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMeshMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-
-static void allocate(XrDeserializeSceneFragmentMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-
-static void allocate(XrSceneMarkerMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMarkerQRCodeMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-
-static void allocate(XrVector4sFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-
-static void allocate(XrHandCapsuleFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-
-static void allocate(XrSpaceQueryInfoBaseHeaderFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceFilterInfoBaseHeaderFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceQueryResultFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-#ifdef XRTRANSPORT_EXT_XR_FB_scene
-
-
-static void allocate(XrOffset3DfFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrRect3DfFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_scene
-
-#ifdef XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-
-static void allocate(XrKeyboardTrackingDescriptionFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-
-static void allocate(XrShareSpacesRecipientBaseHeaderMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-
-static void allocate(XrSpatialAnchorPersistenceNameMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-#ifdef XRTRANSPORT_EXT_XR_BD_body_tracking
-
-
-static void allocate(XrBodyJointLocationBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_anchor
-
-
-static void allocate(XrSpatialAnchorNameHTC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_anchor
-
-
-
-static void allocate(XrBodySkeletonJointHTC** s, std::size_t n);
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-
-static void allocate(XrBodyJointLocationHTC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-
-static void allocate(XrExternalCameraIntrinsicsOCULUS** s, std::size_t n);
-
-
-
-
-static void allocate(XrExternalCameraExtrinsicsOCULUS** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-
-static void allocate(XrPassthroughColorLutDataMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_foveation
-
-
-static void allocate(XrFoveationConfigurationHTC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_foveation
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-
-static void allocate(XrActiveActionSetPriorityEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-#ifdef XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-
-static void allocate(XrForceFeedbackCurlApplyLocationMNDX** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-#ifdef XRTRANSPORT_EXT_XR_ML_localization_map
-
-
-static void allocate(XrLocalizationMapQueryInfoBaseHeaderML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_localization_map
-
-
-
-static void allocate(XrColor3f** s, std::size_t n);
-
-
-
-
-static void allocate(XrExtent3Df** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpheref** s, std::size_t n);
-
-
-
-
-static void allocate(XrBoxf** s, std::size_t n);
-
-
-
-
-static void allocate(XrFrustumf** s, std::size_t n);
-
-
-
-
-static void allocate(XrUuid** s, std::size_t n);
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_future
-
-
-static void allocate(XrFutureCompletionBaseHeaderEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_future
-
-
-
-static void allocate(XrSpaceLocationData** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceVelocityData** s, std::size_t n);
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-
-static void allocate(XrSpatialAnchorsCreateInfoBaseHeaderML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-
-static void allocate(XrSpatialAnchorsQueryInfoBaseHeaderML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorCompletionResultML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-
-static void allocate(XrSpatialEntityComponentDataBaseHeaderBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-
-
-static void allocate(XrApiLayerProperties** s, std::size_t n);
-
-
-
-
-static void allocate(XrExtensionProperties** s, std::size_t n);
-
-
-
-
-static void allocate(XrInstanceCreateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemGetInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemProperties** s, std::size_t n);
-
-
-
-
-static void allocate(XrViewLocateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrView** s, std::size_t n);
-
-
-
-
-static void allocate(XrSessionCreateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainCreateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSessionBeginInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrViewState** s, std::size_t n);
-
-
-
-
-static void allocate(XrFrameEndInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrHapticVibration** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataBuffer** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataInstanceLossPending** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSessionStateChanged** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionStateBoolean** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionStateFloat** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionStateVector2f** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionStatePose** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionSetCreateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionCreateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrInstanceProperties** s, std::size_t n);
-
-
-
-
-static void allocate(XrFrameWaitInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrCompositionLayerProjection** s, std::size_t n);
-
-
-
-
-static void allocate(XrCompositionLayerQuad** s, std::size_t n);
-
-
-
-
-static void allocate(XrReferenceSpaceCreateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionSpaceCreateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataReferenceSpaceChangePending** s, std::size_t n);
-
-
-
-
-static void allocate(XrViewConfigurationView** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceLocation** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceVelocity** s, std::size_t n);
-
-
-
-
-static void allocate(XrFrameState** s, std::size_t n);
-
-
-
-
-static void allocate(XrViewConfigurationProperties** s, std::size_t n);
-
-
-
-
-static void allocate(XrFrameBeginInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrCompositionLayerProjectionView** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataEventsLost** s, std::size_t n);
-
-
-
-
-static void allocate(XrInteractionProfileSuggestedBinding** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataInteractionProfileChanged** s, std::size_t n);
-
-
-
-
-static void allocate(XrInteractionProfileState** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageAcquireInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageWaitInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageReleaseInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionStateGetInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrHapticActionInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSessionActionSetsAttachInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrActionsSyncInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrBoundSourcesForActionEnumerateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrInputSourceLocalizedNameGetInfo** s, std::size_t n);
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_cube
-
-
-static void allocate(XrCompositionLayerCubeKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_cube
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_android_create_instance
-
-
-static void allocate(XrInstanceCreateInfoAndroidKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_android_create_instance
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_depth
-
-
-static void allocate(XrCompositionLayerDepthInfoKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_depth
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_swapchain_format_list
-
-
-static void allocate(XrVulkanSwapchainFormatListCreateInfoKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_swapchain_format_list
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_performance_settings
-
-
-static void allocate(XrEventDataPerfSettingsEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_performance_settings
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_cylinder
-
-
-static void allocate(XrCompositionLayerCylinderKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_cylinder
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect
-
-
-static void allocate(XrCompositionLayerEquirectKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_debug_utils
-
-
-static void allocate(XrDebugUtilsObjectNameInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrDebugUtilsMessengerCallbackDataEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrDebugUtilsMessengerCreateInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrDebugUtilsLabelEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_debug_utils
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_opengl_enable
-
-
-static void allocate(XrGraphicsBindingOpenGLWin32KHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsBindingOpenGLXlibKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsBindingOpenGLXcbKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsBindingOpenGLWaylandKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageOpenGLKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsRequirementsOpenGLKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_opengl_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_opengl_es_enable
-
-
-static void allocate(XrGraphicsBindingOpenGLESAndroidKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageOpenGLESKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsRequirementsOpenGLESKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_opengl_es_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_enable
-
-
-static void allocate(XrGraphicsBindingVulkanKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageVulkanKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsRequirementsVulkanKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_D3D11_enable
-
-
-static void allocate(XrGraphicsBindingD3D11KHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageD3D11KHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsRequirementsD3D11KHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_D3D11_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_D3D12_enable
-
-
-static void allocate(XrGraphicsBindingD3D12KHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageD3D12KHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsRequirementsD3D12KHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_D3D12_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_metal_enable
-
-
-static void allocate(XrGraphicsBindingMetalKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainImageMetalKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrGraphicsRequirementsMetalKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_metal_enable
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_eye_gaze_interaction
-
-
-static void allocate(XrSystemEyeGazeInteractionPropertiesEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrEyeGazeSampleTimeEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_eye_gaze_interaction
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_visibility_mask
-
-
-static void allocate(XrVisibilityMaskKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataVisibilityMaskChangedKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_visibility_mask
-
-#ifdef XRTRANSPORT_EXT_XR_EXTX_overlay
-
-
-static void allocate(XrSessionCreateInfoOverlayEXTX** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataMainSessionVisibilityChangedEXTX** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXTX_overlay
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_color_scale_bias
-
-
-static void allocate(XrCompositionLayerColorScaleBiasKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_color_scale_bias
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor
-
-
-static void allocate(XrSpatialAnchorCreateInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorSpaceCreateInfoMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_image_layout
-
-
-static void allocate(XrCompositionLayerImageLayoutFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_image_layout
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_alpha_blend
-
-
-static void allocate(XrCompositionLayerAlphaBlendFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_alpha_blend
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_view_configuration_depth_range
-
-
-static void allocate(XrViewConfigurationDepthRangeEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_view_configuration_depth_range
-
-#ifdef XRTRANSPORT_EXT_XR_MNDX_egl_enable
-
-
-static void allocate(XrGraphicsBindingEGLMNDX** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MNDX_egl_enable
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_graph_bridge
-
-
-static void allocate(XrSpatialGraphNodeSpaceCreateInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialGraphStaticNodeBindingCreateInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialGraphNodeBindingPropertiesGetInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialGraphNodeBindingPropertiesMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_graph_bridge
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-
-static void allocate(XrSystemHandTrackingPropertiesEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandTrackerCreateInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandJointsLocateInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandJointLocationsEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandJointVelocitiesEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-
-static void allocate(XrSystemHandTrackingMeshPropertiesMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandMeshSpaceCreateInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandMeshUpdateInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandMeshMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandPoseTypeInfoMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_secondary_view_configuration
-
-
-static void allocate(XrSecondaryViewConfigurationSessionBeginInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationStateMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationFrameStateMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationFrameEndInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationLayerInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationSwapchainCreateInfoMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_secondary_view_configuration
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_controller_model
-
-
-static void allocate(XrControllerModelKeyStateMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrControllerModelNodePropertiesMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrControllerModelPropertiesMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrControllerModelNodeStateMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrControllerModelStateMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_controller_model
-
-#ifdef XRTRANSPORT_EXT_XR_EPIC_view_configuration_fov
-
-
-static void allocate(XrViewConfigurationViewFovEPIC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EPIC_view_configuration_fov
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_holographic_window_attachment
-
-
-static void allocate(XrHolographicWindowAttachmentMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_holographic_window_attachment
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_composition_layer_reprojection
-
-
-static void allocate(XrCompositionLayerReprojectionInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrCompositionLayerReprojectionPlaneOverrideMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_composition_layer_reprojection
-
-#ifdef XRTRANSPORT_EXT_XR_FB_android_surface_swapchain_create
-
-
-static void allocate(XrAndroidSurfaceSwapchainCreateInfoFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_android_surface_swapchain_create
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_secure_content
-
-
-static void allocate(XrCompositionLayerSecureContentFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_secure_content
-
-#ifdef XRTRANSPORT_EXT_XR_FB_body_tracking
-
-
-static void allocate(XrBodyTrackerCreateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodyJointsLocateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemBodyTrackingPropertiesFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodyJointLocationsFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodySkeletonFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_dpad_binding
-
-
-static void allocate(XrInteractionProfileDpadBindingEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_dpad_binding
-
-#ifdef XRTRANSPORT_EXT_XR_VALVE_analog_threshold
-
-
-static void allocate(XrInteractionProfileAnalogThresholdVALVE** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_VALVE_analog_threshold
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_joints_motion_range
-
-
-static void allocate(XrHandJointsMotionRangeInfoEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_joints_motion_range
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_loader_init_android
-
-
-static void allocate(XrLoaderInitInfoAndroidKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_loader_init_android
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_enable2
-
-
-static void allocate(XrVulkanInstanceCreateInfoKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrVulkanDeviceCreateInfoKHR** s, std::size_t n);
-
-
-
-
-static void allocate(XrVulkanGraphicsDeviceGetInfoKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_enable2
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect2
-
-
-static void allocate(XrCompositionLayerEquirect2KHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect2
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-
-static void allocate(XrSceneObserverCreateInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneCreateInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrNewSceneComputeInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrVisualMeshComputeLodInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneComponentsMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneComponentsGetInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneComponentLocationsMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneComponentsLocateInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneObjectsMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneComponentParentFilterInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneObjectTypesFilterInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrScenePlanesMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrScenePlaneAlignmentFilterInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMeshesMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMeshBuffersGetInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMeshBuffersMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMeshVertexBufferMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMeshIndicesUint32MSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMeshIndicesUint16MSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-
-static void allocate(XrSerializedSceneFragmentDataGetInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneDeserializeInfoMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-#ifdef XRTRANSPORT_EXT_XR_FB_display_refresh_rate
-
-
-static void allocate(XrEventDataDisplayRefreshRateChangedFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_display_refresh_rate
-
-#ifdef XRTRANSPORT_EXT_XR_HTCX_vive_tracker_interaction
-
-
-static void allocate(XrViveTrackerPathsHTCX** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataViveTrackerConnectedHTCX** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTCX_vive_tracker_interaction
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_facial_tracking
-
-
-static void allocate(XrSystemFacialTrackingPropertiesHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrFacialTrackerCreateInfoHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrFacialExpressionsHTC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_facial_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_color_space
-
-
-static void allocate(XrSystemColorSpacePropertiesFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_color_space
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-
-static void allocate(XrHandTrackingMeshFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandTrackingScaleFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_aim
-
-
-static void allocate(XrHandTrackingAimStateFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_aim
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-
-static void allocate(XrHandTrackingCapsulesStateFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity
-
-
-static void allocate(XrSpaceComponentStatusFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorCreateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemSpatialEntityPropertiesFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSpatialAnchorCreateCompleteFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSpaceSetStatusCompleteFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceComponentStatusSetInfoFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation
-
-
-static void allocate(XrFoveationProfileCreateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainCreateInfoFoveationFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSwapchainStateFoveationFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation_configuration
-
-
-static void allocate(XrFoveationLevelProfileCreateInfoFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation_configuration
-
-#ifdef XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-
-static void allocate(XrSystemKeyboardTrackingPropertiesFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrKeyboardTrackingQueryFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrKeyboardSpaceCreateInfoFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_triangle_mesh
-
-
-static void allocate(XrTriangleMeshCreateInfoFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_triangle_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_passthrough
-
-
-static void allocate(XrSystemPassthroughPropertiesFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughCreateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughLayerCreateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrCompositionLayerPassthroughFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrGeometryInstanceCreateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrGeometryInstanceTransformFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemPassthroughProperties2FB** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughStyleFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughColorMapMonoToRgbaFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughColorMapMonoToMonoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughBrightnessContrastSaturationFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataPassthroughStateChangedFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_passthrough
-
-#ifdef XRTRANSPORT_EXT_XR_FB_render_model
-
-
-static void allocate(XrRenderModelPathInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrRenderModelPropertiesFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrRenderModelBufferFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrRenderModelLoadInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemRenderModelPropertiesFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrRenderModelCapabilitiesRequestFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_render_model
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-
-static void allocate(XrBindingModificationsKHR** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_foveated_rendering
-
-
-static void allocate(XrViewLocateFoveatedRenderingVARJO** s, std::size_t n);
-
-
-
-
-static void allocate(XrFoveatedViewConfigurationViewVARJO** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemFoveatedRenderingPropertiesVARJO** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_foveated_rendering
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_composition_layer_depth_test
-
-
-static void allocate(XrCompositionLayerDepthTestVARJO** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_composition_layer_depth_test
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_marker_tracking
-
-
-static void allocate(XrSystemMarkerTrackingPropertiesVARJO** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataMarkerTrackingUpdateVARJO** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerSpaceCreateInfoVARJO** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_marker_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_ML_frame_end_info
-
-
-static void allocate(XrFrameEndInfoML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_frame_end_info
-
-#ifdef XRTRANSPORT_EXT_XR_ML_global_dimmer
-
-
-static void allocate(XrGlobalDimmerFrameEndInfoML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_global_dimmer
-
-#ifdef XRTRANSPORT_EXT_XR_ML_compat
-
-
-static void allocate(XrCoordinateSpaceCreateInfoML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_compat
-
-#ifdef XRTRANSPORT_EXT_XR_ML_marker_understanding
-
-
-static void allocate(XrSystemMarkerUnderstandingPropertiesML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerDetectorCreateInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerDetectorArucoInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerDetectorSizeInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerDetectorAprilTagInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerDetectorCustomProfileInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerDetectorSnapshotInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerDetectorStateML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMarkerSpaceCreateInfoML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_marker_understanding
-
-#ifdef XRTRANSPORT_EXT_XR_ML_localization_map
-
-
-static void allocate(XrLocalizationMapML** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataLocalizationChangedML** s, std::size_t n);
-
-
-
-
-static void allocate(XrMapLocalizationRequestInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrLocalizationMapImportInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrLocalizationEnableEventsInfoML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_localization_map
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-
-static void allocate(XrSpatialAnchorsCreateInfoFromPoseML** s, std::size_t n);
-
-
-
-
-static void allocate(XrCreateSpatialAnchorsCompletionML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorStateML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-
-static void allocate(XrSpatialAnchorsCreateStorageInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsQueryInfoRadiusML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsQueryCompletionML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsCreateInfoFromUuidsML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsPublishInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsPublishCompletionML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsDeleteInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsDeleteCompletionML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsUpdateExpirationInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsUpdateExpirationCompletionML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsPublishCompletionDetailsML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsDeleteCompletionDetailsML** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorsUpdateExpirationCompletionDetailsML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-
-static void allocate(XrSpatialAnchorPersistenceInfoMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-
-static void allocate(XrSceneMarkersMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMarkerTypeFilterMSFT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneMarkerQRCodesMSFT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-
-static void allocate(XrSpaceQueryInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceQueryResultsFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceStorageLocationFilterInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceComponentFilterInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceUuidFilterInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSpaceQueryResultsAvailableFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSpaceQueryCompleteFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_storage
-
-
-static void allocate(XrSpaceSaveInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceEraseInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSpaceSaveCompleteFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSpaceEraseCompleteFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_storage
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation_vulkan
-
-
-static void allocate(XrSwapchainImageFoveationVulkanFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation_vulkan
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_android_surface
-
-
-static void allocate(XrSwapchainStateAndroidSurfaceDimensionsFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_android_surface
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_opengl_es
-
-
-static void allocate(XrSwapchainStateSamplerOpenGLESFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_opengl_es
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_vulkan
-
-
-static void allocate(XrSwapchainStateSamplerVulkanFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_vulkan
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_sharing
-
-
-static void allocate(XrSpaceShareInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSpaceShareCompleteFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_FB_space_warp
-
-
-static void allocate(XrCompositionLayerSpaceWarpInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemSpaceWarpPropertiesFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_space_warp
-
-#ifdef XRTRANSPORT_EXT_XR_FB_haptic_amplitude_envelope
-
-
-static void allocate(XrHapticAmplitudeEnvelopeVibrationFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_haptic_amplitude_envelope
-
-#ifdef XRTRANSPORT_EXT_XR_FB_scene
-
-
-static void allocate(XrSemanticLabelsFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrRoomLayoutFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrBoundary2DFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSemanticLabelsSupportInfoFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_scene
-
-#ifdef XRTRANSPORT_EXT_XR_ALMALENCE_digital_lens_control
-
-
-static void allocate(XrDigitalLensControlALMALENCE** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ALMALENCE_digital_lens_control
-
-#ifdef XRTRANSPORT_EXT_XR_FB_scene_capture
-
-
-static void allocate(XrEventDataSceneCaptureCompleteFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneCaptureRequestInfoFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_scene_capture
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_container
-
-
-static void allocate(XrSpaceContainerFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_container
-
-#ifdef XRTRANSPORT_EXT_XR_META_foveation_eye_tracked
-
-
-static void allocate(XrFoveationEyeTrackedProfileCreateInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrFoveationEyeTrackedStateMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemFoveationEyeTrackedPropertiesMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_foveation_eye_tracked
-
-#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking
-
-
-static void allocate(XrFaceExpressionInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemFaceTrackingPropertiesFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrFaceTrackerCreateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrFaceExpressionWeightsFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_face_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-
-static void allocate(XrEyeTrackerCreateInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEyeGazesInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEyeGazesFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemEyeTrackingPropertiesFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-#ifdef XRTRANSPORT_EXT_XR_FB_passthrough_keyboard_hands
-
-
-static void allocate(XrPassthroughKeyboardHandsIntensityFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_passthrough_keyboard_hands
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_settings
-
-
-static void allocate(XrCompositionLayerSettingsFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_settings
-
-#ifdef XRTRANSPORT_EXT_XR_FB_haptic_pcm
-
-
-static void allocate(XrHapticPcmVibrationFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrDevicePcmSampleRateStateFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_haptic_pcm
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_frame_synthesis
-
-
-static void allocate(XrFrameSynthesisInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrFrameSynthesisConfigViewEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_frame_synthesis
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_depth_test
-
-
-static void allocate(XrCompositionLayerDepthTestFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_depth_test
-
-#ifdef XRTRANSPORT_EXT_XR_META_local_dimming
-
-
-static void allocate(XrLocalDimmingFrameEndInfoMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_local_dimming
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_preferences
-
-
-static void allocate(XrPassthroughPreferencesMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_preferences
-
-#ifdef XRTRANSPORT_EXT_XR_META_virtual_keyboard
-
-
-static void allocate(XrSystemVirtualKeyboardPropertiesMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardCreateInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardSpaceCreateInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardLocationInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardModelVisibilitySetInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardAnimationStateMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardModelAnimationStatesMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardTextureDataMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardInputInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrVirtualKeyboardTextContextChangeInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardCommitTextMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardBackspaceMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardEnterMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardShownMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardHiddenMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_virtual_keyboard
-
-#ifdef XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-
-static void allocate(XrExternalCameraOCULUS** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-#ifdef XRTRANSPORT_EXT_XR_META_vulkan_swapchain_create_info
-
-
-static void allocate(XrVulkanSwapchainCreateInfoMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_vulkan_swapchain_create_info
-
-#ifdef XRTRANSPORT_EXT_XR_META_performance_metrics
-
-
-static void allocate(XrPerformanceMetricsStateMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrPerformanceMetricsCounterMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_performance_metrics
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_storage_batch
-
-
-static void allocate(XrSpaceListSaveInfoFB** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSpaceListSaveCompleteFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_storage_batch
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_user
-
-
-static void allocate(XrSpaceUserCreateInfoFB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_user
-
-#ifdef XRTRANSPORT_EXT_XR_META_headset_id
-
-
-static void allocate(XrSystemHeadsetIdPropertiesMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_headset_id
-
-#ifdef XRTRANSPORT_EXT_XR_META_recommended_layer_resolution
-
-
-static void allocate(XrRecommendedLayerResolutionMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrRecommendedLayerResolutionGetInfoMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_recommended_layer_resolution
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-
-static void allocate(XrSystemPassthroughColorLutPropertiesMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughColorLutCreateInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughColorLutUpdateInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughColorMapLutMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughColorMapInterpolatedLutMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_mesh
-
-
-static void allocate(XrSpaceTriangleMeshGetInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceTriangleMeshMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_META_body_tracking_full_body
-
-
-static void allocate(XrSystemPropertiesBodyTrackingFullBodyMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_body_tracking_full_body
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_layer_resumed_event
-
-
-static void allocate(XrEventDataPassthroughLayerResumedMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_layer_resumed_event
-
-#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking2
-
-
-static void allocate(XrSystemFaceTrackingProperties2FB** s, std::size_t n);
-
-
-
-
-static void allocate(XrFaceTrackerCreateInfo2FB** s, std::size_t n);
-
-
-
-
-static void allocate(XrFaceExpressionInfo2FB** s, std::size_t n);
-
-
-
-
-static void allocate(XrFaceExpressionWeights2FB** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_face_tracking2
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-
-static void allocate(XrSystemSpatialEntitySharingPropertiesMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrShareSpacesInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataShareSpacesCompleteMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_META_environment_depth
-
-
-static void allocate(XrEnvironmentDepthProviderCreateInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEnvironmentDepthSwapchainCreateInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEnvironmentDepthSwapchainStateMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEnvironmentDepthImageAcquireInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEnvironmentDepthImageViewMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEnvironmentDepthImageMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEnvironmentDepthHandRemovalSetInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemEnvironmentDepthPropertiesMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_environment_depth
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_passthrough
-
-
-static void allocate(XrPassthroughCreateInfoHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughColorHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrPassthroughMeshTransformInfoHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrCompositionLayerPassthroughHTC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_passthrough
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_foveation
-
-
-static void allocate(XrFoveationApplyInfoHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrFoveationDynamicModeInfoHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrFoveationCustomModeInfoHTC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_foveation
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_anchor
-
-
-static void allocate(XrSystemAnchorPropertiesHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorCreateInfoHTC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-
-static void allocate(XrSystemBodyTrackingPropertiesHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodyTrackerCreateInfoHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodyJointsLocateInfoHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodyJointLocationsHTC** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodySkeletonHTC** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-
-static void allocate(XrActiveActionSetPrioritiesEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-#ifdef XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-
-static void allocate(XrSystemForceFeedbackCurlPropertiesMNDX** s, std::size_t n);
-
-
-
-
-static void allocate(XrForceFeedbackCurlApplyLocationsMNDX** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-#ifdef XRTRANSPORT_EXT_XR_BD_body_tracking
-
-
-static void allocate(XrBodyTrackerCreateInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodyJointsLocateInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrBodyJointLocationsBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemBodyTrackingPropertiesBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-
-static void allocate(XrSystemSpatialSensingPropertiesBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityComponentGetInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityLocationGetInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataLocationBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataSemanticBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataBoundingBox2DBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataPolygonBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataBoundingBox3DBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataTriangleMeshBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSenseDataProviderCreateInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSenseDataProviderStartInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSenseDataProviderStateChangedBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataSenseDataUpdatedBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSenseDataQueryInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSenseDataQueryCompletionBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSenseDataFilterUuidBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSenseDataFilterSemanticBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrQueriedSenseDataGetInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrQueriedSenseDataBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityStateBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialEntityAnchorCreateInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrAnchorSpaceCreateInfoBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_anchor
-
-
-static void allocate(XrSystemSpatialAnchorPropertiesBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorCreateInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorCreateCompletionBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorPersistInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorUnpersistInfoBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_anchor_sharing
-
-
-static void allocate(XrSystemSpatialAnchorSharingPropertiesBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpatialAnchorShareInfoBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSharedSpatialAnchorDownloadInfoBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_anchor_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_scene
-
-
-static void allocate(XrSystemSpatialScenePropertiesBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSceneCaptureInfoBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_scene
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_mesh
-
-
-static void allocate(XrSystemSpatialMeshPropertiesBD** s, std::size_t n);
-
-
-
-
-static void allocate(XrSenseDataProviderCreateInfoSpatialMeshBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_BD_future_progress
-
-
-static void allocate(XrFuturePollResultProgressBD** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_future_progress
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking_data_source
-
-
-static void allocate(XrHandTrackingDataSourceInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrHandTrackingDataSourceStateEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking_data_source
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_plane_detection
-
-
-static void allocate(XrPlaneDetectorCreateInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrPlaneDetectorBeginInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrPlaneDetectorGetInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrPlaneDetectorLocationsEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrPlaneDetectorLocationEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrPlaneDetectorPolygonBufferEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemPlaneDetectionPropertiesEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_plane_detection
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_future
-
-
-static void allocate(XrFutureCancelInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrFuturePollInfoEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrFutureCompletionEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrFuturePollResultEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_future
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_user_presence
-
-
-static void allocate(XrEventDataUserPresenceChangedEXT** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemUserPresencePropertiesEXT** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_user_presence
-
-
-
-static void allocate(XrSpacesLocateInfo** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceLocations** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceVelocities** s, std::size_t n);
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_ML_user_calibration
-
-
-static void allocate(XrEventDataHeadsetFitChangedML** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataEyeCalibrationChangedML** s, std::size_t n);
-
-
-
-
-static void allocate(XrUserCalibrationEnableEventsInfoML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_user_calibration
-
-#ifdef XRTRANSPORT_EXT_XR_ML_system_notifications
-
-
-static void allocate(XrSystemNotificationsSetInfoML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_system_notifications
-
-#ifdef XRTRANSPORT_EXT_XR_ML_world_mesh_detection
-
-
-static void allocate(XrWorldMeshDetectorCreateInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshStateRequestInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshBlockStateML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshStateRequestCompletionML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshBufferRecommendedSizeInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshBufferSizeML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshBufferML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshBlockRequestML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshGetInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshBlockML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshRequestCompletionML** s, std::size_t n);
-
-
-
-
-static void allocate(XrWorldMeshRequestCompletionInfoML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_world_mesh_detection
-
-#ifdef XRTRANSPORT_EXT_XR_ML_facial_expression
-
-
-static void allocate(XrSystemFacialExpressionPropertiesML** s, std::size_t n);
-
-
-
-
-static void allocate(XrFacialExpressionClientCreateInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrFacialExpressionBlendShapeGetInfoML** s, std::size_t n);
-
-
-
-
-static void allocate(XrFacialExpressionBlendShapePropertiesML** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_facial_expression
-
-#ifdef XRTRANSPORT_EXT_XR_META_simultaneous_hands_and_controllers
-
-
-static void allocate(XrSystemSimultaneousHandsAndControllersPropertiesMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrSimultaneousHandsAndControllersTrackingResumeInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrSimultaneousHandsAndControllersTrackingPauseInfoMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_simultaneous_hands_and_controllers
-
-#ifdef XRTRANSPORT_EXT_XR_META_colocation_discovery
-
-
-static void allocate(XrColocationDiscoveryStartInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrColocationDiscoveryStopInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrColocationAdvertisementStartInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrColocationAdvertisementStopInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataStartColocationAdvertisementCompleteMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataStopColocationAdvertisementCompleteMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataColocationAdvertisementCompleteMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataStartColocationDiscoveryCompleteMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataColocationDiscoveryResultMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataColocationDiscoveryCompleteMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrEventDataStopColocationDiscoveryCompleteMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemColocationDiscoveryPropertiesMETA** s, std::size_t n);
-
-
-#endif // XRTRANSPORT_EXT_XR_META_colocation_discovery
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
-
-
-static void allocate(XrShareSpacesRecipientGroupsMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrSpaceGroupUuidFilterInfoMETA** s, std::size_t n);
-
-
-
-
-static void allocate(XrSystemSpatialEntityGroupSharingPropertiesMETA** s, std::size_t n);
 
 
 #endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
@@ -9592,14 +6411,12 @@ static void cleanup(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s);
 #endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
 
 
-
-
-
+// Struct deserializer lookup
 // Only to be used with OpenXR pNext structs
 using StructDeserializer = void(*)(XrBaseOutStructure*, std::istream&);
 #define STRUCT_DESERIALIZER_PTR(t) (reinterpret_cast<StructDeserializer>(static_cast<void(*)(t*, std::istream&)>(&deserialize)))
 
-static std::tuple<XrStructureType, StructDeserializer> deserializer_lookup_table[] = {
+static std::unordered_map<XrStructureType, StructDeserializer> deserializer_lookup_table = {
 
 
 
@@ -11407,1875 +8224,16 @@ static std::tuple<XrStructureType, StructDeserializer> deserializer_lookup_table
 };
 
 static StructDeserializer deserializer_lookup(XrStructureType struct_type) {
-    std::size_t array_size = sizeof(deserializer_lookup_table) / sizeof(deserializer_lookup_table[0]);
-    std::size_t low = 0;
-    std::size_t high = array_size - 1;
-
-    while (low <= high) {
-        std::size_t mid = low + (high - low) / 2;
-        std::tuple<XrStructureType, StructDeserializer>& at_mid = deserializer_lookup_table[mid];
-        XrStructureType at_mid_type = std::get<0>(at_mid);
-
-        if (at_mid_type == struct_type) {
-            return std::get<1>(at_mid);
-        }
-
-        if (at_mid_type < struct_type) {
-            low = mid + 1;
-        }
-        else {
-            high = mid - 1;
-        }
-    }
-    
-    assert(false && "XrStructureType not found in deserializers lookup table");
+    assert(deserializer_lookup_table.find(struct_type) != deserializer_lookup_table.end());
+    return deserializer_lookup_table[struct_type];
 }
 
-
-
-// Only to be used with OpenXR pNext structs
-using StructAllocator = void(*)(XrBaseOutStructure**, std::size_t);
-#define STRUCT_ALLOCATOR_PTR(t) (reinterpret_cast<StructAllocator>(static_cast<void(*)(t**, std::size_t)>(&allocate)))
-
-static std::tuple<XrStructureType, StructAllocator> allocator_lookup_table[] = {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {XR_TYPE_API_LAYER_PROPERTIES, STRUCT_ALLOCATOR_PTR(XrApiLayerProperties)},
-
-
-    {XR_TYPE_EXTENSION_PROPERTIES, STRUCT_ALLOCATOR_PTR(XrExtensionProperties)},
-
-
-    {XR_TYPE_INSTANCE_CREATE_INFO, STRUCT_ALLOCATOR_PTR(XrInstanceCreateInfo)},
-
-
-    {XR_TYPE_SYSTEM_GET_INFO, STRUCT_ALLOCATOR_PTR(XrSystemGetInfo)},
-
-
-    {XR_TYPE_SYSTEM_PROPERTIES, STRUCT_ALLOCATOR_PTR(XrSystemProperties)},
-
-
-    {XR_TYPE_VIEW_LOCATE_INFO, STRUCT_ALLOCATOR_PTR(XrViewLocateInfo)},
-
-
-    {XR_TYPE_VIEW, STRUCT_ALLOCATOR_PTR(XrView)},
-
-
-    {XR_TYPE_SESSION_CREATE_INFO, STRUCT_ALLOCATOR_PTR(XrSessionCreateInfo)},
-
-
-    {XR_TYPE_SWAPCHAIN_CREATE_INFO, STRUCT_ALLOCATOR_PTR(XrSwapchainCreateInfo)},
-
-
-    {XR_TYPE_SESSION_BEGIN_INFO, STRUCT_ALLOCATOR_PTR(XrSessionBeginInfo)},
-
-
-    {XR_TYPE_VIEW_STATE, STRUCT_ALLOCATOR_PTR(XrViewState)},
-
-
-    {XR_TYPE_FRAME_END_INFO, STRUCT_ALLOCATOR_PTR(XrFrameEndInfo)},
-
-
-    {XR_TYPE_HAPTIC_VIBRATION, STRUCT_ALLOCATOR_PTR(XrHapticVibration)},
-
-
-    {XR_TYPE_EVENT_DATA_BUFFER, STRUCT_ALLOCATOR_PTR(XrEventDataBuffer)},
-
-
-    {XR_TYPE_EVENT_DATA_INSTANCE_LOSS_PENDING, STRUCT_ALLOCATOR_PTR(XrEventDataInstanceLossPending)},
-
-
-    {XR_TYPE_EVENT_DATA_SESSION_STATE_CHANGED, STRUCT_ALLOCATOR_PTR(XrEventDataSessionStateChanged)},
-
-
-    {XR_TYPE_ACTION_STATE_BOOLEAN, STRUCT_ALLOCATOR_PTR(XrActionStateBoolean)},
-
-
-    {XR_TYPE_ACTION_STATE_FLOAT, STRUCT_ALLOCATOR_PTR(XrActionStateFloat)},
-
-
-    {XR_TYPE_ACTION_STATE_VECTOR2F, STRUCT_ALLOCATOR_PTR(XrActionStateVector2f)},
-
-
-    {XR_TYPE_ACTION_STATE_POSE, STRUCT_ALLOCATOR_PTR(XrActionStatePose)},
-
-
-    {XR_TYPE_ACTION_SET_CREATE_INFO, STRUCT_ALLOCATOR_PTR(XrActionSetCreateInfo)},
-
-
-    {XR_TYPE_ACTION_CREATE_INFO, STRUCT_ALLOCATOR_PTR(XrActionCreateInfo)},
-
-
-    {XR_TYPE_INSTANCE_PROPERTIES, STRUCT_ALLOCATOR_PTR(XrInstanceProperties)},
-
-
-    {XR_TYPE_FRAME_WAIT_INFO, STRUCT_ALLOCATOR_PTR(XrFrameWaitInfo)},
-
-
-    {XR_TYPE_COMPOSITION_LAYER_PROJECTION, STRUCT_ALLOCATOR_PTR(XrCompositionLayerProjection)},
-
-
-    {XR_TYPE_COMPOSITION_LAYER_QUAD, STRUCT_ALLOCATOR_PTR(XrCompositionLayerQuad)},
-
-
-    {XR_TYPE_REFERENCE_SPACE_CREATE_INFO, STRUCT_ALLOCATOR_PTR(XrReferenceSpaceCreateInfo)},
-
-
-    {XR_TYPE_ACTION_SPACE_CREATE_INFO, STRUCT_ALLOCATOR_PTR(XrActionSpaceCreateInfo)},
-
-
-    {XR_TYPE_EVENT_DATA_REFERENCE_SPACE_CHANGE_PENDING, STRUCT_ALLOCATOR_PTR(XrEventDataReferenceSpaceChangePending)},
-
-
-    {XR_TYPE_VIEW_CONFIGURATION_VIEW, STRUCT_ALLOCATOR_PTR(XrViewConfigurationView)},
-
-
-    {XR_TYPE_SPACE_LOCATION, STRUCT_ALLOCATOR_PTR(XrSpaceLocation)},
-
-
-    {XR_TYPE_SPACE_VELOCITY, STRUCT_ALLOCATOR_PTR(XrSpaceVelocity)},
-
-
-    {XR_TYPE_FRAME_STATE, STRUCT_ALLOCATOR_PTR(XrFrameState)},
-
-
-    {XR_TYPE_VIEW_CONFIGURATION_PROPERTIES, STRUCT_ALLOCATOR_PTR(XrViewConfigurationProperties)},
-
-
-    {XR_TYPE_FRAME_BEGIN_INFO, STRUCT_ALLOCATOR_PTR(XrFrameBeginInfo)},
-
-
-    {XR_TYPE_COMPOSITION_LAYER_PROJECTION_VIEW, STRUCT_ALLOCATOR_PTR(XrCompositionLayerProjectionView)},
-
-
-    {XR_TYPE_EVENT_DATA_EVENTS_LOST, STRUCT_ALLOCATOR_PTR(XrEventDataEventsLost)},
-
-
-    {XR_TYPE_INTERACTION_PROFILE_SUGGESTED_BINDING, STRUCT_ALLOCATOR_PTR(XrInteractionProfileSuggestedBinding)},
-
-
-    {XR_TYPE_EVENT_DATA_INTERACTION_PROFILE_CHANGED, STRUCT_ALLOCATOR_PTR(XrEventDataInteractionProfileChanged)},
-
-
-    {XR_TYPE_INTERACTION_PROFILE_STATE, STRUCT_ALLOCATOR_PTR(XrInteractionProfileState)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_ACQUIRE_INFO, STRUCT_ALLOCATOR_PTR(XrSwapchainImageAcquireInfo)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_WAIT_INFO, STRUCT_ALLOCATOR_PTR(XrSwapchainImageWaitInfo)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_RELEASE_INFO, STRUCT_ALLOCATOR_PTR(XrSwapchainImageReleaseInfo)},
-
-
-    {XR_TYPE_ACTION_STATE_GET_INFO, STRUCT_ALLOCATOR_PTR(XrActionStateGetInfo)},
-
-
-    {XR_TYPE_HAPTIC_ACTION_INFO, STRUCT_ALLOCATOR_PTR(XrHapticActionInfo)},
-
-
-    {XR_TYPE_SESSION_ACTION_SETS_ATTACH_INFO, STRUCT_ALLOCATOR_PTR(XrSessionActionSetsAttachInfo)},
-
-
-    {XR_TYPE_ACTIONS_SYNC_INFO, STRUCT_ALLOCATOR_PTR(XrActionsSyncInfo)},
-
-
-    {XR_TYPE_BOUND_SOURCES_FOR_ACTION_ENUMERATE_INFO, STRUCT_ALLOCATOR_PTR(XrBoundSourcesForActionEnumerateInfo)},
-
-
-    {XR_TYPE_INPUT_SOURCE_LOCALIZED_NAME_GET_INFO, STRUCT_ALLOCATOR_PTR(XrInputSourceLocalizedNameGetInfo)},
-
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_cube
-
-    {XR_TYPE_COMPOSITION_LAYER_CUBE_KHR, STRUCT_ALLOCATOR_PTR(XrCompositionLayerCubeKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_cube
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_android_create_instance
-
-    {XR_TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR, STRUCT_ALLOCATOR_PTR(XrInstanceCreateInfoAndroidKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_android_create_instance
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_depth
-
-    {XR_TYPE_COMPOSITION_LAYER_DEPTH_INFO_KHR, STRUCT_ALLOCATOR_PTR(XrCompositionLayerDepthInfoKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_depth
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_swapchain_format_list
-
-    {XR_TYPE_VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR, STRUCT_ALLOCATOR_PTR(XrVulkanSwapchainFormatListCreateInfoKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_swapchain_format_list
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_performance_settings
-
-    {XR_TYPE_EVENT_DATA_PERF_SETTINGS_EXT, STRUCT_ALLOCATOR_PTR(XrEventDataPerfSettingsEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_performance_settings
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_cylinder
-
-    {XR_TYPE_COMPOSITION_LAYER_CYLINDER_KHR, STRUCT_ALLOCATOR_PTR(XrCompositionLayerCylinderKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_cylinder
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect
-
-    {XR_TYPE_COMPOSITION_LAYER_EQUIRECT_KHR, STRUCT_ALLOCATOR_PTR(XrCompositionLayerEquirectKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_debug_utils
-
-    {XR_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrDebugUtilsObjectNameInfoEXT)},
-
-
-    {XR_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT, STRUCT_ALLOCATOR_PTR(XrDebugUtilsMessengerCallbackDataEXT)},
-
-
-    {XR_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrDebugUtilsMessengerCreateInfoEXT)},
-
-
-    {XR_TYPE_DEBUG_UTILS_LABEL_EXT, STRUCT_ALLOCATOR_PTR(XrDebugUtilsLabelEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_debug_utils
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_opengl_enable
-
-    {XR_TYPE_GRAPHICS_BINDING_OPENGL_WIN32_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingOpenGLWin32KHR)},
-
-
-    {XR_TYPE_GRAPHICS_BINDING_OPENGL_XLIB_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingOpenGLXlibKHR)},
-
-
-    {XR_TYPE_GRAPHICS_BINDING_OPENGL_XCB_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingOpenGLXcbKHR)},
-
-
-    {XR_TYPE_GRAPHICS_BINDING_OPENGL_WAYLAND_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingOpenGLWaylandKHR)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR, STRUCT_ALLOCATOR_PTR(XrSwapchainImageOpenGLKHR)},
-
-
-    {XR_TYPE_GRAPHICS_REQUIREMENTS_OPENGL_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsRequirementsOpenGLKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_opengl_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_opengl_es_enable
-
-    {XR_TYPE_GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingOpenGLESAndroidKHR)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR, STRUCT_ALLOCATOR_PTR(XrSwapchainImageOpenGLESKHR)},
-
-
-    {XR_TYPE_GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsRequirementsOpenGLESKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_opengl_es_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_enable
-
-    {XR_TYPE_GRAPHICS_BINDING_VULKAN_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingVulkanKHR)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR, STRUCT_ALLOCATOR_PTR(XrSwapchainImageVulkanKHR)},
-
-
-    {XR_TYPE_GRAPHICS_REQUIREMENTS_VULKAN_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsRequirementsVulkanKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_D3D11_enable
-
-    {XR_TYPE_GRAPHICS_BINDING_D3D11_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingD3D11KHR)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_D3D11_KHR, STRUCT_ALLOCATOR_PTR(XrSwapchainImageD3D11KHR)},
-
-
-    {XR_TYPE_GRAPHICS_REQUIREMENTS_D3D11_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsRequirementsD3D11KHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_D3D11_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_D3D12_enable
-
-    {XR_TYPE_GRAPHICS_BINDING_D3D12_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingD3D12KHR)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_D3D12_KHR, STRUCT_ALLOCATOR_PTR(XrSwapchainImageD3D12KHR)},
-
-
-    {XR_TYPE_GRAPHICS_REQUIREMENTS_D3D12_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsRequirementsD3D12KHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_D3D12_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_metal_enable
-
-    {XR_TYPE_GRAPHICS_BINDING_METAL_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingMetalKHR)},
-
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_METAL_KHR, STRUCT_ALLOCATOR_PTR(XrSwapchainImageMetalKHR)},
-
-
-    {XR_TYPE_GRAPHICS_REQUIREMENTS_METAL_KHR, STRUCT_ALLOCATOR_PTR(XrGraphicsRequirementsMetalKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_metal_enable
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_eye_gaze_interaction
-
-    {XR_TYPE_SYSTEM_EYE_GAZE_INTERACTION_PROPERTIES_EXT, STRUCT_ALLOCATOR_PTR(XrSystemEyeGazeInteractionPropertiesEXT)},
-
-
-    {XR_TYPE_EYE_GAZE_SAMPLE_TIME_EXT, STRUCT_ALLOCATOR_PTR(XrEyeGazeSampleTimeEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_eye_gaze_interaction
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_visibility_mask
-
-    {XR_TYPE_VISIBILITY_MASK_KHR, STRUCT_ALLOCATOR_PTR(XrVisibilityMaskKHR)},
-
-
-    {XR_TYPE_EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR, STRUCT_ALLOCATOR_PTR(XrEventDataVisibilityMaskChangedKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_visibility_mask
-
-#ifdef XRTRANSPORT_EXT_XR_EXTX_overlay
-
-    {XR_TYPE_SESSION_CREATE_INFO_OVERLAY_EXTX, STRUCT_ALLOCATOR_PTR(XrSessionCreateInfoOverlayEXTX)},
-
-
-    {XR_TYPE_EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX, STRUCT_ALLOCATOR_PTR(XrEventDataMainSessionVisibilityChangedEXTX)},
-
-#endif // XRTRANSPORT_EXT_XR_EXTX_overlay
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_color_scale_bias
-
-    {XR_TYPE_COMPOSITION_LAYER_COLOR_SCALE_BIAS_KHR, STRUCT_ALLOCATOR_PTR(XrCompositionLayerColorScaleBiasKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_color_scale_bias
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor
-
-    {XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorCreateInfoMSFT)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_SPACE_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorSpaceCreateInfoMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_image_layout
-
-    {XR_TYPE_COMPOSITION_LAYER_IMAGE_LAYOUT_FB, STRUCT_ALLOCATOR_PTR(XrCompositionLayerImageLayoutFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_image_layout
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_alpha_blend
-
-    {XR_TYPE_COMPOSITION_LAYER_ALPHA_BLEND_FB, STRUCT_ALLOCATOR_PTR(XrCompositionLayerAlphaBlendFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_alpha_blend
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_view_configuration_depth_range
-
-    {XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT, STRUCT_ALLOCATOR_PTR(XrViewConfigurationDepthRangeEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_view_configuration_depth_range
-
-#ifdef XRTRANSPORT_EXT_XR_MNDX_egl_enable
-
-    {XR_TYPE_GRAPHICS_BINDING_EGL_MNDX, STRUCT_ALLOCATOR_PTR(XrGraphicsBindingEGLMNDX)},
-
-#endif // XRTRANSPORT_EXT_XR_MNDX_egl_enable
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_graph_bridge
-
-    {XR_TYPE_SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSpatialGraphNodeSpaceCreateInfoMSFT)},
-
-
-    {XR_TYPE_SPATIAL_GRAPH_STATIC_NODE_BINDING_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSpatialGraphStaticNodeBindingCreateInfoMSFT)},
-
-
-    {XR_TYPE_SPATIAL_GRAPH_NODE_BINDING_PROPERTIES_GET_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSpatialGraphNodeBindingPropertiesGetInfoMSFT)},
-
-
-    {XR_TYPE_SPATIAL_GRAPH_NODE_BINDING_PROPERTIES_MSFT, STRUCT_ALLOCATOR_PTR(XrSpatialGraphNodeBindingPropertiesMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_graph_bridge
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-    {XR_TYPE_SYSTEM_HAND_TRACKING_PROPERTIES_EXT, STRUCT_ALLOCATOR_PTR(XrSystemHandTrackingPropertiesEXT)},
-
-
-    {XR_TYPE_HAND_TRACKER_CREATE_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrHandTrackerCreateInfoEXT)},
-
-
-    {XR_TYPE_HAND_JOINTS_LOCATE_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrHandJointsLocateInfoEXT)},
-
-
-    {XR_TYPE_HAND_JOINT_LOCATIONS_EXT, STRUCT_ALLOCATOR_PTR(XrHandJointLocationsEXT)},
-
-
-    {XR_TYPE_HAND_JOINT_VELOCITIES_EXT, STRUCT_ALLOCATOR_PTR(XrHandJointVelocitiesEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-    {XR_TYPE_SYSTEM_HAND_TRACKING_MESH_PROPERTIES_MSFT, STRUCT_ALLOCATOR_PTR(XrSystemHandTrackingMeshPropertiesMSFT)},
-
-
-    {XR_TYPE_HAND_MESH_SPACE_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrHandMeshSpaceCreateInfoMSFT)},
-
-
-    {XR_TYPE_HAND_MESH_UPDATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrHandMeshUpdateInfoMSFT)},
-
-
-    {XR_TYPE_HAND_MESH_MSFT, STRUCT_ALLOCATOR_PTR(XrHandMeshMSFT)},
-
-
-    {XR_TYPE_HAND_POSE_TYPE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrHandPoseTypeInfoMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_secondary_view_configuration
-
-    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_SESSION_BEGIN_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSecondaryViewConfigurationSessionBeginInfoMSFT)},
-
-
-    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_STATE_MSFT, STRUCT_ALLOCATOR_PTR(XrSecondaryViewConfigurationStateMSFT)},
-
-
-    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_FRAME_STATE_MSFT, STRUCT_ALLOCATOR_PTR(XrSecondaryViewConfigurationFrameStateMSFT)},
-
-
-    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_FRAME_END_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSecondaryViewConfigurationFrameEndInfoMSFT)},
-
-
-    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_LAYER_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSecondaryViewConfigurationLayerInfoMSFT)},
-
-
-    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_SWAPCHAIN_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSecondaryViewConfigurationSwapchainCreateInfoMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_secondary_view_configuration
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_controller_model
-
-    {XR_TYPE_CONTROLLER_MODEL_KEY_STATE_MSFT, STRUCT_ALLOCATOR_PTR(XrControllerModelKeyStateMSFT)},
-
-
-    {XR_TYPE_CONTROLLER_MODEL_NODE_PROPERTIES_MSFT, STRUCT_ALLOCATOR_PTR(XrControllerModelNodePropertiesMSFT)},
-
-
-    {XR_TYPE_CONTROLLER_MODEL_PROPERTIES_MSFT, STRUCT_ALLOCATOR_PTR(XrControllerModelPropertiesMSFT)},
-
-
-    {XR_TYPE_CONTROLLER_MODEL_NODE_STATE_MSFT, STRUCT_ALLOCATOR_PTR(XrControllerModelNodeStateMSFT)},
-
-
-    {XR_TYPE_CONTROLLER_MODEL_STATE_MSFT, STRUCT_ALLOCATOR_PTR(XrControllerModelStateMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_controller_model
-
-#ifdef XRTRANSPORT_EXT_XR_EPIC_view_configuration_fov
-
-    {XR_TYPE_VIEW_CONFIGURATION_VIEW_FOV_EPIC, STRUCT_ALLOCATOR_PTR(XrViewConfigurationViewFovEPIC)},
-
-#endif // XRTRANSPORT_EXT_XR_EPIC_view_configuration_fov
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_holographic_window_attachment
-
-    {XR_TYPE_HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT, STRUCT_ALLOCATOR_PTR(XrHolographicWindowAttachmentMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_holographic_window_attachment
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_composition_layer_reprojection
-
-    {XR_TYPE_COMPOSITION_LAYER_REPROJECTION_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrCompositionLayerReprojectionInfoMSFT)},
-
-
-    {XR_TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT, STRUCT_ALLOCATOR_PTR(XrCompositionLayerReprojectionPlaneOverrideMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_composition_layer_reprojection
-
-#ifdef XRTRANSPORT_EXT_XR_FB_android_surface_swapchain_create
-
-    {XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrAndroidSurfaceSwapchainCreateInfoFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_android_surface_swapchain_create
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_secure_content
-
-    {XR_TYPE_COMPOSITION_LAYER_SECURE_CONTENT_FB, STRUCT_ALLOCATOR_PTR(XrCompositionLayerSecureContentFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_secure_content
-
-#ifdef XRTRANSPORT_EXT_XR_FB_body_tracking
-
-    {XR_TYPE_BODY_TRACKER_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrBodyTrackerCreateInfoFB)},
-
-
-    {XR_TYPE_BODY_JOINTS_LOCATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrBodyJointsLocateInfoFB)},
-
-
-    {XR_TYPE_SYSTEM_BODY_TRACKING_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemBodyTrackingPropertiesFB)},
-
-
-    {XR_TYPE_BODY_JOINT_LOCATIONS_FB, STRUCT_ALLOCATOR_PTR(XrBodyJointLocationsFB)},
-
-
-    {XR_TYPE_BODY_SKELETON_FB, STRUCT_ALLOCATOR_PTR(XrBodySkeletonFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_dpad_binding
-
-    {XR_TYPE_INTERACTION_PROFILE_DPAD_BINDING_EXT, STRUCT_ALLOCATOR_PTR(XrInteractionProfileDpadBindingEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_dpad_binding
-
-#ifdef XRTRANSPORT_EXT_XR_VALVE_analog_threshold
-
-    {XR_TYPE_INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE, STRUCT_ALLOCATOR_PTR(XrInteractionProfileAnalogThresholdVALVE)},
-
-#endif // XRTRANSPORT_EXT_XR_VALVE_analog_threshold
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_joints_motion_range
-
-    {XR_TYPE_HAND_JOINTS_MOTION_RANGE_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrHandJointsMotionRangeInfoEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_joints_motion_range
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_loader_init_android
-
-    {XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR, STRUCT_ALLOCATOR_PTR(XrLoaderInitInfoAndroidKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_loader_init_android
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_enable2
-
-    {XR_TYPE_VULKAN_INSTANCE_CREATE_INFO_KHR, STRUCT_ALLOCATOR_PTR(XrVulkanInstanceCreateInfoKHR)},
-
-
-    {XR_TYPE_VULKAN_DEVICE_CREATE_INFO_KHR, STRUCT_ALLOCATOR_PTR(XrVulkanDeviceCreateInfoKHR)},
-
-
-    {XR_TYPE_VULKAN_GRAPHICS_DEVICE_GET_INFO_KHR, STRUCT_ALLOCATOR_PTR(XrVulkanGraphicsDeviceGetInfoKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_enable2
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect2
-
-    {XR_TYPE_COMPOSITION_LAYER_EQUIRECT2_KHR, STRUCT_ALLOCATOR_PTR(XrCompositionLayerEquirect2KHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect2
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-    {XR_TYPE_SCENE_OBSERVER_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneObserverCreateInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneCreateInfoMSFT)},
-
-
-    {XR_TYPE_NEW_SCENE_COMPUTE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrNewSceneComputeInfoMSFT)},
-
-
-    {XR_TYPE_VISUAL_MESH_COMPUTE_LOD_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrVisualMeshComputeLodInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_COMPONENTS_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneComponentsMSFT)},
-
-
-    {XR_TYPE_SCENE_COMPONENTS_GET_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneComponentsGetInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_COMPONENT_LOCATIONS_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneComponentLocationsMSFT)},
-
-
-    {XR_TYPE_SCENE_COMPONENTS_LOCATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneComponentsLocateInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_OBJECTS_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneObjectsMSFT)},
-
-
-    {XR_TYPE_SCENE_COMPONENT_PARENT_FILTER_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneComponentParentFilterInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_OBJECT_TYPES_FILTER_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneObjectTypesFilterInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_PLANES_MSFT, STRUCT_ALLOCATOR_PTR(XrScenePlanesMSFT)},
-
-
-    {XR_TYPE_SCENE_PLANE_ALIGNMENT_FILTER_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrScenePlaneAlignmentFilterInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_MESHES_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMeshesMSFT)},
-
-
-    {XR_TYPE_SCENE_MESH_BUFFERS_GET_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMeshBuffersGetInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_MESH_BUFFERS_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMeshBuffersMSFT)},
-
-
-    {XR_TYPE_SCENE_MESH_VERTEX_BUFFER_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMeshVertexBufferMSFT)},
-
-
-    {XR_TYPE_SCENE_MESH_INDICES_UINT32_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMeshIndicesUint32MSFT)},
-
-
-    {XR_TYPE_SCENE_MESH_INDICES_UINT16_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMeshIndicesUint16MSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-    {XR_TYPE_SERIALIZED_SCENE_FRAGMENT_DATA_GET_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSerializedSceneFragmentDataGetInfoMSFT)},
-
-
-    {XR_TYPE_SCENE_DESERIALIZE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneDeserializeInfoMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-#ifdef XRTRANSPORT_EXT_XR_FB_display_refresh_rate
-
-    {XR_TYPE_EVENT_DATA_DISPLAY_REFRESH_RATE_CHANGED_FB, STRUCT_ALLOCATOR_PTR(XrEventDataDisplayRefreshRateChangedFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_display_refresh_rate
-
-#ifdef XRTRANSPORT_EXT_XR_HTCX_vive_tracker_interaction
-
-    {XR_TYPE_VIVE_TRACKER_PATHS_HTCX, STRUCT_ALLOCATOR_PTR(XrViveTrackerPathsHTCX)},
-
-
-    {XR_TYPE_EVENT_DATA_VIVE_TRACKER_CONNECTED_HTCX, STRUCT_ALLOCATOR_PTR(XrEventDataViveTrackerConnectedHTCX)},
-
-#endif // XRTRANSPORT_EXT_XR_HTCX_vive_tracker_interaction
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_facial_tracking
-
-    {XR_TYPE_SYSTEM_FACIAL_TRACKING_PROPERTIES_HTC, STRUCT_ALLOCATOR_PTR(XrSystemFacialTrackingPropertiesHTC)},
-
-
-    {XR_TYPE_FACIAL_TRACKER_CREATE_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrFacialTrackerCreateInfoHTC)},
-
-
-    {XR_TYPE_FACIAL_EXPRESSIONS_HTC, STRUCT_ALLOCATOR_PTR(XrFacialExpressionsHTC)},
-
-#endif // XRTRANSPORT_EXT_XR_HTC_facial_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_color_space
-
-    {XR_TYPE_SYSTEM_COLOR_SPACE_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemColorSpacePropertiesFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_color_space
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-    {XR_TYPE_HAND_TRACKING_MESH_FB, STRUCT_ALLOCATOR_PTR(XrHandTrackingMeshFB)},
-
-
-    {XR_TYPE_HAND_TRACKING_SCALE_FB, STRUCT_ALLOCATOR_PTR(XrHandTrackingScaleFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_aim
-
-    {XR_TYPE_HAND_TRACKING_AIM_STATE_FB, STRUCT_ALLOCATOR_PTR(XrHandTrackingAimStateFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_aim
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-    {XR_TYPE_HAND_TRACKING_CAPSULES_STATE_FB, STRUCT_ALLOCATOR_PTR(XrHandTrackingCapsulesStateFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity
-
-    {XR_TYPE_SPACE_COMPONENT_STATUS_FB, STRUCT_ALLOCATOR_PTR(XrSpaceComponentStatusFB)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorCreateInfoFB)},
-
-
-    {XR_TYPE_SYSTEM_SPATIAL_ENTITY_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemSpatialEntityPropertiesFB)},
-
-
-    {XR_TYPE_EVENT_DATA_SPATIAL_ANCHOR_CREATE_COMPLETE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSpatialAnchorCreateCompleteFB)},
-
-
-    {XR_TYPE_EVENT_DATA_SPACE_SET_STATUS_COMPLETE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSpaceSetStatusCompleteFB)},
-
-
-    {XR_TYPE_SPACE_COMPONENT_STATUS_SET_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceComponentStatusSetInfoFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation
-
-    {XR_TYPE_FOVEATION_PROFILE_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrFoveationProfileCreateInfoFB)},
-
-
-    {XR_TYPE_SWAPCHAIN_CREATE_INFO_FOVEATION_FB, STRUCT_ALLOCATOR_PTR(XrSwapchainCreateInfoFoveationFB)},
-
-
-    {XR_TYPE_SWAPCHAIN_STATE_FOVEATION_FB, STRUCT_ALLOCATOR_PTR(XrSwapchainStateFoveationFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation_configuration
-
-    {XR_TYPE_FOVEATION_LEVEL_PROFILE_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrFoveationLevelProfileCreateInfoFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation_configuration
-
-#ifdef XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-    {XR_TYPE_SYSTEM_KEYBOARD_TRACKING_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemKeyboardTrackingPropertiesFB)},
-
-
-    {XR_TYPE_KEYBOARD_TRACKING_QUERY_FB, STRUCT_ALLOCATOR_PTR(XrKeyboardTrackingQueryFB)},
-
-
-    {XR_TYPE_KEYBOARD_SPACE_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrKeyboardSpaceCreateInfoFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_triangle_mesh
-
-    {XR_TYPE_TRIANGLE_MESH_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrTriangleMeshCreateInfoFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_triangle_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_passthrough
-
-    {XR_TYPE_SYSTEM_PASSTHROUGH_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemPassthroughPropertiesFB)},
-
-
-    {XR_TYPE_PASSTHROUGH_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrPassthroughCreateInfoFB)},
-
-
-    {XR_TYPE_PASSTHROUGH_LAYER_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrPassthroughLayerCreateInfoFB)},
-
-
-    {XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_FB, STRUCT_ALLOCATOR_PTR(XrCompositionLayerPassthroughFB)},
-
-
-    {XR_TYPE_GEOMETRY_INSTANCE_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrGeometryInstanceCreateInfoFB)},
-
-
-    {XR_TYPE_GEOMETRY_INSTANCE_TRANSFORM_FB, STRUCT_ALLOCATOR_PTR(XrGeometryInstanceTransformFB)},
-
-
-    {XR_TYPE_SYSTEM_PASSTHROUGH_PROPERTIES2_FB, STRUCT_ALLOCATOR_PTR(XrSystemPassthroughProperties2FB)},
-
-
-    {XR_TYPE_PASSTHROUGH_STYLE_FB, STRUCT_ALLOCATOR_PTR(XrPassthroughStyleFB)},
-
-
-    {XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB, STRUCT_ALLOCATOR_PTR(XrPassthroughColorMapMonoToRgbaFB)},
-
-
-    {XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB, STRUCT_ALLOCATOR_PTR(XrPassthroughColorMapMonoToMonoFB)},
-
-
-    {XR_TYPE_PASSTHROUGH_BRIGHTNESS_CONTRAST_SATURATION_FB, STRUCT_ALLOCATOR_PTR(XrPassthroughBrightnessContrastSaturationFB)},
-
-
-    {XR_TYPE_EVENT_DATA_PASSTHROUGH_STATE_CHANGED_FB, STRUCT_ALLOCATOR_PTR(XrEventDataPassthroughStateChangedFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_passthrough
-
-#ifdef XRTRANSPORT_EXT_XR_FB_render_model
-
-    {XR_TYPE_RENDER_MODEL_PATH_INFO_FB, STRUCT_ALLOCATOR_PTR(XrRenderModelPathInfoFB)},
-
-
-    {XR_TYPE_RENDER_MODEL_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrRenderModelPropertiesFB)},
-
-
-    {XR_TYPE_RENDER_MODEL_BUFFER_FB, STRUCT_ALLOCATOR_PTR(XrRenderModelBufferFB)},
-
-
-    {XR_TYPE_RENDER_MODEL_LOAD_INFO_FB, STRUCT_ALLOCATOR_PTR(XrRenderModelLoadInfoFB)},
-
-
-    {XR_TYPE_SYSTEM_RENDER_MODEL_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemRenderModelPropertiesFB)},
-
-
-    {XR_TYPE_RENDER_MODEL_CAPABILITIES_REQUEST_FB, STRUCT_ALLOCATOR_PTR(XrRenderModelCapabilitiesRequestFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_render_model
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-    {XR_TYPE_BINDING_MODIFICATIONS_KHR, STRUCT_ALLOCATOR_PTR(XrBindingModificationsKHR)},
-
-#endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_foveated_rendering
-
-    {XR_TYPE_VIEW_LOCATE_FOVEATED_RENDERING_VARJO, STRUCT_ALLOCATOR_PTR(XrViewLocateFoveatedRenderingVARJO)},
-
-
-    {XR_TYPE_FOVEATED_VIEW_CONFIGURATION_VIEW_VARJO, STRUCT_ALLOCATOR_PTR(XrFoveatedViewConfigurationViewVARJO)},
-
-
-    {XR_TYPE_SYSTEM_FOVEATED_RENDERING_PROPERTIES_VARJO, STRUCT_ALLOCATOR_PTR(XrSystemFoveatedRenderingPropertiesVARJO)},
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_foveated_rendering
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_composition_layer_depth_test
-
-    {XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_VARJO, STRUCT_ALLOCATOR_PTR(XrCompositionLayerDepthTestVARJO)},
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_composition_layer_depth_test
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_marker_tracking
-
-    {XR_TYPE_SYSTEM_MARKER_TRACKING_PROPERTIES_VARJO, STRUCT_ALLOCATOR_PTR(XrSystemMarkerTrackingPropertiesVARJO)},
-
-
-    {XR_TYPE_EVENT_DATA_MARKER_TRACKING_UPDATE_VARJO, STRUCT_ALLOCATOR_PTR(XrEventDataMarkerTrackingUpdateVARJO)},
-
-
-    {XR_TYPE_MARKER_SPACE_CREATE_INFO_VARJO, STRUCT_ALLOCATOR_PTR(XrMarkerSpaceCreateInfoVARJO)},
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_marker_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_ML_frame_end_info
-
-    {XR_TYPE_FRAME_END_INFO_ML, STRUCT_ALLOCATOR_PTR(XrFrameEndInfoML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_frame_end_info
-
-#ifdef XRTRANSPORT_EXT_XR_ML_global_dimmer
-
-    {XR_TYPE_GLOBAL_DIMMER_FRAME_END_INFO_ML, STRUCT_ALLOCATOR_PTR(XrGlobalDimmerFrameEndInfoML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_global_dimmer
-
-#ifdef XRTRANSPORT_EXT_XR_ML_compat
-
-    {XR_TYPE_COORDINATE_SPACE_CREATE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrCoordinateSpaceCreateInfoML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_compat
-
-#ifdef XRTRANSPORT_EXT_XR_ML_marker_understanding
-
-    {XR_TYPE_SYSTEM_MARKER_UNDERSTANDING_PROPERTIES_ML, STRUCT_ALLOCATOR_PTR(XrSystemMarkerUnderstandingPropertiesML)},
-
-
-    {XR_TYPE_MARKER_DETECTOR_CREATE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrMarkerDetectorCreateInfoML)},
-
-
-    {XR_TYPE_MARKER_DETECTOR_ARUCO_INFO_ML, STRUCT_ALLOCATOR_PTR(XrMarkerDetectorArucoInfoML)},
-
-
-    {XR_TYPE_MARKER_DETECTOR_SIZE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrMarkerDetectorSizeInfoML)},
-
-
-    {XR_TYPE_MARKER_DETECTOR_APRIL_TAG_INFO_ML, STRUCT_ALLOCATOR_PTR(XrMarkerDetectorAprilTagInfoML)},
-
-
-    {XR_TYPE_MARKER_DETECTOR_CUSTOM_PROFILE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrMarkerDetectorCustomProfileInfoML)},
-
-
-    {XR_TYPE_MARKER_DETECTOR_SNAPSHOT_INFO_ML, STRUCT_ALLOCATOR_PTR(XrMarkerDetectorSnapshotInfoML)},
-
-
-    {XR_TYPE_MARKER_DETECTOR_STATE_ML, STRUCT_ALLOCATOR_PTR(XrMarkerDetectorStateML)},
-
-
-    {XR_TYPE_MARKER_SPACE_CREATE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrMarkerSpaceCreateInfoML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_marker_understanding
-
-#ifdef XRTRANSPORT_EXT_XR_ML_localization_map
-
-    {XR_TYPE_LOCALIZATION_MAP_ML, STRUCT_ALLOCATOR_PTR(XrLocalizationMapML)},
-
-
-    {XR_TYPE_EVENT_DATA_LOCALIZATION_CHANGED_ML, STRUCT_ALLOCATOR_PTR(XrEventDataLocalizationChangedML)},
-
-
-    {XR_TYPE_MAP_LOCALIZATION_REQUEST_INFO_ML, STRUCT_ALLOCATOR_PTR(XrMapLocalizationRequestInfoML)},
-
-
-    {XR_TYPE_LOCALIZATION_MAP_IMPORT_INFO_ML, STRUCT_ALLOCATOR_PTR(XrLocalizationMapImportInfoML)},
-
-
-    {XR_TYPE_LOCALIZATION_ENABLE_EVENTS_INFO_ML, STRUCT_ALLOCATOR_PTR(XrLocalizationEnableEventsInfoML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_localization_map
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-    {XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_POSE_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsCreateInfoFromPoseML)},
-
-
-    {XR_TYPE_CREATE_SPATIAL_ANCHORS_COMPLETION_ML, STRUCT_ALLOCATOR_PTR(XrCreateSpatialAnchorsCompletionML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_STATE_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorStateML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-    {XR_TYPE_SPATIAL_ANCHORS_CREATE_STORAGE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsCreateStorageInfoML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_QUERY_INFO_RADIUS_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsQueryInfoRadiusML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_QUERY_COMPLETION_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsQueryCompletionML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_UUIDS_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsCreateInfoFromUuidsML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_PUBLISH_INFO_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsPublishInfoML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_PUBLISH_COMPLETION_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsPublishCompletionML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_DELETE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsDeleteInfoML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_DELETE_COMPLETION_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsDeleteCompletionML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_INFO_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsUpdateExpirationInfoML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_COMPLETION_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsUpdateExpirationCompletionML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_PUBLISH_COMPLETION_DETAILS_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsPublishCompletionDetailsML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_DELETE_COMPLETION_DETAILS_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsDeleteCompletionDetailsML)},
-
-
-    {XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_COMPLETION_DETAILS_ML, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorsUpdateExpirationCompletionDetailsML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-    {XR_TYPE_SPATIAL_ANCHOR_PERSISTENCE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorPersistenceInfoMSFT)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_FROM_PERSISTED_ANCHOR_CREATE_INFO_MSFT, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-    {XR_TYPE_SCENE_MARKERS_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMarkersMSFT)},
-
-
-    {XR_TYPE_SCENE_MARKER_TYPE_FILTER_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMarkerTypeFilterMSFT)},
-
-
-    {XR_TYPE_SCENE_MARKER_QR_CODES_MSFT, STRUCT_ALLOCATOR_PTR(XrSceneMarkerQRCodesMSFT)},
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-    {XR_TYPE_SPACE_QUERY_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceQueryInfoFB)},
-
-
-    {XR_TYPE_SPACE_QUERY_RESULTS_FB, STRUCT_ALLOCATOR_PTR(XrSpaceQueryResultsFB)},
-
-
-    {XR_TYPE_SPACE_STORAGE_LOCATION_FILTER_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceStorageLocationFilterInfoFB)},
-
-
-    {XR_TYPE_SPACE_COMPONENT_FILTER_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceComponentFilterInfoFB)},
-
-
-    {XR_TYPE_SPACE_UUID_FILTER_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceUuidFilterInfoFB)},
-
-
-    {XR_TYPE_EVENT_DATA_SPACE_QUERY_RESULTS_AVAILABLE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSpaceQueryResultsAvailableFB)},
-
-
-    {XR_TYPE_EVENT_DATA_SPACE_QUERY_COMPLETE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSpaceQueryCompleteFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_storage
-
-    {XR_TYPE_SPACE_SAVE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceSaveInfoFB)},
-
-
-    {XR_TYPE_SPACE_ERASE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceEraseInfoFB)},
-
-
-    {XR_TYPE_EVENT_DATA_SPACE_SAVE_COMPLETE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSpaceSaveCompleteFB)},
-
-
-    {XR_TYPE_EVENT_DATA_SPACE_ERASE_COMPLETE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSpaceEraseCompleteFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_storage
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation_vulkan
-
-    {XR_TYPE_SWAPCHAIN_IMAGE_FOVEATION_VULKAN_FB, STRUCT_ALLOCATOR_PTR(XrSwapchainImageFoveationVulkanFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation_vulkan
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_android_surface
-
-    {XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB, STRUCT_ALLOCATOR_PTR(XrSwapchainStateAndroidSurfaceDimensionsFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_android_surface
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_opengl_es
-
-    {XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB, STRUCT_ALLOCATOR_PTR(XrSwapchainStateSamplerOpenGLESFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_opengl_es
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_vulkan
-
-    {XR_TYPE_SWAPCHAIN_STATE_SAMPLER_VULKAN_FB, STRUCT_ALLOCATOR_PTR(XrSwapchainStateSamplerVulkanFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_vulkan
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_sharing
-
-    {XR_TYPE_SPACE_SHARE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceShareInfoFB)},
-
-
-    {XR_TYPE_EVENT_DATA_SPACE_SHARE_COMPLETE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSpaceShareCompleteFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_FB_space_warp
-
-    {XR_TYPE_COMPOSITION_LAYER_SPACE_WARP_INFO_FB, STRUCT_ALLOCATOR_PTR(XrCompositionLayerSpaceWarpInfoFB)},
-
-
-    {XR_TYPE_SYSTEM_SPACE_WARP_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemSpaceWarpPropertiesFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_space_warp
-
-#ifdef XRTRANSPORT_EXT_XR_FB_haptic_amplitude_envelope
-
-    {XR_TYPE_HAPTIC_AMPLITUDE_ENVELOPE_VIBRATION_FB, STRUCT_ALLOCATOR_PTR(XrHapticAmplitudeEnvelopeVibrationFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_haptic_amplitude_envelope
-
-#ifdef XRTRANSPORT_EXT_XR_FB_scene
-
-    {XR_TYPE_SEMANTIC_LABELS_FB, STRUCT_ALLOCATOR_PTR(XrSemanticLabelsFB)},
-
-
-    {XR_TYPE_ROOM_LAYOUT_FB, STRUCT_ALLOCATOR_PTR(XrRoomLayoutFB)},
-
-
-    {XR_TYPE_BOUNDARY_2D_FB, STRUCT_ALLOCATOR_PTR(XrBoundary2DFB)},
-
-
-    {XR_TYPE_SEMANTIC_LABELS_SUPPORT_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSemanticLabelsSupportInfoFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_scene
-
-#ifdef XRTRANSPORT_EXT_XR_ALMALENCE_digital_lens_control
-
-    {XR_TYPE_DIGITAL_LENS_CONTROL_ALMALENCE, STRUCT_ALLOCATOR_PTR(XrDigitalLensControlALMALENCE)},
-
-#endif // XRTRANSPORT_EXT_XR_ALMALENCE_digital_lens_control
-
-#ifdef XRTRANSPORT_EXT_XR_FB_scene_capture
-
-    {XR_TYPE_EVENT_DATA_SCENE_CAPTURE_COMPLETE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSceneCaptureCompleteFB)},
-
-
-    {XR_TYPE_SCENE_CAPTURE_REQUEST_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSceneCaptureRequestInfoFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_scene_capture
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_container
-
-    {XR_TYPE_SPACE_CONTAINER_FB, STRUCT_ALLOCATOR_PTR(XrSpaceContainerFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_container
-
-#ifdef XRTRANSPORT_EXT_XR_META_foveation_eye_tracked
-
-    {XR_TYPE_FOVEATION_EYE_TRACKED_PROFILE_CREATE_INFO_META, STRUCT_ALLOCATOR_PTR(XrFoveationEyeTrackedProfileCreateInfoMETA)},
-
-
-    {XR_TYPE_FOVEATION_EYE_TRACKED_STATE_META, STRUCT_ALLOCATOR_PTR(XrFoveationEyeTrackedStateMETA)},
-
-
-    {XR_TYPE_SYSTEM_FOVEATION_EYE_TRACKED_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemFoveationEyeTrackedPropertiesMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_foveation_eye_tracked
-
-#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking
-
-    {XR_TYPE_FACE_EXPRESSION_INFO_FB, STRUCT_ALLOCATOR_PTR(XrFaceExpressionInfoFB)},
-
-
-    {XR_TYPE_SYSTEM_FACE_TRACKING_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemFaceTrackingPropertiesFB)},
-
-
-    {XR_TYPE_FACE_TRACKER_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrFaceTrackerCreateInfoFB)},
-
-
-    {XR_TYPE_FACE_EXPRESSION_WEIGHTS_FB, STRUCT_ALLOCATOR_PTR(XrFaceExpressionWeightsFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_face_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-    {XR_TYPE_EYE_TRACKER_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrEyeTrackerCreateInfoFB)},
-
-
-    {XR_TYPE_EYE_GAZES_INFO_FB, STRUCT_ALLOCATOR_PTR(XrEyeGazesInfoFB)},
-
-
-    {XR_TYPE_EYE_GAZES_FB, STRUCT_ALLOCATOR_PTR(XrEyeGazesFB)},
-
-
-    {XR_TYPE_SYSTEM_EYE_TRACKING_PROPERTIES_FB, STRUCT_ALLOCATOR_PTR(XrSystemEyeTrackingPropertiesFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-#ifdef XRTRANSPORT_EXT_XR_FB_passthrough_keyboard_hands
-
-    {XR_TYPE_PASSTHROUGH_KEYBOARD_HANDS_INTENSITY_FB, STRUCT_ALLOCATOR_PTR(XrPassthroughKeyboardHandsIntensityFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_passthrough_keyboard_hands
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_settings
-
-    {XR_TYPE_COMPOSITION_LAYER_SETTINGS_FB, STRUCT_ALLOCATOR_PTR(XrCompositionLayerSettingsFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_settings
-
-#ifdef XRTRANSPORT_EXT_XR_FB_haptic_pcm
-
-    {XR_TYPE_HAPTIC_PCM_VIBRATION_FB, STRUCT_ALLOCATOR_PTR(XrHapticPcmVibrationFB)},
-
-
-    {XR_TYPE_DEVICE_PCM_SAMPLE_RATE_STATE_FB, STRUCT_ALLOCATOR_PTR(XrDevicePcmSampleRateStateFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_haptic_pcm
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_frame_synthesis
-
-    {XR_TYPE_FRAME_SYNTHESIS_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrFrameSynthesisInfoEXT)},
-
-
-    {XR_TYPE_FRAME_SYNTHESIS_CONFIG_VIEW_EXT, STRUCT_ALLOCATOR_PTR(XrFrameSynthesisConfigViewEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_frame_synthesis
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_depth_test
-
-    {XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_FB, STRUCT_ALLOCATOR_PTR(XrCompositionLayerDepthTestFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_depth_test
-
-#ifdef XRTRANSPORT_EXT_XR_META_local_dimming
-
-    {XR_TYPE_LOCAL_DIMMING_FRAME_END_INFO_META, STRUCT_ALLOCATOR_PTR(XrLocalDimmingFrameEndInfoMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_local_dimming
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_preferences
-
-    {XR_TYPE_PASSTHROUGH_PREFERENCES_META, STRUCT_ALLOCATOR_PTR(XrPassthroughPreferencesMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_preferences
-
-#ifdef XRTRANSPORT_EXT_XR_META_virtual_keyboard
-
-    {XR_TYPE_SYSTEM_VIRTUAL_KEYBOARD_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemVirtualKeyboardPropertiesMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_CREATE_INFO_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardCreateInfoMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_SPACE_CREATE_INFO_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardSpaceCreateInfoMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_LOCATION_INFO_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardLocationInfoMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_MODEL_VISIBILITY_SET_INFO_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardModelVisibilitySetInfoMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_ANIMATION_STATE_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardAnimationStateMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_MODEL_ANIMATION_STATES_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardModelAnimationStatesMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_TEXTURE_DATA_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardTextureDataMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_INPUT_INFO_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardInputInfoMETA)},
-
-
-    {XR_TYPE_VIRTUAL_KEYBOARD_TEXT_CONTEXT_CHANGE_INFO_META, STRUCT_ALLOCATOR_PTR(XrVirtualKeyboardTextContextChangeInfoMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_COMMIT_TEXT_META, STRUCT_ALLOCATOR_PTR(XrEventDataVirtualKeyboardCommitTextMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_BACKSPACE_META, STRUCT_ALLOCATOR_PTR(XrEventDataVirtualKeyboardBackspaceMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_ENTER_META, STRUCT_ALLOCATOR_PTR(XrEventDataVirtualKeyboardEnterMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_SHOWN_META, STRUCT_ALLOCATOR_PTR(XrEventDataVirtualKeyboardShownMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_HIDDEN_META, STRUCT_ALLOCATOR_PTR(XrEventDataVirtualKeyboardHiddenMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_virtual_keyboard
-
-#ifdef XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-    {XR_TYPE_EXTERNAL_CAMERA_OCULUS, STRUCT_ALLOCATOR_PTR(XrExternalCameraOCULUS)},
-
-#endif // XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-#ifdef XRTRANSPORT_EXT_XR_META_vulkan_swapchain_create_info
-
-    {XR_TYPE_VULKAN_SWAPCHAIN_CREATE_INFO_META, STRUCT_ALLOCATOR_PTR(XrVulkanSwapchainCreateInfoMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_vulkan_swapchain_create_info
-
-#ifdef XRTRANSPORT_EXT_XR_META_performance_metrics
-
-    {XR_TYPE_PERFORMANCE_METRICS_STATE_META, STRUCT_ALLOCATOR_PTR(XrPerformanceMetricsStateMETA)},
-
-
-    {XR_TYPE_PERFORMANCE_METRICS_COUNTER_META, STRUCT_ALLOCATOR_PTR(XrPerformanceMetricsCounterMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_performance_metrics
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_storage_batch
-
-    {XR_TYPE_SPACE_LIST_SAVE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceListSaveInfoFB)},
-
-
-    {XR_TYPE_EVENT_DATA_SPACE_LIST_SAVE_COMPLETE_FB, STRUCT_ALLOCATOR_PTR(XrEventDataSpaceListSaveCompleteFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_storage_batch
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_user
-
-    {XR_TYPE_SPACE_USER_CREATE_INFO_FB, STRUCT_ALLOCATOR_PTR(XrSpaceUserCreateInfoFB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_user
-
-#ifdef XRTRANSPORT_EXT_XR_META_headset_id
-
-    {XR_TYPE_SYSTEM_HEADSET_ID_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemHeadsetIdPropertiesMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_headset_id
-
-#ifdef XRTRANSPORT_EXT_XR_META_recommended_layer_resolution
-
-    {XR_TYPE_RECOMMENDED_LAYER_RESOLUTION_META, STRUCT_ALLOCATOR_PTR(XrRecommendedLayerResolutionMETA)},
-
-
-    {XR_TYPE_RECOMMENDED_LAYER_RESOLUTION_GET_INFO_META, STRUCT_ALLOCATOR_PTR(XrRecommendedLayerResolutionGetInfoMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_recommended_layer_resolution
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-    {XR_TYPE_SYSTEM_PASSTHROUGH_COLOR_LUT_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemPassthroughColorLutPropertiesMETA)},
-
-
-    {XR_TYPE_PASSTHROUGH_COLOR_LUT_CREATE_INFO_META, STRUCT_ALLOCATOR_PTR(XrPassthroughColorLutCreateInfoMETA)},
-
-
-    {XR_TYPE_PASSTHROUGH_COLOR_LUT_UPDATE_INFO_META, STRUCT_ALLOCATOR_PTR(XrPassthroughColorLutUpdateInfoMETA)},
-
-
-    {XR_TYPE_PASSTHROUGH_COLOR_MAP_LUT_META, STRUCT_ALLOCATOR_PTR(XrPassthroughColorMapLutMETA)},
-
-
-    {XR_TYPE_PASSTHROUGH_COLOR_MAP_INTERPOLATED_LUT_META, STRUCT_ALLOCATOR_PTR(XrPassthroughColorMapInterpolatedLutMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_mesh
-
-    {XR_TYPE_SPACE_TRIANGLE_MESH_GET_INFO_META, STRUCT_ALLOCATOR_PTR(XrSpaceTriangleMeshGetInfoMETA)},
-
-
-    {XR_TYPE_SPACE_TRIANGLE_MESH_META, STRUCT_ALLOCATOR_PTR(XrSpaceTriangleMeshMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_META_body_tracking_full_body
-
-    {XR_TYPE_SYSTEM_PROPERTIES_BODY_TRACKING_FULL_BODY_META, STRUCT_ALLOCATOR_PTR(XrSystemPropertiesBodyTrackingFullBodyMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_body_tracking_full_body
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_layer_resumed_event
-
-    {XR_TYPE_EVENT_DATA_PASSTHROUGH_LAYER_RESUMED_META, STRUCT_ALLOCATOR_PTR(XrEventDataPassthroughLayerResumedMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_layer_resumed_event
-
-#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking2
-
-    {XR_TYPE_SYSTEM_FACE_TRACKING_PROPERTIES2_FB, STRUCT_ALLOCATOR_PTR(XrSystemFaceTrackingProperties2FB)},
-
-
-    {XR_TYPE_FACE_TRACKER_CREATE_INFO2_FB, STRUCT_ALLOCATOR_PTR(XrFaceTrackerCreateInfo2FB)},
-
-
-    {XR_TYPE_FACE_EXPRESSION_INFO2_FB, STRUCT_ALLOCATOR_PTR(XrFaceExpressionInfo2FB)},
-
-
-    {XR_TYPE_FACE_EXPRESSION_WEIGHTS2_FB, STRUCT_ALLOCATOR_PTR(XrFaceExpressionWeights2FB)},
-
-#endif // XRTRANSPORT_EXT_XR_FB_face_tracking2
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-    {XR_TYPE_SYSTEM_SPATIAL_ENTITY_SHARING_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemSpatialEntitySharingPropertiesMETA)},
-
-
-    {XR_TYPE_SHARE_SPACES_INFO_META, STRUCT_ALLOCATOR_PTR(XrShareSpacesInfoMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_SHARE_SPACES_COMPLETE_META, STRUCT_ALLOCATOR_PTR(XrEventDataShareSpacesCompleteMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_META_environment_depth
-
-    {XR_TYPE_ENVIRONMENT_DEPTH_PROVIDER_CREATE_INFO_META, STRUCT_ALLOCATOR_PTR(XrEnvironmentDepthProviderCreateInfoMETA)},
-
-
-    {XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_CREATE_INFO_META, STRUCT_ALLOCATOR_PTR(XrEnvironmentDepthSwapchainCreateInfoMETA)},
-
-
-    {XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_STATE_META, STRUCT_ALLOCATOR_PTR(XrEnvironmentDepthSwapchainStateMETA)},
-
-
-    {XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_ACQUIRE_INFO_META, STRUCT_ALLOCATOR_PTR(XrEnvironmentDepthImageAcquireInfoMETA)},
-
-
-    {XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_VIEW_META, STRUCT_ALLOCATOR_PTR(XrEnvironmentDepthImageViewMETA)},
-
-
-    {XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_META, STRUCT_ALLOCATOR_PTR(XrEnvironmentDepthImageMETA)},
-
-
-    {XR_TYPE_ENVIRONMENT_DEPTH_HAND_REMOVAL_SET_INFO_META, STRUCT_ALLOCATOR_PTR(XrEnvironmentDepthHandRemovalSetInfoMETA)},
-
-
-    {XR_TYPE_SYSTEM_ENVIRONMENT_DEPTH_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemEnvironmentDepthPropertiesMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_environment_depth
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_passthrough
-
-    {XR_TYPE_PASSTHROUGH_CREATE_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrPassthroughCreateInfoHTC)},
-
-
-    {XR_TYPE_PASSTHROUGH_COLOR_HTC, STRUCT_ALLOCATOR_PTR(XrPassthroughColorHTC)},
-
-
-    {XR_TYPE_PASSTHROUGH_MESH_TRANSFORM_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrPassthroughMeshTransformInfoHTC)},
-
-
-    {XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_HTC, STRUCT_ALLOCATOR_PTR(XrCompositionLayerPassthroughHTC)},
-
-#endif // XRTRANSPORT_EXT_XR_HTC_passthrough
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_foveation
-
-    {XR_TYPE_FOVEATION_APPLY_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrFoveationApplyInfoHTC)},
-
-
-    {XR_TYPE_FOVEATION_DYNAMIC_MODE_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrFoveationDynamicModeInfoHTC)},
-
-
-    {XR_TYPE_FOVEATION_CUSTOM_MODE_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrFoveationCustomModeInfoHTC)},
-
-#endif // XRTRANSPORT_EXT_XR_HTC_foveation
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_anchor
-
-    {XR_TYPE_SYSTEM_ANCHOR_PROPERTIES_HTC, STRUCT_ALLOCATOR_PTR(XrSystemAnchorPropertiesHTC)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorCreateInfoHTC)},
-
-#endif // XRTRANSPORT_EXT_XR_HTC_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-    {XR_TYPE_SYSTEM_BODY_TRACKING_PROPERTIES_HTC, STRUCT_ALLOCATOR_PTR(XrSystemBodyTrackingPropertiesHTC)},
-
-
-    {XR_TYPE_BODY_TRACKER_CREATE_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrBodyTrackerCreateInfoHTC)},
-
-
-    {XR_TYPE_BODY_JOINTS_LOCATE_INFO_HTC, STRUCT_ALLOCATOR_PTR(XrBodyJointsLocateInfoHTC)},
-
-
-    {XR_TYPE_BODY_JOINT_LOCATIONS_HTC, STRUCT_ALLOCATOR_PTR(XrBodyJointLocationsHTC)},
-
-
-    {XR_TYPE_BODY_SKELETON_HTC, STRUCT_ALLOCATOR_PTR(XrBodySkeletonHTC)},
-
-#endif // XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-    {XR_TYPE_ACTIVE_ACTION_SET_PRIORITIES_EXT, STRUCT_ALLOCATOR_PTR(XrActiveActionSetPrioritiesEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-#ifdef XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-    {XR_TYPE_SYSTEM_FORCE_FEEDBACK_CURL_PROPERTIES_MNDX, STRUCT_ALLOCATOR_PTR(XrSystemForceFeedbackCurlPropertiesMNDX)},
-
-
-    {XR_TYPE_FORCE_FEEDBACK_CURL_APPLY_LOCATIONS_MNDX, STRUCT_ALLOCATOR_PTR(XrForceFeedbackCurlApplyLocationsMNDX)},
-
-#endif // XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-#ifdef XRTRANSPORT_EXT_XR_BD_body_tracking
-
-    {XR_TYPE_BODY_TRACKER_CREATE_INFO_BD, STRUCT_ALLOCATOR_PTR(XrBodyTrackerCreateInfoBD)},
-
-
-    {XR_TYPE_BODY_JOINTS_LOCATE_INFO_BD, STRUCT_ALLOCATOR_PTR(XrBodyJointsLocateInfoBD)},
-
-
-    {XR_TYPE_BODY_JOINT_LOCATIONS_BD, STRUCT_ALLOCATOR_PTR(XrBodyJointLocationsBD)},
-
-
-    {XR_TYPE_SYSTEM_BODY_TRACKING_PROPERTIES_BD, STRUCT_ALLOCATOR_PTR(XrSystemBodyTrackingPropertiesBD)},
-
-#endif // XRTRANSPORT_EXT_XR_BD_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-    {XR_TYPE_SYSTEM_SPATIAL_SENSING_PROPERTIES_BD, STRUCT_ALLOCATOR_PTR(XrSystemSpatialSensingPropertiesBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_GET_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityComponentGetInfoBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_LOCATION_GET_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityLocationGetInfoBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_LOCATION_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityComponentDataLocationBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_SEMANTIC_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityComponentDataSemanticBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_2D_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityComponentDataBoundingBox2DBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_POLYGON_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityComponentDataPolygonBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_3D_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityComponentDataBoundingBox3DBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_TRIANGLE_MESH_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityComponentDataTriangleMeshBD)},
-
-
-    {XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSenseDataProviderCreateInfoBD)},
-
-
-    {XR_TYPE_SENSE_DATA_PROVIDER_START_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSenseDataProviderStartInfoBD)},
-
-
-    {XR_TYPE_EVENT_DATA_SENSE_DATA_PROVIDER_STATE_CHANGED_BD, STRUCT_ALLOCATOR_PTR(XrEventDataSenseDataProviderStateChangedBD)},
-
-
-    {XR_TYPE_EVENT_DATA_SENSE_DATA_UPDATED_BD, STRUCT_ALLOCATOR_PTR(XrEventDataSenseDataUpdatedBD)},
-
-
-    {XR_TYPE_SENSE_DATA_QUERY_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSenseDataQueryInfoBD)},
-
-
-    {XR_TYPE_SENSE_DATA_QUERY_COMPLETION_BD, STRUCT_ALLOCATOR_PTR(XrSenseDataQueryCompletionBD)},
-
-
-    {XR_TYPE_SENSE_DATA_FILTER_UUID_BD, STRUCT_ALLOCATOR_PTR(XrSenseDataFilterUuidBD)},
-
-
-    {XR_TYPE_SENSE_DATA_FILTER_SEMANTIC_BD, STRUCT_ALLOCATOR_PTR(XrSenseDataFilterSemanticBD)},
-
-
-    {XR_TYPE_QUERIED_SENSE_DATA_GET_INFO_BD, STRUCT_ALLOCATOR_PTR(XrQueriedSenseDataGetInfoBD)},
-
-
-    {XR_TYPE_QUERIED_SENSE_DATA_BD, STRUCT_ALLOCATOR_PTR(XrQueriedSenseDataBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_STATE_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityStateBD)},
-
-
-    {XR_TYPE_SPATIAL_ENTITY_ANCHOR_CREATE_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSpatialEntityAnchorCreateInfoBD)},
-
-
-    {XR_TYPE_ANCHOR_SPACE_CREATE_INFO_BD, STRUCT_ALLOCATOR_PTR(XrAnchorSpaceCreateInfoBD)},
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_anchor
-
-    {XR_TYPE_SYSTEM_SPATIAL_ANCHOR_PROPERTIES_BD, STRUCT_ALLOCATOR_PTR(XrSystemSpatialAnchorPropertiesBD)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorCreateInfoBD)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_CREATE_COMPLETION_BD, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorCreateCompletionBD)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_PERSIST_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorPersistInfoBD)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_UNPERSIST_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorUnpersistInfoBD)},
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_anchor_sharing
-
-    {XR_TYPE_SYSTEM_SPATIAL_ANCHOR_SHARING_PROPERTIES_BD, STRUCT_ALLOCATOR_PTR(XrSystemSpatialAnchorSharingPropertiesBD)},
-
-
-    {XR_TYPE_SPATIAL_ANCHOR_SHARE_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSpatialAnchorShareInfoBD)},
-
-
-    {XR_TYPE_SHARED_SPATIAL_ANCHOR_DOWNLOAD_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSharedSpatialAnchorDownloadInfoBD)},
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_anchor_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_scene
-
-    {XR_TYPE_SYSTEM_SPATIAL_SCENE_PROPERTIES_BD, STRUCT_ALLOCATOR_PTR(XrSystemSpatialScenePropertiesBD)},
-
-
-    {XR_TYPE_SCENE_CAPTURE_INFO_BD, STRUCT_ALLOCATOR_PTR(XrSceneCaptureInfoBD)},
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_scene
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_mesh
-
-    {XR_TYPE_SYSTEM_SPATIAL_MESH_PROPERTIES_BD, STRUCT_ALLOCATOR_PTR(XrSystemSpatialMeshPropertiesBD)},
-
-
-    {XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_SPATIAL_MESH_BD, STRUCT_ALLOCATOR_PTR(XrSenseDataProviderCreateInfoSpatialMeshBD)},
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_BD_future_progress
-
-    {XR_TYPE_FUTURE_POLL_RESULT_PROGRESS_BD, STRUCT_ALLOCATOR_PTR(XrFuturePollResultProgressBD)},
-
-#endif // XRTRANSPORT_EXT_XR_BD_future_progress
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking_data_source
-
-    {XR_TYPE_HAND_TRACKING_DATA_SOURCE_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrHandTrackingDataSourceInfoEXT)},
-
-
-    {XR_TYPE_HAND_TRACKING_DATA_SOURCE_STATE_EXT, STRUCT_ALLOCATOR_PTR(XrHandTrackingDataSourceStateEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking_data_source
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_plane_detection
-
-    {XR_TYPE_PLANE_DETECTOR_CREATE_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrPlaneDetectorCreateInfoEXT)},
-
-
-    {XR_TYPE_PLANE_DETECTOR_BEGIN_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrPlaneDetectorBeginInfoEXT)},
-
-
-    {XR_TYPE_PLANE_DETECTOR_GET_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrPlaneDetectorGetInfoEXT)},
-
-
-    {XR_TYPE_PLANE_DETECTOR_LOCATIONS_EXT, STRUCT_ALLOCATOR_PTR(XrPlaneDetectorLocationsEXT)},
-
-
-    {XR_TYPE_PLANE_DETECTOR_LOCATION_EXT, STRUCT_ALLOCATOR_PTR(XrPlaneDetectorLocationEXT)},
-
-
-    {XR_TYPE_PLANE_DETECTOR_POLYGON_BUFFER_EXT, STRUCT_ALLOCATOR_PTR(XrPlaneDetectorPolygonBufferEXT)},
-
-
-    {XR_TYPE_SYSTEM_PLANE_DETECTION_PROPERTIES_EXT, STRUCT_ALLOCATOR_PTR(XrSystemPlaneDetectionPropertiesEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_plane_detection
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_future
-
-    {XR_TYPE_FUTURE_CANCEL_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrFutureCancelInfoEXT)},
-
-
-    {XR_TYPE_FUTURE_POLL_INFO_EXT, STRUCT_ALLOCATOR_PTR(XrFuturePollInfoEXT)},
-
-
-    {XR_TYPE_FUTURE_COMPLETION_EXT, STRUCT_ALLOCATOR_PTR(XrFutureCompletionEXT)},
-
-
-    {XR_TYPE_FUTURE_POLL_RESULT_EXT, STRUCT_ALLOCATOR_PTR(XrFuturePollResultEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_future
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_user_presence
-
-    {XR_TYPE_EVENT_DATA_USER_PRESENCE_CHANGED_EXT, STRUCT_ALLOCATOR_PTR(XrEventDataUserPresenceChangedEXT)},
-
-
-    {XR_TYPE_SYSTEM_USER_PRESENCE_PROPERTIES_EXT, STRUCT_ALLOCATOR_PTR(XrSystemUserPresencePropertiesEXT)},
-
-#endif // XRTRANSPORT_EXT_XR_EXT_user_presence
-
-
-    {XR_TYPE_SPACES_LOCATE_INFO, STRUCT_ALLOCATOR_PTR(XrSpacesLocateInfo)},
-
-
-    {XR_TYPE_SPACE_LOCATIONS, STRUCT_ALLOCATOR_PTR(XrSpaceLocations)},
-
-
-    {XR_TYPE_SPACE_VELOCITIES, STRUCT_ALLOCATOR_PTR(XrSpaceVelocities)},
-
-
-#ifdef XRTRANSPORT_EXT_XR_ML_user_calibration
-
-    {XR_TYPE_EVENT_DATA_HEADSET_FIT_CHANGED_ML, STRUCT_ALLOCATOR_PTR(XrEventDataHeadsetFitChangedML)},
-
-
-    {XR_TYPE_EVENT_DATA_EYE_CALIBRATION_CHANGED_ML, STRUCT_ALLOCATOR_PTR(XrEventDataEyeCalibrationChangedML)},
-
-
-    {XR_TYPE_USER_CALIBRATION_ENABLE_EVENTS_INFO_ML, STRUCT_ALLOCATOR_PTR(XrUserCalibrationEnableEventsInfoML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_user_calibration
-
-#ifdef XRTRANSPORT_EXT_XR_ML_system_notifications
-
-    {XR_TYPE_SYSTEM_NOTIFICATIONS_SET_INFO_ML, STRUCT_ALLOCATOR_PTR(XrSystemNotificationsSetInfoML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_system_notifications
-
-#ifdef XRTRANSPORT_EXT_XR_ML_world_mesh_detection
-
-    {XR_TYPE_WORLD_MESH_DETECTOR_CREATE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshDetectorCreateInfoML)},
-
-
-    {XR_TYPE_WORLD_MESH_STATE_REQUEST_INFO_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshStateRequestInfoML)},
-
-
-    {XR_TYPE_WORLD_MESH_BLOCK_STATE_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshBlockStateML)},
-
-
-    {XR_TYPE_WORLD_MESH_STATE_REQUEST_COMPLETION_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshStateRequestCompletionML)},
-
-
-    {XR_TYPE_WORLD_MESH_BUFFER_RECOMMENDED_SIZE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshBufferRecommendedSizeInfoML)},
-
-
-    {XR_TYPE_WORLD_MESH_BUFFER_SIZE_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshBufferSizeML)},
-
-
-    {XR_TYPE_WORLD_MESH_BUFFER_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshBufferML)},
-
-
-    {XR_TYPE_WORLD_MESH_BLOCK_REQUEST_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshBlockRequestML)},
-
-
-    {XR_TYPE_WORLD_MESH_GET_INFO_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshGetInfoML)},
-
-
-    {XR_TYPE_WORLD_MESH_BLOCK_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshBlockML)},
-
-
-    {XR_TYPE_WORLD_MESH_REQUEST_COMPLETION_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshRequestCompletionML)},
-
-
-    {XR_TYPE_WORLD_MESH_REQUEST_COMPLETION_INFO_ML, STRUCT_ALLOCATOR_PTR(XrWorldMeshRequestCompletionInfoML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_world_mesh_detection
-
-#ifdef XRTRANSPORT_EXT_XR_ML_facial_expression
-
-    {XR_TYPE_SYSTEM_FACIAL_EXPRESSION_PROPERTIES_ML, STRUCT_ALLOCATOR_PTR(XrSystemFacialExpressionPropertiesML)},
-
-
-    {XR_TYPE_FACIAL_EXPRESSION_CLIENT_CREATE_INFO_ML, STRUCT_ALLOCATOR_PTR(XrFacialExpressionClientCreateInfoML)},
-
-
-    {XR_TYPE_FACIAL_EXPRESSION_BLEND_SHAPE_GET_INFO_ML, STRUCT_ALLOCATOR_PTR(XrFacialExpressionBlendShapeGetInfoML)},
-
-
-    {XR_TYPE_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_ML, STRUCT_ALLOCATOR_PTR(XrFacialExpressionBlendShapePropertiesML)},
-
-#endif // XRTRANSPORT_EXT_XR_ML_facial_expression
-
-#ifdef XRTRANSPORT_EXT_XR_META_simultaneous_hands_and_controllers
-
-    {XR_TYPE_SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemSimultaneousHandsAndControllersPropertiesMETA)},
-
-
-    {XR_TYPE_SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_RESUME_INFO_META, STRUCT_ALLOCATOR_PTR(XrSimultaneousHandsAndControllersTrackingResumeInfoMETA)},
-
-
-    {XR_TYPE_SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_PAUSE_INFO_META, STRUCT_ALLOCATOR_PTR(XrSimultaneousHandsAndControllersTrackingPauseInfoMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_simultaneous_hands_and_controllers
-
-#ifdef XRTRANSPORT_EXT_XR_META_colocation_discovery
-
-    {XR_TYPE_COLOCATION_DISCOVERY_START_INFO_META, STRUCT_ALLOCATOR_PTR(XrColocationDiscoveryStartInfoMETA)},
-
-
-    {XR_TYPE_COLOCATION_DISCOVERY_STOP_INFO_META, STRUCT_ALLOCATOR_PTR(XrColocationDiscoveryStopInfoMETA)},
-
-
-    {XR_TYPE_COLOCATION_ADVERTISEMENT_START_INFO_META, STRUCT_ALLOCATOR_PTR(XrColocationAdvertisementStartInfoMETA)},
-
-
-    {XR_TYPE_COLOCATION_ADVERTISEMENT_STOP_INFO_META, STRUCT_ALLOCATOR_PTR(XrColocationAdvertisementStopInfoMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_START_COLOCATION_ADVERTISEMENT_COMPLETE_META, STRUCT_ALLOCATOR_PTR(XrEventDataStartColocationAdvertisementCompleteMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_STOP_COLOCATION_ADVERTISEMENT_COMPLETE_META, STRUCT_ALLOCATOR_PTR(XrEventDataStopColocationAdvertisementCompleteMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_COLOCATION_ADVERTISEMENT_COMPLETE_META, STRUCT_ALLOCATOR_PTR(XrEventDataColocationAdvertisementCompleteMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_START_COLOCATION_DISCOVERY_COMPLETE_META, STRUCT_ALLOCATOR_PTR(XrEventDataStartColocationDiscoveryCompleteMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_COLOCATION_DISCOVERY_RESULT_META, STRUCT_ALLOCATOR_PTR(XrEventDataColocationDiscoveryResultMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_COLOCATION_DISCOVERY_COMPLETE_META, STRUCT_ALLOCATOR_PTR(XrEventDataColocationDiscoveryCompleteMETA)},
-
-
-    {XR_TYPE_EVENT_DATA_STOP_COLOCATION_DISCOVERY_COMPLETE_META, STRUCT_ALLOCATOR_PTR(XrEventDataStopColocationDiscoveryCompleteMETA)},
-
-
-    {XR_TYPE_SYSTEM_COLOCATION_DISCOVERY_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemColocationDiscoveryPropertiesMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_colocation_discovery
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
-
-    {XR_TYPE_SHARE_SPACES_RECIPIENT_GROUPS_META, STRUCT_ALLOCATOR_PTR(XrShareSpacesRecipientGroupsMETA)},
-
-
-    {XR_TYPE_SPACE_GROUP_UUID_FILTER_INFO_META, STRUCT_ALLOCATOR_PTR(XrSpaceGroupUuidFilterInfoMETA)},
-
-
-    {XR_TYPE_SYSTEM_SPATIAL_ENTITY_GROUP_SHARING_PROPERTIES_META, STRUCT_ALLOCATOR_PTR(XrSystemSpatialEntityGroupSharingPropertiesMETA)},
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
-
-};
-
-static StructAllocator allocator_lookup(XrStructureType struct_type) {
-    std::size_t array_size = sizeof(allocator_lookup_table) / sizeof(allocator_lookup_table[0]);
-    std::size_t low = 0;
-    std::size_t high = array_size - 1;
-
-    while (low <= high) {
-        std::size_t mid = low + (high - low) / 2;
-        std::tuple<XrStructureType, StructAllocator>& at_mid = allocator_lookup_table[mid];
-        XrStructureType at_mid_type = std::get<0>(at_mid);
-
-        if (at_mid_type == struct_type) {
-            return std::get<1>(at_mid);
-        }
-
-        if (at_mid_type < struct_type) {
-            low = mid + 1;
-        }
-        else {
-            high = mid - 1;
-        }
-    }
-    
-    assert(false && "XrStructureType not found in allocators lookup table");
-}
-
-
-
+// Struct cleaner lookup
 // Only to be used with OpenXR pNext structs
 using StructCleaner = void(*)(const XrBaseOutStructure*);
 #define STRUCT_CLEANER_PTR(t) (reinterpret_cast<StructCleaner>(static_cast<void(*)(const t*)>(&cleanup)))
 
-static std::tuple<XrStructureType, StructCleaner> cleaner_lookup_table[] = {
+static std::unordered_map<XrStructureType, StructCleaner> cleaner_lookup_table = {
 
 
 
@@ -15083,32 +10041,1825 @@ static std::tuple<XrStructureType, StructCleaner> cleaner_lookup_table[] = {
 };
 
 static StructCleaner cleaner_lookup(XrStructureType struct_type) {
-    std::size_t array_size = sizeof(cleaner_lookup_table) / sizeof(cleaner_lookup_table[0]);
-    std::size_t low = 0;
-    std::size_t high = array_size - 1;
-
-    while (low <= high) {
-        std::size_t mid = low + (high - low) / 2;
-        std::tuple<XrStructureType, StructCleaner>& at_mid = cleaner_lookup_table[mid];
-        XrStructureType at_mid_type = std::get<0>(at_mid);
-
-        if (at_mid_type == struct_type) {
-            return std::get<1>(at_mid);
-        }
-
-        if (at_mid_type < struct_type) {
-            low = mid + 1;
-        }
-        else {
-            high = mid - 1;
-        }
-    }
-    
-    assert(false && "XrStructureType not found in cleaners lookup table");
+    assert(cleaner_lookup_table.find(struct_type) != cleaner_lookup_table.end());
+    return cleaner_lookup_table.at(struct_type);
 }
 
-// Generic deserializer
+// Struct size lookup
+// Only to be used with OpenXR pNext structs
+static std::unordered_map<XrStructureType, std::size_t> size_lookup_table = {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {XR_TYPE_API_LAYER_PROPERTIES, sizeof(XrApiLayerProperties)},
+
+
+    {XR_TYPE_EXTENSION_PROPERTIES, sizeof(XrExtensionProperties)},
+
+
+    {XR_TYPE_INSTANCE_CREATE_INFO, sizeof(XrInstanceCreateInfo)},
+
+
+    {XR_TYPE_SYSTEM_GET_INFO, sizeof(XrSystemGetInfo)},
+
+
+    {XR_TYPE_SYSTEM_PROPERTIES, sizeof(XrSystemProperties)},
+
+
+    {XR_TYPE_VIEW_LOCATE_INFO, sizeof(XrViewLocateInfo)},
+
+
+    {XR_TYPE_VIEW, sizeof(XrView)},
+
+
+    {XR_TYPE_SESSION_CREATE_INFO, sizeof(XrSessionCreateInfo)},
+
+
+    {XR_TYPE_SWAPCHAIN_CREATE_INFO, sizeof(XrSwapchainCreateInfo)},
+
+
+    {XR_TYPE_SESSION_BEGIN_INFO, sizeof(XrSessionBeginInfo)},
+
+
+    {XR_TYPE_VIEW_STATE, sizeof(XrViewState)},
+
+
+    {XR_TYPE_FRAME_END_INFO, sizeof(XrFrameEndInfo)},
+
+
+    {XR_TYPE_HAPTIC_VIBRATION, sizeof(XrHapticVibration)},
+
+
+    {XR_TYPE_EVENT_DATA_BUFFER, sizeof(XrEventDataBuffer)},
+
+
+    {XR_TYPE_EVENT_DATA_INSTANCE_LOSS_PENDING, sizeof(XrEventDataInstanceLossPending)},
+
+
+    {XR_TYPE_EVENT_DATA_SESSION_STATE_CHANGED, sizeof(XrEventDataSessionStateChanged)},
+
+
+    {XR_TYPE_ACTION_STATE_BOOLEAN, sizeof(XrActionStateBoolean)},
+
+
+    {XR_TYPE_ACTION_STATE_FLOAT, sizeof(XrActionStateFloat)},
+
+
+    {XR_TYPE_ACTION_STATE_VECTOR2F, sizeof(XrActionStateVector2f)},
+
+
+    {XR_TYPE_ACTION_STATE_POSE, sizeof(XrActionStatePose)},
+
+
+    {XR_TYPE_ACTION_SET_CREATE_INFO, sizeof(XrActionSetCreateInfo)},
+
+
+    {XR_TYPE_ACTION_CREATE_INFO, sizeof(XrActionCreateInfo)},
+
+
+    {XR_TYPE_INSTANCE_PROPERTIES, sizeof(XrInstanceProperties)},
+
+
+    {XR_TYPE_FRAME_WAIT_INFO, sizeof(XrFrameWaitInfo)},
+
+
+    {XR_TYPE_COMPOSITION_LAYER_PROJECTION, sizeof(XrCompositionLayerProjection)},
+
+
+    {XR_TYPE_COMPOSITION_LAYER_QUAD, sizeof(XrCompositionLayerQuad)},
+
+
+    {XR_TYPE_REFERENCE_SPACE_CREATE_INFO, sizeof(XrReferenceSpaceCreateInfo)},
+
+
+    {XR_TYPE_ACTION_SPACE_CREATE_INFO, sizeof(XrActionSpaceCreateInfo)},
+
+
+    {XR_TYPE_EVENT_DATA_REFERENCE_SPACE_CHANGE_PENDING, sizeof(XrEventDataReferenceSpaceChangePending)},
+
+
+    {XR_TYPE_VIEW_CONFIGURATION_VIEW, sizeof(XrViewConfigurationView)},
+
+
+    {XR_TYPE_SPACE_LOCATION, sizeof(XrSpaceLocation)},
+
+
+    {XR_TYPE_SPACE_VELOCITY, sizeof(XrSpaceVelocity)},
+
+
+    {XR_TYPE_FRAME_STATE, sizeof(XrFrameState)},
+
+
+    {XR_TYPE_VIEW_CONFIGURATION_PROPERTIES, sizeof(XrViewConfigurationProperties)},
+
+
+    {XR_TYPE_FRAME_BEGIN_INFO, sizeof(XrFrameBeginInfo)},
+
+
+    {XR_TYPE_COMPOSITION_LAYER_PROJECTION_VIEW, sizeof(XrCompositionLayerProjectionView)},
+
+
+    {XR_TYPE_EVENT_DATA_EVENTS_LOST, sizeof(XrEventDataEventsLost)},
+
+
+    {XR_TYPE_INTERACTION_PROFILE_SUGGESTED_BINDING, sizeof(XrInteractionProfileSuggestedBinding)},
+
+
+    {XR_TYPE_EVENT_DATA_INTERACTION_PROFILE_CHANGED, sizeof(XrEventDataInteractionProfileChanged)},
+
+
+    {XR_TYPE_INTERACTION_PROFILE_STATE, sizeof(XrInteractionProfileState)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_ACQUIRE_INFO, sizeof(XrSwapchainImageAcquireInfo)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_WAIT_INFO, sizeof(XrSwapchainImageWaitInfo)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_RELEASE_INFO, sizeof(XrSwapchainImageReleaseInfo)},
+
+
+    {XR_TYPE_ACTION_STATE_GET_INFO, sizeof(XrActionStateGetInfo)},
+
+
+    {XR_TYPE_HAPTIC_ACTION_INFO, sizeof(XrHapticActionInfo)},
+
+
+    {XR_TYPE_SESSION_ACTION_SETS_ATTACH_INFO, sizeof(XrSessionActionSetsAttachInfo)},
+
+
+    {XR_TYPE_ACTIONS_SYNC_INFO, sizeof(XrActionsSyncInfo)},
+
+
+    {XR_TYPE_BOUND_SOURCES_FOR_ACTION_ENUMERATE_INFO, sizeof(XrBoundSourcesForActionEnumerateInfo)},
+
+
+    {XR_TYPE_INPUT_SOURCE_LOCALIZED_NAME_GET_INFO, sizeof(XrInputSourceLocalizedNameGetInfo)},
+
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_cube
+
+    {XR_TYPE_COMPOSITION_LAYER_CUBE_KHR, sizeof(XrCompositionLayerCubeKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_cube
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_android_create_instance
+
+    {XR_TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR, sizeof(XrInstanceCreateInfoAndroidKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_android_create_instance
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_depth
+
+    {XR_TYPE_COMPOSITION_LAYER_DEPTH_INFO_KHR, sizeof(XrCompositionLayerDepthInfoKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_depth
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_swapchain_format_list
+
+    {XR_TYPE_VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR, sizeof(XrVulkanSwapchainFormatListCreateInfoKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_swapchain_format_list
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_performance_settings
+
+    {XR_TYPE_EVENT_DATA_PERF_SETTINGS_EXT, sizeof(XrEventDataPerfSettingsEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_performance_settings
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_cylinder
+
+    {XR_TYPE_COMPOSITION_LAYER_CYLINDER_KHR, sizeof(XrCompositionLayerCylinderKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_cylinder
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect
+
+    {XR_TYPE_COMPOSITION_LAYER_EQUIRECT_KHR, sizeof(XrCompositionLayerEquirectKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_debug_utils
+
+    {XR_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT, sizeof(XrDebugUtilsObjectNameInfoEXT)},
+
+
+    {XR_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT, sizeof(XrDebugUtilsMessengerCallbackDataEXT)},
+
+
+    {XR_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT, sizeof(XrDebugUtilsMessengerCreateInfoEXT)},
+
+
+    {XR_TYPE_DEBUG_UTILS_LABEL_EXT, sizeof(XrDebugUtilsLabelEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_debug_utils
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_opengl_enable
+
+    {XR_TYPE_GRAPHICS_BINDING_OPENGL_WIN32_KHR, sizeof(XrGraphicsBindingOpenGLWin32KHR)},
+
+
+    {XR_TYPE_GRAPHICS_BINDING_OPENGL_XLIB_KHR, sizeof(XrGraphicsBindingOpenGLXlibKHR)},
+
+
+    {XR_TYPE_GRAPHICS_BINDING_OPENGL_XCB_KHR, sizeof(XrGraphicsBindingOpenGLXcbKHR)},
+
+
+    {XR_TYPE_GRAPHICS_BINDING_OPENGL_WAYLAND_KHR, sizeof(XrGraphicsBindingOpenGLWaylandKHR)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR, sizeof(XrSwapchainImageOpenGLKHR)},
+
+
+    {XR_TYPE_GRAPHICS_REQUIREMENTS_OPENGL_KHR, sizeof(XrGraphicsRequirementsOpenGLKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_opengl_enable
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_opengl_es_enable
+
+    {XR_TYPE_GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR, sizeof(XrGraphicsBindingOpenGLESAndroidKHR)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR, sizeof(XrSwapchainImageOpenGLESKHR)},
+
+
+    {XR_TYPE_GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR, sizeof(XrGraphicsRequirementsOpenGLESKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_opengl_es_enable
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_enable
+
+    {XR_TYPE_GRAPHICS_BINDING_VULKAN_KHR, sizeof(XrGraphicsBindingVulkanKHR)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR, sizeof(XrSwapchainImageVulkanKHR)},
+
+
+    {XR_TYPE_GRAPHICS_REQUIREMENTS_VULKAN_KHR, sizeof(XrGraphicsRequirementsVulkanKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_enable
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_D3D11_enable
+
+    {XR_TYPE_GRAPHICS_BINDING_D3D11_KHR, sizeof(XrGraphicsBindingD3D11KHR)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_D3D11_KHR, sizeof(XrSwapchainImageD3D11KHR)},
+
+
+    {XR_TYPE_GRAPHICS_REQUIREMENTS_D3D11_KHR, sizeof(XrGraphicsRequirementsD3D11KHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_D3D11_enable
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_D3D12_enable
+
+    {XR_TYPE_GRAPHICS_BINDING_D3D12_KHR, sizeof(XrGraphicsBindingD3D12KHR)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_D3D12_KHR, sizeof(XrSwapchainImageD3D12KHR)},
+
+
+    {XR_TYPE_GRAPHICS_REQUIREMENTS_D3D12_KHR, sizeof(XrGraphicsRequirementsD3D12KHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_D3D12_enable
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_metal_enable
+
+    {XR_TYPE_GRAPHICS_BINDING_METAL_KHR, sizeof(XrGraphicsBindingMetalKHR)},
+
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_METAL_KHR, sizeof(XrSwapchainImageMetalKHR)},
+
+
+    {XR_TYPE_GRAPHICS_REQUIREMENTS_METAL_KHR, sizeof(XrGraphicsRequirementsMetalKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_metal_enable
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_eye_gaze_interaction
+
+    {XR_TYPE_SYSTEM_EYE_GAZE_INTERACTION_PROPERTIES_EXT, sizeof(XrSystemEyeGazeInteractionPropertiesEXT)},
+
+
+    {XR_TYPE_EYE_GAZE_SAMPLE_TIME_EXT, sizeof(XrEyeGazeSampleTimeEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_eye_gaze_interaction
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_visibility_mask
+
+    {XR_TYPE_VISIBILITY_MASK_KHR, sizeof(XrVisibilityMaskKHR)},
+
+
+    {XR_TYPE_EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR, sizeof(XrEventDataVisibilityMaskChangedKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_visibility_mask
+
+#ifdef XRTRANSPORT_EXT_XR_EXTX_overlay
+
+    {XR_TYPE_SESSION_CREATE_INFO_OVERLAY_EXTX, sizeof(XrSessionCreateInfoOverlayEXTX)},
+
+
+    {XR_TYPE_EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX, sizeof(XrEventDataMainSessionVisibilityChangedEXTX)},
+
+#endif // XRTRANSPORT_EXT_XR_EXTX_overlay
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_color_scale_bias
+
+    {XR_TYPE_COMPOSITION_LAYER_COLOR_SCALE_BIAS_KHR, sizeof(XrCompositionLayerColorScaleBiasKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_color_scale_bias
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor
+
+    {XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_MSFT, sizeof(XrSpatialAnchorCreateInfoMSFT)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_SPACE_CREATE_INFO_MSFT, sizeof(XrSpatialAnchorSpaceCreateInfoMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor
+
+#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_image_layout
+
+    {XR_TYPE_COMPOSITION_LAYER_IMAGE_LAYOUT_FB, sizeof(XrCompositionLayerImageLayoutFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_image_layout
+
+#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_alpha_blend
+
+    {XR_TYPE_COMPOSITION_LAYER_ALPHA_BLEND_FB, sizeof(XrCompositionLayerAlphaBlendFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_alpha_blend
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_view_configuration_depth_range
+
+    {XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT, sizeof(XrViewConfigurationDepthRangeEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_view_configuration_depth_range
+
+#ifdef XRTRANSPORT_EXT_XR_MNDX_egl_enable
+
+    {XR_TYPE_GRAPHICS_BINDING_EGL_MNDX, sizeof(XrGraphicsBindingEGLMNDX)},
+
+#endif // XRTRANSPORT_EXT_XR_MNDX_egl_enable
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_graph_bridge
+
+    {XR_TYPE_SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT, sizeof(XrSpatialGraphNodeSpaceCreateInfoMSFT)},
+
+
+    {XR_TYPE_SPATIAL_GRAPH_STATIC_NODE_BINDING_CREATE_INFO_MSFT, sizeof(XrSpatialGraphStaticNodeBindingCreateInfoMSFT)},
+
+
+    {XR_TYPE_SPATIAL_GRAPH_NODE_BINDING_PROPERTIES_GET_INFO_MSFT, sizeof(XrSpatialGraphNodeBindingPropertiesGetInfoMSFT)},
+
+
+    {XR_TYPE_SPATIAL_GRAPH_NODE_BINDING_PROPERTIES_MSFT, sizeof(XrSpatialGraphNodeBindingPropertiesMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_graph_bridge
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking
+
+    {XR_TYPE_SYSTEM_HAND_TRACKING_PROPERTIES_EXT, sizeof(XrSystemHandTrackingPropertiesEXT)},
+
+
+    {XR_TYPE_HAND_TRACKER_CREATE_INFO_EXT, sizeof(XrHandTrackerCreateInfoEXT)},
+
+
+    {XR_TYPE_HAND_JOINTS_LOCATE_INFO_EXT, sizeof(XrHandJointsLocateInfoEXT)},
+
+
+    {XR_TYPE_HAND_JOINT_LOCATIONS_EXT, sizeof(XrHandJointLocationsEXT)},
+
+
+    {XR_TYPE_HAND_JOINT_VELOCITIES_EXT, sizeof(XrHandJointVelocitiesEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
+
+    {XR_TYPE_SYSTEM_HAND_TRACKING_MESH_PROPERTIES_MSFT, sizeof(XrSystemHandTrackingMeshPropertiesMSFT)},
+
+
+    {XR_TYPE_HAND_MESH_SPACE_CREATE_INFO_MSFT, sizeof(XrHandMeshSpaceCreateInfoMSFT)},
+
+
+    {XR_TYPE_HAND_MESH_UPDATE_INFO_MSFT, sizeof(XrHandMeshUpdateInfoMSFT)},
+
+
+    {XR_TYPE_HAND_MESH_MSFT, sizeof(XrHandMeshMSFT)},
+
+
+    {XR_TYPE_HAND_POSE_TYPE_INFO_MSFT, sizeof(XrHandPoseTypeInfoMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_secondary_view_configuration
+
+    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_SESSION_BEGIN_INFO_MSFT, sizeof(XrSecondaryViewConfigurationSessionBeginInfoMSFT)},
+
+
+    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_STATE_MSFT, sizeof(XrSecondaryViewConfigurationStateMSFT)},
+
+
+    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_FRAME_STATE_MSFT, sizeof(XrSecondaryViewConfigurationFrameStateMSFT)},
+
+
+    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_FRAME_END_INFO_MSFT, sizeof(XrSecondaryViewConfigurationFrameEndInfoMSFT)},
+
+
+    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_LAYER_INFO_MSFT, sizeof(XrSecondaryViewConfigurationLayerInfoMSFT)},
+
+
+    {XR_TYPE_SECONDARY_VIEW_CONFIGURATION_SWAPCHAIN_CREATE_INFO_MSFT, sizeof(XrSecondaryViewConfigurationSwapchainCreateInfoMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_secondary_view_configuration
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_controller_model
+
+    {XR_TYPE_CONTROLLER_MODEL_KEY_STATE_MSFT, sizeof(XrControllerModelKeyStateMSFT)},
+
+
+    {XR_TYPE_CONTROLLER_MODEL_NODE_PROPERTIES_MSFT, sizeof(XrControllerModelNodePropertiesMSFT)},
+
+
+    {XR_TYPE_CONTROLLER_MODEL_PROPERTIES_MSFT, sizeof(XrControllerModelPropertiesMSFT)},
+
+
+    {XR_TYPE_CONTROLLER_MODEL_NODE_STATE_MSFT, sizeof(XrControllerModelNodeStateMSFT)},
+
+
+    {XR_TYPE_CONTROLLER_MODEL_STATE_MSFT, sizeof(XrControllerModelStateMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_controller_model
+
+#ifdef XRTRANSPORT_EXT_XR_EPIC_view_configuration_fov
+
+    {XR_TYPE_VIEW_CONFIGURATION_VIEW_FOV_EPIC, sizeof(XrViewConfigurationViewFovEPIC)},
+
+#endif // XRTRANSPORT_EXT_XR_EPIC_view_configuration_fov
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_holographic_window_attachment
+
+    {XR_TYPE_HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT, sizeof(XrHolographicWindowAttachmentMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_holographic_window_attachment
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_composition_layer_reprojection
+
+    {XR_TYPE_COMPOSITION_LAYER_REPROJECTION_INFO_MSFT, sizeof(XrCompositionLayerReprojectionInfoMSFT)},
+
+
+    {XR_TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT, sizeof(XrCompositionLayerReprojectionPlaneOverrideMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_composition_layer_reprojection
+
+#ifdef XRTRANSPORT_EXT_XR_FB_android_surface_swapchain_create
+
+    {XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB, sizeof(XrAndroidSurfaceSwapchainCreateInfoFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_android_surface_swapchain_create
+
+#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_secure_content
+
+    {XR_TYPE_COMPOSITION_LAYER_SECURE_CONTENT_FB, sizeof(XrCompositionLayerSecureContentFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_secure_content
+
+#ifdef XRTRANSPORT_EXT_XR_FB_body_tracking
+
+    {XR_TYPE_BODY_TRACKER_CREATE_INFO_FB, sizeof(XrBodyTrackerCreateInfoFB)},
+
+
+    {XR_TYPE_BODY_JOINTS_LOCATE_INFO_FB, sizeof(XrBodyJointsLocateInfoFB)},
+
+
+    {XR_TYPE_SYSTEM_BODY_TRACKING_PROPERTIES_FB, sizeof(XrSystemBodyTrackingPropertiesFB)},
+
+
+    {XR_TYPE_BODY_JOINT_LOCATIONS_FB, sizeof(XrBodyJointLocationsFB)},
+
+
+    {XR_TYPE_BODY_SKELETON_FB, sizeof(XrBodySkeletonFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_body_tracking
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_dpad_binding
+
+    {XR_TYPE_INTERACTION_PROFILE_DPAD_BINDING_EXT, sizeof(XrInteractionProfileDpadBindingEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_dpad_binding
+
+#ifdef XRTRANSPORT_EXT_XR_VALVE_analog_threshold
+
+    {XR_TYPE_INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE, sizeof(XrInteractionProfileAnalogThresholdVALVE)},
+
+#endif // XRTRANSPORT_EXT_XR_VALVE_analog_threshold
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_hand_joints_motion_range
+
+    {XR_TYPE_HAND_JOINTS_MOTION_RANGE_INFO_EXT, sizeof(XrHandJointsMotionRangeInfoEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_hand_joints_motion_range
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_loader_init_android
+
+    {XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR, sizeof(XrLoaderInitInfoAndroidKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_loader_init_android
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_enable2
+
+    {XR_TYPE_VULKAN_INSTANCE_CREATE_INFO_KHR, sizeof(XrVulkanInstanceCreateInfoKHR)},
+
+
+    {XR_TYPE_VULKAN_DEVICE_CREATE_INFO_KHR, sizeof(XrVulkanDeviceCreateInfoKHR)},
+
+
+    {XR_TYPE_VULKAN_GRAPHICS_DEVICE_GET_INFO_KHR, sizeof(XrVulkanGraphicsDeviceGetInfoKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_enable2
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect2
+
+    {XR_TYPE_COMPOSITION_LAYER_EQUIRECT2_KHR, sizeof(XrCompositionLayerEquirect2KHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect2
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding
+
+    {XR_TYPE_SCENE_OBSERVER_CREATE_INFO_MSFT, sizeof(XrSceneObserverCreateInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_CREATE_INFO_MSFT, sizeof(XrSceneCreateInfoMSFT)},
+
+
+    {XR_TYPE_NEW_SCENE_COMPUTE_INFO_MSFT, sizeof(XrNewSceneComputeInfoMSFT)},
+
+
+    {XR_TYPE_VISUAL_MESH_COMPUTE_LOD_INFO_MSFT, sizeof(XrVisualMeshComputeLodInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_COMPONENTS_MSFT, sizeof(XrSceneComponentsMSFT)},
+
+
+    {XR_TYPE_SCENE_COMPONENTS_GET_INFO_MSFT, sizeof(XrSceneComponentsGetInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_COMPONENT_LOCATIONS_MSFT, sizeof(XrSceneComponentLocationsMSFT)},
+
+
+    {XR_TYPE_SCENE_COMPONENTS_LOCATE_INFO_MSFT, sizeof(XrSceneComponentsLocateInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_OBJECTS_MSFT, sizeof(XrSceneObjectsMSFT)},
+
+
+    {XR_TYPE_SCENE_COMPONENT_PARENT_FILTER_INFO_MSFT, sizeof(XrSceneComponentParentFilterInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_OBJECT_TYPES_FILTER_INFO_MSFT, sizeof(XrSceneObjectTypesFilterInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_PLANES_MSFT, sizeof(XrScenePlanesMSFT)},
+
+
+    {XR_TYPE_SCENE_PLANE_ALIGNMENT_FILTER_INFO_MSFT, sizeof(XrScenePlaneAlignmentFilterInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_MESHES_MSFT, sizeof(XrSceneMeshesMSFT)},
+
+
+    {XR_TYPE_SCENE_MESH_BUFFERS_GET_INFO_MSFT, sizeof(XrSceneMeshBuffersGetInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_MESH_BUFFERS_MSFT, sizeof(XrSceneMeshBuffersMSFT)},
+
+
+    {XR_TYPE_SCENE_MESH_VERTEX_BUFFER_MSFT, sizeof(XrSceneMeshVertexBufferMSFT)},
+
+
+    {XR_TYPE_SCENE_MESH_INDICES_UINT32_MSFT, sizeof(XrSceneMeshIndicesUint32MSFT)},
+
+
+    {XR_TYPE_SCENE_MESH_INDICES_UINT16_MSFT, sizeof(XrSceneMeshIndicesUint16MSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
+
+    {XR_TYPE_SERIALIZED_SCENE_FRAGMENT_DATA_GET_INFO_MSFT, sizeof(XrSerializedSceneFragmentDataGetInfoMSFT)},
+
+
+    {XR_TYPE_SCENE_DESERIALIZE_INFO_MSFT, sizeof(XrSceneDeserializeInfoMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
+
+#ifdef XRTRANSPORT_EXT_XR_FB_display_refresh_rate
+
+    {XR_TYPE_EVENT_DATA_DISPLAY_REFRESH_RATE_CHANGED_FB, sizeof(XrEventDataDisplayRefreshRateChangedFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_display_refresh_rate
+
+#ifdef XRTRANSPORT_EXT_XR_HTCX_vive_tracker_interaction
+
+    {XR_TYPE_VIVE_TRACKER_PATHS_HTCX, sizeof(XrViveTrackerPathsHTCX)},
+
+
+    {XR_TYPE_EVENT_DATA_VIVE_TRACKER_CONNECTED_HTCX, sizeof(XrEventDataViveTrackerConnectedHTCX)},
+
+#endif // XRTRANSPORT_EXT_XR_HTCX_vive_tracker_interaction
+
+#ifdef XRTRANSPORT_EXT_XR_HTC_facial_tracking
+
+    {XR_TYPE_SYSTEM_FACIAL_TRACKING_PROPERTIES_HTC, sizeof(XrSystemFacialTrackingPropertiesHTC)},
+
+
+    {XR_TYPE_FACIAL_TRACKER_CREATE_INFO_HTC, sizeof(XrFacialTrackerCreateInfoHTC)},
+
+
+    {XR_TYPE_FACIAL_EXPRESSIONS_HTC, sizeof(XrFacialExpressionsHTC)},
+
+#endif // XRTRANSPORT_EXT_XR_HTC_facial_tracking
+
+#ifdef XRTRANSPORT_EXT_XR_FB_color_space
+
+    {XR_TYPE_SYSTEM_COLOR_SPACE_PROPERTIES_FB, sizeof(XrSystemColorSpacePropertiesFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_color_space
+
+#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
+
+    {XR_TYPE_HAND_TRACKING_MESH_FB, sizeof(XrHandTrackingMeshFB)},
+
+
+    {XR_TYPE_HAND_TRACKING_SCALE_FB, sizeof(XrHandTrackingScaleFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
+
+#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_aim
+
+    {XR_TYPE_HAND_TRACKING_AIM_STATE_FB, sizeof(XrHandTrackingAimStateFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_aim
+
+#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
+
+    {XR_TYPE_HAND_TRACKING_CAPSULES_STATE_FB, sizeof(XrHandTrackingCapsulesStateFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
+
+#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity
+
+    {XR_TYPE_SPACE_COMPONENT_STATUS_FB, sizeof(XrSpaceComponentStatusFB)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_FB, sizeof(XrSpatialAnchorCreateInfoFB)},
+
+
+    {XR_TYPE_SYSTEM_SPATIAL_ENTITY_PROPERTIES_FB, sizeof(XrSystemSpatialEntityPropertiesFB)},
+
+
+    {XR_TYPE_EVENT_DATA_SPATIAL_ANCHOR_CREATE_COMPLETE_FB, sizeof(XrEventDataSpatialAnchorCreateCompleteFB)},
+
+
+    {XR_TYPE_EVENT_DATA_SPACE_SET_STATUS_COMPLETE_FB, sizeof(XrEventDataSpaceSetStatusCompleteFB)},
+
+
+    {XR_TYPE_SPACE_COMPONENT_STATUS_SET_INFO_FB, sizeof(XrSpaceComponentStatusSetInfoFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity
+
+#ifdef XRTRANSPORT_EXT_XR_FB_foveation
+
+    {XR_TYPE_FOVEATION_PROFILE_CREATE_INFO_FB, sizeof(XrFoveationProfileCreateInfoFB)},
+
+
+    {XR_TYPE_SWAPCHAIN_CREATE_INFO_FOVEATION_FB, sizeof(XrSwapchainCreateInfoFoveationFB)},
+
+
+    {XR_TYPE_SWAPCHAIN_STATE_FOVEATION_FB, sizeof(XrSwapchainStateFoveationFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_foveation
+
+#ifdef XRTRANSPORT_EXT_XR_FB_foveation_configuration
+
+    {XR_TYPE_FOVEATION_LEVEL_PROFILE_CREATE_INFO_FB, sizeof(XrFoveationLevelProfileCreateInfoFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_foveation_configuration
+
+#ifdef XRTRANSPORT_EXT_XR_FB_keyboard_tracking
+
+    {XR_TYPE_SYSTEM_KEYBOARD_TRACKING_PROPERTIES_FB, sizeof(XrSystemKeyboardTrackingPropertiesFB)},
+
+
+    {XR_TYPE_KEYBOARD_TRACKING_QUERY_FB, sizeof(XrKeyboardTrackingQueryFB)},
+
+
+    {XR_TYPE_KEYBOARD_SPACE_CREATE_INFO_FB, sizeof(XrKeyboardSpaceCreateInfoFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_keyboard_tracking
+
+#ifdef XRTRANSPORT_EXT_XR_FB_triangle_mesh
+
+    {XR_TYPE_TRIANGLE_MESH_CREATE_INFO_FB, sizeof(XrTriangleMeshCreateInfoFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_triangle_mesh
+
+#ifdef XRTRANSPORT_EXT_XR_FB_passthrough
+
+    {XR_TYPE_SYSTEM_PASSTHROUGH_PROPERTIES_FB, sizeof(XrSystemPassthroughPropertiesFB)},
+
+
+    {XR_TYPE_PASSTHROUGH_CREATE_INFO_FB, sizeof(XrPassthroughCreateInfoFB)},
+
+
+    {XR_TYPE_PASSTHROUGH_LAYER_CREATE_INFO_FB, sizeof(XrPassthroughLayerCreateInfoFB)},
+
+
+    {XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_FB, sizeof(XrCompositionLayerPassthroughFB)},
+
+
+    {XR_TYPE_GEOMETRY_INSTANCE_CREATE_INFO_FB, sizeof(XrGeometryInstanceCreateInfoFB)},
+
+
+    {XR_TYPE_GEOMETRY_INSTANCE_TRANSFORM_FB, sizeof(XrGeometryInstanceTransformFB)},
+
+
+    {XR_TYPE_SYSTEM_PASSTHROUGH_PROPERTIES2_FB, sizeof(XrSystemPassthroughProperties2FB)},
+
+
+    {XR_TYPE_PASSTHROUGH_STYLE_FB, sizeof(XrPassthroughStyleFB)},
+
+
+    {XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB, sizeof(XrPassthroughColorMapMonoToRgbaFB)},
+
+
+    {XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB, sizeof(XrPassthroughColorMapMonoToMonoFB)},
+
+
+    {XR_TYPE_PASSTHROUGH_BRIGHTNESS_CONTRAST_SATURATION_FB, sizeof(XrPassthroughBrightnessContrastSaturationFB)},
+
+
+    {XR_TYPE_EVENT_DATA_PASSTHROUGH_STATE_CHANGED_FB, sizeof(XrEventDataPassthroughStateChangedFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_passthrough
+
+#ifdef XRTRANSPORT_EXT_XR_FB_render_model
+
+    {XR_TYPE_RENDER_MODEL_PATH_INFO_FB, sizeof(XrRenderModelPathInfoFB)},
+
+
+    {XR_TYPE_RENDER_MODEL_PROPERTIES_FB, sizeof(XrRenderModelPropertiesFB)},
+
+
+    {XR_TYPE_RENDER_MODEL_BUFFER_FB, sizeof(XrRenderModelBufferFB)},
+
+
+    {XR_TYPE_RENDER_MODEL_LOAD_INFO_FB, sizeof(XrRenderModelLoadInfoFB)},
+
+
+    {XR_TYPE_SYSTEM_RENDER_MODEL_PROPERTIES_FB, sizeof(XrSystemRenderModelPropertiesFB)},
+
+
+    {XR_TYPE_RENDER_MODEL_CAPABILITIES_REQUEST_FB, sizeof(XrRenderModelCapabilitiesRequestFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_render_model
+
+#ifdef XRTRANSPORT_EXT_XR_KHR_binding_modification
+
+    {XR_TYPE_BINDING_MODIFICATIONS_KHR, sizeof(XrBindingModificationsKHR)},
+
+#endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
+
+#ifdef XRTRANSPORT_EXT_XR_VARJO_foveated_rendering
+
+    {XR_TYPE_VIEW_LOCATE_FOVEATED_RENDERING_VARJO, sizeof(XrViewLocateFoveatedRenderingVARJO)},
+
+
+    {XR_TYPE_FOVEATED_VIEW_CONFIGURATION_VIEW_VARJO, sizeof(XrFoveatedViewConfigurationViewVARJO)},
+
+
+    {XR_TYPE_SYSTEM_FOVEATED_RENDERING_PROPERTIES_VARJO, sizeof(XrSystemFoveatedRenderingPropertiesVARJO)},
+
+#endif // XRTRANSPORT_EXT_XR_VARJO_foveated_rendering
+
+#ifdef XRTRANSPORT_EXT_XR_VARJO_composition_layer_depth_test
+
+    {XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_VARJO, sizeof(XrCompositionLayerDepthTestVARJO)},
+
+#endif // XRTRANSPORT_EXT_XR_VARJO_composition_layer_depth_test
+
+#ifdef XRTRANSPORT_EXT_XR_VARJO_marker_tracking
+
+    {XR_TYPE_SYSTEM_MARKER_TRACKING_PROPERTIES_VARJO, sizeof(XrSystemMarkerTrackingPropertiesVARJO)},
+
+
+    {XR_TYPE_EVENT_DATA_MARKER_TRACKING_UPDATE_VARJO, sizeof(XrEventDataMarkerTrackingUpdateVARJO)},
+
+
+    {XR_TYPE_MARKER_SPACE_CREATE_INFO_VARJO, sizeof(XrMarkerSpaceCreateInfoVARJO)},
+
+#endif // XRTRANSPORT_EXT_XR_VARJO_marker_tracking
+
+#ifdef XRTRANSPORT_EXT_XR_ML_frame_end_info
+
+    {XR_TYPE_FRAME_END_INFO_ML, sizeof(XrFrameEndInfoML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_frame_end_info
+
+#ifdef XRTRANSPORT_EXT_XR_ML_global_dimmer
+
+    {XR_TYPE_GLOBAL_DIMMER_FRAME_END_INFO_ML, sizeof(XrGlobalDimmerFrameEndInfoML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_global_dimmer
+
+#ifdef XRTRANSPORT_EXT_XR_ML_compat
+
+    {XR_TYPE_COORDINATE_SPACE_CREATE_INFO_ML, sizeof(XrCoordinateSpaceCreateInfoML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_compat
+
+#ifdef XRTRANSPORT_EXT_XR_ML_marker_understanding
+
+    {XR_TYPE_SYSTEM_MARKER_UNDERSTANDING_PROPERTIES_ML, sizeof(XrSystemMarkerUnderstandingPropertiesML)},
+
+
+    {XR_TYPE_MARKER_DETECTOR_CREATE_INFO_ML, sizeof(XrMarkerDetectorCreateInfoML)},
+
+
+    {XR_TYPE_MARKER_DETECTOR_ARUCO_INFO_ML, sizeof(XrMarkerDetectorArucoInfoML)},
+
+
+    {XR_TYPE_MARKER_DETECTOR_SIZE_INFO_ML, sizeof(XrMarkerDetectorSizeInfoML)},
+
+
+    {XR_TYPE_MARKER_DETECTOR_APRIL_TAG_INFO_ML, sizeof(XrMarkerDetectorAprilTagInfoML)},
+
+
+    {XR_TYPE_MARKER_DETECTOR_CUSTOM_PROFILE_INFO_ML, sizeof(XrMarkerDetectorCustomProfileInfoML)},
+
+
+    {XR_TYPE_MARKER_DETECTOR_SNAPSHOT_INFO_ML, sizeof(XrMarkerDetectorSnapshotInfoML)},
+
+
+    {XR_TYPE_MARKER_DETECTOR_STATE_ML, sizeof(XrMarkerDetectorStateML)},
+
+
+    {XR_TYPE_MARKER_SPACE_CREATE_INFO_ML, sizeof(XrMarkerSpaceCreateInfoML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_marker_understanding
+
+#ifdef XRTRANSPORT_EXT_XR_ML_localization_map
+
+    {XR_TYPE_LOCALIZATION_MAP_ML, sizeof(XrLocalizationMapML)},
+
+
+    {XR_TYPE_EVENT_DATA_LOCALIZATION_CHANGED_ML, sizeof(XrEventDataLocalizationChangedML)},
+
+
+    {XR_TYPE_MAP_LOCALIZATION_REQUEST_INFO_ML, sizeof(XrMapLocalizationRequestInfoML)},
+
+
+    {XR_TYPE_LOCALIZATION_MAP_IMPORT_INFO_ML, sizeof(XrLocalizationMapImportInfoML)},
+
+
+    {XR_TYPE_LOCALIZATION_ENABLE_EVENTS_INFO_ML, sizeof(XrLocalizationEnableEventsInfoML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_localization_map
+
+#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors
+
+    {XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_POSE_ML, sizeof(XrSpatialAnchorsCreateInfoFromPoseML)},
+
+
+    {XR_TYPE_CREATE_SPATIAL_ANCHORS_COMPLETION_ML, sizeof(XrCreateSpatialAnchorsCompletionML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_STATE_ML, sizeof(XrSpatialAnchorStateML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors
+
+#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
+
+    {XR_TYPE_SPATIAL_ANCHORS_CREATE_STORAGE_INFO_ML, sizeof(XrSpatialAnchorsCreateStorageInfoML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_QUERY_INFO_RADIUS_ML, sizeof(XrSpatialAnchorsQueryInfoRadiusML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_QUERY_COMPLETION_ML, sizeof(XrSpatialAnchorsQueryCompletionML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_UUIDS_ML, sizeof(XrSpatialAnchorsCreateInfoFromUuidsML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_PUBLISH_INFO_ML, sizeof(XrSpatialAnchorsPublishInfoML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_PUBLISH_COMPLETION_ML, sizeof(XrSpatialAnchorsPublishCompletionML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_DELETE_INFO_ML, sizeof(XrSpatialAnchorsDeleteInfoML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_DELETE_COMPLETION_ML, sizeof(XrSpatialAnchorsDeleteCompletionML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_INFO_ML, sizeof(XrSpatialAnchorsUpdateExpirationInfoML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_COMPLETION_ML, sizeof(XrSpatialAnchorsUpdateExpirationCompletionML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_PUBLISH_COMPLETION_DETAILS_ML, sizeof(XrSpatialAnchorsPublishCompletionDetailsML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_DELETE_COMPLETION_DETAILS_ML, sizeof(XrSpatialAnchorsDeleteCompletionDetailsML)},
+
+
+    {XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_COMPLETION_DETAILS_ML, sizeof(XrSpatialAnchorsUpdateExpirationCompletionDetailsML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
+
+    {XR_TYPE_SPATIAL_ANCHOR_PERSISTENCE_INFO_MSFT, sizeof(XrSpatialAnchorPersistenceInfoMSFT)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_FROM_PERSISTED_ANCHOR_CREATE_INFO_MSFT, sizeof(XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
+
+#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_marker
+
+    {XR_TYPE_SCENE_MARKERS_MSFT, sizeof(XrSceneMarkersMSFT)},
+
+
+    {XR_TYPE_SCENE_MARKER_TYPE_FILTER_MSFT, sizeof(XrSceneMarkerTypeFilterMSFT)},
+
+
+    {XR_TYPE_SCENE_MARKER_QR_CODES_MSFT, sizeof(XrSceneMarkerQRCodesMSFT)},
+
+#endif // XRTRANSPORT_EXT_XR_MSFT_scene_marker
+
+#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_query
+
+    {XR_TYPE_SPACE_QUERY_INFO_FB, sizeof(XrSpaceQueryInfoFB)},
+
+
+    {XR_TYPE_SPACE_QUERY_RESULTS_FB, sizeof(XrSpaceQueryResultsFB)},
+
+
+    {XR_TYPE_SPACE_STORAGE_LOCATION_FILTER_INFO_FB, sizeof(XrSpaceStorageLocationFilterInfoFB)},
+
+
+    {XR_TYPE_SPACE_COMPONENT_FILTER_INFO_FB, sizeof(XrSpaceComponentFilterInfoFB)},
+
+
+    {XR_TYPE_SPACE_UUID_FILTER_INFO_FB, sizeof(XrSpaceUuidFilterInfoFB)},
+
+
+    {XR_TYPE_EVENT_DATA_SPACE_QUERY_RESULTS_AVAILABLE_FB, sizeof(XrEventDataSpaceQueryResultsAvailableFB)},
+
+
+    {XR_TYPE_EVENT_DATA_SPACE_QUERY_COMPLETE_FB, sizeof(XrEventDataSpaceQueryCompleteFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_query
+
+#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_storage
+
+    {XR_TYPE_SPACE_SAVE_INFO_FB, sizeof(XrSpaceSaveInfoFB)},
+
+
+    {XR_TYPE_SPACE_ERASE_INFO_FB, sizeof(XrSpaceEraseInfoFB)},
+
+
+    {XR_TYPE_EVENT_DATA_SPACE_SAVE_COMPLETE_FB, sizeof(XrEventDataSpaceSaveCompleteFB)},
+
+
+    {XR_TYPE_EVENT_DATA_SPACE_ERASE_COMPLETE_FB, sizeof(XrEventDataSpaceEraseCompleteFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_storage
+
+#ifdef XRTRANSPORT_EXT_XR_FB_foveation_vulkan
+
+    {XR_TYPE_SWAPCHAIN_IMAGE_FOVEATION_VULKAN_FB, sizeof(XrSwapchainImageFoveationVulkanFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_foveation_vulkan
+
+#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_android_surface
+
+    {XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB, sizeof(XrSwapchainStateAndroidSurfaceDimensionsFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_android_surface
+
+#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_opengl_es
+
+    {XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB, sizeof(XrSwapchainStateSamplerOpenGLESFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_opengl_es
+
+#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_vulkan
+
+    {XR_TYPE_SWAPCHAIN_STATE_SAMPLER_VULKAN_FB, sizeof(XrSwapchainStateSamplerVulkanFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_vulkan
+
+#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_sharing
+
+    {XR_TYPE_SPACE_SHARE_INFO_FB, sizeof(XrSpaceShareInfoFB)},
+
+
+    {XR_TYPE_EVENT_DATA_SPACE_SHARE_COMPLETE_FB, sizeof(XrEventDataSpaceShareCompleteFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_sharing
+
+#ifdef XRTRANSPORT_EXT_XR_FB_space_warp
+
+    {XR_TYPE_COMPOSITION_LAYER_SPACE_WARP_INFO_FB, sizeof(XrCompositionLayerSpaceWarpInfoFB)},
+
+
+    {XR_TYPE_SYSTEM_SPACE_WARP_PROPERTIES_FB, sizeof(XrSystemSpaceWarpPropertiesFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_space_warp
+
+#ifdef XRTRANSPORT_EXT_XR_FB_haptic_amplitude_envelope
+
+    {XR_TYPE_HAPTIC_AMPLITUDE_ENVELOPE_VIBRATION_FB, sizeof(XrHapticAmplitudeEnvelopeVibrationFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_haptic_amplitude_envelope
+
+#ifdef XRTRANSPORT_EXT_XR_FB_scene
+
+    {XR_TYPE_SEMANTIC_LABELS_FB, sizeof(XrSemanticLabelsFB)},
+
+
+    {XR_TYPE_ROOM_LAYOUT_FB, sizeof(XrRoomLayoutFB)},
+
+
+    {XR_TYPE_BOUNDARY_2D_FB, sizeof(XrBoundary2DFB)},
+
+
+    {XR_TYPE_SEMANTIC_LABELS_SUPPORT_INFO_FB, sizeof(XrSemanticLabelsSupportInfoFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_scene
+
+#ifdef XRTRANSPORT_EXT_XR_ALMALENCE_digital_lens_control
+
+    {XR_TYPE_DIGITAL_LENS_CONTROL_ALMALENCE, sizeof(XrDigitalLensControlALMALENCE)},
+
+#endif // XRTRANSPORT_EXT_XR_ALMALENCE_digital_lens_control
+
+#ifdef XRTRANSPORT_EXT_XR_FB_scene_capture
+
+    {XR_TYPE_EVENT_DATA_SCENE_CAPTURE_COMPLETE_FB, sizeof(XrEventDataSceneCaptureCompleteFB)},
+
+
+    {XR_TYPE_SCENE_CAPTURE_REQUEST_INFO_FB, sizeof(XrSceneCaptureRequestInfoFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_scene_capture
+
+#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_container
+
+    {XR_TYPE_SPACE_CONTAINER_FB, sizeof(XrSpaceContainerFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_container
+
+#ifdef XRTRANSPORT_EXT_XR_META_foveation_eye_tracked
+
+    {XR_TYPE_FOVEATION_EYE_TRACKED_PROFILE_CREATE_INFO_META, sizeof(XrFoveationEyeTrackedProfileCreateInfoMETA)},
+
+
+    {XR_TYPE_FOVEATION_EYE_TRACKED_STATE_META, sizeof(XrFoveationEyeTrackedStateMETA)},
+
+
+    {XR_TYPE_SYSTEM_FOVEATION_EYE_TRACKED_PROPERTIES_META, sizeof(XrSystemFoveationEyeTrackedPropertiesMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_foveation_eye_tracked
+
+#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking
+
+    {XR_TYPE_FACE_EXPRESSION_INFO_FB, sizeof(XrFaceExpressionInfoFB)},
+
+
+    {XR_TYPE_SYSTEM_FACE_TRACKING_PROPERTIES_FB, sizeof(XrSystemFaceTrackingPropertiesFB)},
+
+
+    {XR_TYPE_FACE_TRACKER_CREATE_INFO_FB, sizeof(XrFaceTrackerCreateInfoFB)},
+
+
+    {XR_TYPE_FACE_EXPRESSION_WEIGHTS_FB, sizeof(XrFaceExpressionWeightsFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_face_tracking
+
+#ifdef XRTRANSPORT_EXT_XR_FB_eye_tracking_social
+
+    {XR_TYPE_EYE_TRACKER_CREATE_INFO_FB, sizeof(XrEyeTrackerCreateInfoFB)},
+
+
+    {XR_TYPE_EYE_GAZES_INFO_FB, sizeof(XrEyeGazesInfoFB)},
+
+
+    {XR_TYPE_EYE_GAZES_FB, sizeof(XrEyeGazesFB)},
+
+
+    {XR_TYPE_SYSTEM_EYE_TRACKING_PROPERTIES_FB, sizeof(XrSystemEyeTrackingPropertiesFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_eye_tracking_social
+
+#ifdef XRTRANSPORT_EXT_XR_FB_passthrough_keyboard_hands
+
+    {XR_TYPE_PASSTHROUGH_KEYBOARD_HANDS_INTENSITY_FB, sizeof(XrPassthroughKeyboardHandsIntensityFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_passthrough_keyboard_hands
+
+#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_settings
+
+    {XR_TYPE_COMPOSITION_LAYER_SETTINGS_FB, sizeof(XrCompositionLayerSettingsFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_settings
+
+#ifdef XRTRANSPORT_EXT_XR_FB_haptic_pcm
+
+    {XR_TYPE_HAPTIC_PCM_VIBRATION_FB, sizeof(XrHapticPcmVibrationFB)},
+
+
+    {XR_TYPE_DEVICE_PCM_SAMPLE_RATE_STATE_FB, sizeof(XrDevicePcmSampleRateStateFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_haptic_pcm
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_frame_synthesis
+
+    {XR_TYPE_FRAME_SYNTHESIS_INFO_EXT, sizeof(XrFrameSynthesisInfoEXT)},
+
+
+    {XR_TYPE_FRAME_SYNTHESIS_CONFIG_VIEW_EXT, sizeof(XrFrameSynthesisConfigViewEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_frame_synthesis
+
+#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_depth_test
+
+    {XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_FB, sizeof(XrCompositionLayerDepthTestFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_depth_test
+
+#ifdef XRTRANSPORT_EXT_XR_META_local_dimming
+
+    {XR_TYPE_LOCAL_DIMMING_FRAME_END_INFO_META, sizeof(XrLocalDimmingFrameEndInfoMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_local_dimming
+
+#ifdef XRTRANSPORT_EXT_XR_META_passthrough_preferences
+
+    {XR_TYPE_PASSTHROUGH_PREFERENCES_META, sizeof(XrPassthroughPreferencesMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_passthrough_preferences
+
+#ifdef XRTRANSPORT_EXT_XR_META_virtual_keyboard
+
+    {XR_TYPE_SYSTEM_VIRTUAL_KEYBOARD_PROPERTIES_META, sizeof(XrSystemVirtualKeyboardPropertiesMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_CREATE_INFO_META, sizeof(XrVirtualKeyboardCreateInfoMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_SPACE_CREATE_INFO_META, sizeof(XrVirtualKeyboardSpaceCreateInfoMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_LOCATION_INFO_META, sizeof(XrVirtualKeyboardLocationInfoMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_MODEL_VISIBILITY_SET_INFO_META, sizeof(XrVirtualKeyboardModelVisibilitySetInfoMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_ANIMATION_STATE_META, sizeof(XrVirtualKeyboardAnimationStateMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_MODEL_ANIMATION_STATES_META, sizeof(XrVirtualKeyboardModelAnimationStatesMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_TEXTURE_DATA_META, sizeof(XrVirtualKeyboardTextureDataMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_INPUT_INFO_META, sizeof(XrVirtualKeyboardInputInfoMETA)},
+
+
+    {XR_TYPE_VIRTUAL_KEYBOARD_TEXT_CONTEXT_CHANGE_INFO_META, sizeof(XrVirtualKeyboardTextContextChangeInfoMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_COMMIT_TEXT_META, sizeof(XrEventDataVirtualKeyboardCommitTextMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_BACKSPACE_META, sizeof(XrEventDataVirtualKeyboardBackspaceMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_ENTER_META, sizeof(XrEventDataVirtualKeyboardEnterMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_SHOWN_META, sizeof(XrEventDataVirtualKeyboardShownMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_HIDDEN_META, sizeof(XrEventDataVirtualKeyboardHiddenMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_virtual_keyboard
+
+#ifdef XRTRANSPORT_EXT_XR_OCULUS_external_camera
+
+    {XR_TYPE_EXTERNAL_CAMERA_OCULUS, sizeof(XrExternalCameraOCULUS)},
+
+#endif // XRTRANSPORT_EXT_XR_OCULUS_external_camera
+
+#ifdef XRTRANSPORT_EXT_XR_META_vulkan_swapchain_create_info
+
+    {XR_TYPE_VULKAN_SWAPCHAIN_CREATE_INFO_META, sizeof(XrVulkanSwapchainCreateInfoMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_vulkan_swapchain_create_info
+
+#ifdef XRTRANSPORT_EXT_XR_META_performance_metrics
+
+    {XR_TYPE_PERFORMANCE_METRICS_STATE_META, sizeof(XrPerformanceMetricsStateMETA)},
+
+
+    {XR_TYPE_PERFORMANCE_METRICS_COUNTER_META, sizeof(XrPerformanceMetricsCounterMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_performance_metrics
+
+#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_storage_batch
+
+    {XR_TYPE_SPACE_LIST_SAVE_INFO_FB, sizeof(XrSpaceListSaveInfoFB)},
+
+
+    {XR_TYPE_EVENT_DATA_SPACE_LIST_SAVE_COMPLETE_FB, sizeof(XrEventDataSpaceListSaveCompleteFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_storage_batch
+
+#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_user
+
+    {XR_TYPE_SPACE_USER_CREATE_INFO_FB, sizeof(XrSpaceUserCreateInfoFB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_user
+
+#ifdef XRTRANSPORT_EXT_XR_META_headset_id
+
+    {XR_TYPE_SYSTEM_HEADSET_ID_PROPERTIES_META, sizeof(XrSystemHeadsetIdPropertiesMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_headset_id
+
+#ifdef XRTRANSPORT_EXT_XR_META_recommended_layer_resolution
+
+    {XR_TYPE_RECOMMENDED_LAYER_RESOLUTION_META, sizeof(XrRecommendedLayerResolutionMETA)},
+
+
+    {XR_TYPE_RECOMMENDED_LAYER_RESOLUTION_GET_INFO_META, sizeof(XrRecommendedLayerResolutionGetInfoMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_recommended_layer_resolution
+
+#ifdef XRTRANSPORT_EXT_XR_META_passthrough_color_lut
+
+    {XR_TYPE_SYSTEM_PASSTHROUGH_COLOR_LUT_PROPERTIES_META, sizeof(XrSystemPassthroughColorLutPropertiesMETA)},
+
+
+    {XR_TYPE_PASSTHROUGH_COLOR_LUT_CREATE_INFO_META, sizeof(XrPassthroughColorLutCreateInfoMETA)},
+
+
+    {XR_TYPE_PASSTHROUGH_COLOR_LUT_UPDATE_INFO_META, sizeof(XrPassthroughColorLutUpdateInfoMETA)},
+
+
+    {XR_TYPE_PASSTHROUGH_COLOR_MAP_LUT_META, sizeof(XrPassthroughColorMapLutMETA)},
+
+
+    {XR_TYPE_PASSTHROUGH_COLOR_MAP_INTERPOLATED_LUT_META, sizeof(XrPassthroughColorMapInterpolatedLutMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_passthrough_color_lut
+
+#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_mesh
+
+    {XR_TYPE_SPACE_TRIANGLE_MESH_GET_INFO_META, sizeof(XrSpaceTriangleMeshGetInfoMETA)},
+
+
+    {XR_TYPE_SPACE_TRIANGLE_MESH_META, sizeof(XrSpaceTriangleMeshMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_mesh
+
+#ifdef XRTRANSPORT_EXT_XR_META_body_tracking_full_body
+
+    {XR_TYPE_SYSTEM_PROPERTIES_BODY_TRACKING_FULL_BODY_META, sizeof(XrSystemPropertiesBodyTrackingFullBodyMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_body_tracking_full_body
+
+#ifdef XRTRANSPORT_EXT_XR_META_passthrough_layer_resumed_event
+
+    {XR_TYPE_EVENT_DATA_PASSTHROUGH_LAYER_RESUMED_META, sizeof(XrEventDataPassthroughLayerResumedMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_passthrough_layer_resumed_event
+
+#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking2
+
+    {XR_TYPE_SYSTEM_FACE_TRACKING_PROPERTIES2_FB, sizeof(XrSystemFaceTrackingProperties2FB)},
+
+
+    {XR_TYPE_FACE_TRACKER_CREATE_INFO2_FB, sizeof(XrFaceTrackerCreateInfo2FB)},
+
+
+    {XR_TYPE_FACE_EXPRESSION_INFO2_FB, sizeof(XrFaceExpressionInfo2FB)},
+
+
+    {XR_TYPE_FACE_EXPRESSION_WEIGHTS2_FB, sizeof(XrFaceExpressionWeights2FB)},
+
+#endif // XRTRANSPORT_EXT_XR_FB_face_tracking2
+
+#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
+
+    {XR_TYPE_SYSTEM_SPATIAL_ENTITY_SHARING_PROPERTIES_META, sizeof(XrSystemSpatialEntitySharingPropertiesMETA)},
+
+
+    {XR_TYPE_SHARE_SPACES_INFO_META, sizeof(XrShareSpacesInfoMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_SHARE_SPACES_COMPLETE_META, sizeof(XrEventDataShareSpacesCompleteMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
+
+#ifdef XRTRANSPORT_EXT_XR_META_environment_depth
+
+    {XR_TYPE_ENVIRONMENT_DEPTH_PROVIDER_CREATE_INFO_META, sizeof(XrEnvironmentDepthProviderCreateInfoMETA)},
+
+
+    {XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_CREATE_INFO_META, sizeof(XrEnvironmentDepthSwapchainCreateInfoMETA)},
+
+
+    {XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_STATE_META, sizeof(XrEnvironmentDepthSwapchainStateMETA)},
+
+
+    {XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_ACQUIRE_INFO_META, sizeof(XrEnvironmentDepthImageAcquireInfoMETA)},
+
+
+    {XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_VIEW_META, sizeof(XrEnvironmentDepthImageViewMETA)},
+
+
+    {XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_META, sizeof(XrEnvironmentDepthImageMETA)},
+
+
+    {XR_TYPE_ENVIRONMENT_DEPTH_HAND_REMOVAL_SET_INFO_META, sizeof(XrEnvironmentDepthHandRemovalSetInfoMETA)},
+
+
+    {XR_TYPE_SYSTEM_ENVIRONMENT_DEPTH_PROPERTIES_META, sizeof(XrSystemEnvironmentDepthPropertiesMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_environment_depth
+
+#ifdef XRTRANSPORT_EXT_XR_HTC_passthrough
+
+    {XR_TYPE_PASSTHROUGH_CREATE_INFO_HTC, sizeof(XrPassthroughCreateInfoHTC)},
+
+
+    {XR_TYPE_PASSTHROUGH_COLOR_HTC, sizeof(XrPassthroughColorHTC)},
+
+
+    {XR_TYPE_PASSTHROUGH_MESH_TRANSFORM_INFO_HTC, sizeof(XrPassthroughMeshTransformInfoHTC)},
+
+
+    {XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_HTC, sizeof(XrCompositionLayerPassthroughHTC)},
+
+#endif // XRTRANSPORT_EXT_XR_HTC_passthrough
+
+#ifdef XRTRANSPORT_EXT_XR_HTC_foveation
+
+    {XR_TYPE_FOVEATION_APPLY_INFO_HTC, sizeof(XrFoveationApplyInfoHTC)},
+
+
+    {XR_TYPE_FOVEATION_DYNAMIC_MODE_INFO_HTC, sizeof(XrFoveationDynamicModeInfoHTC)},
+
+
+    {XR_TYPE_FOVEATION_CUSTOM_MODE_INFO_HTC, sizeof(XrFoveationCustomModeInfoHTC)},
+
+#endif // XRTRANSPORT_EXT_XR_HTC_foveation
+
+#ifdef XRTRANSPORT_EXT_XR_HTC_anchor
+
+    {XR_TYPE_SYSTEM_ANCHOR_PROPERTIES_HTC, sizeof(XrSystemAnchorPropertiesHTC)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_HTC, sizeof(XrSpatialAnchorCreateInfoHTC)},
+
+#endif // XRTRANSPORT_EXT_XR_HTC_anchor
+
+#ifdef XRTRANSPORT_EXT_XR_HTC_body_tracking
+
+    {XR_TYPE_SYSTEM_BODY_TRACKING_PROPERTIES_HTC, sizeof(XrSystemBodyTrackingPropertiesHTC)},
+
+
+    {XR_TYPE_BODY_TRACKER_CREATE_INFO_HTC, sizeof(XrBodyTrackerCreateInfoHTC)},
+
+
+    {XR_TYPE_BODY_JOINTS_LOCATE_INFO_HTC, sizeof(XrBodyJointsLocateInfoHTC)},
+
+
+    {XR_TYPE_BODY_JOINT_LOCATIONS_HTC, sizeof(XrBodyJointLocationsHTC)},
+
+
+    {XR_TYPE_BODY_SKELETON_HTC, sizeof(XrBodySkeletonHTC)},
+
+#endif // XRTRANSPORT_EXT_XR_HTC_body_tracking
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
+
+    {XR_TYPE_ACTIVE_ACTION_SET_PRIORITIES_EXT, sizeof(XrActiveActionSetPrioritiesEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
+
+#ifdef XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
+
+    {XR_TYPE_SYSTEM_FORCE_FEEDBACK_CURL_PROPERTIES_MNDX, sizeof(XrSystemForceFeedbackCurlPropertiesMNDX)},
+
+
+    {XR_TYPE_FORCE_FEEDBACK_CURL_APPLY_LOCATIONS_MNDX, sizeof(XrForceFeedbackCurlApplyLocationsMNDX)},
+
+#endif // XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
+
+#ifdef XRTRANSPORT_EXT_XR_BD_body_tracking
+
+    {XR_TYPE_BODY_TRACKER_CREATE_INFO_BD, sizeof(XrBodyTrackerCreateInfoBD)},
+
+
+    {XR_TYPE_BODY_JOINTS_LOCATE_INFO_BD, sizeof(XrBodyJointsLocateInfoBD)},
+
+
+    {XR_TYPE_BODY_JOINT_LOCATIONS_BD, sizeof(XrBodyJointLocationsBD)},
+
+
+    {XR_TYPE_SYSTEM_BODY_TRACKING_PROPERTIES_BD, sizeof(XrSystemBodyTrackingPropertiesBD)},
+
+#endif // XRTRANSPORT_EXT_XR_BD_body_tracking
+
+#ifdef XRTRANSPORT_EXT_XR_BD_spatial_sensing
+
+    {XR_TYPE_SYSTEM_SPATIAL_SENSING_PROPERTIES_BD, sizeof(XrSystemSpatialSensingPropertiesBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_GET_INFO_BD, sizeof(XrSpatialEntityComponentGetInfoBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_LOCATION_GET_INFO_BD, sizeof(XrSpatialEntityLocationGetInfoBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_LOCATION_BD, sizeof(XrSpatialEntityComponentDataLocationBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_SEMANTIC_BD, sizeof(XrSpatialEntityComponentDataSemanticBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_2D_BD, sizeof(XrSpatialEntityComponentDataBoundingBox2DBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_POLYGON_BD, sizeof(XrSpatialEntityComponentDataPolygonBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_3D_BD, sizeof(XrSpatialEntityComponentDataBoundingBox3DBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_TRIANGLE_MESH_BD, sizeof(XrSpatialEntityComponentDataTriangleMeshBD)},
+
+
+    {XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_BD, sizeof(XrSenseDataProviderCreateInfoBD)},
+
+
+    {XR_TYPE_SENSE_DATA_PROVIDER_START_INFO_BD, sizeof(XrSenseDataProviderStartInfoBD)},
+
+
+    {XR_TYPE_EVENT_DATA_SENSE_DATA_PROVIDER_STATE_CHANGED_BD, sizeof(XrEventDataSenseDataProviderStateChangedBD)},
+
+
+    {XR_TYPE_EVENT_DATA_SENSE_DATA_UPDATED_BD, sizeof(XrEventDataSenseDataUpdatedBD)},
+
+
+    {XR_TYPE_SENSE_DATA_QUERY_INFO_BD, sizeof(XrSenseDataQueryInfoBD)},
+
+
+    {XR_TYPE_SENSE_DATA_QUERY_COMPLETION_BD, sizeof(XrSenseDataQueryCompletionBD)},
+
+
+    {XR_TYPE_SENSE_DATA_FILTER_UUID_BD, sizeof(XrSenseDataFilterUuidBD)},
+
+
+    {XR_TYPE_SENSE_DATA_FILTER_SEMANTIC_BD, sizeof(XrSenseDataFilterSemanticBD)},
+
+
+    {XR_TYPE_QUERIED_SENSE_DATA_GET_INFO_BD, sizeof(XrQueriedSenseDataGetInfoBD)},
+
+
+    {XR_TYPE_QUERIED_SENSE_DATA_BD, sizeof(XrQueriedSenseDataBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_STATE_BD, sizeof(XrSpatialEntityStateBD)},
+
+
+    {XR_TYPE_SPATIAL_ENTITY_ANCHOR_CREATE_INFO_BD, sizeof(XrSpatialEntityAnchorCreateInfoBD)},
+
+
+    {XR_TYPE_ANCHOR_SPACE_CREATE_INFO_BD, sizeof(XrAnchorSpaceCreateInfoBD)},
+
+#endif // XRTRANSPORT_EXT_XR_BD_spatial_sensing
+
+#ifdef XRTRANSPORT_EXT_XR_BD_spatial_anchor
+
+    {XR_TYPE_SYSTEM_SPATIAL_ANCHOR_PROPERTIES_BD, sizeof(XrSystemSpatialAnchorPropertiesBD)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_BD, sizeof(XrSpatialAnchorCreateInfoBD)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_CREATE_COMPLETION_BD, sizeof(XrSpatialAnchorCreateCompletionBD)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_PERSIST_INFO_BD, sizeof(XrSpatialAnchorPersistInfoBD)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_UNPERSIST_INFO_BD, sizeof(XrSpatialAnchorUnpersistInfoBD)},
+
+#endif // XRTRANSPORT_EXT_XR_BD_spatial_anchor
+
+#ifdef XRTRANSPORT_EXT_XR_BD_spatial_anchor_sharing
+
+    {XR_TYPE_SYSTEM_SPATIAL_ANCHOR_SHARING_PROPERTIES_BD, sizeof(XrSystemSpatialAnchorSharingPropertiesBD)},
+
+
+    {XR_TYPE_SPATIAL_ANCHOR_SHARE_INFO_BD, sizeof(XrSpatialAnchorShareInfoBD)},
+
+
+    {XR_TYPE_SHARED_SPATIAL_ANCHOR_DOWNLOAD_INFO_BD, sizeof(XrSharedSpatialAnchorDownloadInfoBD)},
+
+#endif // XRTRANSPORT_EXT_XR_BD_spatial_anchor_sharing
+
+#ifdef XRTRANSPORT_EXT_XR_BD_spatial_scene
+
+    {XR_TYPE_SYSTEM_SPATIAL_SCENE_PROPERTIES_BD, sizeof(XrSystemSpatialScenePropertiesBD)},
+
+
+    {XR_TYPE_SCENE_CAPTURE_INFO_BD, sizeof(XrSceneCaptureInfoBD)},
+
+#endif // XRTRANSPORT_EXT_XR_BD_spatial_scene
+
+#ifdef XRTRANSPORT_EXT_XR_BD_spatial_mesh
+
+    {XR_TYPE_SYSTEM_SPATIAL_MESH_PROPERTIES_BD, sizeof(XrSystemSpatialMeshPropertiesBD)},
+
+
+    {XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_SPATIAL_MESH_BD, sizeof(XrSenseDataProviderCreateInfoSpatialMeshBD)},
+
+#endif // XRTRANSPORT_EXT_XR_BD_spatial_mesh
+
+#ifdef XRTRANSPORT_EXT_XR_BD_future_progress
+
+    {XR_TYPE_FUTURE_POLL_RESULT_PROGRESS_BD, sizeof(XrFuturePollResultProgressBD)},
+
+#endif // XRTRANSPORT_EXT_XR_BD_future_progress
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking_data_source
+
+    {XR_TYPE_HAND_TRACKING_DATA_SOURCE_INFO_EXT, sizeof(XrHandTrackingDataSourceInfoEXT)},
+
+
+    {XR_TYPE_HAND_TRACKING_DATA_SOURCE_STATE_EXT, sizeof(XrHandTrackingDataSourceStateEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking_data_source
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_plane_detection
+
+    {XR_TYPE_PLANE_DETECTOR_CREATE_INFO_EXT, sizeof(XrPlaneDetectorCreateInfoEXT)},
+
+
+    {XR_TYPE_PLANE_DETECTOR_BEGIN_INFO_EXT, sizeof(XrPlaneDetectorBeginInfoEXT)},
+
+
+    {XR_TYPE_PLANE_DETECTOR_GET_INFO_EXT, sizeof(XrPlaneDetectorGetInfoEXT)},
+
+
+    {XR_TYPE_PLANE_DETECTOR_LOCATIONS_EXT, sizeof(XrPlaneDetectorLocationsEXT)},
+
+
+    {XR_TYPE_PLANE_DETECTOR_LOCATION_EXT, sizeof(XrPlaneDetectorLocationEXT)},
+
+
+    {XR_TYPE_PLANE_DETECTOR_POLYGON_BUFFER_EXT, sizeof(XrPlaneDetectorPolygonBufferEXT)},
+
+
+    {XR_TYPE_SYSTEM_PLANE_DETECTION_PROPERTIES_EXT, sizeof(XrSystemPlaneDetectionPropertiesEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_plane_detection
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_future
+
+    {XR_TYPE_FUTURE_CANCEL_INFO_EXT, sizeof(XrFutureCancelInfoEXT)},
+
+
+    {XR_TYPE_FUTURE_POLL_INFO_EXT, sizeof(XrFuturePollInfoEXT)},
+
+
+    {XR_TYPE_FUTURE_COMPLETION_EXT, sizeof(XrFutureCompletionEXT)},
+
+
+    {XR_TYPE_FUTURE_POLL_RESULT_EXT, sizeof(XrFuturePollResultEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_future
+
+#ifdef XRTRANSPORT_EXT_XR_EXT_user_presence
+
+    {XR_TYPE_EVENT_DATA_USER_PRESENCE_CHANGED_EXT, sizeof(XrEventDataUserPresenceChangedEXT)},
+
+
+    {XR_TYPE_SYSTEM_USER_PRESENCE_PROPERTIES_EXT, sizeof(XrSystemUserPresencePropertiesEXT)},
+
+#endif // XRTRANSPORT_EXT_XR_EXT_user_presence
+
+
+    {XR_TYPE_SPACES_LOCATE_INFO, sizeof(XrSpacesLocateInfo)},
+
+
+    {XR_TYPE_SPACE_LOCATIONS, sizeof(XrSpaceLocations)},
+
+
+    {XR_TYPE_SPACE_VELOCITIES, sizeof(XrSpaceVelocities)},
+
+
+#ifdef XRTRANSPORT_EXT_XR_ML_user_calibration
+
+    {XR_TYPE_EVENT_DATA_HEADSET_FIT_CHANGED_ML, sizeof(XrEventDataHeadsetFitChangedML)},
+
+
+    {XR_TYPE_EVENT_DATA_EYE_CALIBRATION_CHANGED_ML, sizeof(XrEventDataEyeCalibrationChangedML)},
+
+
+    {XR_TYPE_USER_CALIBRATION_ENABLE_EVENTS_INFO_ML, sizeof(XrUserCalibrationEnableEventsInfoML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_user_calibration
+
+#ifdef XRTRANSPORT_EXT_XR_ML_system_notifications
+
+    {XR_TYPE_SYSTEM_NOTIFICATIONS_SET_INFO_ML, sizeof(XrSystemNotificationsSetInfoML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_system_notifications
+
+#ifdef XRTRANSPORT_EXT_XR_ML_world_mesh_detection
+
+    {XR_TYPE_WORLD_MESH_DETECTOR_CREATE_INFO_ML, sizeof(XrWorldMeshDetectorCreateInfoML)},
+
+
+    {XR_TYPE_WORLD_MESH_STATE_REQUEST_INFO_ML, sizeof(XrWorldMeshStateRequestInfoML)},
+
+
+    {XR_TYPE_WORLD_MESH_BLOCK_STATE_ML, sizeof(XrWorldMeshBlockStateML)},
+
+
+    {XR_TYPE_WORLD_MESH_STATE_REQUEST_COMPLETION_ML, sizeof(XrWorldMeshStateRequestCompletionML)},
+
+
+    {XR_TYPE_WORLD_MESH_BUFFER_RECOMMENDED_SIZE_INFO_ML, sizeof(XrWorldMeshBufferRecommendedSizeInfoML)},
+
+
+    {XR_TYPE_WORLD_MESH_BUFFER_SIZE_ML, sizeof(XrWorldMeshBufferSizeML)},
+
+
+    {XR_TYPE_WORLD_MESH_BUFFER_ML, sizeof(XrWorldMeshBufferML)},
+
+
+    {XR_TYPE_WORLD_MESH_BLOCK_REQUEST_ML, sizeof(XrWorldMeshBlockRequestML)},
+
+
+    {XR_TYPE_WORLD_MESH_GET_INFO_ML, sizeof(XrWorldMeshGetInfoML)},
+
+
+    {XR_TYPE_WORLD_MESH_BLOCK_ML, sizeof(XrWorldMeshBlockML)},
+
+
+    {XR_TYPE_WORLD_MESH_REQUEST_COMPLETION_ML, sizeof(XrWorldMeshRequestCompletionML)},
+
+
+    {XR_TYPE_WORLD_MESH_REQUEST_COMPLETION_INFO_ML, sizeof(XrWorldMeshRequestCompletionInfoML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_world_mesh_detection
+
+#ifdef XRTRANSPORT_EXT_XR_ML_facial_expression
+
+    {XR_TYPE_SYSTEM_FACIAL_EXPRESSION_PROPERTIES_ML, sizeof(XrSystemFacialExpressionPropertiesML)},
+
+
+    {XR_TYPE_FACIAL_EXPRESSION_CLIENT_CREATE_INFO_ML, sizeof(XrFacialExpressionClientCreateInfoML)},
+
+
+    {XR_TYPE_FACIAL_EXPRESSION_BLEND_SHAPE_GET_INFO_ML, sizeof(XrFacialExpressionBlendShapeGetInfoML)},
+
+
+    {XR_TYPE_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_ML, sizeof(XrFacialExpressionBlendShapePropertiesML)},
+
+#endif // XRTRANSPORT_EXT_XR_ML_facial_expression
+
+#ifdef XRTRANSPORT_EXT_XR_META_simultaneous_hands_and_controllers
+
+    {XR_TYPE_SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META, sizeof(XrSystemSimultaneousHandsAndControllersPropertiesMETA)},
+
+
+    {XR_TYPE_SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_RESUME_INFO_META, sizeof(XrSimultaneousHandsAndControllersTrackingResumeInfoMETA)},
+
+
+    {XR_TYPE_SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_PAUSE_INFO_META, sizeof(XrSimultaneousHandsAndControllersTrackingPauseInfoMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_simultaneous_hands_and_controllers
+
+#ifdef XRTRANSPORT_EXT_XR_META_colocation_discovery
+
+    {XR_TYPE_COLOCATION_DISCOVERY_START_INFO_META, sizeof(XrColocationDiscoveryStartInfoMETA)},
+
+
+    {XR_TYPE_COLOCATION_DISCOVERY_STOP_INFO_META, sizeof(XrColocationDiscoveryStopInfoMETA)},
+
+
+    {XR_TYPE_COLOCATION_ADVERTISEMENT_START_INFO_META, sizeof(XrColocationAdvertisementStartInfoMETA)},
+
+
+    {XR_TYPE_COLOCATION_ADVERTISEMENT_STOP_INFO_META, sizeof(XrColocationAdvertisementStopInfoMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_START_COLOCATION_ADVERTISEMENT_COMPLETE_META, sizeof(XrEventDataStartColocationAdvertisementCompleteMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_STOP_COLOCATION_ADVERTISEMENT_COMPLETE_META, sizeof(XrEventDataStopColocationAdvertisementCompleteMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_COLOCATION_ADVERTISEMENT_COMPLETE_META, sizeof(XrEventDataColocationAdvertisementCompleteMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_START_COLOCATION_DISCOVERY_COMPLETE_META, sizeof(XrEventDataStartColocationDiscoveryCompleteMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_COLOCATION_DISCOVERY_RESULT_META, sizeof(XrEventDataColocationDiscoveryResultMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_COLOCATION_DISCOVERY_COMPLETE_META, sizeof(XrEventDataColocationDiscoveryCompleteMETA)},
+
+
+    {XR_TYPE_EVENT_DATA_STOP_COLOCATION_DISCOVERY_COMPLETE_META, sizeof(XrEventDataStopColocationDiscoveryCompleteMETA)},
+
+
+    {XR_TYPE_SYSTEM_COLOCATION_DISCOVERY_PROPERTIES_META, sizeof(XrSystemColocationDiscoveryPropertiesMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_colocation_discovery
+
+#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
+
+    {XR_TYPE_SHARE_SPACES_RECIPIENT_GROUPS_META, sizeof(XrShareSpacesRecipientGroupsMETA)},
+
+
+    {XR_TYPE_SPACE_GROUP_UUID_FILTER_INFO_META, sizeof(XrSpaceGroupUuidFilterInfoMETA)},
+
+
+    {XR_TYPE_SYSTEM_SPATIAL_ENTITY_GROUP_SHARING_PROPERTIES_META, sizeof(XrSystemSpatialEntityGroupSharingPropertiesMETA)},
+
+#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
+
+};
+
+static std::size_t size_lookup(XrStructureType struct_type) {
+    assert(size_lookup_table.find(struct_type) != size_lookup_table.end());
+    return size_lookup_table.at(struct_type);
+}
+
+// Generic deserializers
 template <typename T>
 static void deserialize(T* x, std::istream& in) {
     static_assert(
@@ -15118,27 +11869,81 @@ static void deserialize(T* x, std::istream& in) {
     in.read(reinterpret_cast<char*>(x), sizeof(T));
 }
 
-
-// Generic allocator
-
 template <typename T>
-static void allocate(T** x, std::size_t n) {
-    *x = new T[n]();
+static void deserialize_array(T* x, std::size_t len, std::istream& in) {
+    for (std::size_t i = 0; i < len; i++) {
+        deserialize(&x[i], in);
+    }
 }
 
+// For weird const-correctness reasons, we need a const and non-const version
+template <typename T>
+static void deserialize_ptr(const T** x, std::istream& in) {
+    std::uint32_t len{};
+    deserialize(&len, in);
+    T* data = static_cast<T*>(std::malloc(sizeof(T) * len));
+    if (len) {
+        deserialize_array(data, len, in);
+    }
+    *x = data;
+}
 
-// Generic cleaner
+template <typename T>
+static void deserialize_ptr(T** x, std::istream& in) {
+    std::uint32_t len{};
+    deserialize(&len, in);
+    T* data = static_cast<T*>(std::malloc(sizeof(T) * len));
+    if (len) {
+        deserialize_array(data, len, in);
+    }
+    *x = data;
+}
 
+static void deserialize_xr(const void** p_s, std::istream& in) {
+    XrStructureType type{};
+    deserialize(&type, in);
+    XrBaseOutStructure* s = static_cast<XrBaseOutStructure*>(std::malloc(size_lookup(type)));
+    deserializer_lookup(type)(s, in);
+    *p_s = s;
+}
+
+static void deserialize_xr(void** p_s, std::istream& in) {
+    XrStructureType type{};
+    deserialize(&type, in);
+    XrBaseOutStructure* s = static_cast<XrBaseOutStructure*>(std::malloc(size_lookup(type)));
+    deserializer_lookup(type)(s, in);
+    *p_s = s;
+}
+
+// Generic cleaners
 template <typename T>
 static void cleanup(const T* x) {
     static_assert(
         !std::is_class<T>::value,
         "T must be a supported type"
     );
-    // no-op for base types
+    // no-op for primitive types
     (void)x;
 }
 
+template <typename T>
+static void cleanup_array(const T* x, std::size_t len) {
+    for (std::size_t i = 0; i < len; i++) {
+        cleanup(&x[i]);
+    }
+}
+
+template <typename T>
+static void cleanup_ptr(const T* x, std::size_t len) {
+    cleanup_array(x, len);
+    std::free(const_cast<T*>(x));
+}
+
+static void cleanup_xr(const void* untyped) {
+    const XrBaseOutStructure* x = static_cast<const XrBaseOutStructure*>(untyped);
+    cleaner_lookup(x->type)(x);
+    std::free(const_cast<void*>(untyped));
+}
 
 // Deserializers
 
@@ -15147,275 +11952,386 @@ static void cleanup(const T* x) {
 
 
 static void deserialize(XrVector2f* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->x, in);
-    
+
+        
+
     deserialize(&s->y, in);
+
 }
 
 
 
 
 static void deserialize(XrVector3f* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->x, in);
-    
+
+        
+
     deserialize(&s->y, in);
-    
+
+        
+
     deserialize(&s->z, in);
+
 }
 
 
 
 
 static void deserialize(XrVector4f* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->x, in);
-    
+
+        
+
     deserialize(&s->y, in);
-    
+
+        
+
     deserialize(&s->z, in);
-    
+
+        
+
     deserialize(&s->w, in);
+
 }
 
 
 
 
 static void deserialize(XrColor4f* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->r, in);
-    
+
+        
+
     deserialize(&s->g, in);
-    
+
+        
+
     deserialize(&s->b, in);
-    
+
+        
+
     deserialize(&s->a, in);
+
 }
 
 
 
 
 static void deserialize(XrQuaternionf* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->x, in);
-    
+
+        
+
     deserialize(&s->y, in);
-    
+
+        
+
     deserialize(&s->z, in);
-    
+
+        
+
     deserialize(&s->w, in);
+
 }
 
 
 
 
 static void deserialize(XrPosef* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->orientation, in);
-    
+
+        
+
     deserialize(&s->position, in);
+
 }
 
 
 
 
 static void deserialize(XrOffset2Df* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->x, in);
-    
+
+        
+
     deserialize(&s->y, in);
+
 }
 
 
 
 
 static void deserialize(XrExtent2Df* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->width, in);
-    
+
+        
+
     deserialize(&s->height, in);
+
 }
 
 
 
 
 static void deserialize(XrRect2Df* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->offset, in);
-    
+
+        
+
     deserialize(&s->extent, in);
+
 }
 
 
 
 
 static void deserialize(XrOffset2Di* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->x, in);
-    
+
+        
+
     deserialize(&s->y, in);
+
 }
 
 
 
 
 static void deserialize(XrExtent2Di* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->width, in);
-    
+
+        
+
     deserialize(&s->height, in);
+
 }
 
 
 
 
 static void deserialize(XrRect2Di* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->offset, in);
-    
+
+        
+
     deserialize(&s->extent, in);
+
 }
 
 
 
 
 static void deserialize(XrApplicationInfo* s, std::istream& in) {
-    
-    
         
-    for (int i = 0; i < XR_MAX_APPLICATION_NAME_SIZE; i++) {
-        deserialize(&s->applicationName[i], in);
-    }
-    
+
+    deserialize_array(s->applicationName, XR_MAX_APPLICATION_NAME_SIZE, in);
+
+        
+
     deserialize(&s->applicationVersion, in);
-    
+
         
-    for (int i = 0; i < XR_MAX_ENGINE_NAME_SIZE; i++) {
-        deserialize(&s->engineName[i], in);
-    }
-    
+
+    deserialize_array(s->engineName, XR_MAX_ENGINE_NAME_SIZE, in);
+
+        
+
     deserialize(&s->engineVersion, in);
-    
+
+        
+
     deserialize(&s->apiVersion, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemGraphicsProperties* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->maxSwapchainImageHeight, in);
-    
+
+        
+
     deserialize(&s->maxSwapchainImageWidth, in);
-    
+
+        
+
     deserialize(&s->maxLayerCount, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemTrackingProperties* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->orientationTracking, in);
-    
+
+        
+
     deserialize(&s->positionTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageBaseHeader* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrFovf* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->angleLeft, in);
-    
+
+        
+
     deserialize(&s->angleRight, in);
-    
+
+        
+
     deserialize(&s->angleUp, in);
-    
+
+        
+
     deserialize(&s->angleDown, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainSubImage* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->swapchain, in);
-    
+
+        
+
     deserialize(&s->imageRect, in);
-    
+
+        
+
     deserialize(&s->imageArrayIndex, in);
+
 }
 
 
 
 
 static void deserialize(XrCompositionLayerBaseHeader* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->layerFlags, in);
+
+        
+
+    deserialize(&s->space, in);
+
 }
 
 
 
 
 static void deserialize(XrHapticBaseHeader* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataBaseHeader* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrActionSuggestedBinding* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->action, in);
-    
+
+        
+
     deserialize(&s->binding, in);
+
 }
 
 
 
 
 static void deserialize(XrActiveActionSet* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->actionSet, in);
-    
+
+        
+
     deserialize(&s->subactionPath, in);
+
 }
 
 
@@ -15424,8 +12340,14 @@ static void deserialize(XrActiveActionSet* s, std::istream& in) {
 
 
 static void deserialize(XrBindingModificationBaseHeaderKHR* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -15435,26 +12357,36 @@ static void deserialize(XrBindingModificationBaseHeaderKHR* s, std::istream& in)
 
 
 static void deserialize(XrHandJointLocationEXT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->locationFlags, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->radius, in);
+
 }
 
 
 
 
 static void deserialize(XrHandJointVelocityEXT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->velocityFlags, in);
-    
+
+        
+
     deserialize(&s->linearVelocity, in);
-    
+
+        
+
     deserialize(&s->angularVelocity, in);
+
 }
 
 
@@ -15464,11 +12396,14 @@ static void deserialize(XrHandJointVelocityEXT* s, std::istream& in) {
 
 
 static void deserialize(XrFaceExpressionStatusFB* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->isValid, in);
-    
+
+        
+
     deserialize(&s->isEyeFollowingBlendshapesValid, in);
+
 }
 
 
@@ -15478,24 +12413,32 @@ static void deserialize(XrFaceExpressionStatusFB* s, std::istream& in) {
 
 
 static void deserialize(XrBodySkeletonJointFB* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->joint, in);
-    
+
+        
+
     deserialize(&s->parentJoint, in);
-    
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
 
 
 static void deserialize(XrBodyJointLocationFB* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->locationFlags, in);
-    
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
@@ -15505,13 +12448,18 @@ static void deserialize(XrBodyJointLocationFB* s, std::istream& in) {
 
 
 static void deserialize(XrEyeGazeFB* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->isValid, in);
-    
+
+        
+
     deserialize(&s->gazePose, in);
-    
+
+        
+
     deserialize(&s->gazeConfidence, in);
+
 }
 
 
@@ -15521,63 +12469,58 @@ static void deserialize(XrEyeGazeFB* s, std::istream& in) {
 
 
 static void deserialize(XrHandMeshIndexBufferMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->indexBufferKey, in);
-    
+
+        
+
     deserialize(&s->indexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->indexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCapacityInput;
-        allocate(&s->indices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indices[i], in);
-        }
-    }
-    else {
-        s->indices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->indices, in);
+
 }
 
 
 
 
 static void deserialize(XrHandMeshVertexBufferMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->vertexUpdateTime, in);
-    
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
 }
 
 
 
 
 static void deserialize(XrHandMeshVertexMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->position, in);
-    
+
+        
+
     deserialize(&s->normal, in);
+
 }
 
 
@@ -15587,8 +12530,14 @@ static void deserialize(XrHandMeshVertexMSFT* s, std::istream& in) {
 
 
 static void deserialize(XrSwapchainStateBaseHeaderFB* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -15598,8 +12547,14 @@ static void deserialize(XrSwapchainStateBaseHeaderFB* s, std::istream& in) {
 
 
 static void deserialize(XrLoaderInitInfoBaseHeaderKHR* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -15609,164 +12564,176 @@ static void deserialize(XrLoaderInitInfoBaseHeaderKHR* s, std::istream& in) {
 
 
 static void deserialize(XrUuidMSFT* s, std::istream& in) {
-    
-    
         
-    for (int i = 0; i < 16; i++) {
-        deserialize(&s->bytes[i], in);
-    }
+
+    deserialize_array(s->bytes, 16, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneSphereBoundMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->center, in);
-    
+
+        
+
     deserialize(&s->radius, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneOrientedBoxBoundMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->extents, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneFrustumBoundMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->fov, in);
-    
+
+        
+
     deserialize(&s->farDistance, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneBoundsMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->sphereCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->sphereCount;
-        allocate(&s->spheres, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->spheres[i], in);
-        }
-    }
-    else {
-        s->spheres = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->spheres, in);
+
+        
+
     deserialize(&s->boxCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->boxCount;
-        allocate(&s->boxes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->boxes[i], in);
-        }
-    }
-    else {
-        s->boxes = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->boxes, in);
+
+        
+
     deserialize(&s->frustumCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->frustumCount;
-        allocate(&s->frustums, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->frustums[i], in);
-        }
-    }
-    else {
-        s->frustums = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->frustums, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneComponentMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->componentType, in);
-    
+
+        
+
     deserialize(&s->id, in);
-    
+
+        
+
     deserialize(&s->parentId, in);
-    
+
+        
+
     deserialize(&s->updateTime, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneComponentLocationMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->flags, in);
-    
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneObjectMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->objectType, in);
+
 }
 
 
 
 
 static void deserialize(XrScenePlaneMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->alignment, in);
-    
+
+        
+
     deserialize(&s->size, in);
-    
+
+        
+
     deserialize(&s->meshBufferId, in);
-    
+
+        
+
     deserialize(&s->supportsIndicesUint16, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMeshMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->meshBufferId, in);
-    
+
+        
+
     deserialize(&s->supportsIndicesUint16, in);
+
 }
 
 
@@ -15776,22 +12743,14 @@ static void deserialize(XrSceneMeshMSFT* s, std::istream& in) {
 
 
 static void deserialize(XrDeserializeSceneFragmentMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->bufferSize, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->bufferSize;
-        allocate(&s->buffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->buffer[i], in);
-        }
-    }
-    else {
-        s->buffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->buffer, in);
+
 }
 
 
@@ -15801,26 +12760,36 @@ static void deserialize(XrDeserializeSceneFragmentMSFT* s, std::istream& in) {
 
 
 static void deserialize(XrSceneMarkerMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->markerType, in);
-    
+
+        
+
     deserialize(&s->lastSeenTime, in);
-    
+
+        
+
     deserialize(&s->center, in);
-    
+
+        
+
     deserialize(&s->size, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMarkerQRCodeMSFT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->symbolType, in);
-    
+
+        
+
     deserialize(&s->version, in);
+
 }
 
 
@@ -15830,15 +12799,22 @@ static void deserialize(XrSceneMarkerQRCodeMSFT* s, std::istream& in) {
 
 
 static void deserialize(XrVector4sFB* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->x, in);
-    
+
+        
+
     deserialize(&s->y, in);
-    
+
+        
+
     deserialize(&s->z, in);
-    
+
+        
+
     deserialize(&s->w, in);
+
 }
 
 
@@ -15848,16 +12824,18 @@ static void deserialize(XrVector4sFB* s, std::istream& in) {
 
 
 static void deserialize(XrHandCapsuleFB* s, std::istream& in) {
-    
-    
         
-    for (int i = 0; i < XR_HAND_TRACKING_CAPSULE_POINT_COUNT_FB; i++) {
-        deserialize(&s->points[i], in);
-    }
-    
+
+    deserialize_array(s->points, XR_HAND_TRACKING_CAPSULE_POINT_COUNT_FB, in);
+
+        
+
     deserialize(&s->radius, in);
-    
+
+        
+
     deserialize(&s->joint, in);
+
 }
 
 
@@ -15867,27 +12845,42 @@ static void deserialize(XrHandCapsuleFB* s, std::istream& in) {
 
 
 static void deserialize(XrSpaceQueryInfoBaseHeaderFB* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceFilterInfoBaseHeaderFB* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceQueryResultFB* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->uuid, in);
+
 }
 
 
@@ -15897,24 +12890,32 @@ static void deserialize(XrSpaceQueryResultFB* s, std::istream& in) {
 
 
 static void deserialize(XrOffset3DfFB* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->x, in);
-    
+
+        
+
     deserialize(&s->y, in);
-    
+
+        
+
     deserialize(&s->z, in);
+
 }
 
 
 
 
 static void deserialize(XrRect3DfFB* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->offset, in);
-    
+
+        
+
     deserialize(&s->extent, in);
+
 }
 
 
@@ -15924,18 +12925,22 @@ static void deserialize(XrRect3DfFB* s, std::istream& in) {
 
 
 static void deserialize(XrKeyboardTrackingDescriptionFB* s, std::istream& in) {
-    
-    
-    deserialize(&s->trackedKeyboardId, in);
-    
-    deserialize(&s->size, in);
-    
-    deserialize(&s->flags, in);
-    
         
-    for (int i = 0; i < XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB; i++) {
-        deserialize(&s->name[i], in);
-    }
+
+    deserialize(&s->trackedKeyboardId, in);
+
+        
+
+    deserialize(&s->size, in);
+
+        
+
+    deserialize(&s->flags, in);
+
+        
+
+    deserialize_array(s->name, XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB, in);
+
 }
 
 
@@ -15945,8 +12950,14 @@ static void deserialize(XrKeyboardTrackingDescriptionFB* s, std::istream& in) {
 
 
 static void deserialize(XrShareSpacesRecipientBaseHeaderMETA* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -15956,12 +12967,10 @@ static void deserialize(XrShareSpacesRecipientBaseHeaderMETA* s, std::istream& i
 
 
 static void deserialize(XrSpatialAnchorPersistenceNameMSFT* s, std::istream& in) {
-    
-    
         
-    for (int i = 0; i < XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT; i++) {
-        deserialize(&s->name[i], in);
-    }
+
+    deserialize_array(s->name, XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT, in);
+
 }
 
 
@@ -15971,11 +12980,14 @@ static void deserialize(XrSpatialAnchorPersistenceNameMSFT* s, std::istream& in)
 
 
 static void deserialize(XrBodyJointLocationBD* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->locationFlags, in);
-    
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
@@ -15985,12 +12997,10 @@ static void deserialize(XrBodyJointLocationBD* s, std::istream& in) {
 
 
 static void deserialize(XrSpatialAnchorNameHTC* s, std::istream& in) {
-    
-    
         
-    for (int i = 0; i < XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC; i++) {
-        deserialize(&s->name[i], in);
-    }
+
+    deserialize_array(s->name, XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC, in);
+
 }
 
 
@@ -15999,9 +13009,10 @@ static void deserialize(XrSpatialAnchorNameHTC* s, std::istream& in) {
 
 
 static void deserialize(XrBodySkeletonJointHTC* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
@@ -16010,11 +13021,14 @@ static void deserialize(XrBodySkeletonJointHTC* s, std::istream& in) {
 
 
 static void deserialize(XrBodyJointLocationHTC* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->locationFlags, in);
-    
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
@@ -16024,32 +13038,48 @@ static void deserialize(XrBodyJointLocationHTC* s, std::istream& in) {
 
 
 static void deserialize(XrExternalCameraIntrinsicsOCULUS* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->lastChangeTime, in);
-    
+
+        
+
     deserialize(&s->fov, in);
-    
+
+        
+
     deserialize(&s->virtualNearPlaneDistance, in);
-    
+
+        
+
     deserialize(&s->virtualFarPlaneDistance, in);
-    
+
+        
+
     deserialize(&s->imageSensorPixelResolution, in);
+
 }
 
 
 
 
 static void deserialize(XrExternalCameraExtrinsicsOCULUS* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->lastChangeTime, in);
-    
+
+        
+
     deserialize(&s->cameraStatusFlags, in);
-    
+
+        
+
     deserialize(&s->attachedToDevice, in);
-    
+
+        
+
     deserialize(&s->relativePose, in);
+
 }
 
 
@@ -16059,22 +13089,14 @@ static void deserialize(XrExternalCameraExtrinsicsOCULUS* s, std::istream& in) {
 
 
 static void deserialize(XrPassthroughColorLutDataMETA* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->bufferSize, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->bufferSize;
-        allocate(&s->buffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->buffer[i], in);
-        }
-    }
-    else {
-        s->buffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->buffer, in);
+
 }
 
 
@@ -16084,13 +13106,18 @@ static void deserialize(XrPassthroughColorLutDataMETA* s, std::istream& in) {
 
 
 static void deserialize(XrFoveationConfigurationHTC* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->level, in);
-    
+
+        
+
     deserialize(&s->clearFovDegree, in);
-    
+
+        
+
     deserialize(&s->focalCenterOffset, in);
+
 }
 
 
@@ -16100,11 +13127,14 @@ static void deserialize(XrFoveationConfigurationHTC* s, std::istream& in) {
 
 
 static void deserialize(XrActiveActionSetPriorityEXT* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->actionSet, in);
-    
+
+        
+
     deserialize(&s->priorityOverride, in);
+
 }
 
 
@@ -16114,11 +13144,14 @@ static void deserialize(XrActiveActionSetPriorityEXT* s, std::istream& in) {
 
 
 static void deserialize(XrForceFeedbackCurlApplyLocationMNDX* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->location, in);
-    
+
+        
+
     deserialize(&s->value, in);
+
 }
 
 
@@ -16128,8 +13161,14 @@ static void deserialize(XrForceFeedbackCurlApplyLocationMNDX* s, std::istream& i
 
 
 static void deserialize(XrLocalizationMapQueryInfoBaseHeaderML* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -16138,75 +13177,96 @@ static void deserialize(XrLocalizationMapQueryInfoBaseHeaderML* s, std::istream&
 
 
 static void deserialize(XrColor3f* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->r, in);
-    
+
+        
+
     deserialize(&s->g, in);
-    
+
+        
+
     deserialize(&s->b, in);
+
 }
 
 
 
 
 static void deserialize(XrExtent3Df* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->width, in);
-    
+
+        
+
     deserialize(&s->height, in);
-    
+
+        
+
     deserialize(&s->depth, in);
+
 }
 
 
 
 
 static void deserialize(XrSpheref* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->center, in);
-    
+
+        
+
     deserialize(&s->radius, in);
+
 }
 
 
 
 
 static void deserialize(XrBoxf* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->center, in);
-    
+
+        
+
     deserialize(&s->extents, in);
+
 }
 
 
 
 
 static void deserialize(XrFrustumf* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->fov, in);
-    
+
+        
+
     deserialize(&s->nearZ, in);
-    
+
+        
+
     deserialize(&s->farZ, in);
+
 }
 
 
 
 
 static void deserialize(XrUuid* s, std::istream& in) {
-    
-    
         
-    for (int i = 0; i < XR_UUID_SIZE; i++) {
-        deserialize(&s->data[i], in);
-    }
+
+    deserialize_array(s->data, XR_UUID_SIZE, in);
+
 }
 
 
@@ -16215,8 +13275,18 @@ static void deserialize(XrUuid* s, std::istream& in) {
 
 
 static void deserialize(XrFutureCompletionBaseHeaderEXT* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->futureResult, in);
+
 }
 
 
@@ -16225,24 +13295,32 @@ static void deserialize(XrFutureCompletionBaseHeaderEXT* s, std::istream& in) {
 
 
 static void deserialize(XrSpaceLocationData* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->locationFlags, in);
-    
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceVelocityData* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->velocityFlags, in);
-    
+
+        
+
     deserialize(&s->linearVelocity, in);
-    
+
+        
+
     deserialize(&s->angularVelocity, in);
+
 }
 
 
@@ -16251,8 +13329,14 @@ static void deserialize(XrSpaceVelocityData* s, std::istream& in) {
 
 
 static void deserialize(XrSpatialAnchorsCreateInfoBaseHeaderML* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -16262,19 +13346,28 @@ static void deserialize(XrSpatialAnchorsCreateInfoBaseHeaderML* s, std::istream&
 
 
 static void deserialize(XrSpatialAnchorsQueryInfoBaseHeaderML* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorCompletionResultML* s, std::istream& in) {
-    
-    
+        
+
     deserialize(&s->uuid, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
@@ -16284,8 +13377,14 @@ static void deserialize(XrSpatialAnchorCompletionResultML* s, std::istream& in) 
 
 
 static void deserialize(XrSpatialEntityComponentDataBaseHeaderBD* s, std::istream& in) {
+        
 
-    deserializer_lookup
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -16294,59 +13393,52 @@ static void deserialize(XrSpatialEntityComponentDataBaseHeaderBD* s, std::istrea
 
 
 static void deserialize(XrApiLayerProperties* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
         
-    for (int i = 0; i < XR_MAX_API_LAYER_NAME_SIZE; i++) {
-        deserialize(&s->layerName[i], in);
-    }
-    
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->layerName, XR_MAX_API_LAYER_NAME_SIZE, in);
+
+        
+
     deserialize(&s->specVersion, in);
-    
-    deserialize(&s->layerVersion, in);
-    
+
         
-    for (int i = 0; i < XR_MAX_API_LAYER_DESCRIPTION_SIZE; i++) {
-        deserialize(&s->description[i], in);
-    }
+
+    deserialize(&s->layerVersion, in);
+
+        
+
+    deserialize_array(s->description, XR_MAX_API_LAYER_DESCRIPTION_SIZE, in);
+
 }
 
 
 
 
 static void deserialize(XrExtensionProperties* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_MAX_EXTENSION_NAME_SIZE; i++) {
-        deserialize(&s->extensionName[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->extensionName, XR_MAX_EXTENSION_NAME_SIZE, in);
+
+        
+
     deserialize(&s->extensionVersion, in);
+
 }
 
 
@@ -16355,203 +13447,208 @@ static void deserialize(XrExtensionProperties* s, std::istream& in) {
 
 
 static void deserialize(XrSystemGetInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->formFactor, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemProperties* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    deserialize(&s->systemId, in);
-    
-    deserialize(&s->vendorId, in);
-    
         
-    for (int i = 0; i < XR_MAX_SYSTEM_NAME_SIZE; i++) {
-        deserialize(&s->systemName[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->systemId, in);
+
+        
+
+    deserialize(&s->vendorId, in);
+
+        
+
+    deserialize_array(s->systemName, XR_MAX_SYSTEM_NAME_SIZE, in);
+
+        
+
     deserialize(&s->graphicsProperties, in);
-    
+
+        
+
     deserialize(&s->trackingProperties, in);
+
 }
 
 
 
 
 static void deserialize(XrViewLocateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewConfigurationType, in);
-    
+
+        
+
     deserialize(&s->displayTime, in);
-    
+
+        
+
     deserialize(&s->space, in);
+
 }
 
 
 
 
 static void deserialize(XrView* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->fov, in);
+
 }
 
 
 
 
 static void deserialize(XrSessionCreateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->createFlags, in);
-    
+
+        
+
     deserialize(&s->systemId, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainCreateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->createFlags, in);
-    
+
+        
+
     deserialize(&s->usageFlags, in);
-    
+
+        
+
     deserialize(&s->format, in);
-    
+
+        
+
     deserialize(&s->sampleCount, in);
-    
+
+        
+
     deserialize(&s->width, in);
-    
+
+        
+
     deserialize(&s->height, in);
-    
+
+        
+
     deserialize(&s->faceCount, in);
-    
+
+        
+
     deserialize(&s->arraySize, in);
-    
+
+        
+
     deserialize(&s->mipCount, in);
+
 }
 
 
 
 
 static void deserialize(XrSessionBeginInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->primaryViewConfigurationType, in);
+
 }
 
 
 
 
 static void deserialize(XrViewState* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewStateFlags, in);
+
 }
 
 
@@ -16560,952 +13657,870 @@ static void deserialize(XrViewState* s, std::istream& in) {
 
 
 static void deserialize(XrHapticVibration* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->duration, in);
-    
+
+        
+
     deserialize(&s->frequency, in);
-    
+
+        
+
     deserialize(&s->amplitude, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataBuffer* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < 4000; i++) {
-        deserialize(&s->varying[i], in);
-    }
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->varying, 4000, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataInstanceLossPending* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->lossTime, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSessionStateChanged* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->session, in);
-    
+
+        
+
     deserialize(&s->state, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrActionStateBoolean* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->currentState, in);
-    
+
+        
+
     deserialize(&s->changedSinceLastSync, in);
-    
+
+        
+
     deserialize(&s->lastChangeTime, in);
-    
+
+        
+
     deserialize(&s->isActive, in);
+
 }
 
 
 
 
 static void deserialize(XrActionStateFloat* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->currentState, in);
-    
+
+        
+
     deserialize(&s->changedSinceLastSync, in);
-    
+
+        
+
     deserialize(&s->lastChangeTime, in);
-    
+
+        
+
     deserialize(&s->isActive, in);
+
 }
 
 
 
 
 static void deserialize(XrActionStateVector2f* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->currentState, in);
-    
+
+        
+
     deserialize(&s->changedSinceLastSync, in);
-    
+
+        
+
     deserialize(&s->lastChangeTime, in);
-    
+
+        
+
     deserialize(&s->isActive, in);
+
 }
 
 
 
 
 static void deserialize(XrActionStatePose* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->isActive, in);
+
 }
 
 
 
 
 static void deserialize(XrActionSetCreateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
         
-    for (int i = 0; i < XR_MAX_ACTION_SET_NAME_SIZE; i++) {
-        deserialize(&s->actionSetName[i], in);
-    }
-    
+
+    deserialize_xr(&s->next, in);
+
         
-    for (int i = 0; i < XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE; i++) {
-        deserialize(&s->localizedActionSetName[i], in);
-    }
-    
+
+    deserialize_array(s->actionSetName, XR_MAX_ACTION_SET_NAME_SIZE, in);
+
+        
+
+    deserialize_array(s->localizedActionSetName, XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE, in);
+
+        
+
     deserialize(&s->priority, in);
+
 }
 
 
 
 
 static void deserialize(XrActionCreateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
         
-    for (int i = 0; i < XR_MAX_ACTION_NAME_SIZE; i++) {
-        deserialize(&s->actionName[i], in);
-    }
-    
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->actionName, XR_MAX_ACTION_NAME_SIZE, in);
+
+        
+
     deserialize(&s->actionType, in);
-    
-    deserialize(&s->countSubactionPaths, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->countSubactionPaths;
-        allocate(&s->subactionPaths, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->subactionPaths[i], in);
-        }
-    }
-    else {
-        s->subactionPaths = nullptr;
-    }
-    
+
         
-    for (int i = 0; i < XR_MAX_LOCALIZED_ACTION_NAME_SIZE; i++) {
-        deserialize(&s->localizedActionName[i], in);
-    }
+
+    deserialize(&s->countSubactionPaths, in);
+
+        
+
+    deserialize_ptr(&s->subactionPaths, in);
+
+        
+
+    deserialize_array(s->localizedActionName, XR_MAX_LOCALIZED_ACTION_NAME_SIZE, in);
+
 }
 
 
 
 
 static void deserialize(XrInstanceProperties* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    deserialize(&s->runtimeVersion, in);
-    
         
-    for (int i = 0; i < XR_MAX_RUNTIME_NAME_SIZE; i++) {
-        deserialize(&s->runtimeName[i], in);
-    }
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->runtimeVersion, in);
+
+        
+
+    deserialize_array(s->runtimeName, XR_MAX_RUNTIME_NAME_SIZE, in);
+
 }
 
 
 
 
 static void deserialize(XrFrameWaitInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrCompositionLayerProjection* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->viewCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->viewCount;
-        allocate(&s->views, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->views[i], in);
-        }
-    }
-    else {
-        s->views = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->views, in);
+
 }
 
 
 
 
 static void deserialize(XrCompositionLayerQuad* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->eyeVisibility, in);
-    
+
+        
+
     deserialize(&s->subImage, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->size, in);
+
 }
 
 
 
 
 static void deserialize(XrReferenceSpaceCreateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->referenceSpaceType, in);
-    
+
+        
+
     deserialize(&s->poseInReferenceSpace, in);
+
 }
 
 
 
 
 static void deserialize(XrActionSpaceCreateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->action, in);
-    
+
+        
+
     deserialize(&s->subactionPath, in);
-    
+
+        
+
     deserialize(&s->poseInActionSpace, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataReferenceSpaceChangePending* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->session, in);
-    
+
+        
+
     deserialize(&s->referenceSpaceType, in);
-    
+
+        
+
     deserialize(&s->changeTime, in);
-    
+
+        
+
     deserialize(&s->poseValid, in);
-    
+
+        
+
     deserialize(&s->poseInPreviousSpace, in);
+
 }
 
 
 
 
 static void deserialize(XrViewConfigurationView* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->recommendedImageRectWidth, in);
-    
+
+        
+
     deserialize(&s->maxImageRectWidth, in);
-    
+
+        
+
     deserialize(&s->recommendedImageRectHeight, in);
-    
+
+        
+
     deserialize(&s->maxImageRectHeight, in);
-    
+
+        
+
     deserialize(&s->recommendedSwapchainSampleCount, in);
-    
+
+        
+
     deserialize(&s->maxSwapchainSampleCount, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceLocation* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->locationFlags, in);
-    
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceVelocity* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->velocityFlags, in);
-    
+
+        
+
     deserialize(&s->linearVelocity, in);
-    
+
+        
+
     deserialize(&s->angularVelocity, in);
+
 }
 
 
 
 
 static void deserialize(XrFrameState* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->predictedDisplayTime, in);
-    
+
+        
+
     deserialize(&s->predictedDisplayPeriod, in);
-    
+
+        
+
     deserialize(&s->shouldRender, in);
+
 }
 
 
 
 
 static void deserialize(XrViewConfigurationProperties* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewConfigurationType, in);
-    
+
+        
+
     deserialize(&s->fovMutable, in);
+
 }
 
 
 
 
 static void deserialize(XrFrameBeginInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrCompositionLayerProjectionView* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->fov, in);
-    
+
+        
+
     deserialize(&s->subImage, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataEventsLost* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->lostEventCount, in);
+
 }
 
 
 
 
 static void deserialize(XrInteractionProfileSuggestedBinding* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->interactionProfile, in);
-    
+
+        
+
     deserialize(&s->countSuggestedBindings, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->countSuggestedBindings;
-        allocate(&s->suggestedBindings, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->suggestedBindings[i], in);
-        }
-    }
-    else {
-        s->suggestedBindings = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->suggestedBindings, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataInteractionProfileChanged* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->session, in);
+
 }
 
 
 
 
 static void deserialize(XrInteractionProfileState* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->interactionProfile, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageAcquireInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageWaitInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->timeout, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageReleaseInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrActionStateGetInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->action, in);
-    
+
+        
+
     deserialize(&s->subactionPath, in);
+
 }
 
 
 
 
 static void deserialize(XrHapticActionInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->action, in);
-    
+
+        
+
     deserialize(&s->subactionPath, in);
+
 }
 
 
 
 
 static void deserialize(XrSessionActionSetsAttachInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->countActionSets, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->countActionSets;
-        allocate(&s->actionSets, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->actionSets[i], in);
-        }
-    }
-    else {
-        s->actionSets = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->actionSets, in);
+
 }
 
 
 
 
 static void deserialize(XrActionsSyncInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->countActiveActionSets, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->countActiveActionSets;
-        allocate(&s->activeActionSets, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->activeActionSets[i], in);
-        }
-    }
-    else {
-        s->activeActionSets = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->activeActionSets, in);
+
 }
 
 
 
 
 static void deserialize(XrBoundSourcesForActionEnumerateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->action, in);
+
 }
 
 
 
 
 static void deserialize(XrInputSourceLocalizedNameGetInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->sourcePath, in);
-    
+
+        
+
     deserialize(&s->whichComponents, in);
+
 }
 
 
@@ -17514,31 +14529,38 @@ static void deserialize(XrInputSourceLocalizedNameGetInfo* s, std::istream& in) 
 
 
 static void deserialize(XrCompositionLayerCubeKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->eyeVisibility, in);
-    
+
+        
+
     deserialize(&s->swapchain, in);
-    
+
+        
+
     deserialize(&s->imageArrayIndex, in);
-    
+
+        
+
     deserialize(&s->orientation, in);
+
 }
 
 
@@ -17548,39 +14570,22 @@ static void deserialize(XrCompositionLayerCubeKHR* s, std::istream& in) {
 
 
 static void deserialize(XrInstanceCreateInfoAndroidKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->applicationVM, 1);
-        deserialize(s->applicationVM, in);
-    }
-    else {
-        s->applicationVM = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->applicationActivity, 1);
-        deserialize(s->applicationActivity, in);
-    }
-    else {
-        s->applicationActivity = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->applicationVM, in);
+
+        
+
+    deserialize_ptr(&s->applicationActivity, in);
+
 }
 
 
@@ -17590,29 +14595,34 @@ static void deserialize(XrInstanceCreateInfoAndroidKHR* s, std::istream& in) {
 
 
 static void deserialize(XrCompositionLayerDepthInfoKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->subImage, in);
-    
+
+        
+
     deserialize(&s->minDepth, in);
-    
+
+        
+
     deserialize(&s->maxDepth, in);
-    
+
+        
+
     deserialize(&s->nearZ, in);
-    
+
+        
+
     deserialize(&s->farZ, in);
+
 }
 
 
@@ -17622,34 +14632,22 @@ static void deserialize(XrCompositionLayerDepthInfoKHR* s, std::istream& in) {
 
 
 static void deserialize(XrVulkanSwapchainFormatListCreateInfoKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewFormatCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->viewFormatCount;
-        allocate(&s->viewFormats, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->viewFormats[i], in);
-        }
-    }
-    else {
-        s->viewFormats = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->viewFormats, in);
+
 }
 
 
@@ -17659,27 +14657,30 @@ static void deserialize(XrVulkanSwapchainFormatListCreateInfoKHR* s, std::istrea
 
 
 static void deserialize(XrEventDataPerfSettingsEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->domain, in);
-    
+
+        
+
     deserialize(&s->subDomain, in);
-    
+
+        
+
     deserialize(&s->fromLevel, in);
-    
+
+        
+
     deserialize(&s->toLevel, in);
+
 }
 
 
@@ -17689,35 +14690,46 @@ static void deserialize(XrEventDataPerfSettingsEXT* s, std::istream& in) {
 
 
 static void deserialize(XrCompositionLayerCylinderKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->eyeVisibility, in);
-    
+
+        
+
     deserialize(&s->subImage, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->radius, in);
-    
+
+        
+
     deserialize(&s->centralAngle, in);
-    
+
+        
+
     deserialize(&s->aspectRatio, in);
+
 }
 
 
@@ -17727,35 +14739,46 @@ static void deserialize(XrCompositionLayerCylinderKHR* s, std::istream& in) {
 
 
 static void deserialize(XrCompositionLayerEquirectKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->eyeVisibility, in);
-    
+
+        
+
     deserialize(&s->subImage, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->radius, in);
-    
+
+        
+
     deserialize(&s->scale, in);
-    
+
+        
+
     deserialize(&s->bias, in);
+
 }
 
 
@@ -17765,196 +14788,116 @@ static void deserialize(XrCompositionLayerEquirectKHR* s, std::istream& in) {
 
 
 static void deserialize(XrDebugUtilsObjectNameInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->objectType, in);
-    
+
+        
+
     deserialize(&s->objectHandle, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items{};
-        deserialize(static_cast<std::uint32_t*>(&num_items));
-        allocate(&s->objectName, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->objectName[i], in);
-        }
-    }
-    else {
-        s->objectName = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->objectName, in);
+
 }
 
 
 
 
 static void deserialize(XrDebugUtilsMessengerCallbackDataEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items{};
-        deserialize(static_cast<std::uint32_t*>(&num_items));
-        allocate(&s->messageId, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->messageId[i], in);
-        }
-    }
-    else {
-        s->messageId = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items{};
-        deserialize(static_cast<std::uint32_t*>(&num_items));
-        allocate(&s->functionName, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->functionName[i], in);
-        }
-    }
-    else {
-        s->functionName = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items{};
-        deserialize(static_cast<std::uint32_t*>(&num_items));
-        allocate(&s->message, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->message[i], in);
-        }
-    }
-    else {
-        s->message = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->messageId, in);
+
+        
+
+    deserialize_ptr(&s->functionName, in);
+
+        
+
+    deserialize_ptr(&s->message, in);
+
+        
+
     deserialize(&s->objectCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->objectCount;
-        allocate(&s->objects, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->objects[i], in);
-        }
-    }
-    else {
-        s->objects = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->objects, in);
+
+        
+
     deserialize(&s->sessionLabelCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->sessionLabelCount;
-        allocate(&s->sessionLabels, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->sessionLabels[i], in);
-        }
-    }
-    else {
-        s->sessionLabels = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->sessionLabels, in);
+
 }
 
 
 
 
 static void deserialize(XrDebugUtilsMessengerCreateInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->messageSeverities, in);
-    
+
+        
+
     deserialize(&s->messageTypes, in);
-    
+
+        
+
     deserialize(&s->userCallback, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->userData, 1);
-        deserialize(s->userData, in);
-    }
-    else {
-        s->userData = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->userData, in);
+
 }
 
 
 
 
 static void deserialize(XrDebugUtilsLabelEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items{};
-        deserialize(static_cast<std::uint32_t*>(&num_items));
-        allocate(&s->labelName, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->labelName[i], in);
-        }
-    }
-    else {
-        s->labelName = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->labelName, in);
+
 }
 
 
@@ -17964,172 +14907,152 @@ static void deserialize(XrDebugUtilsLabelEXT* s, std::istream& in) {
 
 
 static void deserialize(XrGraphicsBindingOpenGLWin32KHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->hDC, in);
-    
+
+        
+
     deserialize(&s->hGLRC, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsBindingOpenGLXlibKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->xDisplay, 1);
-        deserialize(s->xDisplay, in);
-    }
-    else {
-        s->xDisplay = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->xDisplay, in);
+
+        
+
     deserialize(&s->visualid, in);
-    
+
+        
+
     deserialize(&s->glxFBConfig, in);
-    
+
+        
+
     deserialize(&s->glxDrawable, in);
-    
+
+        
+
     deserialize(&s->glxContext, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsBindingOpenGLXcbKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->connection, 1);
-        deserialize(s->connection, in);
-    }
-    else {
-        s->connection = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->connection, in);
+
+        
+
     deserialize(&s->screenNumber, in);
-    
+
+        
+
     deserialize(&s->fbconfigid, in);
-    
+
+        
+
     deserialize(&s->visualid, in);
-    
+
+        
+
     deserialize(&s->glxDrawable, in);
-    
+
+        
+
     deserialize(&s->glxContext, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsBindingOpenGLWaylandKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->display, 1);
-        deserialize(s->display, in);
-    }
-    else {
-        s->display = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->display, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageOpenGLKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->image, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsRequirementsOpenGLKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->minApiVersionSupported, in);
-    
+
+        
+
     deserialize(&s->maxApiVersionSupported, in);
+
 }
 
 
@@ -18139,69 +15062,66 @@ static void deserialize(XrGraphicsRequirementsOpenGLKHR* s, std::istream& in) {
 
 
 static void deserialize(XrGraphicsBindingOpenGLESAndroidKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->display, in);
-    
+
+        
+
     deserialize(&s->config, in);
-    
+
+        
+
     deserialize(&s->context, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageOpenGLESKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->image, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsRequirementsOpenGLESKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->minApiVersionSupported, in);
-    
+
+        
+
     deserialize(&s->maxApiVersionSupported, in);
+
 }
 
 
@@ -18211,73 +15131,74 @@ static void deserialize(XrGraphicsRequirementsOpenGLESKHR* s, std::istream& in) 
 
 
 static void deserialize(XrGraphicsBindingVulkanKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->instance, in);
-    
+
+        
+
     deserialize(&s->physicalDevice, in);
-    
+
+        
+
     deserialize(&s->device, in);
-    
+
+        
+
     deserialize(&s->queueFamilyIndex, in);
-    
+
+        
+
     deserialize(&s->queueIndex, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageVulkanKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->image, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsRequirementsVulkanKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->minApiVersionSupported, in);
-    
+
+        
+
     deserialize(&s->maxApiVersionSupported, in);
+
 }
 
 
@@ -18287,81 +15208,58 @@ static void deserialize(XrGraphicsRequirementsVulkanKHR* s, std::istream& in) {
 
 
 static void deserialize(XrGraphicsBindingD3D11KHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->device, 1);
-        deserialize(s->device, in);
-    }
-    else {
-        s->device = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->device, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageD3D11KHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->texture, 1);
-        deserialize(s->texture, in);
-    }
-    else {
-        s->texture = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->texture, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsRequirementsD3D11KHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->adapterLuid, in);
-    
+
+        
+
     deserialize(&s->minFeatureLevel, in);
+
 }
 
 
@@ -18371,91 +15269,62 @@ static void deserialize(XrGraphicsRequirementsD3D11KHR* s, std::istream& in) {
 
 
 static void deserialize(XrGraphicsBindingD3D12KHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->device, 1);
-        deserialize(s->device, in);
-    }
-    else {
-        s->device = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->queue, 1);
-        deserialize(s->queue, in);
-    }
-    else {
-        s->queue = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->device, in);
+
+        
+
+    deserialize_ptr(&s->queue, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageD3D12KHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->texture, 1);
-        deserialize(s->texture, in);
-    }
-    else {
-        s->texture = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->texture, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsRequirementsD3D12KHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->adapterLuid, in);
-    
+
+        
+
     deserialize(&s->minFeatureLevel, in);
+
 }
 
 
@@ -18465,87 +15334,54 @@ static void deserialize(XrGraphicsRequirementsD3D12KHR* s, std::istream& in) {
 
 
 static void deserialize(XrGraphicsBindingMetalKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->commandQueue, 1);
-        deserialize(s->commandQueue, in);
-    }
-    else {
-        s->commandQueue = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->commandQueue, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainImageMetalKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->texture, 1);
-        deserialize(s->texture, in);
-    }
-    else {
-        s->texture = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->texture, in);
+
 }
 
 
 
 
 static void deserialize(XrGraphicsRequirementsMetalKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->metalDevice, 1);
-        deserialize(s->metalDevice, in);
-    }
-    else {
-        s->metalDevice = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->metalDevice, in);
+
 }
 
 
@@ -18555,42 +15391,36 @@ static void deserialize(XrGraphicsRequirementsMetalKHR* s, std::istream& in) {
 
 
 static void deserialize(XrSystemEyeGazeInteractionPropertiesEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsEyeGazeInteraction, in);
+
 }
 
 
 
 
 static void deserialize(XrEyeGazeSampleTimeEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
@@ -18600,78 +15430,64 @@ static void deserialize(XrEyeGazeSampleTimeEXT* s, std::istream& in) {
 
 
 static void deserialize(XrVisibilityMaskKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
+        
+
     deserialize(&s->indexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->indexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCapacityInput;
-        allocate(&s->indices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indices[i], in);
-        }
-    }
-    else {
-        s->indices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->indices, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataVisibilityMaskChangedKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->session, in);
-    
+
+        
+
     deserialize(&s->viewConfigurationType, in);
-    
+
+        
+
     deserialize(&s->viewIndex, in);
+
 }
 
 
@@ -18681,46 +15497,44 @@ static void deserialize(XrEventDataVisibilityMaskChangedKHR* s, std::istream& in
 
 
 static void deserialize(XrSessionCreateInfoOverlayEXTX* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->createFlags, in);
-    
+
+        
+
     deserialize(&s->sessionLayersPlacement, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataMainSessionVisibilityChangedEXTX* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->visible, in);
-    
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -18730,23 +15544,22 @@ static void deserialize(XrEventDataMainSessionVisibilityChangedEXTX* s, std::ist
 
 
 static void deserialize(XrCompositionLayerColorScaleBiasKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->colorScale, in);
-    
+
+        
+
     deserialize(&s->colorBias, in);
+
 }
 
 
@@ -18756,48 +15569,48 @@ static void deserialize(XrCompositionLayerColorScaleBiasKHR* s, std::istream& in
 
 
 static void deserialize(XrSpatialAnchorCreateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorSpaceCreateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->anchor, in);
-    
+
+        
+
     deserialize(&s->poseInAnchorSpace, in);
+
 }
 
 
@@ -18807,21 +15620,18 @@ static void deserialize(XrSpatialAnchorSpaceCreateInfoMSFT* s, std::istream& in)
 
 
 static void deserialize(XrCompositionLayerImageLayoutFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -18831,27 +15641,30 @@ static void deserialize(XrCompositionLayerImageLayoutFB* s, std::istream& in) {
 
 
 static void deserialize(XrCompositionLayerAlphaBlendFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->srcFactorColor, in);
-    
+
+        
+
     deserialize(&s->dstFactorColor, in);
-    
+
+        
+
     deserialize(&s->srcFactorAlpha, in);
-    
+
+        
+
     deserialize(&s->dstFactorAlpha, in);
+
 }
 
 
@@ -18861,27 +15674,30 @@ static void deserialize(XrCompositionLayerAlphaBlendFB* s, std::istream& in) {
 
 
 static void deserialize(XrViewConfigurationDepthRangeEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->recommendedNearZ, in);
-    
+
+        
+
     deserialize(&s->minNearZ, in);
-    
+
+        
+
     deserialize(&s->recommendedFarZ, in);
-    
+
+        
+
     deserialize(&s->maxFarZ, in);
+
 }
 
 
@@ -18891,27 +15707,30 @@ static void deserialize(XrViewConfigurationDepthRangeEXT* s, std::istream& in) {
 
 
 static void deserialize(XrGraphicsBindingEGLMNDX* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->getProcAddress, in);
-    
+
+        
+
     deserialize(&s->display, in);
-    
+
+        
+
     deserialize(&s->config, in);
-    
+
+        
+
     deserialize(&s->context, in);
+
 }
 
 
@@ -18921,98 +15740,88 @@ static void deserialize(XrGraphicsBindingEGLMNDX* s, std::istream& in) {
 
 
 static void deserialize(XrSpatialGraphNodeSpaceCreateInfoMSFT* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    deserialize(&s->nodeType, in);
-    
         
-    for (int i = 0; i < XR_GUID_SIZE_MSFT; i++) {
-        deserialize(&s->nodeId[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->nodeType, in);
+
+        
+
+    deserialize_array(s->nodeId, XR_GUID_SIZE_MSFT, in);
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialGraphStaticNodeBindingCreateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->poseInSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialGraphNodeBindingPropertiesGetInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialGraphNodeBindingPropertiesMSFT* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_GUID_SIZE_MSFT; i++) {
-        deserialize(&s->nodeId[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->nodeId, XR_GUID_SIZE_MSFT, in);
+
+        
+
     deserialize(&s->poseInNodeSpace, in);
+
 }
 
 
@@ -19022,137 +15831,110 @@ static void deserialize(XrSpatialGraphNodeBindingPropertiesMSFT* s, std::istream
 
 
 static void deserialize(XrSystemHandTrackingPropertiesEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsHandTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrHandTrackerCreateInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->hand, in);
-    
+
+        
+
     deserialize(&s->handJointSet, in);
+
 }
 
 
 
 
 static void deserialize(XrHandJointsLocateInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrHandJointLocationsEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->isActive, in);
-    
+
+        
+
     deserialize(&s->jointCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointCount;
-        allocate(&s->jointLocations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->jointLocations[i], in);
-        }
-    }
-    else {
-        s->jointLocations = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->jointLocations, in);
+
 }
 
 
 
 
 static void deserialize(XrHandJointVelocitiesEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->jointCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointCount;
-        allocate(&s->jointVelocities, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->jointVelocities[i], in);
-        }
-    }
-    else {
-        s->jointVelocities = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->jointVelocities, in);
+
 }
 
 
@@ -19162,121 +15944,122 @@ static void deserialize(XrHandJointVelocitiesEXT* s, std::istream& in) {
 
 
 static void deserialize(XrSystemHandTrackingMeshPropertiesMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsHandTrackingMesh, in);
-    
+
+        
+
     deserialize(&s->maxHandMeshIndexCount, in);
-    
+
+        
+
     deserialize(&s->maxHandMeshVertexCount, in);
+
 }
 
 
 
 
 static void deserialize(XrHandMeshSpaceCreateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->handPoseType, in);
-    
+
+        
+
     deserialize(&s->poseInHandMeshSpace, in);
+
 }
 
 
 
 
 static void deserialize(XrHandMeshUpdateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->handPoseType, in);
+
 }
 
 
 
 
 static void deserialize(XrHandMeshMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->isActive, in);
-    
+
+        
+
     deserialize(&s->indexBufferChanged, in);
-    
+
+        
+
     deserialize(&s->vertexBufferChanged, in);
-    
+
+        
+
     deserialize(&s->indexBuffer, in);
-    
+
+        
+
     deserialize(&s->vertexBuffer, in);
+
 }
 
 
 
 
 static void deserialize(XrHandPoseTypeInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->handPoseType, in);
+
 }
 
 
@@ -19286,173 +16069,136 @@ static void deserialize(XrHandPoseTypeInfoMSFT* s, std::istream& in) {
 
 
 static void deserialize(XrSecondaryViewConfigurationSessionBeginInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewConfigurationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->viewConfigurationCount;
-        allocate(&s->enabledViewConfigurationTypes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->enabledViewConfigurationTypes[i], in);
-        }
-    }
-    else {
-        s->enabledViewConfigurationTypes = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->enabledViewConfigurationTypes, in);
+
 }
 
 
 
 
 static void deserialize(XrSecondaryViewConfigurationStateMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewConfigurationType, in);
-    
+
+        
+
     deserialize(&s->active, in);
+
 }
 
 
 
 
 static void deserialize(XrSecondaryViewConfigurationFrameStateMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewConfigurationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->viewConfigurationCount;
-        allocate(&s->viewConfigurationStates, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->viewConfigurationStates[i], in);
-        }
-    }
-    else {
-        s->viewConfigurationStates = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->viewConfigurationStates, in);
+
 }
 
 
 
 
 static void deserialize(XrSecondaryViewConfigurationFrameEndInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewConfigurationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->viewConfigurationCount;
-        allocate(&s->viewConfigurationLayersInfo, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->viewConfigurationLayersInfo[i], in);
-        }
-    }
-    else {
-        s->viewConfigurationLayersInfo = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->viewConfigurationLayersInfo, in);
+
 }
 
 
 
 
 static void deserialize(XrSecondaryViewConfigurationLayerInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewConfigurationType, in);
-    
+
+        
+
     deserialize(&s->environmentBlendMode, in);
-    
+
+        
+
     deserialize(&s->layerCount, in);
-    
-    #error auto-generator doesn't support double pointers (XrSecondaryViewConfigurationLayerInfoMSFT.layers)
-        }
+
+        
+
+    #error auto-generator doesn't support double pointers (s->layers)
+    None
+}
 
 
 
 
 static void deserialize(XrSecondaryViewConfigurationSwapchainCreateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->viewConfigurationType, in);
+
 }
 
 
@@ -19462,143 +16208,110 @@ static void deserialize(XrSecondaryViewConfigurationSwapchainCreateInfoMSFT* s, 
 
 
 static void deserialize(XrControllerModelKeyStateMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->modelKey, in);
+
 }
 
 
 
 
 static void deserialize(XrControllerModelNodePropertiesMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
         
-    for (int i = 0; i < XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT; i++) {
-        deserialize(&s->parentNodeName[i], in);
-    }
-    
+
+    deserialize_xr(&s->next, in);
+
         
-    for (int i = 0; i < XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT; i++) {
-        deserialize(&s->nodeName[i], in);
-    }
+
+    deserialize_array(s->parentNodeName, XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT, in);
+
+        
+
+    deserialize_array(s->nodeName, XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT, in);
+
 }
 
 
 
 
 static void deserialize(XrControllerModelPropertiesMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->nodeCapacityInput, in);
-    
+
+        
+
     deserialize(&s->nodeCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->nodeCapacityInput;
-        allocate(&s->nodeProperties, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->nodeProperties[i], in);
-        }
-    }
-    else {
-        s->nodeProperties = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->nodeProperties, in);
+
 }
 
 
 
 
 static void deserialize(XrControllerModelNodeStateMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->nodePose, in);
+
 }
 
 
 
 
 static void deserialize(XrControllerModelStateMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->nodeCapacityInput, in);
-    
+
+        
+
     deserialize(&s->nodeCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->nodeCapacityInput;
-        allocate(&s->nodeStates, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->nodeStates[i], in);
-        }
-    }
-    else {
-        s->nodeStates = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->nodeStates, in);
+
 }
 
 
@@ -19608,23 +16321,22 @@ static void deserialize(XrControllerModelStateMSFT* s, std::istream& in) {
 
 
 static void deserialize(XrViewConfigurationViewFovEPIC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->recommendedFov, in);
-    
+
+        
+
     deserialize(&s->maxMutableFov, in);
+
 }
 
 
@@ -19634,39 +16346,22 @@ static void deserialize(XrViewConfigurationViewFovEPIC* s, std::istream& in) {
 
 
 static void deserialize(XrHolographicWindowAttachmentMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->holographicSpace, 1);
-        deserialize(s->holographicSpace, in);
-    }
-    else {
-        s->holographicSpace = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->coreWindow, 1);
-        deserialize(s->coreWindow, in);
-    }
-    else {
-        s->coreWindow = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->holographicSpace, in);
+
+        
+
+    deserialize_ptr(&s->coreWindow, in);
+
 }
 
 
@@ -19676,46 +16371,44 @@ static void deserialize(XrHolographicWindowAttachmentMSFT* s, std::istream& in) 
 
 
 static void deserialize(XrCompositionLayerReprojectionInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->reprojectionMode, in);
+
 }
 
 
 
 
 static void deserialize(XrCompositionLayerReprojectionPlaneOverrideMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->position, in);
-    
+
+        
+
     deserialize(&s->normal, in);
-    
+
+        
+
     deserialize(&s->velocity, in);
+
 }
 
 
@@ -19725,21 +16418,18 @@ static void deserialize(XrCompositionLayerReprojectionPlaneOverrideMSFT* s, std:
 
 
 static void deserialize(XrAndroidSurfaceSwapchainCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->createFlags, in);
+
 }
 
 
@@ -19749,21 +16439,18 @@ static void deserialize(XrAndroidSurfaceSwapchainCreateInfoFB* s, std::istream& 
 
 
 static void deserialize(XrCompositionLayerSecureContentFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -19773,141 +16460,118 @@ static void deserialize(XrCompositionLayerSecureContentFB* s, std::istream& in) 
 
 
 static void deserialize(XrBodyTrackerCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->bodyJointSet, in);
+
 }
 
 
 
 
 static void deserialize(XrBodyJointsLocateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemBodyTrackingPropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsBodyTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrBodyJointLocationsFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->isActive, in);
-    
+
+        
+
     deserialize(&s->confidence, in);
-    
+
+        
+
     deserialize(&s->jointCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointCount;
-        allocate(&s->jointLocations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->jointLocations[i], in);
-        }
-    }
-    else {
-        s->jointLocations = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->jointLocations, in);
+
+        
+
     deserialize(&s->skeletonChangedCount, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrBodySkeletonFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->jointCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointCount;
-        allocate(&s->joints, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->joints[i], in);
-        }
-    }
-    else {
-        s->joints = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->joints, in);
+
 }
 
 
@@ -19917,53 +16581,50 @@ static void deserialize(XrBodySkeletonFB* s, std::istream& in) {
 
 
 static void deserialize(XrInteractionProfileDpadBindingEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->binding, in);
-    
+
+        
+
     deserialize(&s->actionSet, in);
-    
+
+        
+
     deserialize(&s->forceThreshold, in);
-    
+
+        
+
     deserialize(&s->forceThresholdReleased, in);
-    
+
+        
+
     deserialize(&s->centerRegion, in);
-    
+
+        
+
     deserialize(&s->wedgeAngle, in);
-    
+
+        
+
     deserialize(&s->isSticky, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->onHaptic, 1);
-        deserialize(s->onHaptic, in);
-    }
-    else {
-        s->onHaptic = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->offHaptic, 1);
-        deserialize(s->offHaptic, in);
-    }
-    else {
-        s->offHaptic = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -19973,47 +16634,38 @@ static void deserialize(XrInteractionProfileDpadBindingEXT* s, std::istream& in)
 
 
 static void deserialize(XrInteractionProfileAnalogThresholdVALVE* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->action, in);
-    
+
+        
+
     deserialize(&s->binding, in);
-    
+
+        
+
     deserialize(&s->onThreshold, in);
-    
+
+        
+
     deserialize(&s->offThreshold, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->onHaptic, 1);
-        deserialize(s->onHaptic, in);
-    }
-    else {
-        s->onHaptic = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->offHaptic, 1);
-        deserialize(s->offHaptic, in);
-    }
-    else {
-        s->offHaptic = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -20023,21 +16675,18 @@ static void deserialize(XrInteractionProfileAnalogThresholdVALVE* s, std::istrea
 
 
 static void deserialize(XrHandJointsMotionRangeInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->handJointsMotionRange, in);
+
 }
 
 
@@ -20047,39 +16696,22 @@ static void deserialize(XrHandJointsMotionRangeInfoEXT* s, std::istream& in) {
 
 
 static void deserialize(XrLoaderInitInfoAndroidKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->applicationVM, 1);
-        deserialize(s->applicationVM, in);
-    }
-    else {
-        s->applicationVM = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->applicationContext, 1);
-        deserialize(s->applicationContext, in);
-    }
-    else {
-        s->applicationContext = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->applicationVM, in);
+
+        
+
+    deserialize_ptr(&s->applicationContext, in);
+
 }
 
 
@@ -20089,115 +16721,94 @@ static void deserialize(XrLoaderInitInfoAndroidKHR* s, std::istream& in) {
 
 
 static void deserialize(XrVulkanInstanceCreateInfoKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->systemId, in);
-    
+
+        
+
     deserialize(&s->createFlags, in);
-    
+
+        
+
     deserialize(&s->pfnGetInstanceProcAddr, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->vulkanCreateInfo, 1);
-        deserialize(s->vulkanCreateInfo, in);
-    }
-    else {
-        s->vulkanCreateInfo = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->vulkanAllocator, 1);
-        deserialize(s->vulkanAllocator, in);
-    }
-    else {
-        s->vulkanAllocator = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->vulkanCreateInfo, in);
+
+        
+
+    deserialize_ptr(&s->vulkanAllocator, in);
+
 }
 
 
 
 
 static void deserialize(XrVulkanDeviceCreateInfoKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->systemId, in);
-    
+
+        
+
     deserialize(&s->createFlags, in);
-    
+
+        
+
     deserialize(&s->pfnGetInstanceProcAddr, in);
-    
+
+        
+
     deserialize(&s->vulkanPhysicalDevice, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->vulkanCreateInfo, 1);
-        deserialize(s->vulkanCreateInfo, in);
-    }
-    else {
-        s->vulkanCreateInfo = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->vulkanAllocator, 1);
-        deserialize(s->vulkanAllocator, in);
-    }
-    else {
-        s->vulkanAllocator = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->vulkanCreateInfo, in);
+
+        
+
+    deserialize_ptr(&s->vulkanAllocator, in);
+
 }
 
 
 
 
 static void deserialize(XrVulkanGraphicsDeviceGetInfoKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->systemId, in);
-    
+
+        
+
     deserialize(&s->vulkanInstance, in);
+
 }
 
 
@@ -20207,37 +16818,50 @@ static void deserialize(XrVulkanGraphicsDeviceGetInfoKHR* s, std::istream& in) {
 
 
 static void deserialize(XrCompositionLayerEquirect2KHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->eyeVisibility, in);
-    
+
+        
+
     deserialize(&s->subImage, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->radius, in);
-    
+
+        
+
     deserialize(&s->centralHorizontalAngle, in);
-    
+
+        
+
     deserialize(&s->upperVerticalAngle, in);
-    
+
+        
+
     deserialize(&s->lowerVerticalAngle, in);
+
 }
 
 
@@ -20247,565 +16871,410 @@ static void deserialize(XrCompositionLayerEquirect2KHR* s, std::istream& in) {
 
 
 static void deserialize(XrSceneObserverCreateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneCreateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrNewSceneComputeInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestedFeatureCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->requestedFeatureCount;
-        allocate(&s->requestedFeatures, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->requestedFeatures[i], in);
-        }
-    }
-    else {
-        s->requestedFeatures = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->requestedFeatures, in);
+
+        
+
     deserialize(&s->consistency, in);
-    
+
+        
+
     deserialize(&s->bounds, in);
+
 }
 
 
 
 
 static void deserialize(XrVisualMeshComputeLodInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->lod, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneComponentsMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->componentCapacityInput, in);
-    
+
+        
+
     deserialize(&s->componentCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->componentCapacityInput;
-        allocate(&s->components, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->components[i], in);
-        }
-    }
-    else {
-        s->components = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->components, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneComponentsGetInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->componentType, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneComponentLocationsMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->locationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->locationCount;
-        allocate(&s->locations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->locations[i], in);
-        }
-    }
-    else {
-        s->locations = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->locations, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneComponentsLocateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->componentIdCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->componentIdCount;
-        allocate(&s->componentIds, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->componentIds[i], in);
-        }
-    }
-    else {
-        s->componentIds = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->componentIds, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneObjectsMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->sceneObjectCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->sceneObjectCount;
-        allocate(&s->sceneObjects, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->sceneObjects[i], in);
-        }
-    }
-    else {
-        s->sceneObjects = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->sceneObjects, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneComponentParentFilterInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->parentId, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneObjectTypesFilterInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->objectTypeCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->objectTypeCount;
-        allocate(&s->objectTypes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->objectTypes[i], in);
-        }
-    }
-    else {
-        s->objectTypes = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->objectTypes, in);
+
 }
 
 
 
 
 static void deserialize(XrScenePlanesMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->scenePlaneCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->scenePlaneCount;
-        allocate(&s->scenePlanes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->scenePlanes[i], in);
-        }
-    }
-    else {
-        s->scenePlanes = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->scenePlanes, in);
+
 }
 
 
 
 
 static void deserialize(XrScenePlaneAlignmentFilterInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->alignmentCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->alignmentCount;
-        allocate(&s->alignments, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->alignments[i], in);
-        }
-    }
-    else {
-        s->alignments = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->alignments, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMeshesMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->sceneMeshCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->sceneMeshCount;
-        allocate(&s->sceneMeshes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->sceneMeshes[i], in);
-        }
-    }
-    else {
-        s->sceneMeshes = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->sceneMeshes, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMeshBuffersGetInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->meshBufferId, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMeshBuffersMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMeshVertexBufferMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMeshIndicesUint32MSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->indexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->indexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCapacityInput;
-        allocate(&s->indices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indices[i], in);
-        }
-    }
-    else {
-        s->indices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->indices, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMeshIndicesUint16MSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->indexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->indexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCapacityInput;
-        allocate(&s->indices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indices[i], in);
-        }
-    }
-    else {
-        s->indices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->indices, in);
+
 }
 
 
@@ -20815,55 +17284,40 @@ static void deserialize(XrSceneMeshIndicesUint16MSFT* s, std::istream& in) {
 
 
 static void deserialize(XrSerializedSceneFragmentDataGetInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->sceneFragmentId, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneDeserializeInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->fragmentCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->fragmentCount;
-        allocate(&s->fragments, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->fragments[i], in);
-        }
-    }
-    else {
-        s->fragments = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->fragments, in);
+
 }
 
 
@@ -20873,23 +17327,22 @@ static void deserialize(XrSceneDeserializeInfoMSFT* s, std::istream& in) {
 
 
 static void deserialize(XrEventDataDisplayRefreshRateChangedFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->fromDisplayRefreshRate, in);
-    
+
+        
+
     deserialize(&s->toDisplayRefreshRate, in);
+
 }
 
 
@@ -20899,52 +17352,40 @@ static void deserialize(XrEventDataDisplayRefreshRateChangedFB* s, std::istream&
 
 
 static void deserialize(XrViveTrackerPathsHTCX* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->persistentPath, in);
-    
+
+        
+
     deserialize(&s->rolePath, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataViveTrackerConnectedHTCX* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->paths, 1);
-        deserialize(s->paths, in);
-    }
-    else {
-        s->paths = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->paths, in);
+
 }
 
 
@@ -20954,79 +17395,70 @@ static void deserialize(XrEventDataViveTrackerConnectedHTCX* s, std::istream& in
 
 
 static void deserialize(XrSystemFacialTrackingPropertiesHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportEyeFacialTracking, in);
-    
+
+        
+
     deserialize(&s->supportLipFacialTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrFacialTrackerCreateInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->facialTrackingType, in);
+
 }
 
 
 
 
 static void deserialize(XrFacialExpressionsHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->isActive, in);
-    
+
+        
+
     deserialize(&s->sampleTime, in);
-    
+
+        
+
     deserialize(&s->expressionCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->expressionWeightings, 1);
-        deserialize(s->expressionWeightings, in);
-    }
-    else {
-        s->expressionWeightings = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->expressionWeightings, in);
+
 }
 
 
@@ -21036,21 +17468,18 @@ static void deserialize(XrFacialExpressionsHTC* s, std::istream& in) {
 
 
 static void deserialize(XrSystemColorSpacePropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->colorSpace, in);
+
 }
 
 
@@ -21060,175 +17489,104 @@ static void deserialize(XrSystemColorSpacePropertiesFB* s, std::istream& in) {
 
 
 static void deserialize(XrHandTrackingMeshFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->jointCapacityInput, in);
-    
+
+        
+
     deserialize(&s->jointCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointCapacityInput;
-        allocate(&s->jointBindPoses, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->jointBindPoses[i], in);
-        }
-    }
-    else {
-        s->jointBindPoses = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointCapacityInput;
-        allocate(&s->jointRadii, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->jointRadii[i], in);
-        }
-    }
-    else {
-        s->jointRadii = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointCapacityInput;
-        allocate(&s->jointParents, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->jointParents[i], in);
-        }
-    }
-    else {
-        s->jointParents = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->jointBindPoses, in);
+
+        
+
+    deserialize_ptr(&s->jointRadii, in);
+
+        
+
+    deserialize_ptr(&s->jointParents, in);
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertexPositions, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertexPositions[i], in);
-        }
-    }
-    else {
-        s->vertexPositions = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertexNormals, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertexNormals[i], in);
-        }
-    }
-    else {
-        s->vertexNormals = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertexUVs, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertexUVs[i], in);
-        }
-    }
-    else {
-        s->vertexUVs = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertexBlendIndices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertexBlendIndices[i], in);
-        }
-    }
-    else {
-        s->vertexBlendIndices = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertexBlendWeights, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertexBlendWeights[i], in);
-        }
-    }
-    else {
-        s->vertexBlendWeights = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->vertexPositions, in);
+
+        
+
+    deserialize_ptr(&s->vertexNormals, in);
+
+        
+
+    deserialize_ptr(&s->vertexUVs, in);
+
+        
+
+    deserialize_ptr(&s->vertexBlendIndices, in);
+
+        
+
+    deserialize_ptr(&s->vertexBlendWeights, in);
+
+        
+
     deserialize(&s->indexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->indexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCapacityInput;
-        allocate(&s->indices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indices[i], in);
-        }
-    }
-    else {
-        s->indices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->indices, in);
+
 }
 
 
 
 
 static void deserialize(XrHandTrackingScaleFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->sensorOutput, in);
-    
+
+        
+
     deserialize(&s->currentOutput, in);
-    
+
+        
+
     deserialize(&s->overrideHandScale, in);
-    
+
+        
+
     deserialize(&s->overrideValueInput, in);
+
 }
 
 
@@ -21238,31 +17596,38 @@ static void deserialize(XrHandTrackingScaleFB* s, std::istream& in) {
 
 
 static void deserialize(XrHandTrackingAimStateFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->status, in);
-    
+
+        
+
     deserialize(&s->aimPose, in);
-    
+
+        
+
     deserialize(&s->pinchStrengthIndex, in);
-    
+
+        
+
     deserialize(&s->pinchStrengthMiddle, in);
-    
+
+        
+
     deserialize(&s->pinchStrengthRing, in);
-    
+
+        
+
     deserialize(&s->pinchStrengthLittle, in);
+
 }
 
 
@@ -21272,24 +17637,18 @@ static void deserialize(XrHandTrackingAimStateFB* s, std::istream& in) {
 
 
 static void deserialize(XrHandTrackingCapsulesStateFB* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_HAND_TRACKING_CAPSULE_COUNT_FB; i++) {
-        deserialize(&s->capsules[i], in);
-    }
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->capsules, XR_HAND_TRACKING_CAPSULE_COUNT_FB, in);
+
 }
 
 
@@ -21299,152 +17658,160 @@ static void deserialize(XrHandTrackingCapsulesStateFB* s, std::istream& in) {
 
 
 static void deserialize(XrSpaceComponentStatusFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->enabled, in);
-    
+
+        
+
     deserialize(&s->changePending, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->poseInSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemSpatialEntityPropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSpatialEntity, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSpatialAnchorCreateCompleteFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->uuid, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSpaceSetStatusCompleteFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->uuid, in);
-    
+
+        
+
     deserialize(&s->componentType, in);
-    
+
+        
+
     deserialize(&s->enabled, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceComponentStatusSetInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->componentType, in);
-    
+
+        
+
     deserialize(&s->enabled, in);
-    
+
+        
+
     deserialize(&s->timeout, in);
+
 }
 
 
@@ -21454,63 +17821,54 @@ static void deserialize(XrSpaceComponentStatusSetInfoFB* s, std::istream& in) {
 
 
 static void deserialize(XrFoveationProfileCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainCreateInfoFoveationFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
 
 
 static void deserialize(XrSwapchainStateFoveationFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
-    
+
+        
+
     deserialize(&s->profile, in);
+
 }
 
 
@@ -21520,25 +17878,26 @@ static void deserialize(XrSwapchainStateFoveationFB* s, std::istream& in) {
 
 
 static void deserialize(XrFoveationLevelProfileCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->level, in);
-    
+
+        
+
     deserialize(&s->verticalOffset, in);
-    
+
+        
+
     deserialize(&s->dynamic, in);
+
 }
 
 
@@ -21548,63 +17907,54 @@ static void deserialize(XrFoveationLevelProfileCreateInfoFB* s, std::istream& in
 
 
 static void deserialize(XrSystemKeyboardTrackingPropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsKeyboardTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrKeyboardTrackingQueryFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
 
 
 static void deserialize(XrKeyboardSpaceCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->trackedKeyboardId, in);
+
 }
 
 
@@ -21614,47 +17964,38 @@ static void deserialize(XrKeyboardSpaceCreateInfoFB* s, std::istream& in) {
 
 
 static void deserialize(XrTriangleMeshCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
-    
+
+        
+
     deserialize(&s->windingOrder, in);
-    
+
+        
+
     deserialize(&s->vertexCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->vertexBuffer, 1);
-        deserialize(s->vertexBuffer, in);
-    }
-    else {
-        s->vertexBuffer = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->vertexBuffer, in);
+
+        
+
     deserialize(&s->triangleCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->indexBuffer, 1);
-        deserialize(s->indexBuffer, in);
-    }
-    else {
-        s->indexBuffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->indexBuffer, in);
+
 }
 
 
@@ -21664,286 +18005,272 @@ static void deserialize(XrTriangleMeshCreateInfoFB* s, std::istream& in) {
 
 
 static void deserialize(XrSystemPassthroughPropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsPassthrough, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughLayerCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->passthrough, in);
-    
+
+        
+
     deserialize(&s->flags, in);
-    
+
+        
+
     deserialize(&s->purpose, in);
+
 }
 
 
 
 
 static void deserialize(XrCompositionLayerPassthroughFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->layerHandle, in);
+
 }
 
 
 
 
 static void deserialize(XrGeometryInstanceCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layer, in);
-    
+
+        
+
     deserialize(&s->mesh, in);
-    
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->scale, in);
+
 }
 
 
 
 
 static void deserialize(XrGeometryInstanceTransformFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->scale, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemPassthroughProperties2FB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->capabilities, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughStyleFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->textureOpacityFactor, in);
-    
+
+        
+
     deserialize(&s->edgeColor, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughColorMapMonoToRgbaFB* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB; i++) {
-        deserialize(&s->textureColorMap[i], in);
-    }
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->textureColorMap, XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughColorMapMonoToMonoFB* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB; i++) {
-        deserialize(&s->textureColorMap[i], in);
-    }
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->textureColorMap, XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughBrightnessContrastSaturationFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->brightness, in);
-    
+
+        
+
     deserialize(&s->contrast, in);
-    
+
+        
+
     deserialize(&s->saturation, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataPassthroughStateChangedFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -21953,152 +18280,132 @@ static void deserialize(XrEventDataPassthroughStateChangedFB* s, std::istream& i
 
 
 static void deserialize(XrRenderModelPathInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->path, in);
+
 }
 
 
 
 
 static void deserialize(XrRenderModelPropertiesFB* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    deserialize(&s->vendorId, in);
-    
         
-    for (int i = 0; i < XR_MAX_RENDER_MODEL_NAME_SIZE_FB; i++) {
-        deserialize(&s->modelName[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->vendorId, in);
+
+        
+
+    deserialize_array(s->modelName, XR_MAX_RENDER_MODEL_NAME_SIZE_FB, in);
+
+        
+
     deserialize(&s->modelKey, in);
-    
+
+        
+
     deserialize(&s->modelVersion, in);
-    
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
 
 
 static void deserialize(XrRenderModelBufferFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->bufferCapacityInput, in);
-    
+
+        
+
     deserialize(&s->bufferCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->bufferCapacityInput;
-        allocate(&s->buffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->buffer[i], in);
-        }
-    }
-    else {
-        s->buffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->buffer, in);
+
 }
 
 
 
 
 static void deserialize(XrRenderModelLoadInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->modelKey, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemRenderModelPropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsRenderModelLoading, in);
+
 }
 
 
 
 
 static void deserialize(XrRenderModelCapabilitiesRequestFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -22108,24 +18415,23 @@ static void deserialize(XrRenderModelCapabilitiesRequestFB* s, std::istream& in)
 
 
 static void deserialize(XrBindingModificationsKHR* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->bindingModificationCount, in);
-    
-    #error auto-generator doesn't support double pointers (XrBindingModificationsKHR.bindingModifications)
-        }
+
+        
+
+    #error auto-generator doesn't support double pointers (s->bindingModifications)
+    None
+}
 
 
 #endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
@@ -22134,63 +18440,54 @@ static void deserialize(XrBindingModificationsKHR* s, std::istream& in) {
 
 
 static void deserialize(XrViewLocateFoveatedRenderingVARJO* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->foveatedRenderingActive, in);
+
 }
 
 
 
 
 static void deserialize(XrFoveatedViewConfigurationViewVARJO* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->foveatedRenderingActive, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemFoveatedRenderingPropertiesVARJO* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsFoveatedRendering, in);
+
 }
 
 
@@ -22200,23 +18497,22 @@ static void deserialize(XrSystemFoveatedRenderingPropertiesVARJO* s, std::istrea
 
 
 static void deserialize(XrCompositionLayerDepthTestVARJO* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->depthTestRangeNearZ, in);
-    
+
+        
+
     deserialize(&s->depthTestRangeFarZ, in);
+
 }
 
 
@@ -22226,71 +18522,70 @@ static void deserialize(XrCompositionLayerDepthTestVARJO* s, std::istream& in) {
 
 
 static void deserialize(XrSystemMarkerTrackingPropertiesVARJO* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsMarkerTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataMarkerTrackingUpdateVARJO* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->markerId, in);
-    
+
+        
+
     deserialize(&s->isActive, in);
-    
+
+        
+
     deserialize(&s->isPredicted, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerSpaceCreateInfoVARJO* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->markerId, in);
-    
+
+        
+
     deserialize(&s->poseInMarkerSpace, in);
+
 }
 
 
@@ -22300,23 +18595,22 @@ static void deserialize(XrMarkerSpaceCreateInfoVARJO* s, std::istream& in) {
 
 
 static void deserialize(XrFrameEndInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->focusDistance, in);
-    
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -22326,23 +18620,22 @@ static void deserialize(XrFrameEndInfoML* s, std::istream& in) {
 
 
 static void deserialize(XrGlobalDimmerFrameEndInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->dimmerValue, in);
-    
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -22352,23 +18645,22 @@ static void deserialize(XrGlobalDimmerFrameEndInfoML* s, std::istream& in) {
 
 
 static void deserialize(XrCoordinateSpaceCreateInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->cfuid, in);
-    
+
+        
+
     deserialize(&s->poseInCoordinateSpace, in);
+
 }
 
 
@@ -22378,203 +18670,190 @@ static void deserialize(XrCoordinateSpaceCreateInfoML* s, std::istream& in) {
 
 
 static void deserialize(XrSystemMarkerUnderstandingPropertiesML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsMarkerUnderstanding, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerDetectorCreateInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->profile, in);
-    
+
+        
+
     deserialize(&s->markerType, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerDetectorArucoInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->arucoDict, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerDetectorSizeInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->markerLength, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerDetectorAprilTagInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->aprilTagDict, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerDetectorCustomProfileInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->fpsHint, in);
-    
+
+        
+
     deserialize(&s->resolutionHint, in);
-    
+
+        
+
     deserialize(&s->cameraHint, in);
-    
+
+        
+
     deserialize(&s->cornerRefineMethod, in);
-    
+
+        
+
     deserialize(&s->useEdgeRefinement, in);
-    
+
+        
+
     deserialize(&s->fullAnalysisIntervalHint, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerDetectorSnapshotInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerDetectorStateML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->state, in);
+
 }
 
 
 
 
 static void deserialize(XrMarkerSpaceCreateInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->markerDetector, in);
-    
+
+        
+
     deserialize(&s->marker, in);
-    
+
+        
+
     deserialize(&s->poseInMarkerSpace, in);
+
 }
 
 
@@ -22584,133 +18863,118 @@ static void deserialize(XrMarkerSpaceCreateInfoML* s, std::istream& in) {
 
 
 static void deserialize(XrLocalizationMapML* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_MAX_LOCALIZATION_MAP_NAME_LENGTH_ML; i++) {
-        deserialize(&s->name[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->name, XR_MAX_LOCALIZATION_MAP_NAME_LENGTH_ML, in);
+
+        
+
     deserialize(&s->mapUuid, in);
-    
+
+        
+
     deserialize(&s->mapType, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataLocalizationChangedML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->session, in);
-    
+
+        
+
     deserialize(&s->state, in);
-    
+
+        
+
     deserialize(&s->map, in);
-    
+
+        
+
     deserialize(&s->confidence, in);
-    
+
+        
+
     deserialize(&s->errorFlags, in);
+
 }
 
 
 
 
 static void deserialize(XrMapLocalizationRequestInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->mapUuid, in);
+
 }
 
 
 
 
 static void deserialize(XrLocalizationMapImportInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->size, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->size;
-        allocate(&s->data, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->data[i], in);
-        }
-    }
-    else {
-        s->data = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->data, in);
+
 }
 
 
 
 
 static void deserialize(XrLocalizationEnableEventsInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->enabled, in);
+
 }
 
 
@@ -22720,82 +18984,70 @@ static void deserialize(XrLocalizationEnableEventsInfoML* s, std::istream& in) {
 
 
 static void deserialize(XrSpatialAnchorsCreateInfoFromPoseML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->poseInBaseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrCreateSpatialAnchorsCompletionML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
-    
+
+        
+
     deserialize(&s->spaceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->spaceCount;
-        allocate(&s->spaces, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->spaces[i], in);
-        }
-    }
-    else {
-        s->spaces = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->spaces, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorStateML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->confidence, in);
+
 }
 
 
@@ -22805,406 +19057,302 @@ static void deserialize(XrSpatialAnchorStateML* s, std::istream& in) {
 
 
 static void deserialize(XrSpatialAnchorsCreateStorageInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsQueryInfoRadiusML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->center, in);
-    
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->radius, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsQueryCompletionML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
-    
+
+        
+
     deserialize(&s->uuidCapacityInput, in);
-    
+
+        
+
     deserialize(&s->uuidCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->uuidCapacityInput;
-        allocate(&s->uuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->uuids[i], in);
-        }
-    }
-    else {
-        s->uuids = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->uuids, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsCreateInfoFromUuidsML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->storage, in);
-    
+
+        
+
     deserialize(&s->uuidCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->uuidCount;
-        allocate(&s->uuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->uuids[i], in);
-        }
-    }
-    else {
-        s->uuids = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->uuids, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsPublishInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->anchorCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->anchorCount;
-        allocate(&s->anchors, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->anchors[i], in);
-        }
-    }
-    else {
-        s->anchors = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->anchors, in);
+
+        
+
     deserialize(&s->expiration, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsPublishCompletionML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
-    
+
+        
+
     deserialize(&s->uuidCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->uuidCount;
-        allocate(&s->uuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->uuids[i], in);
-        }
-    }
-    else {
-        s->uuids = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->uuids, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsDeleteInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuidCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->uuidCount;
-        allocate(&s->uuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->uuids[i], in);
-        }
-    }
-    else {
-        s->uuids = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->uuids, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsDeleteCompletionML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsUpdateExpirationInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuidCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->uuidCount;
-        allocate(&s->uuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->uuids[i], in);
-        }
-    }
-    else {
-        s->uuids = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->uuids, in);
+
+        
+
     deserialize(&s->expiration, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsUpdateExpirationCompletionML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsPublishCompletionDetailsML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->resultCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->resultCount;
-        allocate(&s->results, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->results[i], in);
-        }
-    }
-    else {
-        s->results = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->results, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsDeleteCompletionDetailsML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->resultCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->resultCount;
-        allocate(&s->results, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->results[i], in);
-        }
-    }
-    else {
-        s->results = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->results, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorsUpdateExpirationCompletionDetailsML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->resultCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->resultCount;
-        allocate(&s->results, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->results[i], in);
-        }
-    }
-    else {
-        s->results = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->results, in);
+
 }
 
 
@@ -23214,46 +19362,44 @@ static void deserialize(XrSpatialAnchorsUpdateExpirationCompletionDetailsML* s, 
 
 
 static void deserialize(XrSpatialAnchorPersistenceInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->spatialAnchorPersistenceName, in);
-    
+
+        
+
     deserialize(&s->spatialAnchor, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->spatialAnchorStore, in);
-    
+
+        
+
     deserialize(&s->spatialAnchorPersistenceName, in);
+
 }
 
 
@@ -23263,102 +19409,66 @@ static void deserialize(XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* s, std
 
 
 static void deserialize(XrSceneMarkersMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->sceneMarkerCapacityInput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->sceneMarkerCapacityInput;
-        allocate(&s->sceneMarkers, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->sceneMarkers[i], in);
-        }
-    }
-    else {
-        s->sceneMarkers = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->sceneMarkers, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMarkerTypeFilterMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->markerTypeCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->markerTypeCount;
-        allocate(&s->markerTypes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->markerTypes[i], in);
-        }
-    }
-    else {
-        s->markerTypes = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->markerTypes, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneMarkerQRCodesMSFT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->qrCodeCapacityInput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->qrCodeCapacityInput;
-        allocate(&s->qrCodes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->qrCodes[i], in);
-        }
-    }
-    else {
-        s->qrCodes = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->qrCodes, in);
+
 }
 
 
@@ -23368,201 +19478,158 @@ static void deserialize(XrSceneMarkerQRCodesMSFT* s, std::istream& in) {
 
 
 static void deserialize(XrSpaceQueryInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->queryAction, in);
-    
+
+        
+
     deserialize(&s->maxResultCount, in);
-    
+
+        
+
     deserialize(&s->timeout, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->filter, 1);
-        deserialize(s->filter, in);
-    }
-    else {
-        s->filter = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->excludeFilter, 1);
-        deserialize(s->excludeFilter, in);
-    }
-    else {
-        s->excludeFilter = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceQueryResultsFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->resultCapacityInput, in);
-    
+
+        
+
     deserialize(&s->resultCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->resultCapacityInput;
-        allocate(&s->results, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->results[i], in);
-        }
-    }
-    else {
-        s->results = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->results, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceStorageLocationFilterInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->location, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceComponentFilterInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->componentType, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceUuidFilterInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuidCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->uuidCount;
-        allocate(&s->uuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->uuids[i], in);
-        }
-    }
-    else {
-        s->uuids = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->uuids, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSpaceQueryResultsAvailableFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSpaceQueryCompleteFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
@@ -23572,106 +19639,116 @@ static void deserialize(XrEventDataSpaceQueryCompleteFB* s, std::istream& in) {
 
 
 static void deserialize(XrSpaceSaveInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->location, in);
-    
+
+        
+
     deserialize(&s->persistenceMode, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceEraseInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->location, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSpaceSaveCompleteFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->uuid, in);
-    
+
+        
+
     deserialize(&s->location, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSpaceEraseCompleteFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->uuid, in);
-    
+
+        
+
     deserialize(&s->location, in);
+
 }
 
 
@@ -23681,25 +19758,26 @@ static void deserialize(XrEventDataSpaceEraseCompleteFB* s, std::istream& in) {
 
 
 static void deserialize(XrSwapchainImageFoveationVulkanFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->image, in);
-    
+
+        
+
     deserialize(&s->width, in);
-    
+
+        
+
     deserialize(&s->height, in);
+
 }
 
 
@@ -23709,23 +19787,22 @@ static void deserialize(XrSwapchainImageFoveationVulkanFB* s, std::istream& in) 
 
 
 static void deserialize(XrSwapchainStateAndroidSurfaceDimensionsFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->width, in);
-    
+
+        
+
     deserialize(&s->height, in);
+
 }
 
 
@@ -23735,39 +19812,54 @@ static void deserialize(XrSwapchainStateAndroidSurfaceDimensionsFB* s, std::istr
 
 
 static void deserialize(XrSwapchainStateSamplerOpenGLESFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->minFilter, in);
-    
+
+        
+
     deserialize(&s->magFilter, in);
-    
+
+        
+
     deserialize(&s->wrapModeS, in);
-    
+
+        
+
     deserialize(&s->wrapModeT, in);
-    
+
+        
+
     deserialize(&s->swizzleRed, in);
-    
+
+        
+
     deserialize(&s->swizzleGreen, in);
-    
+
+        
+
     deserialize(&s->swizzleBlue, in);
-    
+
+        
+
     deserialize(&s->swizzleAlpha, in);
-    
+
+        
+
     deserialize(&s->maxAnisotropy, in);
-    
+
+        
+
     deserialize(&s->borderColor, in);
+
 }
 
 
@@ -23777,41 +19869,58 @@ static void deserialize(XrSwapchainStateSamplerOpenGLESFB* s, std::istream& in) 
 
 
 static void deserialize(XrSwapchainStateSamplerVulkanFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->minFilter, in);
-    
+
+        
+
     deserialize(&s->magFilter, in);
-    
+
+        
+
     deserialize(&s->mipmapMode, in);
-    
+
+        
+
     deserialize(&s->wrapModeS, in);
-    
+
+        
+
     deserialize(&s->wrapModeT, in);
-    
+
+        
+
     deserialize(&s->swizzleRed, in);
-    
+
+        
+
     deserialize(&s->swizzleGreen, in);
-    
+
+        
+
     deserialize(&s->swizzleBlue, in);
-    
+
+        
+
     deserialize(&s->swizzleAlpha, in);
-    
+
+        
+
     deserialize(&s->maxAnisotropy, in);
-    
+
+        
+
     deserialize(&s->borderColor, in);
+
 }
 
 
@@ -23821,72 +19930,52 @@ static void deserialize(XrSwapchainStateSamplerVulkanFB* s, std::istream& in) {
 
 
 static void deserialize(XrSpaceShareInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->spaceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->spaceCount;
-        allocate(&s->spaces, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->spaces[i], in);
-        }
-    }
-    else {
-        s->spaces = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->spaces, in);
+
+        
+
     deserialize(&s->userCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->userCount;
-        allocate(&s->users, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->users[i], in);
-        }
-    }
-    else {
-        s->users = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->users, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSpaceShareCompleteFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
@@ -23896,58 +19985,68 @@ static void deserialize(XrEventDataSpaceShareCompleteFB* s, std::istream& in) {
 
 
 static void deserialize(XrCompositionLayerSpaceWarpInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->motionVectorSubImage, in);
-    
+
+        
+
     deserialize(&s->appSpaceDeltaPose, in);
-    
+
+        
+
     deserialize(&s->depthSubImage, in);
-    
+
+        
+
     deserialize(&s->minDepth, in);
-    
+
+        
+
     deserialize(&s->maxDepth, in);
-    
+
+        
+
     deserialize(&s->nearZ, in);
-    
+
+        
+
     deserialize(&s->farZ, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemSpaceWarpPropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->recommendedMotionVectorImageRectWidth, in);
-    
+
+        
+
     deserialize(&s->recommendedMotionVectorImageRectHeight, in);
+
 }
 
 
@@ -23957,36 +20056,26 @@ static void deserialize(XrSystemSpaceWarpPropertiesFB* s, std::istream& in) {
 
 
 static void deserialize(XrHapticAmplitudeEnvelopeVibrationFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->duration, in);
-    
+
+        
+
     deserialize(&s->amplitudeCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->amplitudeCount;
-        allocate(&s->amplitudes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->amplitudes[i], in);
-        }
-    }
-    else {
-        s->amplitudes = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->amplitudes, in);
+
 }
 
 
@@ -23996,147 +20085,108 @@ static void deserialize(XrHapticAmplitudeEnvelopeVibrationFB* s, std::istream& i
 
 
 static void deserialize(XrSemanticLabelsFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->bufferCapacityInput, in);
-    
+
+        
+
     deserialize(&s->bufferCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->bufferCapacityInput;
-        allocate(&s->buffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->buffer[i], in);
-        }
-    }
-    else {
-        s->buffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->buffer, in);
+
 }
 
 
 
 
 static void deserialize(XrRoomLayoutFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->floorUuid, in);
-    
+
+        
+
     deserialize(&s->ceilingUuid, in);
-    
+
+        
+
     deserialize(&s->wallUuidCapacityInput, in);
-    
+
+        
+
     deserialize(&s->wallUuidCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->wallUuidCapacityInput;
-        allocate(&s->wallUuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->wallUuids[i], in);
-        }
-    }
-    else {
-        s->wallUuids = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->wallUuids, in);
+
 }
 
 
 
 
 static void deserialize(XrBoundary2DFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
 }
 
 
 
 
 static void deserialize(XrSemanticLabelsSupportInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items{};
-        deserialize(static_cast<std::uint32_t*>(&num_items));
-        allocate(&s->recognizedLabels, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->recognizedLabels[i], in);
-        }
-    }
-    else {
-        s->recognizedLabels = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->recognizedLabels, in);
+
 }
 
 
@@ -24146,21 +20196,18 @@ static void deserialize(XrSemanticLabelsSupportInfoFB* s, std::istream& in) {
 
 
 static void deserialize(XrDigitalLensControlALMALENCE* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -24170,57 +20217,44 @@ static void deserialize(XrDigitalLensControlALMALENCE* s, std::istream& in) {
 
 
 static void deserialize(XrEventDataSceneCaptureCompleteFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneCaptureRequestInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestByteCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->requestByteCount;
-        allocate(&s->request, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->request[i], in);
-        }
-    }
-    else {
-        s->request = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->request, in);
+
 }
 
 
@@ -24230,36 +20264,26 @@ static void deserialize(XrSceneCaptureRequestInfoFB* s, std::istream& in) {
 
 
 static void deserialize(XrSpaceContainerFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuidCapacityInput, in);
-    
+
+        
+
     deserialize(&s->uuidCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->uuidCapacityInput;
-        allocate(&s->uuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->uuids[i], in);
-        }
-    }
-    else {
-        s->uuids = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->uuids, in);
+
 }
 
 
@@ -24269,68 +20293,58 @@ static void deserialize(XrSpaceContainerFB* s, std::istream& in) {
 
 
 static void deserialize(XrFoveationEyeTrackedProfileCreateInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
 
 
 static void deserialize(XrFoveationEyeTrackedStateMETA* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_FOVEATION_CENTER_SIZE_META; i++) {
-        deserialize(&s->foveationCenter[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->foveationCenter, XR_FOVEATION_CENTER_SIZE_META, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemFoveationEyeTrackedPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsFoveationEyeTracked, in);
+
 }
 
 
@@ -24340,116 +20354,92 @@ static void deserialize(XrSystemFoveationEyeTrackedPropertiesMETA* s, std::istre
 
 
 static void deserialize(XrFaceExpressionInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemFaceTrackingPropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsFaceTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrFaceTrackerCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->faceExpressionSet, in);
+
 }
 
 
 
 
 static void deserialize(XrFaceExpressionWeightsFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->weightCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->weightCount;
-        allocate(&s->weights, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->weights[i], in);
-        }
-    }
-    else {
-        s->weights = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->weights, in);
+
+        
+
     deserialize(&s->confidenceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->confidenceCount;
-        allocate(&s->confidences, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->confidences[i], in);
-        }
-    }
-    else {
-        s->confidences = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->confidences, in);
+
+        
+
     deserialize(&s->status, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
@@ -24459,89 +20449,76 @@ static void deserialize(XrFaceExpressionWeightsFB* s, std::istream& in) {
 
 
 static void deserialize(XrEyeTrackerCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrEyeGazesInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrEyeGazesFB* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_EYE_POSITION_COUNT_FB; i++) {
-        deserialize(&s->gaze[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->gaze, XR_EYE_POSITION_COUNT_FB, in);
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemEyeTrackingPropertiesFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsEyeTracking, in);
+
 }
 
 
@@ -24551,23 +20528,22 @@ static void deserialize(XrSystemEyeTrackingPropertiesFB* s, std::istream& in) {
 
 
 static void deserialize(XrPassthroughKeyboardHandsIntensityFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->leftHandIntensity, in);
-    
+
+        
+
     deserialize(&s->rightHandIntensity, in);
+
 }
 
 
@@ -24577,21 +20553,18 @@ static void deserialize(XrPassthroughKeyboardHandsIntensityFB* s, std::istream& 
 
 
 static void deserialize(XrCompositionLayerSettingsFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
+
 }
 
 
@@ -24601,69 +20574,52 @@ static void deserialize(XrCompositionLayerSettingsFB* s, std::istream& in) {
 
 
 static void deserialize(XrHapticPcmVibrationFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->bufferSize, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->bufferSize;
-        allocate(&s->buffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->buffer[i], in);
-        }
-    }
-    else {
-        s->buffer = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->buffer, in);
+
+        
+
     deserialize(&s->sampleRate, in);
-    
+
+        
+
     deserialize(&s->append, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->samplesConsumed, 1);
-        deserialize(s->samplesConsumed, in);
-    }
-    else {
-        s->samplesConsumed = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->samplesConsumed, in);
+
 }
 
 
 
 
 static void deserialize(XrDevicePcmSampleRateStateFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->sampleRate, in);
+
 }
 
 
@@ -24673,62 +20629,76 @@ static void deserialize(XrDevicePcmSampleRateStateFB* s, std::istream& in) {
 
 
 static void deserialize(XrFrameSynthesisInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->motionVectorSubImage, in);
-    
+
+        
+
     deserialize(&s->motionVectorScale, in);
-    
+
+        
+
     deserialize(&s->motionVectorOffset, in);
-    
+
+        
+
     deserialize(&s->appSpaceDeltaPose, in);
-    
+
+        
+
     deserialize(&s->depthSubImage, in);
-    
+
+        
+
     deserialize(&s->minDepth, in);
-    
+
+        
+
     deserialize(&s->maxDepth, in);
-    
+
+        
+
     deserialize(&s->nearZ, in);
-    
+
+        
+
     deserialize(&s->farZ, in);
+
 }
 
 
 
 
 static void deserialize(XrFrameSynthesisConfigViewEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->recommendedMotionVectorImageRectWidth, in);
-    
+
+        
+
     deserialize(&s->recommendedMotionVectorImageRectHeight, in);
+
 }
 
 
@@ -24738,23 +20708,22 @@ static void deserialize(XrFrameSynthesisConfigViewEXT* s, std::istream& in) {
 
 
 static void deserialize(XrCompositionLayerDepthTestFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->depthMask, in);
-    
+
+        
+
     deserialize(&s->compareOp, in);
+
 }
 
 
@@ -24764,21 +20733,18 @@ static void deserialize(XrCompositionLayerDepthTestFB* s, std::istream& in) {
 
 
 static void deserialize(XrLocalDimmingFrameEndInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->localDimmingMode, in);
+
 }
 
 
@@ -24788,21 +20754,18 @@ static void deserialize(XrLocalDimmingFrameEndInfoMETA* s, std::istream& in) {
 
 
 static void deserialize(XrPassthroughPreferencesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
@@ -24812,382 +20775,330 @@ static void deserialize(XrPassthroughPreferencesMETA* s, std::istream& in) {
 
 
 static void deserialize(XrSystemVirtualKeyboardPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsVirtualKeyboard, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardCreateInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardSpaceCreateInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->locationType, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->poseInSpace, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardLocationInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->locationType, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->poseInSpace, in);
-    
+
+        
+
     deserialize(&s->scale, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardModelVisibilitySetInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->visible, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardAnimationStateMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->animationIndex, in);
-    
+
+        
+
     deserialize(&s->fraction, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardModelAnimationStatesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->stateCapacityInput, in);
-    
+
+        
+
     deserialize(&s->stateCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->stateCapacityInput;
-        allocate(&s->states, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->states[i], in);
-        }
-    }
-    else {
-        s->states = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->states, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardTextureDataMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->textureWidth, in);
-    
+
+        
+
     deserialize(&s->textureHeight, in);
-    
+
+        
+
     deserialize(&s->bufferCapacityInput, in);
-    
+
+        
+
     deserialize(&s->bufferCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->bufferCapacityInput;
-        allocate(&s->buffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->buffer[i], in);
-        }
-    }
-    else {
-        s->buffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->buffer, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardInputInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->inputSource, in);
-    
+
+        
+
     deserialize(&s->inputSpace, in);
-    
+
+        
+
     deserialize(&s->inputPoseInSpace, in);
-    
+
+        
+
     deserialize(&s->inputState, in);
+
 }
 
 
 
 
 static void deserialize(XrVirtualKeyboardTextContextChangeInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items{};
-        deserialize(static_cast<std::uint32_t*>(&num_items));
-        allocate(&s->textContext, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->textContext[i], in);
-        }
-    }
-    else {
-        s->textContext = nullptr;
-    }
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_ptr(&s->textContext, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataVirtualKeyboardCommitTextMETA* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    deserialize(&s->keyboard, in);
-    
         
-    for (int i = 0; i < XR_MAX_VIRTUAL_KEYBOARD_COMMIT_TEXT_SIZE_META; i++) {
-        deserialize(&s->text[i], in);
-    }
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->keyboard, in);
+
+        
+
+    deserialize_array(s->text, XR_MAX_VIRTUAL_KEYBOARD_COMMIT_TEXT_SIZE_META, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataVirtualKeyboardBackspaceMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->keyboard, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataVirtualKeyboardEnterMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->keyboard, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataVirtualKeyboardShownMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->keyboard, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataVirtualKeyboardHiddenMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->keyboard, in);
+
 }
 
 
@@ -25197,28 +21108,26 @@ static void deserialize(XrEventDataVirtualKeyboardHiddenMETA* s, std::istream& i
 
 
 static void deserialize(XrExternalCameraOCULUS* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
         
-    for (int i = 0; i < XR_MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS; i++) {
-        deserialize(&s->name[i], in);
-    }
-    
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_array(s->name, XR_MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS, in);
+
+        
+
     deserialize(&s->intrinsics, in);
-    
+
+        
+
     deserialize(&s->extrinsics, in);
+
 }
 
 
@@ -25228,23 +21137,22 @@ static void deserialize(XrExternalCameraOCULUS* s, std::istream& in) {
 
 
 static void deserialize(XrVulkanSwapchainCreateInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->additionalCreateFlags, in);
-    
+
+        
+
     deserialize(&s->additionalUsageFlags, in);
+
 }
 
 
@@ -25254,48 +21162,48 @@ static void deserialize(XrVulkanSwapchainCreateInfoMETA* s, std::istream& in) {
 
 
 static void deserialize(XrPerformanceMetricsStateMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->enabled, in);
+
 }
 
 
 
 
 static void deserialize(XrPerformanceMetricsCounterMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->counterFlags, in);
-    
+
+        
+
     deserialize(&s->counterUnit, in);
-    
+
+        
+
     deserialize(&s->uintValue, in);
-    
+
+        
+
     deserialize(&s->floatValue, in);
+
 }
 
 
@@ -25305,59 +21213,48 @@ static void deserialize(XrPerformanceMetricsCounterMETA* s, std::istream& in) {
 
 
 static void deserialize(XrSpaceListSaveInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->spaceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->spaceCount;
-        allocate(&s->spaces, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->spaces[i], in);
-        }
-    }
-    else {
-        s->spaces = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->spaces, in);
+
+        
+
     deserialize(&s->location, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSpaceListSaveCompleteFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
@@ -25367,21 +21264,18 @@ static void deserialize(XrEventDataSpaceListSaveCompleteFB* s, std::istream& in)
 
 
 static void deserialize(XrSpaceUserCreateInfoFB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->userId, in);
+
 }
 
 
@@ -25391,21 +21285,18 @@ static void deserialize(XrSpaceUserCreateInfoFB* s, std::istream& in) {
 
 
 static void deserialize(XrSystemHeadsetIdPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->id, in);
+
 }
 
 
@@ -25415,54 +21306,44 @@ static void deserialize(XrSystemHeadsetIdPropertiesMETA* s, std::istream& in) {
 
 
 static void deserialize(XrRecommendedLayerResolutionMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->recommendedImageDimensions, in);
-    
+
+        
+
     deserialize(&s->isValid, in);
+
 }
 
 
 
 
 static void deserialize(XrRecommendedLayerResolutionGetInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->layer, 1);
-        deserialize(s->layer, in);
-    }
-    else {
-        s->layer = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->predictedDisplayTime, in);
+
 }
 
 
@@ -25472,115 +21353,110 @@ static void deserialize(XrRecommendedLayerResolutionGetInfoMETA* s, std::istream
 
 
 static void deserialize(XrSystemPassthroughColorLutPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->maxColorLutResolution, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughColorLutCreateInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->channels, in);
-    
+
+        
+
     deserialize(&s->resolution, in);
-    
+
+        
+
     deserialize(&s->data, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughColorLutUpdateInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->data, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughColorMapLutMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->colorLut, in);
-    
+
+        
+
     deserialize(&s->weight, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughColorMapInterpolatedLutMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->sourceColorLut, in);
-    
+
+        
+
     deserialize(&s->targetColorLut, in);
-    
+
+        
+
     deserialize(&s->weight, in);
+
 }
 
 
@@ -25590,72 +21466,52 @@ static void deserialize(XrPassthroughColorMapInterpolatedLutMETA* s, std::istrea
 
 
 static void deserialize(XrSpaceTriangleMeshGetInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceTriangleMeshMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
+        
+
     deserialize(&s->indexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->indexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCapacityInput;
-        allocate(&s->indices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indices[i], in);
-        }
-    }
-    else {
-        s->indices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->indices, in);
+
 }
 
 
@@ -25665,21 +21521,18 @@ static void deserialize(XrSpaceTriangleMeshMETA* s, std::istream& in) {
 
 
 static void deserialize(XrSystemPropertiesBodyTrackingFullBodyMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsFullBodyTracking, in);
+
 }
 
 
@@ -25689,21 +21542,18 @@ static void deserialize(XrSystemPropertiesBodyTrackingFullBodyMETA* s, std::istr
 
 
 static void deserialize(XrEventDataPassthroughLayerResumedMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layer, in);
+
 }
 
 
@@ -25713,137 +21563,112 @@ static void deserialize(XrEventDataPassthroughLayerResumedMETA* s, std::istream&
 
 
 static void deserialize(XrSystemFaceTrackingProperties2FB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsVisualFaceTracking, in);
-    
+
+        
+
     deserialize(&s->supportsAudioFaceTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrFaceTrackerCreateInfo2FB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->faceExpressionSet, in);
-    
+
+        
+
     deserialize(&s->requestedDataSourceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->requestedDataSourceCount;
-        allocate(&s->requestedDataSources, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->requestedDataSources[i], in);
-        }
-    }
-    else {
-        s->requestedDataSources = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->requestedDataSources, in);
+
 }
 
 
 
 
 static void deserialize(XrFaceExpressionInfo2FB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrFaceExpressionWeights2FB* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->weightCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->weightCount;
-        allocate(&s->weights, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->weights[i], in);
-        }
-    }
-    else {
-        s->weights = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->weights, in);
+
+        
+
     deserialize(&s->confidenceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->confidenceCount;
-        allocate(&s->confidences, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->confidences[i], in);
-        }
-    }
-    else {
-        s->confidences = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->confidences, in);
+
+        
+
     deserialize(&s->isValid, in);
-    
+
+        
+
     deserialize(&s->isEyeFollowingBlendshapesValid, in);
-    
+
+        
+
     deserialize(&s->dataSource, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
@@ -25853,88 +21678,66 @@ static void deserialize(XrFaceExpressionWeights2FB* s, std::istream& in) {
 
 
 static void deserialize(XrSystemSpatialEntitySharingPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSpatialEntitySharing, in);
+
 }
 
 
 
 
 static void deserialize(XrShareSpacesInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->spaceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->spaceCount;
-        allocate(&s->spaces, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->spaces[i], in);
-        }
-    }
-    else {
-        s->spaces = nullptr;
-    }
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        allocate(&s->recipientInfo, 1);
-        deserialize(s->recipientInfo, in);
-    }
-    else {
-        s->recipientInfo = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->spaces, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataShareSpacesCompleteMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
@@ -25944,185 +21747,172 @@ static void deserialize(XrEventDataShareSpacesCompleteMETA* s, std::istream& in)
 
 
 static void deserialize(XrEnvironmentDepthProviderCreateInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->createFlags, in);
+
 }
 
 
 
 
 static void deserialize(XrEnvironmentDepthSwapchainCreateInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->createFlags, in);
+
 }
 
 
 
 
 static void deserialize(XrEnvironmentDepthSwapchainStateMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->width, in);
-    
+
+        
+
     deserialize(&s->height, in);
+
 }
 
 
 
 
 static void deserialize(XrEnvironmentDepthImageAcquireInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->displayTime, in);
+
 }
 
 
 
 
 static void deserialize(XrEnvironmentDepthImageViewMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->fov, in);
-    
+
+        
+
     deserialize(&s->pose, in);
+
 }
 
 
 
 
 static void deserialize(XrEnvironmentDepthImageMETA* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    deserialize(&s->swapchainIndex, in);
-    
-    deserialize(&s->nearZ, in);
-    
-    deserialize(&s->farZ, in);
-    
         
-    for (int i = 0; i < 2; i++) {
-        deserialize(&s->views[i], in);
-    }
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->swapchainIndex, in);
+
+        
+
+    deserialize(&s->nearZ, in);
+
+        
+
+    deserialize(&s->farZ, in);
+
+        
+
+    deserialize_array(s->views, 2, in);
+
 }
 
 
 
 
 static void deserialize(XrEnvironmentDepthHandRemovalSetInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->enabled, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemEnvironmentDepthPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsEnvironmentDepth, in);
-    
+
+        
+
     deserialize(&s->supportsHandRemoval, in);
+
 }
 
 
@@ -26132,126 +21922,112 @@ static void deserialize(XrSystemEnvironmentDepthPropertiesMETA* s, std::istream&
 
 
 static void deserialize(XrPassthroughCreateInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->form, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughColorHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->alpha, in);
+
 }
 
 
 
 
 static void deserialize(XrPassthroughMeshTransformInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->vertexCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCount;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
+        
+
     deserialize(&s->indexCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCount;
-        allocate(&s->indices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indices[i], in);
-        }
-    }
-    else {
-        s->indices = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->indices, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->scale, in);
+
 }
 
 
 
 
 static void deserialize(XrCompositionLayerPassthroughHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->layerFlags, in);
-    
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->passthrough, in);
-    
+
+        
+
     deserialize(&s->color, in);
+
 }
 
 
@@ -26261,91 +22037,66 @@ static void deserialize(XrCompositionLayerPassthroughHTC* s, std::istream& in) {
 
 
 static void deserialize(XrFoveationApplyInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->mode, in);
-    
+
+        
+
     deserialize(&s->subImageCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->subImageCount;
-        allocate(&s->subImages, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->subImages[i], in);
-        }
-    }
-    else {
-        s->subImages = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->subImages, in);
+
 }
 
 
 
 
 static void deserialize(XrFoveationDynamicModeInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->dynamicFlags, in);
+
 }
 
 
 
 
 static void deserialize(XrFoveationCustomModeInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->configCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->configCount;
-        allocate(&s->configs, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->configs[i], in);
-        }
-    }
-    else {
-        s->configs = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->configs, in);
+
 }
 
 
@@ -26355,46 +22106,44 @@ static void deserialize(XrFoveationCustomModeInfoHTC* s, std::istream& in) {
 
 
 static void deserialize(XrSystemAnchorPropertiesHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsAnchor, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorCreateInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->poseInSpace, in);
-    
+
+        
+
     deserialize(&s->name, in);
+
 }
 
 
@@ -26404,139 +22153,114 @@ static void deserialize(XrSpatialAnchorCreateInfoHTC* s, std::istream& in) {
 
 
 static void deserialize(XrSystemBodyTrackingPropertiesHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsBodyTracking, in);
+
 }
 
 
 
 
 static void deserialize(XrBodyTrackerCreateInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->bodyJointSet, in);
+
 }
 
 
 
 
 static void deserialize(XrBodyJointsLocateInfoHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrBodyJointLocationsHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->combinedLocationFlags, in);
-    
+
+        
+
     deserialize(&s->confidenceLevel, in);
-    
+
+        
+
     deserialize(&s->jointLocationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointLocationCount;
-        allocate(&s->jointLocations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->jointLocations[i], in);
-        }
-    }
-    else {
-        s->jointLocations = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->jointLocations, in);
+
+        
+
     deserialize(&s->skeletonGenerationId, in);
+
 }
 
 
 
 
 static void deserialize(XrBodySkeletonHTC* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->jointCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointCount;
-        allocate(&s->joints, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->joints[i], in);
-        }
-    }
-    else {
-        s->joints = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->joints, in);
+
 }
 
 
@@ -26546,34 +22270,22 @@ static void deserialize(XrBodySkeletonHTC* s, std::istream& in) {
 
 
 static void deserialize(XrActiveActionSetPrioritiesEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->actionSetPriorityCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->actionSetPriorityCount;
-        allocate(&s->actionSetPriorities, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->actionSetPriorities[i], in);
-        }
-    }
-    else {
-        s->actionSetPriorities = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->actionSetPriorities, in);
+
 }
 
 
@@ -26583,55 +22295,40 @@ static void deserialize(XrActiveActionSetPrioritiesEXT* s, std::istream& in) {
 
 
 static void deserialize(XrSystemForceFeedbackCurlPropertiesMNDX* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsForceFeedbackCurl, in);
+
 }
 
 
 
 
 static void deserialize(XrForceFeedbackCurlApplyLocationsMNDX* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->locationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->locationCount;
-        allocate(&s->locations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->locations[i], in);
-        }
-    }
-    else {
-        s->locations = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->locations, in);
+
 }
 
 
@@ -26641,101 +22338,84 @@ static void deserialize(XrForceFeedbackCurlApplyLocationsMNDX* s, std::istream& 
 
 
 static void deserialize(XrBodyTrackerCreateInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->jointSet, in);
+
 }
 
 
 
 
 static void deserialize(XrBodyJointsLocateInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrBodyJointLocationsBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->allJointPosesTracked, in);
-    
+
+        
+
     deserialize(&s->jointLocationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->jointLocationCount;
-        allocate(&s->jointLocations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->jointLocations[i], in);
-        }
-    }
-    else {
-        s->jointLocations = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->jointLocations, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemBodyTrackingPropertiesBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsBodyTracking, in);
+
 }
 
 
@@ -26745,573 +22425,464 @@ static void deserialize(XrSystemBodyTrackingPropertiesBD* s, std::istream& in) {
 
 
 static void deserialize(XrSystemSpatialSensingPropertiesBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSpatialSensing, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityComponentGetInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->entityId, in);
-    
+
+        
+
     deserialize(&s->componentType, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityLocationGetInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityComponentDataLocationBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->location, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityComponentDataSemanticBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->labelCapacityInput, in);
-    
+
+        
+
     deserialize(&s->labelCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->labelCapacityInput;
-        allocate(&s->labels, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->labels[i], in);
-        }
-    }
-    else {
-        s->labels = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->labels, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityComponentDataBoundingBox2DBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->boundingBox2D, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityComponentDataPolygonBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityComponentDataBoundingBox3DBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->boundingBox3D, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityComponentDataTriangleMeshBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
+        
+
     deserialize(&s->indexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->indexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCapacityInput;
-        allocate(&s->indices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indices[i], in);
-        }
-    }
-    else {
-        s->indices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->indices, in);
+
 }
 
 
 
 
 static void deserialize(XrSenseDataProviderCreateInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->providerType, in);
+
 }
 
 
 
 
 static void deserialize(XrSenseDataProviderStartInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSenseDataProviderStateChangedBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->provider, in);
-    
+
+        
+
     deserialize(&s->newState, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataSenseDataUpdatedBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->provider, in);
+
 }
 
 
 
 
 static void deserialize(XrSenseDataQueryInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSenseDataQueryCompletionBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
-    
+
+        
+
     deserialize(&s->snapshot, in);
+
 }
 
 
 
 
 static void deserialize(XrSenseDataFilterUuidBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuidCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->uuidCount;
-        allocate(&s->uuids, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->uuids[i], in);
-        }
-    }
-    else {
-        s->uuids = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->uuids, in);
+
 }
 
 
 
 
 static void deserialize(XrSenseDataFilterSemanticBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->labelCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->labelCount;
-        allocate(&s->labels, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->labels[i], in);
-        }
-    }
-    else {
-        s->labels = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->labels, in);
+
 }
 
 
 
 
 static void deserialize(XrQueriedSenseDataGetInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrQueriedSenseDataBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->stateCapacityInput, in);
-    
+
+        
+
     deserialize(&s->stateCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->stateCapacityInput;
-        allocate(&s->states, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->states[i], in);
-        }
-    }
-    else {
-        s->states = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->states, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityStateBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->entityId, in);
-    
+
+        
+
     deserialize(&s->lastUpdateTime, in);
-    
+
+        
+
     deserialize(&s->uuid, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialEntityAnchorCreateInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->snapshot, in);
-    
+
+        
+
     deserialize(&s->entityId, in);
+
 }
 
 
 
 
 static void deserialize(XrAnchorSpaceCreateInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->anchor, in);
-    
+
+        
+
     deserialize(&s->poseInAnchorSpace, in);
+
 }
 
 
@@ -27321,117 +22892,114 @@ static void deserialize(XrAnchorSpaceCreateInfoBD* s, std::istream& in) {
 
 
 static void deserialize(XrSystemSpatialAnchorPropertiesBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSpatialAnchor, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorCreateInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->space, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorCreateCompletionBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
-    
+
+        
+
     deserialize(&s->anchor, in);
-    
+
+        
+
     deserialize(&s->uuid, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorPersistInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->location, in);
-    
+
+        
+
     deserialize(&s->anchor, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorUnpersistInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->location, in);
-    
+
+        
+
     deserialize(&s->anchor, in);
+
 }
 
 
@@ -27441,63 +23009,54 @@ static void deserialize(XrSpatialAnchorUnpersistInfoBD* s, std::istream& in) {
 
 
 static void deserialize(XrSystemSpatialAnchorSharingPropertiesBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSpatialAnchorSharing, in);
+
 }
 
 
 
 
 static void deserialize(XrSpatialAnchorShareInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->anchor, in);
+
 }
 
 
 
 
 static void deserialize(XrSharedSpatialAnchorDownloadInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuid, in);
+
 }
 
 
@@ -27507,40 +23066,32 @@ static void deserialize(XrSharedSpatialAnchorDownloadInfoBD* s, std::istream& in
 
 
 static void deserialize(XrSystemSpatialScenePropertiesBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSpatialScene, in);
+
 }
 
 
 
 
 static void deserialize(XrSceneCaptureInfoBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -27550,44 +23101,40 @@ static void deserialize(XrSceneCaptureInfoBD* s, std::istream& in) {
 
 
 static void deserialize(XrSystemSpatialMeshPropertiesBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSpatialMesh, in);
+
 }
 
 
 
 
 static void deserialize(XrSenseDataProviderCreateInfoSpatialMeshBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->configFlags, in);
-    
+
+        
+
     deserialize(&s->lod, in);
+
 }
 
 
@@ -27597,23 +23144,22 @@ static void deserialize(XrSenseDataProviderCreateInfoSpatialMeshBD* s, std::istr
 
 
 static void deserialize(XrFuturePollResultProgressBD* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->isSupported, in);
-    
+
+        
+
     deserialize(&s->progressPercentage, in);
+
 }
 
 
@@ -27623,57 +23169,44 @@ static void deserialize(XrFuturePollResultProgressBD* s, std::istream& in) {
 
 
 static void deserialize(XrHandTrackingDataSourceInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestedDataSourceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->requestedDataSourceCount;
-        allocate(&s->requestedDataSources, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->requestedDataSources[i], in);
-        }
-    }
-    else {
-        s->requestedDataSources = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->requestedDataSources, in);
+
 }
 
 
 
 
 static void deserialize(XrHandTrackingDataSourceStateEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->isActive, in);
-    
+
+        
+
     deserialize(&s->dataSource, in);
+
 }
 
 
@@ -27683,231 +23216,206 @@ static void deserialize(XrHandTrackingDataSourceStateEXT* s, std::istream& in) {
 
 
 static void deserialize(XrPlaneDetectorCreateInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
+
 }
 
 
 
 
 static void deserialize(XrPlaneDetectorBeginInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->orientationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->orientationCount;
-        allocate(&s->orientations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->orientations[i], in);
-        }
-    }
-    else {
-        s->orientations = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->orientations, in);
+
+        
+
     deserialize(&s->semanticTypeCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->semanticTypeCount;
-        allocate(&s->semanticTypes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->semanticTypes[i], in);
-        }
-    }
-    else {
-        s->semanticTypes = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->semanticTypes, in);
+
+        
+
     deserialize(&s->maxPlanes, in);
-    
+
+        
+
     deserialize(&s->minArea, in);
-    
+
+        
+
     deserialize(&s->boundingBoxPose, in);
-    
+
+        
+
     deserialize(&s->boundingBoxExtent, in);
+
 }
 
 
 
 
 static void deserialize(XrPlaneDetectorGetInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrPlaneDetectorLocationsEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->planeLocationCapacityInput, in);
-    
+
+        
+
     deserialize(&s->planeLocationCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->planeLocationCapacityInput;
-        allocate(&s->planeLocations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->planeLocations[i], in);
-        }
-    }
-    else {
-        s->planeLocations = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->planeLocations, in);
+
 }
 
 
 
 
 static void deserialize(XrPlaneDetectorLocationEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->planeId, in);
-    
+
+        
+
     deserialize(&s->locationFlags, in);
-    
+
+        
+
     deserialize(&s->pose, in);
-    
+
+        
+
     deserialize(&s->extents, in);
-    
+
+        
+
     deserialize(&s->orientation, in);
-    
+
+        
+
     deserialize(&s->semanticType, in);
-    
+
+        
+
     deserialize(&s->polygonBufferCount, in);
+
 }
 
 
 
 
 static void deserialize(XrPlaneDetectorPolygonBufferEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->vertexCapacityInput, in);
-    
+
+        
+
     deserialize(&s->vertexCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCapacityInput;
-        allocate(&s->vertices, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertices[i], in);
-        }
-    }
-    else {
-        s->vertices = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->vertices, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemPlaneDetectionPropertiesEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportedFeatures, in);
+
 }
 
 
@@ -27917,84 +23425,72 @@ static void deserialize(XrSystemPlaneDetectionPropertiesEXT* s, std::istream& in
 
 
 static void deserialize(XrFutureCancelInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->future, in);
+
 }
 
 
 
 
 static void deserialize(XrFuturePollInfoEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->future, in);
+
 }
 
 
 
 
 static void deserialize(XrFutureCompletionEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
+
 }
 
 
 
 
 static void deserialize(XrFuturePollResultEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->state, in);
+
 }
 
 
@@ -28004,44 +23500,40 @@ static void deserialize(XrFuturePollResultEXT* s, std::istream& in) {
 
 
 static void deserialize(XrEventDataUserPresenceChangedEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->session, in);
-    
+
+        
+
     deserialize(&s->isUserPresent, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemUserPresencePropertiesEXT* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsUserPresence, in);
+
 }
 
 
@@ -28050,106 +23542,74 @@ static void deserialize(XrSystemUserPresencePropertiesEXT* s, std::istream& in) 
 
 
 static void deserialize(XrSpacesLocateInfo* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->spaceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->spaceCount;
-        allocate(&s->spaces, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->spaces[i], in);
-        }
-    }
-    else {
-        s->spaces = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->spaces, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceLocations* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->locationCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->locationCount;
-        allocate(&s->locations, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->locations[i], in);
-        }
-    }
-    else {
-        s->locations = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->locations, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceVelocities* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->velocityCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->velocityCount;
-        allocate(&s->velocities, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->velocities[i], in);
-        }
-    }
-    else {
-        s->velocities = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->velocities, in);
+
 }
 
 
@@ -28158,65 +23618,58 @@ static void deserialize(XrSpaceVelocities* s, std::istream& in) {
 
 
 static void deserialize(XrEventDataHeadsetFitChangedML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->status, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataEyeCalibrationChangedML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->status, in);
+
 }
 
 
 
 
 static void deserialize(XrUserCalibrationEnableEventsInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->enabled, in);
+
 }
 
 
@@ -28226,21 +23679,18 @@ static void deserialize(XrUserCalibrationEnableEventsInfoML* s, std::istream& in
 
 
 static void deserialize(XrSystemNotificationsSetInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->suppressNotifications, in);
+
 }
 
 
@@ -28250,400 +23700,336 @@ static void deserialize(XrSystemNotificationsSetInfoML* s, std::istream& in) {
 
 
 static void deserialize(XrWorldMeshDetectorCreateInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshStateRequestInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->baseSpace, in);
-    
+
+        
+
     deserialize(&s->time, in);
-    
+
+        
+
     deserialize(&s->boundingBoxCenter, in);
-    
+
+        
+
     deserialize(&s->boundingBoxExtents, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshBlockStateML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuid, in);
-    
+
+        
+
     deserialize(&s->meshBoundingBoxCenter, in);
-    
+
+        
+
     deserialize(&s->meshBoundingBoxExtents, in);
-    
+
+        
+
     deserialize(&s->lastUpdateTime, in);
-    
+
+        
+
     deserialize(&s->status, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshStateRequestCompletionML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
-    
+
+        
+
     deserialize(&s->timestamp, in);
-    
+
+        
+
     deserialize(&s->meshBlockStateCapacityInput, in);
-    
+
+        
+
     deserialize(&s->meshBlockStateCountOutput, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->meshBlockStateCapacityInput;
-        allocate(&s->meshBlockStates, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->meshBlockStates[i], in);
-        }
-    }
-    else {
-        s->meshBlockStates = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->meshBlockStates, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshBufferRecommendedSizeInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->maxBlockCount, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshBufferSizeML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->size, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshBufferML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->bufferSize, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->bufferSize;
-        allocate(&s->buffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->buffer[i], in);
-        }
-    }
-    else {
-        s->buffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->buffer, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshBlockRequestML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuid, in);
-    
+
+        
+
     deserialize(&s->lod, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshGetInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->flags, in);
-    
+
+        
+
     deserialize(&s->fillHoleLength, in);
-    
+
+        
+
     deserialize(&s->disconnectedComponentArea, in);
-    
+
+        
+
     deserialize(&s->blockCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->blockCount;
-        allocate(&s->blocks, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->blocks[i], in);
-        }
-    }
-    else {
-        s->blocks = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->blocks, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshBlockML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->uuid, in);
-    
+
+        
+
     deserialize(&s->blockResult, in);
-    
+
+        
+
     deserialize(&s->lod, in);
-    
+
+        
+
     deserialize(&s->flags, in);
-    
+
+        
+
     deserialize(&s->indexCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->indexCount;
-        allocate(&s->indexBuffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->indexBuffer[i], in);
-        }
-    }
-    else {
-        s->indexBuffer = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->indexBuffer, in);
+
+        
+
     deserialize(&s->vertexCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->vertexCount;
-        allocate(&s->vertexBuffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->vertexBuffer[i], in);
-        }
-    }
-    else {
-        s->vertexBuffer = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->vertexBuffer, in);
+
+        
+
     deserialize(&s->normalCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->normalCount;
-        allocate(&s->normalBuffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->normalBuffer[i], in);
-        }
-    }
-    else {
-        s->normalBuffer = nullptr;
-    }
-    
+
+        
+
+    deserialize_ptr(&s->normalBuffer, in);
+
+        
+
     deserialize(&s->confidenceCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->confidenceCount;
-        allocate(&s->confidenceBuffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->confidenceBuffer[i], in);
-        }
-    }
-    else {
-        s->confidenceBuffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->confidenceBuffer, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshRequestCompletionML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->futureResult, in);
-    
+
+        
+
     deserialize(&s->blockCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->blockCount;
-        allocate(&s->blocks, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->blocks[i], in);
-        }
-    }
-    else {
-        s->blocks = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->blocks, in);
+
 }
 
 
 
 
 static void deserialize(XrWorldMeshRequestCompletionInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->meshSpace, in);
-    
+
+        
+
     deserialize(&s->meshSpaceLocateTime, in);
+
 }
 
 
@@ -28653,101 +24039,84 @@ static void deserialize(XrWorldMeshRequestCompletionInfoML* s, std::istream& in)
 
 
 static void deserialize(XrSystemFacialExpressionPropertiesML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsFacialExpression, in);
+
 }
 
 
 
 
 static void deserialize(XrFacialExpressionClientCreateInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestedCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->requestedCount;
-        allocate(&s->requestedFacialBlendShapes, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->requestedFacialBlendShapes[i], in);
-        }
-    }
-    else {
-        s->requestedFacialBlendShapes = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->requestedFacialBlendShapes, in);
+
 }
 
 
 
 
 static void deserialize(XrFacialExpressionBlendShapeGetInfoML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrFacialExpressionBlendShapePropertiesML* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestedFacialBlendShape, in);
-    
+
+        
+
     deserialize(&s->weight, in);
-    
+
+        
+
     deserialize(&s->flags, in);
-    
+
+        
+
     deserialize(&s->time, in);
+
 }
 
 
@@ -28757,59 +24126,46 @@ static void deserialize(XrFacialExpressionBlendShapePropertiesML* s, std::istrea
 
 
 static void deserialize(XrSystemSimultaneousHandsAndControllersPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSimultaneousHandsAndControllers, in);
+
 }
 
 
 
 
 static void deserialize(XrSimultaneousHandsAndControllersTrackingResumeInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrSimultaneousHandsAndControllersTrackingPauseInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
@@ -28819,282 +24175,248 @@ static void deserialize(XrSimultaneousHandsAndControllersTrackingPauseInfoMETA* 
 
 
 static void deserialize(XrColocationDiscoveryStartInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrColocationDiscoveryStopInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrColocationAdvertisementStartInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->bufferSize, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->bufferSize;
-        allocate(&s->buffer, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->buffer[i], in);
-        }
-    }
-    else {
-        s->buffer = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->buffer, in);
+
 }
 
 
 
 
 static void deserialize(XrColocationAdvertisementStopInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataStartColocationAdvertisementCompleteMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->advertisementRequestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
-    
+
+        
+
     deserialize(&s->advertisementUuid, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataStopColocationAdvertisementCompleteMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataColocationAdvertisementCompleteMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->advertisementRequestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataStartColocationDiscoveryCompleteMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->discoveryRequestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataColocationDiscoveryResultMETA* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
-    deserialize(&s->discoveryRequestId, in);
-    
-    deserialize(&s->advertisementUuid, in);
-    
-    deserialize(&s->bufferSize, in);
-    
         
-    for (int i = 0; i < XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META; i++) {
-        deserialize(&s->buffer[i], in);
-    }
+
+    deserialize(&s->type, in);
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
+    deserialize(&s->discoveryRequestId, in);
+
+        
+
+    deserialize(&s->advertisementUuid, in);
+
+        
+
+    deserialize(&s->bufferSize, in);
+
+        
+
+    deserialize_array(s->buffer, XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataColocationDiscoveryCompleteMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->discoveryRequestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
 
 
 static void deserialize(XrEventDataStopColocationDiscoveryCompleteMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->requestId, in);
-    
+
+        
+
     deserialize(&s->result, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemColocationDiscoveryPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsColocationDiscovery, in);
+
 }
 
 
@@ -29104,4346 +24426,58 @@ static void deserialize(XrSystemColocationDiscoveryPropertiesMETA* s, std::istre
 
 
 static void deserialize(XrShareSpacesRecipientGroupsMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->groupCount, in);
-    
-    std::uint8_t marker{};
-    deserialize(&marker, in);
-    if (marker) {
-        std::size_t num_items = s->groupCount;
-        allocate(&s->groups, num_items);
-        for (int i = 0; i < num_items; i++) {
-            deserialize(&s->groups[i], in);
-        }
-    }
-    else {
-        s->groups = nullptr;
-    }
+
+        
+
+    deserialize_ptr(&s->groups, in);
+
 }
 
 
 
 
 static void deserialize(XrSpaceGroupUuidFilterInfoMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->groupUuid, in);
+
 }
 
 
 
 
 static void deserialize(XrSystemSpatialEntityGroupSharingPropertiesMETA* s, std::istream& in) {
+        
+
     deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
-    
-    
+
+        
+
+    deserialize_xr(&s->next, in);
+
+        
+
     deserialize(&s->supportsSpatialEntityGroupSharing, in);
-}
 
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
-
-
-// Allocators
-
-
-
-
-
-static void allocate(XrVector2f** s, std::size_t n) {
-    *s = new XrVector2f[n]();
-}
-
-
-
-
-static void allocate(XrVector3f** s, std::size_t n) {
-    *s = new XrVector3f[n]();
-}
-
-
-
-
-static void allocate(XrVector4f** s, std::size_t n) {
-    *s = new XrVector4f[n]();
-}
-
-
-
-
-static void allocate(XrColor4f** s, std::size_t n) {
-    *s = new XrColor4f[n]();
-}
-
-
-
-
-static void allocate(XrQuaternionf** s, std::size_t n) {
-    *s = new XrQuaternionf[n]();
-}
-
-
-
-
-static void allocate(XrPosef** s, std::size_t n) {
-    *s = new XrPosef[n]();
-}
-
-
-
-
-static void allocate(XrOffset2Df** s, std::size_t n) {
-    *s = new XrOffset2Df[n]();
-}
-
-
-
-
-static void allocate(XrExtent2Df** s, std::size_t n) {
-    *s = new XrExtent2Df[n]();
-}
-
-
-
-
-static void allocate(XrRect2Df** s, std::size_t n) {
-    *s = new XrRect2Df[n]();
-}
-
-
-
-
-static void allocate(XrOffset2Di** s, std::size_t n) {
-    *s = new XrOffset2Di[n]();
-}
-
-
-
-
-static void allocate(XrExtent2Di** s, std::size_t n) {
-    *s = new XrExtent2Di[n]();
-}
-
-
-
-
-static void allocate(XrRect2Di** s, std::size_t n) {
-    *s = new XrRect2Di[n]();
-}
-
-
-
-
-static void allocate(XrApplicationInfo** s, std::size_t n) {
-    *s = new XrApplicationInfo[n]();
-}
-
-
-
-
-static void allocate(XrSystemGraphicsProperties** s, std::size_t n) {
-    *s = new XrSystemGraphicsProperties[n]();
-}
-
-
-
-
-static void allocate(XrSystemTrackingProperties** s, std::size_t n) {
-    *s = new XrSystemTrackingProperties[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageBaseHeader** s, std::size_t n) {
-    *s = new XrSwapchainImageBaseHeader[n]();
-}
-
-
-
-
-static void allocate(XrFovf** s, std::size_t n) {
-    *s = new XrFovf[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainSubImage** s, std::size_t n) {
-    *s = new XrSwapchainSubImage[n]();
-}
-
-
-
-
-static void allocate(XrCompositionLayerBaseHeader** s, std::size_t n) {
-    *s = new XrCompositionLayerBaseHeader[n]();
-}
-
-
-
-
-static void allocate(XrHapticBaseHeader** s, std::size_t n) {
-    *s = new XrHapticBaseHeader[n]();
-}
-
-
-
-
-static void allocate(XrEventDataBaseHeader** s, std::size_t n) {
-    *s = new XrEventDataBaseHeader[n]();
-}
-
-
-
-
-static void allocate(XrActionSuggestedBinding** s, std::size_t n) {
-    *s = new XrActionSuggestedBinding[n]();
-}
-
-
-
-
-static void allocate(XrActiveActionSet** s, std::size_t n) {
-    *s = new XrActiveActionSet[n]();
-}
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-
-static void allocate(XrBindingModificationBaseHeaderKHR** s, std::size_t n) {
-    *s = new XrBindingModificationBaseHeaderKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-
-static void allocate(XrHandJointLocationEXT** s, std::size_t n) {
-    *s = new XrHandJointLocationEXT[n]();
-}
-
-
-
-
-static void allocate(XrHandJointVelocityEXT** s, std::size_t n) {
-    *s = new XrHandJointVelocityEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking
-
-
-static void allocate(XrFaceExpressionStatusFB** s, std::size_t n) {
-    *s = new XrFaceExpressionStatusFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_face_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_body_tracking
-
-
-static void allocate(XrBodySkeletonJointFB** s, std::size_t n) {
-    *s = new XrBodySkeletonJointFB[n]();
-}
-
-
-
-
-static void allocate(XrBodyJointLocationFB** s, std::size_t n) {
-    *s = new XrBodyJointLocationFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-
-static void allocate(XrEyeGazeFB** s, std::size_t n) {
-    *s = new XrEyeGazeFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-
-static void allocate(XrHandMeshIndexBufferMSFT** s, std::size_t n) {
-    *s = new XrHandMeshIndexBufferMSFT[n]();
-}
-
-
-
-
-static void allocate(XrHandMeshVertexBufferMSFT** s, std::size_t n) {
-    *s = new XrHandMeshVertexBufferMSFT[n]();
-}
-
-
-
-
-static void allocate(XrHandMeshVertexMSFT** s, std::size_t n) {
-    *s = new XrHandMeshVertexMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state
-
-
-static void allocate(XrSwapchainStateBaseHeaderFB** s, std::size_t n) {
-    *s = new XrSwapchainStateBaseHeaderFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_loader_init
-
-
-static void allocate(XrLoaderInitInfoBaseHeaderKHR** s, std::size_t n) {
-    *s = new XrLoaderInitInfoBaseHeaderKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_loader_init
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-
-static void allocate(XrUuidMSFT** s, std::size_t n) {
-    *s = new XrUuidMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneSphereBoundMSFT** s, std::size_t n) {
-    *s = new XrSceneSphereBoundMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneOrientedBoxBoundMSFT** s, std::size_t n) {
-    *s = new XrSceneOrientedBoxBoundMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneFrustumBoundMSFT** s, std::size_t n) {
-    *s = new XrSceneFrustumBoundMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneBoundsMSFT** s, std::size_t n) {
-    *s = new XrSceneBoundsMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneComponentMSFT** s, std::size_t n) {
-    *s = new XrSceneComponentMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneComponentLocationMSFT** s, std::size_t n) {
-    *s = new XrSceneComponentLocationMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneObjectMSFT** s, std::size_t n) {
-    *s = new XrSceneObjectMSFT[n]();
-}
-
-
-
-
-static void allocate(XrScenePlaneMSFT** s, std::size_t n) {
-    *s = new XrScenePlaneMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMeshMSFT** s, std::size_t n) {
-    *s = new XrSceneMeshMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-
-static void allocate(XrDeserializeSceneFragmentMSFT** s, std::size_t n) {
-    *s = new XrDeserializeSceneFragmentMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-
-static void allocate(XrSceneMarkerMSFT** s, std::size_t n) {
-    *s = new XrSceneMarkerMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMarkerQRCodeMSFT** s, std::size_t n) {
-    *s = new XrSceneMarkerQRCodeMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-
-static void allocate(XrVector4sFB** s, std::size_t n) {
-    *s = new XrVector4sFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-
-static void allocate(XrHandCapsuleFB** s, std::size_t n) {
-    *s = new XrHandCapsuleFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-
-static void allocate(XrSpaceQueryInfoBaseHeaderFB** s, std::size_t n) {
-    *s = new XrSpaceQueryInfoBaseHeaderFB[n]();
-}
-
-
-
-
-static void allocate(XrSpaceFilterInfoBaseHeaderFB** s, std::size_t n) {
-    *s = new XrSpaceFilterInfoBaseHeaderFB[n]();
-}
-
-
-
-
-static void allocate(XrSpaceQueryResultFB** s, std::size_t n) {
-    *s = new XrSpaceQueryResultFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-#ifdef XRTRANSPORT_EXT_XR_FB_scene
-
-
-static void allocate(XrOffset3DfFB** s, std::size_t n) {
-    *s = new XrOffset3DfFB[n]();
-}
-
-
-
-
-static void allocate(XrRect3DfFB** s, std::size_t n) {
-    *s = new XrRect3DfFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_scene
-
-#ifdef XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-
-static void allocate(XrKeyboardTrackingDescriptionFB** s, std::size_t n) {
-    *s = new XrKeyboardTrackingDescriptionFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-
-static void allocate(XrShareSpacesRecipientBaseHeaderMETA** s, std::size_t n) {
-    *s = new XrShareSpacesRecipientBaseHeaderMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-
-static void allocate(XrSpatialAnchorPersistenceNameMSFT** s, std::size_t n) {
-    *s = new XrSpatialAnchorPersistenceNameMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-#ifdef XRTRANSPORT_EXT_XR_BD_body_tracking
-
-
-static void allocate(XrBodyJointLocationBD** s, std::size_t n) {
-    *s = new XrBodyJointLocationBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_anchor
-
-
-static void allocate(XrSpatialAnchorNameHTC** s, std::size_t n) {
-    *s = new XrSpatialAnchorNameHTC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_anchor
-
-
-
-static void allocate(XrBodySkeletonJointHTC** s, std::size_t n) {
-    *s = new XrBodySkeletonJointHTC[n]();
-}
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-
-static void allocate(XrBodyJointLocationHTC** s, std::size_t n) {
-    *s = new XrBodyJointLocationHTC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-
-static void allocate(XrExternalCameraIntrinsicsOCULUS** s, std::size_t n) {
-    *s = new XrExternalCameraIntrinsicsOCULUS[n]();
-}
-
-
-
-
-static void allocate(XrExternalCameraExtrinsicsOCULUS** s, std::size_t n) {
-    *s = new XrExternalCameraExtrinsicsOCULUS[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-
-static void allocate(XrPassthroughColorLutDataMETA** s, std::size_t n) {
-    *s = new XrPassthroughColorLutDataMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_foveation
-
-
-static void allocate(XrFoveationConfigurationHTC** s, std::size_t n) {
-    *s = new XrFoveationConfigurationHTC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_foveation
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-
-static void allocate(XrActiveActionSetPriorityEXT** s, std::size_t n) {
-    *s = new XrActiveActionSetPriorityEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-#ifdef XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-
-static void allocate(XrForceFeedbackCurlApplyLocationMNDX** s, std::size_t n) {
-    *s = new XrForceFeedbackCurlApplyLocationMNDX[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-#ifdef XRTRANSPORT_EXT_XR_ML_localization_map
-
-
-static void allocate(XrLocalizationMapQueryInfoBaseHeaderML** s, std::size_t n) {
-    *s = new XrLocalizationMapQueryInfoBaseHeaderML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_localization_map
-
-
-
-static void allocate(XrColor3f** s, std::size_t n) {
-    *s = new XrColor3f[n]();
-}
-
-
-
-
-static void allocate(XrExtent3Df** s, std::size_t n) {
-    *s = new XrExtent3Df[n]();
-}
-
-
-
-
-static void allocate(XrSpheref** s, std::size_t n) {
-    *s = new XrSpheref[n]();
-}
-
-
-
-
-static void allocate(XrBoxf** s, std::size_t n) {
-    *s = new XrBoxf[n]();
-}
-
-
-
-
-static void allocate(XrFrustumf** s, std::size_t n) {
-    *s = new XrFrustumf[n]();
-}
-
-
-
-
-static void allocate(XrUuid** s, std::size_t n) {
-    *s = new XrUuid[n]();
-}
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_future
-
-
-static void allocate(XrFutureCompletionBaseHeaderEXT** s, std::size_t n) {
-    *s = new XrFutureCompletionBaseHeaderEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_future
-
-
-
-static void allocate(XrSpaceLocationData** s, std::size_t n) {
-    *s = new XrSpaceLocationData[n]();
-}
-
-
-
-
-static void allocate(XrSpaceVelocityData** s, std::size_t n) {
-    *s = new XrSpaceVelocityData[n]();
-}
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-
-static void allocate(XrSpatialAnchorsCreateInfoBaseHeaderML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsCreateInfoBaseHeaderML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-
-static void allocate(XrSpatialAnchorsQueryInfoBaseHeaderML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsQueryInfoBaseHeaderML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorCompletionResultML** s, std::size_t n) {
-    *s = new XrSpatialAnchorCompletionResultML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-
-static void allocate(XrSpatialEntityComponentDataBaseHeaderBD** s, std::size_t n) {
-    *s = new XrSpatialEntityComponentDataBaseHeaderBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-
-
-static void allocate(XrApiLayerProperties** s, std::size_t n) {
-    *s = new XrApiLayerProperties[n]();
-}
-
-
-
-
-static void allocate(XrExtensionProperties** s, std::size_t n) {
-    *s = new XrExtensionProperties[n]();
-}
-
-
-
-
-static void allocate(XrInstanceCreateInfo** s, std::size_t n) {
-    *s = new XrInstanceCreateInfo[n]();
-}
-
-
-
-
-static void allocate(XrSystemGetInfo** s, std::size_t n) {
-    *s = new XrSystemGetInfo[n]();
-}
-
-
-
-
-static void allocate(XrSystemProperties** s, std::size_t n) {
-    *s = new XrSystemProperties[n]();
-}
-
-
-
-
-static void allocate(XrViewLocateInfo** s, std::size_t n) {
-    *s = new XrViewLocateInfo[n]();
-}
-
-
-
-
-static void allocate(XrView** s, std::size_t n) {
-    *s = new XrView[n]();
-}
-
-
-
-
-static void allocate(XrSessionCreateInfo** s, std::size_t n) {
-    *s = new XrSessionCreateInfo[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainCreateInfo** s, std::size_t n) {
-    *s = new XrSwapchainCreateInfo[n]();
-}
-
-
-
-
-static void allocate(XrSessionBeginInfo** s, std::size_t n) {
-    *s = new XrSessionBeginInfo[n]();
-}
-
-
-
-
-static void allocate(XrViewState** s, std::size_t n) {
-    *s = new XrViewState[n]();
-}
-
-
-
-
-static void allocate(XrFrameEndInfo** s, std::size_t n) {
-    *s = new XrFrameEndInfo[n]();
-}
-
-
-
-
-static void allocate(XrHapticVibration** s, std::size_t n) {
-    *s = new XrHapticVibration[n]();
-}
-
-
-
-
-static void allocate(XrEventDataBuffer** s, std::size_t n) {
-    *s = new XrEventDataBuffer[n]();
-}
-
-
-
-
-static void allocate(XrEventDataInstanceLossPending** s, std::size_t n) {
-    *s = new XrEventDataInstanceLossPending[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSessionStateChanged** s, std::size_t n) {
-    *s = new XrEventDataSessionStateChanged[n]();
-}
-
-
-
-
-static void allocate(XrActionStateBoolean** s, std::size_t n) {
-    *s = new XrActionStateBoolean[n]();
-}
-
-
-
-
-static void allocate(XrActionStateFloat** s, std::size_t n) {
-    *s = new XrActionStateFloat[n]();
-}
-
-
-
-
-static void allocate(XrActionStateVector2f** s, std::size_t n) {
-    *s = new XrActionStateVector2f[n]();
-}
-
-
-
-
-static void allocate(XrActionStatePose** s, std::size_t n) {
-    *s = new XrActionStatePose[n]();
-}
-
-
-
-
-static void allocate(XrActionSetCreateInfo** s, std::size_t n) {
-    *s = new XrActionSetCreateInfo[n]();
-}
-
-
-
-
-static void allocate(XrActionCreateInfo** s, std::size_t n) {
-    *s = new XrActionCreateInfo[n]();
-}
-
-
-
-
-static void allocate(XrInstanceProperties** s, std::size_t n) {
-    *s = new XrInstanceProperties[n]();
-}
-
-
-
-
-static void allocate(XrFrameWaitInfo** s, std::size_t n) {
-    *s = new XrFrameWaitInfo[n]();
-}
-
-
-
-
-static void allocate(XrCompositionLayerProjection** s, std::size_t n) {
-    *s = new XrCompositionLayerProjection[n]();
-}
-
-
-
-
-static void allocate(XrCompositionLayerQuad** s, std::size_t n) {
-    *s = new XrCompositionLayerQuad[n]();
-}
-
-
-
-
-static void allocate(XrReferenceSpaceCreateInfo** s, std::size_t n) {
-    *s = new XrReferenceSpaceCreateInfo[n]();
-}
-
-
-
-
-static void allocate(XrActionSpaceCreateInfo** s, std::size_t n) {
-    *s = new XrActionSpaceCreateInfo[n]();
-}
-
-
-
-
-static void allocate(XrEventDataReferenceSpaceChangePending** s, std::size_t n) {
-    *s = new XrEventDataReferenceSpaceChangePending[n]();
-}
-
-
-
-
-static void allocate(XrViewConfigurationView** s, std::size_t n) {
-    *s = new XrViewConfigurationView[n]();
-}
-
-
-
-
-static void allocate(XrSpaceLocation** s, std::size_t n) {
-    *s = new XrSpaceLocation[n]();
-}
-
-
-
-
-static void allocate(XrSpaceVelocity** s, std::size_t n) {
-    *s = new XrSpaceVelocity[n]();
-}
-
-
-
-
-static void allocate(XrFrameState** s, std::size_t n) {
-    *s = new XrFrameState[n]();
-}
-
-
-
-
-static void allocate(XrViewConfigurationProperties** s, std::size_t n) {
-    *s = new XrViewConfigurationProperties[n]();
-}
-
-
-
-
-static void allocate(XrFrameBeginInfo** s, std::size_t n) {
-    *s = new XrFrameBeginInfo[n]();
-}
-
-
-
-
-static void allocate(XrCompositionLayerProjectionView** s, std::size_t n) {
-    *s = new XrCompositionLayerProjectionView[n]();
-}
-
-
-
-
-static void allocate(XrEventDataEventsLost** s, std::size_t n) {
-    *s = new XrEventDataEventsLost[n]();
-}
-
-
-
-
-static void allocate(XrInteractionProfileSuggestedBinding** s, std::size_t n) {
-    *s = new XrInteractionProfileSuggestedBinding[n]();
-}
-
-
-
-
-static void allocate(XrEventDataInteractionProfileChanged** s, std::size_t n) {
-    *s = new XrEventDataInteractionProfileChanged[n]();
-}
-
-
-
-
-static void allocate(XrInteractionProfileState** s, std::size_t n) {
-    *s = new XrInteractionProfileState[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageAcquireInfo** s, std::size_t n) {
-    *s = new XrSwapchainImageAcquireInfo[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageWaitInfo** s, std::size_t n) {
-    *s = new XrSwapchainImageWaitInfo[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageReleaseInfo** s, std::size_t n) {
-    *s = new XrSwapchainImageReleaseInfo[n]();
-}
-
-
-
-
-static void allocate(XrActionStateGetInfo** s, std::size_t n) {
-    *s = new XrActionStateGetInfo[n]();
-}
-
-
-
-
-static void allocate(XrHapticActionInfo** s, std::size_t n) {
-    *s = new XrHapticActionInfo[n]();
-}
-
-
-
-
-static void allocate(XrSessionActionSetsAttachInfo** s, std::size_t n) {
-    *s = new XrSessionActionSetsAttachInfo[n]();
-}
-
-
-
-
-static void allocate(XrActionsSyncInfo** s, std::size_t n) {
-    *s = new XrActionsSyncInfo[n]();
-}
-
-
-
-
-static void allocate(XrBoundSourcesForActionEnumerateInfo** s, std::size_t n) {
-    *s = new XrBoundSourcesForActionEnumerateInfo[n]();
-}
-
-
-
-
-static void allocate(XrInputSourceLocalizedNameGetInfo** s, std::size_t n) {
-    *s = new XrInputSourceLocalizedNameGetInfo[n]();
-}
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_cube
-
-
-static void allocate(XrCompositionLayerCubeKHR** s, std::size_t n) {
-    *s = new XrCompositionLayerCubeKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_cube
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_android_create_instance
-
-
-static void allocate(XrInstanceCreateInfoAndroidKHR** s, std::size_t n) {
-    *s = new XrInstanceCreateInfoAndroidKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_android_create_instance
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_depth
-
-
-static void allocate(XrCompositionLayerDepthInfoKHR** s, std::size_t n) {
-    *s = new XrCompositionLayerDepthInfoKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_depth
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_swapchain_format_list
-
-
-static void allocate(XrVulkanSwapchainFormatListCreateInfoKHR** s, std::size_t n) {
-    *s = new XrVulkanSwapchainFormatListCreateInfoKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_swapchain_format_list
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_performance_settings
-
-
-static void allocate(XrEventDataPerfSettingsEXT** s, std::size_t n) {
-    *s = new XrEventDataPerfSettingsEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_performance_settings
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_cylinder
-
-
-static void allocate(XrCompositionLayerCylinderKHR** s, std::size_t n) {
-    *s = new XrCompositionLayerCylinderKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_cylinder
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect
-
-
-static void allocate(XrCompositionLayerEquirectKHR** s, std::size_t n) {
-    *s = new XrCompositionLayerEquirectKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_debug_utils
-
-
-static void allocate(XrDebugUtilsObjectNameInfoEXT** s, std::size_t n) {
-    *s = new XrDebugUtilsObjectNameInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrDebugUtilsMessengerCallbackDataEXT** s, std::size_t n) {
-    *s = new XrDebugUtilsMessengerCallbackDataEXT[n]();
-}
-
-
-
-
-static void allocate(XrDebugUtilsMessengerCreateInfoEXT** s, std::size_t n) {
-    *s = new XrDebugUtilsMessengerCreateInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrDebugUtilsLabelEXT** s, std::size_t n) {
-    *s = new XrDebugUtilsLabelEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_debug_utils
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_opengl_enable
-
-
-static void allocate(XrGraphicsBindingOpenGLWin32KHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingOpenGLWin32KHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsBindingOpenGLXlibKHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingOpenGLXlibKHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsBindingOpenGLXcbKHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingOpenGLXcbKHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsBindingOpenGLWaylandKHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingOpenGLWaylandKHR[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageOpenGLKHR** s, std::size_t n) {
-    *s = new XrSwapchainImageOpenGLKHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsRequirementsOpenGLKHR** s, std::size_t n) {
-    *s = new XrGraphicsRequirementsOpenGLKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_opengl_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_opengl_es_enable
-
-
-static void allocate(XrGraphicsBindingOpenGLESAndroidKHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingOpenGLESAndroidKHR[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageOpenGLESKHR** s, std::size_t n) {
-    *s = new XrSwapchainImageOpenGLESKHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsRequirementsOpenGLESKHR** s, std::size_t n) {
-    *s = new XrGraphicsRequirementsOpenGLESKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_opengl_es_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_enable
-
-
-static void allocate(XrGraphicsBindingVulkanKHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingVulkanKHR[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageVulkanKHR** s, std::size_t n) {
-    *s = new XrSwapchainImageVulkanKHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsRequirementsVulkanKHR** s, std::size_t n) {
-    *s = new XrGraphicsRequirementsVulkanKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_D3D11_enable
-
-
-static void allocate(XrGraphicsBindingD3D11KHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingD3D11KHR[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageD3D11KHR** s, std::size_t n) {
-    *s = new XrSwapchainImageD3D11KHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsRequirementsD3D11KHR** s, std::size_t n) {
-    *s = new XrGraphicsRequirementsD3D11KHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_D3D11_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_D3D12_enable
-
-
-static void allocate(XrGraphicsBindingD3D12KHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingD3D12KHR[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageD3D12KHR** s, std::size_t n) {
-    *s = new XrSwapchainImageD3D12KHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsRequirementsD3D12KHR** s, std::size_t n) {
-    *s = new XrGraphicsRequirementsD3D12KHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_D3D12_enable
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_metal_enable
-
-
-static void allocate(XrGraphicsBindingMetalKHR** s, std::size_t n) {
-    *s = new XrGraphicsBindingMetalKHR[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainImageMetalKHR** s, std::size_t n) {
-    *s = new XrSwapchainImageMetalKHR[n]();
-}
-
-
-
-
-static void allocate(XrGraphicsRequirementsMetalKHR** s, std::size_t n) {
-    *s = new XrGraphicsRequirementsMetalKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_metal_enable
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_eye_gaze_interaction
-
-
-static void allocate(XrSystemEyeGazeInteractionPropertiesEXT** s, std::size_t n) {
-    *s = new XrSystemEyeGazeInteractionPropertiesEXT[n]();
-}
-
-
-
-
-static void allocate(XrEyeGazeSampleTimeEXT** s, std::size_t n) {
-    *s = new XrEyeGazeSampleTimeEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_eye_gaze_interaction
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_visibility_mask
-
-
-static void allocate(XrVisibilityMaskKHR** s, std::size_t n) {
-    *s = new XrVisibilityMaskKHR[n]();
-}
-
-
-
-
-static void allocate(XrEventDataVisibilityMaskChangedKHR** s, std::size_t n) {
-    *s = new XrEventDataVisibilityMaskChangedKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_visibility_mask
-
-#ifdef XRTRANSPORT_EXT_XR_EXTX_overlay
-
-
-static void allocate(XrSessionCreateInfoOverlayEXTX** s, std::size_t n) {
-    *s = new XrSessionCreateInfoOverlayEXTX[n]();
-}
-
-
-
-
-static void allocate(XrEventDataMainSessionVisibilityChangedEXTX** s, std::size_t n) {
-    *s = new XrEventDataMainSessionVisibilityChangedEXTX[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXTX_overlay
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_color_scale_bias
-
-
-static void allocate(XrCompositionLayerColorScaleBiasKHR** s, std::size_t n) {
-    *s = new XrCompositionLayerColorScaleBiasKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_color_scale_bias
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor
-
-
-static void allocate(XrSpatialAnchorCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrSpatialAnchorCreateInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorSpaceCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrSpatialAnchorSpaceCreateInfoMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_image_layout
-
-
-static void allocate(XrCompositionLayerImageLayoutFB** s, std::size_t n) {
-    *s = new XrCompositionLayerImageLayoutFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_image_layout
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_alpha_blend
-
-
-static void allocate(XrCompositionLayerAlphaBlendFB** s, std::size_t n) {
-    *s = new XrCompositionLayerAlphaBlendFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_alpha_blend
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_view_configuration_depth_range
-
-
-static void allocate(XrViewConfigurationDepthRangeEXT** s, std::size_t n) {
-    *s = new XrViewConfigurationDepthRangeEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_view_configuration_depth_range
-
-#ifdef XRTRANSPORT_EXT_XR_MNDX_egl_enable
-
-
-static void allocate(XrGraphicsBindingEGLMNDX** s, std::size_t n) {
-    *s = new XrGraphicsBindingEGLMNDX[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MNDX_egl_enable
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_graph_bridge
-
-
-static void allocate(XrSpatialGraphNodeSpaceCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrSpatialGraphNodeSpaceCreateInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSpatialGraphStaticNodeBindingCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrSpatialGraphStaticNodeBindingCreateInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSpatialGraphNodeBindingPropertiesGetInfoMSFT** s, std::size_t n) {
-    *s = new XrSpatialGraphNodeBindingPropertiesGetInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSpatialGraphNodeBindingPropertiesMSFT** s, std::size_t n) {
-    *s = new XrSpatialGraphNodeBindingPropertiesMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_graph_bridge
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-
-static void allocate(XrSystemHandTrackingPropertiesEXT** s, std::size_t n) {
-    *s = new XrSystemHandTrackingPropertiesEXT[n]();
-}
-
-
-
-
-static void allocate(XrHandTrackerCreateInfoEXT** s, std::size_t n) {
-    *s = new XrHandTrackerCreateInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrHandJointsLocateInfoEXT** s, std::size_t n) {
-    *s = new XrHandJointsLocateInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrHandJointLocationsEXT** s, std::size_t n) {
-    *s = new XrHandJointLocationsEXT[n]();
-}
-
-
-
-
-static void allocate(XrHandJointVelocitiesEXT** s, std::size_t n) {
-    *s = new XrHandJointVelocitiesEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-
-static void allocate(XrSystemHandTrackingMeshPropertiesMSFT** s, std::size_t n) {
-    *s = new XrSystemHandTrackingMeshPropertiesMSFT[n]();
-}
-
-
-
-
-static void allocate(XrHandMeshSpaceCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrHandMeshSpaceCreateInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrHandMeshUpdateInfoMSFT** s, std::size_t n) {
-    *s = new XrHandMeshUpdateInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrHandMeshMSFT** s, std::size_t n) {
-    *s = new XrHandMeshMSFT[n]();
-}
-
-
-
-
-static void allocate(XrHandPoseTypeInfoMSFT** s, std::size_t n) {
-    *s = new XrHandPoseTypeInfoMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_secondary_view_configuration
-
-
-static void allocate(XrSecondaryViewConfigurationSessionBeginInfoMSFT** s, std::size_t n) {
-    *s = new XrSecondaryViewConfigurationSessionBeginInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationStateMSFT** s, std::size_t n) {
-    *s = new XrSecondaryViewConfigurationStateMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationFrameStateMSFT** s, std::size_t n) {
-    *s = new XrSecondaryViewConfigurationFrameStateMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationFrameEndInfoMSFT** s, std::size_t n) {
-    *s = new XrSecondaryViewConfigurationFrameEndInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationLayerInfoMSFT** s, std::size_t n) {
-    *s = new XrSecondaryViewConfigurationLayerInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSecondaryViewConfigurationSwapchainCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrSecondaryViewConfigurationSwapchainCreateInfoMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_secondary_view_configuration
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_controller_model
-
-
-static void allocate(XrControllerModelKeyStateMSFT** s, std::size_t n) {
-    *s = new XrControllerModelKeyStateMSFT[n]();
-}
-
-
-
-
-static void allocate(XrControllerModelNodePropertiesMSFT** s, std::size_t n) {
-    *s = new XrControllerModelNodePropertiesMSFT[n]();
-}
-
-
-
-
-static void allocate(XrControllerModelPropertiesMSFT** s, std::size_t n) {
-    *s = new XrControllerModelPropertiesMSFT[n]();
-}
-
-
-
-
-static void allocate(XrControllerModelNodeStateMSFT** s, std::size_t n) {
-    *s = new XrControllerModelNodeStateMSFT[n]();
-}
-
-
-
-
-static void allocate(XrControllerModelStateMSFT** s, std::size_t n) {
-    *s = new XrControllerModelStateMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_controller_model
-
-#ifdef XRTRANSPORT_EXT_XR_EPIC_view_configuration_fov
-
-
-static void allocate(XrViewConfigurationViewFovEPIC** s, std::size_t n) {
-    *s = new XrViewConfigurationViewFovEPIC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EPIC_view_configuration_fov
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_holographic_window_attachment
-
-
-static void allocate(XrHolographicWindowAttachmentMSFT** s, std::size_t n) {
-    *s = new XrHolographicWindowAttachmentMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_holographic_window_attachment
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_composition_layer_reprojection
-
-
-static void allocate(XrCompositionLayerReprojectionInfoMSFT** s, std::size_t n) {
-    *s = new XrCompositionLayerReprojectionInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrCompositionLayerReprojectionPlaneOverrideMSFT** s, std::size_t n) {
-    *s = new XrCompositionLayerReprojectionPlaneOverrideMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_composition_layer_reprojection
-
-#ifdef XRTRANSPORT_EXT_XR_FB_android_surface_swapchain_create
-
-
-static void allocate(XrAndroidSurfaceSwapchainCreateInfoFB** s, std::size_t n) {
-    *s = new XrAndroidSurfaceSwapchainCreateInfoFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_android_surface_swapchain_create
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_secure_content
-
-
-static void allocate(XrCompositionLayerSecureContentFB** s, std::size_t n) {
-    *s = new XrCompositionLayerSecureContentFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_secure_content
-
-#ifdef XRTRANSPORT_EXT_XR_FB_body_tracking
-
-
-static void allocate(XrBodyTrackerCreateInfoFB** s, std::size_t n) {
-    *s = new XrBodyTrackerCreateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrBodyJointsLocateInfoFB** s, std::size_t n) {
-    *s = new XrBodyJointsLocateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSystemBodyTrackingPropertiesFB** s, std::size_t n) {
-    *s = new XrSystemBodyTrackingPropertiesFB[n]();
-}
-
-
-
-
-static void allocate(XrBodyJointLocationsFB** s, std::size_t n) {
-    *s = new XrBodyJointLocationsFB[n]();
-}
-
-
-
-
-static void allocate(XrBodySkeletonFB** s, std::size_t n) {
-    *s = new XrBodySkeletonFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_dpad_binding
-
-
-static void allocate(XrInteractionProfileDpadBindingEXT** s, std::size_t n) {
-    *s = new XrInteractionProfileDpadBindingEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_dpad_binding
-
-#ifdef XRTRANSPORT_EXT_XR_VALVE_analog_threshold
-
-
-static void allocate(XrInteractionProfileAnalogThresholdVALVE** s, std::size_t n) {
-    *s = new XrInteractionProfileAnalogThresholdVALVE[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_VALVE_analog_threshold
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_joints_motion_range
-
-
-static void allocate(XrHandJointsMotionRangeInfoEXT** s, std::size_t n) {
-    *s = new XrHandJointsMotionRangeInfoEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_joints_motion_range
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_loader_init_android
-
-
-static void allocate(XrLoaderInitInfoAndroidKHR** s, std::size_t n) {
-    *s = new XrLoaderInitInfoAndroidKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_loader_init_android
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_vulkan_enable2
-
-
-static void allocate(XrVulkanInstanceCreateInfoKHR** s, std::size_t n) {
-    *s = new XrVulkanInstanceCreateInfoKHR[n]();
-}
-
-
-
-
-static void allocate(XrVulkanDeviceCreateInfoKHR** s, std::size_t n) {
-    *s = new XrVulkanDeviceCreateInfoKHR[n]();
-}
-
-
-
-
-static void allocate(XrVulkanGraphicsDeviceGetInfoKHR** s, std::size_t n) {
-    *s = new XrVulkanGraphicsDeviceGetInfoKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_vulkan_enable2
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect2
-
-
-static void allocate(XrCompositionLayerEquirect2KHR** s, std::size_t n) {
-    *s = new XrCompositionLayerEquirect2KHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_composition_layer_equirect2
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-
-static void allocate(XrSceneObserverCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrSceneObserverCreateInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrSceneCreateInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrNewSceneComputeInfoMSFT** s, std::size_t n) {
-    *s = new XrNewSceneComputeInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrVisualMeshComputeLodInfoMSFT** s, std::size_t n) {
-    *s = new XrVisualMeshComputeLodInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneComponentsMSFT** s, std::size_t n) {
-    *s = new XrSceneComponentsMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneComponentsGetInfoMSFT** s, std::size_t n) {
-    *s = new XrSceneComponentsGetInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneComponentLocationsMSFT** s, std::size_t n) {
-    *s = new XrSceneComponentLocationsMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneComponentsLocateInfoMSFT** s, std::size_t n) {
-    *s = new XrSceneComponentsLocateInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneObjectsMSFT** s, std::size_t n) {
-    *s = new XrSceneObjectsMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneComponentParentFilterInfoMSFT** s, std::size_t n) {
-    *s = new XrSceneComponentParentFilterInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneObjectTypesFilterInfoMSFT** s, std::size_t n) {
-    *s = new XrSceneObjectTypesFilterInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrScenePlanesMSFT** s, std::size_t n) {
-    *s = new XrScenePlanesMSFT[n]();
-}
-
-
-
-
-static void allocate(XrScenePlaneAlignmentFilterInfoMSFT** s, std::size_t n) {
-    *s = new XrScenePlaneAlignmentFilterInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMeshesMSFT** s, std::size_t n) {
-    *s = new XrSceneMeshesMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMeshBuffersGetInfoMSFT** s, std::size_t n) {
-    *s = new XrSceneMeshBuffersGetInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMeshBuffersMSFT** s, std::size_t n) {
-    *s = new XrSceneMeshBuffersMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMeshVertexBufferMSFT** s, std::size_t n) {
-    *s = new XrSceneMeshVertexBufferMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMeshIndicesUint32MSFT** s, std::size_t n) {
-    *s = new XrSceneMeshIndicesUint32MSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMeshIndicesUint16MSFT** s, std::size_t n) {
-    *s = new XrSceneMeshIndicesUint16MSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-
-static void allocate(XrSerializedSceneFragmentDataGetInfoMSFT** s, std::size_t n) {
-    *s = new XrSerializedSceneFragmentDataGetInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneDeserializeInfoMSFT** s, std::size_t n) {
-    *s = new XrSceneDeserializeInfoMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_understanding_serialization
-
-#ifdef XRTRANSPORT_EXT_XR_FB_display_refresh_rate
-
-
-static void allocate(XrEventDataDisplayRefreshRateChangedFB** s, std::size_t n) {
-    *s = new XrEventDataDisplayRefreshRateChangedFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_display_refresh_rate
-
-#ifdef XRTRANSPORT_EXT_XR_HTCX_vive_tracker_interaction
-
-
-static void allocate(XrViveTrackerPathsHTCX** s, std::size_t n) {
-    *s = new XrViveTrackerPathsHTCX[n]();
-}
-
-
-
-
-static void allocate(XrEventDataViveTrackerConnectedHTCX** s, std::size_t n) {
-    *s = new XrEventDataViveTrackerConnectedHTCX[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTCX_vive_tracker_interaction
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_facial_tracking
-
-
-static void allocate(XrSystemFacialTrackingPropertiesHTC** s, std::size_t n) {
-    *s = new XrSystemFacialTrackingPropertiesHTC[n]();
-}
-
-
-
-
-static void allocate(XrFacialTrackerCreateInfoHTC** s, std::size_t n) {
-    *s = new XrFacialTrackerCreateInfoHTC[n]();
-}
-
-
-
-
-static void allocate(XrFacialExpressionsHTC** s, std::size_t n) {
-    *s = new XrFacialExpressionsHTC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_facial_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_color_space
-
-
-static void allocate(XrSystemColorSpacePropertiesFB** s, std::size_t n) {
-    *s = new XrSystemColorSpacePropertiesFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_color_space
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-
-static void allocate(XrHandTrackingMeshFB** s, std::size_t n) {
-    *s = new XrHandTrackingMeshFB[n]();
-}
-
-
-
-
-static void allocate(XrHandTrackingScaleFB** s, std::size_t n) {
-    *s = new XrHandTrackingScaleFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_aim
-
-
-static void allocate(XrHandTrackingAimStateFB** s, std::size_t n) {
-    *s = new XrHandTrackingAimStateFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_aim
-
-#ifdef XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-
-static void allocate(XrHandTrackingCapsulesStateFB** s, std::size_t n) {
-    *s = new XrHandTrackingCapsulesStateFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_hand_tracking_capsules
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity
-
-
-static void allocate(XrSpaceComponentStatusFB** s, std::size_t n) {
-    *s = new XrSpaceComponentStatusFB[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorCreateInfoFB** s, std::size_t n) {
-    *s = new XrSpatialAnchorCreateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSystemSpatialEntityPropertiesFB** s, std::size_t n) {
-    *s = new XrSystemSpatialEntityPropertiesFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSpatialAnchorCreateCompleteFB** s, std::size_t n) {
-    *s = new XrEventDataSpatialAnchorCreateCompleteFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSpaceSetStatusCompleteFB** s, std::size_t n) {
-    *s = new XrEventDataSpaceSetStatusCompleteFB[n]();
-}
-
-
-
-
-static void allocate(XrSpaceComponentStatusSetInfoFB** s, std::size_t n) {
-    *s = new XrSpaceComponentStatusSetInfoFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation
-
-
-static void allocate(XrFoveationProfileCreateInfoFB** s, std::size_t n) {
-    *s = new XrFoveationProfileCreateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainCreateInfoFoveationFB** s, std::size_t n) {
-    *s = new XrSwapchainCreateInfoFoveationFB[n]();
-}
-
-
-
-
-static void allocate(XrSwapchainStateFoveationFB** s, std::size_t n) {
-    *s = new XrSwapchainStateFoveationFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation_configuration
-
-
-static void allocate(XrFoveationLevelProfileCreateInfoFB** s, std::size_t n) {
-    *s = new XrFoveationLevelProfileCreateInfoFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation_configuration
-
-#ifdef XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-
-static void allocate(XrSystemKeyboardTrackingPropertiesFB** s, std::size_t n) {
-    *s = new XrSystemKeyboardTrackingPropertiesFB[n]();
-}
-
-
-
-
-static void allocate(XrKeyboardTrackingQueryFB** s, std::size_t n) {
-    *s = new XrKeyboardTrackingQueryFB[n]();
-}
-
-
-
-
-static void allocate(XrKeyboardSpaceCreateInfoFB** s, std::size_t n) {
-    *s = new XrKeyboardSpaceCreateInfoFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_keyboard_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_triangle_mesh
-
-
-static void allocate(XrTriangleMeshCreateInfoFB** s, std::size_t n) {
-    *s = new XrTriangleMeshCreateInfoFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_triangle_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_FB_passthrough
-
-
-static void allocate(XrSystemPassthroughPropertiesFB** s, std::size_t n) {
-    *s = new XrSystemPassthroughPropertiesFB[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughCreateInfoFB** s, std::size_t n) {
-    *s = new XrPassthroughCreateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughLayerCreateInfoFB** s, std::size_t n) {
-    *s = new XrPassthroughLayerCreateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrCompositionLayerPassthroughFB** s, std::size_t n) {
-    *s = new XrCompositionLayerPassthroughFB[n]();
-}
-
-
-
-
-static void allocate(XrGeometryInstanceCreateInfoFB** s, std::size_t n) {
-    *s = new XrGeometryInstanceCreateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrGeometryInstanceTransformFB** s, std::size_t n) {
-    *s = new XrGeometryInstanceTransformFB[n]();
-}
-
-
-
-
-static void allocate(XrSystemPassthroughProperties2FB** s, std::size_t n) {
-    *s = new XrSystemPassthroughProperties2FB[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughStyleFB** s, std::size_t n) {
-    *s = new XrPassthroughStyleFB[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughColorMapMonoToRgbaFB** s, std::size_t n) {
-    *s = new XrPassthroughColorMapMonoToRgbaFB[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughColorMapMonoToMonoFB** s, std::size_t n) {
-    *s = new XrPassthroughColorMapMonoToMonoFB[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughBrightnessContrastSaturationFB** s, std::size_t n) {
-    *s = new XrPassthroughBrightnessContrastSaturationFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataPassthroughStateChangedFB** s, std::size_t n) {
-    *s = new XrEventDataPassthroughStateChangedFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_passthrough
-
-#ifdef XRTRANSPORT_EXT_XR_FB_render_model
-
-
-static void allocate(XrRenderModelPathInfoFB** s, std::size_t n) {
-    *s = new XrRenderModelPathInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrRenderModelPropertiesFB** s, std::size_t n) {
-    *s = new XrRenderModelPropertiesFB[n]();
-}
-
-
-
-
-static void allocate(XrRenderModelBufferFB** s, std::size_t n) {
-    *s = new XrRenderModelBufferFB[n]();
-}
-
-
-
-
-static void allocate(XrRenderModelLoadInfoFB** s, std::size_t n) {
-    *s = new XrRenderModelLoadInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSystemRenderModelPropertiesFB** s, std::size_t n) {
-    *s = new XrSystemRenderModelPropertiesFB[n]();
-}
-
-
-
-
-static void allocate(XrRenderModelCapabilitiesRequestFB** s, std::size_t n) {
-    *s = new XrRenderModelCapabilitiesRequestFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_render_model
-
-#ifdef XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-
-static void allocate(XrBindingModificationsKHR** s, std::size_t n) {
-    *s = new XrBindingModificationsKHR[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_foveated_rendering
-
-
-static void allocate(XrViewLocateFoveatedRenderingVARJO** s, std::size_t n) {
-    *s = new XrViewLocateFoveatedRenderingVARJO[n]();
-}
-
-
-
-
-static void allocate(XrFoveatedViewConfigurationViewVARJO** s, std::size_t n) {
-    *s = new XrFoveatedViewConfigurationViewVARJO[n]();
-}
-
-
-
-
-static void allocate(XrSystemFoveatedRenderingPropertiesVARJO** s, std::size_t n) {
-    *s = new XrSystemFoveatedRenderingPropertiesVARJO[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_foveated_rendering
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_composition_layer_depth_test
-
-
-static void allocate(XrCompositionLayerDepthTestVARJO** s, std::size_t n) {
-    *s = new XrCompositionLayerDepthTestVARJO[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_composition_layer_depth_test
-
-#ifdef XRTRANSPORT_EXT_XR_VARJO_marker_tracking
-
-
-static void allocate(XrSystemMarkerTrackingPropertiesVARJO** s, std::size_t n) {
-    *s = new XrSystemMarkerTrackingPropertiesVARJO[n]();
-}
-
-
-
-
-static void allocate(XrEventDataMarkerTrackingUpdateVARJO** s, std::size_t n) {
-    *s = new XrEventDataMarkerTrackingUpdateVARJO[n]();
-}
-
-
-
-
-static void allocate(XrMarkerSpaceCreateInfoVARJO** s, std::size_t n) {
-    *s = new XrMarkerSpaceCreateInfoVARJO[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_VARJO_marker_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_ML_frame_end_info
-
-
-static void allocate(XrFrameEndInfoML** s, std::size_t n) {
-    *s = new XrFrameEndInfoML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_frame_end_info
-
-#ifdef XRTRANSPORT_EXT_XR_ML_global_dimmer
-
-
-static void allocate(XrGlobalDimmerFrameEndInfoML** s, std::size_t n) {
-    *s = new XrGlobalDimmerFrameEndInfoML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_global_dimmer
-
-#ifdef XRTRANSPORT_EXT_XR_ML_compat
-
-
-static void allocate(XrCoordinateSpaceCreateInfoML** s, std::size_t n) {
-    *s = new XrCoordinateSpaceCreateInfoML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_compat
-
-#ifdef XRTRANSPORT_EXT_XR_ML_marker_understanding
-
-
-static void allocate(XrSystemMarkerUnderstandingPropertiesML** s, std::size_t n) {
-    *s = new XrSystemMarkerUnderstandingPropertiesML[n]();
-}
-
-
-
-
-static void allocate(XrMarkerDetectorCreateInfoML** s, std::size_t n) {
-    *s = new XrMarkerDetectorCreateInfoML[n]();
-}
-
-
-
-
-static void allocate(XrMarkerDetectorArucoInfoML** s, std::size_t n) {
-    *s = new XrMarkerDetectorArucoInfoML[n]();
-}
-
-
-
-
-static void allocate(XrMarkerDetectorSizeInfoML** s, std::size_t n) {
-    *s = new XrMarkerDetectorSizeInfoML[n]();
-}
-
-
-
-
-static void allocate(XrMarkerDetectorAprilTagInfoML** s, std::size_t n) {
-    *s = new XrMarkerDetectorAprilTagInfoML[n]();
-}
-
-
-
-
-static void allocate(XrMarkerDetectorCustomProfileInfoML** s, std::size_t n) {
-    *s = new XrMarkerDetectorCustomProfileInfoML[n]();
-}
-
-
-
-
-static void allocate(XrMarkerDetectorSnapshotInfoML** s, std::size_t n) {
-    *s = new XrMarkerDetectorSnapshotInfoML[n]();
-}
-
-
-
-
-static void allocate(XrMarkerDetectorStateML** s, std::size_t n) {
-    *s = new XrMarkerDetectorStateML[n]();
-}
-
-
-
-
-static void allocate(XrMarkerSpaceCreateInfoML** s, std::size_t n) {
-    *s = new XrMarkerSpaceCreateInfoML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_marker_understanding
-
-#ifdef XRTRANSPORT_EXT_XR_ML_localization_map
-
-
-static void allocate(XrLocalizationMapML** s, std::size_t n) {
-    *s = new XrLocalizationMapML[n]();
-}
-
-
-
-
-static void allocate(XrEventDataLocalizationChangedML** s, std::size_t n) {
-    *s = new XrEventDataLocalizationChangedML[n]();
-}
-
-
-
-
-static void allocate(XrMapLocalizationRequestInfoML** s, std::size_t n) {
-    *s = new XrMapLocalizationRequestInfoML[n]();
-}
-
-
-
-
-static void allocate(XrLocalizationMapImportInfoML** s, std::size_t n) {
-    *s = new XrLocalizationMapImportInfoML[n]();
-}
-
-
-
-
-static void allocate(XrLocalizationEnableEventsInfoML** s, std::size_t n) {
-    *s = new XrLocalizationEnableEventsInfoML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_localization_map
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-
-static void allocate(XrSpatialAnchorsCreateInfoFromPoseML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsCreateInfoFromPoseML[n]();
-}
-
-
-
-
-static void allocate(XrCreateSpatialAnchorsCompletionML** s, std::size_t n) {
-    *s = new XrCreateSpatialAnchorsCompletionML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorStateML** s, std::size_t n) {
-    *s = new XrSpatialAnchorStateML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors
-
-#ifdef XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-
-static void allocate(XrSpatialAnchorsCreateStorageInfoML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsCreateStorageInfoML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsQueryInfoRadiusML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsQueryInfoRadiusML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsQueryCompletionML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsQueryCompletionML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsCreateInfoFromUuidsML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsCreateInfoFromUuidsML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsPublishInfoML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsPublishInfoML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsPublishCompletionML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsPublishCompletionML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsDeleteInfoML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsDeleteInfoML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsDeleteCompletionML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsDeleteCompletionML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsUpdateExpirationInfoML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsUpdateExpirationInfoML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsUpdateExpirationCompletionML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsUpdateExpirationCompletionML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsPublishCompletionDetailsML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsPublishCompletionDetailsML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsDeleteCompletionDetailsML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsDeleteCompletionDetailsML[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorsUpdateExpirationCompletionDetailsML** s, std::size_t n) {
-    *s = new XrSpatialAnchorsUpdateExpirationCompletionDetailsML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_spatial_anchors_storage
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-
-static void allocate(XrSpatialAnchorPersistenceInfoMSFT** s, std::size_t n) {
-    *s = new XrSpatialAnchorPersistenceInfoMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT** s, std::size_t n) {
-    *s = new XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_spatial_anchor_persistence
-
-#ifdef XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-
-static void allocate(XrSceneMarkersMSFT** s, std::size_t n) {
-    *s = new XrSceneMarkersMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMarkerTypeFilterMSFT** s, std::size_t n) {
-    *s = new XrSceneMarkerTypeFilterMSFT[n]();
-}
-
-
-
-
-static void allocate(XrSceneMarkerQRCodesMSFT** s, std::size_t n) {
-    *s = new XrSceneMarkerQRCodesMSFT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MSFT_scene_marker
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-
-static void allocate(XrSpaceQueryInfoFB** s, std::size_t n) {
-    *s = new XrSpaceQueryInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSpaceQueryResultsFB** s, std::size_t n) {
-    *s = new XrSpaceQueryResultsFB[n]();
-}
-
-
-
-
-static void allocate(XrSpaceStorageLocationFilterInfoFB** s, std::size_t n) {
-    *s = new XrSpaceStorageLocationFilterInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSpaceComponentFilterInfoFB** s, std::size_t n) {
-    *s = new XrSpaceComponentFilterInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSpaceUuidFilterInfoFB** s, std::size_t n) {
-    *s = new XrSpaceUuidFilterInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSpaceQueryResultsAvailableFB** s, std::size_t n) {
-    *s = new XrEventDataSpaceQueryResultsAvailableFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSpaceQueryCompleteFB** s, std::size_t n) {
-    *s = new XrEventDataSpaceQueryCompleteFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_query
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_storage
-
-
-static void allocate(XrSpaceSaveInfoFB** s, std::size_t n) {
-    *s = new XrSpaceSaveInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSpaceEraseInfoFB** s, std::size_t n) {
-    *s = new XrSpaceEraseInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSpaceSaveCompleteFB** s, std::size_t n) {
-    *s = new XrEventDataSpaceSaveCompleteFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSpaceEraseCompleteFB** s, std::size_t n) {
-    *s = new XrEventDataSpaceEraseCompleteFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_storage
-
-#ifdef XRTRANSPORT_EXT_XR_FB_foveation_vulkan
-
-
-static void allocate(XrSwapchainImageFoveationVulkanFB** s, std::size_t n) {
-    *s = new XrSwapchainImageFoveationVulkanFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_foveation_vulkan
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_android_surface
-
-
-static void allocate(XrSwapchainStateAndroidSurfaceDimensionsFB** s, std::size_t n) {
-    *s = new XrSwapchainStateAndroidSurfaceDimensionsFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_android_surface
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_opengl_es
-
-
-static void allocate(XrSwapchainStateSamplerOpenGLESFB** s, std::size_t n) {
-    *s = new XrSwapchainStateSamplerOpenGLESFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_opengl_es
-
-#ifdef XRTRANSPORT_EXT_XR_FB_swapchain_update_state_vulkan
-
-
-static void allocate(XrSwapchainStateSamplerVulkanFB** s, std::size_t n) {
-    *s = new XrSwapchainStateSamplerVulkanFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_swapchain_update_state_vulkan
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_sharing
-
-
-static void allocate(XrSpaceShareInfoFB** s, std::size_t n) {
-    *s = new XrSpaceShareInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSpaceShareCompleteFB** s, std::size_t n) {
-    *s = new XrEventDataSpaceShareCompleteFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_FB_space_warp
-
-
-static void allocate(XrCompositionLayerSpaceWarpInfoFB** s, std::size_t n) {
-    *s = new XrCompositionLayerSpaceWarpInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSystemSpaceWarpPropertiesFB** s, std::size_t n) {
-    *s = new XrSystemSpaceWarpPropertiesFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_space_warp
-
-#ifdef XRTRANSPORT_EXT_XR_FB_haptic_amplitude_envelope
-
-
-static void allocate(XrHapticAmplitudeEnvelopeVibrationFB** s, std::size_t n) {
-    *s = new XrHapticAmplitudeEnvelopeVibrationFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_haptic_amplitude_envelope
-
-#ifdef XRTRANSPORT_EXT_XR_FB_scene
-
-
-static void allocate(XrSemanticLabelsFB** s, std::size_t n) {
-    *s = new XrSemanticLabelsFB[n]();
-}
-
-
-
-
-static void allocate(XrRoomLayoutFB** s, std::size_t n) {
-    *s = new XrRoomLayoutFB[n]();
-}
-
-
-
-
-static void allocate(XrBoundary2DFB** s, std::size_t n) {
-    *s = new XrBoundary2DFB[n]();
-}
-
-
-
-
-static void allocate(XrSemanticLabelsSupportInfoFB** s, std::size_t n) {
-    *s = new XrSemanticLabelsSupportInfoFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_scene
-
-#ifdef XRTRANSPORT_EXT_XR_ALMALENCE_digital_lens_control
-
-
-static void allocate(XrDigitalLensControlALMALENCE** s, std::size_t n) {
-    *s = new XrDigitalLensControlALMALENCE[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ALMALENCE_digital_lens_control
-
-#ifdef XRTRANSPORT_EXT_XR_FB_scene_capture
-
-
-static void allocate(XrEventDataSceneCaptureCompleteFB** s, std::size_t n) {
-    *s = new XrEventDataSceneCaptureCompleteFB[n]();
-}
-
-
-
-
-static void allocate(XrSceneCaptureRequestInfoFB** s, std::size_t n) {
-    *s = new XrSceneCaptureRequestInfoFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_scene_capture
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_container
-
-
-static void allocate(XrSpaceContainerFB** s, std::size_t n) {
-    *s = new XrSpaceContainerFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_container
-
-#ifdef XRTRANSPORT_EXT_XR_META_foveation_eye_tracked
-
-
-static void allocate(XrFoveationEyeTrackedProfileCreateInfoMETA** s, std::size_t n) {
-    *s = new XrFoveationEyeTrackedProfileCreateInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrFoveationEyeTrackedStateMETA** s, std::size_t n) {
-    *s = new XrFoveationEyeTrackedStateMETA[n]();
-}
-
-
-
-
-static void allocate(XrSystemFoveationEyeTrackedPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemFoveationEyeTrackedPropertiesMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_foveation_eye_tracked
-
-#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking
-
-
-static void allocate(XrFaceExpressionInfoFB** s, std::size_t n) {
-    *s = new XrFaceExpressionInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrSystemFaceTrackingPropertiesFB** s, std::size_t n) {
-    *s = new XrSystemFaceTrackingPropertiesFB[n]();
-}
-
-
-
-
-static void allocate(XrFaceTrackerCreateInfoFB** s, std::size_t n) {
-    *s = new XrFaceTrackerCreateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrFaceExpressionWeightsFB** s, std::size_t n) {
-    *s = new XrFaceExpressionWeightsFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_face_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-
-static void allocate(XrEyeTrackerCreateInfoFB** s, std::size_t n) {
-    *s = new XrEyeTrackerCreateInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrEyeGazesInfoFB** s, std::size_t n) {
-    *s = new XrEyeGazesInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrEyeGazesFB** s, std::size_t n) {
-    *s = new XrEyeGazesFB[n]();
-}
-
-
-
-
-static void allocate(XrSystemEyeTrackingPropertiesFB** s, std::size_t n) {
-    *s = new XrSystemEyeTrackingPropertiesFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_eye_tracking_social
-
-#ifdef XRTRANSPORT_EXT_XR_FB_passthrough_keyboard_hands
-
-
-static void allocate(XrPassthroughKeyboardHandsIntensityFB** s, std::size_t n) {
-    *s = new XrPassthroughKeyboardHandsIntensityFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_passthrough_keyboard_hands
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_settings
-
-
-static void allocate(XrCompositionLayerSettingsFB** s, std::size_t n) {
-    *s = new XrCompositionLayerSettingsFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_settings
-
-#ifdef XRTRANSPORT_EXT_XR_FB_haptic_pcm
-
-
-static void allocate(XrHapticPcmVibrationFB** s, std::size_t n) {
-    *s = new XrHapticPcmVibrationFB[n]();
-}
-
-
-
-
-static void allocate(XrDevicePcmSampleRateStateFB** s, std::size_t n) {
-    *s = new XrDevicePcmSampleRateStateFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_haptic_pcm
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_frame_synthesis
-
-
-static void allocate(XrFrameSynthesisInfoEXT** s, std::size_t n) {
-    *s = new XrFrameSynthesisInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrFrameSynthesisConfigViewEXT** s, std::size_t n) {
-    *s = new XrFrameSynthesisConfigViewEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_frame_synthesis
-
-#ifdef XRTRANSPORT_EXT_XR_FB_composition_layer_depth_test
-
-
-static void allocate(XrCompositionLayerDepthTestFB** s, std::size_t n) {
-    *s = new XrCompositionLayerDepthTestFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_composition_layer_depth_test
-
-#ifdef XRTRANSPORT_EXT_XR_META_local_dimming
-
-
-static void allocate(XrLocalDimmingFrameEndInfoMETA** s, std::size_t n) {
-    *s = new XrLocalDimmingFrameEndInfoMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_local_dimming
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_preferences
-
-
-static void allocate(XrPassthroughPreferencesMETA** s, std::size_t n) {
-    *s = new XrPassthroughPreferencesMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_preferences
-
-#ifdef XRTRANSPORT_EXT_XR_META_virtual_keyboard
-
-
-static void allocate(XrSystemVirtualKeyboardPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemVirtualKeyboardPropertiesMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardCreateInfoMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardCreateInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardSpaceCreateInfoMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardSpaceCreateInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardLocationInfoMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardLocationInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardModelVisibilitySetInfoMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardModelVisibilitySetInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardAnimationStateMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardAnimationStateMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardModelAnimationStatesMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardModelAnimationStatesMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardTextureDataMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardTextureDataMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardInputInfoMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardInputInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrVirtualKeyboardTextContextChangeInfoMETA** s, std::size_t n) {
-    *s = new XrVirtualKeyboardTextContextChangeInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardCommitTextMETA** s, std::size_t n) {
-    *s = new XrEventDataVirtualKeyboardCommitTextMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardBackspaceMETA** s, std::size_t n) {
-    *s = new XrEventDataVirtualKeyboardBackspaceMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardEnterMETA** s, std::size_t n) {
-    *s = new XrEventDataVirtualKeyboardEnterMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardShownMETA** s, std::size_t n) {
-    *s = new XrEventDataVirtualKeyboardShownMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataVirtualKeyboardHiddenMETA** s, std::size_t n) {
-    *s = new XrEventDataVirtualKeyboardHiddenMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_virtual_keyboard
-
-#ifdef XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-
-static void allocate(XrExternalCameraOCULUS** s, std::size_t n) {
-    *s = new XrExternalCameraOCULUS[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_OCULUS_external_camera
-
-#ifdef XRTRANSPORT_EXT_XR_META_vulkan_swapchain_create_info
-
-
-static void allocate(XrVulkanSwapchainCreateInfoMETA** s, std::size_t n) {
-    *s = new XrVulkanSwapchainCreateInfoMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_vulkan_swapchain_create_info
-
-#ifdef XRTRANSPORT_EXT_XR_META_performance_metrics
-
-
-static void allocate(XrPerformanceMetricsStateMETA** s, std::size_t n) {
-    *s = new XrPerformanceMetricsStateMETA[n]();
-}
-
-
-
-
-static void allocate(XrPerformanceMetricsCounterMETA** s, std::size_t n) {
-    *s = new XrPerformanceMetricsCounterMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_performance_metrics
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_storage_batch
-
-
-static void allocate(XrSpaceListSaveInfoFB** s, std::size_t n) {
-    *s = new XrSpaceListSaveInfoFB[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSpaceListSaveCompleteFB** s, std::size_t n) {
-    *s = new XrEventDataSpaceListSaveCompleteFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_storage_batch
-
-#ifdef XRTRANSPORT_EXT_XR_FB_spatial_entity_user
-
-
-static void allocate(XrSpaceUserCreateInfoFB** s, std::size_t n) {
-    *s = new XrSpaceUserCreateInfoFB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_spatial_entity_user
-
-#ifdef XRTRANSPORT_EXT_XR_META_headset_id
-
-
-static void allocate(XrSystemHeadsetIdPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemHeadsetIdPropertiesMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_headset_id
-
-#ifdef XRTRANSPORT_EXT_XR_META_recommended_layer_resolution
-
-
-static void allocate(XrRecommendedLayerResolutionMETA** s, std::size_t n) {
-    *s = new XrRecommendedLayerResolutionMETA[n]();
-}
-
-
-
-
-static void allocate(XrRecommendedLayerResolutionGetInfoMETA** s, std::size_t n) {
-    *s = new XrRecommendedLayerResolutionGetInfoMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_recommended_layer_resolution
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-
-static void allocate(XrSystemPassthroughColorLutPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemPassthroughColorLutPropertiesMETA[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughColorLutCreateInfoMETA** s, std::size_t n) {
-    *s = new XrPassthroughColorLutCreateInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughColorLutUpdateInfoMETA** s, std::size_t n) {
-    *s = new XrPassthroughColorLutUpdateInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughColorMapLutMETA** s, std::size_t n) {
-    *s = new XrPassthroughColorMapLutMETA[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughColorMapInterpolatedLutMETA** s, std::size_t n) {
-    *s = new XrPassthroughColorMapInterpolatedLutMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_color_lut
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_mesh
-
-
-static void allocate(XrSpaceTriangleMeshGetInfoMETA** s, std::size_t n) {
-    *s = new XrSpaceTriangleMeshGetInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrSpaceTriangleMeshMETA** s, std::size_t n) {
-    *s = new XrSpaceTriangleMeshMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_META_body_tracking_full_body
-
-
-static void allocate(XrSystemPropertiesBodyTrackingFullBodyMETA** s, std::size_t n) {
-    *s = new XrSystemPropertiesBodyTrackingFullBodyMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_body_tracking_full_body
-
-#ifdef XRTRANSPORT_EXT_XR_META_passthrough_layer_resumed_event
-
-
-static void allocate(XrEventDataPassthroughLayerResumedMETA** s, std::size_t n) {
-    *s = new XrEventDataPassthroughLayerResumedMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_passthrough_layer_resumed_event
-
-#ifdef XRTRANSPORT_EXT_XR_FB_face_tracking2
-
-
-static void allocate(XrSystemFaceTrackingProperties2FB** s, std::size_t n) {
-    *s = new XrSystemFaceTrackingProperties2FB[n]();
-}
-
-
-
-
-static void allocate(XrFaceTrackerCreateInfo2FB** s, std::size_t n) {
-    *s = new XrFaceTrackerCreateInfo2FB[n]();
-}
-
-
-
-
-static void allocate(XrFaceExpressionInfo2FB** s, std::size_t n) {
-    *s = new XrFaceExpressionInfo2FB[n]();
-}
-
-
-
-
-static void allocate(XrFaceExpressionWeights2FB** s, std::size_t n) {
-    *s = new XrFaceExpressionWeights2FB[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_FB_face_tracking2
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-
-static void allocate(XrSystemSpatialEntitySharingPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemSpatialEntitySharingPropertiesMETA[n]();
-}
-
-
-
-
-static void allocate(XrShareSpacesInfoMETA** s, std::size_t n) {
-    *s = new XrShareSpacesInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataShareSpacesCompleteMETA** s, std::size_t n) {
-    *s = new XrEventDataShareSpacesCompleteMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_spatial_entity_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_META_environment_depth
-
-
-static void allocate(XrEnvironmentDepthProviderCreateInfoMETA** s, std::size_t n) {
-    *s = new XrEnvironmentDepthProviderCreateInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrEnvironmentDepthSwapchainCreateInfoMETA** s, std::size_t n) {
-    *s = new XrEnvironmentDepthSwapchainCreateInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrEnvironmentDepthSwapchainStateMETA** s, std::size_t n) {
-    *s = new XrEnvironmentDepthSwapchainStateMETA[n]();
-}
-
-
-
-
-static void allocate(XrEnvironmentDepthImageAcquireInfoMETA** s, std::size_t n) {
-    *s = new XrEnvironmentDepthImageAcquireInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrEnvironmentDepthImageViewMETA** s, std::size_t n) {
-    *s = new XrEnvironmentDepthImageViewMETA[n]();
-}
-
-
-
-
-static void allocate(XrEnvironmentDepthImageMETA** s, std::size_t n) {
-    *s = new XrEnvironmentDepthImageMETA[n]();
-}
-
-
-
-
-static void allocate(XrEnvironmentDepthHandRemovalSetInfoMETA** s, std::size_t n) {
-    *s = new XrEnvironmentDepthHandRemovalSetInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrSystemEnvironmentDepthPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemEnvironmentDepthPropertiesMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_environment_depth
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_passthrough
-
-
-static void allocate(XrPassthroughCreateInfoHTC** s, std::size_t n) {
-    *s = new XrPassthroughCreateInfoHTC[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughColorHTC** s, std::size_t n) {
-    *s = new XrPassthroughColorHTC[n]();
-}
-
-
-
-
-static void allocate(XrPassthroughMeshTransformInfoHTC** s, std::size_t n) {
-    *s = new XrPassthroughMeshTransformInfoHTC[n]();
-}
-
-
-
-
-static void allocate(XrCompositionLayerPassthroughHTC** s, std::size_t n) {
-    *s = new XrCompositionLayerPassthroughHTC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_passthrough
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_foveation
-
-
-static void allocate(XrFoveationApplyInfoHTC** s, std::size_t n) {
-    *s = new XrFoveationApplyInfoHTC[n]();
-}
-
-
-
-
-static void allocate(XrFoveationDynamicModeInfoHTC** s, std::size_t n) {
-    *s = new XrFoveationDynamicModeInfoHTC[n]();
-}
-
-
-
-
-static void allocate(XrFoveationCustomModeInfoHTC** s, std::size_t n) {
-    *s = new XrFoveationCustomModeInfoHTC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_foveation
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_anchor
-
-
-static void allocate(XrSystemAnchorPropertiesHTC** s, std::size_t n) {
-    *s = new XrSystemAnchorPropertiesHTC[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorCreateInfoHTC** s, std::size_t n) {
-    *s = new XrSpatialAnchorCreateInfoHTC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-
-static void allocate(XrSystemBodyTrackingPropertiesHTC** s, std::size_t n) {
-    *s = new XrSystemBodyTrackingPropertiesHTC[n]();
-}
-
-
-
-
-static void allocate(XrBodyTrackerCreateInfoHTC** s, std::size_t n) {
-    *s = new XrBodyTrackerCreateInfoHTC[n]();
-}
-
-
-
-
-static void allocate(XrBodyJointsLocateInfoHTC** s, std::size_t n) {
-    *s = new XrBodyJointsLocateInfoHTC[n]();
-}
-
-
-
-
-static void allocate(XrBodyJointLocationsHTC** s, std::size_t n) {
-    *s = new XrBodyJointLocationsHTC[n]();
-}
-
-
-
-
-static void allocate(XrBodySkeletonHTC** s, std::size_t n) {
-    *s = new XrBodySkeletonHTC[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_HTC_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-
-static void allocate(XrActiveActionSetPrioritiesEXT** s, std::size_t n) {
-    *s = new XrActiveActionSetPrioritiesEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_active_action_set_priority
-
-#ifdef XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-
-static void allocate(XrSystemForceFeedbackCurlPropertiesMNDX** s, std::size_t n) {
-    *s = new XrSystemForceFeedbackCurlPropertiesMNDX[n]();
-}
-
-
-
-
-static void allocate(XrForceFeedbackCurlApplyLocationsMNDX** s, std::size_t n) {
-    *s = new XrForceFeedbackCurlApplyLocationsMNDX[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_MNDX_force_feedback_curl
-
-#ifdef XRTRANSPORT_EXT_XR_BD_body_tracking
-
-
-static void allocate(XrBodyTrackerCreateInfoBD** s, std::size_t n) {
-    *s = new XrBodyTrackerCreateInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrBodyJointsLocateInfoBD** s, std::size_t n) {
-    *s = new XrBodyJointsLocateInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrBodyJointLocationsBD** s, std::size_t n) {
-    *s = new XrBodyJointLocationsBD[n]();
-}
-
-
-
-
-static void allocate(XrSystemBodyTrackingPropertiesBD** s, std::size_t n) {
-    *s = new XrSystemBodyTrackingPropertiesBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_body_tracking
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-
-static void allocate(XrSystemSpatialSensingPropertiesBD** s, std::size_t n) {
-    *s = new XrSystemSpatialSensingPropertiesBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityComponentGetInfoBD** s, std::size_t n) {
-    *s = new XrSpatialEntityComponentGetInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityLocationGetInfoBD** s, std::size_t n) {
-    *s = new XrSpatialEntityLocationGetInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataLocationBD** s, std::size_t n) {
-    *s = new XrSpatialEntityComponentDataLocationBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataSemanticBD** s, std::size_t n) {
-    *s = new XrSpatialEntityComponentDataSemanticBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataBoundingBox2DBD** s, std::size_t n) {
-    *s = new XrSpatialEntityComponentDataBoundingBox2DBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataPolygonBD** s, std::size_t n) {
-    *s = new XrSpatialEntityComponentDataPolygonBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataBoundingBox3DBD** s, std::size_t n) {
-    *s = new XrSpatialEntityComponentDataBoundingBox3DBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityComponentDataTriangleMeshBD** s, std::size_t n) {
-    *s = new XrSpatialEntityComponentDataTriangleMeshBD[n]();
-}
-
-
-
-
-static void allocate(XrSenseDataProviderCreateInfoBD** s, std::size_t n) {
-    *s = new XrSenseDataProviderCreateInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrSenseDataProviderStartInfoBD** s, std::size_t n) {
-    *s = new XrSenseDataProviderStartInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSenseDataProviderStateChangedBD** s, std::size_t n) {
-    *s = new XrEventDataSenseDataProviderStateChangedBD[n]();
-}
-
-
-
-
-static void allocate(XrEventDataSenseDataUpdatedBD** s, std::size_t n) {
-    *s = new XrEventDataSenseDataUpdatedBD[n]();
-}
-
-
-
-
-static void allocate(XrSenseDataQueryInfoBD** s, std::size_t n) {
-    *s = new XrSenseDataQueryInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrSenseDataQueryCompletionBD** s, std::size_t n) {
-    *s = new XrSenseDataQueryCompletionBD[n]();
-}
-
-
-
-
-static void allocate(XrSenseDataFilterUuidBD** s, std::size_t n) {
-    *s = new XrSenseDataFilterUuidBD[n]();
-}
-
-
-
-
-static void allocate(XrSenseDataFilterSemanticBD** s, std::size_t n) {
-    *s = new XrSenseDataFilterSemanticBD[n]();
-}
-
-
-
-
-static void allocate(XrQueriedSenseDataGetInfoBD** s, std::size_t n) {
-    *s = new XrQueriedSenseDataGetInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrQueriedSenseDataBD** s, std::size_t n) {
-    *s = new XrQueriedSenseDataBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityStateBD** s, std::size_t n) {
-    *s = new XrSpatialEntityStateBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialEntityAnchorCreateInfoBD** s, std::size_t n) {
-    *s = new XrSpatialEntityAnchorCreateInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrAnchorSpaceCreateInfoBD** s, std::size_t n) {
-    *s = new XrAnchorSpaceCreateInfoBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_sensing
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_anchor
-
-
-static void allocate(XrSystemSpatialAnchorPropertiesBD** s, std::size_t n) {
-    *s = new XrSystemSpatialAnchorPropertiesBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorCreateInfoBD** s, std::size_t n) {
-    *s = new XrSpatialAnchorCreateInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorCreateCompletionBD** s, std::size_t n) {
-    *s = new XrSpatialAnchorCreateCompletionBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorPersistInfoBD** s, std::size_t n) {
-    *s = new XrSpatialAnchorPersistInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorUnpersistInfoBD** s, std::size_t n) {
-    *s = new XrSpatialAnchorUnpersistInfoBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_anchor
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_anchor_sharing
-
-
-static void allocate(XrSystemSpatialAnchorSharingPropertiesBD** s, std::size_t n) {
-    *s = new XrSystemSpatialAnchorSharingPropertiesBD[n]();
-}
-
-
-
-
-static void allocate(XrSpatialAnchorShareInfoBD** s, std::size_t n) {
-    *s = new XrSpatialAnchorShareInfoBD[n]();
-}
-
-
-
-
-static void allocate(XrSharedSpatialAnchorDownloadInfoBD** s, std::size_t n) {
-    *s = new XrSharedSpatialAnchorDownloadInfoBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_anchor_sharing
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_scene
-
-
-static void allocate(XrSystemSpatialScenePropertiesBD** s, std::size_t n) {
-    *s = new XrSystemSpatialScenePropertiesBD[n]();
-}
-
-
-
-
-static void allocate(XrSceneCaptureInfoBD** s, std::size_t n) {
-    *s = new XrSceneCaptureInfoBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_scene
-
-#ifdef XRTRANSPORT_EXT_XR_BD_spatial_mesh
-
-
-static void allocate(XrSystemSpatialMeshPropertiesBD** s, std::size_t n) {
-    *s = new XrSystemSpatialMeshPropertiesBD[n]();
-}
-
-
-
-
-static void allocate(XrSenseDataProviderCreateInfoSpatialMeshBD** s, std::size_t n) {
-    *s = new XrSenseDataProviderCreateInfoSpatialMeshBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_spatial_mesh
-
-#ifdef XRTRANSPORT_EXT_XR_BD_future_progress
-
-
-static void allocate(XrFuturePollResultProgressBD** s, std::size_t n) {
-    *s = new XrFuturePollResultProgressBD[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_BD_future_progress
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_hand_tracking_data_source
-
-
-static void allocate(XrHandTrackingDataSourceInfoEXT** s, std::size_t n) {
-    *s = new XrHandTrackingDataSourceInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrHandTrackingDataSourceStateEXT** s, std::size_t n) {
-    *s = new XrHandTrackingDataSourceStateEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_hand_tracking_data_source
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_plane_detection
-
-
-static void allocate(XrPlaneDetectorCreateInfoEXT** s, std::size_t n) {
-    *s = new XrPlaneDetectorCreateInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrPlaneDetectorBeginInfoEXT** s, std::size_t n) {
-    *s = new XrPlaneDetectorBeginInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrPlaneDetectorGetInfoEXT** s, std::size_t n) {
-    *s = new XrPlaneDetectorGetInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrPlaneDetectorLocationsEXT** s, std::size_t n) {
-    *s = new XrPlaneDetectorLocationsEXT[n]();
-}
-
-
-
-
-static void allocate(XrPlaneDetectorLocationEXT** s, std::size_t n) {
-    *s = new XrPlaneDetectorLocationEXT[n]();
-}
-
-
-
-
-static void allocate(XrPlaneDetectorPolygonBufferEXT** s, std::size_t n) {
-    *s = new XrPlaneDetectorPolygonBufferEXT[n]();
-}
-
-
-
-
-static void allocate(XrSystemPlaneDetectionPropertiesEXT** s, std::size_t n) {
-    *s = new XrSystemPlaneDetectionPropertiesEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_plane_detection
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_future
-
-
-static void allocate(XrFutureCancelInfoEXT** s, std::size_t n) {
-    *s = new XrFutureCancelInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrFuturePollInfoEXT** s, std::size_t n) {
-    *s = new XrFuturePollInfoEXT[n]();
-}
-
-
-
-
-static void allocate(XrFutureCompletionEXT** s, std::size_t n) {
-    *s = new XrFutureCompletionEXT[n]();
-}
-
-
-
-
-static void allocate(XrFuturePollResultEXT** s, std::size_t n) {
-    *s = new XrFuturePollResultEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_future
-
-#ifdef XRTRANSPORT_EXT_XR_EXT_user_presence
-
-
-static void allocate(XrEventDataUserPresenceChangedEXT** s, std::size_t n) {
-    *s = new XrEventDataUserPresenceChangedEXT[n]();
-}
-
-
-
-
-static void allocate(XrSystemUserPresencePropertiesEXT** s, std::size_t n) {
-    *s = new XrSystemUserPresencePropertiesEXT[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_EXT_user_presence
-
-
-
-static void allocate(XrSpacesLocateInfo** s, std::size_t n) {
-    *s = new XrSpacesLocateInfo[n]();
-}
-
-
-
-
-static void allocate(XrSpaceLocations** s, std::size_t n) {
-    *s = new XrSpaceLocations[n]();
-}
-
-
-
-
-static void allocate(XrSpaceVelocities** s, std::size_t n) {
-    *s = new XrSpaceVelocities[n]();
-}
-
-
-
-#ifdef XRTRANSPORT_EXT_XR_ML_user_calibration
-
-
-static void allocate(XrEventDataHeadsetFitChangedML** s, std::size_t n) {
-    *s = new XrEventDataHeadsetFitChangedML[n]();
-}
-
-
-
-
-static void allocate(XrEventDataEyeCalibrationChangedML** s, std::size_t n) {
-    *s = new XrEventDataEyeCalibrationChangedML[n]();
-}
-
-
-
-
-static void allocate(XrUserCalibrationEnableEventsInfoML** s, std::size_t n) {
-    *s = new XrUserCalibrationEnableEventsInfoML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_user_calibration
-
-#ifdef XRTRANSPORT_EXT_XR_ML_system_notifications
-
-
-static void allocate(XrSystemNotificationsSetInfoML** s, std::size_t n) {
-    *s = new XrSystemNotificationsSetInfoML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_system_notifications
-
-#ifdef XRTRANSPORT_EXT_XR_ML_world_mesh_detection
-
-
-static void allocate(XrWorldMeshDetectorCreateInfoML** s, std::size_t n) {
-    *s = new XrWorldMeshDetectorCreateInfoML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshStateRequestInfoML** s, std::size_t n) {
-    *s = new XrWorldMeshStateRequestInfoML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshBlockStateML** s, std::size_t n) {
-    *s = new XrWorldMeshBlockStateML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshStateRequestCompletionML** s, std::size_t n) {
-    *s = new XrWorldMeshStateRequestCompletionML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshBufferRecommendedSizeInfoML** s, std::size_t n) {
-    *s = new XrWorldMeshBufferRecommendedSizeInfoML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshBufferSizeML** s, std::size_t n) {
-    *s = new XrWorldMeshBufferSizeML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshBufferML** s, std::size_t n) {
-    *s = new XrWorldMeshBufferML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshBlockRequestML** s, std::size_t n) {
-    *s = new XrWorldMeshBlockRequestML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshGetInfoML** s, std::size_t n) {
-    *s = new XrWorldMeshGetInfoML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshBlockML** s, std::size_t n) {
-    *s = new XrWorldMeshBlockML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshRequestCompletionML** s, std::size_t n) {
-    *s = new XrWorldMeshRequestCompletionML[n]();
-}
-
-
-
-
-static void allocate(XrWorldMeshRequestCompletionInfoML** s, std::size_t n) {
-    *s = new XrWorldMeshRequestCompletionInfoML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_world_mesh_detection
-
-#ifdef XRTRANSPORT_EXT_XR_ML_facial_expression
-
-
-static void allocate(XrSystemFacialExpressionPropertiesML** s, std::size_t n) {
-    *s = new XrSystemFacialExpressionPropertiesML[n]();
-}
-
-
-
-
-static void allocate(XrFacialExpressionClientCreateInfoML** s, std::size_t n) {
-    *s = new XrFacialExpressionClientCreateInfoML[n]();
-}
-
-
-
-
-static void allocate(XrFacialExpressionBlendShapeGetInfoML** s, std::size_t n) {
-    *s = new XrFacialExpressionBlendShapeGetInfoML[n]();
-}
-
-
-
-
-static void allocate(XrFacialExpressionBlendShapePropertiesML** s, std::size_t n) {
-    *s = new XrFacialExpressionBlendShapePropertiesML[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_ML_facial_expression
-
-#ifdef XRTRANSPORT_EXT_XR_META_simultaneous_hands_and_controllers
-
-
-static void allocate(XrSystemSimultaneousHandsAndControllersPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemSimultaneousHandsAndControllersPropertiesMETA[n]();
-}
-
-
-
-
-static void allocate(XrSimultaneousHandsAndControllersTrackingResumeInfoMETA** s, std::size_t n) {
-    *s = new XrSimultaneousHandsAndControllersTrackingResumeInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrSimultaneousHandsAndControllersTrackingPauseInfoMETA** s, std::size_t n) {
-    *s = new XrSimultaneousHandsAndControllersTrackingPauseInfoMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_simultaneous_hands_and_controllers
-
-#ifdef XRTRANSPORT_EXT_XR_META_colocation_discovery
-
-
-static void allocate(XrColocationDiscoveryStartInfoMETA** s, std::size_t n) {
-    *s = new XrColocationDiscoveryStartInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrColocationDiscoveryStopInfoMETA** s, std::size_t n) {
-    *s = new XrColocationDiscoveryStopInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrColocationAdvertisementStartInfoMETA** s, std::size_t n) {
-    *s = new XrColocationAdvertisementStartInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrColocationAdvertisementStopInfoMETA** s, std::size_t n) {
-    *s = new XrColocationAdvertisementStopInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataStartColocationAdvertisementCompleteMETA** s, std::size_t n) {
-    *s = new XrEventDataStartColocationAdvertisementCompleteMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataStopColocationAdvertisementCompleteMETA** s, std::size_t n) {
-    *s = new XrEventDataStopColocationAdvertisementCompleteMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataColocationAdvertisementCompleteMETA** s, std::size_t n) {
-    *s = new XrEventDataColocationAdvertisementCompleteMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataStartColocationDiscoveryCompleteMETA** s, std::size_t n) {
-    *s = new XrEventDataStartColocationDiscoveryCompleteMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataColocationDiscoveryResultMETA** s, std::size_t n) {
-    *s = new XrEventDataColocationDiscoveryResultMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataColocationDiscoveryCompleteMETA** s, std::size_t n) {
-    *s = new XrEventDataColocationDiscoveryCompleteMETA[n]();
-}
-
-
-
-
-static void allocate(XrEventDataStopColocationDiscoveryCompleteMETA** s, std::size_t n) {
-    *s = new XrEventDataStopColocationDiscoveryCompleteMETA[n]();
-}
-
-
-
-
-static void allocate(XrSystemColocationDiscoveryPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemColocationDiscoveryPropertiesMETA[n]();
-}
-
-
-#endif // XRTRANSPORT_EXT_XR_META_colocation_discovery
-
-#ifdef XRTRANSPORT_EXT_XR_META_spatial_entity_group_sharing
-
-
-static void allocate(XrShareSpacesRecipientGroupsMETA** s, std::size_t n) {
-    *s = new XrShareSpacesRecipientGroupsMETA[n]();
-}
-
-
-
-
-static void allocate(XrSpaceGroupUuidFilterInfoMETA** s, std::size_t n) {
-    *s = new XrSpaceGroupUuidFilterInfoMETA[n]();
-}
-
-
-
-
-static void allocate(XrSystemSpatialEntityGroupSharingPropertiesMETA** s, std::size_t n) {
-    *s = new XrSystemSpatialEntityGroupSharingPropertiesMETA[n]();
 }
 
 
@@ -33457,241 +24491,386 @@ static void allocate(XrSystemSpatialEntityGroupSharingPropertiesMETA** s, std::s
 
 
 static void cleanup(const XrVector2f* s) {
-    
+        
+
     cleanup(&s->x);
+
+        
+
     cleanup(&s->y);
+
 }
 
 
 
 
 static void cleanup(const XrVector3f* s) {
-    
+        
+
     cleanup(&s->x);
+
+        
+
     cleanup(&s->y);
+
+        
+
     cleanup(&s->z);
+
 }
 
 
 
 
 static void cleanup(const XrVector4f* s) {
-    
+        
+
     cleanup(&s->x);
+
+        
+
     cleanup(&s->y);
+
+        
+
     cleanup(&s->z);
+
+        
+
     cleanup(&s->w);
+
 }
 
 
 
 
 static void cleanup(const XrColor4f* s) {
-    
+        
+
     cleanup(&s->r);
+
+        
+
     cleanup(&s->g);
+
+        
+
     cleanup(&s->b);
+
+        
+
     cleanup(&s->a);
+
 }
 
 
 
 
 static void cleanup(const XrQuaternionf* s) {
-    
+        
+
     cleanup(&s->x);
+
+        
+
     cleanup(&s->y);
+
+        
+
     cleanup(&s->z);
+
+        
+
     cleanup(&s->w);
+
 }
 
 
 
 
 static void cleanup(const XrPosef* s) {
-    
+        
+
     cleanup(&s->orientation);
+
+        
+
     cleanup(&s->position);
+
 }
 
 
 
 
 static void cleanup(const XrOffset2Df* s) {
-    
+        
+
     cleanup(&s->x);
+
+        
+
     cleanup(&s->y);
+
 }
 
 
 
 
 static void cleanup(const XrExtent2Df* s) {
-    
+        
+
     cleanup(&s->width);
+
+        
+
     cleanup(&s->height);
+
 }
 
 
 
 
 static void cleanup(const XrRect2Df* s) {
-    
+        
+
     cleanup(&s->offset);
+
+        
+
     cleanup(&s->extent);
+
 }
 
 
 
 
 static void cleanup(const XrOffset2Di* s) {
-    
+        
+
     cleanup(&s->x);
+
+        
+
     cleanup(&s->y);
+
 }
 
 
 
 
 static void cleanup(const XrExtent2Di* s) {
-    
+        
+
     cleanup(&s->width);
+
+        
+
     cleanup(&s->height);
+
 }
 
 
 
 
 static void cleanup(const XrRect2Di* s) {
-    
+        
+
     cleanup(&s->offset);
+
+        
+
     cleanup(&s->extent);
+
 }
 
 
 
 
 static void cleanup(const XrApplicationInfo* s) {
-    
         
-    for (int i = 0; i < XR_MAX_APPLICATION_NAME_SIZE; i++) {
-        cleanup(&s->applicationName[i]);
-    }
+
+    cleanup_array(s->applicationName, XR_MAX_APPLICATION_NAME_SIZE);
+
+        
+
     cleanup(&s->applicationVersion);
+
         
-    for (int i = 0; i < XR_MAX_ENGINE_NAME_SIZE; i++) {
-        cleanup(&s->engineName[i]);
-    }
+
+    cleanup_array(s->engineName, XR_MAX_ENGINE_NAME_SIZE);
+
+        
+
     cleanup(&s->engineVersion);
+
+        
+
     cleanup(&s->apiVersion);
+
 }
 
 
 
 
 static void cleanup(const XrSystemGraphicsProperties* s) {
-    
+        
+
     cleanup(&s->maxSwapchainImageHeight);
+
+        
+
     cleanup(&s->maxSwapchainImageWidth);
+
+        
+
     cleanup(&s->maxLayerCount);
+
 }
 
 
 
 
 static void cleanup(const XrSystemTrackingProperties* s) {
-    
+        
+
     cleanup(&s->orientationTracking);
+
+        
+
     cleanup(&s->positionTracking);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageBaseHeader* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrFovf* s) {
-    
+        
+
     cleanup(&s->angleLeft);
+
+        
+
     cleanup(&s->angleRight);
+
+        
+
     cleanup(&s->angleUp);
+
+        
+
     cleanup(&s->angleDown);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainSubImage* s) {
-    
+        
+
     cleanup(&s->swapchain);
+
+        
+
     cleanup(&s->imageRect);
+
+        
+
     cleanup(&s->imageArrayIndex);
+
 }
 
 
 
 
 static void cleanup(const XrCompositionLayerBaseHeader* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->space);
+
 }
 
 
 
 
 static void cleanup(const XrHapticBaseHeader* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataBaseHeader* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrActionSuggestedBinding* s) {
-    
+        
+
     cleanup(&s->action);
+
+        
+
     cleanup(&s->binding);
+
 }
 
 
 
 
 static void cleanup(const XrActiveActionSet* s) {
-    
+        
+
     cleanup(&s->actionSet);
+
+        
+
     cleanup(&s->subactionPath);
+
 }
 
 
@@ -33700,12 +24879,14 @@ static void cleanup(const XrActiveActionSet* s) {
 
 
 static void cleanup(const XrBindingModificationBaseHeaderKHR* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -33715,20 +24896,36 @@ static void cleanup(const XrBindingModificationBaseHeaderKHR* s) {
 
 
 static void cleanup(const XrHandJointLocationEXT* s) {
-    
+        
+
     cleanup(&s->locationFlags);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->radius);
+
 }
 
 
 
 
 static void cleanup(const XrHandJointVelocityEXT* s) {
-    
+        
+
     cleanup(&s->velocityFlags);
+
+        
+
     cleanup(&s->linearVelocity);
+
+        
+
     cleanup(&s->angularVelocity);
+
 }
 
 
@@ -33738,9 +24935,14 @@ static void cleanup(const XrHandJointVelocityEXT* s) {
 
 
 static void cleanup(const XrFaceExpressionStatusFB* s) {
-    
+        
+
     cleanup(&s->isValid);
+
+        
+
     cleanup(&s->isEyeFollowingBlendshapesValid);
+
 }
 
 
@@ -33750,19 +24952,32 @@ static void cleanup(const XrFaceExpressionStatusFB* s) {
 
 
 static void cleanup(const XrBodySkeletonJointFB* s) {
-    
+        
+
     cleanup(&s->joint);
+
+        
+
     cleanup(&s->parentJoint);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
 
 
 static void cleanup(const XrBodyJointLocationFB* s) {
-    
+        
+
     cleanup(&s->locationFlags);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
@@ -33772,10 +24987,18 @@ static void cleanup(const XrBodyJointLocationFB* s) {
 
 
 static void cleanup(const XrEyeGazeFB* s) {
-    
+        
+
     cleanup(&s->isValid);
+
+        
+
     cleanup(&s->gazePose);
+
+        
+
     cleanup(&s->gazeConfidence);
+
 }
 
 
@@ -33785,45 +25008,60 @@ static void cleanup(const XrEyeGazeFB* s) {
 
 
 static void cleanup(const XrHandMeshIndexBufferMSFT* s) {
-    
-    cleanup(&s->indexBufferKey);
-    cleanup(&s->indexCapacityInput);
-    cleanup(&s->indexCountOutput);
-    if (s->indices != nullptr) {
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indices[i]);
-        }
-        delete[] s->indices;
+        
 
-    }
+    cleanup(&s->indexBufferKey);
+
+        
+
+    cleanup(&s->indexCapacityInput);
+
+        
+
+    cleanup(&s->indexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->indices, s->indexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrHandMeshVertexBufferMSFT* s) {
-    
-    cleanup(&s->vertexUpdateTime);
-    cleanup(&s->vertexCapacityInput);
-    cleanup(&s->vertexCountOutput);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
+        
 
-    }
+    cleanup(&s->vertexUpdateTime);
+
+        
+
+    cleanup(&s->vertexCapacityInput);
+
+        
+
+    cleanup(&s->vertexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrHandMeshVertexMSFT* s) {
-    
+        
+
     cleanup(&s->position);
+
+        
+
     cleanup(&s->normal);
+
 }
 
 
@@ -33833,12 +25071,14 @@ static void cleanup(const XrHandMeshVertexMSFT* s) {
 
 
 static void cleanup(const XrSwapchainStateBaseHeaderFB* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -33848,12 +25088,14 @@ static void cleanup(const XrSwapchainStateBaseHeaderFB* s) {
 
 
 static void cleanup(const XrLoaderInitInfoBaseHeaderKHR* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -33863,123 +25105,179 @@ static void cleanup(const XrLoaderInitInfoBaseHeaderKHR* s) {
 
 
 static void cleanup(const XrUuidMSFT* s) {
-    
         
-    for (int i = 0; i < 16; i++) {
-        cleanup(&s->bytes[i]);
-    }
+
+    cleanup_array(s->bytes, 16);
+
 }
 
 
 
 
 static void cleanup(const XrSceneSphereBoundMSFT* s) {
-    
+        
+
     cleanup(&s->center);
+
+        
+
     cleanup(&s->radius);
+
 }
 
 
 
 
 static void cleanup(const XrSceneOrientedBoxBoundMSFT* s) {
-    
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->extents);
+
 }
 
 
 
 
 static void cleanup(const XrSceneFrustumBoundMSFT* s) {
-    
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->fov);
+
+        
+
     cleanup(&s->farDistance);
+
 }
 
 
 
 
 static void cleanup(const XrSceneBoundsMSFT* s) {
-    
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->time);
+
+        
+
     cleanup(&s->sphereCount);
-    if (s->spheres != nullptr) {
-        std::size_t num_items = s->sphereCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->spheres[i]);
-        }
-        delete[] s->spheres;
 
-    }
+        
+
+    
+    cleanup_ptr(s->spheres, s->sphereCount);
+
+        
+
     cleanup(&s->boxCount);
-    if (s->boxes != nullptr) {
-        std::size_t num_items = s->boxCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->boxes[i]);
-        }
-        delete[] s->boxes;
 
-    }
+        
+
+    
+    cleanup_ptr(s->boxes, s->boxCount);
+
+        
+
     cleanup(&s->frustumCount);
-    if (s->frustums != nullptr) {
-        std::size_t num_items = s->frustumCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->frustums[i]);
-        }
-        delete[] s->frustums;
 
-    }
+        
+
+    
+    cleanup_ptr(s->frustums, s->frustumCount);
+
 }
 
 
 
 
 static void cleanup(const XrSceneComponentMSFT* s) {
-    
+        
+
     cleanup(&s->componentType);
+
+        
+
     cleanup(&s->id);
+
+        
+
     cleanup(&s->parentId);
+
+        
+
     cleanup(&s->updateTime);
+
 }
 
 
 
 
 static void cleanup(const XrSceneComponentLocationMSFT* s) {
-    
+        
+
     cleanup(&s->flags);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
 
 
 static void cleanup(const XrSceneObjectMSFT* s) {
-    
+        
+
     cleanup(&s->objectType);
+
 }
 
 
 
 
 static void cleanup(const XrScenePlaneMSFT* s) {
-    
+        
+
     cleanup(&s->alignment);
+
+        
+
     cleanup(&s->size);
+
+        
+
     cleanup(&s->meshBufferId);
+
+        
+
     cleanup(&s->supportsIndicesUint16);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMeshMSFT* s) {
-    
+        
+
     cleanup(&s->meshBufferId);
+
+        
+
     cleanup(&s->supportsIndicesUint16);
+
 }
 
 
@@ -33989,16 +25287,15 @@ static void cleanup(const XrSceneMeshMSFT* s) {
 
 
 static void cleanup(const XrDeserializeSceneFragmentMSFT* s) {
-    
-    cleanup(&s->bufferSize);
-    if (s->buffer != nullptr) {
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->buffer[i]);
-        }
-        delete[] s->buffer;
+        
 
-    }
+    cleanup(&s->bufferSize);
+
+        
+
+    
+    cleanup_ptr(s->buffer, s->bufferSize);
+
 }
 
 
@@ -34008,20 +25305,36 @@ static void cleanup(const XrDeserializeSceneFragmentMSFT* s) {
 
 
 static void cleanup(const XrSceneMarkerMSFT* s) {
-    
+        
+
     cleanup(&s->markerType);
+
+        
+
     cleanup(&s->lastSeenTime);
+
+        
+
     cleanup(&s->center);
+
+        
+
     cleanup(&s->size);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMarkerQRCodeMSFT* s) {
-    
+        
+
     cleanup(&s->symbolType);
+
+        
+
     cleanup(&s->version);
+
 }
 
 
@@ -34031,11 +25344,22 @@ static void cleanup(const XrSceneMarkerQRCodeMSFT* s) {
 
 
 static void cleanup(const XrVector4sFB* s) {
-    
+        
+
     cleanup(&s->x);
+
+        
+
     cleanup(&s->y);
+
+        
+
     cleanup(&s->z);
+
+        
+
     cleanup(&s->w);
+
 }
 
 
@@ -34045,13 +25369,18 @@ static void cleanup(const XrVector4sFB* s) {
 
 
 static void cleanup(const XrHandCapsuleFB* s) {
-    
         
-    for (int i = 0; i < XR_HAND_TRACKING_CAPSULE_POINT_COUNT_FB; i++) {
-        cleanup(&s->points[i]);
-    }
+
+    cleanup_array(s->points, XR_HAND_TRACKING_CAPSULE_POINT_COUNT_FB);
+
+        
+
     cleanup(&s->radius);
+
+        
+
     cleanup(&s->joint);
+
 }
 
 
@@ -34061,33 +25390,42 @@ static void cleanup(const XrHandCapsuleFB* s) {
 
 
 static void cleanup(const XrSpaceQueryInfoBaseHeaderFB* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceFilterInfoBaseHeaderFB* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceQueryResultFB* s) {
-    
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->uuid);
+
 }
 
 
@@ -34097,19 +25435,32 @@ static void cleanup(const XrSpaceQueryResultFB* s) {
 
 
 static void cleanup(const XrOffset3DfFB* s) {
-    
+        
+
     cleanup(&s->x);
+
+        
+
     cleanup(&s->y);
+
+        
+
     cleanup(&s->z);
+
 }
 
 
 
 
 static void cleanup(const XrRect3DfFB* s) {
-    
+        
+
     cleanup(&s->offset);
+
+        
+
     cleanup(&s->extent);
+
 }
 
 
@@ -34119,14 +25470,22 @@ static void cleanup(const XrRect3DfFB* s) {
 
 
 static void cleanup(const XrKeyboardTrackingDescriptionFB* s) {
-    
-    cleanup(&s->trackedKeyboardId);
-    cleanup(&s->size);
-    cleanup(&s->flags);
         
-    for (int i = 0; i < XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB; i++) {
-        cleanup(&s->name[i]);
-    }
+
+    cleanup(&s->trackedKeyboardId);
+
+        
+
+    cleanup(&s->size);
+
+        
+
+    cleanup(&s->flags);
+
+        
+
+    cleanup_array(s->name, XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB);
+
 }
 
 
@@ -34136,12 +25495,14 @@ static void cleanup(const XrKeyboardTrackingDescriptionFB* s) {
 
 
 static void cleanup(const XrShareSpacesRecipientBaseHeaderMETA* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -34151,11 +25512,10 @@ static void cleanup(const XrShareSpacesRecipientBaseHeaderMETA* s) {
 
 
 static void cleanup(const XrSpatialAnchorPersistenceNameMSFT* s) {
-    
         
-    for (int i = 0; i < XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT; i++) {
-        cleanup(&s->name[i]);
-    }
+
+    cleanup_array(s->name, XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT);
+
 }
 
 
@@ -34165,9 +25525,14 @@ static void cleanup(const XrSpatialAnchorPersistenceNameMSFT* s) {
 
 
 static void cleanup(const XrBodyJointLocationBD* s) {
-    
+        
+
     cleanup(&s->locationFlags);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
@@ -34177,11 +25542,10 @@ static void cleanup(const XrBodyJointLocationBD* s) {
 
 
 static void cleanup(const XrSpatialAnchorNameHTC* s) {
-    
         
-    for (int i = 0; i < XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC; i++) {
-        cleanup(&s->name[i]);
-    }
+
+    cleanup_array(s->name, XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC);
+
 }
 
 
@@ -34190,8 +25554,10 @@ static void cleanup(const XrSpatialAnchorNameHTC* s) {
 
 
 static void cleanup(const XrBodySkeletonJointHTC* s) {
-    
+        
+
     cleanup(&s->pose);
+
 }
 
 
@@ -34200,9 +25566,14 @@ static void cleanup(const XrBodySkeletonJointHTC* s) {
 
 
 static void cleanup(const XrBodyJointLocationHTC* s) {
-    
+        
+
     cleanup(&s->locationFlags);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
@@ -34212,23 +25583,48 @@ static void cleanup(const XrBodyJointLocationHTC* s) {
 
 
 static void cleanup(const XrExternalCameraIntrinsicsOCULUS* s) {
-    
+        
+
     cleanup(&s->lastChangeTime);
+
+        
+
     cleanup(&s->fov);
+
+        
+
     cleanup(&s->virtualNearPlaneDistance);
+
+        
+
     cleanup(&s->virtualFarPlaneDistance);
+
+        
+
     cleanup(&s->imageSensorPixelResolution);
+
 }
 
 
 
 
 static void cleanup(const XrExternalCameraExtrinsicsOCULUS* s) {
-    
+        
+
     cleanup(&s->lastChangeTime);
+
+        
+
     cleanup(&s->cameraStatusFlags);
+
+        
+
     cleanup(&s->attachedToDevice);
+
+        
+
     cleanup(&s->relativePose);
+
 }
 
 
@@ -34238,16 +25634,15 @@ static void cleanup(const XrExternalCameraExtrinsicsOCULUS* s) {
 
 
 static void cleanup(const XrPassthroughColorLutDataMETA* s) {
-    
-    cleanup(&s->bufferSize);
-    if (s->buffer != nullptr) {
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->buffer[i]);
-        }
-        delete[] s->buffer;
+        
 
-    }
+    cleanup(&s->bufferSize);
+
+        
+
+    
+    cleanup_ptr(s->buffer, s->bufferSize);
+
 }
 
 
@@ -34257,10 +25652,18 @@ static void cleanup(const XrPassthroughColorLutDataMETA* s) {
 
 
 static void cleanup(const XrFoveationConfigurationHTC* s) {
-    
+        
+
     cleanup(&s->level);
+
+        
+
     cleanup(&s->clearFovDegree);
+
+        
+
     cleanup(&s->focalCenterOffset);
+
 }
 
 
@@ -34270,9 +25673,14 @@ static void cleanup(const XrFoveationConfigurationHTC* s) {
 
 
 static void cleanup(const XrActiveActionSetPriorityEXT* s) {
-    
+        
+
     cleanup(&s->actionSet);
+
+        
+
     cleanup(&s->priorityOverride);
+
 }
 
 
@@ -34282,9 +25690,14 @@ static void cleanup(const XrActiveActionSetPriorityEXT* s) {
 
 
 static void cleanup(const XrForceFeedbackCurlApplyLocationMNDX* s) {
-    
+        
+
     cleanup(&s->location);
+
+        
+
     cleanup(&s->value);
+
 }
 
 
@@ -34294,12 +25707,14 @@ static void cleanup(const XrForceFeedbackCurlApplyLocationMNDX* s) {
 
 
 static void cleanup(const XrLocalizationMapQueryInfoBaseHeaderML* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -34308,60 +25723,96 @@ static void cleanup(const XrLocalizationMapQueryInfoBaseHeaderML* s) {
 
 
 static void cleanup(const XrColor3f* s) {
-    
+        
+
     cleanup(&s->r);
+
+        
+
     cleanup(&s->g);
+
+        
+
     cleanup(&s->b);
+
 }
 
 
 
 
 static void cleanup(const XrExtent3Df* s) {
-    
+        
+
     cleanup(&s->width);
+
+        
+
     cleanup(&s->height);
+
+        
+
     cleanup(&s->depth);
+
 }
 
 
 
 
 static void cleanup(const XrSpheref* s) {
-    
+        
+
     cleanup(&s->center);
+
+        
+
     cleanup(&s->radius);
+
 }
 
 
 
 
 static void cleanup(const XrBoxf* s) {
-    
+        
+
     cleanup(&s->center);
+
+        
+
     cleanup(&s->extents);
+
 }
 
 
 
 
 static void cleanup(const XrFrustumf* s) {
-    
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->fov);
+
+        
+
     cleanup(&s->nearZ);
+
+        
+
     cleanup(&s->farZ);
+
 }
 
 
 
 
 static void cleanup(const XrUuid* s) {
-    
         
-    for (int i = 0; i < XR_UUID_SIZE; i++) {
-        cleanup(&s->data[i]);
-    }
+
+    cleanup_array(s->data, XR_UUID_SIZE);
+
 }
 
 
@@ -34370,13 +25821,18 @@ static void cleanup(const XrUuid* s) {
 
 
 static void cleanup(const XrFutureCompletionBaseHeaderEXT* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->futureResult);
+
 }
 
 
@@ -34385,19 +25841,32 @@ static void cleanup(const XrFutureCompletionBaseHeaderEXT* s) {
 
 
 static void cleanup(const XrSpaceLocationData* s) {
-    
+        
+
     cleanup(&s->locationFlags);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceVelocityData* s) {
-    
+        
+
     cleanup(&s->velocityFlags);
+
+        
+
     cleanup(&s->linearVelocity);
+
+        
+
     cleanup(&s->angularVelocity);
+
 }
 
 
@@ -34406,12 +25875,14 @@ static void cleanup(const XrSpaceVelocityData* s) {
 
 
 static void cleanup(const XrSpatialAnchorsCreateInfoBaseHeaderML* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -34421,21 +25892,28 @@ static void cleanup(const XrSpatialAnchorsCreateInfoBaseHeaderML* s) {
 
 
 static void cleanup(const XrSpatialAnchorsQueryInfoBaseHeaderML* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorCompletionResultML* s) {
-    
+        
+
     cleanup(&s->uuid);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
@@ -34445,12 +25923,14 @@ static void cleanup(const XrSpatialAnchorCompletionResultML* s) {
 
 
 static void cleanup(const XrSpatialEntityComponentDataBaseHeaderBD* s) {
-    
+        
+
     cleanup(&s->type);
-    if (s->next != nullptr) {
-        cleanup(s->next);
-        delete[] s->next;
-    }
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -34459,39 +25939,52 @@ static void cleanup(const XrSpatialEntityComponentDataBaseHeaderBD* s) {
 
 
 static void cleanup(const XrApiLayerProperties* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_MAX_API_LAYER_NAME_SIZE; i++) {
-        cleanup(&s->layerName[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->layerName, XR_MAX_API_LAYER_NAME_SIZE);
+
+        
+
     cleanup(&s->specVersion);
-    cleanup(&s->layerVersion);
+
         
-    for (int i = 0; i < XR_MAX_API_LAYER_DESCRIPTION_SIZE; i++) {
-        cleanup(&s->description[i]);
-    }
+
+    cleanup(&s->layerVersion);
+
+        
+
+    cleanup_array(s->description, XR_MAX_API_LAYER_DESCRIPTION_SIZE);
+
 }
 
 
 
 
 static void cleanup(const XrExtensionProperties* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_MAX_EXTENSION_NAME_SIZE; i++) {
-        cleanup(&s->extensionName[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->extensionName, XR_MAX_EXTENSION_NAME_SIZE);
+
+        
+
     cleanup(&s->extensionVersion);
+
 }
 
 
@@ -34500,123 +25993,208 @@ static void cleanup(const XrExtensionProperties* s) {
 
 
 static void cleanup(const XrSystemGetInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->formFactor);
+
 }
 
 
 
 
 static void cleanup(const XrSystemProperties* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->systemId);
-    cleanup(&s->vendorId);
         
-    for (int i = 0; i < XR_MAX_SYSTEM_NAME_SIZE; i++) {
-        cleanup(&s->systemName[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->systemId);
+
+        
+
+    cleanup(&s->vendorId);
+
+        
+
+    cleanup_array(s->systemName, XR_MAX_SYSTEM_NAME_SIZE);
+
+        
+
     cleanup(&s->graphicsProperties);
+
+        
+
     cleanup(&s->trackingProperties);
+
 }
 
 
 
 
 static void cleanup(const XrViewLocateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->viewConfigurationType);
+
+        
+
     cleanup(&s->displayTime);
+
+        
+
     cleanup(&s->space);
+
 }
 
 
 
 
 static void cleanup(const XrView* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->fov);
+
 }
 
 
 
 
 static void cleanup(const XrSessionCreateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->createFlags);
+
+        
+
     cleanup(&s->systemId);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainCreateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->createFlags);
+
+        
+
     cleanup(&s->usageFlags);
+
+        
+
     cleanup(&s->format);
+
+        
+
     cleanup(&s->sampleCount);
+
+        
+
     cleanup(&s->width);
+
+        
+
     cleanup(&s->height);
+
+        
+
     cleanup(&s->faceCount);
+
+        
+
     cleanup(&s->arraySize);
+
+        
+
     cleanup(&s->mipCount);
+
 }
 
 
 
 
 static void cleanup(const XrSessionBeginInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->primaryViewConfigurationType);
+
 }
 
 
 
 
 static void cleanup(const XrViewState* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->viewStateFlags);
+
 }
 
 
@@ -34625,585 +26203,875 @@ static void cleanup(const XrViewState* s) {
 
 
 static void cleanup(const XrHapticVibration* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->duration);
+
+        
+
     cleanup(&s->frequency);
+
+        
+
     cleanup(&s->amplitude);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataBuffer* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < 4000; i++) {
-        cleanup(&s->varying[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->varying, 4000);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataInstanceLossPending* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->lossTime);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSessionStateChanged* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->session);
+
+        
+
     cleanup(&s->state);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrActionStateBoolean* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->currentState);
+
+        
+
     cleanup(&s->changedSinceLastSync);
+
+        
+
     cleanup(&s->lastChangeTime);
+
+        
+
     cleanup(&s->isActive);
+
 }
 
 
 
 
 static void cleanup(const XrActionStateFloat* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->currentState);
+
+        
+
     cleanup(&s->changedSinceLastSync);
+
+        
+
     cleanup(&s->lastChangeTime);
+
+        
+
     cleanup(&s->isActive);
+
 }
 
 
 
 
 static void cleanup(const XrActionStateVector2f* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->currentState);
+
+        
+
     cleanup(&s->changedSinceLastSync);
+
+        
+
     cleanup(&s->lastChangeTime);
+
+        
+
     cleanup(&s->isActive);
+
 }
 
 
 
 
 static void cleanup(const XrActionStatePose* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->isActive);
+
 }
 
 
 
 
 static void cleanup(const XrActionSetCreateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_MAX_ACTION_SET_NAME_SIZE; i++) {
-        cleanup(&s->actionSetName[i]);
-    }
+
+    cleanup(&s->type);
+
         
-    for (int i = 0; i < XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE; i++) {
-        cleanup(&s->localizedActionSetName[i]);
-    }
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->actionSetName, XR_MAX_ACTION_SET_NAME_SIZE);
+
+        
+
+    cleanup_array(s->localizedActionSetName, XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE);
+
+        
+
     cleanup(&s->priority);
+
 }
 
 
 
 
 static void cleanup(const XrActionCreateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_MAX_ACTION_NAME_SIZE; i++) {
-        cleanup(&s->actionName[i]);
-    }
-    cleanup(&s->actionType);
-    cleanup(&s->countSubactionPaths);
-    if (s->subactionPaths != nullptr) {
-        std::size_t num_items = s->countSubactionPaths;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->subactionPaths[i]);
-        }
-        delete[] s->subactionPaths;
 
-    }
+    cleanup(&s->type);
+
         
-    for (int i = 0; i < XR_MAX_LOCALIZED_ACTION_NAME_SIZE; i++) {
-        cleanup(&s->localizedActionName[i]);
-    }
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->actionName, XR_MAX_ACTION_NAME_SIZE);
+
+        
+
+    cleanup(&s->actionType);
+
+        
+
+    cleanup(&s->countSubactionPaths);
+
+        
+
+    
+    cleanup_ptr(s->subactionPaths, s->countSubactionPaths);
+
+        
+
+    cleanup_array(s->localizedActionName, XR_MAX_LOCALIZED_ACTION_NAME_SIZE);
+
 }
 
 
 
 
 static void cleanup(const XrInstanceProperties* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->runtimeVersion);
         
-    for (int i = 0; i < XR_MAX_RUNTIME_NAME_SIZE; i++) {
-        cleanup(&s->runtimeName[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->runtimeVersion);
+
+        
+
+    cleanup_array(s->runtimeName, XR_MAX_RUNTIME_NAME_SIZE);
+
 }
 
 
 
 
 static void cleanup(const XrFrameWaitInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrCompositionLayerProjection* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->layerFlags);
-    cleanup(&s->space);
-    cleanup(&s->viewCount);
-    if (s->views != nullptr) {
-        std::size_t num_items = s->viewCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->views[i]);
-        }
-        delete[] s->views;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->layerFlags);
+
+        
+
+    cleanup(&s->space);
+
+        
+
+    cleanup(&s->viewCount);
+
+        
+
+    
+    cleanup_ptr(s->views, s->viewCount);
+
 }
 
 
 
 
 static void cleanup(const XrCompositionLayerQuad* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->eyeVisibility);
+
+        
+
     cleanup(&s->subImage);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->size);
+
 }
 
 
 
 
 static void cleanup(const XrReferenceSpaceCreateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->referenceSpaceType);
+
+        
+
     cleanup(&s->poseInReferenceSpace);
+
 }
 
 
 
 
 static void cleanup(const XrActionSpaceCreateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->action);
+
+        
+
     cleanup(&s->subactionPath);
+
+        
+
     cleanup(&s->poseInActionSpace);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataReferenceSpaceChangePending* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->session);
+
+        
+
     cleanup(&s->referenceSpaceType);
+
+        
+
     cleanup(&s->changeTime);
+
+        
+
     cleanup(&s->poseValid);
+
+        
+
     cleanup(&s->poseInPreviousSpace);
+
 }
 
 
 
 
 static void cleanup(const XrViewConfigurationView* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->recommendedImageRectWidth);
+
+        
+
     cleanup(&s->maxImageRectWidth);
+
+        
+
     cleanup(&s->recommendedImageRectHeight);
+
+        
+
     cleanup(&s->maxImageRectHeight);
+
+        
+
     cleanup(&s->recommendedSwapchainSampleCount);
+
+        
+
     cleanup(&s->maxSwapchainSampleCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceLocation* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->locationFlags);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceVelocity* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->velocityFlags);
+
+        
+
     cleanup(&s->linearVelocity);
+
+        
+
     cleanup(&s->angularVelocity);
+
 }
 
 
 
 
 static void cleanup(const XrFrameState* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->predictedDisplayTime);
+
+        
+
     cleanup(&s->predictedDisplayPeriod);
+
+        
+
     cleanup(&s->shouldRender);
+
 }
 
 
 
 
 static void cleanup(const XrViewConfigurationProperties* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->viewConfigurationType);
+
+        
+
     cleanup(&s->fovMutable);
+
 }
 
 
 
 
 static void cleanup(const XrFrameBeginInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrCompositionLayerProjectionView* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->fov);
+
+        
+
     cleanup(&s->subImage);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataEventsLost* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->lostEventCount);
+
 }
 
 
 
 
 static void cleanup(const XrInteractionProfileSuggestedBinding* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->interactionProfile);
-    cleanup(&s->countSuggestedBindings);
-    if (s->suggestedBindings != nullptr) {
-        std::size_t num_items = s->countSuggestedBindings;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->suggestedBindings[i]);
-        }
-        delete[] s->suggestedBindings;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->interactionProfile);
+
+        
+
+    cleanup(&s->countSuggestedBindings);
+
+        
+
+    
+    cleanup_ptr(s->suggestedBindings, s->countSuggestedBindings);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataInteractionProfileChanged* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->session);
+
 }
 
 
 
 
 static void cleanup(const XrInteractionProfileState* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->interactionProfile);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageAcquireInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageWaitInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->timeout);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageReleaseInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrActionStateGetInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->action);
+
+        
+
     cleanup(&s->subactionPath);
+
 }
 
 
 
 
 static void cleanup(const XrHapticActionInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->action);
+
+        
+
     cleanup(&s->subactionPath);
+
 }
 
 
 
 
 static void cleanup(const XrSessionActionSetsAttachInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->countActionSets);
-    if (s->actionSets != nullptr) {
-        std::size_t num_items = s->countActionSets;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->actionSets[i]);
-        }
-        delete[] s->actionSets;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->countActionSets);
+
+        
+
+    
+    cleanup_ptr(s->actionSets, s->countActionSets);
+
 }
 
 
 
 
 static void cleanup(const XrActionsSyncInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->countActiveActionSets);
-    if (s->activeActionSets != nullptr) {
-        std::size_t num_items = s->countActiveActionSets;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->activeActionSets[i]);
-        }
-        delete[] s->activeActionSets;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->countActiveActionSets);
+
+        
+
+    
+    cleanup_ptr(s->activeActionSets, s->countActiveActionSets);
+
 }
 
 
 
 
 static void cleanup(const XrBoundSourcesForActionEnumerateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->action);
+
 }
 
 
 
 
 static void cleanup(const XrInputSourceLocalizedNameGetInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->sourcePath);
+
+        
+
     cleanup(&s->whichComponents);
+
 }
 
 
@@ -35212,18 +27080,38 @@ static void cleanup(const XrInputSourceLocalizedNameGetInfo* s) {
 
 
 static void cleanup(const XrCompositionLayerCubeKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->eyeVisibility);
+
+        
+
     cleanup(&s->swapchain);
+
+        
+
     cleanup(&s->imageArrayIndex);
+
+        
+
     cleanup(&s->orientation);
+
 }
 
 
@@ -35233,20 +27121,24 @@ static void cleanup(const XrCompositionLayerCubeKHR* s) {
 
 
 static void cleanup(const XrInstanceCreateInfoAndroidKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->applicationVM != nullptr) {
-        cleanup(s->applicationVM);
-        delete[] s->applicationVM;
-    }
-    if (s->applicationActivity != nullptr) {
-        cleanup(s->applicationActivity);
-        delete[] s->applicationActivity;
-    }
+    cleanup_ptr(s->applicationVM, 1);
+
+        
+
+    
+    cleanup_ptr(s->applicationActivity, 1);
+
 }
 
 
@@ -35256,17 +27148,34 @@ static void cleanup(const XrInstanceCreateInfoAndroidKHR* s) {
 
 
 static void cleanup(const XrCompositionLayerDepthInfoKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->subImage);
+
+        
+
     cleanup(&s->minDepth);
+
+        
+
     cleanup(&s->maxDepth);
+
+        
+
     cleanup(&s->nearZ);
+
+        
+
     cleanup(&s->farZ);
+
 }
 
 
@@ -35276,21 +27185,23 @@ static void cleanup(const XrCompositionLayerDepthInfoKHR* s) {
 
 
 static void cleanup(const XrVulkanSwapchainFormatListCreateInfoKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->viewFormatCount);
-    if (s->viewFormats != nullptr) {
-        std::size_t num_items = s->viewFormatCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->viewFormats[i]);
-        }
-        delete[] s->viewFormats;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->viewFormatCount);
+
+        
+
+    
+    cleanup_ptr(s->viewFormats, s->viewFormatCount);
+
 }
 
 
@@ -35300,16 +27211,30 @@ static void cleanup(const XrVulkanSwapchainFormatListCreateInfoKHR* s) {
 
 
 static void cleanup(const XrEventDataPerfSettingsEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->domain);
+
+        
+
     cleanup(&s->subDomain);
+
+        
+
     cleanup(&s->fromLevel);
+
+        
+
     cleanup(&s->toLevel);
+
 }
 
 
@@ -35319,20 +27244,46 @@ static void cleanup(const XrEventDataPerfSettingsEXT* s) {
 
 
 static void cleanup(const XrCompositionLayerCylinderKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->eyeVisibility);
+
+        
+
     cleanup(&s->subImage);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->radius);
+
+        
+
     cleanup(&s->centralAngle);
+
+        
+
     cleanup(&s->aspectRatio);
+
 }
 
 
@@ -35342,20 +27293,46 @@ static void cleanup(const XrCompositionLayerCylinderKHR* s) {
 
 
 static void cleanup(const XrCompositionLayerEquirectKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->eyeVisibility);
+
+        
+
     cleanup(&s->subImage);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->radius);
+
+        
+
     cleanup(&s->scale);
+
+        
+
     cleanup(&s->bias);
+
 }
 
 
@@ -35365,115 +27342,124 @@ static void cleanup(const XrCompositionLayerEquirectKHR* s) {
 
 
 static void cleanup(const XrDebugUtilsObjectNameInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->objectType);
-    cleanup(&s->objectHandle);
-    if (s->objectName != nullptr) {
-        std::size_t num_items = count_null_terminated(s->objectName);
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->objectName[i]);
-        }
-        delete[] s->objectName;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->objectType);
+
+        
+
+    cleanup(&s->objectHandle);
+
+        
+
+    
+    cleanup_ptr(s->objectName, count_null_terminated(s->objectName));
+
 }
 
 
 
 
 static void cleanup(const XrDebugUtilsMessengerCallbackDataEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->messageId != nullptr) {
-        std::size_t num_items = count_null_terminated(s->messageId);
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->messageId[i]);
-        }
-        delete[] s->messageId;
+    cleanup_ptr(s->messageId, count_null_terminated(s->messageId));
 
-    }
-    if (s->functionName != nullptr) {
-        std::size_t num_items = count_null_terminated(s->functionName);
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->functionName[i]);
-        }
-        delete[] s->functionName;
+        
 
-    }
-    if (s->message != nullptr) {
-        std::size_t num_items = count_null_terminated(s->message);
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->message[i]);
-        }
-        delete[] s->message;
+    
+    cleanup_ptr(s->functionName, count_null_terminated(s->functionName));
 
-    }
+        
+
+    
+    cleanup_ptr(s->message, count_null_terminated(s->message));
+
+        
+
     cleanup(&s->objectCount);
-    if (s->objects != nullptr) {
-        std::size_t num_items = s->objectCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->objects[i]);
-        }
-        delete[] s->objects;
 
-    }
+        
+
+    
+    cleanup_ptr(s->objects, s->objectCount);
+
+        
+
     cleanup(&s->sessionLabelCount);
-    if (s->sessionLabels != nullptr) {
-        std::size_t num_items = s->sessionLabelCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->sessionLabels[i]);
-        }
-        delete[] s->sessionLabels;
 
-    }
+        
+
+    
+    cleanup_ptr(s->sessionLabels, s->sessionLabelCount);
+
 }
 
 
 
 
 static void cleanup(const XrDebugUtilsMessengerCreateInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->messageSeverities);
+
+        
+
     cleanup(&s->messageTypes);
+
+        
+
     cleanup(&s->userCallback);
-    if (s->userData != nullptr) {
-        cleanup(s->userData);
-        delete[] s->userData;
-    }
+
+        
+
+    
+    cleanup_ptr(s->userData, 1);
+
 }
 
 
 
 
 static void cleanup(const XrDebugUtilsLabelEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    if (s->labelName != nullptr) {
-        std::size_t num_items = count_null_terminated(s->labelName);
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->labelName[i]);
-        }
-        delete[] s->labelName;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    
+    cleanup_ptr(s->labelName, count_null_terminated(s->labelName));
+
 }
 
 
@@ -35483,98 +27469,155 @@ static void cleanup(const XrDebugUtilsLabelEXT* s) {
 
 
 static void cleanup(const XrGraphicsBindingOpenGLWin32KHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->hDC);
+
+        
+
     cleanup(&s->hGLRC);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsBindingOpenGLXlibKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->xDisplay != nullptr) {
-        cleanup(s->xDisplay);
-        delete[] s->xDisplay;
-    }
+    cleanup_ptr(s->xDisplay, 1);
+
+        
+
     cleanup(&s->visualid);
+
+        
+
     cleanup(&s->glxFBConfig);
+
+        
+
     cleanup(&s->glxDrawable);
+
+        
+
     cleanup(&s->glxContext);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsBindingOpenGLXcbKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->connection != nullptr) {
-        cleanup(s->connection);
-        delete[] s->connection;
-    }
+    cleanup_ptr(s->connection, 1);
+
+        
+
     cleanup(&s->screenNumber);
+
+        
+
     cleanup(&s->fbconfigid);
+
+        
+
     cleanup(&s->visualid);
+
+        
+
     cleanup(&s->glxDrawable);
+
+        
+
     cleanup(&s->glxContext);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsBindingOpenGLWaylandKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->display != nullptr) {
-        cleanup(s->display);
-        delete[] s->display;
-    }
+    cleanup_ptr(s->display, 1);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageOpenGLKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->image);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsRequirementsOpenGLKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->minApiVersionSupported);
+
+        
+
     cleanup(&s->maxApiVersionSupported);
+
 }
 
 
@@ -35584,42 +27627,66 @@ static void cleanup(const XrGraphicsRequirementsOpenGLKHR* s) {
 
 
 static void cleanup(const XrGraphicsBindingOpenGLESAndroidKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->display);
+
+        
+
     cleanup(&s->config);
+
+        
+
     cleanup(&s->context);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageOpenGLESKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->image);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsRequirementsOpenGLESKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->minApiVersionSupported);
+
+        
+
     cleanup(&s->maxApiVersionSupported);
+
 }
 
 
@@ -35629,44 +27696,74 @@ static void cleanup(const XrGraphicsRequirementsOpenGLESKHR* s) {
 
 
 static void cleanup(const XrGraphicsBindingVulkanKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->instance);
+
+        
+
     cleanup(&s->physicalDevice);
+
+        
+
     cleanup(&s->device);
+
+        
+
     cleanup(&s->queueFamilyIndex);
+
+        
+
     cleanup(&s->queueIndex);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageVulkanKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->image);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsRequirementsVulkanKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->minApiVersionSupported);
+
+        
+
     cleanup(&s->maxApiVersionSupported);
+
 }
 
 
@@ -35676,46 +27773,60 @@ static void cleanup(const XrGraphicsRequirementsVulkanKHR* s) {
 
 
 static void cleanup(const XrGraphicsBindingD3D11KHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->device != nullptr) {
-        cleanup(s->device);
-        delete[] s->device;
-    }
+    cleanup_ptr(s->device, 1);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageD3D11KHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->texture != nullptr) {
-        cleanup(s->texture);
-        delete[] s->texture;
-    }
+    cleanup_ptr(s->texture, 1);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsRequirementsD3D11KHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->adapterLuid);
+
+        
+
     cleanup(&s->minFeatureLevel);
+
 }
 
 
@@ -35725,50 +27836,65 @@ static void cleanup(const XrGraphicsRequirementsD3D11KHR* s) {
 
 
 static void cleanup(const XrGraphicsBindingD3D12KHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->device != nullptr) {
-        cleanup(s->device);
-        delete[] s->device;
-    }
-    if (s->queue != nullptr) {
-        cleanup(s->queue);
-        delete[] s->queue;
-    }
+    cleanup_ptr(s->device, 1);
+
+        
+
+    
+    cleanup_ptr(s->queue, 1);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageD3D12KHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->texture != nullptr) {
-        cleanup(s->texture);
-        delete[] s->texture;
-    }
+    cleanup_ptr(s->texture, 1);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsRequirementsD3D12KHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->adapterLuid);
+
+        
+
     cleanup(&s->minFeatureLevel);
+
 }
 
 
@@ -35778,48 +27904,57 @@ static void cleanup(const XrGraphicsRequirementsD3D12KHR* s) {
 
 
 static void cleanup(const XrGraphicsBindingMetalKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->commandQueue != nullptr) {
-        cleanup(s->commandQueue);
-        delete[] s->commandQueue;
-    }
+    cleanup_ptr(s->commandQueue, 1);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainImageMetalKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->texture != nullptr) {
-        cleanup(s->texture);
-        delete[] s->texture;
-    }
+    cleanup_ptr(s->texture, 1);
+
 }
 
 
 
 
 static void cleanup(const XrGraphicsRequirementsMetalKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->metalDevice != nullptr) {
-        cleanup(s->metalDevice);
-        delete[] s->metalDevice;
-    }
+    cleanup_ptr(s->metalDevice, 1);
+
 }
 
 
@@ -35829,26 +27964,36 @@ static void cleanup(const XrGraphicsRequirementsMetalKHR* s) {
 
 
 static void cleanup(const XrSystemEyeGazeInteractionPropertiesEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsEyeGazeInteraction);
+
 }
 
 
 
 
 static void cleanup(const XrEyeGazeSampleTimeEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
@@ -35858,47 +28003,66 @@ static void cleanup(const XrEyeGazeSampleTimeEXT* s) {
 
 
 static void cleanup(const XrVisibilityMaskKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->vertexCapacityInput);
+
+        
+
     cleanup(&s->vertexCountOutput);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
 
-    }
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCapacityInput);
+
+        
+
     cleanup(&s->indexCapacityInput);
-    cleanup(&s->indexCountOutput);
-    if (s->indices != nullptr) {
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indices[i]);
-        }
-        delete[] s->indices;
 
-    }
+        
+
+    cleanup(&s->indexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->indices, s->indexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataVisibilityMaskChangedKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->session);
+
+        
+
     cleanup(&s->viewConfigurationType);
+
+        
+
     cleanup(&s->viewIndex);
+
 }
 
 
@@ -35908,28 +28072,44 @@ static void cleanup(const XrEventDataVisibilityMaskChangedKHR* s) {
 
 
 static void cleanup(const XrSessionCreateInfoOverlayEXTX* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->createFlags);
+
+        
+
     cleanup(&s->sessionLayersPlacement);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataMainSessionVisibilityChangedEXTX* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->visible);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -35939,14 +28119,22 @@ static void cleanup(const XrEventDataMainSessionVisibilityChangedEXTX* s) {
 
 
 static void cleanup(const XrCompositionLayerColorScaleBiasKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->colorScale);
+
+        
+
     cleanup(&s->colorBias);
+
 }
 
 
@@ -35956,29 +28144,48 @@ static void cleanup(const XrCompositionLayerColorScaleBiasKHR* s) {
 
 
 static void cleanup(const XrSpatialAnchorCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorSpaceCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->anchor);
+
+        
+
     cleanup(&s->poseInAnchorSpace);
+
 }
 
 
@@ -35988,13 +28195,18 @@ static void cleanup(const XrSpatialAnchorSpaceCreateInfoMSFT* s) {
 
 
 static void cleanup(const XrCompositionLayerImageLayoutFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -36004,16 +28216,30 @@ static void cleanup(const XrCompositionLayerImageLayoutFB* s) {
 
 
 static void cleanup(const XrCompositionLayerAlphaBlendFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->srcFactorColor);
+
+        
+
     cleanup(&s->dstFactorColor);
+
+        
+
     cleanup(&s->srcFactorAlpha);
+
+        
+
     cleanup(&s->dstFactorAlpha);
+
 }
 
 
@@ -36023,16 +28249,30 @@ static void cleanup(const XrCompositionLayerAlphaBlendFB* s) {
 
 
 static void cleanup(const XrViewConfigurationDepthRangeEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->recommendedNearZ);
+
+        
+
     cleanup(&s->minNearZ);
+
+        
+
     cleanup(&s->recommendedFarZ);
+
+        
+
     cleanup(&s->maxFarZ);
+
 }
 
 
@@ -36042,16 +28282,30 @@ static void cleanup(const XrViewConfigurationDepthRangeEXT* s) {
 
 
 static void cleanup(const XrGraphicsBindingEGLMNDX* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->getProcAddress);
+
+        
+
     cleanup(&s->display);
+
+        
+
     cleanup(&s->config);
+
+        
+
     cleanup(&s->context);
+
 }
 
 
@@ -36061,62 +28315,88 @@ static void cleanup(const XrGraphicsBindingEGLMNDX* s) {
 
 
 static void cleanup(const XrSpatialGraphNodeSpaceCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->nodeType);
         
-    for (int i = 0; i < XR_GUID_SIZE_MSFT; i++) {
-        cleanup(&s->nodeId[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->nodeType);
+
+        
+
+    cleanup_array(s->nodeId, XR_GUID_SIZE_MSFT);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialGraphStaticNodeBindingCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->poseInSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialGraphNodeBindingPropertiesGetInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialGraphNodeBindingPropertiesMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_GUID_SIZE_MSFT; i++) {
-        cleanup(&s->nodeId[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->nodeId, XR_GUID_SIZE_MSFT);
+
+        
+
     cleanup(&s->poseInNodeSpace);
+
 }
 
 
@@ -36126,84 +28406,112 @@ static void cleanup(const XrSpatialGraphNodeBindingPropertiesMSFT* s) {
 
 
 static void cleanup(const XrSystemHandTrackingPropertiesEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsHandTracking);
+
 }
 
 
 
 
 static void cleanup(const XrHandTrackerCreateInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->hand);
+
+        
+
     cleanup(&s->handJointSet);
+
 }
 
 
 
 
 static void cleanup(const XrHandJointsLocateInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrHandJointLocationsEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->isActive);
-    cleanup(&s->jointCount);
-    if (s->jointLocations != nullptr) {
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->jointLocations[i]);
-        }
-        delete[] s->jointLocations;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->isActive);
+
+        
+
+    cleanup(&s->jointCount);
+
+        
+
+    
+    cleanup_ptr(s->jointLocations, s->jointCount);
+
 }
 
 
 
 
 static void cleanup(const XrHandJointVelocitiesEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->jointCount);
-    if (s->jointVelocities != nullptr) {
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->jointVelocities[i]);
-        }
-        delete[] s->jointVelocities;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->jointCount);
+
+        
+
+    
+    cleanup_ptr(s->jointVelocities, s->jointCount);
+
 }
 
 
@@ -36213,73 +28521,122 @@ static void cleanup(const XrHandJointVelocitiesEXT* s) {
 
 
 static void cleanup(const XrSystemHandTrackingMeshPropertiesMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsHandTrackingMesh);
+
+        
+
     cleanup(&s->maxHandMeshIndexCount);
+
+        
+
     cleanup(&s->maxHandMeshVertexCount);
+
 }
 
 
 
 
 static void cleanup(const XrHandMeshSpaceCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->handPoseType);
+
+        
+
     cleanup(&s->poseInHandMeshSpace);
+
 }
 
 
 
 
 static void cleanup(const XrHandMeshUpdateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->time);
+
+        
+
     cleanup(&s->handPoseType);
+
 }
 
 
 
 
 static void cleanup(const XrHandMeshMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->isActive);
+
+        
+
     cleanup(&s->indexBufferChanged);
+
+        
+
     cleanup(&s->vertexBufferChanged);
+
+        
+
     cleanup(&s->indexBuffer);
+
+        
+
     cleanup(&s->vertexBuffer);
+
 }
 
 
 
 
 static void cleanup(const XrHandPoseTypeInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->handPoseType);
+
 }
 
 
@@ -36289,106 +28646,139 @@ static void cleanup(const XrHandPoseTypeInfoMSFT* s) {
 
 
 static void cleanup(const XrSecondaryViewConfigurationSessionBeginInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->viewConfigurationCount);
-    if (s->enabledViewConfigurationTypes != nullptr) {
-        std::size_t num_items = s->viewConfigurationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->enabledViewConfigurationTypes[i]);
-        }
-        delete[] s->enabledViewConfigurationTypes;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->viewConfigurationCount);
+
+        
+
+    
+    cleanup_ptr(s->enabledViewConfigurationTypes, s->viewConfigurationCount);
+
 }
 
 
 
 
 static void cleanup(const XrSecondaryViewConfigurationStateMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->viewConfigurationType);
+
+        
+
     cleanup(&s->active);
+
 }
 
 
 
 
 static void cleanup(const XrSecondaryViewConfigurationFrameStateMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->viewConfigurationCount);
-    if (s->viewConfigurationStates != nullptr) {
-        std::size_t num_items = s->viewConfigurationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->viewConfigurationStates[i]);
-        }
-        delete[] s->viewConfigurationStates;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->viewConfigurationCount);
+
+        
+
+    
+    cleanup_ptr(s->viewConfigurationStates, s->viewConfigurationCount);
+
 }
 
 
 
 
 static void cleanup(const XrSecondaryViewConfigurationFrameEndInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->viewConfigurationCount);
-    if (s->viewConfigurationLayersInfo != nullptr) {
-        std::size_t num_items = s->viewConfigurationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->viewConfigurationLayersInfo[i]);
-        }
-        delete[] s->viewConfigurationLayersInfo;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->viewConfigurationCount);
+
+        
+
+    
+    cleanup_ptr(s->viewConfigurationLayersInfo, s->viewConfigurationCount);
+
 }
 
 
 
 
 static void cleanup(const XrSecondaryViewConfigurationLayerInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->viewConfigurationType);
+
+        
+
     cleanup(&s->environmentBlendMode);
+
+        
+
     cleanup(&s->layerCount);
-    #error auto-generator doesn't support double pointers (XrSecondaryViewConfigurationLayerInfoMSFT.layers)
-        }
+
+        
+
+    #error auto-generator doesn't support double pointers (s->layers)
+    None
+}
 
 
 
 
 static void cleanup(const XrSecondaryViewConfigurationSwapchainCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->viewConfigurationType);
+
 }
 
 
@@ -36398,90 +28788,112 @@ static void cleanup(const XrSecondaryViewConfigurationSwapchainCreateInfoMSFT* s
 
 
 static void cleanup(const XrControllerModelKeyStateMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->modelKey);
+
 }
 
 
 
 
 static void cleanup(const XrControllerModelNodePropertiesMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT; i++) {
-        cleanup(&s->parentNodeName[i]);
-    }
+
+    cleanup(&s->type);
+
         
-    for (int i = 0; i < XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT; i++) {
-        cleanup(&s->nodeName[i]);
-    }
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->parentNodeName, XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT);
+
+        
+
+    cleanup_array(s->nodeName, XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT);
+
 }
 
 
 
 
 static void cleanup(const XrControllerModelPropertiesMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->nodeCapacityInput);
-    cleanup(&s->nodeCountOutput);
-    if (s->nodeProperties != nullptr) {
-        std::size_t num_items = s->nodeCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->nodeProperties[i]);
-        }
-        delete[] s->nodeProperties;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->nodeCapacityInput);
+
+        
+
+    cleanup(&s->nodeCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->nodeProperties, s->nodeCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrControllerModelNodeStateMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->nodePose);
+
 }
 
 
 
 
 static void cleanup(const XrControllerModelStateMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->nodeCapacityInput);
-    cleanup(&s->nodeCountOutput);
-    if (s->nodeStates != nullptr) {
-        std::size_t num_items = s->nodeCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->nodeStates[i]);
-        }
-        delete[] s->nodeStates;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->nodeCapacityInput);
+
+        
+
+    cleanup(&s->nodeCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->nodeStates, s->nodeCapacityInput);
+
 }
 
 
@@ -36491,14 +28903,22 @@ static void cleanup(const XrControllerModelStateMSFT* s) {
 
 
 static void cleanup(const XrViewConfigurationViewFovEPIC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->recommendedFov);
+
+        
+
     cleanup(&s->maxMutableFov);
+
 }
 
 
@@ -36508,20 +28928,24 @@ static void cleanup(const XrViewConfigurationViewFovEPIC* s) {
 
 
 static void cleanup(const XrHolographicWindowAttachmentMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->holographicSpace != nullptr) {
-        cleanup(s->holographicSpace);
-        delete[] s->holographicSpace;
-    }
-    if (s->coreWindow != nullptr) {
-        cleanup(s->coreWindow);
-        delete[] s->coreWindow;
-    }
+    cleanup_ptr(s->holographicSpace, 1);
+
+        
+
+    
+    cleanup_ptr(s->coreWindow, 1);
+
 }
 
 
@@ -36531,28 +28955,44 @@ static void cleanup(const XrHolographicWindowAttachmentMSFT* s) {
 
 
 static void cleanup(const XrCompositionLayerReprojectionInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->reprojectionMode);
+
 }
 
 
 
 
 static void cleanup(const XrCompositionLayerReprojectionPlaneOverrideMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->position);
+
+        
+
     cleanup(&s->normal);
+
+        
+
     cleanup(&s->velocity);
+
 }
 
 
@@ -36562,13 +29002,18 @@ static void cleanup(const XrCompositionLayerReprojectionPlaneOverrideMSFT* s) {
 
 
 static void cleanup(const XrAndroidSurfaceSwapchainCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->createFlags);
+
 }
 
 
@@ -36578,13 +29023,18 @@ static void cleanup(const XrAndroidSurfaceSwapchainCreateInfoFB* s) {
 
 
 static void cleanup(const XrCompositionLayerSecureContentFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -36594,86 +29044,120 @@ static void cleanup(const XrCompositionLayerSecureContentFB* s) {
 
 
 static void cleanup(const XrBodyTrackerCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->bodyJointSet);
+
 }
 
 
 
 
 static void cleanup(const XrBodyJointsLocateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrSystemBodyTrackingPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsBodyTracking);
+
 }
 
 
 
 
 static void cleanup(const XrBodyJointLocationsFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->isActive);
-    cleanup(&s->confidence);
-    cleanup(&s->jointCount);
-    if (s->jointLocations != nullptr) {
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->jointLocations[i]);
-        }
-        delete[] s->jointLocations;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->isActive);
+
+        
+
+    cleanup(&s->confidence);
+
+        
+
+    cleanup(&s->jointCount);
+
+        
+
+    
+    cleanup_ptr(s->jointLocations, s->jointCount);
+
+        
+
     cleanup(&s->skeletonChangedCount);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrBodySkeletonFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->jointCount);
-    if (s->joints != nullptr) {
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->joints[i]);
-        }
-        delete[] s->joints;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->jointCount);
+
+        
+
+    
+    cleanup_ptr(s->joints, s->jointCount);
+
 }
 
 
@@ -36683,27 +29167,50 @@ static void cleanup(const XrBodySkeletonFB* s) {
 
 
 static void cleanup(const XrInteractionProfileDpadBindingEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->binding);
+
+        
+
     cleanup(&s->actionSet);
+
+        
+
     cleanup(&s->forceThreshold);
+
+        
+
     cleanup(&s->forceThresholdReleased);
+
+        
+
     cleanup(&s->centerRegion);
+
+        
+
     cleanup(&s->wedgeAngle);
+
+        
+
     cleanup(&s->isSticky);
-    if (s->onHaptic != nullptr) {
-        cleanup(s->onHaptic);
-        delete[] s->onHaptic;
-    }
-    if (s->offHaptic != nullptr) {
-        cleanup(s->offHaptic);
-        delete[] s->offHaptic;
-    }
+
+        
+
+    cleanup_xr(s->onHaptic);
+
+        
+
+    cleanup_xr(s->offHaptic);
+
 }
 
 
@@ -36713,24 +29220,38 @@ static void cleanup(const XrInteractionProfileDpadBindingEXT* s) {
 
 
 static void cleanup(const XrInteractionProfileAnalogThresholdVALVE* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->action);
+
+        
+
     cleanup(&s->binding);
+
+        
+
     cleanup(&s->onThreshold);
+
+        
+
     cleanup(&s->offThreshold);
-    if (s->onHaptic != nullptr) {
-        cleanup(s->onHaptic);
-        delete[] s->onHaptic;
-    }
-    if (s->offHaptic != nullptr) {
-        cleanup(s->offHaptic);
-        delete[] s->offHaptic;
-    }
+
+        
+
+    cleanup_xr(s->onHaptic);
+
+        
+
+    cleanup_xr(s->offHaptic);
+
 }
 
 
@@ -36740,13 +29261,18 @@ static void cleanup(const XrInteractionProfileAnalogThresholdVALVE* s) {
 
 
 static void cleanup(const XrHandJointsMotionRangeInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->handJointsMotionRange);
+
 }
 
 
@@ -36756,20 +29282,24 @@ static void cleanup(const XrHandJointsMotionRangeInfoEXT* s) {
 
 
 static void cleanup(const XrLoaderInitInfoAndroidKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->applicationVM != nullptr) {
-        cleanup(s->applicationVM);
-        delete[] s->applicationVM;
-    }
-    if (s->applicationContext != nullptr) {
-        cleanup(s->applicationContext);
-        delete[] s->applicationContext;
-    }
+    cleanup_ptr(s->applicationVM, 1);
+
+        
+
+    
+    cleanup_ptr(s->applicationContext, 1);
+
 }
 
 
@@ -36779,61 +29309,98 @@ static void cleanup(const XrLoaderInitInfoAndroidKHR* s) {
 
 
 static void cleanup(const XrVulkanInstanceCreateInfoKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->systemId);
+
+        
+
     cleanup(&s->createFlags);
+
+        
+
     cleanup(&s->pfnGetInstanceProcAddr);
-    if (s->vulkanCreateInfo != nullptr) {
-        cleanup(s->vulkanCreateInfo);
-        delete[] s->vulkanCreateInfo;
-    }
-    if (s->vulkanAllocator != nullptr) {
-        cleanup(s->vulkanAllocator);
-        delete[] s->vulkanAllocator;
-    }
+
+        
+
+    
+    cleanup_ptr(s->vulkanCreateInfo, 1);
+
+        
+
+    
+    cleanup_ptr(s->vulkanAllocator, 1);
+
 }
 
 
 
 
 static void cleanup(const XrVulkanDeviceCreateInfoKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->systemId);
+
+        
+
     cleanup(&s->createFlags);
+
+        
+
     cleanup(&s->pfnGetInstanceProcAddr);
+
+        
+
     cleanup(&s->vulkanPhysicalDevice);
-    if (s->vulkanCreateInfo != nullptr) {
-        cleanup(s->vulkanCreateInfo);
-        delete[] s->vulkanCreateInfo;
-    }
-    if (s->vulkanAllocator != nullptr) {
-        cleanup(s->vulkanAllocator);
-        delete[] s->vulkanAllocator;
-    }
+
+        
+
+    
+    cleanup_ptr(s->vulkanCreateInfo, 1);
+
+        
+
+    
+    cleanup_ptr(s->vulkanAllocator, 1);
+
 }
 
 
 
 
 static void cleanup(const XrVulkanGraphicsDeviceGetInfoKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->systemId);
+
+        
+
     cleanup(&s->vulkanInstance);
+
 }
 
 
@@ -36843,21 +29410,50 @@ static void cleanup(const XrVulkanGraphicsDeviceGetInfoKHR* s) {
 
 
 static void cleanup(const XrCompositionLayerEquirect2KHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->eyeVisibility);
+
+        
+
     cleanup(&s->subImage);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->radius);
+
+        
+
     cleanup(&s->centralHorizontalAngle);
+
+        
+
     cleanup(&s->upperVerticalAngle);
+
+        
+
     cleanup(&s->lowerVerticalAngle);
+
 }
 
 
@@ -36867,348 +29463,422 @@ static void cleanup(const XrCompositionLayerEquirect2KHR* s) {
 
 
 static void cleanup(const XrSceneObserverCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSceneCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrNewSceneComputeInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->requestedFeatureCount);
-    if (s->requestedFeatures != nullptr) {
-        std::size_t num_items = s->requestedFeatureCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->requestedFeatures[i]);
-        }
-        delete[] s->requestedFeatures;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->requestedFeatureCount);
+
+        
+
+    
+    cleanup_ptr(s->requestedFeatures, s->requestedFeatureCount);
+
+        
+
     cleanup(&s->consistency);
+
+        
+
     cleanup(&s->bounds);
+
 }
 
 
 
 
 static void cleanup(const XrVisualMeshComputeLodInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->lod);
+
 }
 
 
 
 
 static void cleanup(const XrSceneComponentsMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->componentCapacityInput);
-    cleanup(&s->componentCountOutput);
-    if (s->components != nullptr) {
-        std::size_t num_items = s->componentCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->components[i]);
-        }
-        delete[] s->components;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->componentCapacityInput);
+
+        
+
+    cleanup(&s->componentCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->components, s->componentCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSceneComponentsGetInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->componentType);
+
 }
 
 
 
 
 static void cleanup(const XrSceneComponentLocationsMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->locationCount);
-    if (s->locations != nullptr) {
-        std::size_t num_items = s->locationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->locations[i]);
-        }
-        delete[] s->locations;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->locationCount);
+
+        
+
+    
+    cleanup_ptr(s->locations, s->locationCount);
+
 }
 
 
 
 
 static void cleanup(const XrSceneComponentsLocateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->baseSpace);
-    cleanup(&s->time);
-    cleanup(&s->componentIdCount);
-    if (s->componentIds != nullptr) {
-        std::size_t num_items = s->componentIdCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->componentIds[i]);
-        }
-        delete[] s->componentIds;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->baseSpace);
+
+        
+
+    cleanup(&s->time);
+
+        
+
+    cleanup(&s->componentIdCount);
+
+        
+
+    
+    cleanup_ptr(s->componentIds, s->componentIdCount);
+
 }
 
 
 
 
 static void cleanup(const XrSceneObjectsMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->sceneObjectCount);
-    if (s->sceneObjects != nullptr) {
-        std::size_t num_items = s->sceneObjectCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->sceneObjects[i]);
-        }
-        delete[] s->sceneObjects;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->sceneObjectCount);
+
+        
+
+    
+    cleanup_ptr(s->sceneObjects, s->sceneObjectCount);
+
 }
 
 
 
 
 static void cleanup(const XrSceneComponentParentFilterInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->parentId);
+
 }
 
 
 
 
 static void cleanup(const XrSceneObjectTypesFilterInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->objectTypeCount);
-    if (s->objectTypes != nullptr) {
-        std::size_t num_items = s->objectTypeCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->objectTypes[i]);
-        }
-        delete[] s->objectTypes;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->objectTypeCount);
+
+        
+
+    
+    cleanup_ptr(s->objectTypes, s->objectTypeCount);
+
 }
 
 
 
 
 static void cleanup(const XrScenePlanesMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->scenePlaneCount);
-    if (s->scenePlanes != nullptr) {
-        std::size_t num_items = s->scenePlaneCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->scenePlanes[i]);
-        }
-        delete[] s->scenePlanes;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->scenePlaneCount);
+
+        
+
+    
+    cleanup_ptr(s->scenePlanes, s->scenePlaneCount);
+
 }
 
 
 
 
 static void cleanup(const XrScenePlaneAlignmentFilterInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->alignmentCount);
-    if (s->alignments != nullptr) {
-        std::size_t num_items = s->alignmentCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->alignments[i]);
-        }
-        delete[] s->alignments;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->alignmentCount);
+
+        
+
+    
+    cleanup_ptr(s->alignments, s->alignmentCount);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMeshesMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->sceneMeshCount);
-    if (s->sceneMeshes != nullptr) {
-        std::size_t num_items = s->sceneMeshCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->sceneMeshes[i]);
-        }
-        delete[] s->sceneMeshes;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->sceneMeshCount);
+
+        
+
+    
+    cleanup_ptr(s->sceneMeshes, s->sceneMeshCount);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMeshBuffersGetInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->meshBufferId);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMeshBuffersMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMeshVertexBufferMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->vertexCapacityInput);
-    cleanup(&s->vertexCountOutput);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->vertexCapacityInput);
+
+        
+
+    cleanup(&s->vertexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMeshIndicesUint32MSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->indexCapacityInput);
-    cleanup(&s->indexCountOutput);
-    if (s->indices != nullptr) {
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indices[i]);
-        }
-        delete[] s->indices;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->indexCapacityInput);
+
+        
+
+    cleanup(&s->indexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->indices, s->indexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMeshIndicesUint16MSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->indexCapacityInput);
-    cleanup(&s->indexCountOutput);
-    if (s->indices != nullptr) {
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indices[i]);
-        }
-        delete[] s->indices;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->indexCapacityInput);
+
+        
+
+    cleanup(&s->indexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->indices, s->indexCapacityInput);
+
 }
 
 
@@ -37218,34 +29888,41 @@ static void cleanup(const XrSceneMeshIndicesUint16MSFT* s) {
 
 
 static void cleanup(const XrSerializedSceneFragmentDataGetInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->sceneFragmentId);
+
 }
 
 
 
 
 static void cleanup(const XrSceneDeserializeInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->fragmentCount);
-    if (s->fragments != nullptr) {
-        std::size_t num_items = s->fragmentCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->fragments[i]);
-        }
-        delete[] s->fragments;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->fragmentCount);
+
+        
+
+    
+    cleanup_ptr(s->fragments, s->fragmentCount);
+
 }
 
 
@@ -37255,14 +29932,22 @@ static void cleanup(const XrSceneDeserializeInfoMSFT* s) {
 
 
 static void cleanup(const XrEventDataDisplayRefreshRateChangedFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->fromDisplayRefreshRate);
+
+        
+
     cleanup(&s->toDisplayRefreshRate);
+
 }
 
 
@@ -37272,30 +29957,41 @@ static void cleanup(const XrEventDataDisplayRefreshRateChangedFB* s) {
 
 
 static void cleanup(const XrViveTrackerPathsHTCX* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->persistentPath);
+
+        
+
     cleanup(&s->rolePath);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataViveTrackerConnectedHTCX* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     
-    if (s->paths != nullptr) {
-        cleanup(s->paths);
-        delete[] s->paths;
-    }
+    cleanup_ptr(s->paths, 1);
+
 }
 
 
@@ -37305,46 +30001,71 @@ static void cleanup(const XrEventDataViveTrackerConnectedHTCX* s) {
 
 
 static void cleanup(const XrSystemFacialTrackingPropertiesHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportEyeFacialTracking);
+
+        
+
     cleanup(&s->supportLipFacialTracking);
+
 }
 
 
 
 
 static void cleanup(const XrFacialTrackerCreateInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->facialTrackingType);
+
 }
 
 
 
 
 static void cleanup(const XrFacialExpressionsHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->isActive);
+
+        
+
     cleanup(&s->sampleTime);
+
+        
+
     cleanup(&s->expressionCount);
-    if (s->expressionWeightings != nullptr) {
-        cleanup(s->expressionWeightings);
-        delete[] s->expressionWeightings;
-    }
+
+        
+
+    
+    cleanup_ptr(s->expressionWeightings, 1);
+
 }
 
 
@@ -37354,13 +30075,18 @@ static void cleanup(const XrFacialExpressionsHTC* s) {
 
 
 static void cleanup(const XrSystemColorSpacePropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->colorSpace);
+
 }
 
 
@@ -37370,106 +30096,113 @@ static void cleanup(const XrSystemColorSpacePropertiesFB* s) {
 
 
 static void cleanup(const XrHandTrackingMeshFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->jointCapacityInput);
+
+        
+
     cleanup(&s->jointCountOutput);
-    if (s->jointBindPoses != nullptr) {
-        std::size_t num_items = s->jointCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->jointBindPoses[i]);
-        }
-        delete[] s->jointBindPoses;
 
-    }
-    if (s->jointRadii != nullptr) {
-        std::size_t num_items = s->jointCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->jointRadii[i]);
-        }
-        delete[] s->jointRadii;
+        
 
-    }
-    if (s->jointParents != nullptr) {
-        std::size_t num_items = s->jointCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->jointParents[i]);
-        }
-        delete[] s->jointParents;
+    
+    cleanup_ptr(s->jointBindPoses, s->jointCapacityInput);
 
-    }
+        
+
+    
+    cleanup_ptr(s->jointRadii, s->jointCapacityInput);
+
+        
+
+    
+    cleanup_ptr(s->jointParents, s->jointCapacityInput);
+
+        
+
     cleanup(&s->vertexCapacityInput);
+
+        
+
     cleanup(&s->vertexCountOutput);
-    if (s->vertexPositions != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertexPositions[i]);
-        }
-        delete[] s->vertexPositions;
 
-    }
-    if (s->vertexNormals != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertexNormals[i]);
-        }
-        delete[] s->vertexNormals;
+        
 
-    }
-    if (s->vertexUVs != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertexUVs[i]);
-        }
-        delete[] s->vertexUVs;
+    
+    cleanup_ptr(s->vertexPositions, s->vertexCapacityInput);
 
-    }
-    if (s->vertexBlendIndices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertexBlendIndices[i]);
-        }
-        delete[] s->vertexBlendIndices;
+        
 
-    }
-    if (s->vertexBlendWeights != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertexBlendWeights[i]);
-        }
-        delete[] s->vertexBlendWeights;
+    
+    cleanup_ptr(s->vertexNormals, s->vertexCapacityInput);
 
-    }
+        
+
+    
+    cleanup_ptr(s->vertexUVs, s->vertexCapacityInput);
+
+        
+
+    
+    cleanup_ptr(s->vertexBlendIndices, s->vertexCapacityInput);
+
+        
+
+    
+    cleanup_ptr(s->vertexBlendWeights, s->vertexCapacityInput);
+
+        
+
     cleanup(&s->indexCapacityInput);
-    cleanup(&s->indexCountOutput);
-    if (s->indices != nullptr) {
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indices[i]);
-        }
-        delete[] s->indices;
 
-    }
+        
+
+    cleanup(&s->indexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->indices, s->indexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrHandTrackingScaleFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->sensorOutput);
+
+        
+
     cleanup(&s->currentOutput);
+
+        
+
     cleanup(&s->overrideHandScale);
+
+        
+
     cleanup(&s->overrideValueInput);
+
 }
 
 
@@ -37479,18 +30212,38 @@ static void cleanup(const XrHandTrackingScaleFB* s) {
 
 
 static void cleanup(const XrHandTrackingAimStateFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->status);
+
+        
+
     cleanup(&s->aimPose);
+
+        
+
     cleanup(&s->pinchStrengthIndex);
+
+        
+
     cleanup(&s->pinchStrengthMiddle);
+
+        
+
     cleanup(&s->pinchStrengthRing);
+
+        
+
     cleanup(&s->pinchStrengthLittle);
+
 }
 
 
@@ -37500,16 +30253,18 @@ static void cleanup(const XrHandTrackingAimStateFB* s) {
 
 
 static void cleanup(const XrHandTrackingCapsulesStateFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_HAND_TRACKING_CAPSULE_COUNT_FB; i++) {
-        cleanup(&s->capsules[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->capsules, XR_HAND_TRACKING_CAPSULE_COUNT_FB);
+
 }
 
 
@@ -37519,91 +30274,160 @@ static void cleanup(const XrHandTrackingCapsulesStateFB* s) {
 
 
 static void cleanup(const XrSpaceComponentStatusFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->enabled);
+
+        
+
     cleanup(&s->changePending);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->poseInSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrSystemSpatialEntityPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSpatialEntity);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSpatialAnchorCreateCompleteFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->uuid);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSpaceSetStatusCompleteFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->uuid);
+
+        
+
     cleanup(&s->componentType);
+
+        
+
     cleanup(&s->enabled);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceComponentStatusSetInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->componentType);
+
+        
+
     cleanup(&s->enabled);
+
+        
+
     cleanup(&s->timeout);
+
 }
 
 
@@ -37613,39 +30437,54 @@ static void cleanup(const XrSpaceComponentStatusSetInfoFB* s) {
 
 
 static void cleanup(const XrFoveationProfileCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainCreateInfoFoveationFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
 
 
 static void cleanup(const XrSwapchainStateFoveationFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
+        
+
     cleanup(&s->profile);
+
 }
 
 
@@ -37655,15 +30494,26 @@ static void cleanup(const XrSwapchainStateFoveationFB* s) {
 
 
 static void cleanup(const XrFoveationLevelProfileCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->level);
+
+        
+
     cleanup(&s->verticalOffset);
+
+        
+
     cleanup(&s->dynamic);
+
 }
 
 
@@ -37673,39 +30523,54 @@ static void cleanup(const XrFoveationLevelProfileCreateInfoFB* s) {
 
 
 static void cleanup(const XrSystemKeyboardTrackingPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsKeyboardTracking);
+
 }
 
 
 
 
 static void cleanup(const XrKeyboardTrackingQueryFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
 
 
 static void cleanup(const XrKeyboardSpaceCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->trackedKeyboardId);
+
 }
 
 
@@ -37715,24 +30580,40 @@ static void cleanup(const XrKeyboardSpaceCreateInfoFB* s) {
 
 
 static void cleanup(const XrTriangleMeshCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
+        
+
     cleanup(&s->windingOrder);
+
+        
+
     cleanup(&s->vertexCount);
-    if (s->vertexBuffer != nullptr) {
-        cleanup(s->vertexBuffer);
-        delete[] s->vertexBuffer;
-    }
+
+        
+
+    
+    cleanup_ptr(s->vertexBuffer, 1);
+
+        
+
     cleanup(&s->triangleCount);
-    if (s->indexBuffer != nullptr) {
-        cleanup(s->indexBuffer);
-        delete[] s->indexBuffer;
-    }
+
+        
+
+    
+    cleanup_ptr(s->indexBuffer, 1);
+
 }
 
 
@@ -37742,176 +30623,272 @@ static void cleanup(const XrTriangleMeshCreateInfoFB* s) {
 
 
 static void cleanup(const XrSystemPassthroughPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsPassthrough);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughLayerCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->passthrough);
+
+        
+
     cleanup(&s->flags);
+
+        
+
     cleanup(&s->purpose);
+
 }
 
 
 
 
 static void cleanup(const XrCompositionLayerPassthroughFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->layerHandle);
+
 }
 
 
 
 
 static void cleanup(const XrGeometryInstanceCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layer);
+
+        
+
     cleanup(&s->mesh);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->scale);
+
 }
 
 
 
 
 static void cleanup(const XrGeometryInstanceTransformFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->scale);
+
 }
 
 
 
 
 static void cleanup(const XrSystemPassthroughProperties2FB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->capabilities);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughStyleFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->textureOpacityFactor);
+
+        
+
     cleanup(&s->edgeColor);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughColorMapMonoToRgbaFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB; i++) {
-        cleanup(&s->textureColorMap[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->textureColorMap, XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughColorMapMonoToMonoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB; i++) {
-        cleanup(&s->textureColorMap[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->textureColorMap, XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughBrightnessContrastSaturationFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->brightness);
+
+        
+
     cleanup(&s->contrast);
+
+        
+
     cleanup(&s->saturation);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataPassthroughStateChangedFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -37921,94 +30898,133 @@ static void cleanup(const XrEventDataPassthroughStateChangedFB* s) {
 
 
 static void cleanup(const XrRenderModelPathInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->path);
+
 }
 
 
 
 
 static void cleanup(const XrRenderModelPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->vendorId);
         
-    for (int i = 0; i < XR_MAX_RENDER_MODEL_NAME_SIZE_FB; i++) {
-        cleanup(&s->modelName[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->vendorId);
+
+        
+
+    cleanup_array(s->modelName, XR_MAX_RENDER_MODEL_NAME_SIZE_FB);
+
+        
+
     cleanup(&s->modelKey);
+
+        
+
     cleanup(&s->modelVersion);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
 
 
 static void cleanup(const XrRenderModelBufferFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->bufferCapacityInput);
-    cleanup(&s->bufferCountOutput);
-    if (s->buffer != nullptr) {
-        std::size_t num_items = s->bufferCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->buffer[i]);
-        }
-        delete[] s->buffer;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->bufferCapacityInput);
+
+        
+
+    cleanup(&s->bufferCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->buffer, s->bufferCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrRenderModelLoadInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->modelKey);
+
 }
 
 
 
 
 static void cleanup(const XrSystemRenderModelPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsRenderModelLoading);
+
 }
 
 
 
 
 static void cleanup(const XrRenderModelCapabilitiesRequestFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -38018,15 +31034,23 @@ static void cleanup(const XrRenderModelCapabilitiesRequestFB* s) {
 
 
 static void cleanup(const XrBindingModificationsKHR* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->bindingModificationCount);
-    #error auto-generator doesn't support double pointers (XrBindingModificationsKHR.bindingModifications)
-        }
+
+        
+
+    #error auto-generator doesn't support double pointers (s->bindingModifications)
+    None
+}
 
 
 #endif // XRTRANSPORT_EXT_XR_KHR_binding_modification
@@ -38035,39 +31059,54 @@ static void cleanup(const XrBindingModificationsKHR* s) {
 
 
 static void cleanup(const XrViewLocateFoveatedRenderingVARJO* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->foveatedRenderingActive);
+
 }
 
 
 
 
 static void cleanup(const XrFoveatedViewConfigurationViewVARJO* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->foveatedRenderingActive);
+
 }
 
 
 
 
 static void cleanup(const XrSystemFoveatedRenderingPropertiesVARJO* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsFoveatedRendering);
+
 }
 
 
@@ -38077,14 +31116,22 @@ static void cleanup(const XrSystemFoveatedRenderingPropertiesVARJO* s) {
 
 
 static void cleanup(const XrCompositionLayerDepthTestVARJO* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->depthTestRangeNearZ);
+
+        
+
     cleanup(&s->depthTestRangeFarZ);
+
 }
 
 
@@ -38094,43 +31141,70 @@ static void cleanup(const XrCompositionLayerDepthTestVARJO* s) {
 
 
 static void cleanup(const XrSystemMarkerTrackingPropertiesVARJO* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsMarkerTracking);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataMarkerTrackingUpdateVARJO* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->markerId);
+
+        
+
     cleanup(&s->isActive);
+
+        
+
     cleanup(&s->isPredicted);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerSpaceCreateInfoVARJO* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->markerId);
+
+        
+
     cleanup(&s->poseInMarkerSpace);
+
 }
 
 
@@ -38140,14 +31214,22 @@ static void cleanup(const XrMarkerSpaceCreateInfoVARJO* s) {
 
 
 static void cleanup(const XrFrameEndInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->focusDistance);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -38157,14 +31239,22 @@ static void cleanup(const XrFrameEndInfoML* s) {
 
 
 static void cleanup(const XrGlobalDimmerFrameEndInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->dimmerValue);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -38174,14 +31264,22 @@ static void cleanup(const XrGlobalDimmerFrameEndInfoML* s) {
 
 
 static void cleanup(const XrCoordinateSpaceCreateInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->cfuid);
+
+        
+
     cleanup(&s->poseInCoordinateSpace);
+
 }
 
 
@@ -38191,124 +31289,190 @@ static void cleanup(const XrCoordinateSpaceCreateInfoML* s) {
 
 
 static void cleanup(const XrSystemMarkerUnderstandingPropertiesML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsMarkerUnderstanding);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerDetectorCreateInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->profile);
+
+        
+
     cleanup(&s->markerType);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerDetectorArucoInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->arucoDict);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerDetectorSizeInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->markerLength);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerDetectorAprilTagInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->aprilTagDict);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerDetectorCustomProfileInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->fpsHint);
+
+        
+
     cleanup(&s->resolutionHint);
+
+        
+
     cleanup(&s->cameraHint);
+
+        
+
     cleanup(&s->cornerRefineMethod);
+
+        
+
     cleanup(&s->useEdgeRefinement);
+
+        
+
     cleanup(&s->fullAnalysisIntervalHint);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerDetectorSnapshotInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerDetectorStateML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->state);
+
 }
 
 
 
 
 static void cleanup(const XrMarkerSpaceCreateInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->markerDetector);
+
+        
+
     cleanup(&s->marker);
+
+        
+
     cleanup(&s->poseInMarkerSpace);
+
 }
 
 
@@ -38318,82 +31482,119 @@ static void cleanup(const XrMarkerSpaceCreateInfoML* s) {
 
 
 static void cleanup(const XrLocalizationMapML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_MAX_LOCALIZATION_MAP_NAME_LENGTH_ML; i++) {
-        cleanup(&s->name[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->name, XR_MAX_LOCALIZATION_MAP_NAME_LENGTH_ML);
+
+        
+
     cleanup(&s->mapUuid);
+
+        
+
     cleanup(&s->mapType);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataLocalizationChangedML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->session);
+
+        
+
     cleanup(&s->state);
+
+        
+
     cleanup(&s->map);
+
+        
+
     cleanup(&s->confidence);
+
+        
+
     cleanup(&s->errorFlags);
+
 }
 
 
 
 
 static void cleanup(const XrMapLocalizationRequestInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->mapUuid);
+
 }
 
 
 
 
 static void cleanup(const XrLocalizationMapImportInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->size);
-    if (s->data != nullptr) {
-        std::size_t num_items = s->size;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->data[i]);
-        }
-        delete[] s->data;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->size);
+
+        
+
+    
+    cleanup_ptr(s->data, s->size);
+
 }
 
 
 
 
 static void cleanup(const XrLocalizationEnableEventsInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->enabled);
+
 }
 
 
@@ -38403,50 +31604,71 @@ static void cleanup(const XrLocalizationEnableEventsInfoML* s) {
 
 
 static void cleanup(const XrSpatialAnchorsCreateInfoFromPoseML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->poseInBaseSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrCreateSpatialAnchorsCompletionML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->futureResult);
-    cleanup(&s->spaceCount);
-    if (s->spaces != nullptr) {
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->spaces[i]);
-        }
-        delete[] s->spaces;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->futureResult);
+
+        
+
+    cleanup(&s->spaceCount);
+
+        
+
+    
+    cleanup_ptr(s->spaces, s->spaceCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorStateML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->confidence);
+
 }
 
 
@@ -38456,249 +31678,311 @@ static void cleanup(const XrSpatialAnchorStateML* s) {
 
 
 static void cleanup(const XrSpatialAnchorsCreateStorageInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsQueryInfoRadiusML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->center);
+
+        
+
     cleanup(&s->time);
+
+        
+
     cleanup(&s->radius);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsQueryCompletionML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->futureResult);
-    cleanup(&s->uuidCapacityInput);
-    cleanup(&s->uuidCountOutput);
-    if (s->uuids != nullptr) {
-        std::size_t num_items = s->uuidCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->uuids[i]);
-        }
-        delete[] s->uuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->futureResult);
+
+        
+
+    cleanup(&s->uuidCapacityInput);
+
+        
+
+    cleanup(&s->uuidCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->uuids, s->uuidCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsCreateInfoFromUuidsML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->storage);
-    cleanup(&s->uuidCount);
-    if (s->uuids != nullptr) {
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->uuids[i]);
-        }
-        delete[] s->uuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->storage);
+
+        
+
+    cleanup(&s->uuidCount);
+
+        
+
+    
+    cleanup_ptr(s->uuids, s->uuidCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsPublishInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->anchorCount);
-    if (s->anchors != nullptr) {
-        std::size_t num_items = s->anchorCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->anchors[i]);
-        }
-        delete[] s->anchors;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->anchorCount);
+
+        
+
+    
+    cleanup_ptr(s->anchors, s->anchorCount);
+
+        
+
     cleanup(&s->expiration);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsPublishCompletionML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->futureResult);
-    cleanup(&s->uuidCount);
-    if (s->uuids != nullptr) {
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->uuids[i]);
-        }
-        delete[] s->uuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->futureResult);
+
+        
+
+    cleanup(&s->uuidCount);
+
+        
+
+    
+    cleanup_ptr(s->uuids, s->uuidCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsDeleteInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->uuidCount);
-    if (s->uuids != nullptr) {
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->uuids[i]);
-        }
-        delete[] s->uuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->uuidCount);
+
+        
+
+    
+    cleanup_ptr(s->uuids, s->uuidCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsDeleteCompletionML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->futureResult);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsUpdateExpirationInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->uuidCount);
-    if (s->uuids != nullptr) {
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->uuids[i]);
-        }
-        delete[] s->uuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->uuidCount);
+
+        
+
+    
+    cleanup_ptr(s->uuids, s->uuidCount);
+
+        
+
     cleanup(&s->expiration);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsUpdateExpirationCompletionML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->futureResult);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsPublishCompletionDetailsML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->resultCount);
-    if (s->results != nullptr) {
-        std::size_t num_items = s->resultCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->results[i]);
-        }
-        delete[] s->results;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->resultCount);
+
+        
+
+    
+    cleanup_ptr(s->results, s->resultCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsDeleteCompletionDetailsML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->resultCount);
-    if (s->results != nullptr) {
-        std::size_t num_items = s->resultCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->results[i]);
-        }
-        delete[] s->results;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->resultCount);
+
+        
+
+    
+    cleanup_ptr(s->results, s->resultCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorsUpdateExpirationCompletionDetailsML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->resultCount);
-    if (s->results != nullptr) {
-        std::size_t num_items = s->resultCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->results[i]);
-        }
-        delete[] s->results;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->resultCount);
+
+        
+
+    
+    cleanup_ptr(s->results, s->resultCount);
+
 }
 
 
@@ -38708,28 +31992,44 @@ static void cleanup(const XrSpatialAnchorsUpdateExpirationCompletionDetailsML* s
 
 
 static void cleanup(const XrSpatialAnchorPersistenceInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->spatialAnchorPersistenceName);
+
+        
+
     cleanup(&s->spatialAnchor);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->spatialAnchorStore);
+
+        
+
     cleanup(&s->spatialAnchorPersistenceName);
+
 }
 
 
@@ -38739,63 +32039,69 @@ static void cleanup(const XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* s) {
 
 
 static void cleanup(const XrSceneMarkersMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->sceneMarkerCapacityInput);
-    if (s->sceneMarkers != nullptr) {
-        std::size_t num_items = s->sceneMarkerCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->sceneMarkers[i]);
-        }
-        delete[] s->sceneMarkers;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->sceneMarkerCapacityInput);
+
+        
+
+    
+    cleanup_ptr(s->sceneMarkers, s->sceneMarkerCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMarkerTypeFilterMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->markerTypeCount);
-    if (s->markerTypes != nullptr) {
-        std::size_t num_items = s->markerTypeCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->markerTypes[i]);
-        }
-        delete[] s->markerTypes;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->markerTypeCount);
+
+        
+
+    
+    cleanup_ptr(s->markerTypes, s->markerTypeCount);
+
 }
 
 
 
 
 static void cleanup(const XrSceneMarkerQRCodesMSFT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->qrCodeCapacityInput);
-    if (s->qrCodes != nullptr) {
-        std::size_t num_items = s->qrCodeCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->qrCodes[i]);
-        }
-        delete[] s->qrCodes;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->qrCodeCapacityInput);
+
+        
+
+    
+    cleanup_ptr(s->qrCodes, s->qrCodeCapacityInput);
+
 }
 
 
@@ -38805,119 +32111,160 @@ static void cleanup(const XrSceneMarkerQRCodesMSFT* s) {
 
 
 static void cleanup(const XrSpaceQueryInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->queryAction);
+
+        
+
     cleanup(&s->maxResultCount);
+
+        
+
     cleanup(&s->timeout);
-    if (s->filter != nullptr) {
-        cleanup(s->filter);
-        delete[] s->filter;
-    }
-    if (s->excludeFilter != nullptr) {
-        cleanup(s->excludeFilter);
-        delete[] s->excludeFilter;
-    }
+
+        
+
+    cleanup_xr(s->filter);
+
+        
+
+    cleanup_xr(s->excludeFilter);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceQueryResultsFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->resultCapacityInput);
-    cleanup(&s->resultCountOutput);
-    if (s->results != nullptr) {
-        std::size_t num_items = s->resultCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->results[i]);
-        }
-        delete[] s->results;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->resultCapacityInput);
+
+        
+
+    cleanup(&s->resultCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->results, s->resultCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceStorageLocationFilterInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->location);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceComponentFilterInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->componentType);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceUuidFilterInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->uuidCount);
-    if (s->uuids != nullptr) {
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->uuids[i]);
-        }
-        delete[] s->uuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->uuidCount);
+
+        
+
+    
+    cleanup_ptr(s->uuids, s->uuidCount);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSpaceQueryResultsAvailableFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSpaceQueryCompleteFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
@@ -38927,63 +32274,116 @@ static void cleanup(const XrEventDataSpaceQueryCompleteFB* s) {
 
 
 static void cleanup(const XrSpaceSaveInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->location);
+
+        
+
     cleanup(&s->persistenceMode);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceEraseInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->location);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSpaceSaveCompleteFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->uuid);
+
+        
+
     cleanup(&s->location);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSpaceEraseCompleteFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->uuid);
+
+        
+
     cleanup(&s->location);
+
 }
 
 
@@ -38993,15 +32393,26 @@ static void cleanup(const XrEventDataSpaceEraseCompleteFB* s) {
 
 
 static void cleanup(const XrSwapchainImageFoveationVulkanFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->image);
+
+        
+
     cleanup(&s->width);
+
+        
+
     cleanup(&s->height);
+
 }
 
 
@@ -39011,14 +32422,22 @@ static void cleanup(const XrSwapchainImageFoveationVulkanFB* s) {
 
 
 static void cleanup(const XrSwapchainStateAndroidSurfaceDimensionsFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->width);
+
+        
+
     cleanup(&s->height);
+
 }
 
 
@@ -39028,22 +32447,54 @@ static void cleanup(const XrSwapchainStateAndroidSurfaceDimensionsFB* s) {
 
 
 static void cleanup(const XrSwapchainStateSamplerOpenGLESFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->minFilter);
+
+        
+
     cleanup(&s->magFilter);
+
+        
+
     cleanup(&s->wrapModeS);
+
+        
+
     cleanup(&s->wrapModeT);
+
+        
+
     cleanup(&s->swizzleRed);
+
+        
+
     cleanup(&s->swizzleGreen);
+
+        
+
     cleanup(&s->swizzleBlue);
+
+        
+
     cleanup(&s->swizzleAlpha);
+
+        
+
     cleanup(&s->maxAnisotropy);
+
+        
+
     cleanup(&s->borderColor);
+
 }
 
 
@@ -39053,23 +32504,58 @@ static void cleanup(const XrSwapchainStateSamplerOpenGLESFB* s) {
 
 
 static void cleanup(const XrSwapchainStateSamplerVulkanFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->minFilter);
+
+        
+
     cleanup(&s->magFilter);
+
+        
+
     cleanup(&s->mipmapMode);
+
+        
+
     cleanup(&s->wrapModeS);
+
+        
+
     cleanup(&s->wrapModeT);
+
+        
+
     cleanup(&s->swizzleRed);
+
+        
+
     cleanup(&s->swizzleGreen);
+
+        
+
     cleanup(&s->swizzleBlue);
+
+        
+
     cleanup(&s->swizzleAlpha);
+
+        
+
     cleanup(&s->maxAnisotropy);
+
+        
+
     cleanup(&s->borderColor);
+
 }
 
 
@@ -39079,44 +32565,54 @@ static void cleanup(const XrSwapchainStateSamplerVulkanFB* s) {
 
 
 static void cleanup(const XrSpaceShareInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->spaceCount);
-    if (s->spaces != nullptr) {
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->spaces[i]);
-        }
-        delete[] s->spaces;
 
-    }
+        
+
+    
+    cleanup_ptr(s->spaces, s->spaceCount);
+
+        
+
     cleanup(&s->userCount);
-    if (s->users != nullptr) {
-        std::size_t num_items = s->userCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->users[i]);
-        }
-        delete[] s->users;
 
-    }
+        
+
+    
+    cleanup_ptr(s->users, s->userCount);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSpaceShareCompleteFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
@@ -39126,34 +32622,68 @@ static void cleanup(const XrEventDataSpaceShareCompleteFB* s) {
 
 
 static void cleanup(const XrCompositionLayerSpaceWarpInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->motionVectorSubImage);
+
+        
+
     cleanup(&s->appSpaceDeltaPose);
+
+        
+
     cleanup(&s->depthSubImage);
+
+        
+
     cleanup(&s->minDepth);
+
+        
+
     cleanup(&s->maxDepth);
+
+        
+
     cleanup(&s->nearZ);
+
+        
+
     cleanup(&s->farZ);
+
 }
 
 
 
 
 static void cleanup(const XrSystemSpaceWarpPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->recommendedMotionVectorImageRectWidth);
+
+        
+
     cleanup(&s->recommendedMotionVectorImageRectHeight);
+
 }
 
 
@@ -39163,22 +32693,27 @@ static void cleanup(const XrSystemSpaceWarpPropertiesFB* s) {
 
 
 static void cleanup(const XrHapticAmplitudeEnvelopeVibrationFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->duration);
-    cleanup(&s->amplitudeCount);
-    if (s->amplitudes != nullptr) {
-        std::size_t num_items = s->amplitudeCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->amplitudes[i]);
-        }
-        delete[] s->amplitudes;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->duration);
+
+        
+
+    cleanup(&s->amplitudeCount);
+
+        
+
+    
+    cleanup_ptr(s->amplitudes, s->amplitudeCount);
+
 }
 
 
@@ -39188,89 +32723,112 @@ static void cleanup(const XrHapticAmplitudeEnvelopeVibrationFB* s) {
 
 
 static void cleanup(const XrSemanticLabelsFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->bufferCapacityInput);
-    cleanup(&s->bufferCountOutput);
-    if (s->buffer != nullptr) {
-        std::size_t num_items = s->bufferCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->buffer[i]);
-        }
-        delete[] s->buffer;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->bufferCapacityInput);
+
+        
+
+    cleanup(&s->bufferCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->buffer, s->bufferCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrRoomLayoutFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->floorUuid);
-    cleanup(&s->ceilingUuid);
-    cleanup(&s->wallUuidCapacityInput);
-    cleanup(&s->wallUuidCountOutput);
-    if (s->wallUuids != nullptr) {
-        std::size_t num_items = s->wallUuidCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->wallUuids[i]);
-        }
-        delete[] s->wallUuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->floorUuid);
+
+        
+
+    cleanup(&s->ceilingUuid);
+
+        
+
+    cleanup(&s->wallUuidCapacityInput);
+
+        
+
+    cleanup(&s->wallUuidCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->wallUuids, s->wallUuidCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrBoundary2DFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->vertexCapacityInput);
-    cleanup(&s->vertexCountOutput);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->vertexCapacityInput);
+
+        
+
+    cleanup(&s->vertexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSemanticLabelsSupportInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->flags);
-    if (s->recognizedLabels != nullptr) {
-        std::size_t num_items = count_null_terminated(s->recognizedLabels);
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->recognizedLabels[i]);
-        }
-        delete[] s->recognizedLabels;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->flags);
+
+        
+
+    
+    cleanup_ptr(s->recognizedLabels, count_null_terminated(s->recognizedLabels));
+
 }
 
 
@@ -39280,13 +32838,18 @@ static void cleanup(const XrSemanticLabelsSupportInfoFB* s) {
 
 
 static void cleanup(const XrDigitalLensControlALMALENCE* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -39296,35 +32859,45 @@ static void cleanup(const XrDigitalLensControlALMALENCE* s) {
 
 
 static void cleanup(const XrEventDataSceneCaptureCompleteFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
 
 
 static void cleanup(const XrSceneCaptureRequestInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->requestByteCount);
-    if (s->request != nullptr) {
-        std::size_t num_items = s->requestByteCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->request[i]);
-        }
-        delete[] s->request;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->requestByteCount);
+
+        
+
+    
+    cleanup_ptr(s->request, s->requestByteCount);
+
 }
 
 
@@ -39334,22 +32907,27 @@ static void cleanup(const XrSceneCaptureRequestInfoFB* s) {
 
 
 static void cleanup(const XrSpaceContainerFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->uuidCapacityInput);
-    cleanup(&s->uuidCountOutput);
-    if (s->uuids != nullptr) {
-        std::size_t num_items = s->uuidCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->uuids[i]);
-        }
-        delete[] s->uuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->uuidCapacityInput);
+
+        
+
+    cleanup(&s->uuidCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->uuids, s->uuidCapacityInput);
+
 }
 
 
@@ -39359,43 +32937,58 @@ static void cleanup(const XrSpaceContainerFB* s) {
 
 
 static void cleanup(const XrFoveationEyeTrackedProfileCreateInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
 
 
 static void cleanup(const XrFoveationEyeTrackedStateMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_FOVEATION_CENTER_SIZE_META; i++) {
-        cleanup(&s->foveationCenter[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->foveationCenter, XR_FOVEATION_CENTER_SIZE_META);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
 
 
 static void cleanup(const XrSystemFoveationEyeTrackedPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsFoveationEyeTracked);
+
 }
 
 
@@ -39405,71 +32998,94 @@ static void cleanup(const XrSystemFoveationEyeTrackedPropertiesMETA* s) {
 
 
 static void cleanup(const XrFaceExpressionInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrSystemFaceTrackingPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsFaceTracking);
+
 }
 
 
 
 
 static void cleanup(const XrFaceTrackerCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->faceExpressionSet);
+
 }
 
 
 
 
 static void cleanup(const XrFaceExpressionWeightsFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->weightCount);
-    if (s->weights != nullptr) {
-        std::size_t num_items = s->weightCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->weights[i]);
-        }
-        delete[] s->weights;
 
-    }
+        
+
+    
+    cleanup_ptr(s->weights, s->weightCount);
+
+        
+
     cleanup(&s->confidenceCount);
-    if (s->confidences != nullptr) {
-        std::size_t num_items = s->confidenceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->confidences[i]);
-        }
-        delete[] s->confidences;
 
-    }
+        
+
+    
+    cleanup_ptr(s->confidences, s->confidenceCount);
+
+        
+
     cleanup(&s->status);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
@@ -39479,56 +33095,76 @@ static void cleanup(const XrFaceExpressionWeightsFB* s) {
 
 
 static void cleanup(const XrEyeTrackerCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrEyeGazesInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrEyeGazesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_EYE_POSITION_COUNT_FB; i++) {
-        cleanup(&s->gaze[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->gaze, XR_EYE_POSITION_COUNT_FB);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrSystemEyeTrackingPropertiesFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsEyeTracking);
+
 }
 
 
@@ -39538,14 +33174,22 @@ static void cleanup(const XrSystemEyeTrackingPropertiesFB* s) {
 
 
 static void cleanup(const XrPassthroughKeyboardHandsIntensityFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->leftHandIntensity);
+
+        
+
     cleanup(&s->rightHandIntensity);
+
 }
 
 
@@ -39555,13 +33199,18 @@ static void cleanup(const XrPassthroughKeyboardHandsIntensityFB* s) {
 
 
 static void cleanup(const XrCompositionLayerSettingsFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
 }
 
 
@@ -39571,40 +33220,54 @@ static void cleanup(const XrCompositionLayerSettingsFB* s) {
 
 
 static void cleanup(const XrHapticPcmVibrationFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->bufferSize);
-    if (s->buffer != nullptr) {
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->buffer[i]);
-        }
-        delete[] s->buffer;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->bufferSize);
+
+        
+
+    
+    cleanup_ptr(s->buffer, s->bufferSize);
+
+        
+
     cleanup(&s->sampleRate);
+
+        
+
     cleanup(&s->append);
-    if (s->samplesConsumed != nullptr) {
-        cleanup(s->samplesConsumed);
-        delete[] s->samplesConsumed;
-    }
+
+        
+
+    
+    cleanup_ptr(s->samplesConsumed, 1);
+
 }
 
 
 
 
 static void cleanup(const XrDevicePcmSampleRateStateFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->sampleRate);
+
 }
 
 
@@ -39614,36 +33277,76 @@ static void cleanup(const XrDevicePcmSampleRateStateFB* s) {
 
 
 static void cleanup(const XrFrameSynthesisInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->motionVectorSubImage);
+
+        
+
     cleanup(&s->motionVectorScale);
+
+        
+
     cleanup(&s->motionVectorOffset);
+
+        
+
     cleanup(&s->appSpaceDeltaPose);
+
+        
+
     cleanup(&s->depthSubImage);
+
+        
+
     cleanup(&s->minDepth);
+
+        
+
     cleanup(&s->maxDepth);
+
+        
+
     cleanup(&s->nearZ);
+
+        
+
     cleanup(&s->farZ);
+
 }
 
 
 
 
 static void cleanup(const XrFrameSynthesisConfigViewEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->recommendedMotionVectorImageRectWidth);
+
+        
+
     cleanup(&s->recommendedMotionVectorImageRectHeight);
+
 }
 
 
@@ -39653,14 +33356,22 @@ static void cleanup(const XrFrameSynthesisConfigViewEXT* s) {
 
 
 static void cleanup(const XrCompositionLayerDepthTestFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->depthMask);
+
+        
+
     cleanup(&s->compareOp);
+
 }
 
 
@@ -39670,13 +33381,18 @@ static void cleanup(const XrCompositionLayerDepthTestFB* s) {
 
 
 static void cleanup(const XrLocalDimmingFrameEndInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->localDimmingMode);
+
 }
 
 
@@ -39686,13 +33402,18 @@ static void cleanup(const XrLocalDimmingFrameEndInfoMETA* s) {
 
 
 static void cleanup(const XrPassthroughPreferencesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
@@ -39702,234 +33423,333 @@ static void cleanup(const XrPassthroughPreferencesMETA* s) {
 
 
 static void cleanup(const XrSystemVirtualKeyboardPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsVirtualKeyboard);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardCreateInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardSpaceCreateInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->locationType);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->poseInSpace);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardLocationInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->locationType);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->poseInSpace);
+
+        
+
     cleanup(&s->scale);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardModelVisibilitySetInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->visible);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardAnimationStateMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->animationIndex);
+
+        
+
     cleanup(&s->fraction);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardModelAnimationStatesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->stateCapacityInput);
-    cleanup(&s->stateCountOutput);
-    if (s->states != nullptr) {
-        std::size_t num_items = s->stateCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->states[i]);
-        }
-        delete[] s->states;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->stateCapacityInput);
+
+        
+
+    cleanup(&s->stateCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->states, s->stateCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardTextureDataMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->textureWidth);
-    cleanup(&s->textureHeight);
-    cleanup(&s->bufferCapacityInput);
-    cleanup(&s->bufferCountOutput);
-    if (s->buffer != nullptr) {
-        std::size_t num_items = s->bufferCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->buffer[i]);
-        }
-        delete[] s->buffer;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->textureWidth);
+
+        
+
+    cleanup(&s->textureHeight);
+
+        
+
+    cleanup(&s->bufferCapacityInput);
+
+        
+
+    cleanup(&s->bufferCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->buffer, s->bufferCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardInputInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->inputSource);
+
+        
+
     cleanup(&s->inputSpace);
+
+        
+
     cleanup(&s->inputPoseInSpace);
+
+        
+
     cleanup(&s->inputState);
+
 }
 
 
 
 
 static void cleanup(const XrVirtualKeyboardTextContextChangeInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    if (s->textContext != nullptr) {
-        std::size_t num_items = count_null_terminated(s->textContext);
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->textContext[i]);
-        }
-        delete[] s->textContext;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    
+    cleanup_ptr(s->textContext, count_null_terminated(s->textContext));
+
 }
 
 
 
 
 static void cleanup(const XrEventDataVirtualKeyboardCommitTextMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->keyboard);
         
-    for (int i = 0; i < XR_MAX_VIRTUAL_KEYBOARD_COMMIT_TEXT_SIZE_META; i++) {
-        cleanup(&s->text[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->keyboard);
+
+        
+
+    cleanup_array(s->text, XR_MAX_VIRTUAL_KEYBOARD_COMMIT_TEXT_SIZE_META);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataVirtualKeyboardBackspaceMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->keyboard);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataVirtualKeyboardEnterMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->keyboard);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataVirtualKeyboardShownMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->keyboard);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataVirtualKeyboardHiddenMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->keyboard);
+
 }
 
 
@@ -39939,18 +33759,26 @@ static void cleanup(const XrEventDataVirtualKeyboardHiddenMETA* s) {
 
 
 static void cleanup(const XrExternalCameraOCULUS* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
         
-    for (int i = 0; i < XR_MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS; i++) {
-        cleanup(&s->name[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_array(s->name, XR_MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS);
+
+        
+
     cleanup(&s->intrinsics);
+
+        
+
     cleanup(&s->extrinsics);
+
 }
 
 
@@ -39960,14 +33788,22 @@ static void cleanup(const XrExternalCameraOCULUS* s) {
 
 
 static void cleanup(const XrVulkanSwapchainCreateInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->additionalCreateFlags);
+
+        
+
     cleanup(&s->additionalUsageFlags);
+
 }
 
 
@@ -39977,29 +33813,48 @@ static void cleanup(const XrVulkanSwapchainCreateInfoMETA* s) {
 
 
 static void cleanup(const XrPerformanceMetricsStateMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->enabled);
+
 }
 
 
 
 
 static void cleanup(const XrPerformanceMetricsCounterMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->counterFlags);
+
+        
+
     cleanup(&s->counterUnit);
+
+        
+
     cleanup(&s->uintValue);
+
+        
+
     cleanup(&s->floatValue);
+
 }
 
 
@@ -40009,36 +33864,49 @@ static void cleanup(const XrPerformanceMetricsCounterMETA* s) {
 
 
 static void cleanup(const XrSpaceListSaveInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->spaceCount);
-    if (s->spaces != nullptr) {
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->spaces[i]);
-        }
-        delete[] s->spaces;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->spaceCount);
+
+        
+
+    
+    cleanup_ptr(s->spaces, s->spaceCount);
+
+        
+
     cleanup(&s->location);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSpaceListSaveCompleteFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
@@ -40048,13 +33916,18 @@ static void cleanup(const XrEventDataSpaceListSaveCompleteFB* s) {
 
 
 static void cleanup(const XrSpaceUserCreateInfoFB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->userId);
+
 }
 
 
@@ -40064,13 +33937,18 @@ static void cleanup(const XrSpaceUserCreateInfoFB* s) {
 
 
 static void cleanup(const XrSystemHeadsetIdPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->id);
+
 }
 
 
@@ -40080,31 +33958,44 @@ static void cleanup(const XrSystemHeadsetIdPropertiesMETA* s) {
 
 
 static void cleanup(const XrRecommendedLayerResolutionMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->recommendedImageDimensions);
+
+        
+
     cleanup(&s->isValid);
+
 }
 
 
 
 
 static void cleanup(const XrRecommendedLayerResolutionGetInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    if (s->layer != nullptr) {
-        cleanup(s->layer);
-        delete[] s->layer;
-    }
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup_xr(s->layer);
+
+        
+
     cleanup(&s->predictedDisplayTime);
+
 }
 
 
@@ -40114,70 +34005,110 @@ static void cleanup(const XrRecommendedLayerResolutionGetInfoMETA* s) {
 
 
 static void cleanup(const XrSystemPassthroughColorLutPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->maxColorLutResolution);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughColorLutCreateInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->channels);
+
+        
+
     cleanup(&s->resolution);
+
+        
+
     cleanup(&s->data);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughColorLutUpdateInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->data);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughColorMapLutMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->colorLut);
+
+        
+
     cleanup(&s->weight);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughColorMapInterpolatedLutMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->sourceColorLut);
+
+        
+
     cleanup(&s->targetColorLut);
+
+        
+
     cleanup(&s->weight);
+
 }
 
 
@@ -40187,44 +34118,54 @@ static void cleanup(const XrPassthroughColorMapInterpolatedLutMETA* s) {
 
 
 static void cleanup(const XrSpaceTriangleMeshGetInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceTriangleMeshMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->vertexCapacityInput);
+
+        
+
     cleanup(&s->vertexCountOutput);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
 
-    }
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCapacityInput);
+
+        
+
     cleanup(&s->indexCapacityInput);
-    cleanup(&s->indexCountOutput);
-    if (s->indices != nullptr) {
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indices[i]);
-        }
-        delete[] s->indices;
 
-    }
+        
+
+    cleanup(&s->indexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->indices, s->indexCapacityInput);
+
 }
 
 
@@ -40234,13 +34175,18 @@ static void cleanup(const XrSpaceTriangleMeshMETA* s) {
 
 
 static void cleanup(const XrSystemPropertiesBodyTrackingFullBodyMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsFullBodyTracking);
+
 }
 
 
@@ -40250,13 +34196,18 @@ static void cleanup(const XrSystemPropertiesBodyTrackingFullBodyMETA* s) {
 
 
 static void cleanup(const XrEventDataPassthroughLayerResumedMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layer);
+
 }
 
 
@@ -40266,83 +34217,115 @@ static void cleanup(const XrEventDataPassthroughLayerResumedMETA* s) {
 
 
 static void cleanup(const XrSystemFaceTrackingProperties2FB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsVisualFaceTracking);
+
+        
+
     cleanup(&s->supportsAudioFaceTracking);
+
 }
 
 
 
 
 static void cleanup(const XrFaceTrackerCreateInfo2FB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->faceExpressionSet);
-    cleanup(&s->requestedDataSourceCount);
-    if (s->requestedDataSources != nullptr) {
-        std::size_t num_items = s->requestedDataSourceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->requestedDataSources[i]);
-        }
-        delete[] s->requestedDataSources;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->faceExpressionSet);
+
+        
+
+    cleanup(&s->requestedDataSourceCount);
+
+        
+
+    
+    cleanup_ptr(s->requestedDataSources, s->requestedDataSourceCount);
+
 }
 
 
 
 
 static void cleanup(const XrFaceExpressionInfo2FB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrFaceExpressionWeights2FB* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->weightCount);
-    if (s->weights != nullptr) {
-        std::size_t num_items = s->weightCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->weights[i]);
-        }
-        delete[] s->weights;
 
-    }
+        
+
+    
+    cleanup_ptr(s->weights, s->weightCount);
+
+        
+
     cleanup(&s->confidenceCount);
-    if (s->confidences != nullptr) {
-        std::size_t num_items = s->confidenceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->confidences[i]);
-        }
-        delete[] s->confidences;
 
-    }
+        
+
+    
+    cleanup_ptr(s->confidences, s->confidenceCount);
+
+        
+
     cleanup(&s->isValid);
+
+        
+
     cleanup(&s->isEyeFollowingBlendshapesValid);
+
+        
+
     cleanup(&s->dataSource);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
@@ -40352,52 +34335,67 @@ static void cleanup(const XrFaceExpressionWeights2FB* s) {
 
 
 static void cleanup(const XrSystemSpatialEntitySharingPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSpatialEntitySharing);
+
 }
 
 
 
 
 static void cleanup(const XrShareSpacesInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->spaceCount);
-    if (s->spaces != nullptr) {
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->spaces[i]);
-        }
-        delete[] s->spaces;
+        
 
-    }
-    if (s->recipientInfo != nullptr) {
-        cleanup(s->recipientInfo);
-        delete[] s->recipientInfo;
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->spaceCount);
+
+        
+
+    
+    cleanup_ptr(s->spaces, s->spaceCount);
+
+        
+
+    cleanup_xr(s->recipientInfo);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataShareSpacesCompleteMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
@@ -40407,114 +34405,172 @@ static void cleanup(const XrEventDataShareSpacesCompleteMETA* s) {
 
 
 static void cleanup(const XrEnvironmentDepthProviderCreateInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->createFlags);
+
 }
 
 
 
 
 static void cleanup(const XrEnvironmentDepthSwapchainCreateInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->createFlags);
+
 }
 
 
 
 
 static void cleanup(const XrEnvironmentDepthSwapchainStateMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->width);
+
+        
+
     cleanup(&s->height);
+
 }
 
 
 
 
 static void cleanup(const XrEnvironmentDepthImageAcquireInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->displayTime);
+
 }
 
 
 
 
 static void cleanup(const XrEnvironmentDepthImageViewMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->fov);
+
+        
+
     cleanup(&s->pose);
+
 }
 
 
 
 
 static void cleanup(const XrEnvironmentDepthImageMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->swapchainIndex);
-    cleanup(&s->nearZ);
-    cleanup(&s->farZ);
         
-    for (int i = 0; i < 2; i++) {
-        cleanup(&s->views[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->swapchainIndex);
+
+        
+
+    cleanup(&s->nearZ);
+
+        
+
+    cleanup(&s->farZ);
+
+        
+
+    cleanup_array(s->views, 2);
+
 }
 
 
 
 
 static void cleanup(const XrEnvironmentDepthHandRemovalSetInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->enabled);
+
 }
 
 
 
 
 static void cleanup(const XrSystemEnvironmentDepthPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsEnvironmentDepth);
+
+        
+
     cleanup(&s->supportsHandRemoval);
+
 }
 
 
@@ -40524,76 +34580,114 @@ static void cleanup(const XrSystemEnvironmentDepthPropertiesMETA* s) {
 
 
 static void cleanup(const XrPassthroughCreateInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->form);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughColorHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->alpha);
+
 }
 
 
 
 
 static void cleanup(const XrPassthroughMeshTransformInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->vertexCount);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
 
-    }
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCount);
+
+        
+
     cleanup(&s->indexCount);
-    if (s->indices != nullptr) {
-        std::size_t num_items = s->indexCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indices[i]);
-        }
-        delete[] s->indices;
 
-    }
+        
+
+    
+    cleanup_ptr(s->indices, s->indexCount);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->scale);
+
 }
 
 
 
 
 static void cleanup(const XrCompositionLayerPassthroughHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->layerFlags);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->passthrough);
+
+        
+
     cleanup(&s->color);
+
 }
 
 
@@ -40603,56 +34697,68 @@ static void cleanup(const XrCompositionLayerPassthroughHTC* s) {
 
 
 static void cleanup(const XrFoveationApplyInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->mode);
-    cleanup(&s->subImageCount);
-    if (s->subImages != nullptr) {
-        std::size_t num_items = s->subImageCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->subImages[i]);
-        }
-        delete[] s->subImages;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->mode);
+
+        
+
+    cleanup(&s->subImageCount);
+
+        
+
+    
+    cleanup_ptr(s->subImages, s->subImageCount);
+
 }
 
 
 
 
 static void cleanup(const XrFoveationDynamicModeInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->dynamicFlags);
+
 }
 
 
 
 
 static void cleanup(const XrFoveationCustomModeInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->configCount);
-    if (s->configs != nullptr) {
-        std::size_t num_items = s->configCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->configs[i]);
-        }
-        delete[] s->configs;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->configCount);
+
+        
+
+    
+    cleanup_ptr(s->configs, s->configCount);
+
 }
 
 
@@ -40662,28 +34768,44 @@ static void cleanup(const XrFoveationCustomModeInfoHTC* s) {
 
 
 static void cleanup(const XrSystemAnchorPropertiesHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsAnchor);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorCreateInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->poseInSpace);
+
+        
+
     cleanup(&s->name);
+
 }
 
 
@@ -40693,85 +34815,116 @@ static void cleanup(const XrSpatialAnchorCreateInfoHTC* s) {
 
 
 static void cleanup(const XrSystemBodyTrackingPropertiesHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsBodyTracking);
+
 }
 
 
 
 
 static void cleanup(const XrBodyTrackerCreateInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->bodyJointSet);
+
 }
 
 
 
 
 static void cleanup(const XrBodyJointsLocateInfoHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrBodyJointLocationsHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->combinedLocationFlags);
-    cleanup(&s->confidenceLevel);
-    cleanup(&s->jointLocationCount);
-    if (s->jointLocations != nullptr) {
-        std::size_t num_items = s->jointLocationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->jointLocations[i]);
-        }
-        delete[] s->jointLocations;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->combinedLocationFlags);
+
+        
+
+    cleanup(&s->confidenceLevel);
+
+        
+
+    cleanup(&s->jointLocationCount);
+
+        
+
+    
+    cleanup_ptr(s->jointLocations, s->jointLocationCount);
+
+        
+
     cleanup(&s->skeletonGenerationId);
+
 }
 
 
 
 
 static void cleanup(const XrBodySkeletonHTC* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->jointCount);
-    if (s->joints != nullptr) {
-        std::size_t num_items = s->jointCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->joints[i]);
-        }
-        delete[] s->joints;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->jointCount);
+
+        
+
+    
+    cleanup_ptr(s->joints, s->jointCount);
+
 }
 
 
@@ -40781,21 +34934,23 @@ static void cleanup(const XrBodySkeletonHTC* s) {
 
 
 static void cleanup(const XrActiveActionSetPrioritiesEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->actionSetPriorityCount);
-    if (s->actionSetPriorities != nullptr) {
-        std::size_t num_items = s->actionSetPriorityCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->actionSetPriorities[i]);
-        }
-        delete[] s->actionSetPriorities;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->actionSetPriorityCount);
+
+        
+
+    
+    cleanup_ptr(s->actionSetPriorities, s->actionSetPriorityCount);
+
 }
 
 
@@ -40805,34 +34960,41 @@ static void cleanup(const XrActiveActionSetPrioritiesEXT* s) {
 
 
 static void cleanup(const XrSystemForceFeedbackCurlPropertiesMNDX* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsForceFeedbackCurl);
+
 }
 
 
 
 
 static void cleanup(const XrForceFeedbackCurlApplyLocationsMNDX* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->locationCount);
-    if (s->locations != nullptr) {
-        std::size_t num_items = s->locationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->locations[i]);
-        }
-        delete[] s->locations;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->locationCount);
+
+        
+
+    
+    cleanup_ptr(s->locations, s->locationCount);
+
 }
 
 
@@ -40842,62 +35004,85 @@ static void cleanup(const XrForceFeedbackCurlApplyLocationsMNDX* s) {
 
 
 static void cleanup(const XrBodyTrackerCreateInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->jointSet);
+
 }
 
 
 
 
 static void cleanup(const XrBodyJointsLocateInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrBodyJointLocationsBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->allJointPosesTracked);
-    cleanup(&s->jointLocationCount);
-    if (s->jointLocations != nullptr) {
-        std::size_t num_items = s->jointLocationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->jointLocations[i]);
-        }
-        delete[] s->jointLocations;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->allJointPosesTracked);
+
+        
+
+    cleanup(&s->jointLocationCount);
+
+        
+
+    
+    cleanup_ptr(s->jointLocations, s->jointLocationCount);
+
 }
 
 
 
 
 static void cleanup(const XrSystemBodyTrackingPropertiesBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsBodyTracking);
+
 }
 
 
@@ -40907,352 +35092,471 @@ static void cleanup(const XrSystemBodyTrackingPropertiesBD* s) {
 
 
 static void cleanup(const XrSystemSpatialSensingPropertiesBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSpatialSensing);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityComponentGetInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->entityId);
+
+        
+
     cleanup(&s->componentType);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityLocationGetInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityComponentDataLocationBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->location);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityComponentDataSemanticBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->labelCapacityInput);
-    cleanup(&s->labelCountOutput);
-    if (s->labels != nullptr) {
-        std::size_t num_items = s->labelCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->labels[i]);
-        }
-        delete[] s->labels;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->labelCapacityInput);
+
+        
+
+    cleanup(&s->labelCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->labels, s->labelCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityComponentDataBoundingBox2DBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->boundingBox2D);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityComponentDataPolygonBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->vertexCapacityInput);
-    cleanup(&s->vertexCountOutput);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->vertexCapacityInput);
+
+        
+
+    cleanup(&s->vertexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityComponentDataBoundingBox3DBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->boundingBox3D);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityComponentDataTriangleMeshBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->vertexCapacityInput);
+
+        
+
     cleanup(&s->vertexCountOutput);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
 
-    }
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCapacityInput);
+
+        
+
     cleanup(&s->indexCapacityInput);
-    cleanup(&s->indexCountOutput);
-    if (s->indices != nullptr) {
-        std::size_t num_items = s->indexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indices[i]);
-        }
-        delete[] s->indices;
 
-    }
+        
+
+    cleanup(&s->indexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->indices, s->indexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSenseDataProviderCreateInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->providerType);
+
 }
 
 
 
 
 static void cleanup(const XrSenseDataProviderStartInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSenseDataProviderStateChangedBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->provider);
+
+        
+
     cleanup(&s->newState);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataSenseDataUpdatedBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->provider);
+
 }
 
 
 
 
 static void cleanup(const XrSenseDataQueryInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSenseDataQueryCompletionBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->futureResult);
+
+        
+
     cleanup(&s->snapshot);
+
 }
 
 
 
 
 static void cleanup(const XrSenseDataFilterUuidBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->uuidCount);
-    if (s->uuids != nullptr) {
-        std::size_t num_items = s->uuidCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->uuids[i]);
-        }
-        delete[] s->uuids;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->uuidCount);
+
+        
+
+    
+    cleanup_ptr(s->uuids, s->uuidCount);
+
 }
 
 
 
 
 static void cleanup(const XrSenseDataFilterSemanticBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->labelCount);
-    if (s->labels != nullptr) {
-        std::size_t num_items = s->labelCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->labels[i]);
-        }
-        delete[] s->labels;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->labelCount);
+
+        
+
+    
+    cleanup_ptr(s->labels, s->labelCount);
+
 }
 
 
 
 
 static void cleanup(const XrQueriedSenseDataGetInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrQueriedSenseDataBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->stateCapacityInput);
-    cleanup(&s->stateCountOutput);
-    if (s->states != nullptr) {
-        std::size_t num_items = s->stateCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->states[i]);
-        }
-        delete[] s->states;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->stateCapacityInput);
+
+        
+
+    cleanup(&s->stateCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->states, s->stateCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityStateBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->entityId);
+
+        
+
     cleanup(&s->lastUpdateTime);
+
+        
+
     cleanup(&s->uuid);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialEntityAnchorCreateInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->snapshot);
+
+        
+
     cleanup(&s->entityId);
+
 }
 
 
 
 
 static void cleanup(const XrAnchorSpaceCreateInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->anchor);
+
+        
+
     cleanup(&s->poseInAnchorSpace);
+
 }
 
 
@@ -41262,71 +35566,114 @@ static void cleanup(const XrAnchorSpaceCreateInfoBD* s) {
 
 
 static void cleanup(const XrSystemSpatialAnchorPropertiesBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSpatialAnchor);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorCreateInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->space);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorCreateCompletionBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->futureResult);
+
+        
+
     cleanup(&s->anchor);
+
+        
+
     cleanup(&s->uuid);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorPersistInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->location);
+
+        
+
     cleanup(&s->anchor);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorUnpersistInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->location);
+
+        
+
     cleanup(&s->anchor);
+
 }
 
 
@@ -41336,39 +35683,54 @@ static void cleanup(const XrSpatialAnchorUnpersistInfoBD* s) {
 
 
 static void cleanup(const XrSystemSpatialAnchorSharingPropertiesBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSpatialAnchorSharing);
+
 }
 
 
 
 
 static void cleanup(const XrSpatialAnchorShareInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->anchor);
+
 }
 
 
 
 
 static void cleanup(const XrSharedSpatialAnchorDownloadInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->uuid);
+
 }
 
 
@@ -41378,25 +35740,32 @@ static void cleanup(const XrSharedSpatialAnchorDownloadInfoBD* s) {
 
 
 static void cleanup(const XrSystemSpatialScenePropertiesBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSpatialScene);
+
 }
 
 
 
 
 static void cleanup(const XrSceneCaptureInfoBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -41406,27 +35775,40 @@ static void cleanup(const XrSceneCaptureInfoBD* s) {
 
 
 static void cleanup(const XrSystemSpatialMeshPropertiesBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSpatialMesh);
+
 }
 
 
 
 
 static void cleanup(const XrSenseDataProviderCreateInfoSpatialMeshBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->configFlags);
+
+        
+
     cleanup(&s->lod);
+
 }
 
 
@@ -41436,14 +35818,22 @@ static void cleanup(const XrSenseDataProviderCreateInfoSpatialMeshBD* s) {
 
 
 static void cleanup(const XrFuturePollResultProgressBD* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->isSupported);
+
+        
+
     cleanup(&s->progressPercentage);
+
 }
 
 
@@ -41453,35 +35843,45 @@ static void cleanup(const XrFuturePollResultProgressBD* s) {
 
 
 static void cleanup(const XrHandTrackingDataSourceInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->requestedDataSourceCount);
-    if (s->requestedDataSources != nullptr) {
-        std::size_t num_items = s->requestedDataSourceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->requestedDataSources[i]);
-        }
-        delete[] s->requestedDataSources;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->requestedDataSourceCount);
+
+        
+
+    
+    cleanup_ptr(s->requestedDataSources, s->requestedDataSourceCount);
+
 }
 
 
 
 
 static void cleanup(const XrHandTrackingDataSourceStateEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->isActive);
+
+        
+
     cleanup(&s->dataSource);
+
 }
 
 
@@ -41491,139 +35891,210 @@ static void cleanup(const XrHandTrackingDataSourceStateEXT* s) {
 
 
 static void cleanup(const XrPlaneDetectorCreateInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->flags);
+
 }
 
 
 
 
 static void cleanup(const XrPlaneDetectorBeginInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
+        
+
     cleanup(&s->orientationCount);
-    if (s->orientations != nullptr) {
-        std::size_t num_items = s->orientationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->orientations[i]);
-        }
-        delete[] s->orientations;
 
-    }
+        
+
+    
+    cleanup_ptr(s->orientations, s->orientationCount);
+
+        
+
     cleanup(&s->semanticTypeCount);
-    if (s->semanticTypes != nullptr) {
-        std::size_t num_items = s->semanticTypeCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->semanticTypes[i]);
-        }
-        delete[] s->semanticTypes;
 
-    }
+        
+
+    
+    cleanup_ptr(s->semanticTypes, s->semanticTypeCount);
+
+        
+
     cleanup(&s->maxPlanes);
+
+        
+
     cleanup(&s->minArea);
+
+        
+
     cleanup(&s->boundingBoxPose);
+
+        
+
     cleanup(&s->boundingBoxExtent);
+
 }
 
 
 
 
 static void cleanup(const XrPlaneDetectorGetInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrPlaneDetectorLocationsEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->planeLocationCapacityInput);
-    cleanup(&s->planeLocationCountOutput);
-    if (s->planeLocations != nullptr) {
-        std::size_t num_items = s->planeLocationCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->planeLocations[i]);
-        }
-        delete[] s->planeLocations;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->planeLocationCapacityInput);
+
+        
+
+    cleanup(&s->planeLocationCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->planeLocations, s->planeLocationCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrPlaneDetectorLocationEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->planeId);
+
+        
+
     cleanup(&s->locationFlags);
+
+        
+
     cleanup(&s->pose);
+
+        
+
     cleanup(&s->extents);
+
+        
+
     cleanup(&s->orientation);
+
+        
+
     cleanup(&s->semanticType);
+
+        
+
     cleanup(&s->polygonBufferCount);
+
 }
 
 
 
 
 static void cleanup(const XrPlaneDetectorPolygonBufferEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->vertexCapacityInput);
-    cleanup(&s->vertexCountOutput);
-    if (s->vertices != nullptr) {
-        std::size_t num_items = s->vertexCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertices[i]);
-        }
-        delete[] s->vertices;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->vertexCapacityInput);
+
+        
+
+    cleanup(&s->vertexCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->vertices, s->vertexCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrSystemPlaneDetectionPropertiesEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportedFeatures);
+
 }
 
 
@@ -41633,52 +36104,72 @@ static void cleanup(const XrSystemPlaneDetectionPropertiesEXT* s) {
 
 
 static void cleanup(const XrFutureCancelInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->future);
+
 }
 
 
 
 
 static void cleanup(const XrFuturePollInfoEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->future);
+
 }
 
 
 
 
 static void cleanup(const XrFutureCompletionEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->futureResult);
+
 }
 
 
 
 
 static void cleanup(const XrFuturePollResultEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->state);
+
 }
 
 
@@ -41688,27 +36179,40 @@ static void cleanup(const XrFuturePollResultEXT* s) {
 
 
 static void cleanup(const XrEventDataUserPresenceChangedEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->session);
+
+        
+
     cleanup(&s->isUserPresent);
+
 }
 
 
 
 
 static void cleanup(const XrSystemUserPresencePropertiesEXT* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsUserPresence);
+
 }
 
 
@@ -41717,65 +36221,77 @@ static void cleanup(const XrSystemUserPresencePropertiesEXT* s) {
 
 
 static void cleanup(const XrSpacesLocateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->baseSpace);
-    cleanup(&s->time);
-    cleanup(&s->spaceCount);
-    if (s->spaces != nullptr) {
-        std::size_t num_items = s->spaceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->spaces[i]);
-        }
-        delete[] s->spaces;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->baseSpace);
+
+        
+
+    cleanup(&s->time);
+
+        
+
+    cleanup(&s->spaceCount);
+
+        
+
+    
+    cleanup_ptr(s->spaces, s->spaceCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceLocations* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->locationCount);
-    if (s->locations != nullptr) {
-        std::size_t num_items = s->locationCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->locations[i]);
-        }
-        delete[] s->locations;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->locationCount);
+
+        
+
+    
+    cleanup_ptr(s->locations, s->locationCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceVelocities* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->velocityCount);
-    if (s->velocities != nullptr) {
-        std::size_t num_items = s->velocityCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->velocities[i]);
-        }
-        delete[] s->velocities;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->velocityCount);
+
+        
+
+    
+    cleanup_ptr(s->velocities, s->velocityCount);
+
 }
 
 
@@ -41784,40 +36300,58 @@ static void cleanup(const XrSpaceVelocities* s) {
 
 
 static void cleanup(const XrEventDataHeadsetFitChangedML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->status);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataEyeCalibrationChangedML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->status);
+
 }
 
 
 
 
 static void cleanup(const XrUserCalibrationEnableEventsInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->enabled);
+
 }
 
 
@@ -41827,13 +36361,18 @@ static void cleanup(const XrUserCalibrationEnableEventsInfoML* s) {
 
 
 static void cleanup(const XrSystemNotificationsSetInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->suppressNotifications);
+
 }
 
 
@@ -41843,242 +36382,344 @@ static void cleanup(const XrSystemNotificationsSetInfoML* s) {
 
 
 static void cleanup(const XrWorldMeshDetectorCreateInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshStateRequestInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->baseSpace);
+
+        
+
     cleanup(&s->time);
+
+        
+
     cleanup(&s->boundingBoxCenter);
+
+        
+
     cleanup(&s->boundingBoxExtents);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshBlockStateML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->uuid);
+
+        
+
     cleanup(&s->meshBoundingBoxCenter);
+
+        
+
     cleanup(&s->meshBoundingBoxExtents);
+
+        
+
     cleanup(&s->lastUpdateTime);
+
+        
+
     cleanup(&s->status);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshStateRequestCompletionML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->futureResult);
-    cleanup(&s->timestamp);
-    cleanup(&s->meshBlockStateCapacityInput);
-    cleanup(&s->meshBlockStateCountOutput);
-    if (s->meshBlockStates != nullptr) {
-        std::size_t num_items = s->meshBlockStateCapacityInput;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->meshBlockStates[i]);
-        }
-        delete[] s->meshBlockStates;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->futureResult);
+
+        
+
+    cleanup(&s->timestamp);
+
+        
+
+    cleanup(&s->meshBlockStateCapacityInput);
+
+        
+
+    cleanup(&s->meshBlockStateCountOutput);
+
+        
+
+    
+    cleanup_ptr(s->meshBlockStates, s->meshBlockStateCapacityInput);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshBufferRecommendedSizeInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->maxBlockCount);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshBufferSizeML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->size);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshBufferML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->bufferSize);
-    if (s->buffer != nullptr) {
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->buffer[i]);
-        }
-        delete[] s->buffer;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->bufferSize);
+
+        
+
+    
+    cleanup_ptr(s->buffer, s->bufferSize);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshBlockRequestML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->uuid);
+
+        
+
     cleanup(&s->lod);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshGetInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->flags);
-    cleanup(&s->fillHoleLength);
-    cleanup(&s->disconnectedComponentArea);
-    cleanup(&s->blockCount);
-    if (s->blocks != nullptr) {
-        std::size_t num_items = s->blockCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->blocks[i]);
-        }
-        delete[] s->blocks;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->flags);
+
+        
+
+    cleanup(&s->fillHoleLength);
+
+        
+
+    cleanup(&s->disconnectedComponentArea);
+
+        
+
+    cleanup(&s->blockCount);
+
+        
+
+    
+    cleanup_ptr(s->blocks, s->blockCount);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshBlockML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->uuid);
+
+        
+
     cleanup(&s->blockResult);
+
+        
+
     cleanup(&s->lod);
+
+        
+
     cleanup(&s->flags);
+
+        
+
     cleanup(&s->indexCount);
-    if (s->indexBuffer != nullptr) {
-        std::size_t num_items = s->indexCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->indexBuffer[i]);
-        }
-        delete[] s->indexBuffer;
 
-    }
+        
+
+    
+    cleanup_ptr(s->indexBuffer, s->indexCount);
+
+        
+
     cleanup(&s->vertexCount);
-    if (s->vertexBuffer != nullptr) {
-        std::size_t num_items = s->vertexCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->vertexBuffer[i]);
-        }
-        delete[] s->vertexBuffer;
 
-    }
+        
+
+    
+    cleanup_ptr(s->vertexBuffer, s->vertexCount);
+
+        
+
     cleanup(&s->normalCount);
-    if (s->normalBuffer != nullptr) {
-        std::size_t num_items = s->normalCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->normalBuffer[i]);
-        }
-        delete[] s->normalBuffer;
 
-    }
+        
+
+    
+    cleanup_ptr(s->normalBuffer, s->normalCount);
+
+        
+
     cleanup(&s->confidenceCount);
-    if (s->confidenceBuffer != nullptr) {
-        std::size_t num_items = s->confidenceCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->confidenceBuffer[i]);
-        }
-        delete[] s->confidenceBuffer;
 
-    }
+        
+
+    
+    cleanup_ptr(s->confidenceBuffer, s->confidenceCount);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshRequestCompletionML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->futureResult);
-    cleanup(&s->blockCount);
-    if (s->blocks != nullptr) {
-        std::size_t num_items = s->blockCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->blocks[i]);
-        }
-        delete[] s->blocks;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->futureResult);
+
+        
+
+    cleanup(&s->blockCount);
+
+        
+
+    
+    cleanup_ptr(s->blocks, s->blockCount);
+
 }
 
 
 
 
 static void cleanup(const XrWorldMeshRequestCompletionInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->meshSpace);
+
+        
+
     cleanup(&s->meshSpaceLocateTime);
+
 }
 
 
@@ -42088,62 +36729,85 @@ static void cleanup(const XrWorldMeshRequestCompletionInfoML* s) {
 
 
 static void cleanup(const XrSystemFacialExpressionPropertiesML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsFacialExpression);
+
 }
 
 
 
 
 static void cleanup(const XrFacialExpressionClientCreateInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->requestedCount);
-    if (s->requestedFacialBlendShapes != nullptr) {
-        std::size_t num_items = s->requestedCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->requestedFacialBlendShapes[i]);
-        }
-        delete[] s->requestedFacialBlendShapes;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->requestedCount);
+
+        
+
+    
+    cleanup_ptr(s->requestedFacialBlendShapes, s->requestedCount);
+
 }
 
 
 
 
 static void cleanup(const XrFacialExpressionBlendShapeGetInfoML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrFacialExpressionBlendShapePropertiesML* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestedFacialBlendShape);
+
+        
+
     cleanup(&s->weight);
+
+        
+
     cleanup(&s->flags);
+
+        
+
     cleanup(&s->time);
+
 }
 
 
@@ -42153,37 +36817,46 @@ static void cleanup(const XrFacialExpressionBlendShapePropertiesML* s) {
 
 
 static void cleanup(const XrSystemSimultaneousHandsAndControllersPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSimultaneousHandsAndControllers);
+
 }
 
 
 
 
 static void cleanup(const XrSimultaneousHandsAndControllersTrackingResumeInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrSimultaneousHandsAndControllersTrackingPauseInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
@@ -42193,174 +36866,249 @@ static void cleanup(const XrSimultaneousHandsAndControllersTrackingPauseInfoMETA
 
 
 static void cleanup(const XrColocationDiscoveryStartInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrColocationDiscoveryStopInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrColocationAdvertisementStartInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->bufferSize);
-    if (s->buffer != nullptr) {
-        std::size_t num_items = s->bufferSize;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->buffer[i]);
-        }
-        delete[] s->buffer;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->bufferSize);
+
+        
+
+    
+    cleanup_ptr(s->buffer, s->bufferSize);
+
 }
 
 
 
 
 static void cleanup(const XrColocationAdvertisementStopInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataStartColocationAdvertisementCompleteMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->advertisementRequestId);
+
+        
+
     cleanup(&s->result);
+
+        
+
     cleanup(&s->advertisementUuid);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataStopColocationAdvertisementCompleteMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataColocationAdvertisementCompleteMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->advertisementRequestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataStartColocationDiscoveryCompleteMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->discoveryRequestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataColocationDiscoveryResultMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->discoveryRequestId);
-    cleanup(&s->advertisementUuid);
-    cleanup(&s->bufferSize);
         
-    for (int i = 0; i < XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META; i++) {
-        cleanup(&s->buffer[i]);
-    }
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->discoveryRequestId);
+
+        
+
+    cleanup(&s->advertisementUuid);
+
+        
+
+    cleanup(&s->bufferSize);
+
+        
+
+    cleanup_array(s->buffer, XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataColocationDiscoveryCompleteMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->discoveryRequestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
 
 
 static void cleanup(const XrEventDataStopColocationDiscoveryCompleteMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->requestId);
+
+        
+
     cleanup(&s->result);
+
 }
 
 
 
 
 static void cleanup(const XrSystemColocationDiscoveryPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsColocationDiscovery);
+
 }
 
 
@@ -42370,47 +37118,59 @@ static void cleanup(const XrSystemColocationDiscoveryPropertiesMETA* s) {
 
 
 static void cleanup(const XrShareSpacesRecipientGroupsMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
-    cleanup(&s->groupCount);
-    if (s->groups != nullptr) {
-        std::size_t num_items = s->groupCount;
-        for (int i = 0; i < num_items; i++) {
-            cleanup(&s->groups[i]);
-        }
-        delete[] s->groups;
+        
 
-    }
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
+    cleanup(&s->groupCount);
+
+        
+
+    
+    cleanup_ptr(s->groups, s->groupCount);
+
 }
 
 
 
 
 static void cleanup(const XrSpaceGroupUuidFilterInfoMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->groupUuid);
+
 }
 
 
 
 
 static void cleanup(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    
+        
+
+    cleanup(&s->type);
+
+        
+
+    cleanup_xr(s->next);
+
+        
+
     cleanup(&s->supportsSpatialEntityGroupSharing);
+
 }
 
 
@@ -42419,114 +37179,18 @@ static void cleanup(const XrSystemSpatialEntityGroupSharingPropertiesMETA* s) {
 
 // Custom implementations
 static void deserialize(XrInstanceCreateInfo* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
 
-    deserialize(&s->createFlags, in);
-    deserialize(&s->applicationInfo, in);
-    deserialize(&s->enabledApiLayerCount, in);
-
-    char** enabledApiLayerNames = new char*[s->enabledApiLayerCount]();
-    for (int i = 0; i < s->enabledApiLayerCount; i++) {
-        std::size_t string_length{};
-        deserialize(reinterpret_cast<std::uint32_t*>(&string_length), in);
-        char* str = new char[string_length]();
-        for (int j = 0; j < string_length; j++) {
-            deserialize(&str[j], in);
-        }
-        enabledApiLayerNames[i] = str;
-    }
-    s->enabledApiLayerNames = enabledApiLayerNames;
-
-    deserialize(&s->enabledExtensionCount, in);
-    
-    char** enabledExtensionNames = new char*[s->enabledExtensionCount]();
-    for (int i = 0; i < s->enabledExtensionCount; i++) {
-        std::size_t string_length{};
-        deserialize(reinterpret_cast<std::uint32_t*>(&string_length), in);
-        char* str = new char[s->enabledExtensionCount]();
-        for (int j = 0; j < string_length; j++) {
-            deserialize(&str[j], in);
-        }
-        enabledExtensionNames[i] = str;
-    }
-    s->enabledExtensionNames;
 }
 
 static void cleanup(const XrInstanceCreateInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-    for (int i = 0; i < s->enabledApiLayerCount; i++) {
-        delete[] s->enabledApiLayerNames[i];
-    }
-    delete[] s->enabledApiLayerNames;
-    for (int i = 0; i < s->enabledExtensionCount; i++) {
-        delete[] s->enabledExtensionNames[i];
-    }
-    delete[] s->enabledExtensionNames;
+
 }
 
 static void deserialize(XrFrameEndInfo* s, std::istream& in) {
-    deserialize(&s->type, in);
-    XrStructureType next_type{};
-    deserialize(&next_type, in);
-    if (next_type != XR_TYPE_UNKNOWN) {
-        XrBaseOutStructure* next{};
-        allocator_lookup(next_type)(&next, 1);
-        deserializer_lookup(next_type)(next, in);
-        s->next = next;
-    }
-    else {
-        s->next = nullptr;
-    }
 
-    deserialize(&s->displayTime, in);
-    deserialize(&s->environmentBlendMode, in);
-    deserialize(&s->layerCount, in);
-
-    XrCompositionLayerBaseHeader** layers = new XrCompositionLayerBaseHeader*[s->layerCount]();
-    for (int i = 0; i < s->layerCount; i++) {
-        XrStructureType layer_type{};
-        deserialize(&layer_type, in);
-        if (layer_type != XR_TYPE_UNKNOWN) {
-            XrCompositionLayerBaseHeader* layer{};
-            allocator_lookup(layer_type)(reinterpret_cast<XrBaseOutStructure**>(&layer), 1);
-            deserializer_lookup(layer_type)(reinterpret_cast<XrBaseOutStructure*>(layer), in);
-            layers[i] = layer;
-        }
-        else {
-            layers[i] = nullptr;
-        }
-    }
-    s->layers = layers;
 }
 
 static void cleanup(const XrFrameEndInfo* s) {
-    if (s->next != nullptr) {
-        const XrBaseOutStructure* next = reinterpret_cast<const XrBaseOutStructure*>(s->next);
-        cleaner_lookup(next->type)(next);
-        delete[] next;
-    }
-
-    for (int i = 0; i < s->layerCount; i++) {
-        const XrBaseOutStructure* layer = reinterpret_cast<const XrBaseOutStructure*>(s->layers[i]);
-        cleaner_lookup(layer->type)(layer);
-        delete[] layer;
-    }
-    delete[] s->layers;
 }
 
 } // namespace xrtransport
