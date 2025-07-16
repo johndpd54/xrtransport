@@ -1,0 +1,5 @@
+# xrtransport
+
+xrtransport is a project that aims to provide a transparent layer to interact with a remote [OpenXR](https://www.khronos.org/openxr/) runtime. It accomplishes this by providing a local runtime on the client that simply serializes all calls it receives, sends them to a dispatcher on the server, which deserializes the calls and executes them on the server's OpenXR runtime. Any returned data is also serialized on the host and sent back to the client, which then deserializes it and applies it, creating a completely transparent link to the server's OpenXR runtime. The idea is that a client should not be able to tell that it is using xrtransport and it should behave exactly as if it is running on the server.
+
+Obviously, there are many parts of OpenXR that are impractical or impossible to do remotely in this way, e.g. graphics-related code. Compatibility with various graphics APIs should be implemented 
