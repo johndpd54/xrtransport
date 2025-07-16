@@ -2676,90 +2676,90 @@
 
 // List of base structs and all enabled extension structs
 #define XRT_STRUCT_LIST_ALL(_) \
-    _(XrCompositionLayerQuad, XR, XR_TYPE_COMPOSITION_LAYER_QUAD) \
-    _(XrVector4f, PLAIN) \
-    _(XrColor4f, PLAIN) \
-    _(XrFrameBeginInfo, XR, XR_TYPE_FRAME_BEGIN_INFO) \
-    _(XrQuaternionf, PLAIN) \
-    _(XrPosef, PLAIN) \
-    _(XrFrameEndInfo, XR_CUSTOM, XR_TYPE_FRAME_END_INFO) \
-    _(XrOffset2Df, PLAIN) \
-    _(XrFrameWaitInfo, XR, XR_TYPE_FRAME_WAIT_INFO) \
-    _(XrExtent2Df, PLAIN) \
-    _(XrVector3f, PLAIN) \
-    _(XrRect2Df, PLAIN) \
-    _(XrOffset2Di, PLAIN) \
-    _(XrFrameState, XR, XR_TYPE_FRAME_STATE) \
-    _(XrExtent2Di, PLAIN) \
-    _(XrHapticBaseHeader, XR_HEADER) \
-    _(XrRect2Di, PLAIN) \
-    _(XrExtensionProperties, XR, XR_TYPE_EXTENSION_PROPERTIES) \
-    _(XrApiLayerProperties, XR, XR_TYPE_API_LAYER_PROPERTIES) \
-    _(XrEventDataBuffer, XR, XR_TYPE_EVENT_DATA_BUFFER) \
-    _(XrBodySkeletonJointHTC, PLAIN) \
-    _(XrEventDataBaseHeader, XR_HEADER) \
-    _(XrApplicationInfo, PLAIN) \
-    _(XrInstanceCreateInfo, XR_CUSTOM, XR_TYPE_INSTANCE_CREATE_INFO) \
-    _(XrEventDataEventsLost, XR, XR_TYPE_EVENT_DATA_EVENTS_LOST) \
-    _(XrInstanceProperties, XR, XR_TYPE_INSTANCE_PROPERTIES) \
-    _(XrEventDataInstanceLossPending, XR, XR_TYPE_EVENT_DATA_INSTANCE_LOSS_PENDING) \
-    _(XrEventDataSessionStateChanged, XR, XR_TYPE_EVENT_DATA_SESSION_STATE_CHANGED) \
-    _(XrSystemGetInfo, XR, XR_TYPE_SYSTEM_GET_INFO) \
-    _(XrEventDataReferenceSpaceChangePending, XR, XR_TYPE_EVENT_DATA_REFERENCE_SPACE_CHANGE_PENDING) \
-    _(XrSystemProperties, XR, XR_TYPE_SYSTEM_PROPERTIES) \
-    _(XrSystemGraphicsProperties, PLAIN) \
-    _(XrSystemTrackingProperties, PLAIN) \
-    _(XrViewConfigurationProperties, XR, XR_TYPE_VIEW_CONFIGURATION_PROPERTIES) \
+    _(XrActionCreateInfo, XR, XR_TYPE_ACTION_CREATE_INFO) \
+    _(XrActionSetCreateInfo, XR, XR_TYPE_ACTION_SET_CREATE_INFO) \
+    _(XrActionSpaceCreateInfo, XR, XR_TYPE_ACTION_SPACE_CREATE_INFO) \
     _(XrActionStateBoolean, XR, XR_TYPE_ACTION_STATE_BOOLEAN) \
     _(XrActionStateFloat, XR, XR_TYPE_ACTION_STATE_FLOAT) \
-    _(XrVector2f, PLAIN) \
-    _(XrActionStateVector2f, XR, XR_TYPE_ACTION_STATE_VECTOR2F) \
-    _(XrActionStatePose, XR, XR_TYPE_ACTION_STATE_POSE) \
     _(XrActionStateGetInfo, XR, XR_TYPE_ACTION_STATE_GET_INFO) \
-    _(XrHapticActionInfo, XR, XR_TYPE_HAPTIC_ACTION_INFO) \
-    _(XrActionSetCreateInfo, XR, XR_TYPE_ACTION_SET_CREATE_INFO) \
+    _(XrActionStatePose, XR, XR_TYPE_ACTION_STATE_POSE) \
+    _(XrActionStateVector2f, XR, XR_TYPE_ACTION_STATE_VECTOR2F) \
     _(XrActionSuggestedBinding, PLAIN) \
-    _(XrInteractionProfileSuggestedBinding, XR, XR_TYPE_INTERACTION_PROFILE_SUGGESTED_BINDING) \
-    _(XrSessionCreateInfo, XR, XR_TYPE_SESSION_CREATE_INFO) \
-    _(XrActiveActionSet, PLAIN) \
-    _(XrSessionBeginInfo, XR, XR_TYPE_SESSION_BEGIN_INFO) \
-    _(XrSessionActionSetsAttachInfo, XR, XR_TYPE_SESSION_ACTION_SETS_ATTACH_INFO) \
-    _(XrSwapchainCreateInfo, XR, XR_TYPE_SWAPCHAIN_CREATE_INFO) \
     _(XrActionsSyncInfo, XR, XR_TYPE_ACTIONS_SYNC_INFO) \
-    _(XrSwapchainImageBaseHeader, XR_HEADER) \
+    _(XrActiveActionSet, PLAIN) \
+    _(XrApiLayerProperties, XR, XR_TYPE_API_LAYER_PROPERTIES) \
+    _(XrApplicationInfo, PLAIN) \
+    _(XrBodySkeletonJointHTC, PLAIN) \
     _(XrBoundSourcesForActionEnumerateInfo, XR, XR_TYPE_BOUND_SOURCES_FOR_ACTION_ENUMERATE_INFO) \
-    _(XrInputSourceLocalizedNameGetInfo, XR, XR_TYPE_INPUT_SOURCE_LOCALIZED_NAME_GET_INFO) \
-    _(XrColor3f, PLAIN) \
-    _(XrCompositionLayerProjectionView, XR, XR_TYPE_COMPOSITION_LAYER_PROJECTION_VIEW) \
-    _(XrEventDataInteractionProfileChanged, XR, XR_TYPE_EVENT_DATA_INTERACTION_PROFILE_CHANGED) \
-    _(XrExtent3Df, PLAIN) \
-    _(XrInteractionProfileState, XR, XR_TYPE_INTERACTION_PROFILE_STATE) \
-    _(XrSpheref, PLAIN) \
-    _(XrActionCreateInfo, XR, XR_TYPE_ACTION_CREATE_INFO) \
     _(XrBoxf, PLAIN) \
-    _(XrFrustumf, PLAIN) \
-    _(XrUuid, PLAIN) \
-    _(XrSwapchainImageAcquireInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_ACQUIRE_INFO) \
-    _(XrSwapchainImageWaitInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_WAIT_INFO) \
-    _(XrSwapchainImageReleaseInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_RELEASE_INFO) \
-    _(XrReferenceSpaceCreateInfo, XR, XR_TYPE_REFERENCE_SPACE_CREATE_INFO) \
-    _(XrActionSpaceCreateInfo, XR, XR_TYPE_ACTION_SPACE_CREATE_INFO) \
-    _(XrSpaceLocation, XR, XR_TYPE_SPACE_LOCATION) \
-    _(XrSpaceVelocity, XR, XR_TYPE_SPACE_VELOCITY) \
+    _(XrColor3f, PLAIN) \
+    _(XrColor4f, PLAIN) \
+    _(XrCompositionLayerBaseHeader, XR_HEADER) \
+    _(XrCompositionLayerProjection, XR, XR_TYPE_COMPOSITION_LAYER_PROJECTION) \
+    _(XrCompositionLayerProjectionView, XR, XR_TYPE_COMPOSITION_LAYER_PROJECTION_VIEW) \
+    _(XrCompositionLayerQuad, XR, XR_TYPE_COMPOSITION_LAYER_QUAD) \
+    _(XrEventDataBaseHeader, XR_HEADER) \
+    _(XrEventDataBuffer, XR, XR_TYPE_EVENT_DATA_BUFFER) \
+    _(XrEventDataEventsLost, XR, XR_TYPE_EVENT_DATA_EVENTS_LOST) \
+    _(XrEventDataInstanceLossPending, XR, XR_TYPE_EVENT_DATA_INSTANCE_LOSS_PENDING) \
+    _(XrEventDataInteractionProfileChanged, XR, XR_TYPE_EVENT_DATA_INTERACTION_PROFILE_CHANGED) \
+    _(XrEventDataReferenceSpaceChangePending, XR, XR_TYPE_EVENT_DATA_REFERENCE_SPACE_CHANGE_PENDING) \
+    _(XrEventDataSessionStateChanged, XR, XR_TYPE_EVENT_DATA_SESSION_STATE_CHANGED) \
+    _(XrExtensionProperties, XR, XR_TYPE_EXTENSION_PROPERTIES) \
+    _(XrExtent2Df, PLAIN) \
+    _(XrExtent2Di, PLAIN) \
+    _(XrExtent3Df, PLAIN) \
     _(XrFovf, PLAIN) \
+    _(XrFrameBeginInfo, XR, XR_TYPE_FRAME_BEGIN_INFO) \
+    _(XrFrameEndInfo, XR_CUSTOM, XR_TYPE_FRAME_END_INFO) \
+    _(XrFrameState, XR, XR_TYPE_FRAME_STATE) \
+    _(XrFrameWaitInfo, XR, XR_TYPE_FRAME_WAIT_INFO) \
+    _(XrFrustumf, PLAIN) \
+    _(XrHapticActionInfo, XR, XR_TYPE_HAPTIC_ACTION_INFO) \
+    _(XrHapticBaseHeader, XR_HEADER) \
+    _(XrHapticVibration, XR, XR_TYPE_HAPTIC_VIBRATION) \
+    _(XrInputSourceLocalizedNameGetInfo, XR, XR_TYPE_INPUT_SOURCE_LOCALIZED_NAME_GET_INFO) \
+    _(XrInstanceCreateInfo, XR_CUSTOM, XR_TYPE_INSTANCE_CREATE_INFO) \
+    _(XrInstanceProperties, XR, XR_TYPE_INSTANCE_PROPERTIES) \
+    _(XrInteractionProfileState, XR, XR_TYPE_INTERACTION_PROFILE_STATE) \
+    _(XrInteractionProfileSuggestedBinding, XR, XR_TYPE_INTERACTION_PROFILE_SUGGESTED_BINDING) \
+    _(XrOffset2Df, PLAIN) \
+    _(XrOffset2Di, PLAIN) \
+    _(XrPosef, PLAIN) \
+    _(XrQuaternionf, PLAIN) \
+    _(XrRect2Df, PLAIN) \
+    _(XrRect2Di, PLAIN) \
+    _(XrReferenceSpaceCreateInfo, XR, XR_TYPE_REFERENCE_SPACE_CREATE_INFO) \
+    _(XrSessionActionSetsAttachInfo, XR, XR_TYPE_SESSION_ACTION_SETS_ATTACH_INFO) \
+    _(XrSessionBeginInfo, XR, XR_TYPE_SESSION_BEGIN_INFO) \
+    _(XrSessionCreateInfo, XR, XR_TYPE_SESSION_CREATE_INFO) \
+    _(XrSpaceLocation, XR, XR_TYPE_SPACE_LOCATION) \
+    _(XrSpaceLocationData, PLAIN) \
+    _(XrSpaceLocations, XR, XR_TYPE_SPACE_LOCATIONS) \
+    _(XrSpaceVelocities, XR, XR_TYPE_SPACE_VELOCITIES) \
+    _(XrSpaceVelocity, XR, XR_TYPE_SPACE_VELOCITY) \
+    _(XrSpaceVelocityData, PLAIN) \
+    _(XrSpacesLocateInfo, XR, XR_TYPE_SPACES_LOCATE_INFO) \
+    _(XrSpheref, PLAIN) \
+    _(XrSwapchainCreateInfo, XR, XR_TYPE_SWAPCHAIN_CREATE_INFO) \
+    _(XrSwapchainImageAcquireInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_ACQUIRE_INFO) \
+    _(XrSwapchainImageBaseHeader, XR_HEADER) \
+    _(XrSwapchainImageReleaseInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_RELEASE_INFO) \
+    _(XrSwapchainImageWaitInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_WAIT_INFO) \
+    _(XrSwapchainSubImage, PLAIN) \
+    _(XrSystemGetInfo, XR, XR_TYPE_SYSTEM_GET_INFO) \
+    _(XrSystemGraphicsProperties, PLAIN) \
+    _(XrSystemProperties, XR, XR_TYPE_SYSTEM_PROPERTIES) \
+    _(XrSystemTrackingProperties, PLAIN) \
+    _(XrUuid, PLAIN) \
+    _(XrVector2f, PLAIN) \
+    _(XrVector3f, PLAIN) \
+    _(XrVector4f, PLAIN) \
     _(XrView, XR, XR_TYPE_VIEW) \
+    _(XrViewConfigurationProperties, XR, XR_TYPE_VIEW_CONFIGURATION_PROPERTIES) \
+    _(XrViewConfigurationView, XR, XR_TYPE_VIEW_CONFIGURATION_VIEW) \
     _(XrViewLocateInfo, XR, XR_TYPE_VIEW_LOCATE_INFO) \
     _(XrViewState, XR, XR_TYPE_VIEW_STATE) \
-    _(XrViewConfigurationView, XR, XR_TYPE_VIEW_CONFIGURATION_VIEW) \
-    _(XrSwapchainSubImage, PLAIN) \
-    _(XrCompositionLayerBaseHeader, XR_HEADER) \
-    _(XrHapticVibration, XR, XR_TYPE_HAPTIC_VIBRATION) \
-    _(XrCompositionLayerProjection, XR, XR_TYPE_COMPOSITION_LAYER_PROJECTION) \
-    _(XrSpacesLocateInfo, XR, XR_TYPE_SPACES_LOCATE_INFO) \
-    _(XrSpaceLocations, XR, XR_TYPE_SPACE_LOCATIONS) \
-    _(XrSpaceLocationData, PLAIN) \
-    _(XrSpaceVelocities, XR, XR_TYPE_SPACE_VELOCITIES) \
-    _(XrSpaceVelocityData, PLAIN) \
     XRT_STRUCT_LIST_XR_KHR_android_thread_settings(_) \
     XRT_STRUCT_LIST_XR_KHR_android_surface_swapchain(_) \
     XRT_STRUCT_LIST_XR_KHR_composition_layer_cube(_) \
@@ -7554,164 +7554,26 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(supportsSpatialEntityGroupSharing, XrBool32, PLAIN) 
-#define XRT_ENUMERATE_XrCompositionLayerQuad(_) \
+#define XRT_ENUMERATE_XrActionCreateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(layerFlags, XrCompositionLayerFlags, PLAIN) \
-    _(space, XrSpace, PLAIN) \
-    _(eyeVisibility, XrEyeVisibility, PLAIN) \
-    _(subImage, XrSwapchainSubImage, PLAIN) \
-    _(pose, XrPosef, PLAIN) \
-    _(size, XrExtent2Df, PLAIN) 
-#define XRT_ENUMERATE_XrVector4f(_) \
-    _(x, float, PLAIN) \
-    _(y, float, PLAIN) \
-    _(z, float, PLAIN) \
-    _(w, float, PLAIN) 
-#define XRT_ENUMERATE_XrColor4f(_) \
-    _(r, float, PLAIN) \
-    _(g, float, PLAIN) \
-    _(b, float, PLAIN) \
-    _(a, float, PLAIN) 
-#define XRT_ENUMERATE_XrFrameBeginInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) 
-#define XRT_ENUMERATE_XrQuaternionf(_) \
-    _(x, float, PLAIN) \
-    _(y, float, PLAIN) \
-    _(z, float, PLAIN) \
-    _(w, float, PLAIN) 
-#define XRT_ENUMERATE_XrPosef(_) \
-    _(orientation, XrQuaternionf, PLAIN) \
-    _(position, XrVector3f, PLAIN) 
-#define XRT_ENUMERATE_XrFrameEndInfo(_) \
+    _(actionName, char[XR_MAX_ACTION_NAME_SIZE], ARRAY, XR_MAX_ACTION_NAME_SIZE) \
+    _(actionType, XrActionType, PLAIN) \
+    _(countSubactionPaths, uint32_t, PLAIN) \
+    _(subactionPaths, const XrPath*, POINTER, true, s->countSubactionPaths) \
+    _(localizedActionName, char[XR_MAX_LOCALIZED_ACTION_NAME_SIZE], ARRAY, XR_MAX_LOCALIZED_ACTION_NAME_SIZE) 
+#define XRT_ENUMERATE_XrActionSetCreateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(displayTime, XrTime, PLAIN) \
-    _(environmentBlendMode, XrEnvironmentBlendMode, PLAIN) \
-    _(layerCount, uint32_t, PLAIN) \
-    _(layers, const XrCompositionLayerBaseHeader* const*, XR) 
-#define XRT_ENUMERATE_XrOffset2Df(_) \
-    _(x, float, PLAIN) \
-    _(y, float, PLAIN) 
-#define XRT_ENUMERATE_XrFrameWaitInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) 
-#define XRT_ENUMERATE_XrExtent2Df(_) \
-    _(width, float, PLAIN) \
-    _(height, float, PLAIN) 
-#define XRT_ENUMERATE_XrVector3f(_) \
-    _(x, float, PLAIN) \
-    _(y, float, PLAIN) \
-    _(z, float, PLAIN) 
-#define XRT_ENUMERATE_XrRect2Df(_) \
-    _(offset, XrOffset2Df, PLAIN) \
-    _(extent, XrExtent2Df, PLAIN) 
-#define XRT_ENUMERATE_XrOffset2Di(_) \
-    _(x, int32_t, PLAIN) \
-    _(y, int32_t, PLAIN) 
-#define XRT_ENUMERATE_XrFrameState(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(predictedDisplayTime, XrTime, PLAIN) \
-    _(predictedDisplayPeriod, XrDuration, PLAIN) \
-    _(shouldRender, XrBool32, PLAIN) 
-#define XRT_ENUMERATE_XrExtent2Di(_) \
-    _(width, int32_t, PLAIN) \
-    _(height, int32_t, PLAIN) 
-#define XRT_ENUMERATE_XrHapticBaseHeader(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) 
-#define XRT_ENUMERATE_XrRect2Di(_) \
-    _(offset, XrOffset2Di, PLAIN) \
-    _(extent, XrExtent2Di, PLAIN) 
-#define XRT_ENUMERATE_XrExtensionProperties(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(extensionName, char[XR_MAX_EXTENSION_NAME_SIZE], ARRAY, XR_MAX_EXTENSION_NAME_SIZE) \
-    _(extensionVersion, uint32_t, PLAIN) 
-#define XRT_ENUMERATE_XrApiLayerProperties(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(layerName, char[XR_MAX_API_LAYER_NAME_SIZE], ARRAY, XR_MAX_API_LAYER_NAME_SIZE) \
-    _(specVersion, XrVersion, PLAIN) \
-    _(layerVersion, uint32_t, PLAIN) \
-    _(description, char[XR_MAX_API_LAYER_DESCRIPTION_SIZE], ARRAY, XR_MAX_API_LAYER_DESCRIPTION_SIZE) 
-#define XRT_ENUMERATE_XrEventDataBuffer(_) \
+    _(actionSetName, char[XR_MAX_ACTION_SET_NAME_SIZE], ARRAY, XR_MAX_ACTION_SET_NAME_SIZE) \
+    _(localizedActionSetName, char[XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE], ARRAY, XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE) \
+    _(priority, uint32_t, PLAIN) 
+#define XRT_ENUMERATE_XrActionSpaceCreateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(varying, uint8_t[4000], ARRAY, 4000) 
-#define XRT_ENUMERATE_XrBodySkeletonJointHTC(_) \
-    _(pose, XrPosef, PLAIN) 
-#define XRT_ENUMERATE_XrEventDataBaseHeader(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) 
-#define XRT_ENUMERATE_XrApplicationInfo(_) \
-    _(applicationName, char[XR_MAX_APPLICATION_NAME_SIZE], ARRAY, XR_MAX_APPLICATION_NAME_SIZE) \
-    _(applicationVersion, uint32_t, PLAIN) \
-    _(engineName, char[XR_MAX_ENGINE_NAME_SIZE], ARRAY, XR_MAX_ENGINE_NAME_SIZE) \
-    _(engineVersion, uint32_t, PLAIN) \
-    _(apiVersion, XrVersion, PLAIN) 
-#define XRT_ENUMERATE_XrInstanceCreateInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(createFlags, XrInstanceCreateFlags, PLAIN) \
-    _(applicationInfo, XrApplicationInfo, PLAIN) \
-    _(enabledApiLayerCount, uint32_t, PLAIN) \
-    _(enabledApiLayerNames, const char* const*, POINTER, true, s->enabledApiLayerCount,null-terminated) \
-    _(enabledExtensionCount, uint32_t, PLAIN) \
-    _(enabledExtensionNames, const char* const*, POINTER, true, s->enabledExtensionCount,null-terminated) 
-#define XRT_ENUMERATE_XrEventDataEventsLost(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(lostEventCount, uint32_t, PLAIN) 
-#define XRT_ENUMERATE_XrInstanceProperties(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(runtimeVersion, XrVersion, PLAIN) \
-    _(runtimeName, char[XR_MAX_RUNTIME_NAME_SIZE], ARRAY, XR_MAX_RUNTIME_NAME_SIZE) 
-#define XRT_ENUMERATE_XrEventDataInstanceLossPending(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(lossTime, XrTime, PLAIN) 
-#define XRT_ENUMERATE_XrEventDataSessionStateChanged(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(session, XrSession, PLAIN) \
-    _(state, XrSessionState, PLAIN) \
-    _(time, XrTime, PLAIN) 
-#define XRT_ENUMERATE_XrSystemGetInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(formFactor, XrFormFactor, PLAIN) 
-#define XRT_ENUMERATE_XrEventDataReferenceSpaceChangePending(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(session, XrSession, PLAIN) \
-    _(referenceSpaceType, XrReferenceSpaceType, PLAIN) \
-    _(changeTime, XrTime, PLAIN) \
-    _(poseValid, XrBool32, PLAIN) \
-    _(poseInPreviousSpace, XrPosef, PLAIN) 
-#define XRT_ENUMERATE_XrSystemProperties(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(systemId, XrSystemId, PLAIN) \
-    _(vendorId, uint32_t, PLAIN) \
-    _(systemName, char[XR_MAX_SYSTEM_NAME_SIZE], ARRAY, XR_MAX_SYSTEM_NAME_SIZE) \
-    _(graphicsProperties, XrSystemGraphicsProperties, PLAIN) \
-    _(trackingProperties, XrSystemTrackingProperties, PLAIN) 
-#define XRT_ENUMERATE_XrSystemGraphicsProperties(_) \
-    _(maxSwapchainImageHeight, uint32_t, PLAIN) \
-    _(maxSwapchainImageWidth, uint32_t, PLAIN) \
-    _(maxLayerCount, uint32_t, PLAIN) 
-#define XRT_ENUMERATE_XrSystemTrackingProperties(_) \
-    _(orientationTracking, XrBool32, PLAIN) \
-    _(positionTracking, XrBool32, PLAIN) 
-#define XRT_ENUMERATE_XrViewConfigurationProperties(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(viewConfigurationType, XrViewConfigurationType, PLAIN) \
-    _(fovMutable, XrBool32, PLAIN) 
+    _(action, XrAction, PLAIN) \
+    _(subactionPath, XrPath, PLAIN) \
+    _(poseInActionSpace, XrPosef, PLAIN) 
 #define XRT_ENUMERATE_XrActionStateBoolean(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7726,9 +7588,15 @@
     _(changedSinceLastSync, XrBool32, PLAIN) \
     _(lastChangeTime, XrTime, PLAIN) \
     _(isActive, XrBool32, PLAIN) 
-#define XRT_ENUMERATE_XrVector2f(_) \
-    _(x, float, PLAIN) \
-    _(y, float, PLAIN) 
+#define XRT_ENUMERATE_XrActionStateGetInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(action, XrAction, PLAIN) \
+    _(subactionPath, XrPath, PLAIN) 
+#define XRT_ENUMERATE_XrActionStatePose(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(isActive, XrBool32, PLAIN) 
 #define XRT_ENUMERATE_XrActionStateVector2f(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7736,52 +7604,272 @@
     _(changedSinceLastSync, XrBool32, PLAIN) \
     _(lastChangeTime, XrTime, PLAIN) \
     _(isActive, XrBool32, PLAIN) 
-#define XRT_ENUMERATE_XrActionStatePose(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(isActive, XrBool32, PLAIN) 
-#define XRT_ENUMERATE_XrActionStateGetInfo(_) \
+#define XRT_ENUMERATE_XrActionSuggestedBinding(_) \
+    _(action, XrAction, PLAIN) \
+    _(binding, XrPath, PLAIN) 
+#define XRT_ENUMERATE_XrActionsSyncInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(action, XrAction, PLAIN) \
+    _(countActiveActionSets, uint32_t, PLAIN) \
+    _(activeActionSets, const XrActiveActionSet*, POINTER, true, s->countActiveActionSets) 
+#define XRT_ENUMERATE_XrActiveActionSet(_) \
+    _(actionSet, XrActionSet, PLAIN) \
     _(subactionPath, XrPath, PLAIN) 
+#define XRT_ENUMERATE_XrApiLayerProperties(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(layerName, char[XR_MAX_API_LAYER_NAME_SIZE], ARRAY, XR_MAX_API_LAYER_NAME_SIZE) \
+    _(specVersion, XrVersion, PLAIN) \
+    _(layerVersion, uint32_t, PLAIN) \
+    _(description, char[XR_MAX_API_LAYER_DESCRIPTION_SIZE], ARRAY, XR_MAX_API_LAYER_DESCRIPTION_SIZE) 
+#define XRT_ENUMERATE_XrApplicationInfo(_) \
+    _(applicationName, char[XR_MAX_APPLICATION_NAME_SIZE], ARRAY, XR_MAX_APPLICATION_NAME_SIZE) \
+    _(applicationVersion, uint32_t, PLAIN) \
+    _(engineName, char[XR_MAX_ENGINE_NAME_SIZE], ARRAY, XR_MAX_ENGINE_NAME_SIZE) \
+    _(engineVersion, uint32_t, PLAIN) \
+    _(apiVersion, XrVersion, PLAIN) 
+#define XRT_ENUMERATE_XrBodySkeletonJointHTC(_) \
+    _(pose, XrPosef, PLAIN) 
+#define XRT_ENUMERATE_XrBoundSourcesForActionEnumerateInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(action, XrAction, PLAIN) 
+#define XRT_ENUMERATE_XrBoxf(_) \
+    _(center, XrPosef, PLAIN) \
+    _(extents, XrExtent3Df, PLAIN) 
+#define XRT_ENUMERATE_XrColor3f(_) \
+    _(r, float, PLAIN) \
+    _(g, float, PLAIN) \
+    _(b, float, PLAIN) 
+#define XRT_ENUMERATE_XrColor4f(_) \
+    _(r, float, PLAIN) \
+    _(g, float, PLAIN) \
+    _(b, float, PLAIN) \
+    _(a, float, PLAIN) 
+#define XRT_ENUMERATE_XrCompositionLayerBaseHeader(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(layerFlags, XrCompositionLayerFlags, PLAIN) \
+    _(space, XrSpace, PLAIN) 
+#define XRT_ENUMERATE_XrCompositionLayerProjection(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(layerFlags, XrCompositionLayerFlags, PLAIN) \
+    _(space, XrSpace, PLAIN) \
+    _(viewCount, uint32_t, PLAIN) \
+    _(views, const XrCompositionLayerProjectionView*, POINTER, true, s->viewCount) 
+#define XRT_ENUMERATE_XrCompositionLayerProjectionView(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(pose, XrPosef, PLAIN) \
+    _(fov, XrFovf, PLAIN) \
+    _(subImage, XrSwapchainSubImage, PLAIN) 
+#define XRT_ENUMERATE_XrCompositionLayerQuad(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(layerFlags, XrCompositionLayerFlags, PLAIN) \
+    _(space, XrSpace, PLAIN) \
+    _(eyeVisibility, XrEyeVisibility, PLAIN) \
+    _(subImage, XrSwapchainSubImage, PLAIN) \
+    _(pose, XrPosef, PLAIN) \
+    _(size, XrExtent2Df, PLAIN) 
+#define XRT_ENUMERATE_XrEventDataBaseHeader(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) 
+#define XRT_ENUMERATE_XrEventDataBuffer(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(varying, uint8_t[4000], ARRAY, 4000) 
+#define XRT_ENUMERATE_XrEventDataEventsLost(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(lostEventCount, uint32_t, PLAIN) 
+#define XRT_ENUMERATE_XrEventDataInstanceLossPending(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(lossTime, XrTime, PLAIN) 
+#define XRT_ENUMERATE_XrEventDataInteractionProfileChanged(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(session, XrSession, PLAIN) 
+#define XRT_ENUMERATE_XrEventDataReferenceSpaceChangePending(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(session, XrSession, PLAIN) \
+    _(referenceSpaceType, XrReferenceSpaceType, PLAIN) \
+    _(changeTime, XrTime, PLAIN) \
+    _(poseValid, XrBool32, PLAIN) \
+    _(poseInPreviousSpace, XrPosef, PLAIN) 
+#define XRT_ENUMERATE_XrEventDataSessionStateChanged(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(session, XrSession, PLAIN) \
+    _(state, XrSessionState, PLAIN) \
+    _(time, XrTime, PLAIN) 
+#define XRT_ENUMERATE_XrExtensionProperties(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(extensionName, char[XR_MAX_EXTENSION_NAME_SIZE], ARRAY, XR_MAX_EXTENSION_NAME_SIZE) \
+    _(extensionVersion, uint32_t, PLAIN) 
+#define XRT_ENUMERATE_XrExtent2Df(_) \
+    _(width, float, PLAIN) \
+    _(height, float, PLAIN) 
+#define XRT_ENUMERATE_XrExtent2Di(_) \
+    _(width, int32_t, PLAIN) \
+    _(height, int32_t, PLAIN) 
+#define XRT_ENUMERATE_XrExtent3Df(_) \
+    _(width, float, PLAIN) \
+    _(height, float, PLAIN) \
+    _(depth, float, PLAIN) 
+#define XRT_ENUMERATE_XrFovf(_) \
+    _(angleLeft, float, PLAIN) \
+    _(angleRight, float, PLAIN) \
+    _(angleUp, float, PLAIN) \
+    _(angleDown, float, PLAIN) 
+#define XRT_ENUMERATE_XrFrameBeginInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) 
+#define XRT_ENUMERATE_XrFrameEndInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(displayTime, XrTime, PLAIN) \
+    _(environmentBlendMode, XrEnvironmentBlendMode, PLAIN) \
+    _(layerCount, uint32_t, PLAIN) \
+    _(layers, const XrCompositionLayerBaseHeader* const*, XR) 
+#define XRT_ENUMERATE_XrFrameState(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(predictedDisplayTime, XrTime, PLAIN) \
+    _(predictedDisplayPeriod, XrDuration, PLAIN) \
+    _(shouldRender, XrBool32, PLAIN) 
+#define XRT_ENUMERATE_XrFrameWaitInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) 
+#define XRT_ENUMERATE_XrFrustumf(_) \
+    _(pose, XrPosef, PLAIN) \
+    _(fov, XrFovf, PLAIN) \
+    _(nearZ, float, PLAIN) \
+    _(farZ, float, PLAIN) 
 #define XRT_ENUMERATE_XrHapticActionInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(action, XrAction, PLAIN) \
     _(subactionPath, XrPath, PLAIN) 
-#define XRT_ENUMERATE_XrActionSetCreateInfo(_) \
+#define XRT_ENUMERATE_XrHapticBaseHeader(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) 
+#define XRT_ENUMERATE_XrHapticVibration(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(actionSetName, char[XR_MAX_ACTION_SET_NAME_SIZE], ARRAY, XR_MAX_ACTION_SET_NAME_SIZE) \
-    _(localizedActionSetName, char[XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE], ARRAY, XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE) \
-    _(priority, uint32_t, PLAIN) 
-#define XRT_ENUMERATE_XrActionSuggestedBinding(_) \
-    _(action, XrAction, PLAIN) \
-    _(binding, XrPath, PLAIN) 
+    _(duration, XrDuration, PLAIN) \
+    _(frequency, float, PLAIN) \
+    _(amplitude, float, PLAIN) 
+#define XRT_ENUMERATE_XrInputSourceLocalizedNameGetInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(sourcePath, XrPath, PLAIN) \
+    _(whichComponents, XrInputSourceLocalizedNameFlags, PLAIN) 
+#define XRT_ENUMERATE_XrInstanceCreateInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(createFlags, XrInstanceCreateFlags, PLAIN) \
+    _(applicationInfo, XrApplicationInfo, PLAIN) \
+    _(enabledApiLayerCount, uint32_t, PLAIN) \
+    _(enabledApiLayerNames, const char* const*, POINTER, true, s->enabledApiLayerCount,null-terminated) \
+    _(enabledExtensionCount, uint32_t, PLAIN) \
+    _(enabledExtensionNames, const char* const*, POINTER, true, s->enabledExtensionCount,null-terminated) 
+#define XRT_ENUMERATE_XrInstanceProperties(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(runtimeVersion, XrVersion, PLAIN) \
+    _(runtimeName, char[XR_MAX_RUNTIME_NAME_SIZE], ARRAY, XR_MAX_RUNTIME_NAME_SIZE) 
+#define XRT_ENUMERATE_XrInteractionProfileState(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(interactionProfile, XrPath, PLAIN) 
 #define XRT_ENUMERATE_XrInteractionProfileSuggestedBinding(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(interactionProfile, XrPath, PLAIN) \
     _(countSuggestedBindings, uint32_t, PLAIN) \
     _(suggestedBindings, const XrActionSuggestedBinding*, POINTER, true, s->countSuggestedBindings) 
-#define XRT_ENUMERATE_XrSessionCreateInfo(_) \
+#define XRT_ENUMERATE_XrOffset2Df(_) \
+    _(x, float, PLAIN) \
+    _(y, float, PLAIN) 
+#define XRT_ENUMERATE_XrOffset2Di(_) \
+    _(x, int32_t, PLAIN) \
+    _(y, int32_t, PLAIN) 
+#define XRT_ENUMERATE_XrPosef(_) \
+    _(orientation, XrQuaternionf, PLAIN) \
+    _(position, XrVector3f, PLAIN) 
+#define XRT_ENUMERATE_XrQuaternionf(_) \
+    _(x, float, PLAIN) \
+    _(y, float, PLAIN) \
+    _(z, float, PLAIN) \
+    _(w, float, PLAIN) 
+#define XRT_ENUMERATE_XrRect2Df(_) \
+    _(offset, XrOffset2Df, PLAIN) \
+    _(extent, XrExtent2Df, PLAIN) 
+#define XRT_ENUMERATE_XrRect2Di(_) \
+    _(offset, XrOffset2Di, PLAIN) \
+    _(extent, XrExtent2Di, PLAIN) 
+#define XRT_ENUMERATE_XrReferenceSpaceCreateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(createFlags, XrSessionCreateFlags, PLAIN) \
-    _(systemId, XrSystemId, PLAIN) 
-#define XRT_ENUMERATE_XrActiveActionSet(_) \
-    _(actionSet, XrActionSet, PLAIN) \
-    _(subactionPath, XrPath, PLAIN) 
-#define XRT_ENUMERATE_XrSessionBeginInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(primaryViewConfigurationType, XrViewConfigurationType, PLAIN) 
+    _(referenceSpaceType, XrReferenceSpaceType, PLAIN) \
+    _(poseInReferenceSpace, XrPosef, PLAIN) 
 #define XRT_ENUMERATE_XrSessionActionSetsAttachInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(countActionSets, uint32_t, PLAIN) \
     _(actionSets, const XrActionSet*, POINTER, true, s->countActionSets) 
+#define XRT_ENUMERATE_XrSessionBeginInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(primaryViewConfigurationType, XrViewConfigurationType, PLAIN) 
+#define XRT_ENUMERATE_XrSessionCreateInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(createFlags, XrSessionCreateFlags, PLAIN) \
+    _(systemId, XrSystemId, PLAIN) 
+#define XRT_ENUMERATE_XrSpaceLocation(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(locationFlags, XrSpaceLocationFlags, PLAIN) \
+    _(pose, XrPosef, PLAIN) 
+#define XRT_ENUMERATE_XrSpaceLocationData(_) \
+    _(locationFlags, XrSpaceLocationFlags, PLAIN) \
+    _(pose, XrPosef, PLAIN) 
+#define XRT_ENUMERATE_XrSpaceLocations(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(locationCount, uint32_t, PLAIN) \
+    _(locations, XrSpaceLocationData*, POINTER, false, s->locationCount) 
+#define XRT_ENUMERATE_XrSpaceVelocities(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(velocityCount, uint32_t, PLAIN) \
+    _(velocities, XrSpaceVelocityData*, POINTER, false, s->velocityCount) 
+#define XRT_ENUMERATE_XrSpaceVelocity(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(velocityFlags, XrSpaceVelocityFlags, PLAIN) \
+    _(linearVelocity, XrVector3f, PLAIN) \
+    _(angularVelocity, XrVector3f, PLAIN) 
+#define XRT_ENUMERATE_XrSpaceVelocityData(_) \
+    _(velocityFlags, XrSpaceVelocityFlags, PLAIN) \
+    _(linearVelocity, XrVector3f, PLAIN) \
+    _(angularVelocity, XrVector3f, PLAIN) 
+#define XRT_ENUMERATE_XrSpacesLocateInfo(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, const void*, XR) \
+    _(baseSpace, XrSpace, PLAIN) \
+    _(time, XrTime, PLAIN) \
+    _(spaceCount, uint32_t, PLAIN) \
+    _(spaces, const XrSpace*, POINTER, true, s->spaceCount) 
+#define XRT_ENUMERATE_XrSpheref(_) \
+    _(center, XrPosef, PLAIN) \
+    _(radius, float, PLAIN) 
 #define XRT_ENUMERATE_XrSwapchainCreateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7794,108 +7882,75 @@
     _(faceCount, uint32_t, PLAIN) \
     _(arraySize, uint32_t, PLAIN) \
     _(mipCount, uint32_t, PLAIN) 
-#define XRT_ENUMERATE_XrActionsSyncInfo(_) \
+#define XRT_ENUMERATE_XrSwapchainImageAcquireInfo(_) \
     _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(countActiveActionSets, uint32_t, PLAIN) \
-    _(activeActionSets, const XrActiveActionSet*, POINTER, true, s->countActiveActionSets) 
+    _(next, const void*, XR) 
 #define XRT_ENUMERATE_XrSwapchainImageBaseHeader(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) 
-#define XRT_ENUMERATE_XrBoundSourcesForActionEnumerateInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(action, XrAction, PLAIN) 
-#define XRT_ENUMERATE_XrInputSourceLocalizedNameGetInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(sourcePath, XrPath, PLAIN) \
-    _(whichComponents, XrInputSourceLocalizedNameFlags, PLAIN) 
-#define XRT_ENUMERATE_XrColor3f(_) \
-    _(r, float, PLAIN) \
-    _(g, float, PLAIN) \
-    _(b, float, PLAIN) 
-#define XRT_ENUMERATE_XrCompositionLayerProjectionView(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(pose, XrPosef, PLAIN) \
-    _(fov, XrFovf, PLAIN) \
-    _(subImage, XrSwapchainSubImage, PLAIN) 
-#define XRT_ENUMERATE_XrEventDataInteractionProfileChanged(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(session, XrSession, PLAIN) 
-#define XRT_ENUMERATE_XrExtent3Df(_) \
-    _(width, float, PLAIN) \
-    _(height, float, PLAIN) \
-    _(depth, float, PLAIN) 
-#define XRT_ENUMERATE_XrInteractionProfileState(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(interactionProfile, XrPath, PLAIN) 
-#define XRT_ENUMERATE_XrSpheref(_) \
-    _(center, XrPosef, PLAIN) \
-    _(radius, float, PLAIN) 
-#define XRT_ENUMERATE_XrActionCreateInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(actionName, char[XR_MAX_ACTION_NAME_SIZE], ARRAY, XR_MAX_ACTION_NAME_SIZE) \
-    _(actionType, XrActionType, PLAIN) \
-    _(countSubactionPaths, uint32_t, PLAIN) \
-    _(subactionPaths, const XrPath*, POINTER, true, s->countSubactionPaths) \
-    _(localizedActionName, char[XR_MAX_LOCALIZED_ACTION_NAME_SIZE], ARRAY, XR_MAX_LOCALIZED_ACTION_NAME_SIZE) 
-#define XRT_ENUMERATE_XrBoxf(_) \
-    _(center, XrPosef, PLAIN) \
-    _(extents, XrExtent3Df, PLAIN) 
-#define XRT_ENUMERATE_XrFrustumf(_) \
-    _(pose, XrPosef, PLAIN) \
-    _(fov, XrFovf, PLAIN) \
-    _(nearZ, float, PLAIN) \
-    _(farZ, float, PLAIN) 
-#define XRT_ENUMERATE_XrUuid(_) \
-    _(data, uint8_t[XR_UUID_SIZE], ARRAY, XR_UUID_SIZE) 
-#define XRT_ENUMERATE_XrSwapchainImageAcquireInfo(_) \
+#define XRT_ENUMERATE_XrSwapchainImageReleaseInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
 #define XRT_ENUMERATE_XrSwapchainImageWaitInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(timeout, XrDuration, PLAIN) 
-#define XRT_ENUMERATE_XrSwapchainImageReleaseInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) 
-#define XRT_ENUMERATE_XrReferenceSpaceCreateInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(referenceSpaceType, XrReferenceSpaceType, PLAIN) \
-    _(poseInReferenceSpace, XrPosef, PLAIN) 
-#define XRT_ENUMERATE_XrActionSpaceCreateInfo(_) \
+#define XRT_ENUMERATE_XrSwapchainSubImage(_) \
+    _(swapchain, XrSwapchain, PLAIN) \
+    _(imageRect, XrRect2Di, PLAIN) \
+    _(imageArrayIndex, uint32_t, PLAIN) 
+#define XRT_ENUMERATE_XrSystemGetInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(action, XrAction, PLAIN) \
-    _(subactionPath, XrPath, PLAIN) \
-    _(poseInActionSpace, XrPosef, PLAIN) 
-#define XRT_ENUMERATE_XrSpaceLocation(_) \
+    _(formFactor, XrFormFactor, PLAIN) 
+#define XRT_ENUMERATE_XrSystemGraphicsProperties(_) \
+    _(maxSwapchainImageHeight, uint32_t, PLAIN) \
+    _(maxSwapchainImageWidth, uint32_t, PLAIN) \
+    _(maxLayerCount, uint32_t, PLAIN) 
+#define XRT_ENUMERATE_XrSystemProperties(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
-    _(locationFlags, XrSpaceLocationFlags, PLAIN) \
-    _(pose, XrPosef, PLAIN) 
-#define XRT_ENUMERATE_XrSpaceVelocity(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(velocityFlags, XrSpaceVelocityFlags, PLAIN) \
-    _(linearVelocity, XrVector3f, PLAIN) \
-    _(angularVelocity, XrVector3f, PLAIN) 
-#define XRT_ENUMERATE_XrFovf(_) \
-    _(angleLeft, float, PLAIN) \
-    _(angleRight, float, PLAIN) \
-    _(angleUp, float, PLAIN) \
-    _(angleDown, float, PLAIN) 
+    _(systemId, XrSystemId, PLAIN) \
+    _(vendorId, uint32_t, PLAIN) \
+    _(systemName, char[XR_MAX_SYSTEM_NAME_SIZE], ARRAY, XR_MAX_SYSTEM_NAME_SIZE) \
+    _(graphicsProperties, XrSystemGraphicsProperties, PLAIN) \
+    _(trackingProperties, XrSystemTrackingProperties, PLAIN) 
+#define XRT_ENUMERATE_XrSystemTrackingProperties(_) \
+    _(orientationTracking, XrBool32, PLAIN) \
+    _(positionTracking, XrBool32, PLAIN) 
+#define XRT_ENUMERATE_XrUuid(_) \
+    _(data, uint8_t[XR_UUID_SIZE], ARRAY, XR_UUID_SIZE) 
+#define XRT_ENUMERATE_XrVector2f(_) \
+    _(x, float, PLAIN) \
+    _(y, float, PLAIN) 
+#define XRT_ENUMERATE_XrVector3f(_) \
+    _(x, float, PLAIN) \
+    _(y, float, PLAIN) \
+    _(z, float, PLAIN) 
+#define XRT_ENUMERATE_XrVector4f(_) \
+    _(x, float, PLAIN) \
+    _(y, float, PLAIN) \
+    _(z, float, PLAIN) \
+    _(w, float, PLAIN) 
 #define XRT_ENUMERATE_XrView(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(pose, XrPosef, PLAIN) \
     _(fov, XrFovf, PLAIN) 
+#define XRT_ENUMERATE_XrViewConfigurationProperties(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(viewConfigurationType, XrViewConfigurationType, PLAIN) \
+    _(fovMutable, XrBool32, PLAIN) 
+#define XRT_ENUMERATE_XrViewConfigurationView(_) \
+    _(type, XrStructureType, PLAIN) \
+    _(next, void*, XR) \
+    _(recommendedImageRectWidth, uint32_t, PLAIN) \
+    _(maxImageRectWidth, uint32_t, PLAIN) \
+    _(recommendedImageRectHeight, uint32_t, PLAIN) \
+    _(maxImageRectHeight, uint32_t, PLAIN) \
+    _(recommendedSwapchainSampleCount, uint32_t, PLAIN) \
+    _(maxSwapchainSampleCount, uint32_t, PLAIN) 
 #define XRT_ENUMERATE_XrViewLocateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7906,60 +7961,5 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(viewStateFlags, XrViewStateFlags, PLAIN) 
-#define XRT_ENUMERATE_XrViewConfigurationView(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(recommendedImageRectWidth, uint32_t, PLAIN) \
-    _(maxImageRectWidth, uint32_t, PLAIN) \
-    _(recommendedImageRectHeight, uint32_t, PLAIN) \
-    _(maxImageRectHeight, uint32_t, PLAIN) \
-    _(recommendedSwapchainSampleCount, uint32_t, PLAIN) \
-    _(maxSwapchainSampleCount, uint32_t, PLAIN) 
-#define XRT_ENUMERATE_XrSwapchainSubImage(_) \
-    _(swapchain, XrSwapchain, PLAIN) \
-    _(imageRect, XrRect2Di, PLAIN) \
-    _(imageArrayIndex, uint32_t, PLAIN) 
-#define XRT_ENUMERATE_XrCompositionLayerBaseHeader(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(layerFlags, XrCompositionLayerFlags, PLAIN) \
-    _(space, XrSpace, PLAIN) 
-#define XRT_ENUMERATE_XrHapticVibration(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(duration, XrDuration, PLAIN) \
-    _(frequency, float, PLAIN) \
-    _(amplitude, float, PLAIN) 
-#define XRT_ENUMERATE_XrCompositionLayerProjection(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(layerFlags, XrCompositionLayerFlags, PLAIN) \
-    _(space, XrSpace, PLAIN) \
-    _(viewCount, uint32_t, PLAIN) \
-    _(views, const XrCompositionLayerProjectionView*, POINTER, true, s->viewCount) 
-#define XRT_ENUMERATE_XrSpacesLocateInfo(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, const void*, XR) \
-    _(baseSpace, XrSpace, PLAIN) \
-    _(time, XrTime, PLAIN) \
-    _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, const XrSpace*, POINTER, true, s->spaceCount) 
-#define XRT_ENUMERATE_XrSpaceLocations(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(locationCount, uint32_t, PLAIN) \
-    _(locations, XrSpaceLocationData*, POINTER, false, s->locationCount) 
-#define XRT_ENUMERATE_XrSpaceLocationData(_) \
-    _(locationFlags, XrSpaceLocationFlags, PLAIN) \
-    _(pose, XrPosef, PLAIN) 
-#define XRT_ENUMERATE_XrSpaceVelocities(_) \
-    _(type, XrStructureType, PLAIN) \
-    _(next, void*, XR) \
-    _(velocityCount, uint32_t, PLAIN) \
-    _(velocities, XrSpaceVelocityData*, POINTER, false, s->velocityCount) 
-#define XRT_ENUMERATE_XrSpaceVelocityData(_) \
-    _(velocityFlags, XrSpaceVelocityFlags, PLAIN) \
-    _(linearVelocity, XrVector3f, PLAIN) \
-    _(angularVelocity, XrVector3f, PLAIN) 
 
 #endif // XRT_REFLECTION_STRUCT_H

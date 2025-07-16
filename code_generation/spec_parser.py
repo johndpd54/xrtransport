@@ -317,7 +317,9 @@ def collect_extensions(xml_root, structs, functions):
         if extension.structs or extension.functions:
             extensions[extension_name] = extension
     
-    extensions[None] = XrExtension(list(no_extension_structs), list(no_extension_functions))
+    structs_list = sorted(no_extension_structs, key=lambda x: x.name)
+    functions_list = sorted(no_extension_functions, key=lambda x: x.name)
+    extensions[None] = XrExtension(structs_list, functions_list)
 
     return extensions
             
