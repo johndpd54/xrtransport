@@ -1,9 +1,79 @@
 import random
+import string
 import os
 from collections import deque
 from mako.template import Template
 from mako.lookup import TemplateLookup
 from mako import exceptions
+
+ASSERT_COMMAND = "assert"
+
+class StructPlan:
+    def __init__(self, type_name, children=None):
+        self.type_name = type_name
+        self.children = children if children != None else {}
+    
+    def init(self, out, binding, name, indent=""):
+        for member_name, child in self.children.items():
+            child.init(out, f"{binding}.{member_name}", f"{name}_{member_name}", indent)
+    
+    def compare(self, out, binding, indent=""):
+        for member_name, child in self.children.items():
+            if member_name == "next" and isinstance(child, PointerPlan):
+                # cast binding when comparing void* next
+                # we may want a more specific check as this might catch e.g. int* next
+                child_binding = f"(({child.type_name}*){binding}.next)"
+            else:
+                child_binding = f"{binding}.{member_name}"
+            child.compare(out, child_binding, indent)
+
+class PointerPlan:
+    def __init__(self, type_name, children=None):
+        self.type_name = type_name
+        self.children = children if children != None else []
+    
+    def init(self, out, binding, name, indent=""):
+        # stack array declaration
+        out.append(f"{indent}{self.type_name} {name}[{len(self.children)}]{{}};")
+        # init all members of array
+        for index, child in enumerate(self.children):
+            child.init(out, f"{name}[{index}]", f"{name}_{index}", indent)
+        # set pointer to stack array
+        out.append(f"{indent}{binding} = {name};")
+        pass
+
+    def compare(self, out, binding, indent=""):
+        for index, child in enumerate(self.children):
+            child.compare(out, f"{binding}[{index}]", indent)
+
+# Arrays use the same value for every slot because length is
+# known at compile time, not generate time.
+class ArrayPlan:
+    def __init__(self, type_name, array_length, child=None):
+        self.type_name = type_name
+        self.array_length = array_length
+        self.child = child
+    
+    def init(self, out, binding, name, indent=""):
+        out.append(f"{indent}for (int i = 0; i < {self.array_length}; i++) {{")
+        self.child.init(out, f"{binding}[i]", name, indent + "    ")
+        out.append(f"{indent}}}")
+    
+    def compare(self, out, binding, indent=""):
+        out.append(f"{indent}for (int i = 0; i < {self.array_length}; i++) {{")
+        self.child.compare(out, f"{binding}[i]", indent + "    ")
+        out.append(f"{indent}}}")
+
+class ValuePlan:
+    def __init__(self, type_name, value=None):
+        self.type_name = type_name
+        self.value = value
+    
+    def init(self, out, binding, name, indent=""):
+        out.append(f"{indent}{binding} = {self.value};")
+    
+    def compare(self, out, binding, indent=""):
+        out.append(f"{indent}{ASSERT_COMMAND}({binding} == {self.value});")
 
 # This stuff is very unwieldy to do in a Mako template, so it's defined here
 class RandomStructGenerator:
@@ -12,51 +82,74 @@ class RandomStructGenerator:
         self.test_structs = [s for s in spec.test_structs if not s.name in spec.custom_structs and not s.header]
         self.test_xr_structs = [s for s in self.test_structs if s.xr_type]
         self.nullptr_chance = 0.6
-        self.asst = "assert"
 
-    def _plan_member(self, plan, type_name):
+    def plan_member(self, type_name):
         struct = self.spec.find_struct(type_name)
         if struct:
-            self._plan_struct(plan, struct)
+            return self.plan_struct(struct)
         else:
-            self._plan_primitive(plan)
+            return self.plan_value(type_name)
 
-    def _plan_struct(self, plan, struct):
+    def plan_struct(self, struct):
+        struct_plan = StructPlan(struct.name)
         if struct.xr_type:
-            if random.random() < self.nullptr_chance: # push a boolean to indicate end of chain
-                plan.append(True)
+            struct_plan.children["type"] = ValuePlan("XrStructureType", struct.xr_type)
+            if random.random() < self.nullptr_chance:
+                struct_plan.children["next"] = ValuePlan("void*", "nullptr")
             else:
-                plan.append(False)
-                next_struct = self.choose_xr_struct()
-                plan.append(next_struct) # push next struct type in chain
-                self._plan_struct(plan, next_struct) # recurse down the chain
+                next_xr_struct = self.choose_xr_struct()
+                next_plan = self.plan_struct(next_xr_struct) # recurse to get StructPlan
+                next_pointer_plan = PointerPlan(next_xr_struct.name, [next_plan]) # wrap in PointerPlan to allocate on stack
+                struct_plan.children["next"] = next_pointer_plan
             rest_members = struct.members[2:]
         else:
             rest_members = struct.members
+        
         for member in rest_members:
             if member.pointer:
-                if random.random() < self.nullptr_chance: # push a boolean to indicate nullptr
-                    plan.append(True)
+                if random.random() < self.nullptr_chance:
+                    struct_plan.children[member.name] = ValuePlan(member.full_type(), "nullptr")
                     continue
-                plan.append(False)
-                if member.len == "null-terminated":
-                    random_string = "".join(random.choices(string.ascii_letters + string.digits, k=random.randint(0, 100)))
-                    plan.append(random_string) # push string value
-                elif member.len:
-                    new_length = random.randint(1, 20) # push length of array ptr
-                    plan.append(new_length)
-                    for i in range(new_length):
-                        self._plan_member(plan, member.type) # recurse for each element of array
-                else:
-                    self._plan_member(plan, member.type) # single item pointer
-            elif member.array:
-                self._plan_member(plan, member.type) # only plan for one item, each item in the array will be the same for convenience
-            else:
-                self._plan_member(plan, member.type) # singular item, plan for struct or primitive
                 
-    def _plan_primitive(self, plan):
-        hex_value = hex(random.randint(0, 2**64 - 1))
-        plan.append(hex_value) # plan primitive's value
+                pointer_plan = PointerPlan(member.type)
+                if member.len:
+                    array_length = random.randint(1, 20)
+                    if member.len != "null-terminated":
+                        # find the existing value plan for the member that specifies this member's length
+                        # note that this will fail if the length-specifying member comes after, but I don't
+                        # think this problem exists in the current spec
+                        length_member_plan = struct_plan.children[member.len]
+                        assert isinstance(length_member_plan, ValuePlan)
+                        length_member_plan.value = str(array_length)
+                else:
+                    array_length = 1
+                    
+                for _ in range(array_length):
+                    pointer_plan.children.append(self.plan_member(member.type))
+                    
+                if member.len == "null-terminated":
+                    pointer_plan.children.append(ValuePlan(member.full_type(), member.type + "{}"))
+                
+                struct_plan.children[member.name] = pointer_plan
+            elif member.array:
+                array_plan = ArrayPlan(member.type, member.array)
+                array_plan.child = self.plan_member(member.type)
+                struct_plan.children[member.name] = array_plan
+            else:
+                struct_plan.children[member.name] = self.plan_member(member.type)
+        
+        return struct_plan
+    
+    def plan_value(self, type_name):
+        return ValuePlan(type_name, self.gen_random_value(type_name))
+                        
+    def gen_random_value(self, type_name):
+        if type_name == "char":
+            return "'" + random.choice(string.ascii_letters + string.digits) + "'"
+        # put in other special cases here
+        # elif type_name == "...":
+        else:
+            return f"({type_name}) {hex(random.randint(0, 2**64 - 1))}"
     
     def choose_struct(self):
         return random.choice(self.test_structs)
@@ -67,141 +160,23 @@ class RandomStructGenerator:
     def generate_plan(self, struct=None):
         if struct == None:
             struct = self.choose_struct()
-        plan = deque()
-        plan.append(struct)
-        self._plan_struct(plan, struct)
-        return StructFuzzerPlan(plan, self.spec)
-
-# represents a plan that comes from a first pass over a struct to determine how to generate it
-class StructFuzzerPlan:
-    def __init__(self, plan, spec):
-        # save an unmodified copy of the deque to restore
-        self.saved_plan = plan
-        self.spec = spec
-        self.asst = "assert"
+        return self.plan_struct(struct)
     
-    def _init_member(self, plan, out, type_name, name, binding, indent=0):
-        struct = self.spec.find_struct(type_name)
-        if struct:
-            self._init_struct(plan, out, struct, name, binding, indent)
-        else:
-            self._init_primitive(plan, out, type_name, name, binding, indent)
-
-    def _init_struct(self, plan, out, struct, name, binding, indent=0):
-        if struct.xr_type:
-            out.append(f"{indent * ' '}{binding}.type = {struct.xr_type};")
-            if plan.popleft(): # should generate nullptr
-                out.append(f"{indent * ' '}{binding}.next = nullptr;")
-            else:
-                next_struct = plan.popleft() # randomly chosen xr struct
-                out.append(f"{indent * ' '}{next_struct.name} {name}_next{{}};")
-                self._init_struct(plan, out, next_struct, f"{name}_next", f"{name}_next", indent)
-                out.append(f"{indent * ' '}{binding}.next = &{name}_next;")
-            rest_members = struct.members[2:]
-        else:
-            rest_members = struct.members
-        for member in rest_members:
-            if member.pointer:
-                if plan.popleft(): # should generate nullptr
-                    # allow pointer chains to terminate
-                    if member.len and member.len != "null-terminated":
-                        # if this is set to nullptr, its length should also be zero
-                        # out.append(f"{indent * ' '}{binding}.{member.len} = 0;")
-                        pass
-                        # actually, the serializer/deserializer should be able to handle this kind
-                        # of invalid input and pass it on as-is. Even though this is an error state,
-                        # we'll test for the possibility. It shouldn't crash and also the server runtime
-                        # should hopefully handle it gracefully
-                    out.append(f"{indent * ' '}{binding}.{member.name} = nullptr;")
-                    continue
-                if member.len == "null-terminated":
-                    random_string = plan.popleft()
-                    out.append(f"{indent * ' '}{binding}.{member.name} = \"{random_string}\";")
-                elif member.len:
-                    # reset its length to a smaller number (overwrite member that specifies its length)
-                    new_length = plan.popleft()
-                    out.append(f"{indent * ' '}{binding}.{member.len} = {new_length};")
-                    out.append(f"{indent * ' '}{member.type} {name}_{member.name}[{new_length}]{{}};")
-                    for i in range(new_length):
-                        self._init_member(plan, out, member.type, f"{name}_{member.name}_{i}", f"{name}_{member.name}[{i}]", indent)
-                    out.append(f"{indent * ' '}{binding}.{member.name} = {name}_{member.name};")
-                else:
-                    out.append(f"{indent * ' '}{member.type} {name}_{member.name}{{}};")
-                    self._init_member(plan, out, member.type, f"{name}_{member.name}", f"{name}_{member.name}", indent)
-                    out.append(f"{indent * ' '}{binding}.{member.name} = &{name}_{member.name};")
-            elif member.array:
-                out.append(f"{indent * ' '}for (int i = 0; i < {member.array}; i++) {{")
-                self._init_member(plan, out, member.type, f"{name}_{member.name}", f"{binding}.{member.name}[i]", indent + 4)
-                out.append(f"{indent * ' '}}}")
-            else:
-                self._init_member(plan, out, member.type, f"{name}_{member.name}", f"{binding}.{member.name}", indent)
-
-    def _init_primitive(self, plan, out, type_name, name, binding, indent=0):
-        hex_value = plan.popleft()
-        out.append(f"{indent * ' '}{binding} = ({type_name})({hex_value});")
+    def init_struct(self, struct_plan, struct_name, indent=""):
+        out = []
+        out.append(f"{indent}{struct_plan.type_name} {struct_name}{{}};")
+        struct_plan.init(out, struct_name, struct_name, indent)
+        return "\n".join(out)
     
-    def _compare_member(self, plan, out, type_name, name, binding, indent=0):
-        struct = self.spec.find_struct(type_name)
-        if struct:
-            self._compare_struct(plan, out, struct, name, binding, indent)
-        else:
-            self._compare_primitive(plan, out, type_name, name, binding, indent)
-
-    def _compare_struct(self, plan, out, struct, name, binding, indent=0):
-        if struct.xr_type:
-            out.append(f"{indent * ' '}{self.asst}({binding}.type == {struct.xr_type});")
-            if plan.popleft():
-                out.append(f"{indent * ' '}{self.asst}({binding}.next == nullptr);")
-            else:
-                next_struct = plan.popleft()
-                self._compare_struct(plan, out, next_struct, f"{name}_next", f"(*({next_struct.name}*){binding}.next)", indent)
-            rest_members = struct.members[2:]
-        else:
-            rest_members = struct.members
-        for member in rest_members:
-            if member.pointer:
-                if plan.popleft(): # should generate nullptr
-                    out.append(f"{indent * ' '}{self.asst}({binding}.{member.name} == nullptr);")
-                    continue
-                if member.len == "null-terminated":
-                    random_string = plan.popleft()
-                    out.append(f"{indent * ' '}{self.asst}(strcmp({binding}.{member.name}, \"{random_string}\") == 0);")
-                elif member.len:
-                    # reset its length to a smaller number (overwrite member that specifies its length)
-                    new_length = plan.popleft()
-                    for i in range(new_length):
-                        self._compare_member(plan, out, member.type, f"{name}_{member.name}_{i}", f"{binding}.{member.name}[{i}]", indent)
-                else:
-                    self._compare_member(plan, out, member.type, f"{name}_{member.name}", f"{binding}->{member.name}", indent)
-            elif member.array:
-                out.append(f"{indent * ' '}for (int i = 0; i < {member.array}; i++) {{")
-                self._compare_member(plan, out, member.type, f"{name}_{member.name}", f"{binding}.{member.name}[i]", indent + 4)
-                out.append(f"{indent * ' '}}}")
-            else:
-                self._compare_member(plan, out, member.type, f"{name}_{member.name}", f"{binding}.{member.name}", indent)
-
-    def _compare_primitive(self, plan, out, type_name, name, binding, indent=0):
-        hex_value = plan.popleft()
-        out.append(f"{indent * ' '}{self.asst}({binding} == ({type_name})({hex_value}));")
-    
-    def gen_init(self, name, indent=0):
-        # copy the deque so it can be safely popped from
-        plan = deque(self.saved_plan)
-        struct = plan.popleft()
-        lines = []
-        lines.append(f"{indent * ' '}{struct.name} {name}{{}};")
-        self._init_struct(plan, lines, struct, name, name, indent)
-        return os.linesep.join(lines)
-    
-    def gen_compare(self, name, indent=0):
-        # copy the deque so it can be safely popped from
-        plan = deque(self.saved_plan)
-        struct = plan.popleft()
-        lines = []
-        self._compare_struct(plan, lines, struct, name, name, indent)
-        return os.linesep.join(lines)
+    def compare_struct(self, struct_plan, struct_name, indent=""):
+        out = []
+        struct_plan.compare(out, struct_name, indent)
+        return "\n".join(out)
 
 def generate_struct_fuzzer(spec, templates_dir, out):
+    # Make fuzzer output deterministic (not thread safe)
+    random.seed(1337)
+
     template_lookup = TemplateLookup(directories=[f"{templates_dir}/test"])
     template = template_lookup.get_template("struct_fuzzer.mako")
     struct_generator = RandomStructGenerator(spec)
