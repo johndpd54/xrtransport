@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cstring>
 #include <iostream>
+#include <vector>
 
 using namespace xrtransport;
 
