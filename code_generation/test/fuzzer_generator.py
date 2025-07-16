@@ -173,9 +173,9 @@ class RandomStructGenerator:
         struct_plan.compare(out, struct_name, indent)
         return "\n".join(out)
 
-def generate_struct_fuzzer(spec, templates_dir, out):
+def generate_struct_fuzzer(spec, templates_dir, out, fuzzer_seed):
     # Make fuzzer output deterministic (not thread safe)
-    random.seed(1337)
+    random.seed(fuzzer_seed)
 
     template_lookup = TemplateLookup(directories=[f"{templates_dir}/test"])
     template = template_lookup.get_template("struct_fuzzer.mako")

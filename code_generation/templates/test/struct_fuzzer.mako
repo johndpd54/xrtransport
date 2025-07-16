@@ -75,7 +75,7 @@ int main() {
     //
     // Struct initialization
     //
-<% plans = [struct_generator.generate_plan() for _ in range(100)] %>
+<% plans = [struct_generator.generate_plan() for _ in range(1000)] %>
 % for i, plan in enumerate(plans):
 ${struct_generator.init_struct(plan, f"item{i}", "    ")}
 % endfor

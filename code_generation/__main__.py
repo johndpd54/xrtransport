@@ -1,5 +1,5 @@
-import sys
 import os
+import argparse
 from . import (
     get_xml_root,
     parse_spec,
@@ -10,10 +10,16 @@ from . import (
     TEMPLATES_DIR
 )
 
-if len(sys.argv) < 3:
-    print("2 arguments required: xr.xml path, generated folder")
-    sys.exit(1)
-xr_xml_path, generated_folder = sys.argv[1:3]
+parser = argparse.ArgumentParser(description="Generate serialization, deserialization, and test code based on OpenXR spec")
+parser.add_argument("openxr_spec_path", help="Path to the xr.xml file for the OpenXR spec")
+parser.add_argument("generated_out", help="Path to the folder to place generated source code in")
+parser.add_argument("--fuzzer-seed", default=1337, type=int, help="Numerical seed to use for the fuzzer")
+args = parser.parse_args()
+
+xr_xml_path = args.openxr_spec_path
+generated_folder = args.generated_out
+fuzzer_seed = args.fuzzer_seed
+
 xml_root = get_xml_root(xr_xml_path)
 spec = parse_spec(xml_root)
 
@@ -29,4 +35,4 @@ with open(serializer_path, "wb") as out:
 with open(deserializer_path, "wb") as out:
     generate_deserializer(spec, TEMPLATES_DIR, out)
 with open(fuzzer_path, "wb") as out:
-    generate_struct_fuzzer(spec, TEMPLATES_DIR, out)
+    generate_struct_fuzzer(spec, TEMPLATES_DIR, out, fuzzer_seed)
