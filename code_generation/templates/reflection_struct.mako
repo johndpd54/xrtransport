@@ -2,7 +2,11 @@
 #define XRT_REFLECTION_STRUCT_H
 
 <%def name="list_struct(struct)">\
-% if struct.xr_type:
+% if struct.custom and struct.xr_type:
+(${struct.name}, XR_CUSTOM, ${struct.xr_type})\
+% elif struct.custom:
+(${struct.name}, CUSTOM, ${struct.xr_type})\
+% elif struct.xr_type:
 (${struct.name}, XR, ${struct.xr_type})\
 % elif struct.header:
 (${struct.name}, XR_HEADER)\
@@ -12,12 +16,20 @@
 </%def>
 
 <%def name="enumerate_member(member)">\
-% if member.type == "void" and member.pointer == "*" and member.name == "next":
+<% member_struct = spec.find_struct(member.type) %>\
+% if member.is_next_ptr() or (member.pointer and member_struct and member_struct.header):
 (${member.name}, ${member.full_type()}, XR)\
 % elif member.pointer:
 (${member.name}, ${member.full_type()}, POINTER, \
 ${"true" if member.qualifier == "const" else "false"}, \
-${member.len if member.len else "1"})\
+% if member.len == "null-terminated":
+count_null_terminated(s->${member.name})\
+% elif member.len:
+s->${member.len}\
+% else:
+1\
+% endif
+)\
 % elif member.array:
 (${member.name}, ${member.full_type()}, ARRAY, \
 ${member.array})\

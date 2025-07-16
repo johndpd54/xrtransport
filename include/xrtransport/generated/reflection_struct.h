@@ -2682,10 +2682,11 @@
     _(XrFrameBeginInfo, XR, XR_TYPE_FRAME_BEGIN_INFO) \
     _(XrQuaternionf, PLAIN) \
     _(XrPosef, PLAIN) \
-    _(XrFrameEndInfo, XR, XR_TYPE_FRAME_END_INFO) \
+    _(XrFrameEndInfo, XR_CUSTOM, XR_TYPE_FRAME_END_INFO) \
     _(XrOffset2Df, PLAIN) \
     _(XrFrameWaitInfo, XR, XR_TYPE_FRAME_WAIT_INFO) \
     _(XrExtent2Df, PLAIN) \
+    _(XrVector3f, PLAIN) \
     _(XrRect2Df, PLAIN) \
     _(XrOffset2Di, PLAIN) \
     _(XrFrameState, XR, XR_TYPE_FRAME_STATE) \
@@ -2695,13 +2696,13 @@
     _(XrExtensionProperties, XR, XR_TYPE_EXTENSION_PROPERTIES) \
     _(XrApiLayerProperties, XR, XR_TYPE_API_LAYER_PROPERTIES) \
     _(XrEventDataBuffer, XR, XR_TYPE_EVENT_DATA_BUFFER) \
+    _(XrBodySkeletonJointHTC, PLAIN) \
     _(XrEventDataBaseHeader, XR_HEADER) \
     _(XrApplicationInfo, PLAIN) \
-    _(XrInstanceCreateInfo, XR, XR_TYPE_INSTANCE_CREATE_INFO) \
+    _(XrInstanceCreateInfo, XR_CUSTOM, XR_TYPE_INSTANCE_CREATE_INFO) \
     _(XrEventDataEventsLost, XR, XR_TYPE_EVENT_DATA_EVENTS_LOST) \
     _(XrInstanceProperties, XR, XR_TYPE_INSTANCE_PROPERTIES) \
     _(XrEventDataInstanceLossPending, XR, XR_TYPE_EVENT_DATA_INSTANCE_LOSS_PENDING) \
-    _(XrVector3f, PLAIN) \
     _(XrEventDataSessionStateChanged, XR, XR_TYPE_EVENT_DATA_SESSION_STATE_CHANGED) \
     _(XrSystemGetInfo, XR, XR_TYPE_SYSTEM_GET_INFO) \
     _(XrEventDataReferenceSpaceChangePending, XR, XR_TYPE_EVENT_DATA_REFERENCE_SPACE_CHANGE_PENDING) \
@@ -2710,8 +2711,8 @@
     _(XrSystemTrackingProperties, PLAIN) \
     _(XrViewConfigurationProperties, XR, XR_TYPE_VIEW_CONFIGURATION_PROPERTIES) \
     _(XrActionStateBoolean, XR, XR_TYPE_ACTION_STATE_BOOLEAN) \
-    _(XrVector2f, PLAIN) \
     _(XrActionStateFloat, XR, XR_TYPE_ACTION_STATE_FLOAT) \
+    _(XrVector2f, PLAIN) \
     _(XrActionStateVector2f, XR, XR_TYPE_ACTION_STATE_VECTOR2F) \
     _(XrActionStatePose, XR, XR_TYPE_ACTION_STATE_POSE) \
     _(XrActionStateGetInfo, XR, XR_TYPE_ACTION_STATE_GET_INFO) \
@@ -2728,10 +2729,16 @@
     _(XrSwapchainImageBaseHeader, XR_HEADER) \
     _(XrBoundSourcesForActionEnumerateInfo, XR, XR_TYPE_BOUND_SOURCES_FOR_ACTION_ENUMERATE_INFO) \
     _(XrInputSourceLocalizedNameGetInfo, XR, XR_TYPE_INPUT_SOURCE_LOCALIZED_NAME_GET_INFO) \
+    _(XrColor3f, PLAIN) \
     _(XrCompositionLayerProjectionView, XR, XR_TYPE_COMPOSITION_LAYER_PROJECTION_VIEW) \
     _(XrEventDataInteractionProfileChanged, XR, XR_TYPE_EVENT_DATA_INTERACTION_PROFILE_CHANGED) \
+    _(XrExtent3Df, PLAIN) \
     _(XrInteractionProfileState, XR, XR_TYPE_INTERACTION_PROFILE_STATE) \
+    _(XrSpheref, PLAIN) \
     _(XrActionCreateInfo, XR, XR_TYPE_ACTION_CREATE_INFO) \
+    _(XrBoxf, PLAIN) \
+    _(XrFrustumf, PLAIN) \
+    _(XrUuid, PLAIN) \
     _(XrSwapchainImageAcquireInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_ACQUIRE_INFO) \
     _(XrSwapchainImageWaitInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_WAIT_INFO) \
     _(XrSwapchainImageReleaseInfo, XR, XR_TYPE_SWAPCHAIN_IMAGE_RELEASE_INFO) \
@@ -2753,13 +2760,6 @@
     _(XrSpaceLocationData, PLAIN) \
     _(XrSpaceVelocities, XR, XR_TYPE_SPACE_VELOCITIES) \
     _(XrSpaceVelocityData, PLAIN) \
-    _(XrBodySkeletonJointHTC, PLAIN) \
-    _(XrColor3f, PLAIN) \
-    _(XrExtent3Df, PLAIN) \
-    _(XrSpheref, PLAIN) \
-    _(XrBoxf, PLAIN) \
-    _(XrFrustumf, PLAIN) \
-    _(XrUuid, PLAIN) \
     XRT_STRUCT_LIST_XR_KHR_android_thread_settings(_) \
     XRT_STRUCT_LIST_XR_KHR_android_surface_swapchain(_) \
     XRT_STRUCT_LIST_XR_KHR_composition_layer_cube(_) \
@@ -3102,12 +3102,12 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(viewFormatCount, uint32_t, PLAIN) \
-    _(viewFormats, const VkFormat*, POINTER, true, viewFormatCount) 
+    _(viewFormats, const VkFormat*, POINTER, true, s->viewFormatCount) 
 #define XRT_ENUMERATE_XrVulkanSwapchainFormatListCreateInfoKHR(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(viewFormatCount, uint32_t, PLAIN) \
-    _(viewFormats, const VkFormat*, POINTER, true, viewFormatCount) 
+    _(viewFormats, const VkFormat*, POINTER, true, s->viewFormatCount) 
 #define XRT_ENUMERATE_XrEventDataPerfSettingsEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3171,21 +3171,21 @@
     _(next, const void*, XR) \
     _(objectType, XrObjectType, PLAIN) \
     _(objectHandle, uint64_t, PLAIN) \
-    _(objectName, const char*, POINTER, true, null-terminated) 
+    _(objectName, const char*, POINTER, true, count_null_terminated(s->objectName)) 
 #define XRT_ENUMERATE_XrDebugUtilsLabelEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(labelName, const char*, POINTER, true, null-terminated) 
+    _(labelName, const char*, POINTER, true, count_null_terminated(s->labelName)) 
 #define XRT_ENUMERATE_XrDebugUtilsMessengerCallbackDataEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(messageId, const char*, POINTER, true, null-terminated) \
-    _(functionName, const char*, POINTER, true, null-terminated) \
-    _(message, const char*, POINTER, true, null-terminated) \
+    _(messageId, const char*, POINTER, true, count_null_terminated(s->messageId)) \
+    _(functionName, const char*, POINTER, true, count_null_terminated(s->functionName)) \
+    _(message, const char*, POINTER, true, count_null_terminated(s->message)) \
     _(objectCount, uint32_t, PLAIN) \
-    _(objects, XrDebugUtilsObjectNameInfoEXT*, POINTER, false, objectCount) \
+    _(objects, XrDebugUtilsObjectNameInfoEXT*, POINTER, false, s->objectCount) \
     _(sessionLabelCount, uint32_t, PLAIN) \
-    _(sessionLabels, XrDebugUtilsLabelEXT*, POINTER, false, sessionLabelCount) 
+    _(sessionLabels, XrDebugUtilsLabelEXT*, POINTER, false, s->sessionLabelCount) 
 #define XRT_ENUMERATE_XrDebugUtilsMessengerCreateInfoEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3198,17 +3198,17 @@
     _(next, const void*, XR) \
     _(objectType, XrObjectType, PLAIN) \
     _(objectHandle, uint64_t, PLAIN) \
-    _(objectName, const char*, POINTER, true, null-terminated) 
+    _(objectName, const char*, POINTER, true, count_null_terminated(s->objectName)) 
 #define XRT_ENUMERATE_XrDebugUtilsMessengerCallbackDataEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(messageId, const char*, POINTER, true, null-terminated) \
-    _(functionName, const char*, POINTER, true, null-terminated) \
-    _(message, const char*, POINTER, true, null-terminated) \
+    _(messageId, const char*, POINTER, true, count_null_terminated(s->messageId)) \
+    _(functionName, const char*, POINTER, true, count_null_terminated(s->functionName)) \
+    _(message, const char*, POINTER, true, count_null_terminated(s->message)) \
     _(objectCount, uint32_t, PLAIN) \
-    _(objects, XrDebugUtilsObjectNameInfoEXT*, POINTER, false, objectCount) \
+    _(objects, XrDebugUtilsObjectNameInfoEXT*, POINTER, false, s->objectCount) \
     _(sessionLabelCount, uint32_t, PLAIN) \
-    _(sessionLabels, XrDebugUtilsLabelEXT*, POINTER, false, sessionLabelCount) 
+    _(sessionLabels, XrDebugUtilsLabelEXT*, POINTER, false, s->sessionLabelCount) 
 #define XRT_ENUMERATE_XrDebugUtilsMessengerCreateInfoEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3219,7 +3219,7 @@
 #define XRT_ENUMERATE_XrDebugUtilsLabelEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(labelName, const char*, POINTER, true, null-terminated) 
+    _(labelName, const char*, POINTER, true, count_null_terminated(s->labelName)) 
 #define XRT_ENUMERATE_XrGraphicsBindingOpenGLWin32KHR(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3453,10 +3453,10 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector2f*, POINTER, false, vertexCapacityInput) \
+    _(vertices, XrVector2f*, POINTER, false, s->vertexCapacityInput) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint32_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint32_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrEventDataVisibilityMaskChangedKHR(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3468,10 +3468,10 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector2f*, POINTER, false, vertexCapacityInput) \
+    _(vertices, XrVector2f*, POINTER, false, s->vertexCapacityInput) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint32_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint32_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrEventDataVisibilityMaskChangedKHR(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3636,12 +3636,12 @@
     _(next, void*, XR) \
     _(isActive, XrBool32, PLAIN) \
     _(jointCount, uint32_t, PLAIN) \
-    _(jointLocations, XrHandJointLocationEXT*, POINTER, false, jointCount) 
+    _(jointLocations, XrHandJointLocationEXT*, POINTER, false, s->jointCount) 
 #define XRT_ENUMERATE_XrHandJointVelocitiesEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(jointCount, uint32_t, PLAIN) \
-    _(jointVelocities, XrHandJointVelocityEXT*, POINTER, false, jointCount) 
+    _(jointVelocities, XrHandJointVelocityEXT*, POINTER, false, s->jointCount) 
 #define XRT_ENUMERATE_XrSystemHandTrackingPropertiesEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -3661,12 +3661,12 @@
     _(next, void*, XR) \
     _(isActive, XrBool32, PLAIN) \
     _(jointCount, uint32_t, PLAIN) \
-    _(jointLocations, XrHandJointLocationEXT*, POINTER, false, jointCount) 
+    _(jointLocations, XrHandJointLocationEXT*, POINTER, false, s->jointCount) 
 #define XRT_ENUMERATE_XrHandJointVelocitiesEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(jointCount, uint32_t, PLAIN) \
-    _(jointVelocities, XrHandJointVelocityEXT*, POINTER, false, jointCount) 
+    _(jointVelocities, XrHandJointVelocityEXT*, POINTER, false, s->jointCount) 
 #define XRT_ENUMERATE_XrSystemHandTrackingMeshPropertiesMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -3695,12 +3695,12 @@
     _(indexBufferKey, uint32_t, PLAIN) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint32_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint32_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrHandMeshVertexBufferMSFT(_) \
     _(vertexUpdateTime, XrTime, PLAIN) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrHandMeshVertexMSFT*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrHandMeshVertexMSFT*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrHandMeshVertexMSFT(_) \
     _(position, XrVector3f, PLAIN) \
     _(normal, XrVector3f, PLAIN) 
@@ -3740,7 +3740,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(viewConfigurationCount, uint32_t, PLAIN) \
-    _(enabledViewConfigurationTypes, const XrViewConfigurationType*, POINTER, true, viewConfigurationCount) 
+    _(enabledViewConfigurationTypes, const XrViewConfigurationType*, POINTER, true, s->viewConfigurationCount) 
 #define XRT_ENUMERATE_XrSecondaryViewConfigurationStateMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -3750,19 +3750,19 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(viewConfigurationCount, uint32_t, PLAIN) \
-    _(viewConfigurationStates, XrSecondaryViewConfigurationStateMSFT*, POINTER, false, viewConfigurationCount) 
+    _(viewConfigurationStates, XrSecondaryViewConfigurationStateMSFT*, POINTER, false, s->viewConfigurationCount) 
 #define XRT_ENUMERATE_XrSecondaryViewConfigurationFrameEndInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(viewConfigurationCount, uint32_t, PLAIN) \
-    _(viewConfigurationLayersInfo, const XrSecondaryViewConfigurationLayerInfoMSFT*, POINTER, true, viewConfigurationCount) 
+    _(viewConfigurationLayersInfo, const XrSecondaryViewConfigurationLayerInfoMSFT*, POINTER, true, s->viewConfigurationCount) 
 #define XRT_ENUMERATE_XrSecondaryViewConfigurationLayerInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(viewConfigurationType, XrViewConfigurationType, PLAIN) \
     _(environmentBlendMode, XrEnvironmentBlendMode, PLAIN) \
     _(layerCount, uint32_t, PLAIN) \
-    _(layers, const XrCompositionLayerBaseHeader* const*, POINTER, true, layerCount) 
+    _(layers, const XrCompositionLayerBaseHeader* const*, XR) 
 #define XRT_ENUMERATE_XrSecondaryViewConfigurationSwapchainCreateInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3771,7 +3771,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(viewConfigurationCount, uint32_t, PLAIN) \
-    _(enabledViewConfigurationTypes, const XrViewConfigurationType*, POINTER, true, viewConfigurationCount) 
+    _(enabledViewConfigurationTypes, const XrViewConfigurationType*, POINTER, true, s->viewConfigurationCount) 
 #define XRT_ENUMERATE_XrSecondaryViewConfigurationStateMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -3781,19 +3781,19 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(viewConfigurationCount, uint32_t, PLAIN) \
-    _(viewConfigurationStates, XrSecondaryViewConfigurationStateMSFT*, POINTER, false, viewConfigurationCount) 
+    _(viewConfigurationStates, XrSecondaryViewConfigurationStateMSFT*, POINTER, false, s->viewConfigurationCount) 
 #define XRT_ENUMERATE_XrSecondaryViewConfigurationFrameEndInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(viewConfigurationCount, uint32_t, PLAIN) \
-    _(viewConfigurationLayersInfo, const XrSecondaryViewConfigurationLayerInfoMSFT*, POINTER, true, viewConfigurationCount) 
+    _(viewConfigurationLayersInfo, const XrSecondaryViewConfigurationLayerInfoMSFT*, POINTER, true, s->viewConfigurationCount) 
 #define XRT_ENUMERATE_XrSecondaryViewConfigurationLayerInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(viewConfigurationType, XrViewConfigurationType, PLAIN) \
     _(environmentBlendMode, XrEnvironmentBlendMode, PLAIN) \
     _(layerCount, uint32_t, PLAIN) \
-    _(layers, const XrCompositionLayerBaseHeader* const*, POINTER, true, layerCount) 
+    _(layers, const XrCompositionLayerBaseHeader* const*, XR) 
 #define XRT_ENUMERATE_XrSecondaryViewConfigurationSwapchainCreateInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3812,7 +3812,7 @@
     _(next, void*, XR) \
     _(nodeCapacityInput, uint32_t, PLAIN) \
     _(nodeCountOutput, uint32_t, PLAIN) \
-    _(nodeProperties, XrControllerModelNodePropertiesMSFT*, POINTER, false, nodeCapacityInput) 
+    _(nodeProperties, XrControllerModelNodePropertiesMSFT*, POINTER, false, s->nodeCapacityInput) 
 #define XRT_ENUMERATE_XrControllerModelNodeStateMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -3822,7 +3822,7 @@
     _(next, void*, XR) \
     _(nodeCapacityInput, uint32_t, PLAIN) \
     _(nodeCountOutput, uint32_t, PLAIN) \
-    _(nodeStates, XrControllerModelNodeStateMSFT*, POINTER, false, nodeCapacityInput) 
+    _(nodeStates, XrControllerModelNodeStateMSFT*, POINTER, false, s->nodeCapacityInput) 
 #define XRT_ENUMERATE_XrControllerModelKeyStateMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -3837,7 +3837,7 @@
     _(next, void*, XR) \
     _(nodeCapacityInput, uint32_t, PLAIN) \
     _(nodeCountOutput, uint32_t, PLAIN) \
-    _(nodeProperties, XrControllerModelNodePropertiesMSFT*, POINTER, false, nodeCapacityInput) 
+    _(nodeProperties, XrControllerModelNodePropertiesMSFT*, POINTER, false, s->nodeCapacityInput) 
 #define XRT_ENUMERATE_XrControllerModelNodeStateMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -3847,7 +3847,7 @@
     _(next, void*, XR) \
     _(nodeCapacityInput, uint32_t, PLAIN) \
     _(nodeCountOutput, uint32_t, PLAIN) \
-    _(nodeStates, XrControllerModelNodeStateMSFT*, POINTER, false, nodeCapacityInput) 
+    _(nodeStates, XrControllerModelNodeStateMSFT*, POINTER, false, s->nodeCapacityInput) 
 #define XRT_ENUMERATE_XrViewConfigurationViewFovEPIC(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3926,7 +3926,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(jointCount, uint32_t, PLAIN) \
-    _(joints, XrBodySkeletonJointFB*, POINTER, false, jointCount) 
+    _(joints, XrBodySkeletonJointFB*, POINTER, false, s->jointCount) 
 #define XRT_ENUMERATE_XrBodyJointsLocateInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3938,7 +3938,7 @@
     _(isActive, XrBool32, PLAIN) \
     _(confidence, float, PLAIN) \
     _(jointCount, uint32_t, PLAIN) \
-    _(jointLocations, XrBodyJointLocationFB*, POINTER, false, jointCount) \
+    _(jointLocations, XrBodyJointLocationFB*, POINTER, false, s->jointCount) \
     _(skeletonChangedCount, uint32_t, PLAIN) \
     _(time, XrTime, PLAIN) 
 #define XRT_ENUMERATE_XrBodyTrackerCreateInfoFB(_) \
@@ -3960,14 +3960,14 @@
     _(isActive, XrBool32, PLAIN) \
     _(confidence, float, PLAIN) \
     _(jointCount, uint32_t, PLAIN) \
-    _(jointLocations, XrBodyJointLocationFB*, POINTER, false, jointCount) \
+    _(jointLocations, XrBodyJointLocationFB*, POINTER, false, s->jointCount) \
     _(skeletonChangedCount, uint32_t, PLAIN) \
     _(time, XrTime, PLAIN) 
 #define XRT_ENUMERATE_XrBodySkeletonFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(jointCount, uint32_t, PLAIN) \
-    _(joints, XrBodySkeletonJointFB*, POINTER, false, jointCount) 
+    _(joints, XrBodySkeletonJointFB*, POINTER, false, s->jointCount) 
 #define XRT_ENUMERATE_XrInteractionProfileDpadBindingEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3978,8 +3978,8 @@
     _(centerRegion, float, PLAIN) \
     _(wedgeAngle, float, PLAIN) \
     _(isSticky, XrBool32, PLAIN) \
-    _(onHaptic, const XrHapticBaseHeader*, POINTER, true, 1) \
-    _(offHaptic, const XrHapticBaseHeader*, POINTER, true, 1) 
+    _(onHaptic, const XrHapticBaseHeader*, XR) \
+    _(offHaptic, const XrHapticBaseHeader*, XR) 
 #define XRT_ENUMERATE_XrInteractionProfileDpadBindingEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3990,8 +3990,8 @@
     _(centerRegion, float, PLAIN) \
     _(wedgeAngle, float, PLAIN) \
     _(isSticky, XrBool32, PLAIN) \
-    _(onHaptic, const XrHapticBaseHeader*, POINTER, true, 1) \
-    _(offHaptic, const XrHapticBaseHeader*, POINTER, true, 1) 
+    _(onHaptic, const XrHapticBaseHeader*, XR) \
+    _(offHaptic, const XrHapticBaseHeader*, XR) 
 #define XRT_ENUMERATE_XrInteractionProfileAnalogThresholdVALVE(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -3999,8 +3999,8 @@
     _(binding, XrPath, PLAIN) \
     _(onThreshold, float, PLAIN) \
     _(offThreshold, float, PLAIN) \
-    _(onHaptic, const XrHapticBaseHeader*, POINTER, true, 1) \
-    _(offHaptic, const XrHapticBaseHeader*, POINTER, true, 1) 
+    _(onHaptic, const XrHapticBaseHeader*, XR) \
+    _(offHaptic, const XrHapticBaseHeader*, XR) 
 #define XRT_ENUMERATE_XrInteractionProfileAnalogThresholdVALVE(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4008,8 +4008,8 @@
     _(binding, XrPath, PLAIN) \
     _(onThreshold, float, PLAIN) \
     _(offThreshold, float, PLAIN) \
-    _(onHaptic, const XrHapticBaseHeader*, POINTER, true, 1) \
-    _(offHaptic, const XrHapticBaseHeader*, POINTER, true, 1) 
+    _(onHaptic, const XrHapticBaseHeader*, XR) \
+    _(offHaptic, const XrHapticBaseHeader*, XR) 
 #define XRT_ENUMERATE_XrHandJointsMotionRangeInfoEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4111,7 +4111,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(requestedFeatureCount, uint32_t, PLAIN) \
-    _(requestedFeatures, const XrSceneComputeFeatureMSFT*, POINTER, true, requestedFeatureCount) \
+    _(requestedFeatures, const XrSceneComputeFeatureMSFT*, POINTER, true, s->requestedFeatureCount) \
     _(consistency, XrSceneComputeConsistencyMSFT, PLAIN) \
     _(bounds, XrSceneBoundsMSFT, PLAIN) 
 #define XRT_ENUMERATE_XrVisualMeshComputeLodInfoMSFT(_) \
@@ -4132,11 +4132,11 @@
     _(space, XrSpace, PLAIN) \
     _(time, XrTime, PLAIN) \
     _(sphereCount, uint32_t, PLAIN) \
-    _(spheres, const XrSceneSphereBoundMSFT*, POINTER, true, sphereCount) \
+    _(spheres, const XrSceneSphereBoundMSFT*, POINTER, true, s->sphereCount) \
     _(boxCount, uint32_t, PLAIN) \
-    _(boxes, const XrSceneOrientedBoxBoundMSFT*, POINTER, true, boxCount) \
+    _(boxes, const XrSceneOrientedBoxBoundMSFT*, POINTER, true, s->boxCount) \
     _(frustumCount, uint32_t, PLAIN) \
-    _(frustums, const XrSceneFrustumBoundMSFT*, POINTER, true, frustumCount) 
+    _(frustums, const XrSceneFrustumBoundMSFT*, POINTER, true, s->frustumCount) 
 #define XRT_ENUMERATE_XrSceneComponentMSFT(_) \
     _(componentType, XrSceneComponentTypeMSFT, PLAIN) \
     _(id, XrUuidMSFT, PLAIN) \
@@ -4147,7 +4147,7 @@
     _(next, void*, XR) \
     _(componentCapacityInput, uint32_t, PLAIN) \
     _(componentCountOutput, uint32_t, PLAIN) \
-    _(components, XrSceneComponentMSFT*, POINTER, false, componentCapacityInput) 
+    _(components, XrSceneComponentMSFT*, POINTER, false, s->componentCapacityInput) 
 #define XRT_ENUMERATE_XrSceneComponentsGetInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4159,21 +4159,21 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(locationCount, uint32_t, PLAIN) \
-    _(locations, XrSceneComponentLocationMSFT*, POINTER, false, locationCount) 
+    _(locations, XrSceneComponentLocationMSFT*, POINTER, false, s->locationCount) 
 #define XRT_ENUMERATE_XrSceneComponentsLocateInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(baseSpace, XrSpace, PLAIN) \
     _(time, XrTime, PLAIN) \
     _(componentIdCount, uint32_t, PLAIN) \
-    _(componentIds, const XrUuidMSFT*, POINTER, true, componentIdCount) 
+    _(componentIds, const XrUuidMSFT*, POINTER, true, s->componentIdCount) 
 #define XRT_ENUMERATE_XrSceneObjectMSFT(_) \
     _(objectType, XrSceneObjectTypeMSFT, PLAIN) 
 #define XRT_ENUMERATE_XrSceneObjectsMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(sceneObjectCount, uint32_t, PLAIN) \
-    _(sceneObjects, XrSceneObjectMSFT*, POINTER, false, sceneObjectCount) 
+    _(sceneObjects, XrSceneObjectMSFT*, POINTER, false, s->sceneObjectCount) 
 #define XRT_ENUMERATE_XrSceneComponentParentFilterInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4182,7 +4182,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(objectTypeCount, uint32_t, PLAIN) \
-    _(objectTypes, const XrSceneObjectTypeMSFT*, POINTER, true, objectTypeCount) 
+    _(objectTypes, const XrSceneObjectTypeMSFT*, POINTER, true, s->objectTypeCount) 
 #define XRT_ENUMERATE_XrScenePlaneMSFT(_) \
     _(alignment, XrScenePlaneAlignmentTypeMSFT, PLAIN) \
     _(size, XrExtent2Df, PLAIN) \
@@ -4192,12 +4192,12 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(scenePlaneCount, uint32_t, PLAIN) \
-    _(scenePlanes, XrScenePlaneMSFT*, POINTER, false, scenePlaneCount) 
+    _(scenePlanes, XrScenePlaneMSFT*, POINTER, false, s->scenePlaneCount) 
 #define XRT_ENUMERATE_XrScenePlaneAlignmentFilterInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(alignmentCount, uint32_t, PLAIN) \
-    _(alignments, const XrScenePlaneAlignmentTypeMSFT*, POINTER, true, alignmentCount) 
+    _(alignments, const XrScenePlaneAlignmentTypeMSFT*, POINTER, true, s->alignmentCount) 
 #define XRT_ENUMERATE_XrSceneMeshMSFT(_) \
     _(meshBufferId, uint64_t, PLAIN) \
     _(supportsIndicesUint16, XrBool32, PLAIN) 
@@ -4205,7 +4205,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(sceneMeshCount, uint32_t, PLAIN) \
-    _(sceneMeshes, XrSceneMeshMSFT*, POINTER, false, sceneMeshCount) 
+    _(sceneMeshes, XrSceneMeshMSFT*, POINTER, false, s->sceneMeshCount) 
 #define XRT_ENUMERATE_XrSceneMeshBuffersGetInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4218,19 +4218,19 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector3f*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrVector3f*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrSceneMeshIndicesUint32MSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint32_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint32_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrSceneMeshIndicesUint16MSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint16_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint16_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrSceneObserverCreateInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -4241,7 +4241,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(requestedFeatureCount, uint32_t, PLAIN) \
-    _(requestedFeatures, const XrSceneComputeFeatureMSFT*, POINTER, true, requestedFeatureCount) \
+    _(requestedFeatures, const XrSceneComputeFeatureMSFT*, POINTER, true, s->requestedFeatureCount) \
     _(consistency, XrSceneComputeConsistencyMSFT, PLAIN) \
     _(bounds, XrSceneBoundsMSFT, PLAIN) 
 #define XRT_ENUMERATE_XrVisualMeshComputeLodInfoMSFT(_) \
@@ -4253,7 +4253,7 @@
     _(next, void*, XR) \
     _(componentCapacityInput, uint32_t, PLAIN) \
     _(componentCountOutput, uint32_t, PLAIN) \
-    _(components, XrSceneComponentMSFT*, POINTER, false, componentCapacityInput) 
+    _(components, XrSceneComponentMSFT*, POINTER, false, s->componentCapacityInput) 
 #define XRT_ENUMERATE_XrSceneComponentsGetInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4262,19 +4262,19 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(locationCount, uint32_t, PLAIN) \
-    _(locations, XrSceneComponentLocationMSFT*, POINTER, false, locationCount) 
+    _(locations, XrSceneComponentLocationMSFT*, POINTER, false, s->locationCount) 
 #define XRT_ENUMERATE_XrSceneComponentsLocateInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(baseSpace, XrSpace, PLAIN) \
     _(time, XrTime, PLAIN) \
     _(componentIdCount, uint32_t, PLAIN) \
-    _(componentIds, const XrUuidMSFT*, POINTER, true, componentIdCount) 
+    _(componentIds, const XrUuidMSFT*, POINTER, true, s->componentIdCount) 
 #define XRT_ENUMERATE_XrSceneObjectsMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(sceneObjectCount, uint32_t, PLAIN) \
-    _(sceneObjects, XrSceneObjectMSFT*, POINTER, false, sceneObjectCount) 
+    _(sceneObjects, XrSceneObjectMSFT*, POINTER, false, s->sceneObjectCount) 
 #define XRT_ENUMERATE_XrSceneComponentParentFilterInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4283,22 +4283,22 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(objectTypeCount, uint32_t, PLAIN) \
-    _(objectTypes, const XrSceneObjectTypeMSFT*, POINTER, true, objectTypeCount) 
+    _(objectTypes, const XrSceneObjectTypeMSFT*, POINTER, true, s->objectTypeCount) 
 #define XRT_ENUMERATE_XrScenePlanesMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(scenePlaneCount, uint32_t, PLAIN) \
-    _(scenePlanes, XrScenePlaneMSFT*, POINTER, false, scenePlaneCount) 
+    _(scenePlanes, XrScenePlaneMSFT*, POINTER, false, s->scenePlaneCount) 
 #define XRT_ENUMERATE_XrScenePlaneAlignmentFilterInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(alignmentCount, uint32_t, PLAIN) \
-    _(alignments, const XrScenePlaneAlignmentTypeMSFT*, POINTER, true, alignmentCount) 
+    _(alignments, const XrScenePlaneAlignmentTypeMSFT*, POINTER, true, s->alignmentCount) 
 #define XRT_ENUMERATE_XrSceneMeshesMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(sceneMeshCount, uint32_t, PLAIN) \
-    _(sceneMeshes, XrSceneMeshMSFT*, POINTER, false, sceneMeshCount) 
+    _(sceneMeshes, XrSceneMeshMSFT*, POINTER, false, s->sceneMeshCount) 
 #define XRT_ENUMERATE_XrSceneMeshBuffersGetInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4311,31 +4311,31 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector3f*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrVector3f*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrSceneMeshIndicesUint32MSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint32_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint32_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrSceneMeshIndicesUint16MSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint16_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint16_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrSerializedSceneFragmentDataGetInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(sceneFragmentId, XrUuidMSFT, PLAIN) 
 #define XRT_ENUMERATE_XrDeserializeSceneFragmentMSFT(_) \
     _(bufferSize, uint32_t, PLAIN) \
-    _(buffer, const uint8_t*, POINTER, true, bufferSize) 
+    _(buffer, const uint8_t*, POINTER, true, s->bufferSize) 
 #define XRT_ENUMERATE_XrSceneDeserializeInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(fragmentCount, uint32_t, PLAIN) \
-    _(fragments, const XrDeserializeSceneFragmentMSFT*, POINTER, true, fragmentCount) 
+    _(fragments, const XrDeserializeSceneFragmentMSFT*, POINTER, true, s->fragmentCount) 
 #define XRT_ENUMERATE_XrSerializedSceneFragmentDataGetInfoMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4344,7 +4344,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(fragmentCount, uint32_t, PLAIN) \
-    _(fragments, const XrDeserializeSceneFragmentMSFT*, POINTER, true, fragmentCount) 
+    _(fragments, const XrDeserializeSceneFragmentMSFT*, POINTER, true, s->fragmentCount) 
 #define XRT_ENUMERATE_XrEventDataDisplayRefreshRateChangedFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -4423,19 +4423,19 @@
     _(next, void*, XR) \
     _(jointCapacityInput, uint32_t, PLAIN) \
     _(jointCountOutput, uint32_t, PLAIN) \
-    _(jointBindPoses, XrPosef*, POINTER, false, jointCapacityInput) \
-    _(jointRadii, float*, POINTER, false, jointCapacityInput) \
-    _(jointParents, XrHandJointEXT*, POINTER, false, jointCapacityInput) \
+    _(jointBindPoses, XrPosef*, POINTER, false, s->jointCapacityInput) \
+    _(jointRadii, float*, POINTER, false, s->jointCapacityInput) \
+    _(jointParents, XrHandJointEXT*, POINTER, false, s->jointCapacityInput) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertexPositions, XrVector3f*, POINTER, false, vertexCapacityInput) \
-    _(vertexNormals, XrVector3f*, POINTER, false, vertexCapacityInput) \
-    _(vertexUVs, XrVector2f*, POINTER, false, vertexCapacityInput) \
-    _(vertexBlendIndices, XrVector4sFB*, POINTER, false, vertexCapacityInput) \
-    _(vertexBlendWeights, XrVector4f*, POINTER, false, vertexCapacityInput) \
+    _(vertexPositions, XrVector3f*, POINTER, false, s->vertexCapacityInput) \
+    _(vertexNormals, XrVector3f*, POINTER, false, s->vertexCapacityInput) \
+    _(vertexUVs, XrVector2f*, POINTER, false, s->vertexCapacityInput) \
+    _(vertexBlendIndices, XrVector4sFB*, POINTER, false, s->vertexCapacityInput) \
+    _(vertexBlendWeights, XrVector4f*, POINTER, false, s->vertexCapacityInput) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, int16_t*, POINTER, false, indexCapacityInput) 
+    _(indices, int16_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrHandTrackingScaleFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -4448,19 +4448,19 @@
     _(next, void*, XR) \
     _(jointCapacityInput, uint32_t, PLAIN) \
     _(jointCountOutput, uint32_t, PLAIN) \
-    _(jointBindPoses, XrPosef*, POINTER, false, jointCapacityInput) \
-    _(jointRadii, float*, POINTER, false, jointCapacityInput) \
-    _(jointParents, XrHandJointEXT*, POINTER, false, jointCapacityInput) \
+    _(jointBindPoses, XrPosef*, POINTER, false, s->jointCapacityInput) \
+    _(jointRadii, float*, POINTER, false, s->jointCapacityInput) \
+    _(jointParents, XrHandJointEXT*, POINTER, false, s->jointCapacityInput) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertexPositions, XrVector3f*, POINTER, false, vertexCapacityInput) \
-    _(vertexNormals, XrVector3f*, POINTER, false, vertexCapacityInput) \
-    _(vertexUVs, XrVector2f*, POINTER, false, vertexCapacityInput) \
-    _(vertexBlendIndices, XrVector4sFB*, POINTER, false, vertexCapacityInput) \
-    _(vertexBlendWeights, XrVector4f*, POINTER, false, vertexCapacityInput) \
+    _(vertexPositions, XrVector3f*, POINTER, false, s->vertexCapacityInput) \
+    _(vertexNormals, XrVector3f*, POINTER, false, s->vertexCapacityInput) \
+    _(vertexUVs, XrVector2f*, POINTER, false, s->vertexCapacityInput) \
+    _(vertexBlendIndices, XrVector4sFB*, POINTER, false, s->vertexCapacityInput) \
+    _(vertexBlendWeights, XrVector4f*, POINTER, false, s->vertexCapacityInput) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, int16_t*, POINTER, false, indexCapacityInput) 
+    _(indices, int16_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrHandTrackingScaleFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -4796,7 +4796,7 @@
     _(next, void*, XR) \
     _(bufferCapacityInput, uint32_t, PLAIN) \
     _(bufferCountOutput, uint32_t, PLAIN) \
-    _(buffer, uint8_t*, POINTER, false, bufferCapacityInput) 
+    _(buffer, uint8_t*, POINTER, false, s->bufferCapacityInput) 
 #define XRT_ENUMERATE_XrRenderModelLoadInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -4826,7 +4826,7 @@
     _(next, void*, XR) \
     _(bufferCapacityInput, uint32_t, PLAIN) \
     _(bufferCountOutput, uint32_t, PLAIN) \
-    _(buffer, uint8_t*, POINTER, false, bufferCapacityInput) 
+    _(buffer, uint8_t*, POINTER, false, s->bufferCapacityInput) 
 #define XRT_ENUMERATE_XrRenderModelLoadInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -4843,7 +4843,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(bindingModificationCount, uint32_t, PLAIN) \
-    _(bindingModifications, const XrBindingModificationBaseHeaderKHR* const*, POINTER, true, bindingModificationCount) 
+    _(bindingModifications, const XrBindingModificationBaseHeaderKHR* const*, XR) 
 #define XRT_ENUMERATE_XrBindingModificationBaseHeaderKHR(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -4851,7 +4851,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(bindingModificationCount, uint32_t, PLAIN) \
-    _(bindingModifications, const XrBindingModificationBaseHeaderKHR* const*, POINTER, true, bindingModificationCount) 
+    _(bindingModifications, const XrBindingModificationBaseHeaderKHR* const*, XR) 
 #define XRT_ENUMERATE_XrViewLocateFoveatedRenderingVARJO(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5054,7 +5054,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(size, uint32_t, PLAIN) \
-    _(data, char*, POINTER, false, size) 
+    _(data, char*, POINTER, false, s->size) 
 #define XRT_ENUMERATE_XrLocalizationEnableEventsInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5081,7 +5081,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(size, uint32_t, PLAIN) \
-    _(data, char*, POINTER, false, size) 
+    _(data, char*, POINTER, false, s->size) 
 #define XRT_ENUMERATE_XrLocalizationEnableEventsInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5100,7 +5100,7 @@
     _(next, void*, XR) \
     _(futureResult, XrResult, PLAIN) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, XrSpace*, POINTER, false, spaceCount) 
+    _(spaces, XrSpace*, POINTER, false, s->spaceCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorStateML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -5116,7 +5116,7 @@
     _(next, void*, XR) \
     _(futureResult, XrResult, PLAIN) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, XrSpace*, POINTER, false, spaceCount) 
+    _(spaces, XrSpace*, POINTER, false, s->spaceCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorStateML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -5140,30 +5140,30 @@
     _(futureResult, XrResult, PLAIN) \
     _(uuidCapacityInput, uint32_t, PLAIN) \
     _(uuidCountOutput, uint32_t, PLAIN) \
-    _(uuids, XrUuidEXT*, POINTER, false, uuidCapacityInput) 
+    _(uuids, XrUuidEXT*, POINTER, false, s->uuidCapacityInput) 
 #define XRT_ENUMERATE_XrSpatialAnchorsCreateInfoFromUuidsML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(storage, XrSpatialAnchorsStorageML, PLAIN) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, const XrUuidEXT*, POINTER, true, uuidCount) 
+    _(uuids, const XrUuidEXT*, POINTER, true, s->uuidCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsPublishInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(anchorCount, uint32_t, PLAIN) \
-    _(anchors, const XrSpace*, POINTER, true, anchorCount) \
+    _(anchors, const XrSpace*, POINTER, true, s->anchorCount) \
     _(expiration, uint64_t, PLAIN) 
 #define XRT_ENUMERATE_XrSpatialAnchorsPublishCompletionML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(futureResult, XrResult, PLAIN) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, XrUuidEXT*, POINTER, false, uuidCount) 
+    _(uuids, XrUuidEXT*, POINTER, false, s->uuidCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsDeleteInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, const XrUuidEXT*, POINTER, true, uuidCount) 
+    _(uuids, const XrUuidEXT*, POINTER, true, s->uuidCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsDeleteCompletionML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -5172,7 +5172,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, const XrUuidEXT*, POINTER, true, uuidCount) \
+    _(uuids, const XrUuidEXT*, POINTER, true, s->uuidCount) \
     _(expiration, uint64_t, PLAIN) 
 #define XRT_ENUMERATE_XrSpatialAnchorsUpdateExpirationCompletionML(_) \
     _(type, XrStructureType, PLAIN) \
@@ -5182,17 +5182,17 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(resultCount, uint32_t, PLAIN) \
-    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, resultCount) 
+    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, s->resultCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsDeleteCompletionDetailsML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(resultCount, uint32_t, PLAIN) \
-    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, resultCount) 
+    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, s->resultCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsUpdateExpirationCompletionDetailsML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(resultCount, uint32_t, PLAIN) \
-    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, resultCount) 
+    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, s->resultCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorCompletionResultML(_) \
     _(uuid, XrUuidEXT, PLAIN) \
     _(result, XrResult, PLAIN) 
@@ -5212,30 +5212,30 @@
     _(futureResult, XrResult, PLAIN) \
     _(uuidCapacityInput, uint32_t, PLAIN) \
     _(uuidCountOutput, uint32_t, PLAIN) \
-    _(uuids, XrUuidEXT*, POINTER, false, uuidCapacityInput) 
+    _(uuids, XrUuidEXT*, POINTER, false, s->uuidCapacityInput) 
 #define XRT_ENUMERATE_XrSpatialAnchorsCreateInfoFromUuidsML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(storage, XrSpatialAnchorsStorageML, PLAIN) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, const XrUuidEXT*, POINTER, true, uuidCount) 
+    _(uuids, const XrUuidEXT*, POINTER, true, s->uuidCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsPublishInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(anchorCount, uint32_t, PLAIN) \
-    _(anchors, const XrSpace*, POINTER, true, anchorCount) \
+    _(anchors, const XrSpace*, POINTER, true, s->anchorCount) \
     _(expiration, uint64_t, PLAIN) 
 #define XRT_ENUMERATE_XrSpatialAnchorsPublishCompletionML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(futureResult, XrResult, PLAIN) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, XrUuidEXT*, POINTER, false, uuidCount) 
+    _(uuids, XrUuidEXT*, POINTER, false, s->uuidCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsDeleteInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, const XrUuidEXT*, POINTER, true, uuidCount) 
+    _(uuids, const XrUuidEXT*, POINTER, true, s->uuidCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsDeleteCompletionML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -5244,7 +5244,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, const XrUuidEXT*, POINTER, true, uuidCount) \
+    _(uuids, const XrUuidEXT*, POINTER, true, s->uuidCount) \
     _(expiration, uint64_t, PLAIN) 
 #define XRT_ENUMERATE_XrSpatialAnchorsUpdateExpirationCompletionML(_) \
     _(type, XrStructureType, PLAIN) \
@@ -5254,17 +5254,17 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(resultCount, uint32_t, PLAIN) \
-    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, resultCount) 
+    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, s->resultCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsDeleteCompletionDetailsML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(resultCount, uint32_t, PLAIN) \
-    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, resultCount) 
+    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, s->resultCount) 
 #define XRT_ENUMERATE_XrSpatialAnchorsUpdateExpirationCompletionDetailsML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(resultCount, uint32_t, PLAIN) \
-    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, resultCount) 
+    _(results, XrSpatialAnchorCompletionResultML*, POINTER, false, s->resultCount) 
 #define XRT_ENUMERATE_XrEventDataHeadsetFitChangedML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5322,12 +5322,12 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(sceneMarkerCapacityInput, uint32_t, PLAIN) \
-    _(sceneMarkers, XrSceneMarkerMSFT*, POINTER, false, sceneMarkerCapacityInput) 
+    _(sceneMarkers, XrSceneMarkerMSFT*, POINTER, false, s->sceneMarkerCapacityInput) 
 #define XRT_ENUMERATE_XrSceneMarkerTypeFilterMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(markerTypeCount, uint32_t, PLAIN) \
-    _(markerTypes, XrSceneMarkerTypeMSFT*, POINTER, false, markerTypeCount) 
+    _(markerTypes, XrSceneMarkerTypeMSFT*, POINTER, false, s->markerTypeCount) 
 #define XRT_ENUMERATE_XrSceneMarkerQRCodeMSFT(_) \
     _(symbolType, XrSceneMarkerQRCodeSymbolTypeMSFT, PLAIN) \
     _(version, uint8_t, PLAIN) 
@@ -5335,22 +5335,22 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(qrCodeCapacityInput, uint32_t, PLAIN) \
-    _(qrCodes, XrSceneMarkerQRCodeMSFT*, POINTER, false, qrCodeCapacityInput) 
+    _(qrCodes, XrSceneMarkerQRCodeMSFT*, POINTER, false, s->qrCodeCapacityInput) 
 #define XRT_ENUMERATE_XrSceneMarkersMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(sceneMarkerCapacityInput, uint32_t, PLAIN) \
-    _(sceneMarkers, XrSceneMarkerMSFT*, POINTER, false, sceneMarkerCapacityInput) 
+    _(sceneMarkers, XrSceneMarkerMSFT*, POINTER, false, s->sceneMarkerCapacityInput) 
 #define XRT_ENUMERATE_XrSceneMarkerTypeFilterMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(markerTypeCount, uint32_t, PLAIN) \
-    _(markerTypes, XrSceneMarkerTypeMSFT*, POINTER, false, markerTypeCount) 
+    _(markerTypes, XrSceneMarkerTypeMSFT*, POINTER, false, s->markerTypeCount) 
 #define XRT_ENUMERATE_XrSceneMarkerQRCodesMSFT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(qrCodeCapacityInput, uint32_t, PLAIN) \
-    _(qrCodes, XrSceneMarkerQRCodeMSFT*, POINTER, false, qrCodeCapacityInput) 
+    _(qrCodes, XrSceneMarkerQRCodeMSFT*, POINTER, false, s->qrCodeCapacityInput) 
 #define XRT_ENUMERATE_XrSpaceQueryInfoBaseHeaderFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -5363,8 +5363,8 @@
     _(queryAction, XrSpaceQueryActionFB, PLAIN) \
     _(maxResultCount, uint32_t, PLAIN) \
     _(timeout, XrDuration, PLAIN) \
-    _(filter, const XrSpaceFilterInfoBaseHeaderFB*, POINTER, true, 1) \
-    _(excludeFilter, const XrSpaceFilterInfoBaseHeaderFB*, POINTER, true, 1) 
+    _(filter, const XrSpaceFilterInfoBaseHeaderFB*, XR) \
+    _(excludeFilter, const XrSpaceFilterInfoBaseHeaderFB*, XR) 
 #define XRT_ENUMERATE_XrSpaceStorageLocationFilterInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5373,7 +5373,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, XrUuidEXT*, POINTER, false, uuidCount) 
+    _(uuids, XrUuidEXT*, POINTER, false, s->uuidCount) 
 #define XRT_ENUMERATE_XrSpaceComponentFilterInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5386,7 +5386,7 @@
     _(next, void*, XR) \
     _(resultCapacityInput, uint32_t, PLAIN) \
     _(resultCountOutput, uint32_t, PLAIN) \
-    _(results, XrSpaceQueryResultFB*, POINTER, false, resultCapacityInput) 
+    _(results, XrSpaceQueryResultFB*, POINTER, false, s->resultCapacityInput) 
 #define XRT_ENUMERATE_XrEventDataSpaceQueryResultsAvailableFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5402,14 +5402,14 @@
     _(queryAction, XrSpaceQueryActionFB, PLAIN) \
     _(maxResultCount, uint32_t, PLAIN) \
     _(timeout, XrDuration, PLAIN) \
-    _(filter, const XrSpaceFilterInfoBaseHeaderFB*, POINTER, true, 1) \
-    _(excludeFilter, const XrSpaceFilterInfoBaseHeaderFB*, POINTER, true, 1) 
+    _(filter, const XrSpaceFilterInfoBaseHeaderFB*, XR) \
+    _(excludeFilter, const XrSpaceFilterInfoBaseHeaderFB*, XR) 
 #define XRT_ENUMERATE_XrSpaceQueryResultsFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(resultCapacityInput, uint32_t, PLAIN) \
     _(resultCountOutput, uint32_t, PLAIN) \
-    _(results, XrSpaceQueryResultFB*, POINTER, false, resultCapacityInput) 
+    _(results, XrSpaceQueryResultFB*, POINTER, false, s->resultCapacityInput) 
 #define XRT_ENUMERATE_XrSpaceStorageLocationFilterInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5418,7 +5418,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, XrUuidEXT*, POINTER, false, uuidCount) 
+    _(uuids, XrUuidEXT*, POINTER, false, s->uuidCount) 
 #define XRT_ENUMERATE_XrSpaceComponentFilterInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5566,9 +5566,9 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, XrSpace*, POINTER, false, spaceCount) \
+    _(spaces, XrSpace*, POINTER, false, s->spaceCount) \
     _(userCount, uint32_t, PLAIN) \
-    _(users, XrSpaceUserFB*, POINTER, false, userCount) 
+    _(users, XrSpaceUserFB*, POINTER, false, s->userCount) 
 #define XRT_ENUMERATE_XrEventDataSpaceShareCompleteFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5578,9 +5578,9 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, XrSpace*, POINTER, false, spaceCount) \
+    _(spaces, XrSpace*, POINTER, false, s->spaceCount) \
     _(userCount, uint32_t, PLAIN) \
-    _(users, XrSpaceUserFB*, POINTER, false, userCount) 
+    _(users, XrSpaceUserFB*, POINTER, false, s->userCount) 
 #define XRT_ENUMERATE_XrEventDataSpaceShareCompleteFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5623,13 +5623,13 @@
     _(next, const void*, XR) \
     _(duration, XrDuration, PLAIN) \
     _(amplitudeCount, uint32_t, PLAIN) \
-    _(amplitudes, const float*, POINTER, true, amplitudeCount) 
+    _(amplitudes, const float*, POINTER, true, s->amplitudeCount) 
 #define XRT_ENUMERATE_XrHapticAmplitudeEnvelopeVibrationFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(duration, XrDuration, PLAIN) \
     _(amplitudeCount, uint32_t, PLAIN) \
-    _(amplitudes, const float*, POINTER, true, amplitudeCount) 
+    _(amplitudes, const float*, POINTER, true, s->amplitudeCount) 
 #define XRT_ENUMERATE_XrOffset3DfFB(_) \
     _(x, float, PLAIN) \
     _(y, float, PLAIN) \
@@ -5642,7 +5642,7 @@
     _(next, const void*, XR) \
     _(bufferCapacityInput, uint32_t, PLAIN) \
     _(bufferCountOutput, uint32_t, PLAIN) \
-    _(buffer, char*, POINTER, false, bufferCapacityInput) 
+    _(buffer, char*, POINTER, false, s->bufferCapacityInput) 
 #define XRT_ENUMERATE_XrRoomLayoutFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5650,24 +5650,24 @@
     _(ceilingUuid, XrUuidEXT, PLAIN) \
     _(wallUuidCapacityInput, uint32_t, PLAIN) \
     _(wallUuidCountOutput, uint32_t, PLAIN) \
-    _(wallUuids, XrUuidEXT*, POINTER, false, wallUuidCapacityInput) 
+    _(wallUuids, XrUuidEXT*, POINTER, false, s->wallUuidCapacityInput) 
 #define XRT_ENUMERATE_XrBoundary2DFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector2f*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrVector2f*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrSemanticLabelsSupportInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(flags, XrSemanticLabelsSupportFlagsFB, PLAIN) \
-    _(recognizedLabels, const char*, POINTER, true, null-terminated) 
+    _(recognizedLabels, const char*, POINTER, true, count_null_terminated(s->recognizedLabels)) 
 #define XRT_ENUMERATE_XrSemanticLabelsFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(bufferCapacityInput, uint32_t, PLAIN) \
     _(bufferCountOutput, uint32_t, PLAIN) \
-    _(buffer, char*, POINTER, false, bufferCapacityInput) 
+    _(buffer, char*, POINTER, false, s->bufferCapacityInput) 
 #define XRT_ENUMERATE_XrRoomLayoutFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5675,18 +5675,18 @@
     _(ceilingUuid, XrUuidEXT, PLAIN) \
     _(wallUuidCapacityInput, uint32_t, PLAIN) \
     _(wallUuidCountOutput, uint32_t, PLAIN) \
-    _(wallUuids, XrUuidEXT*, POINTER, false, wallUuidCapacityInput) 
+    _(wallUuids, XrUuidEXT*, POINTER, false, s->wallUuidCapacityInput) 
 #define XRT_ENUMERATE_XrBoundary2DFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector2f*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrVector2f*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrSemanticLabelsSupportInfoFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(flags, XrSemanticLabelsSupportFlagsFB, PLAIN) \
-    _(recognizedLabels, const char*, POINTER, true, null-terminated) 
+    _(recognizedLabels, const char*, POINTER, true, count_null_terminated(s->recognizedLabels)) 
 #define XRT_ENUMERATE_XrDigitalLensControlALMALENCE(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5700,7 +5700,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(requestByteCount, uint32_t, PLAIN) \
-    _(request, const char*, POINTER, true, requestByteCount) 
+    _(request, const char*, POINTER, true, s->requestByteCount) 
 #define XRT_ENUMERATE_XrEventDataSceneCaptureCompleteFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5710,19 +5710,19 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(requestByteCount, uint32_t, PLAIN) \
-    _(request, const char*, POINTER, true, requestByteCount) 
+    _(request, const char*, POINTER, true, s->requestByteCount) 
 #define XRT_ENUMERATE_XrSpaceContainerFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCapacityInput, uint32_t, PLAIN) \
     _(uuidCountOutput, uint32_t, PLAIN) \
-    _(uuids, XrUuidEXT*, POINTER, false, uuidCapacityInput) 
+    _(uuids, XrUuidEXT*, POINTER, false, s->uuidCapacityInput) 
 #define XRT_ENUMERATE_XrSpaceContainerFB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCapacityInput, uint32_t, PLAIN) \
     _(uuidCountOutput, uint32_t, PLAIN) \
-    _(uuids, XrUuidEXT*, POINTER, false, uuidCapacityInput) 
+    _(uuids, XrUuidEXT*, POINTER, false, s->uuidCapacityInput) 
 #define XRT_ENUMERATE_XrFoveationEyeTrackedProfileCreateInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5768,9 +5768,9 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(weightCount, uint32_t, PLAIN) \
-    _(weights, float*, POINTER, false, weightCount) \
+    _(weights, float*, POINTER, false, s->weightCount) \
     _(confidenceCount, uint32_t, PLAIN) \
-    _(confidences, float*, POINTER, false, confidenceCount) \
+    _(confidences, float*, POINTER, false, s->confidenceCount) \
     _(status, XrFaceExpressionStatusFB, PLAIN) \
     _(time, XrTime, PLAIN) 
 #define XRT_ENUMERATE_XrSystemFaceTrackingPropertiesFB(_) \
@@ -5789,9 +5789,9 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(weightCount, uint32_t, PLAIN) \
-    _(weights, float*, POINTER, false, weightCount) \
+    _(weights, float*, POINTER, false, s->weightCount) \
     _(confidenceCount, uint32_t, PLAIN) \
-    _(confidences, float*, POINTER, false, confidenceCount) \
+    _(confidences, float*, POINTER, false, s->confidenceCount) \
     _(status, XrFaceExpressionStatusFB, PLAIN) \
     _(time, XrTime, PLAIN) 
 #define XRT_ENUMERATE_XrEyeGazeFB(_) \
@@ -5854,7 +5854,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(bufferSize, uint32_t, PLAIN) \
-    _(buffer, const float*, POINTER, true, bufferSize) \
+    _(buffer, const float*, POINTER, true, s->bufferSize) \
     _(sampleRate, float, PLAIN) \
     _(append, XrBool32, PLAIN) \
     _(samplesConsumed, uint32_t*, POINTER, false, 1) 
@@ -5866,7 +5866,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(bufferSize, uint32_t, PLAIN) \
-    _(buffer, const float*, POINTER, true, bufferSize) \
+    _(buffer, const float*, POINTER, true, s->bufferSize) \
     _(sampleRate, float, PLAIN) \
     _(append, XrBool32, PLAIN) \
     _(samplesConsumed, uint32_t*, POINTER, false, 1) 
@@ -5970,7 +5970,7 @@
     _(next, void*, XR) \
     _(stateCapacityInput, uint32_t, PLAIN) \
     _(stateCountOutput, uint32_t, PLAIN) \
-    _(states, XrVirtualKeyboardAnimationStateMETA*, POINTER, false, stateCapacityInput) 
+    _(states, XrVirtualKeyboardAnimationStateMETA*, POINTER, false, s->stateCapacityInput) 
 #define XRT_ENUMERATE_XrVirtualKeyboardTextureDataMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -5978,7 +5978,7 @@
     _(textureHeight, uint32_t, PLAIN) \
     _(bufferCapacityInput, uint32_t, PLAIN) \
     _(bufferCountOutput, uint32_t, PLAIN) \
-    _(buffer, uint8_t*, POINTER, false, bufferCapacityInput) 
+    _(buffer, uint8_t*, POINTER, false, s->bufferCapacityInput) 
 #define XRT_ENUMERATE_XrVirtualKeyboardInputInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -5989,7 +5989,7 @@
 #define XRT_ENUMERATE_XrVirtualKeyboardTextContextChangeInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(textContext, const char*, POINTER, true, null-terminated) 
+    _(textContext, const char*, POINTER, true, count_null_terminated(s->textContext)) 
 #define XRT_ENUMERATE_XrEventDataVirtualKeyboardCommitTextMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6045,7 +6045,7 @@
     _(next, void*, XR) \
     _(stateCapacityInput, uint32_t, PLAIN) \
     _(stateCountOutput, uint32_t, PLAIN) \
-    _(states, XrVirtualKeyboardAnimationStateMETA*, POINTER, false, stateCapacityInput) 
+    _(states, XrVirtualKeyboardAnimationStateMETA*, POINTER, false, s->stateCapacityInput) 
 #define XRT_ENUMERATE_XrVirtualKeyboardTextureDataMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6053,7 +6053,7 @@
     _(textureHeight, uint32_t, PLAIN) \
     _(bufferCapacityInput, uint32_t, PLAIN) \
     _(bufferCountOutput, uint32_t, PLAIN) \
-    _(buffer, uint8_t*, POINTER, false, bufferCapacityInput) 
+    _(buffer, uint8_t*, POINTER, false, s->bufferCapacityInput) 
 #define XRT_ENUMERATE_XrVirtualKeyboardInputInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6064,7 +6064,7 @@
 #define XRT_ENUMERATE_XrVirtualKeyboardTextContextChangeInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(textContext, const char*, POINTER, true, null-terminated) 
+    _(textContext, const char*, POINTER, true, count_null_terminated(s->textContext)) 
 #define XRT_ENUMERATE_XrEventDataVirtualKeyboardCommitTextMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6145,7 +6145,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, XrSpace*, POINTER, false, spaceCount) \
+    _(spaces, XrSpace*, POINTER, false, s->spaceCount) \
     _(location, XrSpaceStorageLocationFB, PLAIN) 
 #define XRT_ENUMERATE_XrEventDataSpaceListSaveCompleteFB(_) \
     _(type, XrStructureType, PLAIN) \
@@ -6156,7 +6156,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, XrSpace*, POINTER, false, spaceCount) \
+    _(spaces, XrSpace*, POINTER, false, s->spaceCount) \
     _(location, XrSpaceStorageLocationFB, PLAIN) 
 #define XRT_ENUMERATE_XrEventDataSpaceListSaveCompleteFB(_) \
     _(type, XrStructureType, PLAIN) \
@@ -6187,7 +6187,7 @@
 #define XRT_ENUMERATE_XrRecommendedLayerResolutionGetInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(layer, const XrCompositionLayerBaseHeader*, POINTER, true, 1) \
+    _(layer, const XrCompositionLayerBaseHeader*, XR) \
     _(predictedDisplayTime, XrTime, PLAIN) 
 #define XRT_ENUMERATE_XrRecommendedLayerResolutionMETA(_) \
     _(type, XrStructureType, PLAIN) \
@@ -6197,11 +6197,11 @@
 #define XRT_ENUMERATE_XrRecommendedLayerResolutionGetInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
-    _(layer, const XrCompositionLayerBaseHeader*, POINTER, true, 1) \
+    _(layer, const XrCompositionLayerBaseHeader*, XR) \
     _(predictedDisplayTime, XrTime, PLAIN) 
 #define XRT_ENUMERATE_XrPassthroughColorLutDataMETA(_) \
     _(bufferSize, uint32_t, PLAIN) \
-    _(buffer, const uint8_t*, POINTER, true, bufferSize) 
+    _(buffer, const uint8_t*, POINTER, true, s->bufferSize) 
 #define XRT_ENUMERATE_XrPassthroughColorLutCreateInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6260,10 +6260,10 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector3f*, POINTER, false, vertexCapacityInput) \
+    _(vertices, XrVector3f*, POINTER, false, s->vertexCapacityInput) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint32_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint32_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrSpaceTriangleMeshGetInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -6272,10 +6272,10 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector3f*, POINTER, false, vertexCapacityInput) \
+    _(vertices, XrVector3f*, POINTER, false, s->vertexCapacityInput) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint32_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint32_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrSystemPropertiesBodyTrackingFullBodyMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6302,7 +6302,7 @@
     _(next, const void*, XR) \
     _(faceExpressionSet, XrFaceExpressionSet2FB, PLAIN) \
     _(requestedDataSourceCount, uint32_t, PLAIN) \
-    _(requestedDataSources, XrFaceTrackingDataSource2FB*, POINTER, false, requestedDataSourceCount) 
+    _(requestedDataSources, XrFaceTrackingDataSource2FB*, POINTER, false, s->requestedDataSourceCount) 
 #define XRT_ENUMERATE_XrFaceExpressionInfo2FB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6311,9 +6311,9 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(weightCount, uint32_t, PLAIN) \
-    _(weights, float*, POINTER, false, weightCount) \
+    _(weights, float*, POINTER, false, s->weightCount) \
     _(confidenceCount, uint32_t, PLAIN) \
-    _(confidences, float*, POINTER, false, confidenceCount) \
+    _(confidences, float*, POINTER, false, s->confidenceCount) \
     _(isValid, XrBool32, PLAIN) \
     _(isEyeFollowingBlendshapesValid, XrBool32, PLAIN) \
     _(dataSource, XrFaceTrackingDataSource2FB, PLAIN) \
@@ -6328,7 +6328,7 @@
     _(next, const void*, XR) \
     _(faceExpressionSet, XrFaceExpressionSet2FB, PLAIN) \
     _(requestedDataSourceCount, uint32_t, PLAIN) \
-    _(requestedDataSources, XrFaceTrackingDataSource2FB*, POINTER, false, requestedDataSourceCount) 
+    _(requestedDataSources, XrFaceTrackingDataSource2FB*, POINTER, false, s->requestedDataSourceCount) 
 #define XRT_ENUMERATE_XrFaceExpressionInfo2FB(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6337,9 +6337,9 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(weightCount, uint32_t, PLAIN) \
-    _(weights, float*, POINTER, false, weightCount) \
+    _(weights, float*, POINTER, false, s->weightCount) \
     _(confidenceCount, uint32_t, PLAIN) \
-    _(confidences, float*, POINTER, false, confidenceCount) \
+    _(confidences, float*, POINTER, false, s->confidenceCount) \
     _(isValid, XrBool32, PLAIN) \
     _(isEyeFollowingBlendshapesValid, XrBool32, PLAIN) \
     _(dataSource, XrFaceTrackingDataSource2FB, PLAIN) \
@@ -6355,8 +6355,8 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, XrSpace*, POINTER, false, spaceCount) \
-    _(recipientInfo, const XrShareSpacesRecipientBaseHeaderMETA*, POINTER, true, 1) 
+    _(spaces, XrSpace*, POINTER, false, s->spaceCount) \
+    _(recipientInfo, const XrShareSpacesRecipientBaseHeaderMETA*, XR) 
 #define XRT_ENUMERATE_XrEventDataShareSpacesCompleteMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6370,8 +6370,8 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, XrSpace*, POINTER, false, spaceCount) \
-    _(recipientInfo, const XrShareSpacesRecipientBaseHeaderMETA*, POINTER, true, 1) 
+    _(spaces, XrSpace*, POINTER, false, s->spaceCount) \
+    _(recipientInfo, const XrShareSpacesRecipientBaseHeaderMETA*, XR) 
 #define XRT_ENUMERATE_XrEventDataShareSpacesCompleteMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6467,9 +6467,9 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(vertexCount, uint32_t, PLAIN) \
-    _(vertices, const XrVector3f*, POINTER, true, vertexCount) \
+    _(vertices, const XrVector3f*, POINTER, true, s->vertexCount) \
     _(indexCount, uint32_t, PLAIN) \
-    _(indices, const uint32_t*, POINTER, true, indexCount) \
+    _(indices, const uint32_t*, POINTER, true, s->indexCount) \
     _(baseSpace, XrSpace, PLAIN) \
     _(time, XrTime, PLAIN) \
     _(pose, XrPosef, PLAIN) \
@@ -6493,9 +6493,9 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(vertexCount, uint32_t, PLAIN) \
-    _(vertices, const XrVector3f*, POINTER, true, vertexCount) \
+    _(vertices, const XrVector3f*, POINTER, true, s->vertexCount) \
     _(indexCount, uint32_t, PLAIN) \
-    _(indices, const uint32_t*, POINTER, true, indexCount) \
+    _(indices, const uint32_t*, POINTER, true, s->indexCount) \
     _(baseSpace, XrSpace, PLAIN) \
     _(time, XrTime, PLAIN) \
     _(pose, XrPosef, PLAIN) \
@@ -6512,7 +6512,7 @@
     _(next, const void*, XR) \
     _(mode, XrFoveationModeHTC, PLAIN) \
     _(subImageCount, uint32_t, PLAIN) \
-    _(subImages, XrSwapchainSubImage*, POINTER, false, subImageCount) 
+    _(subImages, XrSwapchainSubImage*, POINTER, false, s->subImageCount) 
 #define XRT_ENUMERATE_XrFoveationConfigurationHTC(_) \
     _(level, XrFoveationLevelHTC, PLAIN) \
     _(clearFovDegree, float, PLAIN) \
@@ -6525,13 +6525,13 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(configCount, uint32_t, PLAIN) \
-    _(configs, const XrFoveationConfigurationHTC*, POINTER, true, configCount) 
+    _(configs, const XrFoveationConfigurationHTC*, POINTER, true, s->configCount) 
 #define XRT_ENUMERATE_XrFoveationApplyInfoHTC(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(mode, XrFoveationModeHTC, PLAIN) \
     _(subImageCount, uint32_t, PLAIN) \
-    _(subImages, XrSwapchainSubImage*, POINTER, false, subImageCount) 
+    _(subImages, XrSwapchainSubImage*, POINTER, false, s->subImageCount) 
 #define XRT_ENUMERATE_XrFoveationDynamicModeInfoHTC(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6540,7 +6540,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(configCount, uint32_t, PLAIN) \
-    _(configs, const XrFoveationConfigurationHTC*, POINTER, true, configCount) 
+    _(configs, const XrFoveationConfigurationHTC*, POINTER, true, s->configCount) 
 #define XRT_ENUMERATE_XrSystemAnchorPropertiesHTC(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6582,7 +6582,7 @@
     _(combinedLocationFlags, XrSpaceLocationFlags, PLAIN) \
     _(confidenceLevel, XrBodyJointConfidenceHTC, PLAIN) \
     _(jointLocationCount, uint32_t, PLAIN) \
-    _(jointLocations, XrBodyJointLocationHTC*, POINTER, false, jointLocationCount) \
+    _(jointLocations, XrBodyJointLocationHTC*, POINTER, false, s->jointLocationCount) \
     _(skeletonGenerationId, uint32_t, PLAIN) 
 #define XRT_ENUMERATE_XrBodyJointLocationHTC(_) \
     _(locationFlags, XrSpaceLocationFlags, PLAIN) \
@@ -6591,7 +6591,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(jointCount, uint32_t, PLAIN) \
-    _(joints, XrBodySkeletonJointHTC*, POINTER, false, jointCount) 
+    _(joints, XrBodySkeletonJointHTC*, POINTER, false, s->jointCount) 
 #define XRT_ENUMERATE_XrSystemBodyTrackingPropertiesHTC(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6611,18 +6611,18 @@
     _(combinedLocationFlags, XrSpaceLocationFlags, PLAIN) \
     _(confidenceLevel, XrBodyJointConfidenceHTC, PLAIN) \
     _(jointLocationCount, uint32_t, PLAIN) \
-    _(jointLocations, XrBodyJointLocationHTC*, POINTER, false, jointLocationCount) \
+    _(jointLocations, XrBodyJointLocationHTC*, POINTER, false, s->jointLocationCount) \
     _(skeletonGenerationId, uint32_t, PLAIN) 
 #define XRT_ENUMERATE_XrBodySkeletonHTC(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(jointCount, uint32_t, PLAIN) \
-    _(joints, XrBodySkeletonJointHTC*, POINTER, false, jointCount) 
+    _(joints, XrBodySkeletonJointHTC*, POINTER, false, s->jointCount) 
 #define XRT_ENUMERATE_XrActiveActionSetPrioritiesEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(actionSetPriorityCount, uint32_t, PLAIN) \
-    _(actionSetPriorities, const XrActiveActionSetPriorityEXT*, POINTER, true, actionSetPriorityCount) 
+    _(actionSetPriorities, const XrActiveActionSetPriorityEXT*, POINTER, true, s->actionSetPriorityCount) 
 #define XRT_ENUMERATE_XrActiveActionSetPriorityEXT(_) \
     _(actionSet, XrActionSet, PLAIN) \
     _(priorityOverride, uint32_t, PLAIN) 
@@ -6630,7 +6630,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(actionSetPriorityCount, uint32_t, PLAIN) \
-    _(actionSetPriorities, const XrActiveActionSetPriorityEXT*, POINTER, true, actionSetPriorityCount) 
+    _(actionSetPriorities, const XrActiveActionSetPriorityEXT*, POINTER, true, s->actionSetPriorityCount) 
 #define XRT_ENUMERATE_XrSystemForceFeedbackCurlPropertiesMNDX(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6639,7 +6639,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(locationCount, uint32_t, PLAIN) \
-    _(locations, XrForceFeedbackCurlApplyLocationMNDX*, POINTER, false, locationCount) 
+    _(locations, XrForceFeedbackCurlApplyLocationMNDX*, POINTER, false, s->locationCount) 
 #define XRT_ENUMERATE_XrForceFeedbackCurlApplyLocationMNDX(_) \
     _(location, XrForceFeedbackCurlLocationMNDX, PLAIN) \
     _(value, float, PLAIN) 
@@ -6651,7 +6651,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(locationCount, uint32_t, PLAIN) \
-    _(locations, XrForceFeedbackCurlApplyLocationMNDX*, POINTER, false, locationCount) 
+    _(locations, XrForceFeedbackCurlApplyLocationMNDX*, POINTER, false, s->locationCount) 
 #define XRT_ENUMERATE_XrSystemBodyTrackingPropertiesBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6670,7 +6670,7 @@
     _(next, void*, XR) \
     _(allJointPosesTracked, XrBool32, PLAIN) \
     _(jointLocationCount, uint32_t, PLAIN) \
-    _(jointLocations, XrBodyJointLocationBD*, POINTER, false, jointLocationCount) 
+    _(jointLocations, XrBodyJointLocationBD*, POINTER, false, s->jointLocationCount) 
 #define XRT_ENUMERATE_XrBodyJointLocationBD(_) \
     _(locationFlags, XrSpaceLocationFlags, PLAIN) \
     _(pose, XrPosef, PLAIN) 
@@ -6688,7 +6688,7 @@
     _(next, void*, XR) \
     _(allJointPosesTracked, XrBool32, PLAIN) \
     _(jointLocationCount, uint32_t, PLAIN) \
-    _(jointLocations, XrBodyJointLocationBD*, POINTER, false, jointLocationCount) 
+    _(jointLocations, XrBodyJointLocationBD*, POINTER, false, s->jointLocationCount) 
 #define XRT_ENUMERATE_XrSystemBodyTrackingPropertiesBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6718,7 +6718,7 @@
     _(next, void*, XR) \
     _(labelCapacityInput, uint32_t, PLAIN) \
     _(labelCountOutput, uint32_t, PLAIN) \
-    _(labels, XrSemanticLabelBD*, POINTER, false, labelCapacityInput) 
+    _(labels, XrSemanticLabelBD*, POINTER, false, s->labelCapacityInput) 
 #define XRT_ENUMERATE_XrSpatialEntityComponentDataBoundingBox2DBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6728,7 +6728,7 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector2f*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrVector2f*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrSpatialEntityComponentDataBoundingBox3DBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6738,10 +6738,10 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector3f*, POINTER, false, vertexCapacityInput) \
+    _(vertices, XrVector3f*, POINTER, false, s->vertexCapacityInput) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint16_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint16_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrSenseDataProviderCreateInfoBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6774,7 +6774,7 @@
     _(next, void*, XR) \
     _(stateCapacityInput, uint32_t, PLAIN) \
     _(stateCountOutput, uint32_t, PLAIN) \
-    _(states, XrSpatialEntityStateBD*, POINTER, false, stateCapacityInput) 
+    _(states, XrSpatialEntityStateBD*, POINTER, false, s->stateCapacityInput) 
 #define XRT_ENUMERATE_XrSpatialEntityStateBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6785,12 +6785,12 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, const XrUuidEXT*, POINTER, true, uuidCount) 
+    _(uuids, const XrUuidEXT*, POINTER, true, s->uuidCount) 
 #define XRT_ENUMERATE_XrSenseDataFilterSemanticBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(labelCount, uint32_t, PLAIN) \
-    _(labels, const XrSemanticLabelBD*, POINTER, true, labelCount) 
+    _(labels, const XrSemanticLabelBD*, POINTER, true, s->labelCount) 
 #define XRT_ENUMERATE_XrSpatialEntityAnchorCreateInfoBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6823,7 +6823,7 @@
     _(next, void*, XR) \
     _(labelCapacityInput, uint32_t, PLAIN) \
     _(labelCountOutput, uint32_t, PLAIN) \
-    _(labels, XrSemanticLabelBD*, POINTER, false, labelCapacityInput) 
+    _(labels, XrSemanticLabelBD*, POINTER, false, s->labelCapacityInput) 
 #define XRT_ENUMERATE_XrSpatialEntityComponentDataBoundingBox2DBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6833,7 +6833,7 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector2f*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrVector2f*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrSpatialEntityComponentDataBoundingBox3DBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -6843,10 +6843,10 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector3f*, POINTER, false, vertexCapacityInput) \
+    _(vertices, XrVector3f*, POINTER, false, s->vertexCapacityInput) \
     _(indexCapacityInput, uint32_t, PLAIN) \
     _(indexCountOutput, uint32_t, PLAIN) \
-    _(indices, uint16_t*, POINTER, false, indexCapacityInput) 
+    _(indices, uint16_t*, POINTER, false, s->indexCapacityInput) 
 #define XRT_ENUMERATE_XrSenseDataProviderCreateInfoBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -6875,12 +6875,12 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(uuidCount, uint32_t, PLAIN) \
-    _(uuids, const XrUuidEXT*, POINTER, true, uuidCount) 
+    _(uuids, const XrUuidEXT*, POINTER, true, s->uuidCount) 
 #define XRT_ENUMERATE_XrSenseDataFilterSemanticBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(labelCount, uint32_t, PLAIN) \
-    _(labels, const XrSemanticLabelBD*, POINTER, true, labelCount) 
+    _(labels, const XrSemanticLabelBD*, POINTER, true, s->labelCount) 
 #define XRT_ENUMERATE_XrQueriedSenseDataGetInfoBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -6889,7 +6889,7 @@
     _(next, void*, XR) \
     _(stateCapacityInput, uint32_t, PLAIN) \
     _(stateCountOutput, uint32_t, PLAIN) \
-    _(states, XrSpatialEntityStateBD*, POINTER, false, stateCapacityInput) 
+    _(states, XrSpatialEntityStateBD*, POINTER, false, s->stateCapacityInput) 
 #define XRT_ENUMERATE_XrSpatialEntityStateBD(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7028,7 +7028,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(requestedDataSourceCount, uint32_t, PLAIN) \
-    _(requestedDataSources, XrHandTrackingDataSourceEXT*, POINTER, false, requestedDataSourceCount) 
+    _(requestedDataSources, XrHandTrackingDataSourceEXT*, POINTER, false, s->requestedDataSourceCount) 
 #define XRT_ENUMERATE_XrHandTrackingDataSourceStateEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7038,7 +7038,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(requestedDataSourceCount, uint32_t, PLAIN) \
-    _(requestedDataSources, XrHandTrackingDataSourceEXT*, POINTER, false, requestedDataSourceCount) 
+    _(requestedDataSources, XrHandTrackingDataSourceEXT*, POINTER, false, s->requestedDataSourceCount) 
 #define XRT_ENUMERATE_XrHandTrackingDataSourceStateEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7058,9 +7058,9 @@
     _(baseSpace, XrSpace, PLAIN) \
     _(time, XrTime, PLAIN) \
     _(orientationCount, uint32_t, PLAIN) \
-    _(orientations, const XrPlaneDetectorOrientationEXT*, POINTER, true, orientationCount) \
+    _(orientations, const XrPlaneDetectorOrientationEXT*, POINTER, true, s->orientationCount) \
     _(semanticTypeCount, uint32_t, PLAIN) \
-    _(semanticTypes, const XrPlaneDetectorSemanticTypeEXT*, POINTER, true, semanticTypeCount) \
+    _(semanticTypes, const XrPlaneDetectorSemanticTypeEXT*, POINTER, true, s->semanticTypeCount) \
     _(maxPlanes, uint32_t, PLAIN) \
     _(minArea, float, PLAIN) \
     _(boundingBoxPose, XrPosef, PLAIN) \
@@ -7085,13 +7085,13 @@
     _(next, void*, XR) \
     _(planeLocationCapacityInput, uint32_t, PLAIN) \
     _(planeLocationCountOutput, uint32_t, PLAIN) \
-    _(planeLocations, XrPlaneDetectorLocationEXT*, POINTER, false, planeLocationCapacityInput) 
+    _(planeLocations, XrPlaneDetectorLocationEXT*, POINTER, false, s->planeLocationCapacityInput) 
 #define XRT_ENUMERATE_XrPlaneDetectorPolygonBufferEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector2f*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrVector2f*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrPlaneDetectorCreateInfoEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7102,9 +7102,9 @@
     _(baseSpace, XrSpace, PLAIN) \
     _(time, XrTime, PLAIN) \
     _(orientationCount, uint32_t, PLAIN) \
-    _(orientations, const XrPlaneDetectorOrientationEXT*, POINTER, true, orientationCount) \
+    _(orientations, const XrPlaneDetectorOrientationEXT*, POINTER, true, s->orientationCount) \
     _(semanticTypeCount, uint32_t, PLAIN) \
-    _(semanticTypes, const XrPlaneDetectorSemanticTypeEXT*, POINTER, true, semanticTypeCount) \
+    _(semanticTypes, const XrPlaneDetectorSemanticTypeEXT*, POINTER, true, s->semanticTypeCount) \
     _(maxPlanes, uint32_t, PLAIN) \
     _(minArea, float, PLAIN) \
     _(boundingBoxPose, XrPosef, PLAIN) \
@@ -7119,7 +7119,7 @@
     _(next, void*, XR) \
     _(planeLocationCapacityInput, uint32_t, PLAIN) \
     _(planeLocationCountOutput, uint32_t, PLAIN) \
-    _(planeLocations, XrPlaneDetectorLocationEXT*, POINTER, false, planeLocationCapacityInput) 
+    _(planeLocations, XrPlaneDetectorLocationEXT*, POINTER, false, s->planeLocationCapacityInput) 
 #define XRT_ENUMERATE_XrPlaneDetectorLocationEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7135,7 +7135,7 @@
     _(next, void*, XR) \
     _(vertexCapacityInput, uint32_t, PLAIN) \
     _(vertexCountOutput, uint32_t, PLAIN) \
-    _(vertices, XrVector2f*, POINTER, false, vertexCapacityInput) 
+    _(vertices, XrVector2f*, POINTER, false, s->vertexCapacityInput) 
 #define XRT_ENUMERATE_XrSystemPlaneDetectionPropertiesEXT(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7227,7 +7227,7 @@
     _(timestamp, XrTime, PLAIN) \
     _(meshBlockStateCapacityInput, uint32_t, PLAIN) \
     _(meshBlockStateCountOutput, uint32_t, PLAIN) \
-    _(meshBlockStates, XrWorldMeshBlockStateML*, POINTER, false, meshBlockStateCapacityInput) 
+    _(meshBlockStates, XrWorldMeshBlockStateML*, POINTER, false, s->meshBlockStateCapacityInput) 
 #define XRT_ENUMERATE_XrWorldMeshBufferRecommendedSizeInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7240,7 +7240,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(bufferSize, uint32_t, PLAIN) \
-    _(buffer, void*, POINTER, false, bufferSize) 
+    _(buffer, void*, POINTER, false, s->bufferSize) 
 #define XRT_ENUMERATE_XrWorldMeshBlockRequestML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7253,7 +7253,7 @@
     _(fillHoleLength, float, PLAIN) \
     _(disconnectedComponentArea, float, PLAIN) \
     _(blockCount, uint32_t, PLAIN) \
-    _(blocks, XrWorldMeshBlockRequestML*, POINTER, false, blockCount) 
+    _(blocks, XrWorldMeshBlockRequestML*, POINTER, false, s->blockCount) 
 #define XRT_ENUMERATE_XrWorldMeshBlockML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7262,13 +7262,13 @@
     _(lod, XrWorldMeshDetectorLodML, PLAIN) \
     _(flags, XrWorldMeshDetectorFlagsML, PLAIN) \
     _(indexCount, uint32_t, PLAIN) \
-    _(indexBuffer, uint16_t*, POINTER, false, indexCount) \
+    _(indexBuffer, uint16_t*, POINTER, false, s->indexCount) \
     _(vertexCount, uint32_t, PLAIN) \
-    _(vertexBuffer, XrVector3f*, POINTER, false, vertexCount) \
+    _(vertexBuffer, XrVector3f*, POINTER, false, s->vertexCount) \
     _(normalCount, uint32_t, PLAIN) \
-    _(normalBuffer, XrVector3f*, POINTER, false, normalCount) \
+    _(normalBuffer, XrVector3f*, POINTER, false, s->normalCount) \
     _(confidenceCount, uint32_t, PLAIN) \
-    _(confidenceBuffer, float*, POINTER, false, confidenceCount) 
+    _(confidenceBuffer, float*, POINTER, false, s->confidenceCount) 
 #define XRT_ENUMERATE_XrWorldMeshRequestCompletionInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7279,7 +7279,7 @@
     _(next, void*, XR) \
     _(futureResult, XrResult, PLAIN) \
     _(blockCount, uint32_t, PLAIN) \
-    _(blocks, XrWorldMeshBlockML*, POINTER, false, blockCount) 
+    _(blocks, XrWorldMeshBlockML*, POINTER, false, s->blockCount) 
 #define XRT_ENUMERATE_XrWorldMeshDetectorCreateInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -7305,7 +7305,7 @@
     _(timestamp, XrTime, PLAIN) \
     _(meshBlockStateCapacityInput, uint32_t, PLAIN) \
     _(meshBlockStateCountOutput, uint32_t, PLAIN) \
-    _(meshBlockStates, XrWorldMeshBlockStateML*, POINTER, false, meshBlockStateCapacityInput) 
+    _(meshBlockStates, XrWorldMeshBlockStateML*, POINTER, false, s->meshBlockStateCapacityInput) 
 #define XRT_ENUMERATE_XrWorldMeshBufferRecommendedSizeInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7318,7 +7318,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(bufferSize, uint32_t, PLAIN) \
-    _(buffer, void*, POINTER, false, bufferSize) 
+    _(buffer, void*, POINTER, false, s->bufferSize) 
 #define XRT_ENUMERATE_XrWorldMeshBlockRequestML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7331,7 +7331,7 @@
     _(fillHoleLength, float, PLAIN) \
     _(disconnectedComponentArea, float, PLAIN) \
     _(blockCount, uint32_t, PLAIN) \
-    _(blocks, XrWorldMeshBlockRequestML*, POINTER, false, blockCount) 
+    _(blocks, XrWorldMeshBlockRequestML*, POINTER, false, s->blockCount) 
 #define XRT_ENUMERATE_XrWorldMeshBlockML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7340,19 +7340,19 @@
     _(lod, XrWorldMeshDetectorLodML, PLAIN) \
     _(flags, XrWorldMeshDetectorFlagsML, PLAIN) \
     _(indexCount, uint32_t, PLAIN) \
-    _(indexBuffer, uint16_t*, POINTER, false, indexCount) \
+    _(indexBuffer, uint16_t*, POINTER, false, s->indexCount) \
     _(vertexCount, uint32_t, PLAIN) \
-    _(vertexBuffer, XrVector3f*, POINTER, false, vertexCount) \
+    _(vertexBuffer, XrVector3f*, POINTER, false, s->vertexCount) \
     _(normalCount, uint32_t, PLAIN) \
-    _(normalBuffer, XrVector3f*, POINTER, false, normalCount) \
+    _(normalBuffer, XrVector3f*, POINTER, false, s->normalCount) \
     _(confidenceCount, uint32_t, PLAIN) \
-    _(confidenceBuffer, float*, POINTER, false, confidenceCount) 
+    _(confidenceBuffer, float*, POINTER, false, s->confidenceCount) 
 #define XRT_ENUMERATE_XrWorldMeshRequestCompletionML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(futureResult, XrResult, PLAIN) \
     _(blockCount, uint32_t, PLAIN) \
-    _(blocks, XrWorldMeshBlockML*, POINTER, false, blockCount) 
+    _(blocks, XrWorldMeshBlockML*, POINTER, false, s->blockCount) 
 #define XRT_ENUMERATE_XrWorldMeshRequestCompletionInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7366,7 +7366,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(requestedCount, uint32_t, PLAIN) \
-    _(requestedFacialBlendShapes, const XrFacialBlendShapeML*, POINTER, true, requestedCount) 
+    _(requestedFacialBlendShapes, const XrFacialBlendShapeML*, POINTER, true, s->requestedCount) 
 #define XRT_ENUMERATE_XrFacialExpressionBlendShapeGetInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -7385,7 +7385,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(requestedCount, uint32_t, PLAIN) \
-    _(requestedFacialBlendShapes, const XrFacialBlendShapeML*, POINTER, true, requestedCount) 
+    _(requestedFacialBlendShapes, const XrFacialBlendShapeML*, POINTER, true, s->requestedCount) 
 #define XRT_ENUMERATE_XrFacialExpressionBlendShapeGetInfoML(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -7426,7 +7426,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(bufferSize, uint32_t, PLAIN) \
-    _(buffer, uint8_t*, POINTER, false, bufferSize) 
+    _(buffer, uint8_t*, POINTER, false, s->bufferSize) 
 #define XRT_ENUMERATE_XrColocationAdvertisementStopInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -7482,7 +7482,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(bufferSize, uint32_t, PLAIN) \
-    _(buffer, uint8_t*, POINTER, false, bufferSize) 
+    _(buffer, uint8_t*, POINTER, false, s->bufferSize) 
 #define XRT_ENUMERATE_XrColocationAdvertisementStopInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -7536,7 +7536,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(groupCount, uint32_t, PLAIN) \
-    _(groups, XrUuid*, POINTER, false, groupCount) 
+    _(groups, XrUuid*, POINTER, false, s->groupCount) 
 #define XRT_ENUMERATE_XrSpaceGroupUuidFilterInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7545,7 +7545,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(groupCount, uint32_t, PLAIN) \
-    _(groups, XrUuid*, POINTER, false, groupCount) 
+    _(groups, XrUuid*, POINTER, false, s->groupCount) 
 #define XRT_ENUMERATE_XrSpaceGroupUuidFilterInfoMETA(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7590,7 +7590,7 @@
     _(displayTime, XrTime, PLAIN) \
     _(environmentBlendMode, XrEnvironmentBlendMode, PLAIN) \
     _(layerCount, uint32_t, PLAIN) \
-    _(layers, const XrCompositionLayerBaseHeader* const*, POINTER, true, layerCount) 
+    _(layers, const XrCompositionLayerBaseHeader* const*, XR) 
 #define XRT_ENUMERATE_XrOffset2Df(_) \
     _(x, float, PLAIN) \
     _(y, float, PLAIN) 
@@ -7600,6 +7600,10 @@
 #define XRT_ENUMERATE_XrExtent2Df(_) \
     _(width, float, PLAIN) \
     _(height, float, PLAIN) 
+#define XRT_ENUMERATE_XrVector3f(_) \
+    _(x, float, PLAIN) \
+    _(y, float, PLAIN) \
+    _(z, float, PLAIN) 
 #define XRT_ENUMERATE_XrRect2Df(_) \
     _(offset, XrOffset2Df, PLAIN) \
     _(extent, XrExtent2Df, PLAIN) 
@@ -7637,6 +7641,8 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(varying, uint8_t[4000], ARRAY, 4000) 
+#define XRT_ENUMERATE_XrBodySkeletonJointHTC(_) \
+    _(pose, XrPosef, PLAIN) 
 #define XRT_ENUMERATE_XrEventDataBaseHeader(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -7652,9 +7658,9 @@
     _(createFlags, XrInstanceCreateFlags, PLAIN) \
     _(applicationInfo, XrApplicationInfo, PLAIN) \
     _(enabledApiLayerCount, uint32_t, PLAIN) \
-    _(enabledApiLayerNames, const char* const*, POINTER, true, enabledApiLayerCount,null-terminated) \
+    _(enabledApiLayerNames, const char* const*, POINTER, true, s->enabledApiLayerCount,null-terminated) \
     _(enabledExtensionCount, uint32_t, PLAIN) \
-    _(enabledExtensionNames, const char* const*, POINTER, true, enabledExtensionCount,null-terminated) 
+    _(enabledExtensionNames, const char* const*, POINTER, true, s->enabledExtensionCount,null-terminated) 
 #define XRT_ENUMERATE_XrEventDataEventsLost(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7668,10 +7674,6 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(lossTime, XrTime, PLAIN) 
-#define XRT_ENUMERATE_XrVector3f(_) \
-    _(x, float, PLAIN) \
-    _(y, float, PLAIN) \
-    _(z, float, PLAIN) 
 #define XRT_ENUMERATE_XrEventDataSessionStateChanged(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7717,9 +7719,6 @@
     _(changedSinceLastSync, XrBool32, PLAIN) \
     _(lastChangeTime, XrTime, PLAIN) \
     _(isActive, XrBool32, PLAIN) 
-#define XRT_ENUMERATE_XrVector2f(_) \
-    _(x, float, PLAIN) \
-    _(y, float, PLAIN) 
 #define XRT_ENUMERATE_XrActionStateFloat(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7727,6 +7726,9 @@
     _(changedSinceLastSync, XrBool32, PLAIN) \
     _(lastChangeTime, XrTime, PLAIN) \
     _(isActive, XrBool32, PLAIN) 
+#define XRT_ENUMERATE_XrVector2f(_) \
+    _(x, float, PLAIN) \
+    _(y, float, PLAIN) 
 #define XRT_ENUMERATE_XrActionStateVector2f(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
@@ -7762,7 +7764,7 @@
     _(next, const void*, XR) \
     _(interactionProfile, XrPath, PLAIN) \
     _(countSuggestedBindings, uint32_t, PLAIN) \
-    _(suggestedBindings, const XrActionSuggestedBinding*, POINTER, true, countSuggestedBindings) 
+    _(suggestedBindings, const XrActionSuggestedBinding*, POINTER, true, s->countSuggestedBindings) 
 #define XRT_ENUMERATE_XrSessionCreateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7779,7 +7781,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(countActionSets, uint32_t, PLAIN) \
-    _(actionSets, const XrActionSet*, POINTER, true, countActionSets) 
+    _(actionSets, const XrActionSet*, POINTER, true, s->countActionSets) 
 #define XRT_ENUMERATE_XrSwapchainCreateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7796,7 +7798,7 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(countActiveActionSets, uint32_t, PLAIN) \
-    _(activeActionSets, const XrActiveActionSet*, POINTER, true, countActiveActionSets) 
+    _(activeActionSets, const XrActiveActionSet*, POINTER, true, s->countActiveActionSets) 
 #define XRT_ENUMERATE_XrSwapchainImageBaseHeader(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) 
@@ -7809,6 +7811,10 @@
     _(next, const void*, XR) \
     _(sourcePath, XrPath, PLAIN) \
     _(whichComponents, XrInputSourceLocalizedNameFlags, PLAIN) 
+#define XRT_ENUMERATE_XrColor3f(_) \
+    _(r, float, PLAIN) \
+    _(g, float, PLAIN) \
+    _(b, float, PLAIN) 
 #define XRT_ENUMERATE_XrCompositionLayerProjectionView(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
@@ -7819,18 +7825,35 @@
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(session, XrSession, PLAIN) 
+#define XRT_ENUMERATE_XrExtent3Df(_) \
+    _(width, float, PLAIN) \
+    _(height, float, PLAIN) \
+    _(depth, float, PLAIN) 
 #define XRT_ENUMERATE_XrInteractionProfileState(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(interactionProfile, XrPath, PLAIN) 
+#define XRT_ENUMERATE_XrSpheref(_) \
+    _(center, XrPosef, PLAIN) \
+    _(radius, float, PLAIN) 
 #define XRT_ENUMERATE_XrActionCreateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(actionName, char[XR_MAX_ACTION_NAME_SIZE], ARRAY, XR_MAX_ACTION_NAME_SIZE) \
     _(actionType, XrActionType, PLAIN) \
     _(countSubactionPaths, uint32_t, PLAIN) \
-    _(subactionPaths, const XrPath*, POINTER, true, countSubactionPaths) \
+    _(subactionPaths, const XrPath*, POINTER, true, s->countSubactionPaths) \
     _(localizedActionName, char[XR_MAX_LOCALIZED_ACTION_NAME_SIZE], ARRAY, XR_MAX_LOCALIZED_ACTION_NAME_SIZE) 
+#define XRT_ENUMERATE_XrBoxf(_) \
+    _(center, XrPosef, PLAIN) \
+    _(extents, XrExtent3Df, PLAIN) 
+#define XRT_ENUMERATE_XrFrustumf(_) \
+    _(pose, XrPosef, PLAIN) \
+    _(fov, XrFovf, PLAIN) \
+    _(nearZ, float, PLAIN) \
+    _(farZ, float, PLAIN) 
+#define XRT_ENUMERATE_XrUuid(_) \
+    _(data, uint8_t[XR_UUID_SIZE], ARRAY, XR_UUID_SIZE) 
 #define XRT_ENUMERATE_XrSwapchainImageAcquireInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) 
@@ -7913,19 +7936,19 @@
     _(layerFlags, XrCompositionLayerFlags, PLAIN) \
     _(space, XrSpace, PLAIN) \
     _(viewCount, uint32_t, PLAIN) \
-    _(views, const XrCompositionLayerProjectionView*, POINTER, true, viewCount) 
+    _(views, const XrCompositionLayerProjectionView*, POINTER, true, s->viewCount) 
 #define XRT_ENUMERATE_XrSpacesLocateInfo(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, const void*, XR) \
     _(baseSpace, XrSpace, PLAIN) \
     _(time, XrTime, PLAIN) \
     _(spaceCount, uint32_t, PLAIN) \
-    _(spaces, const XrSpace*, POINTER, true, spaceCount) 
+    _(spaces, const XrSpace*, POINTER, true, s->spaceCount) 
 #define XRT_ENUMERATE_XrSpaceLocations(_) \
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(locationCount, uint32_t, PLAIN) \
-    _(locations, XrSpaceLocationData*, POINTER, false, locationCount) 
+    _(locations, XrSpaceLocationData*, POINTER, false, s->locationCount) 
 #define XRT_ENUMERATE_XrSpaceLocationData(_) \
     _(locationFlags, XrSpaceLocationFlags, PLAIN) \
     _(pose, XrPosef, PLAIN) 
@@ -7933,33 +7956,10 @@
     _(type, XrStructureType, PLAIN) \
     _(next, void*, XR) \
     _(velocityCount, uint32_t, PLAIN) \
-    _(velocities, XrSpaceVelocityData*, POINTER, false, velocityCount) 
+    _(velocities, XrSpaceVelocityData*, POINTER, false, s->velocityCount) 
 #define XRT_ENUMERATE_XrSpaceVelocityData(_) \
     _(velocityFlags, XrSpaceVelocityFlags, PLAIN) \
     _(linearVelocity, XrVector3f, PLAIN) \
     _(angularVelocity, XrVector3f, PLAIN) 
-#define XRT_ENUMERATE_XrBodySkeletonJointHTC(_) \
-    _(pose, XrPosef, PLAIN) 
-#define XRT_ENUMERATE_XrColor3f(_) \
-    _(r, float, PLAIN) \
-    _(g, float, PLAIN) \
-    _(b, float, PLAIN) 
-#define XRT_ENUMERATE_XrExtent3Df(_) \
-    _(width, float, PLAIN) \
-    _(height, float, PLAIN) \
-    _(depth, float, PLAIN) 
-#define XRT_ENUMERATE_XrSpheref(_) \
-    _(center, XrPosef, PLAIN) \
-    _(radius, float, PLAIN) 
-#define XRT_ENUMERATE_XrBoxf(_) \
-    _(center, XrPosef, PLAIN) \
-    _(extents, XrExtent3Df, PLAIN) 
-#define XRT_ENUMERATE_XrFrustumf(_) \
-    _(pose, XrPosef, PLAIN) \
-    _(fov, XrFovf, PLAIN) \
-    _(nearZ, float, PLAIN) \
-    _(farZ, float, PLAIN) 
-#define XRT_ENUMERATE_XrUuid(_) \
-    _(data, uint8_t[XR_UUID_SIZE], ARRAY, XR_UUID_SIZE) 
 
 #endif // XRT_REFLECTION_STRUCT_H

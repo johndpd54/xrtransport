@@ -79,7 +79,7 @@ class ValuePlan:
 class RandomStructGenerator:
     def __init__(self, spec):
         self.spec = spec
-        self.test_structs = [s for s in spec.test_structs if not s.name in spec.custom_structs and not s.header]
+        self.test_structs = [s for s in spec.test_structs if not s.custom and not s.header]
         self.test_xr_structs = [s for s in self.test_structs if s.xr_type]
         self.nullptr_chance = 0.6
 

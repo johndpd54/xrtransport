@@ -15,7 +15,6 @@ class XrSpec:
         self.extensions = extensions
         self.functions_index = {f.name: f for f in self.functions}
         self.structs_index = {s.name: s for s in self.structs}
-        self.custom_structs = CUSTOM_STRUCTS
         test_extensions = [None]
         self.test_structs = filter_test_structs(self.extensions, test_extensions)
     
@@ -42,6 +41,7 @@ class XrStruct:
         self.members = members
         self.header = None
         self.extension = None
+        self.custom = False
     
 class XrFunction:
     def __init__(self, name, type_, params):
@@ -219,6 +219,8 @@ def collect_structs(xml_root):
 
         if struct.name in struct_blacklist:
             continue
+        if struct.name in CUSTOM_STRUCTS:
+            struct.custom = True
 
         # check if struct has corresponding structure type, if so add it
         xr_structure_type = get_xr_structure_type(type_tag)
