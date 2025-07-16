@@ -187,38 +187,54 @@ template <typename T>
 static void deserialize_ptr(const T** x, std::istream& in) {
     std::uint32_t len{};
     deserialize(&len, in);
-    T* data = static_cast<T*>(std::malloc(sizeof(T) * len));
     if (len) {
+        T* data = static_cast<T*>(std::malloc(sizeof(T) * len));
         deserialize_array(data, len, in);
+        *x = data;
     }
-    *x = data;
+    else {
+        *x = nullptr;
+    }
 }
 
 template <typename T>
 static void deserialize_ptr(T** x, std::istream& in) {
     std::uint32_t len{};
     deserialize(&len, in);
-    T* data = static_cast<T*>(std::malloc(sizeof(T) * len));
     if (len) {
+        T* data = static_cast<T*>(std::malloc(sizeof(T) * len));
         deserialize_array(data, len, in);
+        *x = data;
     }
-    *x = data;
+    else {
+        *x = nullptr;
+    }
 }
 
 static void deserialize_xr(const void** p_s, std::istream& in) {
     XrStructureType type{};
     deserialize(&type, in);
-    XrBaseOutStructure* s = static_cast<XrBaseOutStructure*>(std::malloc(size_lookup(type)));
-    deserializer_lookup(type)(s, in);
-    *p_s = s;
+    if (type) {
+        XrBaseOutStructure* s = static_cast<XrBaseOutStructure*>(std::malloc(size_lookup(type)));
+        deserializer_lookup(type)(s, in);
+        *p_s = s;
+    }
+    else {
+        *p_s = nullptr;
+    }
 }
 
 static void deserialize_xr(void** p_s, std::istream& in) {
     XrStructureType type{};
     deserialize(&type, in);
-    XrBaseOutStructure* s = static_cast<XrBaseOutStructure*>(std::malloc(size_lookup(type)));
-    deserializer_lookup(type)(s, in);
-    *p_s = s;
+    if (type) {
+        XrBaseOutStructure* s = static_cast<XrBaseOutStructure*>(std::malloc(size_lookup(type)));
+        deserializer_lookup(type)(s, in);
+        *p_s = s;
+    }
+    else {
+        *p_s = nullptr;
+    }
 }
 
 // Generic cleaners
@@ -241,11 +257,17 @@ static void cleanup_array(const T* x, std::size_t len) {
 
 template <typename T>
 static void cleanup_ptr(const T* x, std::size_t len) {
+    if (!x) {
+        return; // do not clean up null pointer
+    }
     cleanup_array(x, len);
     std::free(const_cast<T*>(x));
 }
 
 static void cleanup_xr(const void* untyped) {
+    if (!untyped) {
+        return; // do not clean up null pointer
+    }
     const XrBaseOutStructure* x = static_cast<const XrBaseOutStructure*>(untyped);
     cleaner_lookup(x->type)(x);
     std::free(const_cast<void*>(untyped));
