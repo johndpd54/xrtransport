@@ -1,7 +1,6 @@
 import os
 from .spec_parser import get_xml_root, parse_spec
-from .common import generate_common
-from .structs import generate_serializer, generate_deserializer
+from .reflection_struct import generate_reflection_struct
 from .test import generate_struct_fuzzer
 
 PACKAGE_DIR = os.path.relpath(os.path.dirname(os.path.realpath(__file__)), os.getcwd())

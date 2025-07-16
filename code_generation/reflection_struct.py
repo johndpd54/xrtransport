@@ -2,9 +2,9 @@ from mako.template import Template
 from mako.lookup import TemplateLookup
 from mako import exceptions
 
-def generate_common(spec, templates_dir, out):
+def generate_reflection_struct(spec, templates_dir, out):
     template_lookup = TemplateLookup(directories=[templates_dir])
-    template = template_lookup.get_template("common.mako")
+    template = template_lookup.get_template("reflection_struct.mako")
     try:
         out.write(template.render(spec=spec).encode())
     except:

@@ -8,37 +8,31 @@ CUSTOM_STRUCTS = [
 ]
 
 class XrSpec:
-    def __init__(self, functions, function_aliases, structs, supported_types):
+    def __init__(self, functions, function_aliases, structs, extensions):
         self.functions = functions
         self.function_aliases = function_aliases
         self.structs = structs
-        self.supported_types = supported_types
+        self.extensions = extensions
         self.functions_index = {f.name: f for f in self.functions}
         self.structs_index = {s.name: s for s in self.structs}
-        self.grouped_structs = self.group_structs()
-        self.grouped_xr_structs = [[s for s in g if s.xr_type] for g in self.grouped_structs]
         self.custom_structs = CUSTOM_STRUCTS
         test_extensions = [None]
-        self.test_structs = filter_test_structs(self.structs, test_extensions)
-        self.test_supported_types = filter_test_supported_types(self.supported_types, test_extensions)
+        self.test_structs = filter_test_structs(self.extensions, test_extensions)
     
     def find_function(self, name):
         return self.functions_index[name] if name in self.functions_index else None
     
     def find_struct(self, name):
         return self.structs_index[name] if name in self.structs_index else None
-    
-    def group_structs(self):
-        # group structs by extension
-        grouped_structs = [[]]
-        last_extension = None
-        for struct in self.structs:
-            if struct.extension == last_extension:
-                grouped_structs[-1].append(struct)
-            else:
-                grouped_structs.append([struct])
-                last_extension = struct.extension
-        return grouped_structs
+
+class XrExtension:
+    def __init__(self, structs=None, functions=None):
+        if structs == None:
+            structs = []
+        if functions == None:
+            functions = []
+        self.structs = structs
+        self.functions = functions
 
 class XrStruct:
     def __init__(self, name, members):
@@ -103,9 +97,8 @@ def get_xml_root(xml_path):
 def parse_spec(xml_root):
     functions, function_aliases = collect_functions(xml_root)
     structs = collect_structs(xml_root)
-    supported_types = collect_supported_types(xml_root)
-    attach_extension_names(xml_root, structs, functions, supported_types) # must be done before constructing XrSpec
-    spec = XrSpec(functions, function_aliases, structs, supported_types)
+    extensions = collect_extensions(xml_root, structs, functions)
+    spec = XrSpec(functions, function_aliases, structs, extensions)
     return spec
 
 def collect_xr_structure_type_values(xml_root):
@@ -286,9 +279,14 @@ def collect_functions(xml_root):
     
     return functions, function_aliases
 
-def attach_extension_names(xml_root, structs, functions, supported_types):
+def collect_extensions(xml_root, structs, functions):
     extension_tags = xml_root.findall("extensions/extension")
+    no_extension_structs = set(structs)
+    no_extension_functions = set(functions)
+    extensions = {}
     for extension_tag in extension_tags:
+        extension_name = extension_tag.attrib["name"]
+        extension = XrExtension()
         for type_tag in extension_tag.findall("require/type"):
             name = type_tag.attrib["name"]
             # O(N^2), but this needs to be done before the spec is constructed
@@ -296,14 +294,14 @@ def attach_extension_names(xml_root, structs, functions, supported_types):
             # them all in a dict first
             struct = next((s for s in structs if s.name == name), None)
             if struct:
-                struct.extension = extension_tag.attrib["name"]
-            if name in supported_types:
-                supported_types[name] = extension_tag.attrib["name"]
+                extension.structs.append(struct)
+                no_extension_structs.discard(struct)
         for command_tag in extension_tag.findall("require/command"):
-            function_name = command_tag.attrib["name"]
-            function = next((f for f in functions if f.name == function_name), None)
+            name = command_tag.attrib["name"]
+            function = next((f for f in functions if f.name == name), None)
             if function:
-                function.extension = extension_tag.attrib["name"]
+                extension.functions.append(function)
+                no_extension_functions.discard(function)
         # Some structs are not referred to by their extension, but their XrStructureType is
         for enum_tag in extension_tag.findall("require/enum"):
             if "extends" in enum_tag.attrib and enum_tag.attrib["extends"] == "XrStructureType":
@@ -312,32 +310,19 @@ def attach_extension_names(xml_root, structs, functions, supported_types):
                 if not struct:
                     print(f"Warning! found XrStructureType ({enum_name}) with no corresponding struct!")
                 else:
-                    struct.extension = extension_tag.attrib["name"]
-
-def collect_supported_types(xml_root):
-    # map of type name to extension
-    # this function fills in None as extension for all types, this will be filled in later
-    supported_types = {}
-    type_tags = xml_root.findall("types/type")
-    for type_tag in type_tags:
-        if "requires" in type_tag.attrib:
-            # this specifies that this type comes from a header
-            if type_tag.attrib["requires"] == "openxr_platform_defines":
-                # this is a basic C type that we support
-                supported_types[type_tag.attrib["name"]] = None
-        elif "category" in type_tag.attrib:
-            category = type_tag.attrib["category"]
-            if category in ["basetype", "bitmask", "handle"]:
-                supported_types[type_tag.find("name").text] = None
-            elif category == "enum":
-                supported_types[type_tag.attrib["name"]] = None
+                    extension.structs.append(struct)
+                    no_extension_structs.discard(struct)
+        if extension.structs or extension.functions:
+            extensions[extension_name] = extension
     
-    return supported_types
-            
-# filter the whole list of structs to a subset for testing defined by a list of extensions we're testing
-def filter_test_structs(structs, test_extensions):
-    return [s for s in structs if s.extension in test_extensions]
+    extensions[None] = XrExtension(list(no_extension_structs), list(no_extension_functions))
 
-# filter the whole list of supported types to a subset for testing defined by a list of extensions we're testing
-def filter_test_supported_types(supported_types, test_extensions):
-    return [t for t in supported_types if supported_types[t] in test_extensions]
+    return extensions
+            
+# concatenate the list of structs based on the list of extension names we're testing
+def filter_test_structs(extensions, test_extensions):
+    test_structs = []
+    for ext_name, ext in extensions.items():
+        if ext_name in test_extensions:
+            test_structs += ext.structs
+    return test_structs
