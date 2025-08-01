@@ -11,9 +11,6 @@
 
 namespace xrtransport {
 
-// Hack necessary for MSVC
-#define XRT_EXPAND(x) x
-
 // Deserializer forward declarations
 #define XRT_STRUCT_DESERIALIZER_FORWARD_DECLARATION(struct_name, ...) \
     static void deserialize(struct_name* s, std::istream& in);
@@ -39,7 +36,7 @@ using StructDeserializer = void(*)(XrBaseOutStructure*, std::istream&);
 #define XRT_STRUCT_DESERIALIZER_LOOKUP_ENTRY_XR(struct_type, XR, xr_type) \
     {xr_type, XRT_STRUCT_DESERIALIZER_PTR(struct_type)},
 #define XRT_STRUCT_DESERIALIZER_LOOKUP_ENTRY(struct_type, type, ...) \
-    XRT_EXPAND(XRT_STRUCT_DESERIALIZER_LOOKUP_ENTRY_##type(struct_type, type, ##__VA_ARGS__))
+    XRT_STRUCT_DESERIALIZER_LOOKUP_ENTRY_##type(struct_type, type, ##__VA_ARGS__)
 
 static std::unordered_map<XrStructureType, StructDeserializer> deserializer_lookup_table = {
     XRT_STRUCT_LIST_ALL(XRT_STRUCT_DESERIALIZER_LOOKUP_ENTRY)
@@ -63,7 +60,7 @@ using StructCleaner = void(*)(const XrBaseOutStructure*);
 #define XRT_STRUCT_CLEANER_LOOKUP_ENTRY_XR(struct_type, XR, xr_type) \
     {xr_type, XRT_STRUCT_CLEANER_PTR(struct_type)},
 #define XRT_STRUCT_CLEANER_LOOKUP_ENTRY(struct_type, type, ...) \
-    XRT_EXPAND(XRT_STRUCT_CLEANER_LOOKUP_ENTRY_##type(struct_type, type, ##__VA_ARGS__))
+    XRT_STRUCT_CLEANER_LOOKUP_ENTRY_##type(struct_type, type, ##__VA_ARGS__)
 
 static std::unordered_map<XrStructureType, StructCleaner> cleaner_lookup_table = {
     XRT_STRUCT_LIST_ALL(XRT_STRUCT_CLEANER_LOOKUP_ENTRY)
@@ -84,7 +81,7 @@ static StructCleaner cleaner_lookup(XrStructureType struct_type) {
 #define XRT_STRUCT_SIZE_LOOKUP_ENTRY_XR(struct_type, XR, xr_type) \
     {xr_type, sizeof(struct_type)},
 #define XRT_STRUCT_SIZE_LOOKUP_ENTRY(struct_type, type, ...) \
-    XRT_EXPAND(XRT_STRUCT_SIZE_LOOKUP_ENTRY_##type(struct_type, type, ##__VA_ARGS__))
+    XRT_STRUCT_SIZE_LOOKUP_ENTRY_##type(struct_type, type, ##__VA_ARGS__)
 
 static std::unordered_map<XrStructureType, std::size_t> size_lookup_table = {
     XRT_STRUCT_LIST_ALL(XRT_STRUCT_SIZE_LOOKUP_ENTRY)
@@ -213,7 +210,7 @@ static void cleanup_xr(const void* untyped) {
 #define XRT_STRUCT_DESERIALIZE_MEMBER_PLAIN(member_name, member_type, type, ...) \
     deserialize(&s->member_name, in);
 #define XRT_STRUCT_DESERIALIZE_MEMBER(member_name, member_type, type, ...) \
-    XRT_EXPAND(XRT_STRUCT_DESERIALIZE_MEMBER_##type(member_name, member_type, type, ##__VA_ARGS__))
+    XRT_STRUCT_DESERIALIZE_MEMBER_##type(member_name, member_type, type, ##__VA_ARGS__)
 
 #define XRT_STRUCT_DESERIALIZER_CUSTOM(...) // no implementation for custom structs
 #define XRT_STRUCT_DESERIALIZER_XR_CUSTOM(...)
@@ -230,7 +227,7 @@ static void cleanup_xr(const void* untyped) {
         XRT_ENUMERATE_##struct_name(XRT_STRUCT_DESERIALIZE_MEMBER) \
     }
 #define XRT_STRUCT_DESERIALIZER(struct_name, struct_type, ...) \
-    XRT_EXPAND(XRT_STRUCT_DESERIALIZER_##struct_type(struct_name, struct_type, ##__VA_ARGS__))
+    XRT_STRUCT_DESERIALIZER_##struct_type(struct_name, struct_type, ##__VA_ARGS__)
 
 XRT_STRUCT_LIST_ALL(XRT_STRUCT_DESERIALIZER)
 
@@ -244,7 +241,7 @@ XRT_STRUCT_LIST_ALL(XRT_STRUCT_DESERIALIZER)
 #define XRT_STRUCT_CLEANUP_MEMBER_PLAIN(member_name, member_type, type, ...) \
     cleanup(&s->member_name);
 #define XRT_STRUCT_CLEANUP_MEMBER(member_name, member_type, type, ...) \
-    XRT_EXPAND(XRT_STRUCT_CLEANUP_MEMBER_##type(member_name, member_type, type, ##__VA_ARGS__))
+    XRT_STRUCT_CLEANUP_MEMBER_##type(member_name, member_type, type, ##__VA_ARGS__)
 
 #define XRT_STRUCT_CLEANER_CUSTOM(...) // no implementation for custom structs
 #define XRT_STRUCT_CLEANER_XR_CUSTOM(...)
@@ -261,7 +258,7 @@ XRT_STRUCT_LIST_ALL(XRT_STRUCT_DESERIALIZER)
         XRT_ENUMERATE_##struct_name(XRT_STRUCT_CLEANUP_MEMBER) \
     }
 #define XRT_STRUCT_CLEANER(struct_name, struct_type, ...) \
-    XRT_EXPAND(XRT_STRUCT_CLEANER_##struct_type(struct_name, struct_type, ##__VA_ARGS__))
+    XRT_STRUCT_CLEANER_##struct_type(struct_name, struct_type, ##__VA_ARGS__)
 
 XRT_STRUCT_LIST_ALL(XRT_STRUCT_CLEANER)
 

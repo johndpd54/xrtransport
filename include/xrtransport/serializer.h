@@ -11,9 +11,6 @@
 
 namespace xrtransport {
 
-// Hack necessary for MSVC
-#define XRT_EXPAND(x) x
-
 // Forward declarations
 #define XRT_STRUCT_SERIALIZER_FORWARD_DECLARATION(struct_name, ...) \
     static void serialize(const struct_name* s, std::ostream& out);
@@ -32,7 +29,7 @@ using StructSerializer = void(*)(const XrBaseInStructure*, std::ostream&);
 #define XRT_STRUCT_SERIALIZER_LOOKUP_ENTRY_XR(struct_type, XR, xr_type) \
     {xr_type, XRT_STRUCT_SERIALIZER_PTR(struct_type)},
 #define XRT_STRUCT_SERIALIZER_LOOKUP_ENTRY(struct_type, type, ...) \
-    XRT_EXPAND(XRT_STRUCT_SERIALIZER_LOOKUP_ENTRY_##type(struct_type, type, ##__VA_ARGS__))
+    XRT_STRUCT_SERIALIZER_LOOKUP_ENTRY_##type(struct_type, type, ##__VA_ARGS__)
 
 static std::unordered_map<XrStructureType, StructSerializer> serializer_lookup_table = {
     XRT_STRUCT_LIST_ALL(XRT_STRUCT_SERIALIZER_LOOKUP_ENTRY)
@@ -87,7 +84,7 @@ static void serialize_xr(const void* untyped, std::ostream& out) {
 #define XRT_STRUCT_SERIALIZE_MEMBER_PLAIN(member_name, member_type, type, ...) \
     serialize(&s->member_name, out);
 #define XRT_STRUCT_SERIALIZE_MEMBER(member_name, member_type, type, ...) \
-    XRT_EXPAND(XRT_STRUCT_SERIALIZE_MEMBER_##type(member_name, member_type, type, ##__VA_ARGS__))
+    XRT_STRUCT_SERIALIZE_MEMBER_##type(member_name, member_type, type, ##__VA_ARGS__)
 
 #define XRT_STRUCT_SERIALIZER_CUSTOM(...) // no implementation for custom structs
 #define XRT_STRUCT_SERIALIZER_XR_CUSTOM(...)
@@ -104,7 +101,7 @@ static void serialize_xr(const void* untyped, std::ostream& out) {
         XRT_ENUMERATE_##struct_name(XRT_STRUCT_SERIALIZE_MEMBER) \
     }
 #define XRT_STRUCT_SERIALIZER(struct_name, struct_type, ...) \
-    XRT_EXPAND(XRT_STRUCT_SERIALIZER_##struct_type(struct_name, struct_type, ##__VA_ARGS__))
+    XRT_STRUCT_SERIALIZER_##struct_type(struct_name, struct_type, ##__VA_ARGS__)
 
 XRT_STRUCT_LIST_ALL(XRT_STRUCT_SERIALIZER)
 

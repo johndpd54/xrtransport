@@ -7,3 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(fuzzer fuzzer.cpp)
 
 target_include_directories(fuzzer PRIVATE ../OpenXR-SDK/include ../include)
+if(MSVC)
+    target_compile_options(fuzzer PRIVATE /Zc:preprocessor)
+endif()
