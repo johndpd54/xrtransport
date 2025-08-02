@@ -9,6 +9,26 @@ xrtransport is a **transparent serialization layer** that:
 
 **Key Principle**: All state is handled by the native OpenXR runtime on the server. xrtransport is just a transparent network layer.
 
+## Phase 0: Function Generation Infrastructure ✅ COMPLETED
+
+### Step 0.1: Extend Code Generation for Functions ✅
+- [x] Create `code_generation/templates/reflection_function.mako`
+- [x] Add function reflection generation to `code_generation/reflection_function.py`
+- [x] Update `code_generation/__main__.py` to generate function reflection
+- [x] Generate `include/xrtransport/generated/reflection_function.h`
+
+### Step 0.2: Function Parameter Analysis ✅
+- [x] Extend `XrFunction` class to include parameter analysis
+- [x] Add parameter direction analysis (input/output/inout)
+- [x] Add parameter size analysis for arrays
+- [x] Add function categorization (instance, system, session, etc.)
+
+### Step 0.3: Function Interception Templates ✅
+- [x] Create function interception macro templates
+- [x] Generate function pointer type definitions
+- [x] Create function call serialization templates
+- [x] Add function response deserialization templates
+
 ## Phase 1: Basic Function Interception
 
 ### Step 1.1: Create Function Pointer Interception
