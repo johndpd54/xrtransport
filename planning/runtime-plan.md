@@ -40,6 +40,15 @@ xrtransport is a **transparent serialization layer** that:
           self.requires_allocation = False  # True if output needs memory allocation
   ```
 
+- [ ] **Add binding storage to `XrStruct` class**:
+  ```python
+  class XrStruct:
+      def __init__(self, name, members):
+          # ... existing fields ...
+          self.output_bindings = []  # Cached list of output bindings for this struct
+          self.binding_analyzed = False  # Flag to prevent redundant analysis
+  ```
+
 - [ ] **Implement binding analysis algorithm**:
   ```python
   def analyze_output_bindings(func, spec):
@@ -51,28 +60,57 @@ xrtransport is a **transparent serialization layer** that:
       - "countOutput" (count parameter for array output)
       """
       bindings = []
+      processed_structs = set()
+      
       for param in func.params:
           if param.pointer and not param.qualifier == "const":
-              bindings.extend(analyze_param_bindings(param, spec))
+              # For direct pointer parameters
+              bindings.append(param.name)
+              
+              # For struct pointer parameters, analyze the struct once
+              if param.type in spec.structs_index:
+                  struct = spec.structs_index[param.type]
+                  struct_bindings = get_struct_bindings(struct, spec)
+                  bindings.extend([f"{param.name}->{binding}" for binding in struct_bindings])
+      
       return bindings
   ```
 
 - [ ] **Add struct member analysis**:
   ```python
-  def analyze_struct_outputs(struct, spec):
+  def analyze_struct_outputs(struct, spec, processed_structs=None):
       """
-      Recursively analyze struct members that could be modified.
-      Handles nested structs, arrays, and pointer chains.
+      Analyze struct members that could be modified.
+      Stores bindings per-struct to avoid redundant processing.
       """
+      if processed_structs is None:
+          processed_structs = set()
+      
+      # Avoid processing the same struct multiple times
+      if struct.name in processed_structs:
+          return []
+      
+      processed_structs.add(struct.name)
       outputs = []
+      
       for member in struct.members:
           if member.pointer and not member.qualifier == "const":
+              # Store the binding at this level - children will be handled by this binding
               outputs.append(f"{member.name}")
-              # Recursively analyze pointed-to struct
-              if member.type in spec.structs_index:
-                  nested = analyze_struct_outputs(spec.structs_index[member.type], spec)
-                  outputs.extend([f"{member.name}->{nested}" for nested in nested])
+              # Don't recursively process children - they'll be handled when this binding is processed
       return outputs
+  ```
+
+- [ ] **Add binding caching mechanism**:
+  ```python
+  def get_struct_bindings(struct, spec):
+      """
+      Get cached bindings for a struct, analyzing only once.
+      """
+      if not struct.binding_analyzed:
+          struct.output_bindings = analyze_struct_outputs(struct, spec)
+          struct.binding_analyzed = True
+      return struct.output_bindings
   ```
 
 ### Step 2.2: Enhanced Template Generation System
