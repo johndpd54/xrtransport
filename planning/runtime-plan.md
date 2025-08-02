@@ -29,17 +29,6 @@ xrtransport is a **transparent serialization layer** that:
 ## Phase 2: Detailed Implementation Plan
 
 ### Step 2.1: Enhanced Spec Parser and Data Binding Analysis
-- [ ] **Extend `XrParam` class** to include output analysis:
-  ```python
-  class XrParam:
-      def __init__(self, type_, name):
-          # ... existing fields ...
-          self.is_output = False  # True if parameter can be modified by function
-          self.is_input = False   # True if parameter is read by function
-          self.output_bindings = []  # List of data paths that could be modified
-          self.requires_allocation = False  # True if output needs memory allocation
-  ```
-
 - [ ] **Add binding storage to `XrStruct` class**:
   ```python
   class XrStruct:
