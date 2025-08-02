@@ -42,6 +42,8 @@ class XrStruct:
         self.header = None
         self.extension = None
         self.custom = False
+        self.output_bindings = []
+        self.binding_analyzed = False
     
 class XrFunction:
     def __init__(self, name, type_, params):
@@ -330,3 +332,54 @@ def filter_test_structs(extensions, test_extensions):
         if ext_name in test_extensions:
             test_structs += ext.structs
     return test_structs
+
+
+# ----------------------------  Binding-Analysis Helpers  ----------------------------
+
+def analyze_struct_outputs(struct, spec, processed_structs=None):
+    """Return a list of member names of *struct* that may be modified (non-const pointers).
+    The result is cached inside *struct* via get_struct_bindings().
+    """
+    if processed_structs is None:
+        processed_structs = set()
+
+    # Avoid infinite recursion for self-referencing structs
+    if struct.name in processed_structs:
+        return []
+    processed_structs.add(struct.name)
+
+    outputs = []
+    for member in struct.members:
+        # A member is considered an output if it is a pointer and not marked const
+        if member.pointer and member.qualifier != "const":
+            outputs.append(member.name)
+            # We deliberately do *not* recurse into this member because the pointer itself
+            # will be handled at runtime when the binding path is followed (see plan 2.1).
+    return outputs
+
+
+def get_struct_bindings(struct, spec):
+    """Return cached output bindings for a struct, computing them once if necessary."""
+    if not getattr(struct, "binding_analyzed", False):
+        struct.output_bindings = analyze_struct_outputs(struct, spec)
+        struct.binding_analyzed = True
+    return struct.output_bindings
+
+
+def analyze_output_bindings(func, spec):
+    """Return a list of binding paths for *func* that may be modified by the server.
+    Each path is in the form "param" or "param->nestedMember" according to the
+    algorithm sketched in planning/runtime-plan.md.
+    """
+    bindings = []
+    for param in func.params:
+        # We care only about non-const pointer parameters
+        if param.pointer and param.qualifier != "const":
+            bindings.append(param.name)
+
+            # If the parameter is a pointer to a struct, merge that struct's bindings
+            if param.type in spec.structs_index:
+                struct = spec.structs_index[param.type]
+                struct_bindings = get_struct_bindings(struct, spec)
+                bindings.extend([f"{param.name}->{b}" for b in struct_bindings])
+    return bindings
