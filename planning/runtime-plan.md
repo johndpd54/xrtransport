@@ -12,8 +12,7 @@ xrtransport is a **transparent serialization layer** that:
 ## Phase 1: Redo Project Structure
 
 ### Step 1.1: Plan Struct and Function Generation Mechanism
-- [ ] Pause for me to write code to generate with straight Python/mako instead of using preprocessor macros
-- [ ] Then continue with the next steps
+- [ ] Write code to generate with straight Python/mako instead of using preprocessor macros (I will do this step, not the agent)
 
 ### Step 1.2: Implement Return Data Serialization Strategy
 - [ ] Implement code to figure out data bindings that need to be sent back to the client (python code based on parsed spec)
@@ -21,9 +20,8 @@ xrtransport is a **transparent serialization layer** that:
     - These bindings will be used in the function bodies to know what to send back to the client when the server executes the command, and on the client to know how to deserialize the data it got from the server.
 
 ### Step 1.3: Implement In-place Deserialize Mechanism
-- [ ] Pause and help me choose strategy: a) parameter to existing deserialize logic or b) set of new functions
-    - Instead of choosing for me, interview me about the pros and cons of each strategy
+- [ ] Choose strategy for in-place deserialization: a) parameter to existing deserialize logic or b) set of new in-place deserialization functions
 - [ ] Implement deserialize functions to deserialize in place, assuming the pointers are already allocated, based on the strategy chosen above
 
 ### Step 1.4: Plan Generator for Client-side Function Bodies
-- [ ] Generate function body template: a) serialize parameters onto output stream, b) wait for response, c) apply result based on bindings chosen in Step 1.2
+- [ ] Write Python/mako code to generate each function, one at a time, based on the following general structure: a) serialize parameters onto output stream, b) wait for response, c) apply result based on bindings chosen in Step 1.2
