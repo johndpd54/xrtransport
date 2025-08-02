@@ -19,15 +19,15 @@ xrtransport is a **transparent serialization layer** that:
 
 ### Step 1.2: Implement Basic Serialization Wrapper
 - [ ] Create `runtime/include/xrtransport/serializer_wrapper.h`
-- [ ] Implement wrapper that serializes function calls to network
-- [ ] Add basic network send/receive functionality
+- [ ] Implement wrapper that serializes function calls to memory buffer
+- [ ] Add basic serialization/deserialization testing
 - [ ] Test with simple function like `xrEnumerateApiLayerProperties`
 
 ### Step 1.3: Add Response Handling
-- [ ] Implement deserialization of return values
+- [ ] Implement deserialization of return values from mock data
 - [ ] Handle output parameter modification
 - [ ] Add error code propagation
-- [ ] Test end-to-end with simple function
+- [ ] Test end-to-end with simple function using mock responses
 
 ## Phase 2: Core OpenXR Functions
 
